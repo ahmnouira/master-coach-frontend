@@ -1,0 +1,104 @@
+<app-sub-header [title]="'Détail coach'" [subTitle]="'BACK'"></app-sub-header>
+<div class="row sub-component-content">
+    <div class="col-11 col-xl-10">
+      <div class="coach-banner">
+          <img class="coach-img" [attr.src]="coach.photo ? coach.photo : '/assets/img/common/blank-profile-picture-973460.png'">
+        <div class="col-3" style=" display: flex; height: 80%; align-content: center; justify-content: space-between; flex-direction: column;">
+          <div class="rating">
+            <img src="assets/img/common/Layer%202.svg"/>
+            <img src="assets/img/common/Layer%202.svg"/>
+            <img src="assets/img/common/Layer%202.svg"/>
+            <img src="assets/img/common/Layer%202.svg"/>
+            <img src="assets/img/common/Layer%202-1.svg"/>
+          </div>
+          <span class="coach-name">{{coach.prenom}} {{coach.nom}}</span>
+          <span class="coach-badge">Coaching carrière</span>
+        </div>
+        <div class="col-3" style="justify-content: space-around">
+          <img src="assets/img/common/world-wide-web.svg" style="margin-right: 5px;"/>
+          <span class="coach-name">{{coach.email}}</span>
+        </div>
+        <div class="col-3">
+          <button (click)="createNewConversation(coach)" class="btn-rdv"><span class="material-icons">send</span>  Envoyer un message</button>
+        </div>
+      </div>
+      <div  style="padding: 20px 10px 20px 160px;">
+        <div class="row">
+          <span class="coach-comps">{{coach.competances}}</span>
+        </div>
+        <div class="row mt-2">
+          <span class="coach-desc" *ngIf="coach.bio">
+            {{coach.bio}}
+          </span>
+          <span  class="coach-desc" *ngIf="!coach.bio">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum ipsum consectetur nulla sodales, at aliquam ligula iaculis. Fusce sed leo rhoncus, commodo lectus vel, accumsan sapien. Nullam nulla libero, laoreet in rutrum sed, blandit a nibh. Curabitur ultrices ante in malesuada sagittis. Fusce id elit sit amet sem eleifend varius. Ut ullamcorper dignissim dui vehicula egestas. Vivamus nec aliquam mauris. Nulla vestibulum tempor sapien quis malesuada. Vestibulum eu sapien purus. Nunc vitae tortor ultrices, scelerisque nibh ac, interdum nulla. Ut ullamcorper dignissim dui vehicula egestas. Vivamus nec aliquam mauris. Nulla vestibulum tempor sapien quis malesuada. Vestibulum eu sapien purus. Nunc vitae tortor ultrices, scelerisque nibh ac, interdum nulla.
+          </span>
+        </div>
+        <div class="row mt-3 bloc-comp-accr">
+          <span class="elem-lab">Accreditations légales</span>
+          <div class="row d-inline-flex flex-wrap elem-group">
+            <span class="elem" *ngFor="let acc of coach.accreditation">{{acc.name}}</span>
+          </div>
+          <span class="elem-lab">Compétences</span>
+          <div class="row d-inline-flex flex-wrap elem-group">
+            <span class="elem" *ngFor="let comp of coach.competance">{{comp.name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cards-container col-11 col-xl-10 row g-4 p-0" #elemt (mousedown)="startDragging($event, false, elemt)" (mouseup)="stopDragging($event, false)"
+       (mouseleave)="stopDragging($event, false)" (mousemove)="moveEvent($event, elemt)">
+      <div (click)="goToDetailFormation($event,1)" style="margin-left: 10px;margin-right: 10px;" class="col-6 col-lg-3">
+        <div class="card">
+          <img src="assets/img/common/pbk5ajSVo5Uw0X16iFACjzozuTBWt5mCk6ELDU0ZFgWqPhDOyGKWisdomxsgD88gz+TpcI8yx+YQiwamisj3vGUDTpqMTB245uBznqHie6Bl5z1rJS3fplD3Fc7HWmIuSu3KR3yAsXNiLduRoqdkwk@2x.png"/>
+          <div class="bottom-info">
+            <div class="title-rating">
+              <span class="badge">Coaching carrière</span>
+            </div>
+            <div class="partial-info">
+              <span class="coach-skills">Comment gérer ses émotions au travail ?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div (click)="goToDetailFormation($event,1)" style="margin-left: 10px;margin-right: 10px;" class="col-6 col-lg-3">
+        <div class="card">
+          <img src="assets/img/common/PVRJRCiwuL8HcD84vsBj3lWFzA5lfNO8V0eIZQTyIMYXZCVZVs2MeGuAWREq4SPRxEUa8aqAVXGqeoioIRjfXmm5JC2ail6ti1gN9EexboDHGbc5rneP4MAo+tq_BFEpJfMswajStXiCihNW8wiDnW@2x.png"/>
+          <div class="bottom-info">
+            <div class="title-rating">
+              <span class="badge">Coaching de vie</span>
+            </div>
+            <div class="partial-info">
+              <span class="coach-skills">Comment gérer ses émotions au travail ?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div (click)="goToDetailFormation($event,1)" style="margin-left: 10px;margin-right: 10px;" class="col-6 col-lg-3">
+        <div class="card">
+          <img src="assets/img/common/ZTEtw73XBzh47hasLQKcSpFCHnLq2w1HNNIidyVRoPn6N4TQJgp4y9iI9I1UdLJJQfWlJBq8QkRkYqRdrnAXuGxYq2SYI8gisoSz1z1VdCsT2WDw209XZpU5ck5q5aBtchdj4mcovU2O5E6qsnAU6K@2x.png"/>
+          <div class="bottom-info">
+            <div class="title-rating">
+              <span class="badge">Coaching carrière</span>
+            </div>
+            <div class="partial-info">
+              <span class="coach-skills">Comment gérer ses émotions au travail ?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div (click)="goToDetailFormation($event,1)" style="margin-left: 10px;margin-right: 10px;" class="col-6 col-lg-3">
+       <div class="card">
+        <img src="assets/img/common/pbk5ajSVo5Uw0X16iFACjzozuTBWt5mCk6ELDU0ZFgWqPhDOyGKWisdomxsgD88gz+TpcI8yx+YQiwamisj3vGUDTpqMTB245uBznqHie6Bl5z1rJS3fplD3Fc7HWmIuSu3KR3yAsXNiLduRoqdkwk@2x.png"/>
+        <div class="bottom-info">
+          <div class="title-rating">
+            <span class="badge">Coaching de vie</span>
+          </div>
+          <div class="partial-info">
+            <span class="coach-skills">Comment gérer ses émotions au travail ?</span>
+          </div>
+        </div>
+       </div>
+      </div>
+  </div>
+</div>

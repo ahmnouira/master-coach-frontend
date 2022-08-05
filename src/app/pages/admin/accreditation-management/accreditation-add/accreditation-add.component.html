@@ -1,0 +1,16 @@
+<app-sub-header [title]="'Ajouter une accréditation'" [subTitle]="'BACK'"></app-sub-header>
+<div class="sub-component-content pt-40">
+  <form>
+    <div class="input-group form-group form-inline mb-2 mt-2">
+      <div class="col-2">
+        <span class="input-group-text"> Libellé accreditation : </span>
+      </div>
+      <div class="col-10">
+        <input class="form-control ml-2" required [(ngModel)]="newUser.name" id="userName" name="userName" type="text" />
+      </div>
+    </div>
+  </form>
+  <div class="d-flex justify-content-start mb-4">
+    <button class="btn btn-primary align-self-start" (click)="addUser()">Enregistrer</button>&nbsp;
+  </div>
+</div>

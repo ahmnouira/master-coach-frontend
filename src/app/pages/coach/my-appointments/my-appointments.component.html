@@ -1,0 +1,152 @@
+<app-sub-header [title]="'Calendrier'"></app-sub-header>
+
+<div class="mb-3 mt-3">
+  <div class="d-flex justify-content-end">
+    <button (click)="openModal('modalworkinghours')"class="btn align-self-end btn-no-border gray-link"><span class="material-icons">add_circle</span>Mes heures de travail</button>
+    <button (click)="openModal('modalgoogleagenda')" class="btn align-self-end btn-no-border gray-link"><span class="material-icons">add_circle</span>Synchroniser mon calendrier</button>&nbsp;
+    <button (click)="openModal('modalajoutsession')" class="btn align-self-end ms-2"><span class="material-icons">add_circle</span>Ajouter une session</button>&nbsp;
+  </div>
+</div>
+<div class="d-flex justify-content-start align-items-center mb-3">
+  <div class="meeting-type gray" >&#9632; <span>rendez-vous terminé</span></div>
+  <div class="meeting-type red" >&#9632; <span>rendez-vous en attente de paiement</span></div>
+  <div class="meeting-type yellow">&#9632; <span>rendez-vous à confimer</span></div>
+  <div class="meeting-type blue">&#9632; <span>rendez-vous à venir</span></div>
+</div>
+<full-calendar #calendar [options]="calendarOptions"></full-calendar>
+
+
+<app-modal-ajout-session></app-modal-ajout-session>
+<app-modal-calendrier></app-modal-calendrier>
+<app-modal-google-agenda></app-modal-google-agenda>
+<app-modal-working-hours></app-modal-working-hours>
+<ng-template #confirmModal>
+
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Confirmez-vous ce rendez-vous</h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <h2 style="font: normal normal normal 18px/22px Fredoka; letter-spacing: 0px; color: #2b76a3;">{{clickedEvent._def.extendedProps.session.title}}</h2>
+    </div>
+    <div>
+      <h4 style="font: normal normal normal 15px/19px Fredoka; letter-spacing: 0px;text-transform: capitalize;"><strong>Date: </strong>Le {{clickedEvent._def.extendedProps.session.fullStartDateString}} de <strong>{{clickedEvent._def.extendedProps.session.startTimeString}}h</strong> a <strong>{{clickedEvent._def.extendedProps.session.endTimeString}}h</strong></h4>
+    </div>
+    <span style=""><strong>Status:</strong> {{clickedEvent._def.extendedProps.session.statusName}}</span>
+    <div *ngIf="clickedEvent._def.extendedProps.session.users.length == 1">
+      <span style=""><strong>Client participant:</strong> {{clickedEvent._def.extendedProps.session.users[0].prenom}} {{clickedEvent._def.extendedProps.session.users[0].nom}}</span>
+    </div>
+    <div *ngIf="clickedEvent._def.extendedProps.session.users.length > 1">
+      <span style=""><strong>Clients participants:</strong></span>
+      <ul>
+        <li *ngFor="let userElement of clickedEvent._def.extendedProps.session.users">{{userElement.prenom}} {{userElement.nom}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="confirmRdv('accepted')">Confirmer</button>
+    <button type="button" class="btn bg-danger" (click)="openNGBModal(refusSession, 2)" style="color: white; border: 1px solid white;">Refuser</button>
+  </div>
+</ng-template>
+
+<ng-template #statusModal>
+
+  <div class="modal-header">
+    <h5 class="modal-title" id="modalTitle">Rendez-vous {{clickedEvent._def.extendedProps.session.statusName}}</h5>
+    <div>
+      <button type="button" class="pull-right" style="border:0" (click)="openNGBModal(annulationSession, 2)">
+        <img src="assets/img/common/trash-bin.svg" style="width: 15px;height: 15px;margin-right: 15px">
+      </button>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+
+  </div>
+  <div class="modal-body">
+    <div>
+      <h2 style="font: normal normal normal 18px/22px Fredoka; letter-spacing: 0px; color: #2b76a3;">Formation</h2>
+    </div>
+    <div>
+      <h4 style="font: normal normal normal 15px/19px Fredoka; letter-spacing: 0px;text-transform: capitalize;"><strong>Date: </strong>Le {{clickedEvent._def.extendedProps.session.fullStartDateString}} de <strong>{{clickedEvent._def.extendedProps.session.startTimeString}}h</strong> a <strong>{{clickedEvent._def.extendedProps.session.endTimeString}}h</strong></h4>
+    </div>
+    <span style=""><strong>Status:</strong> {{clickedEvent._def.extendedProps.session.statusName}}</span><br/>
+    <span style=""><strong>Services:</strong> Coaching de vie</span>
+    <div *ngIf="clickedEvent._def.extendedProps.session.users.length == 1">
+      <span style=""><strong>Client participant:</strong> {{clickedEvent._def.extendedProps.session.users[0].prenom}} {{clickedEvent._def.extendedProps.session.users[0].nom}}</span>
+    </div>
+    <div *ngIf="clickedEvent._def.extendedProps.session.users.length > 1">
+      <span style=""><strong>Clients participants:</strong></span>
+          <ul>
+            <li *ngFor="let userElement of clickedEvent._def.extendedProps.session.users">{{userElement.prenom}} {{userElement.nom}}</li>
+          </ul>
+    </div>
+    <diV class="d-flex justify-content-center mt-3">
+      <button *ngIf="isTimeAndDay(clickedEvent._def.extendedProps.session)" (click)="joinVideo(clickedEvent._def.extendedProps.session)"  [ngStyle]="!isTimeAndDay(clickedEvent._def.extendedProps.session) ? {'background-color' :  'grey'} : {}"  class="start-btn"><img src="assets/img/common/play-button%20(11)-1.svg" style="width: 20px; height: 20px;margin-right: 10px">Commencer</button>
+    </diV>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Fermer</button>
+  </div>
+</ng-template>
+
+<ng-template #refusSession>
+
+  <div class="modal-header">
+    <h5 class="modal-title" id="refusTitle">Êtes-vous sûr de vouloir refuser ce rendez-vous !</h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal(2)">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label class="element-label">Motif de refus</label>
+        <input type="text" [(ngModel)]="motif"
+               class="form-control element"
+               required id="motifRefus" name="motifRefus"
+               >
+          <!--     #motif="ngModel"
+        >
+        <div *ngIf="(motif.invalid && motif.touched) || motif.dirty">
+          <small *ngIf="motif.errors?.required" class="alert alert-danger" role="alert">Le motif de refus est obligatoire!</small>
+        </div>-->
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button [disabled]="motif.length == 0" type="button" class="btn btn-primary" (click)="confirmRdv('declined')">Oui</button>
+    <button type="button" class="btn bg-danger" (click)="closeModal(2)" style="color: white; border: 1px solid white;">Non</button>
+  </div>
+</ng-template>
+<ng-template #annulationSession>
+  <div class="modal-header">
+    <h5 class="modal-title" id="annulationTitle">Êtes-vous sûr de vouloir annuler ce rendez-vous !</h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal(2)">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label class="element-label">Motif de annulation</label>
+        <input type="text" [(ngModel)]="motif"
+               class="form-control element"
+               required id="motifAnnulation" name="motifAnnulation"
+               >
+       <!--        #motif="ngModel"
+        >
+        <div *ngIf="(motif.invalid && motif.touched) || motif.dirty">
+          <small *ngIf="motif.errors?.required" class="alert alert-danger" role="alert">Le motif d'annulation est obligatoire!</small>
+        </div>-->
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button [disabled]="motif.length == 0" type="button" class="btn btn-primary" (click)="confirmRdv('cancelled')">Oui</button>
+    <button type="button" class="btn bg-danger" (click)="closeModal(2)" style="color: white; border: 1px solid white;">Non</button>
+  </div>
+</ng-template>

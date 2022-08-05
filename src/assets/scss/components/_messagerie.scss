@@ -1,0 +1,371 @@
+.messagerie {
+  .bloc-top {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $md) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .left-bloc {
+      h2 {
+        font-family: $font-family-base;
+        font-size: $font-size-base;
+        font-weight: 500;
+        line-height: 22px;
+        text-transform: capitalize;
+        margin-bottom: 0;
+      }
+    }
+    .right-bloc {
+      margin-top: 20px;
+      @media (min-width: $md) {
+        margin-top: 0;
+      }
+      .right-elements {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        .notification {
+          margin: 0 20px;
+          padding: 8px 11px;
+          border: 1px solid $sky-blue;
+          border-radius: 10px;
+          i {
+            &::before {
+              font-size: 18px;
+              position: relative;
+              top: 3px;
+            }
+          }
+        }
+        .user {
+          .img-user {
+            img {
+              width: 40px;
+              height: 40px;
+              border: 1px solid $sky-blue;
+              border-radius: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .bloc-down {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    @media (min-width: $md) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .first-bloc {
+      width: 100%;
+      @media (min-width: $md) {
+        width: 30%;
+      }
+      .search-bar {
+        input {
+          height: 50px;
+        }
+        button {
+          top: 15px;
+        }
+      }
+      .chat-list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        max-height: 400px;
+        min-height: 400px;
+        
+        .box {
+          background: #FFFFFF 0% 0% no-repeat padding-box;
+          box-shadow: 0px 0px 10px #0000001a;
+          border-radius: 10px;
+          padding: 12px 19px;
+          margin-bottom: 20px;
+          position: relative;
+          transition: 0.3s all;
+          cursor: pointer;
+
+          p{
+            display: flex;
+          }
+          img {
+            width: 35px;
+            height: 35px;
+            border: 1px solid $blue;
+            border-radius: 100%;
+          }
+          .name {
+            margin: 0;
+            font-family: $font-family-base;
+            font-size: $font-size-md;
+            font-weight: 400;
+            line-height: 17px;
+
+            .name-inner {
+              display: inline-flex;
+              align-items: center;
+              width: 88%;
+              margin-left: 10px;
+              font-size: 14px;
+              color: #3C4D5D;
+
+              span {
+                margin-left: auto;
+              }
+            }
+          }
+          &.active,
+          &:hover {
+            background: #dcebf299;
+            transition: 0.3s all;
+            box-shadow: 0px 0px 10px #0000001a;
+          }
+        }
+      }
+    }
+    .second-bloc {
+      width: 100%;
+      @media (min-width: $md) {
+        width: 68%;
+        margin-left: 2%;
+      }
+      .white-bloc {
+        width: 100%;
+        float: left;
+        background: #fff;
+        box-shadow: 0px 0px 10px #0000001a;
+        border-radius: 10px;
+        .header {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          border-radius: 10px 10px 0 0;
+          padding: 15px 20px;
+          position: relative;
+          background-color: rgba(19, 118, 163, 0.15);
+          .profile-name {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 10px;
+            img {
+              width: 30px;
+              height: 30px;
+              border: 1px solid $blue;
+              border-radius: 100%;
+              cursor: pointer;
+            }
+            .name {
+              margin: 0;
+              font-family: $font-family-base;
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 17px;
+              text-transform: capitalize;
+              cursor: pointer;
+            }
+          }
+          .delete-action {
+            width: 20px;
+            height: 20px;
+            margin-left: auto;
+            margin-right: 10px;
+            cursor: pointer;
+          }
+          .ml-auto{
+            margin-left: auto;
+          }
+        }
+        .body {
+          width: 100%;
+          float: left;
+          padding: 20px;
+          max-height: 400px;
+          min-height: 400px;
+          overflow: auto;
+          .message-left,
+          .message-right {
+            width: 100%;
+            margin-bottom: 30px;
+            @media (min-width: $md) {
+              width: 75%;
+            }
+            
+          }
+          .message-left {
+            float: left;
+            p.date {
+              font-family: $font-family-base;
+              font-size: 10px;
+              font-weight: 400;
+              line-height: 12px;
+              color: $grey;
+              opacity: 0.5;
+              margin: 0 0 4px;
+            }
+            .description {
+              font: normal normal normal 14px/24px Fredoka;
+              letter-spacing: 0px;
+              color: $grey;
+              opacity: 0.75;
+            }
+          }
+          .message-right {
+            float: right;
+            text-align: right;
+            padding: 17px 20px;
+            position: relative;
+            background-color: RGBA(243,187,195,0.15);
+            border-radius: 10px;
+
+            .msg-actions{
+              position: absolute;
+              span {
+                font-size: 19px;
+                color: grey;
+              }
+            }
+            p.date {
+              font-family: $font-family-base;
+              font-size: 10px;
+              font-weight: 400;
+              line-height: 12px;
+              color: #2B76A3;
+              opacity: 0.5;
+              margin: 0 0 4px;
+            }
+            p.description {
+              font: normal normal normal 14px/24px Fredoka;
+              letter-spacing: 0px;
+              color: #2B76A3;
+              margin: 0;
+              
+            }
+          }
+        }
+      }
+      .footer {
+        width: 100%;
+        float: left;
+        background: #dfeaf1;
+        box-shadow: 0px 0px 10px #0000001a;
+        border-radius: 33px;
+        margin-top: 20px;
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          align-items: center;
+          @media (min-width: $md) {
+            flex-direction: row;
+            justify-content: space-between;
+            height: 60px;
+            padding: 10px 20px;
+          }
+
+          .icons {
+            width: 100%;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            text-align: center;
+            @media (min-width: $md) {
+              width: 20%;
+              padding-bottom: 0;
+            }
+            i {
+              padding-right: 10px;
+              cursor: pointer;
+              transition: 0.3s all;
+              color: #1376A3;
+              &::before {
+                font-size: 20px;
+              }
+              &:hover {
+                opacity: 0.5;
+              }
+            }
+          }
+          .input {
+            width: 100%;
+            position: relative;
+            @media (min-width: $md) {
+              width: 80%;
+            }
+            input {
+              width: 100%;
+              height: 40px;
+              border-radius: 33px;
+              border: transparent;
+              padding: 10px;
+              background: #fff;
+            }
+            .send {
+              position: absolute;
+              top: 8px;
+              right: 20px;
+              padding: 0;
+              background: transparent;
+              border: unset;
+              transition: 0.3s all;
+              i {
+                &::before {
+                  font-size: 20px;
+                }
+              }
+              &:hover {
+                opacity: 0.5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .search-bar {
+    margin-bottom: 18px;
+    position: relative;
+    input {
+      width: 100%;
+      height: 40px;
+      border: 1px solid $sky-blue;
+      border-radius: 10px;
+      text-transform: capitalize;
+      padding: 10px;
+      &::placeholder{
+        color: #3C4D5D;
+        opacity: 0.25;
+        font-size: 12px;
+        padding-left: 20px;
+      }
+      &:focus-visible {
+        outline: none;
+      }
+    }
+    button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: unset;
+      i {
+        &::before {
+          font-size: $font-size-base;
+        }
+      }
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+}

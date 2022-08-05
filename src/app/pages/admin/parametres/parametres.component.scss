@@ -1,0 +1,145 @@
+.sub-component-content{
+  margin: 35px 0 10px 0;
+}
+
+.mlr-10{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.row-title{
+  text-align: left;
+  font: normal normal normal 18px/22px Fredoka;
+  letter-spacing: 0px;
+  color: #1376A3;
+  opacity: 1;
+}
+.col-separator {
+  border-bottom: 2px solid #1376a340;
+  max-width: 190px;
+}
+.col-margin{
+  max-width: 190px;
+}
+.image-container { position: relative; }
+.image-container .profil-image { display: block; width: 250px }
+.image-container .profil-icon { position: absolute; bottom:10px; left:115px; }
+.image-container button {
+  background: transparent;
+  border: none;
+  position: absolute;
+  width: 250px;
+}
+
+.col {
+  flex: 1; /* additionally, equal width */
+  padding: 0.5rem;
+}
+
+.element{
+  height: 50px;
+  /* UI Properties */
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001A;
+  border-radius: 10px;
+  padding: 15px 25px;
+  opacity: 1;
+  font: normal normal normal 16px/19px Fredoka;
+  letter-spacing: 0px;
+  color: #3C4D5D;
+  opacity: 1;
+}
+.element-bio{
+  /* UI Properties */
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001A;
+  border-radius: 10px;
+  padding: 15px 25px;
+  opacity: 1;
+  font: normal normal normal 16px/19px Fredoka;
+  letter-spacing: 0px;
+  color: #3C4D5D;
+  opacity: 1;
+}
+
+:host ::ng-deep .lazyContainer{
+  color: #3C4D5D;
+}
+
+
+
+:host ::ng-deep c-icon{
+  filter: invert(97%) sepia(100%) saturate(11%) hue-rotate(217deg) brightness(105%) contrast(104%) !important;
+}
+
+.element-spec {
+  background: #1376A3 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001A;
+  border-radius: 10px;
+  opacity: 1;
+  padding: 15px 25px;
+  font: normal normal normal 16px/19px Fredoka;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+}
+
+
+.pt-40{
+  padding-top: 40px;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.smaller-font{
+  text-align: left;
+  font: normal normal normal 12px/15px Fredoka !important;
+  letter-spacing: 0px;
+  color: #3C4D5D;
+  opacity: 1;
+  margin-right: 8px;
+}
+
+.active-tab {
+  width: 192px;
+  height: 54px;
+  /* UI Properties */
+  background: #FEEFEA 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  padding: 15px 20px;
+  opacity: 1;
+  border: 0;
+  text-align: left;
+
+  span{
+    text-align: left;
+    font: normal normal normal 18px/22px Fredoka;
+    letter-spacing: 0px;
+    color: #3C4D5D;
+    opacity: 1;
+    margin-right: 8px;
+  }
+}
+.white-bg{
+  background-color: #FFFFFF;
+}
+.sub-component-content .col-10{
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 991px){
+  .col-separator{
+    padding-bottom: 6px;
+    padding-left: 0;
+  }
+
+  .active-tab{
+    padding: 15px 13px;
+    span{
+      font-size: 15px;
+    }
+
+  }
+  
+}

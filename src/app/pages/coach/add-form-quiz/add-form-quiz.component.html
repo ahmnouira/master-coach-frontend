@@ -1,0 +1,98 @@
+<app-sub-header [title]="'Formulaire de satisfaction'" [subTitle]="'BACK'"></app-sub-header>
+<div class="row sub-component-content">
+  <div class="col-2">
+    <button class="active-tab white-bg pl-0" [routerLink]="['/pages/coach/parametre']">
+      <span>Mon profil </span>
+      <img src="assets/img/common/arrow-left.svg">
+    </button>
+    <button class="active-tab white-bg pl-0">
+      <span>Mes plans </span>
+      <img src="assets/img/common/arrow-left.svg">
+    </button>
+    <div class="smaller-font active-tab pl-0" style="margin-left: 10px;" [routerLink]="['/pages/coach/quiz/list']">
+      <span style="margin-left: 10px;">Formulaire de satisfaction</span>
+      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px">
+    </div>
+    <div class="white-bg pl-0 smaller-font mt-3">
+      <span>Politique de confidentialité </span>
+      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px">
+    </div>
+    <div class="white-bg pl-0 smaller-font mt-3">
+      <span>Conditions générales </span>
+      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px">
+    </div>
+  </div>
+  <div class="col-10">
+    <div class="d-flex align-items-center">
+      <a (click)="addQuestion()"  class="btn" style="margin-left: auto"><span class="material-icons">add_circle</span>Ajouter une nouvelle question</a>&nbsp;
+    </div>
+    <div class="row">
+      <div class=" form-group">
+        <label class="element-label">Intitulé du formulaire</label>
+        <input type="text"
+               class="form-control element"
+               placeholder="Texte..."
+               [(ngModel)]="formName"
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <label class="element-label">Description du formulaire</label>
+        <textarea rows="5" style="height: 120px" [(ngModel)]="formDescription"
+                  class="form-control element"
+                  placeholder="Texte...">
+          </textarea>
+      </div>
+    </div>
+    <div *ngFor="let question of listQuestions; index as i" class="question mt-4">
+      <a (click)="removeQuestion(i)" style="position: relative; top: 10px; left: 98%; margin-left: auto; width: 10px; height: 10px; cursor: pointer">
+        <img src="assets/img/common/close.png" style="width: 10px; height: 10px">
+      </a>
+        <div class="row">
+          <div class="col-8">
+            <div class=" form-group">
+              <label class="element-label">Question</label>
+              <input type="text"
+                     class="form-control element"
+                     placeholder="Question"
+                     [(ngModel)]="question.questionText"
+              >
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label class="element-label">Type</label>
+              <div class="d-flex" style="flex-direction: row;align-items: center;height: 50px;">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="multiple" [(ngModel)]="question.questionChoixMultiple" (change)="questionChoixMultipleChanged(i)">
+                  <label class="form-check-label mt-1" for="inlineCheckbox1">Choix multiple</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="unique" [(ngModel)]="question.questionChoixUnique" (change)="questionChoixUniqueChanged(i)">
+                  <label class="form-check-label mt-1" for="inlineCheckbox2">Choix Unique</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let resp of question.questionResponses; index as j" class="row mt-1" style="align-items: center;">
+          <div class="form-group" style="width: 95%">
+            <label class="element-label">Réponse</label>
+            <input type="text"
+                   class="form-control element"
+                   placeholder="Réponse"
+                   [(ngModel)]="resp.responseText"
+            >
+          </div>
+          <img (click)="removeResponse(i,j)" src="assets/img/common/trash-bin.svg" style="width: 50px; height: 50px; margin-top: 20px;"/>
+        </div>
+        <div class="d-flex mt-2">
+          <a (click)="addResponse(i)" class="btn add-resp" style="margin-left: auto"><span class="material-icons">add_circle</span>Ajouter une réponse</a>&nbsp;
+        </div>
+    </div>
+    <div class="d-flex align-items-center">
+      <button  (click)="saveForm()" [disabled]="listQuestions.length == 0"  class="btn btn-primary mt-3" style="margin-left: auto">Enregistrer</button>&nbsp;
+    </div>
+  </div>
+</div>

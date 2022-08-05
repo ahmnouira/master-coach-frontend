@@ -1,0 +1,15 @@
+:host::ng-deep timepicker {
+  .btn {
+    padding: 0 !important;
+    min-width: 0 !important;
+    height: unset !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+  }
+  input {
+    margin-top: 0 !important;
+  }
+  td {
+    margin-bottom: 0!important;
+  }
+}

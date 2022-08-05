@@ -1,0 +1,184 @@
+.sub-component-content{
+  margin: 80px 10px 10px 0;
+
+  .profil-container{
+    .status-container{
+      gap: 40px;
+    }
+
+    .today-meeting{
+      background-color: #FFE561;
+      background-image: url(../../../../assets/img/calendar.png);
+      box-shadow: 0px 0px 10px #0000001A;
+      border-radius: 10px;
+      background-repeat: no-repeat;
+      background-position: bottom right;
+      padding: 20px 20px 0 20px;
+
+      .title{
+        font: normal normal normal 22px/26px Fredoka;
+        letter-spacing: 0px;
+        color: #EF6032;
+        margin-bottom: 16px;
+      }
+      .coach{
+        .name{
+          font: normal normal normal 18px/22px Fredoka;
+          letter-spacing: 0px;
+          color: #EF6032;
+        }
+        .time{
+          font: normal normal normal 12px/15px Fredoka;
+          letter-spacing: 0px;
+          color: #EF6032;
+        }
+      }
+      .date{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 0px 5px #0000001A;
+        border-radius: 10px;
+        padding: 11px 20px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+
+        .day-num{
+          font: normal normal bold 32px/39px Fredoka;
+          letter-spacing: 0px;
+          color: #EF6032;
+          line-height: normal;
+          text-align: center;
+        }
+        .day{
+          font: normal normal normal 18px/22px Fredoka;
+          letter-spacing: 0px;
+          color: #EF6032;
+          line-height: normal;
+        }
+      }
+    }
+
+    .team{
+      margin-top: 40px;
+      background-color: #F3BBC3;
+      background-image: url(../../../../assets/img/goal.png);
+      background-repeat: no-repeat;
+      background-position: top right;
+      box-shadow: 0px 0px 10px #0000001A;
+      border-radius: 10px;
+      padding: 0 20px 10px 20px;
+      max-height: 370px;
+      overflow-y: auto;
+
+      .title{
+        font: normal normal normal 22px/26px Fredoka;
+        color: #FFFFFF;
+        padding: 16px 0;
+      }
+
+      .member{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .d-flex{
+          gap: 10px;
+          align-items: center;
+        }
+        .name{
+          font: normal normal normal 14px/17px Fredoka;
+          letter-spacing: 0px;
+          color: #FFFFFF;
+        }
+        .date{
+          font: normal normal normal 10px/12px Fredoka;
+          color: #FFFFFF;
+          opacity: 0.5;
+        }
+        .price{
+          font: normal normal medium 16px/20px Fredoka;
+          color: #FFFFFF;
+        }
+      }
+    }
+
+    .card{
+      flex: 1;
+      border: unset;
+      padding: 20px;
+      background: #FFFFFF 0% 0% no-repeat padding-box;
+      box-shadow: 0px 0px 10px #0000001A;
+      border-radius: 10px;
+
+      .space{
+        gap: 24px;
+      }
+      &:last-of-type{
+        flex: 2;
+      }
+      .align-center{
+        align-items: center;
+      }
+      .card-number {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        div {
+            height: 20px;
+            width: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        &.up{
+          div{
+            background: rgb(38 162 27 / 25%) 0% 0% no-repeat padding-box;
+          }
+          span{
+            color: #25A200;
+            font-size: 10px;
+          }
+        } 
+        
+        &.down{
+          div{
+            background: rgb(243 187 195 / 10%);
+          }
+          span{
+            color: #F3BBC3;
+            font-size: 10px;
+          }
+        }
+      }
+      .card-icon{
+        padding: 10px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 0px 5px #0000001A;
+        border-radius: 10px;
+        margin-right: 20px;
+      }
+      .card-title{
+        margin-top: 17px;
+        font: normal normal normal 10px/12px Fredoka;
+        opacity: 0.5;
+        margin-bottom: 3px;
+      }
+      .card-total{
+        font: normal normal bold 18px/22px Fredoka;
+      }
+      .card-desc{
+        margin-top: 3px;
+        font: normal normal normal 10px/12px Fredoka;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.mlr-10{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+

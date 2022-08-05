@@ -1,0 +1,131 @@
+.sub-component-content{
+  margin: 35px 10px 10px 0;
+}
+
+.mlr-10{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.pt-40{
+  padding-top: 40px;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.smaller-font{
+  cursor: pointer;
+  text-align: left;
+  font: normal normal normal 12px/15px Fredoka !important;
+  letter-spacing: 0px;
+  height: unset !important;
+  color: #3C4D5D;
+  opacity: 1;
+  margin-right: 8px;
+  span{
+    text-align: left;
+    font: normal normal normal 12px/15px Fredoka !important;
+    letter-spacing: 0px;
+    color: #3C4D5D;
+    opacity: 1;
+    margin-right: 8px;
+  }
+}
+
+.active-tab {
+  cursor: pointer;
+  width: 192px;
+  height: 54px;
+  /* UI Properties */
+  background: #FEEFEA 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  padding: 15px 20px;
+  opacity: 1;
+  border: 0;
+  text-align: left;
+
+  span{
+    text-align: left;
+    font: normal normal normal 18px/22px Fredoka;
+    letter-spacing: 0px;
+    color: #3C4D5D;
+    opacity: 1;
+    margin-right: 8px;
+  }
+}
+.white-bg{
+  background-color: #FFFFFF;
+}
+
+.cursor-pointer{
+  cursor: pointer!important;
+}
+
+.question{
+  min-height: 200px;
+  width: 100%;
+  /* UI Properties */
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001A;
+  border-radius: 10px;
+  padding: 15px;
+
+  .add-resp{
+    border: 0 !important;
+  }
+  .add-resp:hover {
+    background-color: #FFFFFF!important;
+    color: #3C4D5D!important;
+  }
+}
+
+
+.element{
+  height: 50px;
+  /* UI Properties */
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001A;
+  border-radius: 10px;
+  padding: 15px 25px;
+  opacity: 1;
+  font: normal normal normal 16px/19px Fredoka;
+  letter-spacing: 0px;
+  color: #3C4D5D;
+  opacity: 1;
+}
+.element-bio{
+  /* UI Properties */
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001A;
+  border-radius: 10px;
+  padding: 15px 25px;
+  opacity: 1;
+  font: normal normal normal 16px/19px Fredoka;
+  letter-spacing: 0px;
+  color: #3C4D5D;
+  opacity: 1;
+}
+
+
+
+.form-check-label{
+  margin-left: 8px;
+  text-align: left;
+  font: normal normal normal 14px/17px Fredoka;
+  letter-spacing: 0px;
+  color: #3C4D5D;
+  opacity: 1;
+}
+
+@media screen and (max-width: 991px){
+
+  .active-tab{
+    padding: 15px 13px;
+    span{
+      font-size: 15px;
+    }
+  }
+  
+}

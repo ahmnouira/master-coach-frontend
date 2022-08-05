@@ -1,0 +1,177 @@
+:host ::ng-deep full-calendar{
+  table { table-layout: fixed; }
+
+  td{
+    height: 150px;
+  }
+  .fc-toolbar-chunk {
+    div {
+      display: inline-flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .fc-toolbar-title {
+      text-transform: capitalize;
+      color: #1376a3;
+      font-size: 18px;
+    }
+
+    .fc-icon-chevron-right:before, .fc-icon-chevron-left:before{
+      top: -2px;
+      position: relative;
+    }
+  }
+  .fc-scrollgrid {
+    .fc-col-header {
+      background: #FCFCFE 0% 0% no-repeat padding-box;
+    }
+    .fc-col-header .fc-col-header-cell {
+      padding: 10px 0;
+      vertical-align: center;
+    }
+    .fc-col-header .fc-col-header-cell .fc-col-header-cell-cushion {
+      text-transform: capitalize;
+      font: normal normal normal 14px/17px Fredoka;
+      letter-spacing: 0px;
+      color: #9DA5AD;
+      text-decoration: unset;
+    }
+  }
+  .fc-daygrid-day-number{
+    font: normal normal normal 14px/17px Fredoka;
+    letter-spacing: 0px;
+    color: #9DA5AD;
+  }
+  .fc-daygrid-day-top{
+    justify-content: start;
+    a{
+      text-decoration: unset;
+      padding: 17px 0 10px 17px;
+     
+    }
+  }
+  ::ng-deep .fc-daygrid-day-events{
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    max-height: 8em !important;
+    a{
+      width: 100%;
+      &:hover{
+        background: unset;
+        cursor: pointer;
+      }
+      img{
+        max-width: 28px;
+        max-height: 28px;
+      }
+    }
+  }
+  .fc-next-button {
+    margin-left: 10px;
+  }
+
+  .fc-prev-button {
+    margin-right: 10px;
+  }
+
+  .fc-prev-button, .fc-next-button {
+    color: #1376a3;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 5px #0000001A;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 0;
+  }
+
+  .avatars {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+  }
+
+  .avatar {
+    position: relative;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+  }
+
+  .avatar:not(:last-child) {
+    margin-left: -30px;
+  }
+
+  .avatar img {
+    width: 100%;
+    display: block;
+  }
+
+}
+.meeting-type{
+  font-size: 30px; 
+  margin-right: 8px;
+  span{
+    font-size: 10px; 
+    text-transform: uppercase;
+    position: relative;
+    top: -3px;
+    left: -4px;
+  }
+  &.gray{
+    color:rgba(33, 37, 41, 0.5);
+  }
+  &.red{
+    color:rgba(220, 53, 69, 1);
+  }
+  &.yellow{
+    color:rgba(255, 193, 7, 1);
+  }
+  &.blue{
+    color:rgba(19, 118, 163, 1);
+  }
+}
+
+button.gray-link{
+  color: #3C4D5D;
+  font-size: 12px;
+  
+  &:hover{
+    color: #fff;
+  }
+  
+}
+.btn-no-border {
+  border: 0!important;
+  padding: 20px 10px !important;
+  
+}
+.modal-title{
+  margin-bottom: 0 !important;
+  line-height: 1.5 !important;
+  color: #1376a3;
+  font: normal normal normal 18px/22px Fredoka;
+  font-weight: 600;
+}
+.modal-header{
+  button {
+    border: 1px solid #1376a3;
+    background-color: transparent;
+    color: #1376a3;
+    border-radius: 50%;
+  }
+}
+.start-btn {
+  height: 50px;
+  width: 180px;
+  /* UI Properties */
+  background: #EF6032 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001A;
+  border-radius: 25px;
+  color: #FFFFFF;
+  border: 0;
+  font: normal normal normal 14px/15px Fredoka;
+}
+

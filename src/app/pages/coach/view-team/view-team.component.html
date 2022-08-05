@@ -1,0 +1,85 @@
+<app-sub-header
+  [title]="'Gestion des équipes'"
+  [subTitle]="'BACK'"
+></app-sub-header>
+<div class="sub-component-content pt-40">
+  <div class="d-flex justify-content-center">
+    <h2
+      style="
+        font: normal normal normal 20px/22px Fredoka;
+        letter-spacing: 0px;
+        color: #3c4d5d;
+        font-weight: bold;
+      "
+    >
+      Nom de l'équipe : {{ teamObject.name?.toUpperCase() }}
+    </h2>
+  </div>
+  <div class="d-flex justify-content-center">
+    <h2
+      style="
+        font: normal normal normal 14px/22px Fredoka;
+        letter-spacing: 0px;
+        color: #3c4d5d;
+        font-weight: bold;
+      "
+    >
+      {{ teamObject.description?.toUpperCase() }}
+    </h2>
+  </div>
+  <div class="d-flex justify-content-end pt-40 mb-3">
+    <button
+      [disabled]="selectedProfiles.length === 0"
+      class="btn btn-primary align-self-end"
+      (click)="openModal(template)"
+    >
+      <span class="material-icons">delete</span>Supprimer la selection
+    </button>
+  </div>
+  <div class="input-group form-group form-inline pt-40">
+    <span class="input-group-text"> Rechercher : </span>
+    <input
+      class="form-control ml-2"
+      type="text"
+      name="searchText"
+      [(ngModel)]="searchValue"
+    />
+  </div>
+  <div class="table-responsive">
+    <loading-card [loading]="loadingAnimation">
+      <datatable
+        [datatable]="this.teamObject.users"
+        (datatableChange)="datatableChange($event)"
+        [checkboxes]="true"
+        [Actions]="ACTION_COLUMNS"
+        (onActionClicked)="onActionClicked($event)"
+        [searchvalue]="searchValue"
+        [displayedColomn]="DISPLAYED_COLUMNS"
+      ></datatable>
+    </loading-card>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">
+      Confirmer la suppression des élements sélectionnés
+    </h5>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="massDelete()">
+      Confirmer
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">
+      Annuler
+    </button>
+  </div>
+</ng-template>

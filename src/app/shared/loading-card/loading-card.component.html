@@ -1,0 +1,11 @@
+<div class="position-relative">
+  <div *ngIf="loading" class="spinner-wrapper">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <ng-content></ng-content>
+</div>

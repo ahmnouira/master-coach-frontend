@@ -1,0 +1,126 @@
+<div id="main-container-login" class="row">
+  <div class="col right-login-pane">
+    <div class="image">
+      <img src="assets/img/login/mastercoach.svg" alt="left-pane-image">
+    </div>
+    <div class="welcome-title">
+      <span>Créer votre compte {{accountType}}!</span>
+    </div>
+    <div class="login-form">
+      <form class="login-form" *ngIf="!isLoggedIn"
+            [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
+            name="form"
+            #f="ngForm"
+            novalidate>
+        <div class="form-group">
+          <label for="username">Nom d'utilisateur</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            aria-describedby="emailHelp"
+            placeholder="Ex : lorem@ipsum.com"
+            [(ngModel)]="form.username"
+            required
+            #username="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="username.errors && f.submitted"
+          >
+            Le nom d'utilisateur est obligatoire!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+            placeholder="Ex : lorem@ipsum.com"
+            [(ngModel)]="form.email"
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required
+            #email="ngModel"
+          />
+          <div *ngIf="(email.invalid && email.touched) || email.dirty">
+            <small *ngIf="email.errors?.required" class="alert alert-danger" role="alert">L'email' est obligatoire!</small>
+            <small *ngIf="email.errors?.pattern" class="alert alert-danger" role="alert">Veuillez entrer un email valide</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Ex : lorem@ipsum.com"
+            [(ngModel)]="form.password"
+            required
+            minlength="3"
+            #password="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="password.errors && f.submitted"
+          >
+            <div *ngIf="password.errors.required">Mot de passe est obligatoire!</div>
+            <div *ngIf="password.errors.minlength">
+              Le mot de passe doit avoir au moins 3 caractères
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirmez votre mot de passe</label>
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Ex : lorem@ipsum.com"
+            [(ngModel)]="form.confirmPassword"
+            required
+            minlength="3"
+            #confirmPassword="ngModel"
+            pattern="{{ password.value }}"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="confirmPassword.errors && f.submitted"
+          >
+            <div *ngIf="confirmPassword.errors.required">Mot de passe est obligatoire!</div>
+            <div *ngIf="confirmPassword.errors.pattern">Les mots de passe ne correspondent pas!</div>
+            <div *ngIf="confirmPassword.errors.minlength">
+              Le mot de passe doit avoir au moins 3 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex">
+          <button
+            type="submit"
+            [disabled]="!f.form.valid"
+            class="btn btn-submit raised-button" (click)="createUser()">
+            Créer
+          </button>
+        </div>
+        <div class="form-group">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && isLoginFailed"
+          >
+            La création a echoué: {{ errorMessage }}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
