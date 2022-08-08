@@ -1,0 +1,101 @@
+<!-- row content -->
+<ng-container>
+  <td
+    *ngIf="checkboxes"
+    datatable-checkbox-template
+    [row]="row"
+    (onckeckBoxClicked)="ckeckBoxClicked($event)"
+  ></td>
+  <ng-container *ngFor="let title of displayedColomnList">
+    <td
+      *ngIf="title.type === 'text' || title.type === 'badge'"
+      [ngStyle]="title.value.toLowerCase() === ('id') ? {'text-align' :  'center'} : {'text-align' :  'left'}"
+
+    >
+      <span
+        [class]="row[title.data + '_class']"
+        [ngClass]="{ badge: title.type === 'badge' }"
+      >
+        {{ row[title.data] || row[title.data] === 0  ?  row[title.data] : '-'}}
+      </span>
+    </td>
+    <!-- date piped -->
+    <td *ngIf="title.type === 'date'">
+      <span>
+        <ng-template [ngIf]="row[title.data]">
+          {{ row[title.data] | date: title.dateFormat ? title.dateFormat : "dd/MM/yyyy" }}
+        </ng-template>
+        <ng-template [ngIf]="!row[title.data]">-</ng-template>
+      </span>
+    </td>
+    <!-- checkbox -->
+    <td
+      *ngIf="title.type === 'checkbox'"
+      datatable-inputcheckbox-template
+      [row]="row"
+      [title]="title.data"
+      [textalign]="textalign"
+      style="display: flex; justify-content: center; padding-top: 1rem; "
+    ></td>
+    <td *ngIf="title.type === 'icon'">
+      <i
+        class="material-icons icon-satatus"
+        [matTooltip]="row[title.hovericondata]"
+      >
+        {{ row[title.data] }}
+      </i>
+    </td>
+    <td *ngIf="title.type === 'customTemplate'">
+
+
+      <ng-container
+        *ngTemplateOutlet="
+          title.template;
+          context: {
+            row: row
+          }
+        "
+      >
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- actions List -->
+  <td class="p-0 ">
+    <div class="d-flex actions-container">
+      <ng-container *ngFor="let action of Actions">
+    
+        <ng-template [ngIf]="!row.actionHidden">
+          <div class="d-flex" class="icon-datatable" tabindex="0">
+            <ng-container *ngFor="let child of action.childrens; let x = index">
+              <div
+                [tooltip]="row[child.tooltipAttribut]"
+                [adaptivePosition]="false"
+                placement="left"
+                class="actionitem"
+                [style.border-right]="
+                x + 1 === action.childrens.length ? 'none' : ''
+              "
+              >
+              <div
+                (click)="
+                  !row[child.disabledAttribut] ? actionClicked(child, row) : ''
+                "
+                [style.text-align]="'center'"
+                [ngClass]="row[child.disabledAttribut] ? 'icon-disabled' : ''"
+                [class]="
+                  'material-icons cursor-pointer m-auto color-primary-onhover material-icons-action'
+                "
+              >
+                <img *ngIf="child.iconClass =='view'"src="assets/img/common/view%20(1).svg"/>
+                <img *ngIf="child.iconClass =='edit'"src="assets/img/common/Layer%2092.svg"/>
+                <img *ngIf="child.iconClass =='delete'" src="assets/img/common/trash-bin.svg"/>
+            </div>
+              </div>
+            </ng-container>
+          </div>
+        </ng-template>
+      </ng-container>
+    </div>
+  </td>
+</ng-container>

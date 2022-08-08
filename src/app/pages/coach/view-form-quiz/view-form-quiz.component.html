@@ -1,0 +1,42 @@
+<app-sub-header [title]="'Formulaire de satisfaction'" [subTitle]="'BACK'"></app-sub-header>
+<div class="row sub-component-content">
+  <div class="col-2">
+    <button class="active-tab white-bg pl-0" [routerLink]="['/pages/coach/parametre']">
+      <span>Mon profil </span>
+      <img src="assets/img/common/arrow-left.svg">
+    </button>
+    <button class="active-tab white-bg pl-0">
+      <span>Mes plans </span>
+      <img src="assets/img/common/arrow-left.svg">
+    </button>
+    <div class="smaller-font active-tab pl-0" style="margin-left: 10px;"  [routerLink]="['/pages/coach/quiz/list']">
+      <span style="margin-left: 10px;">Formulaire de suivi client</span>
+      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px">
+    </div>
+    <div class="white-bg pl-0 smaller-font mt-3">
+      <span>Politique de confidentialité </span>
+      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px">
+    </div>
+    <div class="white-bg pl-0 smaller-font mt-3">
+      <span>Conditions générales </span>
+      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px">
+    </div>
+  </div>
+  <div class="col-10" style="display: flex;flex-wrap: wrap">
+    <div class="d-flex align-items-center" style="width: 100%">
+      <a (click)="editForm()" class="btn" style="margin-left: auto"><span class="material-icons">edit</span>Modifier le formulaire</a>&nbsp;
+    </div>
+
+    <div *ngFor="let question of quizData.questions; index as i" class="question mt-4">
+      <span class="question-title">{{question.questionText}}</span>
+      <div class="d-flex" style="height: 50px;">
+        <ul>
+          <li *ngFor="let resp of question.questionResponses" style="width: 100%;margin: 15px 20px;">
+            <label class="form-check-label mt-1" >{{resp.responseText}}</label>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

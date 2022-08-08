@@ -1,0 +1,44 @@
+<app-sub-header [title]="'Mes rendez-vous'" [subTitle]="'BACK'"></app-sub-header>
+<div class="row sub-component-content">
+  <div class="formation-content d-flex">
+    <div class="col-9">
+      <div class="video">
+        <div class="bottom-blur">
+          <countdown #cd [config]="config"></countdown>
+        </div>
+      </div>
+      <div class="desc">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum ipsum consectetur nulla sodales, at aliquam ligula iaculis. Fusce sed leo rhoncus, commodo lectus vel, accumsan sapien. Nullam nulla libero, laoreet in rutrum sed, blandit a nibh. Curabitur ultrices ante in malesuada sagittis. Fusce id elit sit amet sem eleifend varius. Ut ullamcorper dignissim dui vehicula egestas.
+        </p>
+        <p>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dictum tempor ante, ut posuere quam cursus sed. Aliquam sit amet libero in massa interdum laoreet. Fusce facilisis scelerisque justo, facilisis gravida dolor sollicitudin dignissim. Aliquam sollicitudin lacinia venenatis. Integer tempor felis quis purus dignissim, a volutpat enim pulvinar. Vestibulum scelerisque metus ac lacus aliquet hendrerit. Donec varius in eros at hendrerit. Curabitur eget dui vel felis eleifend hendrerit. Integer dignissim, magna feugiat vehicula dictum, ex massa molestie elit, ut scelerisque velit purus eu turpis. Cras orci quam, ultricies id eleifend et, placerat a nibh. Integer rhoncus non lectus porta cursus. Vivamus ornare porta erat non pellentesque. Proin sed felis vulputate, dapibus ex consequat, aliquet purus. Integer efficitur dui quis faucibus faucibus. Cras diam nisi, dapibus quis finibus vel, maximus eu urna. Pellentesque eu iaculis augue. Nunc fermentum luctus rhoncus. Donec quis ultricies enim, vitae elementum mi. Curabitur vel ultrices nisi, nec rhoncus ligula. Quisque auctor dolor vel purus rutrum rutrum. Vestibulum rutrum ullamcorper augue non dignissim. Proin vitae metus malesuada, aliquet urna a, interdum magna. Pellentesque pulvinar, dui eget aliquam lacinia, felis odio ornare nibh, et pretium diam neque et orci. Praesent sed urna dui. In commodo venenatis odio. Aenean sodales, nibh eget porta rhoncus, urna orci hendrerit ante, nec gravida ex sem vitae neque. Vivamus sed euismod nunc.
+        </p>
+        <p>
+          Vivamus nec aliquam mauris. Nulla vestibulum tempor sapien quis malesuada. Vestibulum eu sapien purus. Nunc vitae tortor ultrices, scelerisque nibh ac, interdum nulla. Pellentesque dapibus sapien eu aliquet congue. Etiam aliquet nulla sit amet sapien eleifend, at rhoncus neque hendrerit. Suspendisse semper, urna vitae lobortis faucibus, mauris libero euismod enim, a malesuada diam nulla ut velit. Donec accumsan ullamcorper turpis, a sollicitudin mi maximus ut. Vestibulum commodo tempor aliquam. Phasellus metus neque, commodo a nulla quis, auctor ultrices quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dictum tempor ante, ut posuere quam cursus sed. Aliquam sit amet libero in massa interdum laoreet. Fusce facilisis scelerisque justo, facilisis gravida dolor sollicitudin dignissim. Aliquam sollicitudin lacinia venenatis. Integer tempor felis quis purus dignissim, a volutpat enim pulvinar. Vestibulum scelerisque metus ac lacus aliquet hendrerit. Donec varius in eros at hendrerit. Curabitur eget dui vel felis eleifend hendrerit. Integer dignissim, magna feugiat vehicula dictum, ex massa molestie elit, ut scelerisque velit purus eu turpis. Cras orci quam, ultricies id eleifend et, placerat a nibh. Integer rhoncus non lectus porta cursus. Vivamus ornare porta erat non pellentesque.
+        </p>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-card d-flex">
+        <img class="coach-image mlr-10" width="40px" height="40px" [attr.src]="coach.photo"/>
+        <div class="rating">
+          <img src="assets/img/common/Layer%202-dark.svg"/>
+          <img src="assets/img/common/Layer%202-dark.svg"/>
+          <img src="assets/img/common/Layer%202-dark.svg"/>
+          <img src="assets/img/common/Layer%202-dark.svg"/>
+          <img src="assets/img/common/Layer%202-dark%20empty.svg"/>
+        </div>
+        <span class="form-card-title">{{coach.prenom}} {{coach.nom}}</span>
+        <p>{{coach.competances}}</p>
+        <div class="d-flex justify-content-center">
+          <button [disabled]="!isTimeAndDay()"  [ngStyle]="!isTimeAndDay() ? {'background-color' :  'grey'} : {}"  class="start-btn" (click)="joinVideo()"><img src="assets/img/common/play-button%20(11)-1.svg" style="width: 20px; height: 20px;margin-right: 10px">Commencez</button>
+        </div>
+      </div>
+      <div class="d-flex" style="margin: 10px">
+        <h3 class="d-flex align-items-center" style="margin-right: 40px;font: normal normal normal 18px/22px Fredoka;letter-spacing: 0px;font-weight:600;color: #3C4D5D;"><span class="material-icons">calendar_month</span> <span>{{session.dateString}}</span></h3>
+        <h3 class="d-flex align-items-center" style="font: normal normal normal 18px/22px Fredoka;letter-spacing: 0px;font-weight:600;color: #3C4D5D;"><span class="material-icons">schedule</span> <span>{{session.timeString}}</span></h3>
+      </div>
+    </div>
+  </div>
+</div>

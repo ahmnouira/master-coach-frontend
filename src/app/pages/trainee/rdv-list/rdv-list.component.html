@@ -1,0 +1,51 @@
+<app-sub-header [title]="'Mes rendez-vous'" [subTitle]="'NONE'"></app-sub-header>
+<div class="row sub-component-content">
+
+  <div class="day-selector">
+    <div class="custom-day-selector-title">
+      <button class="btn-prev" (click) = "changeViewDate(-1, 'month')">
+        <span class="material-icons">keyboard_arrow_left</span>
+      </button>
+      <div class="day-selector-title">{{viewDate.format('MMMM YYYY')}}</div>
+      <button class="btn-next" (click) = "changeViewDate(1, 'month')">
+        <span class="material-icons">keyboard_arrow_right</span>
+      </button>
+    </div>
+    <div class="d-flex row-of-days">
+      <button *ngFor = "let day of gridArr" class="date-item" (click)="onDateClick(day)" [ngClass]="day.value == selectedDate?.format('DD') ? 'selected-day': ''">
+        <span class="day-name" >{{day.name}}</span>
+        <span class="day-number" >{{day.value}}</span>
+      </button>
+    </div>
+  </div>
+  <div class="filters-row input-group form-group form-inline mt-3 mlr-10 d-flex">
+    <select class="selectFilter mlr-10"[(ngModel)]="selectedStatus" (change)='onOptionsSelected($event, "status")'>
+      <option selected disabled value="status"  >Status</option>
+      <option  value="all">Tous</option>
+      <option  value="pending">En attente</option>
+      <option  value="ongoing">En cours</option>
+      <option  value="done">Terminé</option>
+    </select>
+    <select class="selectFilter mlr-10" [(ngModel)]="selectedType" (change)='onOptionsSelected($event, "type")'>
+      <option selected disabled value="type" >Catégorie</option>
+    </select>
+    <div class="filters-row input-group form-group form-inline" style="width: 250px;">
+      <input class="form-control searchBox mlr-10" type="text" [(ngModel)]="filterString" placeholder="Coach">
+      <span class="material-icons material-icons-inside-input" style="right: 30px;color: #1376a3">search</span>
+    </div>
+    <button class="btn mlr-10">Rechercher</button>
+  </div><br/>
+  <div class="">
+    <div class="table-responsive ">
+      <loading-card [loading]="loadingAnimation">
+        <datatable [datatable]="sessionList"
+                   (datatableChange)="datatableChange($event)"
+                   [checkboxes]="true"
+                   [Actions]="ACTION_COLUMNS"
+                   (onActionClicked)="onActionClicked($event)"
+                   [searchvalue]="filterString"
+                   [displayedColomn]="DISPLAYED_COLUMNS"></datatable>
+      </loading-card>
+    </div>
+  </div>
+</div>

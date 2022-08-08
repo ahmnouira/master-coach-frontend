@@ -1,0 +1,15 @@
+<ngx-smart-modal #modalgoogleagenda identifier="modalgoogleagenda" [customClass]="'modal-google-agenda'"
+    [closable]="true">
+    <div class="bloc-img">
+        <img src="../../../../assets/img/common/google-agenda.png" class="img-fluid" alt="">
+    </div>
+    <p>Google Agenda</p>
+    <div class="description text-center">
+        <p>Synchronisez votre disponibilité et vos sessions avec votre compte Google Agenda. Chaque fois qu'il y a une
+            session confirmée sur la plate-forme, elle sera automatiquement ajoutée à votre calendrier.</p>
+    </div>
+    <div class="text-center">
+        <button *ngIf="!isLoggedIn" (click)="signIn()" class="btn-blue"><i class="icon-google"></i>Sign with Google</button>
+        <button *ngIf="isLoggedIn " (click)="signOut()" class="btn-red"><i class="icon-google"></i>Connecté en tant que {{currentUserEmail }}</button>
+    </div>
+</ngx-smart-modal>

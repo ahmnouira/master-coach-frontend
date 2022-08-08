@@ -1,0 +1,115 @@
+.sub-component-content{
+  margin: 35px 10px 10px 0;
+}
+
+.mlr-10{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.pt-40{
+  padding-top: 40px;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.smaller-font{
+  cursor: pointer;
+  text-align: left;
+  font: normal normal normal 12px/15px Fredoka !important;
+  letter-spacing: 0px;
+  height: unset !important;
+  color: #3C4D5D;
+  opacity: 1;
+  margin-right: 8px;
+  span{
+    text-align: left;
+    font: normal normal normal 12px/15px Fredoka !important;
+    letter-spacing: 0px;
+    color: #3C4D5D;
+    opacity: 1;
+    margin-right: 8px;
+  }
+}
+
+.active-tab {
+  cursor: pointer;
+  width: 192px;
+  height: 54px;
+  /* UI Properties */
+  background: #FEEFEA 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  padding: 15px 20px;
+  opacity: 1;
+  border: 0;
+  text-align: left;
+
+  span{
+    text-align: left;
+    font: normal normal normal 18px/22px Fredoka;
+    letter-spacing: 0px;
+    color: #3C4D5D;
+    opacity: 1;
+    margin-right: 8px;
+  }
+}
+.white-bg{
+  background-color: #FFFFFF;
+}
+
+.cursor-pointer{
+  cursor: pointer!important;
+}
+.heading {
+  text-align: left;
+  font: normal normal normal 18px/22px Fredoka;
+  letter-spacing: 0px;
+  color: #1376A3;
+  opacity: 1;
+}
+
+.form-card {
+  width: 30%;
+  height: 360px;
+  /* UI Properties */
+  background: transparent url('/assets/img/common/Groupe de masques 50.png') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  background-size: cover;
+  flex-direction: column;
+  margin: 15px;
+  img {
+    width: 67px;
+    height: 89px;
+  }
+  .form-card-title {
+    text-align: center;
+    font: normal normal normal 18px/22px Fredoka;
+    letter-spacing: 0px;
+    color: #1376A3;
+    opacity: 1;
+    margin: 10px auto;
+  }
+  p {
+    text-align: center;
+    font: normal normal normal 14px/20px Fredoka;
+    letter-spacing: 0px;
+    color: #9DA5AD;
+    opacity: 1;
+    margin: 15px;
+  }
+  a {
+    margin: 20px 60px;
+  }
+}
+
+@media screen and (max-width: 991px){
+
+  .active-tab{
+    padding: 15px 13px;
+    span{
+      font-size: 15px;
+    }
+  }
+}

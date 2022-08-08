@@ -1,0 +1,166 @@
+<app-sub-header [title]="'Gestion des clients'"></app-sub-header>
+<div class="sub-component-content">
+
+  <div class="row mt-4 gx-4" style="height: 100%;">
+    <div class="col-3">
+      <div class="filters-row input-group form-group form-inline p-0">
+        <input class="form-control coach-search" type="text" [(ngModel)]="filterString" (change)="filterInputChanged($event)" (keydown)="filterInputChanged($event)" placeholder="Client">
+        <span class="material-icons material-icons-inside-input" style="right: 30px;color: #DDF2FA">search</span>
+      </div>
+      <div class="select-all d-flex">
+        <input type="checkbox" id="selectAll" name="selectAll" [(ngModel)]="selectAll" (change)="selectAllUsers($event)">
+        <div>Tout sélectionner</div>
+      </div>
+
+      <div class="client-item mb-3" [ngClass]="selectedUser?._id == user?._id ? 'client-item-active':''" *ngFor="let user of coachUsers; index as i" (click)="selectedUserChanged(user)">
+          <input type="checkbox" [id]="user?._id" [name]="user?._id" [(ngModel)]="user.selected" (change)="checkboxChanged($event)">
+          <img class="mlr-10" width="36px" height="36px" [attr.src]="user.photo" style="border-radius: 50%;border: 1px solid #2B76A3;"/>
+          <span>{{coachUsers[i].prenom}} {{user.nom}}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="5.875" height="9.833" viewBox="0 0 5.875 9.833">
+            <g id="arrow-down-sign-to-navigate_7_" data-name="arrow-down-sign-to-navigate (7)" transform="translate(-96.836 9.584) rotate(-90)">
+              <path id="Tracé_29" data-name="Tracé 29" d="M4.667,102.461a.652.652,0,0,1-.462-.191L.192,98.256a.654.654,0,0,1,.924-.924l3.551,3.551,3.551-3.551a.654.654,0,0,1,.924.924l-4.013,4.013A.652.652,0,0,1,4.667,102.461Z" transform="translate(0)" fill="currentColor" stroke="currentColor" stroke-width="0.5"/>
+            </g>
+          </svg>
+        </div>
+    </div>
+    <div class="col-9 d-flex flex-column">
+      <div class="d-inline-flex justify-content-end">
+        <button [disabled]="userToDelete.length === 0" class="btn align-self-end" (click)="openModal(template)"><span class="material-icons">delete</span>Supprimer la selection</button>
+        <a routerLink="/pages/coach/coach-client/team/list" class="btn align-self-end" style="margin-right: 10px; margin-left: 10px"><span class="material-icons">manage_accounts</span>Gérer les équipes</a>&nbsp;
+        <a routerLink="/pages/coach/coach-client/add" class="btn align-self-end"><span class="material-icons">add_circle</span>Ajouter un client</a>&nbsp;
+      </div>
+      <div class="client-info" [ngClass]="!selectedUser ? 'd-flex':''">
+        <a class="send-msg" (click)="createNewConversation(selectedUser)"  *ngIf="selectedUser">
+          <span class="material-icons" style="vertical-align: bottom;">send</span>
+         Envoyer un message
+        </a>
+        <div class="action-icons" *ngIf="selectedUser">
+          <img src="assets/img/common/edit-client.svg" style="width: 20px; height: 20px; cursor: pointer;" (click)="modeEdit = !modeEdit">
+          <div class="dropdown-container" tabindex="-1">
+            <div class="three-dots"></div>
+            <div class="dropdown">
+              <a (click)="deleteUser(selectedUser)"><div>Supprimer</div></a>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="selectedUser">
+          <div class="row">
+            <img class="user-img"  [attr.src]="selectedUser.photo" ></div>
+          <div class="row" *ngIf="modeEdit">
+            <div class="col-3">
+              <div class="form-group">
+                <label class="element-label">Nom</label>
+                <input type="text" [(ngModel)]="selectedUserToupdate.nom"
+                       class="form-control element"
+                       placeholder="Laroche"
+                >
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="col form-group">
+                <label class="element-label">Prénom</label>
+                <input type="text" [(ngModel)]="selectedUserToupdate.prenom"
+                       class="form-control element"
+                       placeholder="David"
+                >
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+              <label class="element-label">Email</label>
+              <input type="email" [(ngModel)]="selectedUserToupdate.email"
+                     class="form-control element"
+                     pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                     placeholder="davidlaroche@gmail.com"
+                     required
+                     #email="ngModel"
+              >
+                <div *ngIf="(email.invalid && email.touched) || email.dirty">
+                  <small *ngIf="email.errors?.required" class="alert alert-danger" role="alert">L'email' est obligatoire!</small>
+                  <small *ngIf="email.errors?.pattern" class="alert alert-danger" role="alert">Veuillez entrer un email valide</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <label class="element-label">Numéro de téléphone</label>
+                <input type="tel" [(ngModel)]="selectedUserToupdate.tel"
+                       class="form-control element"
+                       placeholder="+33 12 34 56 789"
+                       pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
+                       required
+                       #tel="ngModel"
+                >
+                <div *ngIf="(tel.invalid && email.touched) || tel.dirty">
+                  <small *ngIf="tel.errors?.required" class="alert alert-danger" role="alert">Le numéro de telephone est est obligatoire!</small>
+                  <small *ngIf="tel.errors?.pattern" class="alert alert-danger" role="alert">Veuillez entrer un numéro de telephone valide</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3" *ngIf="modeEdit">
+            <div class="form-group">
+              <label class="element-label">Equipe</label>
+              <select id="selectTeam" [(ngModel)]="selectedTeam" required
+                      class="form-control element">
+                <option *ngFor="let team of coachTeams" [value]="team._id">{{team.name.toUpperCase()}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group mt-3" *ngIf="modeEdit">
+            <label class="element-label">Notes</label>
+            <textarea rows="5" style="height: 120px" [(ngModel)]="selectedUserToupdate.notes"
+                      class="form-control element"
+                      placeholder="Texte...">
+              </textarea>
+          </div>
+          <div class="d-flex flex-column flex-xl-row justify-content-between user-infos "  *ngIf="!modeEdit">
+            <div class="basic-info d-flex"><img src="assets/img/common/email%20(12).png">  <div>{{selectedUser?.email}}</div></div>
+            <div class="basic-info d-flex"><img src="assets/img/common/user%20(31).png"> <div> {{selectedUser?.prenom}} {{selectedUser?.nom}}</div></div>
+            <div class="basic-info d-flex"><img src="assets/img/common/phone%20(5).png"> <div> {{selectedUser?.tel}}</div></div>
+          </div>
+          <div class="d-flex mt-3 user-infos last"  *ngIf="!modeEdit">
+            <div class="basic-info d-flex">
+             <img width="22px" src="../../../../../assets/img/common/team.svg"/>
+            
+              <strong> Equipe :</strong>  {{getUserTeam(selectedUser)? getUserTeam(selectedUser)?.name : 'Non affecté'}}</div>
+          </div>
+          <div class="row profil-data">
+            <div class="form-group" *ngIf="!modeEdit">
+              <label class="element-label">Notes</label>
+              <textarea [disabled]="!modeEdit" rows="5" style="height: 120px" [(ngModel)]="selectedUser.notes"
+                        class="form-control element"
+                        placeholder="Texte...">
+              </textarea>
+            </div>
+          </div>
+          <div *ngIf="modeEdit" class="d-flex justify-content-end mb-3 action-btn">
+            <button class="btn align-self-end mlr-10" (click)="modeEdit = false" >Annuler</button>&nbsp;
+            <button class="btn btn-primary align-self-end mlr-10" (click)="saveUser()" >Enregistrer</button>&nbsp;
+          </div>
+        </div>
+        <div [hidden]="coachUsers.length == 0 || selectedUser" class="no-data">
+          Veuillez selectionner un client
+        </div>
+        <div *ngIf="coachUsers.length == 0" class="no-data">
+          Vous n'avez pas de clients dans vos équipes
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression des élements sélectionnés</h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="massDelete()">Confirmer</button>
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Annuler</button>
+  </div>
+</ng-template>

@@ -1,0 +1,36 @@
+<ngx-smart-modal #modalworkinghours identifier="modalworkinghours" [customClass]="'ajout-session'" [closable]="true">
+  <div class="bloc-img">
+    <img src="../../../../assets/img/common/salut.png" class="img-fluid" alt="">
+  </div>
+  <p>Sélectionnez vos jours/heures de travail</p>
+  <form action="">
+    <div class="weekdays d-flex justify-content-center">
+      <div *ngFor="let day of weekDays" class="mt-2 d-flex flex-column justify-content-center align-items-center">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox + {{day.number}}" name="inlineCheckbox + {{day.number}}" [(ngModel)]="day.isSelected">
+        <label class="form-check-label mt-1" [ngClass]="day.isSelected ? 'blue-font': ''" style="margin-left: 10px" for="inlineCheckbox + {{day.number}}">{{day.name}}</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="flex-input">
+        <div class="left">
+          <label for="heure-debut">Heure de début</label>
+          <timepicker class="custom-timepicker" name="heure-debut" id="heure-debut"
+                      [(ngModel)]="heureDeb"
+                      [showMinutes]="true" [minuteStep]="15" [showMeridian]="false" [min]="minTime" [max]="heureFin" >
+          </timepicker>
+        </div>
+        <div class="right">
+          <label for="heure-fin">Heure de fin</label>
+          <timepicker class="custom-timepicker" name="heure-fin" id="heure-fin"
+                      [(ngModel)]="heureFin"
+                      [showMinutes]="true" [minuteStep]="15" [showMeridian]="false" [min]="heureDeb" [max]="maxTime" >
+          </timepicker>
+        </div>
+      </div>
+
+    </div>
+    <div class="text-center">
+      <button (click)="saveData()" class="btn-blue">Confirmez</button>
+    </div>
+  </form>
+</ngx-smart-modal>

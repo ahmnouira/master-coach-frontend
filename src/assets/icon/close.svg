@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26.515" height="26.515" viewBox="0 0 26.515 26.515">
+  <g id="error" transform="translate(0.25 0.25)">
+    <g id="Groupe_115" data-name="Groupe 115">
+      <g id="Groupe_114" data-name="Groupe 114">
+        <path id="Tracé_137" data-name="Tracé 137" d="M13.007,0A13.007,13.007,0,1,0,26.015,13.007,13,13,0,0,0,13.007,0Zm0,23.982A10.975,10.975,0,1,1,23.982,13.007,10.969,10.969,0,0,1,13.007,23.982Z" fill="#3c4d5d" stroke="#dfeaf1" stroke-width="0.5"/>
+      </g>
+    </g>
+    <g id="Groupe_117" data-name="Groupe 117" transform="translate(8.259 8.26)">
+      <g id="Groupe_116" data-name="Groupe 116">
+        <path id="Tracé_138" data-name="Tracé 138" d="M171.753,170.317,168.74,167.3l3.013-3.013a1.016,1.016,0,1,0-1.437-1.437l-3.013,3.013-3.013-3.013a1.016,1.016,0,1,0-1.437,1.437l3.013,3.013-3.013,3.013a1.016,1.016,0,1,0,1.437,1.437l3.013-3.013,3.013,3.013a1.016,1.016,0,1,0,1.437-1.437Z" transform="translate(-162.555 -162.556)" fill="#3c4d5d" stroke="#dfeaf1" stroke-width="0.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

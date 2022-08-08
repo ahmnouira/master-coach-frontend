@@ -1,0 +1,194 @@
+<div
+  id="ngx-datatable"
+  class="position-relative"
+  [style.text-align]="textalign"
+>
+  <div class="table-container table-responsive-sm">
+    <table class="table" [@animateStagger]="{ value: '50' }">
+      <thead>
+        <tr
+          [@animate]="{ value: '*', params: { y: '100%' } }"
+          *ngIf="!hideTheader"
+        >
+          <th class="w-42" *ngIf="checkboxes">
+            <span *ngIf="checkboxesMultiselect" class="checkboxTemplate">
+              <input
+                [(ngModel)]="checkAll"
+                (change)="checkAllClicked()"
+                [id]="'checkAll'"
+                class="w-0 field-checkbox"
+                type="checkbox"
+                [name]="'checkAll'"
+              />
+              <label [for]="'checkAll'"></label>
+            </span>
+          </th>
+          <th
+            [ngClass]="{
+              'thsorted': title === sortByItem
+            }"
+            *ngFor="let title of displayedColomnList"
+          >
+            <span
+              (click)="title.sort && !loadingList ? sortBy(title) : ''"
+              class="color-primary block p3 cursor-pointer m-0"
+              [ngClass]="{
+                sorting: title.sort && !loadingList && title !== sortByItem,
+                sorting_desc: !title.sorted && !loadingList && title === sortByItem,
+                sorting_asc: title.sorted && !loadingList && title === sortByItem
+              }"
+              translate
+            >
+              {{ title.value }}
+            </span>
+          </th>
+          <th class="p3 action" [attr.colspan]="Actions.length">
+            <span class="color-primary block p3 cursor-pointer">
+              Actions
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="loadingList">
+          <tr
+            loading-rows
+            [@animate]="{ value: '*', params: { y: '100%' } }"
+            [displayedColomnList]="displayedColomnList"
+            [nbRows]="nbRows"
+            [Actions]="Actions"
+            [checkboxes]="checkboxes"
+          ></tr>
+          <tr
+            loading-rows
+            [@animate]="{ value: '*', params: { y: '100%' } }"
+            [displayedColomnList]="displayedColomnList"
+            [Actions]="Actions"
+            [checkboxes]="checkboxes"
+          ></tr>
+          <tr
+            loading-rows
+            [@animate]="{ value: '*', params: { y: '100%' } }"
+            [displayedColomnList]="displayedColomnList"
+            [Actions]="Actions"
+            [checkboxes]="checkboxes"
+          ></tr>
+          <tr
+            loading-rows
+            [@animate]="{ value: '*', params: { y: '100%' } }"
+            [displayedColomnList]="displayedColomnList"
+            [Actions]="Actions"
+            [checkboxes]="checkboxes"
+          ></tr>
+        </ng-container>
+        <ng-container *ngIf="!loadingList">
+          <ng-container
+            *ngFor="
+              let row of _datatable
+                | filterData
+                  : {
+                      searchvalue: searchvalue,
+                      displayedColomnList: displayedColomnList,
+                      serverSidesearch: serverSidesearch,
+                      filters: filters,
+                      associations: associations
+                    }
+                | paginate
+                  : {
+                      startItem: startItem,
+                      endItem: endItem,
+                      serverSidePagination: serverSidePagination
+                    };
+              let rowindex = index
+            "
+          >
+            <tr
+              [@animate]="{ value: '*', params: { y: '100%' } }"
+              datatable-row
+              [row]="row"
+              [displayedColomnList]="displayedColomnList"
+              [sortByItem]="sortByItem"
+              [Actions]="Actions"
+              [textalign]="textalign"
+              [checkboxes]="checkboxes"
+              (rowClicked)="rowClicked($event)"
+              (onActionClicked)="actionClicked($event)"
+              (onckeckBoxClicked)="ckeckBoxClicked($event)"
+              [class]="row.rowClass"
+              [ngClass]="{
+                rowSelected: row.selected,
+                'tr-small': smallCells
+              }"
+              (click)="rowClicked(row)"
+            ></tr>
+          </ng-container>
+
+          <tr
+            [@animate]="{ value: '*', params: { y: '100%' } }"
+            *ngIf="
+              (
+                _datatable
+                | filterData
+                  : {
+                      searchvalue: searchvalue,
+                      displayedColomnList: displayedColomnList,
+
+                      serverSidesearch: serverSidesearch,
+                      filters: filters,
+                      associations: associations
+                    }
+              ).length === 0
+            "
+            class="odd"
+          >
+            <td
+              [style.background]="'#fff'"
+              valign="top"
+              [attr.colspan]="
+                displayedColomnList.length +
+                Actions.length +
+                (checkboxes ? 1 : 0)
+              "
+              class="dataTables_empty"
+            >
+              {{ nothingToShowMessage }}
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <!-- //pagination section -->
+
+    <div
+      *ngIf="pagination && !loadingList"
+      [@animate]="{ value: '*', params: { y: '100%' } }"
+      [attr.colspan]="
+        displayedColomnList.length + Actions.length + (checkboxes ? 1 : 0)
+      "
+      datatable-footer
+      [totalItems]="
+        serverSidePagination
+          ? numberOfRecords
+          : (
+              _datatable
+              | filterData
+                : {
+                    searchvalue: searchvalue,
+                    displayedColomnList: displayedColomnList,
+                    serverSidesearch: serverSidesearch,
+                    filters: filters,
+                    associations: associations
+                  }
+            )?.length
+      "
+      [itemsPerPage]="_itemsPerPage"
+      [endItem]="endItem"
+      [startItem]="startItem"
+      [maxSize]="maxSize"
+      [showBoundaryLinks]="showBoundaryLinks"
+      (onpageChanged)="pageChanged($event)"
+      class="footer-table"
+    ></div>
+    <!-- //pagination section -->
+  </div>
+</div>

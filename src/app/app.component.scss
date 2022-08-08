@@ -1,0 +1,40 @@
+#main{
+  min-height: 100%;
+  background-color: var(--global-bg-color-effafd) !important;
+}
+
+#content {
+  padding: 25px;
+  transition: all 0.2s;
+  width: 100%;
+  margin: 20px 20px 20px 0px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.content-wrapper {
+  padding: 15px
+}
+
+
+
+@media(max-width:768px) {
+  #sidebar {
+    margin-left: -250px
+  }
+
+  #sidebar.active {
+    margin-left: 0px
+  }
+
+  #sidebarCollapse span {
+    display: none
+  }
+
+  #content{
+    margin: 20px;
+  }
+}
+
+
+

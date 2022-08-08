@@ -1,0 +1,171 @@
+body {
+  font-family: 'Fredoka', sans-serif!important;
+  font-size: 14px;
+} 
+select {
+  /* for Firefox */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* For IE10 */
+select::-ms-expand {
+  display: none;
+}
+.blue-title{
+  font-size: 18px;
+  color: #1376A3;
+}
+.btn-modal {
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: 400;
+  line-height: 15px;
+  text-transform: capitalize;
+  text-decoration: none;
+  transition: 0.3s all;
+}
+
+.btn-pink {
+  background: $pink;
+  color: white;
+  border: 1px solid transparent;
+  &:hover {
+    background: transparent;
+    border: 1px solid $pink;
+    color: $pink;
+  }
+}
+
+.pl-40{
+  padding-left: 40px;
+}
+
+.ml-40{
+  margin-left: 40px;
+}
+
+.mt-20{
+  margin-top: 20px;
+}
+
+.mb-40{
+  margin-bottom: 40px;
+}
+
+.pt-40{
+  padding-top: 40px;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.mb-17{
+  margin-bottom: 17px;
+}
+
+.right-space{
+  margin-right: 40px;
+}
+
+.mb-20{
+  margin-bottom: 20px;
+}
+.center-verticaly{
+  display: flex;
+  align-items: center;
+}
+
+.alert.alert-danger {
+  color: #db2121;
+  background-color: unset;
+  border-color: unset;
+  border: unset;
+  top: 4px;
+  padding: 0;
+}
+
+
+.btn-white-pink {
+  background: transparent;
+  color: $pink;
+  border: 1px solid $pink;
+  &:hover {
+    background: $pink;
+    border: 1px solid transparent;
+    color: white;
+  }
+}
+
+.btn-blue {
+  background: $blue;
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: 400;
+  line-height: 15px;
+  text-transform: capitalize;
+  color: white;
+  border-radius: 25px;
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 10px #0000001a;
+  padding: 17px 40px;
+  transition: 0.3s all;
+  &:hover {
+    background: transparent;
+    border: 1px solid $blue;
+    color: $blue;
+    i {
+      &::before {
+        color: $blue;
+      }
+    }
+  }
+  i {
+    &::before {
+      font-size: 15px;
+      padding-right: 10px;
+      position: relative;
+      top: 3px;
+    }
+  }
+}
+
+.btn-red {
+  background: $google-red;
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: 400;
+  line-height: 15px;
+  color: white;
+  border-radius: 25px;
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 10px #0000001a;
+  padding: 17px 40px;
+  transition: 0.3s all;
+  &:hover {
+    background: transparent;
+    border: 1px solid $google-red;
+    color: $google-red;
+    i {
+      &::before {
+        color: $google-red;
+      }
+    }
+  }
+  i {
+    &::before {
+      font-size: 15px;
+      padding-right: 10px;
+      position: relative;
+      top: 3px;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .pl-40{ padding: 0}
+}
