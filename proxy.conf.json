@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://51.91.8.233:5000",
+    "target": "https://mastercoach-api.innovant.studio",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
