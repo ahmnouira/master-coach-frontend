@@ -10,20 +10,20 @@
     margin-top: 0 !important;
   }
   td {
-    margin-bottom: 0!important;
+    margin-bottom: 0 !important;
   }
 }
 
 .weekdays {
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001A;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
   font: normal normal normal 18px/32px Fredoka;
-  color: #9DA5AD;
+  color: #9da5ad;
   padding: 25px;
   border-radius: 10px;
 }
 .blue-font {
-  color : #1376a3;
+  color: #1376a3;
 }
 
 :host ::ng-deep .nsm-dialog {

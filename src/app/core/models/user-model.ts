@@ -2,7 +2,7 @@ export class User {
   password: string;
   userName: string;
   email: string;
-  roles: "Client" | "Admin" | "Coach";
+  roles: 'Client' | 'Admin' | 'Coach';
   competance: [];
   category: [];
   accreditation: [];
@@ -11,5 +11,5 @@ export class User {
   prenom: string;
   tel: string;
   photo: string;
-  twilio_sid:string;
+  twilio_sid: string;
 }

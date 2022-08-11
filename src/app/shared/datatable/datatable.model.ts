@@ -1,11 +1,11 @@
-import { TemplateRef } from "@angular/core";
+import { TemplateRef } from '@angular/core';
 
 export class datatable_displayedColomn {
-  data: string ;
+  data: string;
   template?: TemplateRef<any>;
   value: string;
-  type: "text" | "badge" | "checkbox" | "date" | "icon" | "customTemplate" =
-    "text";
+  type: 'text' | 'badge' | 'checkbox' | 'date' | 'icon' | 'customTemplate' =
+    'text';
   search: boolean = false;
   sort: boolean = false;
   sorted?: boolean;

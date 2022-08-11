@@ -1,5 +1,5 @@
-body{
-  background-color: #FFFFFF !important;
+body {
+  background-color: #ffffff !important;
 }
 #main-container-login {
   /* Layout Properties */
@@ -18,19 +18,18 @@ body{
   flex: 1; /* additionally, equal width */
 }
 
-.left-login-pane{
+.left-login-pane {
   margin: 25px 28px;
   position: relative;
   /* UI Properties */
   background: var(--global-bg-color-effafd) 0% 0% no-repeat padding-box;
   border-radius: 20px;
 
-  .logo{
+  .logo {
     display: flex;
     img {
       margin: 80px auto;
     }
-
   }
   .image {
     position: absolute;
@@ -38,26 +37,26 @@ body{
     top: 0;
     left: 0;
     right: 0;
-      img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin: 20px auto;
-        max-width: 356px;
-      }
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 20px auto;
+      max-width: 356px;
+    }
   }
 }
-.right-login-pane{
+.right-login-pane {
   margin: 29px 28px;
   justify-content: center;
   position: relative;
 
-  .create-account{
-    display: flex;  
+  .create-account {
+    display: flex;
     flex-direction: column;
   }
-  .image{
+  .image {
     display: flex;
     align-items: center;
     margin-bottom: 32px;
@@ -66,25 +65,27 @@ body{
       max-width: 98px;
     }
   }
-  .center-content{
+  .center-content {
     width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        form{
-          max-width: 424px;
-          margin: 0 auto;
-        }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    form {
+      max-width: 424px;
+      margin: 0 auto;
+    }
   }
   .welcome-title {
     text-align: center;
     margin-bottom: 25px;
     span {
-      font: var(--global-font-style-normal) normal var(--global-font-weight-normal) 30px/36px var(--global-font-family-fredoka);
+      font: var(--global-font-style-normal) normal
+        var(--global-font-weight-normal) 30px/36px
+        var(--global-font-family-fredoka);
       letter-spacing: var(--global-character-spacing-0);
       text-align: center;
-      color: #EF6032;
+      color: #ef6032;
     }
   }
 
@@ -93,31 +94,30 @@ body{
     height: 50px;
     border: none;
     /* UI Properties */
-    box-shadow: 0px 0px 10px #0000001A;
+    box-shadow: 0px 0px 10px #0000001a;
     border-radius: 25px;
     opacity: 1;
     font: normal normal normal 14px/17px Fredoka;
     letter-spacing: 0px;
     &.btn-submit {
-      color: #FFFFFF;
-      background: #EF6032 0% 0% no-repeat padding-box;
+      color: #ffffff;
+      background: #ef6032 0% 0% no-repeat padding-box;
       margin: 0 auto 15px auto;
-      border: 1px solid #EF6032;
+      border: 1px solid #ef6032;
       &:hover {
-        background: #FFFFFF 0% 0% no-repeat padding-box;
-        color: #EF6032;
-        
+        background: #ffffff 0% 0% no-repeat padding-box;
+        color: #ef6032;
       }
     }
-    &.btn-submit-secondary{
-      color: #1376A3;
-      border: 1px solid #1376A3;
+    &.btn-submit-secondary {
+      color: #1376a3;
+      border: 1px solid #1376a3;
       margin: 10px auto;
     }
-  
-    &.btn-submit-secondary:hover{
-      background: #1376A3 0% 0% no-repeat padding-box;
-      color: #FFFFFF;
+
+    &.btn-submit-secondary:hover {
+      background: #1376a3 0% 0% no-repeat padding-box;
+      color: #ffffff;
       margin: 10px auto;
     }
   }
@@ -126,60 +126,58 @@ body{
     text-align: right;
     font: normal normal normal 14px/17px Fredoka;
     letter-spacing: 0px;
-    color: #9DA6AE;
+    color: #9da6ae;
     text-decoration: unset;
     margin-bottom: 35px;
-    &:hover{
-      color: #1376A3;
+    &:hover {
+      color: #1376a3;
     }
   }
 }
 
 @media screen and (max-width: 769px) {
-  .right-login-pane{
-    div.create-account{
+  .right-login-pane {
+    div.create-account {
       flex-direction: column;
       gap: unset;
     }
     a.login-forgotten-pass {
       margin-bottom: 35px;
     }
-    div.image{
+    div.image {
       margin-bottom: 32px;
     }
   }
- 
 }
 
 @media screen and (max-width: 900px) {
-  .right-login-pane .btn.btn-submit-secondary{
+  .right-login-pane .btn.btn-submit-secondary {
     padding: 0 10px;
   }
   .left-login-pane {
-    .image img{
+    .image img {
       max-width: 95%;
     }
     .logo img {
       margin: 50px auto;
-  }
+    }
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .right-login-pane .image{
+  .right-login-pane .image {
     margin-bottom: 10px;
   }
   .left-login-pane {
-  
     .logo img {
       margin: 60px auto;
-  }
+    }
   }
 }
 
 @media screen and (max-width: 1400px) {
-  .right-login-pane{
-    .create-account{
+  .right-login-pane {
+    .create-account {
       flex-direction: row;
       gap: 16px;
     }
@@ -188,4 +186,3 @@ body{
     }
   }
 }
-

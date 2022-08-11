@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input } from '@angular/core';
 import {
   datatable_action,
   datatable_displayedColomn,
-} from "../datatable.model";
+} from '../datatable.model';
 
 @Component({
-  selector: "[loading-rows]",
+  selector: '[loading-rows]',
   template: `
     <ng-container>
       <td *ngIf="checkboxes">
@@ -22,7 +22,7 @@ import {
       </td>
     </ng-container>
   `,
-  styleUrls: ["./loading-rows.component.scss"],
+  styleUrls: ['./loading-rows.component.scss'],
 })
 export class LoadingRowsComponent implements OnInit {
   @Input() displayedColomnList: datatable_displayedColomn[] = [];

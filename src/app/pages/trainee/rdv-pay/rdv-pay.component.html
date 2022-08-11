@@ -1,42 +1,89 @@
-<app-sub-header [title]="'Mes rendez-vous'" [subTitle]="'BACK'"></app-sub-header>
+<app-sub-header
+  [title]="'Mes rendez-vous'"
+  [subTitle]="'BACK'"
+></app-sub-header>
 <div class="row sub-component-content">
   <div class="wizard-tabs">
-    <span class="rdv-pill green-pill material-icons" style="cursor: pointer" (click)="window.history.go(-2)">
-      <img src="../../../../assets/icon/check-img.png"/>
+    <span
+      class="rdv-pill green-pill material-icons"
+      style="cursor: pointer"
+      (click)="window.history.go(-2)"
+    >
+      <img src="../../../../assets/icon/check-img.png" />
     </span>
-    <span class="" style="color: #38A220;cursor: pointer" (click)="window.history.go(-2)">Détails</span>
-    <span class="material-icons" style="color: #38A220;cursor: pointer" (click)="window.history.go(-2)">arrow_right_alt</span>
-    <span class="rdv-pill green-pill material-icons" style="cursor: pointer" (click)="window.history.go(-1)">
-      <img src="../../../../assets/icon/check-img.png"/>
+    <span
+      class=""
+      style="color: #38a220; cursor: pointer"
+      (click)="window.history.go(-2)"
+      >Détails</span
+    >
+    <span
+      class="material-icons"
+      style="color: #38a220; cursor: pointer"
+      (click)="window.history.go(-2)"
+      >arrow_right_alt</span
+    >
+    <span
+      class="rdv-pill green-pill material-icons"
+      style="cursor: pointer"
+      (click)="window.history.go(-1)"
+    >
+      <img src="../../../../assets/icon/check-img.png" />
     </span>
-    <span class="" style="color: #38A220;cursor: pointer" (click)="window.history.go(-1)">Planifier</span>
-    <span class="material-icons" style="color: #38A220;cursor: pointer" (click)="window.history.go(-1)">arrow_right_alt</span>
+    <span
+      class=""
+      style="color: #38a220; cursor: pointer"
+      (click)="window.history.go(-1)"
+      >Planifier</span
+    >
+    <span
+      class="material-icons"
+      style="color: #38a220; cursor: pointer"
+      (click)="window.history.go(-1)"
+      >arrow_right_alt</span
+    >
     <span hidden class="rdv-pill orange-pill" style="cursor: pointer">3</span>
-    <span hidden class="material-icons" style="color: #FFA700;cursor: pointer">arrow_right_alt</span>
-    <span hidden class="" style="color: #FFA700;cursor: pointer">Paiement</span>
+    <span hidden class="material-icons" style="color: #ffa700; cursor: pointer"
+      >arrow_right_alt</span
+    >
+    <span hidden class="" style="color: #ffa700; cursor: pointer"
+      >Paiement</span
+    >
   </div>
   <div class="row">
     <div class="recap">
-        <img src="assets/img/common/Groupe%20de%20masques%2056.png">
-        <span class="title-header">Les détails de(s) rendez-vous choisi(s)</span>
-        <span class="rdv-type" *ngIf="!isVideoSession">Session de coaching individuelle</span>
-        <span class="rdv-type" *ngIf="isVideoSession">Session via visioconférence</span>
-          <div class="d-flex mb-3" *ngFor="let rdv of selectedAppointments">
-            <div class="" style="margin-right: 10px">
-               <span class="rdv-date">
-                {{rdv.formattedDate}}</span>
-            </div>
-            <div class="d-flex flex-column">
-              <span class="rdv-date" *ngFor="let cren of rdv.selectedTimes">
-            {{cren.creneauText}} <span class="material-icons" style="font-weight: bold;vertical-align: text-bottom;">arrow_right_alt</span> {{cren.endTime}} ({{rdv.selectedTimeZone}})</span>
-
-            </div>
-          </div>
-
+      <img src="assets/img/common/Groupe%20de%20masques%2056.png" />
+      <span class="title-header">Les détails de(s) rendez-vous choisi(s)</span>
+      <span class="rdv-type" *ngIf="!isVideoSession"
+        >Session de coaching individuelle</span
+      >
+      <span class="rdv-type" *ngIf="isVideoSession"
+        >Session via visioconférence</span
+      >
+      <div class="d-flex mb-3" *ngFor="let rdv of selectedAppointments">
+        <div class="" style="margin-right: 10px">
+          <span class="rdv-date"> {{ rdv.formattedDate }}</span>
+        </div>
+        <div class="d-flex flex-column">
+          <span class="rdv-date" *ngFor="let cren of rdv.selectedTimes">
+            {{ cren.creneauText }}
+            <span
+              class="material-icons"
+              style="font-weight: bold; vertical-align: text-bottom"
+              >arrow_right_alt</span
+            >
+            {{ cren.endTime }} ({{ rdv.selectedTimeZone }})</span
+          >
+        </div>
+      </div>
     </div>
   </div>
   <div class="d-flex justify-content-center mt-3">
-    <button (click)="saveRdv()" class="btn btn-primary align-self-center" >Envoyer au Coach</button>&nbsp;
+    <button (click)="saveRdv()" class="btn btn-primary align-self-center">
+      Envoyer au Coach</button
+    >&nbsp;
   </div>
 </div>
-<app-modal-succes [description]="'Sessions crées avec succès'"></app-modal-succes>
+<app-modal-succes
+  [description]="'Sessions crées avec succès'"
+></app-modal-succes>

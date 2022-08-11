@@ -12,13 +12,14 @@
   }
 
   .thsorted {
-    background-color: #73B5E3;
+    background-color: #73b5e3;
     span {
       color: #000 !important;
     }
   }
 
-  .dropdown-item.active, .dropdown-item:active {
+  .dropdown-item.active,
+  .dropdown-item:active {
     color: #000 !important;
     background-color: #fdfdfd !important;
   }
@@ -36,8 +37,8 @@
       position: relative;
       width: 1.5em;
       height: 1.5em;
-      color: #3C4D5D;
-      border: 1px solid #3C4D5D;
+      color: #3c4d5d;
+      border: 1px solid #3c4d5d;
       border-radius: 4px;
       appearance: none;
       outline: 0;
@@ -45,23 +46,23 @@
       transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
       &::before {
         position: absolute;
-        content: '';
+        content: "";
         display: block;
         top: 1px;
         left: 6px;
         width: 8px;
         height: 14px;
         border-style: solid;
-        border-color: #3C4D5D;
-        color: #3C4D5D;
+        border-color: #3c4d5d;
+        color: #3c4d5d;
         font-weight: 900;
         border-width: 0 4px 4px 0;
         transform: rotate(45deg);
         opacity: 0;
       }
       &:checked {
-        color: #3C4D5D;
-        border-color: #3C4D5D;
+        color: #3c4d5d;
+        border-color: #3c4d5d;
         background: white;
         &::before {
           opacity: 1;
@@ -88,23 +89,24 @@
     border-radius: 0.25rem;
     background: #ffff;
     border: none;
-    thead{
-      tr{
+    thead {
+      tr {
         height: auto;
         th {
           padding: 0 0.25rem;
         }
       }
     }
-    td, th {
+    td,
+    th {
       padding: 0 0.25rem;
       vertical-align: middle;
     }
     border-collapse: separate;
     border-spacing: 20px;
 
-    td{
-      .actions-container{
+    td {
+      .actions-container {
         justify-content: end;
         padding-right: 20px;
       }
@@ -127,7 +129,11 @@
     }
   }
 
-  .table [class*=" icon-"], .table [class^=icon-], .table [class^=svg-], .table img, .table svg {
+  .table [class*=" icon-"],
+  .table [class^="icon-"],
+  .table [class^="svg-"],
+  .table img,
+  .table svg {
     cursor: pointer !important;
   }
 
@@ -137,18 +143,18 @@
   }
 
   .sorting_desc {
-    background: url("./assets/sorting/sort_desc.png") no-repeat 99.6%
-      center;
+    background: url("./assets/sorting/sort_desc.png") no-repeat 99.6% center;
     background-size: 8px;
   }
 
   .sorting {
-    background: url("./assets/sorting/sort_both.png") no-repeat 99.6%
-      center;
+    background: url("./assets/sorting/sort_both.png") no-repeat 99.6% center;
     background-size: 8px;
   }
 
-  .sorting, .sorting_asc, .sorting_desc {
+  .sorting,
+  .sorting_asc,
+  .sorting_desc {
     padding-right: 0.625rem !important;
     background-position: 98% 50%;
   }
@@ -191,7 +197,7 @@
     text-align: left;
     font: normal normal medium 14px/17px Fredoka;
     letter-spacing: 0px;
-    color: #3C4D5D;
+    color: #3c4d5d;
     text-transform: uppercase;
     opacity: 0.5;
   }
@@ -208,7 +214,7 @@
     width: 1120px;
     height: 60px;
     /* UI Properties */
-    box-shadow: 0px 0px 10px #0000001A;
+    box-shadow: 0px 0px 10px #0000001a;
     opacity: 1;
     border-radius: 15px;
   }
@@ -216,11 +222,11 @@
   thead tr:nth-child(1) {
     box-shadow: none;
   }
-  tbody tr{
+  tbody tr {
     text-align: left;
     font: normal normal normal 14px/17px Fredoka;
     letter-spacing: 0px;
-    color: #3C4D5D;
+    color: #3c4d5d;
     opacity: 1;
     border-radius: 15px;
   }
@@ -327,8 +333,13 @@
     color: rgba(0, 0, 0, 0.54);
   }
 
-  thead, tbody, tfoot, tr, td, th {
-     border: none;
+  thead,
+  tbody,
+  tfoot,
+  tr,
+  td,
+  th {
+    border: none;
   }
 }
 
@@ -337,7 +348,7 @@
 
   tr {
     border: 0 !important;
-    border-bottom: 1px solid #C2C2C2  !important;
+    border-bottom: 1px solid #c2c2c2 !important;
   }
   th span {
     font-family: Arial;
@@ -347,7 +358,7 @@
     line-height: 11px;
     display: flex;
     align-items: center;
-    color: #366A95;
+    color: #366a95;
   }
   .dataTables_empty {
     text-align: center;

@@ -1,10 +1,15 @@
-<ngx-smart-modal #modalsucces identifier="modalsucces" [customClass]="'modal-satisfaction'" [closable]="true">
+<ngx-smart-modal
+  #modalsucces
+  identifier="modalsucces"
+  [customClass]="'modal-satisfaction'"
+  [closable]="true"
+>
   <div class="bloc-img">
-    <img src="/assets/img/common/salut.png" class="img-fluid" alt="">
+    <img src="/assets/img/common/salut.png" class="img-fluid" alt="" />
   </div>
   <p>Félicitation</p>
   <div class="description">
-    <p>{{description}}</p>
+    <p>{{ description }}</p>
   </div>
   <div class="text-center">
     <button class="btn-blue" (click)="modalsucces.close()">Fermer</button>

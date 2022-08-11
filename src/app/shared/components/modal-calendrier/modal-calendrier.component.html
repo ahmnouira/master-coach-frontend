@@ -1,51 +1,59 @@
-<ngx-smart-modal #modalcalendrier identifier="modalcalendrier" [customClass]="'modal-calendrier'" [closable]="true">
-    <div class="bloc-img">
-        <img src="../../../../assets/img/common/salut.png" class="img-fluid" alt="">
+<ngx-smart-modal
+  #modalcalendrier
+  identifier="modalcalendrier"
+  [customClass]="'modal-calendrier'"
+  [closable]="true"
+>
+  <div class="bloc-img">
+    <img
+      src="../../../../assets/img/common/salut.png"
+      class="img-fluid"
+      alt=""
+    />
+  </div>
+  <p>Ajouter une session</p>
+  <div class="btn-bloc">
+    <a href="" class="btn-modal btn-white-pink">Session</a>
+    <a href="" class="btn-modal btn-pink">Planifiez</a>
+  </div>
+  <form action="">
+    <div class="form-group">
+      <label for="client">Fuseau Horaire</label>
+      <select name="fuseau-horaire" id="fuseau-horaire">
+        <option value="fuseau-horaire-1">client 1</option>
+        <option value="fuseau-horaire-2">client 2</option>
+        <option value="fuseau-horaire-3">client 3</option>
+      </select>
     </div>
-    <p>Ajouter une session</p>
-    <div class="btn-bloc">
-        <a href="" class="btn-modal btn-white-pink">Session</a>
-        <a href="" class="btn-modal btn-pink">Planifiez</a>
+    <div class="form-group">
+      <label for="Heure">Heure</label>
+      <div class="flex-input">
+        <div class="left">
+          <select name="heure-debut" id="heure-debut">
+            <option value="heure-debut-1">09:00</option>
+            <option value="heure-debut-2">10:00</option>
+            <option value="heure-debut-3">12:00</option>
+          </select>
+        </div>
+        <div class="right">
+          <select name="heure-fin" id="heure-fin">
+            <option value="heure-fin-1">20:00</option>
+            <option value="heure-fin-2">22:00</option>
+            <option value="heure-fin-3">00:00</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <form action="">
-        <div class="form-group">
-            <label for="client">Fuseau Horaire</label>
-            <select name="fuseau-horaire" id="fuseau-horaire">
-                <option value="fuseau-horaire-1">client 1</option>
-                <option value="fuseau-horaire-2">client 2</option>
-                <option value="fuseau-horaire-3">client 3</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="Heure">Heure</label>
-            <div class="flex-input">
-                <div class="left">
-                    <select name="heure-debut" id="heure-debut">
-                        <option value="heure-debut-1">09:00</option>
-                        <option value="heure-debut-2">10:00</option>
-                        <option value="heure-debut-3">12:00</option>
-                    </select>
-                </div>
-                <div class="right">
-                    <select name="heure-fin" id="heure-fin">
-                        <option value="heure-fin-1">20:00</option>
-                        <option value="heure-fin-2">22:00</option>
-                        <option value="heure-fin-3">00:00</option>
-                    </select>
-                </div>
-            </div>
-
-        </div>
-        <div class="form-group">
-            <label for="date">date</label>
-            <select name="date" id="date">
-                <option value="date-1">Mardi, 15 Avril 2022</option>
-                <option value="date-2">Mercredi, 16 Avril 2022</option>
-                <option value="date-3">Jeudi, 17 Avril 2022</option>
-            </select>
-        </div>
-        <div class="text-center">
-            <button class="btn-blue">confirmez</button>
-        </div>
-    </form>
+    <div class="form-group">
+      <label for="date">date</label>
+      <select name="date" id="date">
+        <option value="date-1">Mardi, 15 Avril 2022</option>
+        <option value="date-2">Mercredi, 16 Avril 2022</option>
+        <option value="date-3">Jeudi, 17 Avril 2022</option>
+      </select>
+    </div>
+    <div class="text-center">
+      <button class="btn-blue">confirmez</button>
+    </div>
+  </form>
 </ngx-smart-modal>

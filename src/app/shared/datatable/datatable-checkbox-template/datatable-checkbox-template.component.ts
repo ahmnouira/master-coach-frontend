@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: "[datatable-checkbox-template]",
+  selector: '[datatable-checkbox-template]',
   template: `
     <span class="checkboxTemplate">
       <input
@@ -16,7 +16,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
       <label [for]="'checkboxTemplate_' + row.id"></label>
     </span>
   `,
-  styles: []
+  styles: [],
 })
 export class DatatableCheckboxTemplateComponent implements OnInit {
   @Input() row: any = {};

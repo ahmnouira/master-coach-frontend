@@ -1,85 +1,136 @@
-<app-sub-header [title]="'Ajouter un client'" [subTitle]="'BACK'"></app-sub-header>
+<app-sub-header
+  [title]="'Ajouter un client'"
+  [subTitle]="'BACK'"
+></app-sub-header>
 <div class="sub-component-content">
   <div class="col-10">
     <div class="row">
       <div class="col-10">
-        <div class="image-container" (click)="file.click()" >
-          <img class="profil-image" [attr.src]="form.photo">
-          <input type="file" hidden accept="image/*" (change)="importFile($event)" #file>
-          <button > <img class="profil-icon" src="assets/img/common/camera-to-take-photos%20(3).svg"></button>
-
+        <div class="image-container" (click)="file.click()">
+          <img class="profil-image" [attr.src]="form.photo" />
+          <input
+            type="file"
+            hidden
+            accept="image/*"
+            (change)="importFile($event)"
+            #file
+          />
+          <button>
+            <img
+              class="profil-icon"
+              src="assets/img/common/camera-to-take-photos%20(3).svg"
+            />
+          </button>
         </div>
         <div class="row d-flex profil-data">
           <div class="col form-group">
             <label class="element-label">Nom</label>
-            <input type="text" [(ngModel)]="form.nom"
-                   class="form-control element"
-                   placeholder="Laroche"
-            >
+            <input
+              type="text"
+              [(ngModel)]="form.nom"
+              class="form-control element"
+              placeholder="Laroche"
+            />
           </div>
           <div class="col form-group">
             <label class="element-label">Prénom</label>
-            <input type="text" [(ngModel)]="form.prenom"
-                   class="form-control element"
-                   placeholder="David"
-            >
+            <input
+              type="text"
+              [(ngModel)]="form.prenom"
+              class="form-control element"
+              placeholder="David"
+            />
           </div>
         </div>
         <div class="row d-flex profil-data">
           <div class="col form-group">
             <label class="element-label">Email</label>
-            <input type="email" [(ngModel)]="form.email"
-                   class="form-control element"
-                   pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                   placeholder="davidlaroche@gmail.com"
-                   required
-                   #email="ngModel"
-            >
+            <input
+              type="email"
+              [(ngModel)]="form.email"
+              class="form-control element"
+              pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              placeholder="davidlaroche@gmail.com"
+              required
+              #email="ngModel"
+            />
             <div *ngIf="(email.invalid && email.touched) || email.dirty">
-              <small *ngIf="email.errors?.required" class="alert alert-danger" role="alert">L'email' est obligatoire!</small>
-              <small *ngIf="email.errors?.pattern" class="alert alert-danger" role="alert">Veuillez entrer un email valide</small>
+              <small
+                *ngIf="email.errors?.required"
+                class="alert alert-danger"
+                role="alert"
+                >L'email' est obligatoire!</small
+              >
+              <small
+                *ngIf="email.errors?.pattern"
+                class="alert alert-danger"
+                role="alert"
+                >Veuillez entrer un email valide</small
+              >
             </div>
           </div>
           <div class="col form-group">
             <label class="element-label">Numéro de téléphone</label>
-            <input type="tel" [(ngModel)]="form.tel"
-                   class="form-control element"
-                   placeholder="+33 12 34 56 789"
-                   pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
-                   required
-                   #tel="ngModel"
-            >
+            <input
+              type="tel"
+              [(ngModel)]="form.tel"
+              class="form-control element"
+              placeholder="+33 12 34 56 789"
+              pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
+              required
+              #tel="ngModel"
+            />
             <div *ngIf="(tel.invalid && email.touched) || tel.dirty">
-              <small *ngIf="tel.errors?.required" class="alert alert-danger" role="alert">Le numéro de telephone est est obligatoire!</small>
-              <small *ngIf="tel.errors?.pattern" class="alert alert-danger" role="alert">Veuillez entrer un numéro de telephone valide</small>
+              <small
+                *ngIf="tel.errors?.required"
+                class="alert alert-danger"
+                role="alert"
+                >Le numéro de telephone est est obligatoire!</small
+              >
+              <small
+                *ngIf="tel.errors?.pattern"
+                class="alert alert-danger"
+                role="alert"
+                >Veuillez entrer un numéro de telephone valide</small
+              >
             </div>
           </div>
         </div>
         <div class="row profil-data">
           <div class="form-group">
             <label class="element-label">Equipe</label>
-            <select id="selectTeam" [(ngModel)]="selectedTeam" required
-                    class="form-control element">
+            <select
+              id="selectTeam"
+              [(ngModel)]="selectedTeam"
+              required
+              class="form-control element"
+            >
               <option [value]="'NO_TEAM'">PAS D'AFFECTATION</option>
-              <option *ngFor="let team of teamsList" [value]="team._id">{{team.name.toUpperCase()}}</option>
+              <option *ngFor="let team of teamsList" [value]="team._id">
+                {{ team.name.toUpperCase() }}
+              </option>
             </select>
           </div>
         </div>
         <div class="row profil-data">
           <div class="form-group">
             <label class="element-label">Notes</label>
-            <textarea rows="5" style="height: 120px" [(ngModel)]="form.notes"
-                      class="form-control element"
-                      placeholder="Texte...">
-          </textarea>
+            <textarea
+              rows="5"
+              style="height: 120px"
+              [(ngModel)]="form.notes"
+              class="form-control element"
+              placeholder="Texte..."
+            >
+            </textarea>
           </div>
         </div>
         <div class="d-flex justify-content-start mt-4">
-          <button class="btn btn-primary align-self-end" (click)="saveUser()">Enregistrer</button>&nbsp;
+          <button class="btn btn-primary align-self-end" (click)="saveUser()">
+            Enregistrer</button
+          >&nbsp;
         </div>
       </div>
     </div>
-
-
   </div>
 </div>

@@ -1,73 +1,84 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {CoachService} from "../../../services/coach.service";
-import {TokenStorageService} from "../../../services/token-storage.service";
+import { Router } from '@angular/router';
+import { CoachService } from '../../../services/coach.service';
+import { TokenStorageService } from '../../../services/token-storage.service';
 
 @Component({
   selector: 'app-add-form-quiz',
   templateUrl: './add-form-quiz.component.html',
-  styleUrls: ['./add-form-quiz.component.scss']
+  styleUrls: ['./add-form-quiz.component.scss'],
 })
 export class AddFormQuizComponent implements OnInit {
-
   listQuestions: any = [];
   formName = '';
   formDescription = '';
 
-  constructor(private router :Router, private coachService : CoachService, private tokenStoregeService : TokenStorageService) { }
+  constructor(
+    private router: Router,
+    private coachService: CoachService,
+    private tokenStoregeService: TokenStorageService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  addQuestion(){
+  addQuestion() {
     this.listQuestions.push({
-      questionText : '',
+      questionText: '',
       questionType: 'multiple',
       questionChoixMultiple: true,
       questionChoixUnique: false,
-      questionResponses: []
-    })
+      questionResponses: [],
+    });
   }
   removeQuestion(index) {
-    this.listQuestions.splice(index,1);
+    this.listQuestions.splice(index, 1);
   }
 
-  addResponse(indexQuestion){
+  addResponse(indexQuestion) {
     this.listQuestions[indexQuestion].questionResponses.push({
-      responsePosition : this.listQuestions[indexQuestion].questionResponses.length,
-      responseText: ''
-    })
+      responsePosition:
+        this.listQuestions[indexQuestion].questionResponses.length,
+      responseText: '',
+    });
   }
   removeResponse(indexQuestion, indexREsp) {
-    this.listQuestions[indexQuestion].questionResponses.splice(indexREsp,1);
+    this.listQuestions[indexQuestion].questionResponses.splice(indexREsp, 1);
   }
 
-  questionChoixUniqueChanged(indexQuestion){
-    this.listQuestions[indexQuestion].questionChoixMultiple = !this.listQuestions[indexQuestion].questionChoixUnique;
-    this.listQuestions[indexQuestion].questionType = this.listQuestions[indexQuestion].questionChoixUnique? 'unique':'multiple';
+  questionChoixUniqueChanged(indexQuestion) {
+    this.listQuestions[indexQuestion].questionChoixMultiple =
+      !this.listQuestions[indexQuestion].questionChoixUnique;
+    this.listQuestions[indexQuestion].questionType = this.listQuestions[
+      indexQuestion
+    ].questionChoixUnique
+      ? 'unique'
+      : 'multiple';
   }
 
-  questionChoixMultipleChanged(indexQuestion){
-    this.listQuestions[indexQuestion].questionChoixUnique = !this.listQuestions[indexQuestion].questionChoixMultiple;
-    this.listQuestions[indexQuestion].questionType = this.listQuestions[indexQuestion].questionChoixUnique? 'unique':'multiple';
+  questionChoixMultipleChanged(indexQuestion) {
+    this.listQuestions[indexQuestion].questionChoixUnique =
+      !this.listQuestions[indexQuestion].questionChoixMultiple;
+    this.listQuestions[indexQuestion].questionType = this.listQuestions[
+      indexQuestion
+    ].questionChoixUnique
+      ? 'unique'
+      : 'multiple';
   }
 
-  saveForm(){
+  saveForm() {
     let quizData = {
       coach_id: this.tokenStoregeService.getUser()._id,
       quizName: this.formName,
       quizDesc: this.formDescription,
-      questions: [...this.listQuestions]
-    }
+      questions: [...this.listQuestions],
+    };
     this.coachService.CreateQuiz(quizData).subscribe(
-      data => {
-        this.router.navigateByUrl('/pages/coach/quiz/list')
+      (data) => {
+        this.router.navigateByUrl('/pages/coach/quiz/list');
       },
-      error => {
-        console.log(error)
+      (error) => {
+        console.log(error);
       }
-    )
-
+    );
   }
-
 }

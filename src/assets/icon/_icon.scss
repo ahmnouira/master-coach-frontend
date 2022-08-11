@@ -1,19 +1,19 @@
 @font-face {
-  font-family: 'icomoon';
-  src: url('./icomoon.eot?6hh435');
-  src: url('./icomoon.eot?6hh435#iefix') format('embedded-opentype'),
-    url('./icomoon.ttf?6hh435') format('truetype'),
-    url('./icomoon.woff?6hh435') format('woff'),
-    url('./icomoon.svg?6hh435#icomoon') format('svg');
+  font-family: "icomoon";
+  src: url("./icomoon.eot?6hh435");
+  src: url("./icomoon.eot?6hh435#iefix") format("embedded-opentype"),
+    url("./icomoon.ttf?6hh435") format("truetype"),
+    url("./icomoon.woff?6hh435") format("woff"),
+    url("./icomoon.svg?6hh435#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^='icon-'],
-[class*=' icon-'] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: "icomoon" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -27,72 +27,72 @@
 }
 
 .icon-notification:before {
-  content: '\e90f';
+  content: "\e90f";
   color: #3c4d5d;
 }
 .icon-add:before {
-  content: '\e907';
+  content: "\e907";
   color: #1376a3;
 }
 .icon-attachment:before {
-  content: '\e908';
+  content: "\e908";
   color: #1376a3;
 }
 .icon-chatting:before {
-  content: '\e909';
+  content: "\e909";
   color: #fff;
 }
 .icon-add-image:before {
-  content: '\e90a';
+  content: "\e90a";
   color: #1376a3;
 }
 .icon-information:before {
-  content: '\e90b';
+  content: "\e90b";
   color: #3c4d5d;
 }
 .icon-loupe:before {
-  content: '\e90c';
+  content: "\e90c";
   color: #ddf2fa;
 }
 .icon-send:before {
-  content: '\e90d';
+  content: "\e90d";
   color: #1376a3;
 }
 .icon-smile:before {
-  content: '\e90e';
+  content: "\e90e";
   color: #1376a3;
 }
 .icon-error:before {
-  content: '\e900';
+  content: "\e900";
   color: #9da5ad;
 }
 .icon-google:before {
-  content: '\e901';
+  content: "\e901";
   color: #fff;
 }
 .icon-arrow-left:before {
-  content: '\e902';
+  content: "\e902";
   color: #3c4d5d;
 }
 .icon-Arrow-Outline:before {
-  content: '\e903';
+  content: "\e903";
   color: #9da5ad;
 }
 .icon-checked:before {
-  content: '\e904';
+  content: "\e904";
   color: #3c4d5d;
 }
 .icon-etoile-1:before {
-  content: '\e905';
+  content: "\e905";
   color: #fbe561;
 }
 .icon-etoile:before {
-  content: '\e906';
+  content: "\e906";
   color: #fbe561;
 }
 
 .icon-trash:before {
-  content: '\e9ac';
+  content: "\e9ac";
   color: rgba(220, 53, 69, 1);
   width: 20px;
   height: 20px;

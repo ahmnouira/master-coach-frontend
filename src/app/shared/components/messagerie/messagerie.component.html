@@ -1,91 +1,192 @@
 <app-sub-header [title]="'Messagerie'" [subTitle]="'None'"></app-sub-header>
 <div class="messagerie">
-    <div class="bloc-down">
-        <div class="first-bloc">
-            <div class="search-bar">
-                <input type="search-profile" id="search-profile" name="" placeholder="rechercher ...">
-                <button><i class="icon-loupe"></i></button>
-            </div>
-            <div class="chat-list-contaner">
-                <div class="chat-list">
-                    <div *ngFor="let conversation of conversations; let index = index;" class="box" [ngClass]="{'active': conversation.sid === currentConversation.sid}"  (click)='loadConversationMessage(conversation)'>
-                        <p class="name">
-                            <img [attr.src]="conversation?.channelState?.userImage" class="img-fluid" alt="">
-                            <span class="name-inner" *ngIf="conversation">
-                                {{ getConversationName(conversation) }}
-                              <span class="badge badge-dark">{{conversation.unreadCount}}</span>
-                            </span>
-                        </p>
-                      </div>
-                    </div>
-            </div>
+  <div class="bloc-down">
+    <div class="first-bloc">
+      <div class="search-bar">
+        <input
+          type="search-profile"
+          id="search-profile"
+          name=""
+          placeholder="rechercher ..."
+        />
+        <button><i class="icon-loupe"></i></button>
+      </div>
+      <div class="chat-list-contaner">
+        <div class="chat-list">
+          <div
+            *ngFor="let conversation of conversations; let index = index"
+            class="box"
+            [ngClass]="{ active: conversation.sid === currentConversation.sid }"
+            (click)="loadConversationMessage(conversation)"
+          >
+            <p class="name">
+              <img
+                [attr.src]="conversation?.channelState?.userImage"
+                class="img-fluid"
+                alt=""
+              />
+              <span class="name-inner" *ngIf="conversation">
+                {{ getConversationName(conversation) }}
+                <span class="badge badge-dark">{{
+                  conversation.unreadCount
+                }}</span>
+              </span>
+            </p>
+          </div>
         </div>
-        <div class="second-bloc">
-            <div class="white-bloc">
-                <div class="header">
-                    <div class="profile-name">
-                        <img [attr.src]="currentConversation?.channelState?.userImage" class="img-fluid" alt="" (click)="goToUserProfile(currentConversation?.channelState?.userEmail)">
-                        <p class="name" *ngIf="currentConversation"  (click)="goToUserProfile(currentConversation?.channelState?.userEmail)">
-                            {{currentConversation.channelState.friendlyName }}
-                        </p>
-                    </div>
-                    <div class="btn-tooltip ml-auto">
-                      <i class="icon-information"></i>
-                    </div>
-                </div>
-                <div class="body" #scrollMe [scrollTop]="scrolltop" (scroll)="onScroll($event)">
-                    <div [ngClass]="{'message-right': message.author === currentUser.email, 'message-left' : message.author !== currentUser.email }"
-                    class="message-left"
-                    *ngFor="let message of messages" >
-
-                      <div class="msg-actions">
-                        <a *ngIf="message.author === currentUser.email && !message.media" class="delete-message-btn" (click)="isModeEdit = !isModeEdit; msgContent=message.body; messageToEdit = message"  tooltip="Modifier le message" >
-                        <span class="material-icons" style="color: grey;">edit</span>
-                        </a>
-                        <a *ngIf="message.author === currentUser.email" class="delete-message-btn" (click)="deleteMessage(message)"  tooltip="Supprimer le message" >
-                          <span class="material-icons">delete_forever</span>
-                        </a>
-                      </div>
-                        <p class="date">
-                            {{getUserName(message.author)}} | {{message.date}} {{message.updated ? '| Modifié le ' + message.updateDate: ''}}
-                        </p>
-                        <p class="description">
-                           {{message.body}}
-                        </p>
-                      <p class="description" *ngIf="message.media">
-                        <a *ngIf="!message.media?.contentType?.includes('image')" class="mlr-10" [attr.href]="sanitizer.bypassSecurityTrustResourceUrl(message.media?.url)" download="{{message.media?.filename}}" title="{{message.media?.filename}}" target="_blank">{{message.media?.filename}}</a>
-                        <img *ngIf="message.media?.contentType?.includes('image')" class="mlr-10" [attr.src]="sanitizer.bypassSecurityTrustResourceUrl(message.media?.url)" style="width: 250px;"/>
-                      </p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer">
-                <div class="form-group">
-                    <div class="icons">
-                        <i class="icon-smile" (click)="isEmojiPickerVisible = !isEmojiPickerVisible;"></i>
-                        <i class="icon-add-image" (click)="imageContent.click()"></i>
-                        <i class="icon-attachment" (click)="documents.click()"></i>
-                        <i class="icon-trash" *ngIf="currentConversation" (click)="deleteConversation(currentConversation)" tooltip="Supprimer la conversation"></i>
-                    </div>
-
-                  <emoji-mart
-                    class="emoji-mart"
-                    *ngIf="isEmojiPickerVisible" [color]="'#1376A3'" [skin]="3" [sheetSize]="32"
-                    (emojiSelect)="addEmoji($event)" title="Choisissez votre emoji" [showPreview]="false"
-                    [i18n]="smileyI18n"
-                  ></emoji-mart>
-
-                    <input type="file" hidden accept="image/*" (change)="importFile($event)" #imageContent>
-                    <input type="file" hidden accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf" (change)="importFile($event)" #documents>
-                    <div class="input" style="width: 100%">
-                        <input type="text" [(ngModel)]="msgContent" (keyup.enter)="sendNewMessage()">
-                        <button (click)="sendNewMessage()" class="send"><i class="icon-send"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="mat-error">
-              {{uploadError}}
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="second-bloc">
+      <div class="white-bloc">
+        <div class="header">
+          <div class="profile-name">
+            <img
+              [attr.src]="currentConversation?.channelState?.userImage"
+              class="img-fluid"
+              alt=""
+              (click)="
+                goToUserProfile(currentConversation?.channelState?.userEmail)
+              "
+            />
+            <p
+              class="name"
+              *ngIf="currentConversation"
+              (click)="
+                goToUserProfile(currentConversation?.channelState?.userEmail)
+              "
+            >
+              {{ currentConversation.channelState.friendlyName }}
+            </p>
+          </div>
+          <div class="btn-tooltip ml-auto">
+            <i class="icon-information"></i>
+          </div>
+        </div>
+        <div
+          class="body"
+          #scrollMe
+          [scrollTop]="scrolltop"
+          (scroll)="onScroll($event)"
+        >
+          <div
+            [ngClass]="{
+              'message-right': message.author === currentUser.email,
+              'message-left': message.author !== currentUser.email
+            }"
+            class="message-left"
+            *ngFor="let message of messages"
+          >
+            <div class="msg-actions">
+              <a
+                *ngIf="message.author === currentUser.email && !message.media"
+                class="delete-message-btn"
+                (click)="
+                  isModeEdit = !isModeEdit;
+                  msgContent = message.body;
+                  messageToEdit = message
+                "
+                tooltip="Modifier le message"
+              >
+                <span class="material-icons" style="color: grey">edit</span>
+              </a>
+              <a
+                *ngIf="message.author === currentUser.email"
+                class="delete-message-btn"
+                (click)="deleteMessage(message)"
+                tooltip="Supprimer le message"
+              >
+                <span class="material-icons">delete_forever</span>
+              </a>
+            </div>
+            <p class="date">
+              {{ getUserName(message.author) }} | {{ message.date }}
+              {{ message.updated ? "| Modifié le " + message.updateDate : "" }}
+            </p>
+            <p class="description">
+              {{ message.body }}
+            </p>
+            <p class="description" *ngIf="message.media">
+              <a
+                *ngIf="!message.media?.contentType?.includes('image')"
+                class="mlr-10"
+                [attr.href]="
+                  sanitizer.bypassSecurityTrustResourceUrl(message.media?.url)
+                "
+                download="{{ message.media?.filename }}"
+                title="{{ message.media?.filename }}"
+                target="_blank"
+                >{{ message.media?.filename }}</a
+              >
+              <img
+                *ngIf="message.media?.contentType?.includes('image')"
+                class="mlr-10"
+                [attr.src]="
+                  sanitizer.bypassSecurityTrustResourceUrl(message.media?.url)
+                "
+                style="width: 250px"
+              />
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="form-group">
+          <div class="icons">
+            <i
+              class="icon-smile"
+              (click)="isEmojiPickerVisible = !isEmojiPickerVisible"
+            ></i>
+            <i class="icon-add-image" (click)="imageContent.click()"></i>
+            <i class="icon-attachment" (click)="documents.click()"></i>
+            <i
+              class="icon-trash"
+              *ngIf="currentConversation"
+              (click)="deleteConversation(currentConversation)"
+              tooltip="Supprimer la conversation"
+            ></i>
+          </div>
+
+          <emoji-mart
+            class="emoji-mart"
+            *ngIf="isEmojiPickerVisible"
+            [color]="'#1376A3'"
+            [skin]="3"
+            [sheetSize]="32"
+            (emojiSelect)="addEmoji($event)"
+            title="Choisissez votre emoji"
+            [showPreview]="false"
+            [i18n]="smileyI18n"
+          ></emoji-mart>
+
+          <input
+            type="file"
+            hidden
+            accept="image/*"
+            (change)="importFile($event)"
+            #imageContent
+          />
+          <input
+            type="file"
+            hidden
+            accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf"
+            (change)="importFile($event)"
+            #documents
+          />
+          <div class="input" style="width: 100%">
+            <input
+              type="text"
+              [(ngModel)]="msgContent"
+              (keyup.enter)="sendNewMessage()"
+            />
+            <button (click)="sendNewMessage()" class="send">
+              <i class="icon-send"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mat-error">
+        {{ uploadError }}
+      </div>
+    </div>
+  </div>
 </div>

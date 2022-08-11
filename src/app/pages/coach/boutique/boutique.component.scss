@@ -1,35 +1,37 @@
-.sub-component-content{
-    margin: 35px 10px 10px 10px;
-    display: flex;
-    justify-content: center;
+.sub-component-content {
+  margin: 35px 10px 10px 10px;
+  display: flex;
+  justify-content: center;
 
-    .files-container{
-        width: fit-content;
-        border-radius: 10px;
-        overflow: hidden;
-        .file-desc {
-            position: relative;
+  .files-container {
+    width: fit-content;
+    border-radius: 10px;
+    overflow: hidden;
+    .file-desc {
+      position: relative;
 
-            .overlay{
-                position: absolute;
-                top: 0;
-                right: 0;
-                left: 0;
-                bottom: 0;
-                background: transparent linear-gradient(180deg, #FEEFEA00 0%, #FEEFEA 100%) 0% 0% no-repeat padding-box;
-            }
-            .d-flex{
-                z-index: 9999;
-                padding: 0 20px;
-                justify-content: space-between;
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-            }
-        }
-        .file-title{
-            background-color: #FEEFEA;
-            padding: 15px 20px 20px 20px;
-        }
+      .overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: transparent
+          linear-gradient(180deg, #feefea00 0%, #feefea 100%) 0% 0% no-repeat
+          padding-box;
+      }
+      .d-flex {
+        z-index: 9999;
+        padding: 0 20px;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
     }
+    .file-title {
+      background-color: #feefea;
+      padding: 15px 20px 20px 20px;
+    }
+  }
 }

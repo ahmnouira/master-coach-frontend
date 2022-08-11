@@ -1,16 +1,23 @@
 <app-sub-header [title]="'Modifier un utilisateur'"></app-sub-header>
 <div class="sub-component-content pt-40">
   <div class="d-flex justify-content-end mb-4">
-    <button class="btn btn-primary align-self-end" (click)="addUser()"><span class="material-icons">add_circle</span>Enregister</button>&nbsp;
+    <button class="btn btn-primary align-self-end" (click)="addUser()">
+      <span class="material-icons">add_circle</span>Enregister</button
+    >&nbsp;
   </div>
   <form>
-
     <div class="input-group form-group form-inline mb-2 mt-2">
       <div class="col-2">
         <span class="input-group-text"> Nom d'utilisateur : </span>
       </div>
       <div class="col-10">
-        <input class="form-control ml-2" [(ngModel)]="newUser.username" id="userName" name="userName" type="text" />
+        <input
+          class="form-control ml-2"
+          [(ngModel)]="newUser.username"
+          id="userName"
+          name="userName"
+          type="text"
+        />
       </div>
     </div>
     <div class="input-group form-group form-inline mb-2 mt-2">
@@ -18,7 +25,13 @@
         <span class="input-group-text"> Email : </span>
       </div>
       <div class="col-10">
-        <input class="form-control ml-2" [(ngModel)]="newUser.email" id="firstName" name="firstName" type="text" />
+        <input
+          class="form-control ml-2"
+          [(ngModel)]="newUser.email"
+          id="firstName"
+          name="firstName"
+          type="text"
+        />
       </div>
     </div>
     <div class="input-group form-group form-inline mb-2 mt-2">
@@ -26,7 +39,13 @@
         <span class="input-group-text"> Rôle : </span>
       </div>
       <div class="col-10">
-        <select id="inputState" [(ngModel)]="newUser.role" (change)="userRoleChanged()" name="workflow" class="form-select">
+        <select
+          id="inputState"
+          [(ngModel)]="newUser.role"
+          (change)="userRoleChanged()"
+          name="workflow"
+          class="form-select"
+        >
           <option value="Admin">Administrateur</option>
           <option value="Coach">Coach</option>
           <option value="Client">Client</option>
@@ -38,56 +57,93 @@
         <span class="input-group-text"> Status : </span>
       </div>
       <div class="col-10">
-        <div class="btn-group" data-toggle="buttons" style="display: flex; justify-content: space-evenly">
+        <div
+          class="btn-group"
+          data-toggle="buttons"
+          style="display: flex; justify-content: space-evenly"
+        >
           <label class="active">
-            <input type="radio" name="options" id="option1" value="Actif" [(ngModel)]="newUser.status" > Actif
+            <input
+              type="radio"
+              name="options"
+              id="option1"
+              value="Actif"
+              [(ngModel)]="newUser.status"
+            />
+            Actif
           </label>
           <label class="">
-            <input type="radio" name="options" id="option2" value="Inactif" [(ngModel)]="newUser.status" > Inactif
+            <input
+              type="radio"
+              name="options"
+              id="option2"
+              value="Inactif"
+              [(ngModel)]="newUser.status"
+            />
+            Inactif
           </label>
           <label class="">
-            <input type="radio" name="options" id="option3" value="En attente" [(ngModel)]="newUser.status" > En attente
+            <input
+              type="radio"
+              name="options"
+              id="option3"
+              value="En attente"
+              [(ngModel)]="newUser.status"
+            />
+            En attente
           </label>
         </div>
       </div>
     </div>
 
-    <div *ngIf="newUser.role == 'Coach'" class="input-group form-group form-inline mb-2 mt-2">
+    <div
+      *ngIf="newUser.role == 'Coach'"
+      class="input-group form-group form-inline mb-2 mt-2"
+    >
       <div class="col-2">
         <span class="input-group-text"> Compétences : </span>
       </div>
       <div class="col-10">
-
-        <angular2-multiselect name="competance"
-                              [data]="userCompetences"
-                              [(ngModel)]="newUser.competance"
-                              [settings]="settings">
+        <angular2-multiselect
+          name="competance"
+          [data]="userCompetences"
+          [(ngModel)]="newUser.competance"
+          [settings]="settings"
+        >
         </angular2-multiselect>
       </div>
     </div>
-    <div *ngIf="newUser.role == 'Coach'" class="input-group form-group form-inline mb-2 mt-2">
+    <div
+      *ngIf="newUser.role == 'Coach'"
+      class="input-group form-group form-inline mb-2 mt-2"
+    >
       <div class="col-2">
         <span class="input-group-text"> Categories : </span>
       </div>
       <div class="col-10">
-
-        <angular2-multiselect name="userCategory"
-                              [data]="userCategory"
-                              [(ngModel)]="newUser.category"
-                              [settings]="settings">
+        <angular2-multiselect
+          name="userCategory"
+          [data]="userCategory"
+          [(ngModel)]="newUser.category"
+          [settings]="settings"
+        >
         </angular2-multiselect>
       </div>
     </div>
-    <div *ngIf="newUser.role == 'Coach'" class="input-group form-group form-inline mb-2 mt-2">
+    <div
+      *ngIf="newUser.role == 'Coach'"
+      class="input-group form-group form-inline mb-2 mt-2"
+    >
       <div class="col-2">
         <span class="input-group-text"> Accréditations : </span>
       </div>
       <div class="col-10">
-
-        <angular2-multiselect name="userAccred"
-                              [data]="userAccred"
-                              [(ngModel)]="newUser.accreditation"
-                              [settings]="settings">
+        <angular2-multiselect
+          name="userAccred"
+          [data]="userAccred"
+          [(ngModel)]="newUser.accreditation"
+          [settings]="settings"
+        >
         </angular2-multiselect>
       </div>
     </div>

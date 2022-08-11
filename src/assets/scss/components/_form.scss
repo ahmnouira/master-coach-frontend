@@ -1,117 +1,120 @@
-.flex-inputs{
-  .form-group{
+.flex-inputs {
+  .form-group {
     max-width: 308px;
   }
 }
 
-.file-box{
-  a{
+.file-box {
+  a {
     display: block;
     margin: 0;
     flex: 1;
     margin-right: 10px;
     height: 50px;
-    box-shadow: 0px 0px 10px #0000001A;
-    border: 1px solid #1376A3;
+    box-shadow: 0px 0px 10px #0000001a;
+    border: 1px solid #1376a3;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: unset;
-    color: #1376A3;
+    color: #1376a3;
   }
-  .d-flex{
+  .d-flex {
     align-items: center;
   }
 }
-.form-group angular2-multiselect.multiselect{
-  background: #1376A3 0% 0% no-repeat padding-box;
-  border: 1px solid #1376A3;
+.form-group angular2-multiselect.multiselect {
+  background: #1376a3 0% 0% no-repeat padding-box;
+  border: 1px solid #1376a3;
   border-radius: 10px;
   padding: 0;
   font: normal normal normal 16px/19px Fredoka;
   letter-spacing: 0px;
   color: #fff;
 
-  .selected-list .c-angle-down ,.selected-list .c-angle-up{
-    width: 8px!important;
-    height: 10px!important;
+  .selected-list .c-angle-down,
+  .selected-list .c-angle-up {
+    width: 8px !important;
+    height: 10px !important;
     top: 42%;
-    svg{
+    svg {
       fill: #fff;
     }
-  
   }
-  .selected-list{
-    padding: 5px 10px 5px 20px ;
+  .selected-list {
+    padding: 5px 10px 5px 20px;
 
-    .clear-all{
-      svg path{
+    .clear-all {
+      svg path {
         fill: #fff;
       }
     }
-    .c-btn{
+    .c-btn {
       padding: 0;
-      .c-token{
+      .c-token {
         background-color: rgb(60 77 93 / 25%);
         border-radius: 4px;
       }
     }
   }
-  .dropdown-list{
-    .arrow-down, .arrow-up{display: none;}
-    .list-area{
+  .dropdown-list {
+    .arrow-down,
+    .arrow-up {
+      display: none;
+    }
+    .list-area {
       box-shadow: 0px 0px 10px #0000001a;
       border-radius: 10px;
       border: unset;
-      color: #9DA5AD;
+      color: #9da5ad;
       font-size: 14px;
-      label{
+      label {
         font-size: 14px;
       }
-      .pure-checkbox.select-all{
-        label{
-          color: #9DA5AD;
+      .pure-checkbox.select-all {
+        label {
+          color: #9da5ad;
           font-size: 14px;
         }
       }
-      
-     ul{
-       li{
-        &.selected-item, &:hover{
-          background-color: #0000001A;
-        }
-        label{
-          color: #3C4D5D;
-        }
-       }
-     }
-    }
-  } 
-}
 
+      ul {
+        li {
+          &.selected-item,
+          &:hover {
+            background-color: #0000001a;
+          }
+          label {
+            color: #3c4d5d;
+          }
+        }
+      }
+    }
+  }
+}
 
 .element-label {
   text-align: left;
   font: normal normal normal 10px/12px Fredoka;
   letter-spacing: 0px;
-  color: #3C4D5D;
+  color: #3c4d5d;
   opacity: 0.5;
   margin-bottom: 8px;
 }
 
 .form-group {
-  &.col{
+  &.col {
     padding: 0;
-    input{
+    input {
       width: 100%;
     }
   }
 
-  .file-input{
+  .file-input {
     height: 50px;
-    box-shadow: 0px 0px 10px #0000001A;
-    border: 1px solid #1376A3;
+    box-shadow: 0px 0px 10px #0000001a;
+    border: 1px solid #1376a3;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -119,24 +122,24 @@
     cursor: pointer;
     position: relative;
 
-    &:hover, &:active{
-      background-color: #1376A3;
-      label{
-
-        color: #fff;  
-        svg path{
+    &:hover,
+    &:active {
+      background-color: #1376a3;
+      label {
+        color: #fff;
+        svg path {
           fill: #fff;
         }
       }
     }
-    label{
+    label {
       top: 0;
       position: absolute;
       left: 0;
       bottom: 0;
       right: 0;
       cursor: pointer;
-      color: #1376A3;
+      color: #1376a3;
       font-size: 12px;
       opacity: 1;
       margin: 0;
@@ -144,53 +147,52 @@
       align-items: center;
       justify-content: center;
 
-      svg{
+      svg {
         margin-right: 5px;
       }
     }
   }
 
   .form-control::placeholder {
-    color: #3C4D5D;
+    color: #3c4d5d;
     opacity: 0.25;
   }
 
-  textarea{
-    box-shadow: 0px 0px 10px #0000001A;
+  textarea {
+    box-shadow: 0px 0px 10px #0000001a;
     border-radius: 10px;
     border: unset;
     background: unset;
-    color: #3C4D5D;
+    color: #3c4d5d;
     font-size: 14px;
     padding-left: 20px;
   }
   input {
     height: 50px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 0px 10px #0000001A;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #0000001a;
     border-radius: 10px;
     border: unset;
     background: unset;
-    color: #3C4D5D;
+    color: #3c4d5d;
     font-size: 14px;
     padding-left: 20px;
 
-    &:focus{
-      box-shadow: 0px 0px 10px #0000001A;
+    &:focus {
+      box-shadow: 0px 0px 10px #0000001a;
     }
   }
   label {
     text-align: left;
     font: normal normal normal 10px/12px Fredoka;
     letter-spacing: 0px;
-    color: #3C4D5D;
+    color: #3c4d5d;
     opacity: 0.5;
     margin-bottom: 8px;
   }
 }
 
-
-.submit-btn{
+.submit-btn {
   max-width: 140px;
   margin-top: 20px;
 }

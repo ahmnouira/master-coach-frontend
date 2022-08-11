@@ -1,8 +1,6 @@
-
 .day-selector {
-  
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001A;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   margin: 20px auto;
   width: 97%;
@@ -13,11 +11,11 @@
     display: flex;
     align-items: center;
     height: 60px;
-    .btn-next, .btn-prev {
-
-      background: #1376A3 0% 0% no-repeat padding-box;
-      box-shadow: 0px 0px 5px #0000001A;
-      color: #FFFFFF;
+    .btn-next,
+    .btn-prev {
+      background: #1376a3 0% 0% no-repeat padding-box;
+      box-shadow: 0px 0px 5px #0000001a;
+      color: #ffffff;
       border-radius: 50%;
       width: 40px;
       height: 40px;
@@ -38,7 +36,7 @@
       margin-right: 10px;
     }
   }
-  .row-of-days{
+  .row-of-days {
     flex-wrap: wrap;
 
     .date-item {
@@ -51,18 +49,18 @@
       height: 83px;
       border: 0;
       margin: 0 1px;
-      .day-name{
+      .day-name {
         text-align: center;
         font: normal normal normal 16px/19px Fredoka;
         letter-spacing: 0px;
-        color: #3C4D5D;
+        color: #3c4d5d;
         opacity: 0.5;
         text-transform: capitalize;
       }
       .day-number {
         font: normal normal normal 18px/22px Fredoka;
         letter-spacing: 0px;
-        color: #3C4D5D;
+        color: #3c4d5d;
         text-transform: uppercase;
         font-weight: bold;
         opacity: 1;
@@ -70,24 +68,24 @@
     }
 
     .selected-day {
-      background: transparent url('/assets/img/common/Union 3.svg')  50% 50% no-repeat padding-box;
+      background: transparent url("/assets/img/common/Union 3.svg") 50% 50%
+        no-repeat padding-box;
       box-shadow: 0px 0px 0px #0000001a;
       background-size: 130% 130%;
       span {
-        color: #FFFFFF !important;
+        color: #ffffff !important;
       }
     }
   }
 }
 
-
-.mlr-10{
+.mlr-10 {
   margin-right: 10px;
   margin-left: 10px;
 }
 
 .selectFilter {
-  background: #1376A3;
+  background: #1376a3;
   border-radius: 10px !important;
   color: #fff;
   padding: 10px;
@@ -99,8 +97,10 @@
   outline: none;
 }
 
-
-.btn {font: normal normal normal 14px/17px Fredoka; height: 50px}
+.btn {
+  font: normal normal normal 14px/17px Fredoka;
+  height: 50px;
+}
 
 .searchBox {
   padding: 20px;
@@ -109,10 +109,10 @@
   border-color: #1376a3;
   border-radius: 10px !important;
 }
-.searchBox::placeholder{
+.searchBox::placeholder {
   font: normal normal normal 14px/17px Fredoka;
   letter-spacing: 0px;
-  color: #1376A3;
+  color: #1376a3;
   opacity: 0.5;
 }
 
@@ -120,4 +120,3 @@
   //width: 100px !important;
   font: normal normal normal 14px/17px Fredoka !important;
 }
-

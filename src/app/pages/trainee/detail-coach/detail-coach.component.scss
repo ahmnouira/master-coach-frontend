@@ -1,19 +1,19 @@
-.sub-component-content .col-9:first-child{
+.sub-component-content .col-9:first-child {
   margin-top: 50px;
 }
-.sub-component-content .col-9:nth-child(2){
+.sub-component-content .col-9:nth-child(2) {
   margin-top: 10px;
 }
-.sub-component-content{
+.sub-component-content {
   margin: 50px 10px 10px 10px;
   display: flex;
   justify-content: center;
 }
-.coach-banner{
+.coach-banner {
   height: 110px;
   /* UI Properties */
-  background: #1376A3 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001A;
+  background: #1376a3 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   overflow: visible;
   display: flex;
@@ -25,11 +25,11 @@
     border-radius: 50%;
     position: relative;
     border-left: 3px solid transparent;
-    border-top: 3px solid #1376A3;
-    border-right: 3px solid #1376A3;
-    border-bottom: 3px solid #1376A3;
+    border-top: 3px solid #1376a3;
+    border-right: 3px solid #1376a3;
+    border-bottom: 3px solid #1376a3;
   }
-  .coach-name{
+  .coach-name {
     color: white;
     font: normal normal normal 14px/22px Fredoka;
     letter-spacing: 0px;
@@ -52,7 +52,7 @@
   }
   .coach-badge {
     color: white;
-    border : 1px solid white;
+    border: 1px solid white;
     font: normal normal normal 11px/15px Fredoka;
     padding: 2px 10px;
     border-radius: 5px;
@@ -62,8 +62,8 @@
   .btn-rdv {
     font: normal normal normal 14px/17px Fredoka;
     letter-spacing: 0px;
-    color: #1376A3;
-    background-color: #FFFFFF;
+    color: #1376a3;
+    background-color: #ffffff;
     border-radius: 20px;
     height: 40px;
     padding: 10px 20px;
@@ -72,13 +72,12 @@
     align-items: center;
     gap: 5px;
   }
-
 }
 
 .coach-comps {
   font: normal normal normal 18px/22px Fredoka;
   letter-spacing: 0px;
-  color: #1376A3;
+  color: #1376a3;
   font-weight: bold;
 }
 
@@ -86,41 +85,40 @@
   text-align: left;
   font: normal normal normal 14px/20px Fredoka;
   letter-spacing: 0px;
-  color: #3C4D5D;
+  color: #3c4d5d;
 }
 .bloc-comp-accr {
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001A;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   padding: 15px;
 }
 
 .elem {
-  box-shadow: 0px 0px 10px #0000001A;
-  border: 1px solid #3C4D5D;
+  box-shadow: 0px 0px 10px #0000001a;
+  border: 1px solid #3c4d5d;
   font: normal normal normal 14px/20px Fredoka;
   border-radius: 5px;
   padding: 5px 10px;
-  color: #3C4D5D;
-  margin-right : 10px;
+  color: #3c4d5d;
+  margin-right: 10px;
   max-width: fit-content;
 }
 .elem-lab {
   font: normal normal normal 14px/17px Fredoka;
   letter-spacing: 0px;
-  color: #1376A3;
+  color: #1376a3;
 }
 
 .elem-group {
   margin: 10px 1px;
 }
 .cards-container {
-
   display: flex;
   overflow-x: scroll;
   flex-flow: row nowrap;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   cursor: pointer;
   .card {
     max-width: 340px;
@@ -131,7 +129,7 @@
     display: flex;
     align-items: flex-end;
     transition: 0.25s ease-out;
-    box-shadow: 0px 0px 10px #0000001A;
+    box-shadow: 0px 0px 10px #0000001a;
     border: 0;
     overflow: hidden;
     cursor: pointer;
@@ -146,15 +144,19 @@
 
     border-radius: 10px;
   }
-  .card .bottom-info{
+  .card .bottom-info {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    border-radius: 0px 0px 10px 10px
+    border-radius: 0px 0px 10px 10px;
   }
   .card .bottom-info .partial-info {
-    background: linear-gradient(to top, rgba(221, 242, 250, 1), rgba(221, 242, 250, 0.8));
+    background: linear-gradient(
+      to top,
+      rgba(221, 242, 250, 1),
+      rgba(221, 242, 250, 0.8)
+    );
     min-width: 100%;
     height: 62px;
     padding-right: 30px;
@@ -163,21 +165,23 @@
     z-index: 99999999;
     position: relative;
     border-radius: 0px 0px 10px 10px;
-    .coach-name{
+    .coach-name {
       font: normal normal normal 20px/22px Fredoka;
       left: 20px;
       font-weight: bold;
       position: relative;
       top: 10px;
-    }.coach-skills{
-       font: normal normal normal 18px/15px Fredoka;
-       left: 20px;
-       position: relative;
-       top: 10px;
-     }
+    }
+    .coach-skills {
+      font: normal normal normal 18px/15px Fredoka;
+      left: 20px;
+      position: relative;
+      top: 10px;
+    }
   }
   .card .bottom-info .title-rating {
-    background: transparent url('/assets/img/common/Rectangle%20547.svg') 0% 0% no-repeat padding-box;
+    background: transparent url("/assets/img/common/Rectangle%20547.svg") 0% 0%
+      no-repeat padding-box;
     opacity: 1;
     width: 100%;
     height: 100px;
@@ -199,7 +203,7 @@
       }
     }
     span {
-      background-color: #3C4D5D;
+      background-color: #3c4d5d;
       border: 1px white;
       color: white;
       left: 20px;

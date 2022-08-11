@@ -50,7 +50,7 @@
           flex-wrap: wrap;
           justify-content: center;
         }
-        a{
+        a {
           cursor: pointer;
         }
       }
@@ -82,7 +82,7 @@
             background: transparent;
             padding: 0 10px;
           }
-          .form-check-label{
+          .form-check-label {
             font-size: $font-size-md;
           }
           select {
@@ -140,7 +140,7 @@
       top: 15px;
       right: 10px;
       &::before {
-        content: '\e900';
+        content: "\e900";
         font-family: $icon;
         font-size: 1.625rem;
         color: #9da5ad;

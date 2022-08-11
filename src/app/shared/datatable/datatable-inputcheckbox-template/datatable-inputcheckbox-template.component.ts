@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: "[datatable-inputcheckbox-template]",
+  selector: '[datatable-inputcheckbox-template]',
   template: `
     <span class="custom-control custom-checkbox">
       <input
@@ -23,7 +23,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   styles: [],
 })
 export class DatatableInputcheckboxTemplateComponent implements OnInit {
-  @Input() textalign: string = "left";
+  @Input() textalign: string = 'left';
   @Input() row: any = {};
   @Input() allEnabled: boolean = false;
   @Input() title: any;
@@ -34,7 +34,7 @@ export class DatatableInputcheckboxTemplateComponent implements OnInit {
   ngOnInit() {}
   onInputChanged(row?, input?) {
     if (row && input) {
-      row[input + "Change"] = true;
+      row[input + 'Change'] = true;
       this.inputChanged.emit({ item: row, label: input });
     }
   }

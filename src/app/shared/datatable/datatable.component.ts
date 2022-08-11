@@ -1,5 +1,5 @@
-import { PageChangedEvent } from "ngx-bootstrap/pagination";
-import { BsDatepickerConfig } from "ngx-bootstrap/datepicker";
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import {
   Component,
   OnInit,
@@ -11,21 +11,21 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
   TemplateRef,
-} from "@angular/core";
+} from '@angular/core';
 import {
   datatable_action,
   datatable_displayedColomn,
   tag,
-} from "./datatable.model";
+} from './datatable.model';
 
-import * as cloneDeep from "lodash/cloneDeep";
-import { Animations } from "../animations";
-import { DatePipe } from "@angular/common";
+import * as cloneDeep from 'lodash/cloneDeep';
+import { Animations } from '../animations';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: "datatable",
-  templateUrl: "./datatable.component.html",
-  styleUrls: ["./datatable.component.scss"],
+  selector: 'datatable',
+  templateUrl: './datatable.component.html',
+  styleUrls: ['./datatable.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styles: [
@@ -63,7 +63,7 @@ export class DatatableComponent implements OnInit {
   // text align in table  // left right or center
   @Input() childListLabel: string;
   @Input() hideTheader: boolean = false;
-  @Input() textalign: "left" | "right" | "center" = "left";
+  @Input() textalign: 'left' | 'right' | 'center' = 'left';
 
   display: any = [true];
   //data
@@ -108,10 +108,10 @@ export class DatatableComponent implements OnInit {
     return this._Actions;
   }
   //Empty list message
-  @Input() nothingToShowMessage: string = "Pas de résultats";
+  @Input() nothingToShowMessage: string = 'Pas de résultats';
 
   //pagination message
-  @Input() paginationmessag: string = "";
+  @Input() paginationmessag: string = '';
 
   //if false first and last buttons will be hidden
   @Input() showBoundaryLinks: boolean = false;
@@ -133,20 +133,20 @@ export class DatatableComponent implements OnInit {
   @Input() pagination: boolean = true;
   // @Input() filterInside: boolean = false;
   //******For PDF/Exel && CSV files ///
-  nameOnExtract: any = "Liste";
+  nameOnExtract: any = 'Liste';
   // @Input() showExtracttns: boolean = true;
   //******For PDF/Exel && CSV files ///
   @Input() Advancedfilter: boolean = true;
   @Input() visibility: any = true;
   bsConfigRange: Partial<BsDatepickerConfig>;
-  colorTheme = "theme-bycolor-function";
+  colorTheme = 'theme-bycolor-function';
   datatableexist: boolean = false;
   searchexist: boolean = false;
   @Input() set searchvalue(value: string) {
     this._searchvalue = cloneDeep(value);
     this.refreshPagination();
   }
-  _searchvalue: any = "";
+  _searchvalue: any = '';
   sortByItem: datatable_displayedColomn;
   startItem: number = 0;
   endItem: number = 10;
@@ -163,7 +163,7 @@ export class DatatableComponent implements OnInit {
   checkAllClicked() {
     this._datatable = cloneDeep(
       this._datatable.map((el) => {
-        if(el.checkboxDisabled != true) {
+        if (el.checkboxDisabled != true) {
           el.selected = this.checkAll;
         }
         return el;
@@ -196,10 +196,10 @@ export class DatatableComponent implements OnInit {
 
   sortAsc(data) {
     this._datatable.sort((a, b) => {
-      if (typeof a[data] == "number") return a[data] - b[data];
+      if (typeof a[data] == 'number') return a[data] - b[data];
 
-      let item1 = a[data] ? a[data].toUpperCase() : "";
-      let item2 = b[data] ? b[data].toUpperCase() : "";
+      let item1 = a[data] ? a[data].toUpperCase() : '';
+      let item2 = b[data] ? b[data].toUpperCase() : '';
       if (item1 < item2) {
         return -1;
       }
@@ -211,10 +211,10 @@ export class DatatableComponent implements OnInit {
   }
   sortDesc(data) {
     this._datatable.sort((b, a) => {
-      if (typeof a[data] == "number") return a[data] - b[data];
+      if (typeof a[data] == 'number') return a[data] - b[data];
 
-      let item1 = a[data] ? a[data].toUpperCase() : "";
-      let item2 = b[data] ? b[data].toUpperCase() : "";
+      let item1 = a[data] ? a[data].toUpperCase() : '';
+      let item2 = b[data] ? b[data].toUpperCase() : '';
       if (item1 < item2) {
         return -1;
       }
@@ -239,14 +239,20 @@ export class DatatableComponent implements OnInit {
     this.startItem = (event.page - 1) * event.itemsPerPage;
     this.endItem = event.page * event.itemsPerPage;
     if (this.serverSidePagination) {
-      this.startDisplay.emit({startItem: this.startItem, itemsPerPage: event.itemsPerPage});
+      this.startDisplay.emit({
+        startItem: this.startItem,
+        itemsPerPage: event.itemsPerPage,
+      });
     }
   }
   refreshPagination() {
     this.startItem = 0;
     this.endItem = this._itemsPerPage;
     if (this.serverSidePagination) {
-      this.startDisplay.emit({startItem: this.startItem, itemsPerPage: this._itemsPerPage});
+      this.startDisplay.emit({
+        startItem: this.startItem,
+        itemsPerPage: this._itemsPerPage,
+      });
     }
   }
   searchServerSide(event) {
@@ -269,7 +275,7 @@ export class DatatableComponent implements OnInit {
   }
 }
 
-@Pipe({ name: "filterData", pure: false })
+@Pipe({ name: 'filterData', pure: false })
 export class filterData implements PipeTransform {
   constructor(private datePipe: DatePipe) {}
 
@@ -277,7 +283,7 @@ export class filterData implements PipeTransform {
     if (searchBody.serverSidesearch) {
       return list;
     }
-    let search = searchBody.searchvalue.toLowerCase().replace(/ /g, "");
+    let search = searchBody.searchvalue.toLowerCase().replace(/ /g, '');
     if (search.length == 0) return list;
     return list.filter((el) => {
       let value = false;
@@ -289,19 +295,21 @@ export class filterData implements PipeTransform {
         const type = colTosearch[index].type;
 
         const column = el[name]
-          ? (type == "date"
-              ? this.datePipe.transform(new Date(el[name]), "dd/MM/yyyy")
+          ? (type == 'date'
+              ? this.datePipe.transform(new Date(el[name]), 'dd/MM/yyyy')
               : el[name]
             )
               .toString()
               .toLowerCase()
-              .replace(/ /g, "")
-          : "";
+              .replace(/ /g, '')
+          : '';
         value =
           (value ||
-          column.includes(search.toLowerCase()) ||
-          search.includes(column.toLowerCase())) && (search != '') && (column != '');
-        if(value) break;
+            column.includes(search.toLowerCase()) ||
+            search.includes(column.toLowerCase())) &&
+          search != '' &&
+          column != '';
+        if (value) break;
       }
 
       return value;
@@ -309,10 +317,10 @@ export class filterData implements PipeTransform {
   }
 }
 
-@Pipe({ name: "paginate", pure: false })
+@Pipe({ name: 'paginate', pure: false })
 export class paginatePipe implements PipeTransform {
   transform(list, filterObj): any[] {
-    if (filterObj.serverSidePagination || filterObj.endItem == "all") {
+    if (filterObj.serverSidePagination || filterObj.endItem == 'all') {
       return list;
     }
     return list.slice(filterObj.startItem, filterObj.endItem);

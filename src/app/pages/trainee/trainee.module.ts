@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfilClientComponent } from './profil-client/profil-client.component';
-import {TraineeRoutingModule} from "./trainee-routing.module";
-import {ComponentsModule} from "../components/components.module";
+import { TraineeRoutingModule } from './trainee-routing.module';
+import { ComponentsModule } from '../components/components.module';
 import { ParametresComponent } from './parametres/parametres.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 import { FindCoachComponent } from './find-coach/find-coach.component';
 import { MesDocQuizComponent } from './client-quiz/mes-doc-quiz/mes-doc-quiz.component';
 import { AnswerQuizComponent } from './client-quiz/answer-quiz/answer-quiz.component';
-import {LoadingCardModule} from "../../shared/loading-card/loading-card.module";
-import {DatatableModule} from "../../shared/datatable/datatable.module";
+import { LoadingCardModule } from '../../shared/loading-card/loading-card.module';
+import { DatatableModule } from '../../shared/datatable/datatable.module';
 import { DetailCoachComponent } from './detail-coach/detail-coach.component';
 import { FormationDetailComponent } from './formation-detail/formation-detail.component';
 import { RdvListComponent } from './rdv-list/rdv-list.component';
 import { RdvReservationComponent } from './rdv-reservation/rdv-reservation.component';
 import { RdvPayComponent } from './rdv-pay/rdv-pay.component';
 import { RdvDetailComponent } from './rdv-detail/rdv-detail.component';
-import {CountdownModule} from "ngx-countdown";
-import {SharedModule} from "../../shared/shared.module";
-import {NgSelectModule} from "@ng-select/ng-select";
+import { CountdownModule } from 'ngx-countdown';
+import { SharedModule } from '../../shared/shared.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -34,18 +34,17 @@ import {NgSelectModule} from "@ng-select/ng-select";
     RdvPayComponent,
     RdvDetailComponent,
   ],
-    imports: [
-        CommonModule,
-        TraineeRoutingModule,
-        ComponentsModule,
-        FormsModule,
-        LoadingCardModule,
-        DatatableModule,
-        CountdownModule,
-        SharedModule,
-        NgSelectModule
-    ], providers: [
-    { provide: Window, useValue: window }
-  ]
+  imports: [
+    CommonModule,
+    TraineeRoutingModule,
+    ComponentsModule,
+    FormsModule,
+    LoadingCardModule,
+    DatatableModule,
+    CountdownModule,
+    SharedModule,
+    NgSelectModule,
+  ],
+  providers: [{ provide: Window, useValue: window }],
 })
-export class TraineeModule { }
+export class TraineeModule {}

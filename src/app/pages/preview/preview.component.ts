@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import { NgxSmartModalService } from 'ngx-smart-modal'
+import { Component, OnInit } from '@angular/core';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-preview',
@@ -12,6 +12,6 @@ export class PreviewComponent implements OnInit {
   ngOnInit(): void {}
 
   openModal(modal) {
-    this.modal.getModal(modal).open()
+    this.modal.getModal(modal).open();
   }
 }

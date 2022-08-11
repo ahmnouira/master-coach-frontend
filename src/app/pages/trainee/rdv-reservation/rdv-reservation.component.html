@@ -1,83 +1,182 @@
-<app-sub-header [title]="'Mes rendez-vous'" [subTitle]="'BACK'"></app-sub-header>
+<app-sub-header
+  [title]="'Mes rendez-vous'"
+  [subTitle]="'BACK'"
+></app-sub-header>
 <div class="row sub-component-content">
   <div class="wizard-tabs">
-    <span class="rdv-pill green-pill material-icons" style="cursor: pointer" (click)="window.history.go(-1)">
-      <img src="../../../../assets/icon/check-img.png"/>
+    <span
+      class="rdv-pill green-pill material-icons"
+      style="cursor: pointer"
+      (click)="window.history.go(-1)"
+    >
+      <img src="../../../../assets/icon/check-img.png" />
     </span>
-    <span class="material-icons" style="color: #38A220;cursor: pointer" (click)="window.history.go(-1)">arrow_right_alt</span>
-    <span class="" style="color: #38A220;cursor: pointer" (click)="window.history.go(-1)">Détails</span>
+    <span
+      class="material-icons"
+      style="color: #38a220; cursor: pointer"
+      (click)="window.history.go(-1)"
+      >arrow_right_alt</span
+    >
+    <span
+      class=""
+      style="color: #38a220; cursor: pointer"
+      (click)="window.history.go(-1)"
+      >Détails</span
+    >
     <span class="rdv-pill orange-pill" style="cursor: pointer">2</span>
-    <span class="material-icons" style="color: #FFA700;cursor: pointer">arrow_right_alt</span>
-    <span class="" style="color: #FFA700;cursor: pointer">Planifier</span>
+    <span class="material-icons" style="color: #ffa700; cursor: pointer"
+      >arrow_right_alt</span
+    >
+    <span class="" style="color: #ffa700; cursor: pointer">Planifier</span>
     <span hidden class="rdv-pill gray-pill" style="cursor: pointer">3</span>
-    <span hidden class="material-icons" style="color: #5C5C5C;cursor: pointer">arrow_right_alt</span>
-    <span hidden class="" style="color: #5C5C5C;cursor: pointer">Paiement</span>
+    <span hidden class="material-icons" style="color: #5c5c5c; cursor: pointer"
+      >arrow_right_alt</span
+    >
+    <span hidden class="" style="color: #5c5c5c; cursor: pointer"
+      >Paiement</span
+    >
   </div>
   <div class="day-selector">
     <div class="custom-day-selector-title">
-      <button class="btn-prev" (click) = "changeViewDate(-1, 'month')">
+      <button class="btn-prev" (click)="changeViewDate(-1, 'month')">
         <span class="material-icons">keyboard_arrow_left</span>
       </button>
-      <div class="day-selector-title">{{viewDate.format('MMMM YYYY')}}</div>
-      <button class="btn-next" (click) = "changeViewDate(1, 'month')">
+      <div class="day-selector-title">{{ viewDate.format("MMMM YYYY") }}</div>
+      <button class="btn-next" (click)="changeViewDate(1, 'month')">
         <span class="material-icons">keyboard_arrow_right</span>
       </button>
     </div>
     <div class="d-flex row-of-days">
-      <button *ngFor = "let day of gridArr" class="date-item" [disabled]="!day.isAvailable" [ngStyle]="{'color': !day.isAvailable ?'#CCC' : ''}" (click)="onDateClick(day)" [ngClass]="day.value == selectedDate.format('DD') && day.isAvailable ? 'selected-day': ''">
-        <span class="day-name" [ngStyle]="{'color': !day.isAvailable ?'#CCC' : ''}">{{day.name}}</span>
-        <span class="day-number" [ngStyle]="{'color': !day.isAvailable ?'#CCC' : ''}">{{day.value}}</span>
+      <button
+        *ngFor="let day of gridArr"
+        class="date-item"
+        [disabled]="!day.isAvailable"
+        [ngStyle]="{ color: !day.isAvailable ? '#CCC' : '' }"
+        (click)="onDateClick(day)"
+        [ngClass]="
+          day.value == selectedDate.format('DD') && day.isAvailable
+            ? 'selected-day'
+            : ''
+        "
+      >
+        <span
+          class="day-name"
+          [ngStyle]="{ color: !day.isAvailable ? '#CCC' : '' }"
+          >{{ day.name }}</span
+        >
+        <span
+          class="day-number"
+          [ngStyle]="{ color: !day.isAvailable ? '#CCC' : '' }"
+          >{{ day.value }}</span
+        >
       </button>
     </div>
   </div>
-  <div class="row d-flex" style="margin: 20px auto;">
+  <div class="row d-flex" style="margin: 20px auto">
     <div class="col-3" style="pointer-events: none">
-        <div class="weekdays">
-          <div>Jours de disponibilité du coach</div>
-          <div *ngFor="let day of weekDays" class="mt-2 d-flex align-items-center">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox + {{day.number}}" [(ngModel)]="day.isSelected">
-            <label class="form-check-label mt-1" [ngClass]="day.isSelected ? 'blue-font': ''" style="margin-left: 10px" for="inlineCheckbox + {{day.number}}">{{day.name}}</label>
-          </div>
+      <div class="weekdays">
+        <div>Jours de disponibilité du coach</div>
+        <div
+          *ngFor="let day of weekDays"
+          class="mt-2 d-flex align-items-center"
+        >
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox + {{ day.number }}"
+            [(ngModel)]="day.isSelected"
+          />
+          <label
+            class="form-check-label mt-1"
+            [ngClass]="day.isSelected ? 'blue-font' : ''"
+            style="margin-left: 10px"
+            for="inlineCheckbox + {{ day.number }}"
+            >{{ day.name }}</label
+          >
         </div>
+      </div>
     </div>
     <div class="col-9">
-        <div class="creanau mb-3" id="creanea{{i}}"
-             *ngFor="let appointment of selectedAppointments; index as i"
-             [ngClass]="selectedAppointmentIndex == i ? 'selectedCrenau':''"
-             (click)="selectedAppointmentIndex = i">
-          <a [hidden]="selectedAppointments.length == 1" (click)="removeDate(i)" style="position: relative; left: 98%; margin-left: auto; width: 10px; height: 10px; cursor: pointer">
-            <img src="assets/img/common/close.png" style="width: 10px; height: 10px">
-          </a>
-          <span class="titre-creneau">Choisissez l’heure de la session : </span>
-          <span class="date-creneau">{{appointment.selectedDate.format('DD/MM/YYYY')}}</span>
+      <div
+        class="creanau mb-3"
+        id="creanea{{ i }}"
+        *ngFor="let appointment of selectedAppointments; index as i"
+        [ngClass]="selectedAppointmentIndex == i ? 'selectedCrenau' : ''"
+        (click)="selectedAppointmentIndex = i"
+      >
+        <a
+          [hidden]="selectedAppointments.length == 1"
+          (click)="removeDate(i)"
+          style="
+            position: relative;
+            left: 98%;
+            margin-left: auto;
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+          "
+        >
+          <img
+            src="assets/img/common/close.png"
+            style="width: 10px; height: 10px"
+          />
+        </a>
+        <span class="titre-creneau">Choisissez l’heure de la session : </span>
+        <span class="date-creneau">{{
+          appointment.selectedDate.format("DD/MM/YYYY")
+        }}</span>
 
-          <div class="d-flex creanau-list">
-            <button class="elem" [disabled]="!isCrenauAvailable(appointment.selectedDate, comp)" [ngClass]="!isCrenauAvailable(appointment.selectedDate, comp)? 'elem-disabled' : comp.isSelected ? 'elem-selected': ''"
-                    *ngFor="let comp of appointment.selectedTimes" (click)="onTimeClick(comp,i)">
-              {{comp.creneauText}}
-            </button>
-          </div>
-          <div class="d-flex mt-4 justify-content-between">
-            <div class="form-group">
-              <ng-select class="selectFilter"
-              name="fuseau-horaire" id="fuseau-horaire" 
+        <div class="d-flex creanau-list">
+          <button
+            class="elem"
+            [disabled]="!isCrenauAvailable(appointment.selectedDate, comp)"
+            [ngClass]="
+              !isCrenauAvailable(appointment.selectedDate, comp)
+                ? 'elem-disabled'
+                : comp.isSelected
+                ? 'elem-selected'
+                : ''
+            "
+            *ngFor="let comp of appointment.selectedTimes"
+            (click)="onTimeClick(comp, i)"
+          >
+            {{ comp.creneauText }}
+          </button>
+        </div>
+        <div class="d-flex mt-4 justify-content-between">
+          <div class="form-group">
+            <ng-select
+              class="selectFilter"
+              name="fuseau-horaire"
+              id="fuseau-horaire"
               bindLabel="name"
               bindValue="id"
-              [clearable] = false
-              [searchable] = false
-              [(ngModel)]="appointment.selectedTimeZone">
-              <ng-option *ngFor="let zone of getAllZones()" value="{{zone}}">{{zone}}</ng-option>
-              </ng-select>
-              
-            </div>
-            <a *ngIf="i == 0" (click)="addNewAappointment()" class="btn" style="margin-left: auto; border: 0"><span class="material-icons">add_circle</span>Choisir une nouvelle date</a>&nbsp;
+              [clearable]="false"
+              [searchable]="false"
+              [(ngModel)]="appointment.selectedTimeZone"
+            >
+              <ng-option
+                *ngFor="let zone of getAllZones()"
+                value="{{ zone }}"
+                >{{ zone }}</ng-option
+              >
+            </ng-select>
           </div>
+          <a
+            *ngIf="i == 0"
+            (click)="addNewAappointment()"
+            class="btn"
+            style="margin-left: auto; border: 0"
+            ><span class="material-icons">add_circle</span>Choisir une nouvelle
+            date</a
+          >&nbsp;
         </div>
-      <div class="d-flex justify-content-end mb-4 mt-5 btn-actions " >
+      </div>
+      <div class="d-flex justify-content-end mb-4 mt-5 btn-actions">
         <button class="btn align-self-end" (click)="back()">
           <span class="material-icons right">keyboard_arrow_left</span>
-          <span>Précedent</span>
-        </button>&nbsp;
+          <span>Précedent</span></button
+        >&nbsp;
         <button class="btn btn-primary align-self-end" (click)="goToPayment()">
           <span>Suivant</span>
           <span class="material-icons left">keyboard_arrow_right</span>

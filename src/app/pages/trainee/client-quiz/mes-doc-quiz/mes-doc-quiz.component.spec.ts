@@ -8,9 +8,8 @@ describe('MesDocQuizComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MesDocQuizComponent ]
-    })
-    .compileComponents();
+      declarations: [MesDocQuizComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

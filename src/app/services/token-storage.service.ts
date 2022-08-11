@@ -5,11 +5,10 @@ const TWILIO_TOKEN_KEY = 'twilio-token';
 const TWILIO_TOKEN_VIDEO_KEY = 'twilio-video-token';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenStorageService {
-
-  constructor() { }
+  constructor() {}
 
   signOut(): void {
     window.localStorage.clear();
@@ -24,20 +23,20 @@ export class TokenStorageService {
     return window.localStorage.getItem(TOKEN_KEY);
   }
 
-  public getTwilioToken () : string|null {
+  public getTwilioToken(): string | null {
     return window.localStorage.getItem(TWILIO_TOKEN_KEY);
   }
 
-  public saveTwilioToken (token:string) : void {
+  public saveTwilioToken(token: string): void {
     window.localStorage.removeItem(TWILIO_TOKEN_KEY);
     window.localStorage.setItem(TWILIO_TOKEN_KEY, token);
   }
 
-  public getTwilioVideoToken () : string|null {
+  public getTwilioVideoToken(): string | null {
     return window.localStorage.getItem(TWILIO_TOKEN_VIDEO_KEY);
   }
 
-  public saveTwilioVideoToken (token:string) : void {
+  public saveTwilioVideoToken(token: string): void {
     window.localStorage.removeItem(TWILIO_TOKEN_VIDEO_KEY);
     window.localStorage.setItem(TWILIO_TOKEN_VIDEO_KEY, token);
   }
@@ -49,15 +48,13 @@ export class TokenStorageService {
   }
 
   public getUser(): any {
-    let user = window.localStorage.getItem(USER_KEY)
-    if(user) return JSON.parse(user)
-    return {}
+    let user = window.localStorage.getItem(USER_KEY);
+    if (user) return JSON.parse(user);
+    return {};
   }
 
   public isReadOnly(): boolean | null {
-      const user = this.getUser();
-      return !(user.role?.toLowerCase() === 'admin');
+    const user = this.getUser();
+    return !(user.role?.toLowerCase() === 'admin');
   }
-
-
 }

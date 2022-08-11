@@ -1,13 +1,13 @@
-.sub-component-content{
+.sub-component-content {
   margin: 35px 10px 10px 0;
 }
 
-.mlr-10{
+.mlr-10 {
   margin-right: 10px;
   margin-left: 10px;
 }
 
-.pt-40{
+.pt-40 {
   padding-top: 40px;
 }
 
@@ -15,20 +15,20 @@
   padding-left: 0 !important;
 }
 
-.smaller-font{
+.smaller-font {
   cursor: pointer;
   text-align: left;
   font: normal normal normal 12px/15px Fredoka !important;
   letter-spacing: 0px;
   height: unset !important;
-  color: #3C4D5D;
+  color: #3c4d5d;
   opacity: 1;
   margin-right: 8px;
-  span{
+  span {
     text-align: left;
     font: normal normal normal 12px/15px Fredoka !important;
     letter-spacing: 0px;
-    color: #3C4D5D;
+    color: #3c4d5d;
     opacity: 1;
     margin-right: 8px;
   }
@@ -39,34 +39,34 @@
   width: 192px;
   height: 54px;
   /* UI Properties */
-  background: #FEEFEA 0% 0% no-repeat padding-box;
+  background: #feefea 0% 0% no-repeat padding-box;
   border-radius: 10px;
   padding: 15px 20px;
   opacity: 1;
   border: 0;
   text-align: left;
 
-  span{
+  span {
     text-align: left;
     font: normal normal normal 18px/22px Fredoka;
     letter-spacing: 0px;
-    color: #3C4D5D;
+    color: #3c4d5d;
     opacity: 1;
     margin-right: 8px;
   }
 }
-.white-bg{
-  background-color: #FFFFFF;
+.white-bg {
+  background-color: #ffffff;
 }
 
-.cursor-pointer{
-  cursor: pointer!important;
+.cursor-pointer {
+  cursor: pointer !important;
 }
 .heading {
   text-align: left;
   font: normal normal normal 18px/22px Fredoka;
   letter-spacing: 0px;
-  color: #1376A3;
+  color: #1376a3;
   opacity: 1;
 }
 
@@ -74,7 +74,8 @@
   width: 30%;
   height: 360px;
   /* UI Properties */
-  background: transparent url('/assets/img/common/Groupe de masques 50.png') 0% 0% no-repeat padding-box;
+  background: transparent url("/assets/img/common/Groupe de masques 50.png") 0%
+    0% no-repeat padding-box;
   opacity: 1;
   background-size: cover;
   flex-direction: column;
@@ -87,7 +88,7 @@
     text-align: center;
     font: normal normal normal 18px/22px Fredoka;
     letter-spacing: 0px;
-    color: #1376A3;
+    color: #1376a3;
     opacity: 1;
     margin: 10px auto;
   }
@@ -95,7 +96,7 @@
     text-align: center;
     font: normal normal normal 14px/20px Fredoka;
     letter-spacing: 0px;
-    color: #9DA5AD;
+    color: #9da5ad;
     opacity: 1;
     margin: 15px;
   }
@@ -104,11 +105,10 @@
   }
 }
 
-@media screen and (max-width: 991px){
-
-  .active-tab{
+@media screen and (max-width: 991px) {
+  .active-tab {
     padding: 15px 13px;
-    span{
+    span {
       font-size: 15px;
     }
   }

@@ -8,9 +8,8 @@ describe('CcListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CcListComponent ]
-    })
-    .compileComponents();
+      declarations: [CcListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

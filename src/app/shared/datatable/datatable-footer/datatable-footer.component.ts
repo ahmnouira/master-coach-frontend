@@ -12,7 +12,12 @@ import {
   template: `
     <div class="flex-row mr-3" hidden>
       <span class="mr-1">Nb de résultats par tableau</span>
-      <select class="pl-form-control" style="padding : 4.44px" [(ngModel)]="itemsPerPage" (change)="onChangeItemsPerPage()">
+      <select
+        class="pl-form-control"
+        style="padding : 4.44px"
+        [(ngModel)]="itemsPerPage"
+        (change)="onChangeItemsPerPage()"
+      >
         <option [value]="10">10</option>
         <option [value]="25">25</option>
         <option [value]="50">50</option>
@@ -21,7 +26,11 @@ import {
     </div>
     <div class="flex-row">
       <span class="mr-1">
-        {{totalItems > endItem ? (startItem + ' - ' + endItem + ' sur ' + totalItems) : (startItem + ' - ' + totalItems + ' sur ' + endItem)}}
+        {{
+          totalItems > endItem
+            ? startItem + ' - ' + endItem + ' sur ' + totalItems
+            : startItem + ' - ' + totalItems + ' sur ' + endItem
+        }}
       </span>
       <pagination
         [boundaryLinks]="false"
@@ -33,10 +42,18 @@ import {
         (pageChanged)="pageChanged($event)"
       ></pagination>
     </div>
-    <ng-template #prevTemplate let-disabled="disabled" let-currentPage="currentPage">
+    <ng-template
+      #prevTemplate
+      let-disabled="disabled"
+      let-currentPage="currentPage"
+    >
       <span class="material-icons">chevron_left</span>
     </ng-template>
-    <ng-template #nextTemplate let-disabled="disabled" let-currentPage="currentPage">
+    <ng-template
+      #nextTemplate
+      let-disabled="disabled"
+      let-currentPage="currentPage"
+    >
       <span class="material-icons">chevron_right</span>
     </ng-template>
   `,
@@ -56,8 +73,8 @@ import {
       }
 
       .page-link {
-        color: #3C4D5D !important;
-        margin-top: .25rem;
+        color: #3c4d5d !important;
+        margin-top: 0.25rem;
         border: none !important;
         font-weight: 700 !important;
         align-items: center !important;
@@ -82,30 +99,30 @@ import {
       }
 
       .page-item:not(.disabled) .page-link:not(:active):focus {
-        outline: 2px solid #366A95 !important;
+        outline: 2px solid #366a95 !important;
         outline-offset: 2px !important;
         background-color: #fafafa !important;
       }
 
       .page-item.disabled {
         /*border: 1px solid #5C5C5C !important;*/
-        background: #5C5C5C !important;
+        background: #5c5c5c !important;
         cursor: not-allowed !important;
       }
 
       .page-item.disabled .page-link {
         /*background: #5C5C5C !important;*/
-        color: #3C4D5D !important;
+        color: #3c4d5d !important;
       }
 
       .page-link:hover {
-        background-color: #73B5E3 !important;
+        background-color: #73b5e3 !important;
         color: #000000 !important;
       }
 
       .page-item:not(.disabled):not(:focus):hover {
-        background-color: #73B5E3 !important;
-        border: 1.5px solid #73B5E3 !important;
+        background-color: #73b5e3 !important;
+        border: 1.5px solid #73b5e3 !important;
       }
 
       .flex-row {
@@ -113,10 +130,10 @@ import {
         align-items: center;
       }
     `,
-  ], encapsulation: ViewEncapsulation.None,
+  ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DatatableFooterComponent implements OnInit {
-
   @Input() totalItems: number = 0;
   @Input() itemsPerPage: number = 10;
   @Input() startItem: number = 0;
@@ -128,11 +145,9 @@ export class DatatableFooterComponent implements OnInit {
   @Input() showBoundaryLinks: boolean = false;
   @Output() onpageChanged = new EventEmitter();
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   pageChanged(event) {
     this.onpageChanged.emit(event);
@@ -141,7 +156,7 @@ export class DatatableFooterComponent implements OnInit {
   onChangeItemsPerPage() {
     this.onpageChanged.emit({
       itemsPerPage: this.itemsPerPage,
-      page: 1
+      page: 1,
     });
   }
 }

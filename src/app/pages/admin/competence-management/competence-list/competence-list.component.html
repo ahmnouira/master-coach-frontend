@@ -1,21 +1,32 @@
 <app-sub-header [title]="'Gestion des compétences'"></app-sub-header>
 <div class="sub-component-content pt-40">
   <div class="d-flex justify-content-end mb-2">
-    <a routerLink="/pages/admin/competences/add" class="btn btn-primary align-self-end"><span class="material-icons">add_circle</span>Ajouter une compétence</a>&nbsp;
+    <a
+      routerLink="/pages/admin/competences/add"
+      class="btn btn-primary align-self-end"
+      ><span class="material-icons">add_circle</span>Ajouter une compétence</a
+    >&nbsp;
   </div>
   <div class="input-group form-group form-inline pt-40">
     <span class="input-group-text"> Rechercher : </span>
-    <input class="form-control ml-2" type="text" name="searchText" [(ngModel)]="searchValue"/>
+    <input
+      class="form-control ml-2"
+      type="text"
+      name="searchText"
+      [(ngModel)]="searchValue"
+    />
   </div>
-  <div class="table-responsive ">
+  <div class="table-responsive">
     <loading-card [loading]="loadingAnimation">
-      <datatable [datatable]="filteredData"
-                 (datatableChange)="datatableChange($event)"
-                 [checkboxes]="true"
-                 [Actions]="ACTION_COLUMNS"
-                 (onActionClicked)="onActionClicked($event)"
-                 [searchvalue]="searchValue"
-                 [displayedColomn]="DISPLAYED_COLUMNS"></datatable>
+      <datatable
+        [datatable]="filteredData"
+        (datatableChange)="datatableChange($event)"
+        [checkboxes]="true"
+        [Actions]="ACTION_COLUMNS"
+        (onActionClicked)="onActionClicked($event)"
+        [searchvalue]="searchValue"
+        [displayedColomn]="DISPLAYED_COLUMNS"
+      ></datatable>
     </loading-card>
   </div>
 </div>

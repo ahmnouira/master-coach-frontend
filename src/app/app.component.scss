@@ -1,4 +1,4 @@
-#main{
+#main {
   min-height: 100%;
   background-color: var(--global-bg-color-effafd) !important;
 }
@@ -13,28 +13,23 @@
 }
 
 .content-wrapper {
-  padding: 15px
+  padding: 15px;
 }
 
-
-
-@media(max-width:768px) {
+@media (max-width: 768px) {
   #sidebar {
-    margin-left: -250px
+    margin-left: -250px;
   }
 
   #sidebar.active {
-    margin-left: 0px
+    margin-left: 0px;
   }
 
   #sidebarCollapse span {
-    display: none
+    display: none;
   }
 
-  #content{
+  #content {
     margin: 20px;
   }
 }
-
-
-

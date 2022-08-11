@@ -25,7 +25,7 @@
           </th>
           <th
             [ngClass]="{
-              'thsorted': title === sortByItem
+              thsorted: title === sortByItem
             }"
             *ngFor="let title of displayedColomnList"
           >
@@ -34,8 +34,10 @@
               class="color-primary block p3 cursor-pointer m-0"
               [ngClass]="{
                 sorting: title.sort && !loadingList && title !== sortByItem,
-                sorting_desc: !title.sorted && !loadingList && title === sortByItem,
-                sorting_asc: title.sorted && !loadingList && title === sortByItem
+                sorting_desc:
+                  !title.sorted && !loadingList && title === sortByItem,
+                sorting_asc:
+                  title.sorted && !loadingList && title === sortByItem
               }"
               translate
             >
@@ -43,9 +45,7 @@
             </span>
           </th>
           <th class="p3 action" [attr.colspan]="Actions.length">
-            <span class="color-primary block p3 cursor-pointer">
-              Actions
-            </span>
+            <span class="color-primary block p3 cursor-pointer"> Actions </span>
           </th>
         </tr>
       </thead>

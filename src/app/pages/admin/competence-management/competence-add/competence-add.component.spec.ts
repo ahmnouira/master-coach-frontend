@@ -8,9 +8,8 @@ describe('CompetenceAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CompetenceAddComponent ]
-    })
-    .compileComponents();
+      declarations: [CompetenceAddComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

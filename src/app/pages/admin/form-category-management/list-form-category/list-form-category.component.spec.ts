@@ -8,9 +8,8 @@ describe('ListFormCategoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListFormCategoryComponent ]
-    })
-    .compileComponents();
+      declarations: [ListFormCategoryComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

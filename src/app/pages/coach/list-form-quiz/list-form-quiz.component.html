@@ -1,45 +1,85 @@
-<app-sub-header [title]="'Formulaire de satisfaction'" [subTitle]="'BACK'"></app-sub-header>
+<app-sub-header
+  [title]="'Formulaire de satisfaction'"
+  [subTitle]="'BACK'"
+></app-sub-header>
 <div class="row sub-component-content">
   <div class="col-2">
-    <button class="active-tab white-bg pl-0" [routerLink]="['/pages/coach/parametre']">
+    <button
+      class="active-tab white-bg pl-0"
+      [routerLink]="['/pages/coach/parametre']"
+    >
       <span>Mon profil </span>
-      <img src="assets/img/common/arrow-left.svg">
+      <img src="assets/img/common/arrow-left.svg" />
     </button>
     <button class="active-tab white-bg pl-0">
       <span>Mes plans </span>
-      <img src="assets/img/common/arrow-left.svg">
+      <img src="assets/img/common/arrow-left.svg" />
     </button>
-    <div class="smaller-font active-tab pl-0" style="margin-left: 10px;"  [routerLink]="['/pages/coach/quiz/list']">
-      <span style="margin-left: 10px;">Formulaire de suivi client</span>
-      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px">
+    <div
+      class="smaller-font active-tab pl-0"
+      style="margin-left: 10px"
+      [routerLink]="['/pages/coach/quiz/list']"
+    >
+      <span style="margin-left: 10px">Formulaire de suivi client</span>
+      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px" />
     </div>
     <div class="white-bg pl-0 smaller-font mt-3">
       <span>Politique de confidentialité </span>
-      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px">
+      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px" />
     </div>
     <div class="white-bg pl-0 smaller-font mt-3">
       <span>Conditions générales </span>
-      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px">
+      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px" />
     </div>
   </div>
   <div class="col-10">
     <div class="d-flex align-items-center">
-        <span class="heading">Choisir une catégorie</span>
-      <a routerLink="/pages/coach/quiz/add" class="btn" style="margin-left: auto"><span class="material-icons">add_circle</span>Ajouter un formulaire</a>&nbsp;
-
+      <span class="heading">Choisir une catégorie</span>
+      <a
+        routerLink="/pages/coach/quiz/add"
+        class="btn"
+        style="margin-left: auto"
+        ><span class="material-icons">add_circle</span>Ajouter un formulaire</a
+      >&nbsp;
     </div>
     <diV class="d-flex mt-3" style="flex-wrap: wrap">
       <div class="form-card d-flex" *ngFor="let quiz of quizList; index as i">
-        <a (click)="removeQuiz(quiz)" style="position: relative; top: 10px; left: 20px; margin-left: auto; width: 10px; height: 10px; cursor: pointer">
-          <img src="assets/img/common/close.png" style="width: 10px; height: 10px" tooltip="Supprimer le quiz">
+        <a
+          (click)="removeQuiz(quiz)"
+          style="
+            position: relative;
+            top: 10px;
+            left: 20px;
+            margin-left: auto;
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+          "
+        >
+          <img
+            src="assets/img/common/close.png"
+            style="width: 10px; height: 10px"
+            tooltip="Supprimer le quiz"
+          />
         </a>
-        <img *ngIf="i % 3 == 0" class="mx-auto mt-3" src="assets/img/common/Groupe%20de%20masques%2045.png">
-        <img *ngIf="i % 3 == 1"class="mx-auto mt-3" src="assets/img/common/Saly-34.png">
-        <img *ngIf="i % 3 == 2"class="mx-auto mt-3" src="assets/img/common/Saly-6.png">
-        <span class="form-card-title">{{quiz.quizName}}</span>
-        <p>{{quiz.quizDesc}}</p>
+        <img
+          *ngIf="i % 3 == 0"
+          class="mx-auto mt-3"
+          src="assets/img/common/Groupe%20de%20masques%2045.png"
+        />
+        <img
+          *ngIf="i % 3 == 1"
+          class="mx-auto mt-3"
+          src="assets/img/common/Saly-34.png"
+        />
+        <img
+          *ngIf="i % 3 == 2"
+          class="mx-auto mt-3"
+          src="assets/img/common/Saly-6.png"
+        />
+        <span class="form-card-title">{{ quiz.quizName }}</span>
+        <p>{{ quiz.quizDesc }}</p>
         <a class="btn btn-primary" (click)="goToQuiz(quiz)">Je choisis</a>&nbsp;
-
       </div>
     </diV>
   </div>

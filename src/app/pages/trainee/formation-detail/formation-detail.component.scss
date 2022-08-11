@@ -1,5 +1,4 @@
-
-.wizard-tabs{
+.wizard-tabs {
   display: flex;
   height: 60px;
   justify-content: center;
@@ -16,40 +15,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 17px!important;
+    font-size: 17px !important;
   }
   span:not(.material-icons) {
     font-size: 14px;
   }
   .material-icons.arrow-next {
-    color: #FFA700;
-    cursor: pointer; 
+    color: #ffa700;
+    cursor: pointer;
     font-size: 17px;
     transform: rotate(180deg);
-    &.disabled{
-      color: #9DA5AD;
+    &.disabled {
+      color: #9da5ad;
     }
   }
-  .gray-pill{
-    background-color: #FFFFFF;
-    border: 1px solid #9DA5AD;
-    color: #9DA5AD;
+  .gray-pill {
+    background-color: #ffffff;
+    border: 1px solid #9da5ad;
+    color: #9da5ad;
   }
   .orange-pill {
-    background-color: #FFA700;
-    color: #FFFFFF;
+    background-color: #ffa700;
+    color: #ffffff;
   }
 }
-
 
 .form-card {
   height: 350px;
   /* UI Properties */
-  background: transparent url('/assets/img/common/Groupe de masques 50.png') 0% 0% no-repeat padding-box;
+  background: transparent url("/assets/img/common/Groupe de masques 50.png") 0%
+    0% no-repeat padding-box;
   opacity: 1;
   background-size: cover;
   flex-direction: column;
-  box-shadow: 0px 0px 10px #0000001A;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   .rating {
     display: flex;
@@ -71,15 +70,15 @@
     margin: 30px auto 20px auto;
     border-radius: 50%;
     border-left: 4px solid transparent;
-    border-top: 4px solid #1376A3;
-    border-right: 4px solid #1376A3;
-    border-bottom: 4px solid #1376A3;
+    border-top: 4px solid #1376a3;
+    border-right: 4px solid #1376a3;
+    border-bottom: 4px solid #1376a3;
   }
   .form-card-title {
     text-align: center;
     font: normal normal normal 18px/22px Fredoka;
     letter-spacing: 0px;
-    color: #1376A3;
+    color: #1376a3;
     opacity: 1;
     margin: 15px auto 4px auto;
   }
@@ -87,7 +86,7 @@
     text-align: center;
     font: normal normal normal 14px/20px Fredoka;
     letter-spacing: 0px;
-    color: #9DA5AD;
+    color: #9da5ad;
     opacity: 1;
     margin: 4px;
   }
@@ -102,23 +101,24 @@
   margin: 5px;
   font: normal normal normal 18px/22px Fredoka;
   letter-spacing: 0px;
-  color: #1376A3;
+  color: #1376a3;
   background: transparent;
   border: 0;
-
 }
 
 .video {
   height: 432px;
   /* UI Properties */
-  background: transparent url('/assets/img/common/Groupe de masques 55@2x.png') 0% 0% no-repeat padding-box;
+  background: transparent url("/assets/img/common/Groupe de masques 55@2x.png")
+    0% 0% no-repeat padding-box;
   background-size: cover;
   border-radius: 20px;
   margin-bottom: 20px;
   position: relative;
   .play-button {
     position: relative;
-    background: transparent url('/assets/img/common/play-button%20(5).svg') 0% 0% no-repeat padding-box;
+    background: transparent url("/assets/img/common/play-button%20(5).svg") 0%
+      0% no-repeat padding-box;
     top: 50%;
     left: 50%;
     width: 61px;
@@ -126,7 +126,7 @@
     transform: translate(-50%, -50%);
     z-index: 1;
   }
-  .bottom-blur{
+  .bottom-blur {
     background: linear-gradient(to top, #ddf2fa, rgba(283, 242, 250, 0));
     min-width: 100%;
     height: 100%;
@@ -142,6 +142,6 @@
   span {
     font: normal normal normal 14px/22px Fredoka;
     letter-spacing: 0px;
-    color: #3C4D5D;
+    color: #3c4d5d;
   }
 }

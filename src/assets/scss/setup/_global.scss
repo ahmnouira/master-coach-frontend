@@ -1,7 +1,7 @@
 body {
-  font-family: 'Fredoka', sans-serif!important;
+  font-family: "Fredoka", sans-serif !important;
   font-size: 14px;
-} 
+}
 select {
   /* for Firefox */
   -moz-appearance: none;
@@ -13,9 +13,9 @@ select {
 select::-ms-expand {
   display: none;
 }
-.blue-title{
+.blue-title {
   font-size: 18px;
-  color: #1376A3;
+  color: #1376a3;
 }
 .btn-modal {
   padding: 12px 25px;
@@ -40,23 +40,23 @@ select::-ms-expand {
   }
 }
 
-.pl-40{
+.pl-40 {
   padding-left: 40px;
 }
 
-.ml-40{
+.ml-40 {
   margin-left: 40px;
 }
 
-.mt-20{
+.mt-20 {
   margin-top: 20px;
 }
 
-.mb-40{
+.mb-40 {
   margin-bottom: 40px;
 }
 
-.pt-40{
+.pt-40 {
   padding-top: 40px;
 }
 
@@ -64,18 +64,18 @@ select::-ms-expand {
   padding-left: 0 !important;
 }
 
-.mb-17{
+.mb-17 {
   margin-bottom: 17px;
 }
 
-.right-space{
+.right-space {
   margin-right: 40px;
 }
 
-.mb-20{
+.mb-20 {
   margin-bottom: 20px;
 }
-.center-verticaly{
+.center-verticaly {
   display: flex;
   align-items: center;
 }
@@ -88,7 +88,6 @@ select::-ms-expand {
   top: 4px;
   padding: 0;
 }
-
 
 .btn-white-pink {
   background: transparent;
@@ -167,5 +166,7 @@ select::-ms-expand {
 }
 
 @media screen and (max-width: 991px) {
-  .pl-40{ padding: 0}
+  .pl-40 {
+    padding: 0;
+  }
 }

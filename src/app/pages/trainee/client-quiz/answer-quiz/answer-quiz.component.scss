@@ -1,11 +1,10 @@
-
-.question{
+.question {
   min-height: 260px;
   width: 100%;
   max-width: 45%;
   /* UI Properties */
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001A;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   padding: 15px;
   flex: calc(50% - 3rem);
@@ -15,67 +14,65 @@
     text-align: left;
     font: normal normal normal 18px/22px Fredoka;
     letter-spacing: 0px;
-    color: #1376A3;
+    color: #1376a3;
     opacity: 1;
     margin-left: 10px;
   }
 
-  .add-resp{
+  .add-resp {
     border: 0 !important;
   }
   .add-resp:hover {
-    background-color: #FFFFFF!important;
-    color: #3C4D5D!important;
+    background-color: #ffffff !important;
+    color: #3c4d5d !important;
   }
 }
 
-
-.element{
+.element {
   height: 50px;
   /* UI Properties */
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001A;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   padding: 15px 25px;
   opacity: 1;
   font: normal normal normal 16px/19px Fredoka;
   letter-spacing: 0px;
-  color: #3C4D5D;
+  color: #3c4d5d;
   opacity: 1;
 }
-.element-bio{
+.element-bio {
   /* UI Properties */
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001A;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   padding: 15px 25px;
   opacity: 1;
   font: normal normal normal 16px/19px Fredoka;
   letter-spacing: 0px;
-  color: #3C4D5D;
+  color: #3c4d5d;
   opacity: 1;
 }
 
-
-.form-check-label{
+.form-check-label {
   margin-left: 8px;
   text-align: left;
   font: normal normal normal 14px/17px Fredoka;
   letter-spacing: 0px;
-  color: #3C4D5D;
+  color: #3c4d5d;
   opacity: 1;
 }
-
 
 .form-card {
   height: 300px;
   /* UI Properties */
-  background: transparent url('/assets/img/common/Groupe de masques 50.png') 0% 0% no-repeat padding-box;
+  background: transparent url("/assets/img/common/Groupe de masques 50.png") 0%
+    0% no-repeat padding-box;
   opacity: 1;
   background-size: cover;
   flex-direction: column;
   margin: 15px;
-  box-shadow: 0px 0px 10px #0000001A;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   img {
     width: 160px;
@@ -86,7 +83,7 @@
     text-align: center;
     font: normal normal normal 18px/22px Fredoka;
     letter-spacing: 0px;
-    color: #1376A3;
+    color: #1376a3;
     opacity: 1;
     margin: 0px auto;
   }
@@ -94,7 +91,7 @@
     text-align: center;
     font: normal normal normal 14px/20px Fredoka;
     letter-spacing: 0px;
-    color: #9DA5AD;
+    color: #9da5ad;
     opacity: 1;
     margin: 15px;
   }
@@ -102,4 +99,3 @@
     margin: 20px 60px;
   }
 }
-

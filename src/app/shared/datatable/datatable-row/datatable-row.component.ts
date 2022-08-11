@@ -1,14 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {
   datatable_displayedColomn,
   tag,
   datatable_action,
-} from "../datatable.model";
+} from '../datatable.model';
 
 @Component({
-  selector: "[datatable-row]",
-  templateUrl: "./datatable-row.component.html",
-  styleUrls: ["./datatable-row.component.scss"],
+  selector: '[datatable-row]',
+  templateUrl: './datatable-row.component.html',
+  styleUrls: ['./datatable-row.component.scss'],
 })
 export class DatatableRowComponent implements OnInit {
   @Input() set row(value) {
@@ -21,7 +21,7 @@ export class DatatableRowComponent implements OnInit {
   @Input() displayedColomnList: datatable_displayedColomn[] = [];
   @Input() Actions: datatable_action[] = [];
   @Input() checkboxes: boolean = false;
-  @Input() textalign: any = "left";
+  @Input() textalign: any = 'left';
   @Input() sortByItem: any;
 
   // when row clicked
@@ -31,8 +31,7 @@ export class DatatableRowComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   rowClicked(row) {
     this.onrowClicked.emit(row);
   }

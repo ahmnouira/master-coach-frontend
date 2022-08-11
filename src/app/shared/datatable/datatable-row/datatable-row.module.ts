@@ -1,12 +1,12 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { CommonModule, DatePipe } from "@angular/common";
-import { DatatableRowComponent } from "./datatable-row.component";
-import { TooltipModule } from "ngx-bootstrap/tooltip";
-import { FormsModule } from "@angular/forms";
-import { DatatableCheckboxTemplateModule } from "../datatable-checkbox-template/datatable-checkbox-template.module";
-import { DatatableInputcheckboxTemplateModule } from "../datatable-inputcheckbox-template/datatable-inputcheckbox-template.module";
-import { MatTooltipModule } from "@angular/material/tooltip";
-import { MomentModule } from "ngx-moment";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
+import { DatatableRowComponent } from './datatable-row.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { FormsModule } from '@angular/forms';
+import { DatatableCheckboxTemplateModule } from '../datatable-checkbox-template/datatable-checkbox-template.module';
+import { DatatableInputcheckboxTemplateModule } from '../datatable-inputcheckbox-template/datatable-inputcheckbox-template.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [DatatableRowComponent],

@@ -1,30 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-  font-family: 'Fredoka';
-  src: local('Fredoka'),
-    url(./assets/fonts/Fredoka-Regular.ttf) format('truetype');
+  font-family: "Fredoka";
+  src: local("Fredoka"),
+    url(./assets/fonts/Fredoka-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'FredokaMedium';
-  src: local('Fredoka'),
-    url(./assets/fonts/Fredoka-Medium.ttf) format('truetype');
+  font-family: "FredokaMedium";
+  src: local("Fredoka"),
+    url(./assets/fonts/Fredoka-Medium.ttf) format("truetype");
 }
 :root {
+  /* Colors: */
+  --global-bg-color-effafd: #effafd;
+  --global-bg-color-ef6032: #ef6032;
 
-    /* Colors: */
-    --global-bg-color-effafd: #EFFAFD ;
-    --global-bg-color-ef6032 : #EF6032  ;
-
-    /* Font/text values */
-    --global-font-family-fredoka: Fredoka;
-    --global-font-style-normal: normal;
-    --global-font-weight-normal: normal;
-    --global-font-size-14: 14px;
-    --global-character-spacing-0: 0px;
-    --global-line-spacing-17: 17px;
-    --global-font-color: #3C4D5D;
-    --global-active-link-color: #EF6032;
-    --fc-border-color: #FCFCFE;
+  /* Font/text values */
+  --global-font-family-fredoka: Fredoka;
+  --global-font-style-normal: normal;
+  --global-font-weight-normal: normal;
+  --global-font-size-14: 14px;
+  --global-character-spacing-0: 0px;
+  --global-line-spacing-17: 17px;
+  --global-font-color: #3c4d5d;
+  --global-active-link-color: #ef6032;
+  --fc-border-color: #fcfcfe;
 }
 
 /* Character Styles */
@@ -41,22 +40,22 @@
 body {
   height: 100vh;
   overflow-x: hidden;
-  font-family: 'Fredoka', sans-serif;
+  font-family: "Fredoka", sans-serif;
 }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 /* Importing Datepicker SCSS file. */
-@import 'node_modules/ngx-bootstrap/datepicker/bs-datepicker';
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
-@import '~ngx-smart-modal/ngx-smart-modal';
+@import "~ngx-smart-modal/ngx-smart-modal";
 
-@import './assets/scss/app';
+@import "./assets/scss/app";
 
 @import url(https://fonts.googleapis.com/css?family=Material+Icons);
 
-@import '~@ctrl/ngx-emoji-mart/picker';
+@import "~@ctrl/ngx-emoji-mart/picker";
 
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
@@ -66,7 +65,7 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .btn {
@@ -98,21 +97,21 @@ body {
 .btn-primary {
   background: #2b76a3 0% 0% no-repeat padding-box;
   color: #ffffff;
-  
-  &.full-width{
+
+  &.full-width {
     width: 100%;
   }
 }
 
 .btn-primary:hover {
   background: #ffffff 0% 0% no-repeat padding-box;
-  color: #1376A3 ;
-  border-color: #1376A3 ;
+  color: #1376a3;
+  border-color: #1376a3;
 }
-button.btn-primary:focus{
+button.btn-primary:focus {
   box-shadow: unset;
 }
-.btn-primary:active:focus{
+.btn-primary:active:focus {
   box-shadow: unset;
 }
 
@@ -132,7 +131,7 @@ button.btn-primary:focus{
   border: none;
 }
 
-input[name='searchText'] {
+input[name="searchText"] {
   border: 1px solid #1376a3;
   border-radius: 10px !important;
   opacity: 1;
@@ -142,7 +141,7 @@ input[name='searchText'] {
   right: 20px;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   position: relative;
   width: 20px;
   height: 20px;
@@ -178,32 +177,31 @@ input[type='checkbox'] {
   }
 }
 
-
 .badge-info {
-  color : rgba(13, 202, 240, 1) !important;
-  border : 2px solid rgba(13, 202, 240, 1) !important;
+  color: rgba(13, 202, 240, 1) !important;
+  border: 2px solid rgba(13, 202, 240, 1) !important;
   background-color: transparent !important;
 }
 .badge-warning {
   background-color: transparent !important;
-  color : rgba(255, 193, 7, 1) !important;
-  border : 2px solid rgba(255, 193, 7, 1) !important;
+  color: rgba(255, 193, 7, 1) !important;
+  border: 2px solid rgba(255, 193, 7, 1) !important;
 }
 .badge-succes {
   background-color: transparent !important;
-  color : rgba(25, 135, 84, 1) !important;
-  border : 2px solid rgba(25, 135, 84, 1) !important;
+  color: rgba(25, 135, 84, 1) !important;
+  border: 2px solid rgba(25, 135, 84, 1) !important;
 }
 .badge-danger {
   background-color: transparent !important;
-  color : rgba(220, 53, 69, 1) !important;
-  border : 2px solid rgba(220, 53, 69, 1) !important;
+  color: rgba(220, 53, 69, 1) !important;
+  border: 2px solid rgba(220, 53, 69, 1) !important;
 }
 
 .badge-dark {
   background-color: transparent !important;
-  color : rgba(33, 37, 41, 1) !important;
-  border : 2px solid rgba(33, 37, 41, 1) !important;
+  color: rgba(33, 37, 41, 1) !important;
+  border: 2px solid rgba(33, 37, 41, 1) !important;
 }
 
 .visio-conference {
@@ -275,5 +273,3 @@ input[type='checkbox'] {
     }
   }
 }
-
-

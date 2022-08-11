@@ -1,87 +1,155 @@
-<ngx-smart-modal #modalajoutsession identifier="modalajoutsession" [customClass]="'ajout-session'" [closable]="true">
-    <div class="bloc-img">
-        <img src="../../../../assets/img/common/salut.png" class="img-fluid" alt="">
-    </div>
-    <p>Ajouter une session</p>
-    <div class="btn-bloc">
-        <a (click)="isPlannif = false" class="btn-modal " [ngClass]="!isPlannif ? 'btn-pink': 'btn-white-pink'">Session</a>
-        <a (click)="isPlannif = true" class="btn-modal " [ngClass]="isPlannif ? 'btn-pink': 'btn-white-pink'">Planifiez</a>
-    </div>
-    <form *ngIf="!isPlannif" action="">
-      <div class="d-flex justify-content-around align-items-center">
-        <div class="form-group">
-          <label class="form-check-label" for="isIndivudual">Session Individuelle</label>
-          <input class="form-check-input" type="checkbox" id="isIndivudual" name="isIndivudual" [(ngModel)]="isIndividual" (change)="checkboxChanged($event, 'indiv')">
-        </div>
-        <div class="form-group">
-          <label class="form-check-label" for="isTeamSession">Session d'équipe</label>
-          <input class="form-check-input" type="checkbox" id="isTeamSession" name="isTeamSession" [(ngModel)]="isTeamSession" (change)="checkboxChanged($event, 'team')">
-        </div>
-
+<ngx-smart-modal
+  #modalajoutsession
+  identifier="modalajoutsession"
+  [customClass]="'ajout-session'"
+  [closable]="true"
+>
+  <div class="bloc-img">
+    <img
+      src="../../../../assets/img/common/salut.png"
+      class="img-fluid"
+      alt=""
+    />
+  </div>
+  <p>Ajouter une session</p>
+  <div class="btn-bloc">
+    <a
+      (click)="isPlannif = false"
+      class="btn-modal"
+      [ngClass]="!isPlannif ? 'btn-pink' : 'btn-white-pink'"
+      >Session</a
+    >
+    <a
+      (click)="isPlannif = true"
+      class="btn-modal"
+      [ngClass]="isPlannif ? 'btn-pink' : 'btn-white-pink'"
+      >Planifiez</a
+    >
+  </div>
+  <form *ngIf="!isPlannif" action="">
+    <div class="d-flex justify-content-around align-items-center">
+      <div class="form-group">
+        <label class="form-check-label" for="isIndivudual"
+          >Session Individuelle</label
+        >
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="isIndivudual"
+          name="isIndivudual"
+          [(ngModel)]="isIndividual"
+          (change)="checkboxChanged($event, 'indiv')"
+        />
       </div>
-        <div class="form-group" *ngIf="isIndividual">
-          <label for="client">Client</label>
-          <select name="client" id="client" [(ngModel)]="selectedUserId">
-            <option *ngFor="let client of coach.clients" [value]="client._id">{{client.prenom}} {{client.nom}}</option>
-          </select>
-        </div>
-        <div class="form-group" *ngIf="isTeamSession">
-          <label for="teams">Equipe</label>
-          <select name="teams" id="teams"  [(ngModel)]="selectedTeamId">
-            <option *ngFor="let team of teams" [value]="team._id">{{team.name}}</option>
-          </select>
-        </div>
-        <div class="form-group">
-            <label for="service">Service</label>
-            <select name="service" id="service">
-                <option value="service-1">service 1</option>
-                <option value="service-2">service 2</option>
-                <option value="service-3">service 3</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="duree">Durée</label>
-            <select name="duree" id="duree">
-                <option value="duree-1">30 min</option>
-                <option value="duree-2">60 min</option>
-            </select>
-        </div>
-        <div class="text-center">
-            <button (click)="isPlannif = true" class="btn-blue">Suivant</button>
-        </div>
-    </form>
-    <form *ngIf="isPlannif" action="">
+      <div class="form-group">
+        <label class="form-check-label" for="isTeamSession"
+          >Session d'équipe</label
+        >
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="isTeamSession"
+          name="isTeamSession"
+          [(ngModel)]="isTeamSession"
+          (change)="checkboxChanged($event, 'team')"
+        />
+      </div>
+    </div>
+    <div class="form-group" *ngIf="isIndividual">
+      <label for="client">Client</label>
+      <select name="client" id="client" [(ngModel)]="selectedUserId">
+        <option *ngFor="let client of coach.clients" [value]="client._id">
+          {{ client.prenom }} {{ client.nom }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group" *ngIf="isTeamSession">
+      <label for="teams">Equipe</label>
+      <select name="teams" id="teams" [(ngModel)]="selectedTeamId">
+        <option *ngFor="let team of teams" [value]="team._id">
+          {{ team.name }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="service">Service</label>
+      <select name="service" id="service">
+        <option value="service-1">service 1</option>
+        <option value="service-2">service 2</option>
+        <option value="service-3">service 3</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="duree">Durée</label>
+      <select name="duree" id="duree">
+        <option value="duree-1">30 min</option>
+        <option value="duree-2">60 min</option>
+      </select>
+    </div>
+    <div class="text-center">
+      <button (click)="isPlannif = true" class="btn-blue">Suivant</button>
+    </div>
+  </form>
+  <form *ngIf="isPlannif" action="">
     <div class="form-group">
       <label for="client">Fuseau Horaire</label>
-      <select name="fuseau-horaire" id="fuseau-horaire" [(ngModel)]="selectedTimezone">
-        <option *ngFor="let zone of getAllZones()" value="{{zone}}">{{zone}}</option>
+      <select
+        name="fuseau-horaire"
+        id="fuseau-horaire"
+        [(ngModel)]="selectedTimezone"
+      >
+        <option *ngFor="let zone of getAllZones()" value="{{ zone }}">
+          {{ zone }}
+        </option>
       </select>
     </div>
     <div class="form-group">
       <div class="flex-input">
         <div class="left">
           <label for="heure-debut">Heure de début</label>
-          <timepicker class="custom-timepicker" name="heure-debut" id="heure-debut"
-                      [(ngModel)]="heureDeb"
-                      [showMinutes]="true" [minuteStep]="15" [showMeridian]="false" [min]="minTime" [max]="heureFin" >
+          <timepicker
+            class="custom-timepicker"
+            name="heure-debut"
+            id="heure-debut"
+            [(ngModel)]="heureDeb"
+            [showMinutes]="true"
+            [minuteStep]="15"
+            [showMeridian]="false"
+            [min]="minTime"
+            [max]="heureFin"
+          >
           </timepicker>
         </div>
         <div class="right">
           <label for="heure-fin">Heure de fin</label>
-          <timepicker class="custom-timepicker" name="heure-fin" id="heure-fin"
-                      [(ngModel)]="heureFin"
-                      [showMinutes]="true" [minuteStep]="15" [showMeridian]="false" [min]="heureDeb" [max]="maxTime" >
+          <timepicker
+            class="custom-timepicker"
+            name="heure-fin"
+            id="heure-fin"
+            [(ngModel)]="heureFin"
+            [showMinutes]="true"
+            [minuteStep]="15"
+            [showMeridian]="false"
+            [min]="heureDeb"
+            [max]="maxTime"
+          >
           </timepicker>
         </div>
       </div>
-
     </div>
     <div class="form-group">
       <label for="date">date</label>
-      <input type="text" id="date" name="date"
-             placeholder="Choisissez une date" [(ngModel)]="selectedDate" (change)="selectedDateChanged()"
-             class="form-control custom-datepicker" [bsConfig]="{ adaptivePosition: true, containerClass: 'theme-blue' }"
-             bsDatepicker>
+      <input
+        type="text"
+        id="date"
+        name="date"
+        placeholder="Choisissez une date"
+        [(ngModel)]="selectedDate"
+        (change)="selectedDateChanged()"
+        class="form-control custom-datepicker"
+        [bsConfig]="{ adaptivePosition: true, containerClass: 'theme-blue' }"
+        bsDatepicker
+      />
     </div>
     <div class="text-center">
       <button (click)="saveSession()" class="btn-blue">Confirmez</button>

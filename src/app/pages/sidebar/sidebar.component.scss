@@ -1,10 +1,9 @@
-
 a,
 a:hover,
 a:focus {
   color: inherit;
   text-decoration: none;
-  transition: all 0.3s
+  transition: all 0.3s;
 }
 
 .navbar {
@@ -13,25 +12,25 @@ a:focus {
   border: none;
   border-radius: 0;
   margin-bottom: 40px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1)
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-btn {
   box-shadow: none;
   outline: none !important;
-  border: none
+  border: none;
 }
 
 .line {
   width: 100%;
   height: 1px;
-  border-bottom: 1px dashed #ddd
+  border-bottom: 1px dashed #ddd;
 }
 
 .wrapper {
   display: flex;
   width: 100%;
-  align-items: stretch
+  align-items: stretch;
 }
 
 #sidebar {
@@ -40,10 +39,10 @@ a:focus {
   height: 100%;
   color: var(--global-font-color);
   transition: all 0.3s;
-  &.active{
-    margin-left: -250px
+  &.active {
+    margin-left: -250px;
   }
-  .nav_img{
+  .nav_img {
     text-align: center;
   }
   .sidebar-header {
@@ -55,7 +54,7 @@ a:focus {
       cursor: pointer;
     }
   }
-  ul{
+  ul {
     &.components {
       margin-top: 5rem !important;
       margin-bottom: 8px;
@@ -64,20 +63,21 @@ a:focus {
     p {
       padding: 10px;
       display: block;
-      color: #fff
+      color: #fff;
     }
     li {
       margin-left: 44px;
       max-width: 188px;
       border-radius: 10px;
-      &.active>a,
+      &.active > a,
       a[aria-expanded="true"] {
         color: #fff;
         background: var(--global-active-link-color);
         box-shadow: 0px 0px 10px #0000001a;
         border-radius: 10px;
         img {
-          filter: invert(97%) sepia(100%) saturate(11%) hue-rotate(217deg) brightness(105%) contrast(104%);
+          filter: invert(97%) sepia(100%) saturate(11%) hue-rotate(217deg)
+            brightness(105%) contrast(104%);
         }
       }
       a {
@@ -95,16 +95,17 @@ a:focus {
           background: var(--global-active-link-color);
           border-radius: 10px;
           img {
-            filter: invert(97%) sepia(100%) saturate(11%) hue-rotate(217deg) brightness(105%) contrast(104%);
+            filter: invert(97%) sepia(100%) saturate(11%) hue-rotate(217deg)
+              brightness(105%) contrast(104%);
           }
         }
         img {
           margin-right: 14px;
-          &.profil_icon{
+          &.profil_icon {
             margin-right: 17px;
           }
           path {
-            fill: var(--global-font-color)
+            fill: var(--global-font-color);
           }
         }
       }
@@ -113,7 +114,7 @@ a:focus {
 }
 
 a[data-toggle="collapse"] {
-  position: relative
+  position: relative;
 }
 
 .dropdown-toggle::after {
@@ -127,42 +128,40 @@ a[data-toggle="collapse"] {
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #318fb5
+  background: #318fb5;
 }
 
 ul.CTAs {
-  padding: 20px
-  a {
+  padding: 20px a {
     text-align: center;
     font-size: 0.9em !important;
     display: block;
     border-radius: 5px;
-    margin-bottom: 5px
+    margin-bottom: 5px;
   }
 }
 
 a.download,
 a.download:hover {
   background: #318fb5;
-  color: #fff
+  color: #fff;
 }
 
-@media(max-width:990px) {
+@media (max-width: 990px) {
   nav#sidebar {
     min-width: 200px;
 
-    .sidebar-header img{
+    .sidebar-header img {
       max-width: 158px;
       height: auto;
     }
 
-    ul li{
+    ul li {
       margin-left: 15px;
       max-width: 177px;
-      a span{
+      a span {
         font-size: 15px;
       }
     }
   }
-
 }

@@ -8,9 +8,8 @@ describe('EditFormQuizComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditFormQuizComponent ]
-    })
-    .compileComponents();
+      declarations: [EditFormQuizComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

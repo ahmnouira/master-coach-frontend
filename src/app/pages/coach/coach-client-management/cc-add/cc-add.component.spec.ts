@@ -8,9 +8,8 @@ describe('CcAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CcAddComponent ]
-    })
-    .compileComponents();
+      declarations: [CcAddComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

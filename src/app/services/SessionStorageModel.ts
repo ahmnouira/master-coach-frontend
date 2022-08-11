@@ -1,5 +1,3 @@
-export class SessionStorageModel{
-
-  UserId:string=""
-
+export class SessionStorageModel {
+  UserId: string = '';
 }

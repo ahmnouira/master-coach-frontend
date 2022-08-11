@@ -1,38 +1,49 @@
-.sub-component-content{
+.sub-component-content {
   margin: 24px 10px 10px 0;
 
-  .sub-menu{
+  .sub-menu {
     margin-bottom: 13px;
   }
 }
 
-input{
-  span{display: none;}
-
+input {
+  span {
+    display: none;
+  }
 }
 
-.mlr-10{
+.mlr-10 {
   margin-right: 10px;
   margin-left: 10px;
 }
 
-.row-title{
+.row-title {
   text-align: left;
   font: normal normal normal 18px/22px Fredoka;
   letter-spacing: 0px;
-  color: #1376A3;
+  color: #1376a3;
   opacity: 1;
 }
 .col-separator {
   border-bottom: 2px solid #1376a340;
   max-width: 190px;
 }
-.col-margin{
+.col-margin {
   max-width: 190px;
 }
-.image-container { position: relative; }
-.image-container .profil-image { display: block; width: 250px; cursor: pointer }
-.image-container .profil-icon { position: absolute; bottom:10px; left:115px; }
+.image-container {
+  position: relative;
+}
+.image-container .profil-image {
+  display: block;
+  width: 250px;
+  cursor: pointer;
+}
+.image-container .profil-icon {
+  position: absolute;
+  bottom: 10px;
+  left: 115px;
+}
 .image-container button {
   background: transparent;
   border: none;
@@ -45,41 +56,41 @@ input{
   padding: 0.5rem;
 }
 
-.element{
+.element {
   height: 50px;
   /* UI Properties */
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001A;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   padding: 15px 25px;
   opacity: 1;
   font: normal normal normal 16px/19px Fredoka;
   letter-spacing: 0px;
-  color: #3C4D5D;
+  color: #3c4d5d;
   opacity: 1;
 }
-.element-bio{
+.element-bio {
   /* UI Properties */
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001A;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
   border-radius: 10px;
   padding: 15px 25px;
   opacity: 1;
   font: normal normal normal 16px/19px Fredoka;
   letter-spacing: 0px;
-  color: #3C4D5D;
+  color: #3c4d5d;
   opacity: 1;
 }
 
-:host ::ng-deep .lazyContainer{
-    color: #3C4D5D;
-  }
+:host ::ng-deep .lazyContainer {
+  color: #3c4d5d;
+}
 
-.col-margin{
+.col-margin {
   max-width: 190px;
 }
 
-.pt-40{
+.pt-40 {
   padding-top: 40px;
 }
 
@@ -87,11 +98,11 @@ input{
   padding-left: 0 !important;
 }
 
-.smaller-font{
+.smaller-font {
   text-align: left;
   font: normal normal normal 12px/15px Fredoka !important;
   letter-spacing: 0px;
-  color: #3C4D5D;
+  color: #3c4d5d;
   opacity: 1;
   margin-right: 8px;
 }
@@ -100,27 +111,27 @@ input{
   width: 192px;
   height: 54px;
   display: block;
-  background: #FEEFEA 0% 0% no-repeat padding-box;
+  background: #feefea 0% 0% no-repeat padding-box;
   border-radius: 10px;
   padding: 15px 20px;
   opacity: 1;
   border: 0;
   text-align: left;
 
-  span{
+  span {
     text-align: left;
     font: normal normal normal 18px/22px FredokaMedium;
     letter-spacing: 0px;
-    color: #3C4D5D;
+    color: #3c4d5d;
     opacity: 1;
     margin-right: 8px;
   }
 }
-.white-bg{
-  background-color: #FFFFFF;
+.white-bg {
+  background-color: #ffffff;
 }
-.cursor-pointer{
-  cursor: pointer!important;
+.cursor-pointer {
+  cursor: pointer !important;
 }
 
 @media screen and (max-width: 1200px) {
@@ -128,16 +139,15 @@ input{
     width: unset;
   }
 }
-@media screen and (max-width: 991px){
-  .col-separator{
+@media screen and (max-width: 991px) {
+  .col-separator {
     padding-bottom: 6px;
     padding-left: 0;
   }
-  .active-tab{
+  .active-tab {
     padding: 15px 13px;
-    span{
+    span {
       font-size: 15px;
     }
   }
-  
 }

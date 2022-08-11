@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {TwilioConversationService} from "../../../services/twilio.service";
+import { Router } from '@angular/router';
+import { TwilioConversationService } from '../../../services/twilio.service';
 
 @Component({
   selector: 'app-detail-coach',
   templateUrl: './detail-coach.component.html',
-  styleUrls: ['./detail-coach.component.scss']
+  styleUrls: ['./detail-coach.component.scss'],
 })
 export class DetailCoachComponent implements OnInit {
-  coach : any = {}
+  coach: any = {};
   mouseDown = false;
 
   startX: any;
@@ -16,21 +16,25 @@ export class DetailCoachComponent implements OnInit {
   scrollLeft: any;
 
   slider = document.querySelector<HTMLElement>('.wrapper');
-  constructor(private conversationService: TwilioConversationService,private router : Router) { }
+  constructor(
+    private conversationService: TwilioConversationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.coach = history.state?.id;
-    console.log(this.coach)
+    console.log(this.coach);
   }
 
-  goToDetailFormation(e,formation) {
+  goToDetailFormation(e, formation) {
     e.preventDefault();
     let data = {
-      coach : this.coach,
-      formation : formation
-    }
-    this.router.navigateByUrl('/pages/client/rdv/detail-formation', { state: { id: data } });
-
+      coach: this.coach,
+      formation: formation,
+    };
+    this.router.navigateByUrl('/pages/client/rdv/detail-formation', {
+      state: { id: data },
+    });
   }
   startDragging(e, flag, el) {
     this.mouseDown = true;
@@ -52,13 +56,12 @@ export class DetailCoachComponent implements OnInit {
 
   createNewConversation(user) {
     this.conversationService.createNewConversation(user._id).subscribe(
-      data =>{
+      (data) => {
         console.log(data);
         this.router.navigate(['/pages/conversations']);
       },
-      error => {}
+      (error) => {}
     );
     console.log(user._id);
   }
-
 }

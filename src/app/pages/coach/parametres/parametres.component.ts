@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenStorageService} from "../../../services/token-storage.service";
-import {UserService} from "../../../services/user-service.service";
-import {User} from "../../../core/models/user-model";
-import {AdminService} from "../../../services/admin.service";
+import { TokenStorageService } from '../../../services/token-storage.service';
+import { UserService } from '../../../services/user-service.service';
+import { User } from '../../../core/models/user-model';
+import { AdminService } from '../../../services/admin.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-parametres',
   templateUrl: './parametres.component.html',
-  styleUrls: ['./parametres.component.scss']
+  styleUrls: ['./parametres.component.scss'],
 })
 export class ParametresComponent implements OnInit {
   form: any = {};
@@ -19,41 +19,48 @@ export class ParametresComponent implements OnInit {
   userCompetences: any = [];
   userAccred: any = [];
   settings = {};
-  newPassword = "";
-  confirmPassword = "";
+  newPassword = '';
+  confirmPassword = '';
   passwordChangedFlag = false;
   confirmPasswordChangedFlag = false;
-  constructor(private tokenStorageService : TokenStorageService, private userService : UserService, private adminService : AdminService, public sanitizer : DomSanitizer) { }
+  constructor(
+    private tokenStorageService: TokenStorageService,
+    private userService: UserService,
+    private adminService: AdminService,
+    public sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit(): void {
     const user = this.tokenStorageService.getUser();
-    this.getUserFromDb(user._id)
+    this.getUserFromDb(user._id);
 
-    this.form.photo = this.form.photo ? this.form.photo : '/assets/img/common/utilisateur.png';
+    this.form.photo = this.form.photo
+      ? this.form.photo
+      : '/assets/img/common/utilisateur.png';
     this.settings = {
-      text: "Sélectionner...",
+      text: 'Sélectionner...',
       position: 'bottom',
       autoPosition: false,
-      searchPlaceholderText: "Rechercher...",
-      filterSelectAllText: "Sélectionner tous les résultats filtrés",
-      filterUnSelectAllText: "Désélectionner tous les résultats filtrés",
+      searchPlaceholderText: 'Rechercher...',
+      filterSelectAllText: 'Sélectionner tous les résultats filtrés',
+      filterUnSelectAllText: 'Désélectionner tous les résultats filtrés',
       selectAllText: 'Sélectionner tout',
       unSelectAllText: 'Désélectionner tout',
       noDataLabel: 'Aucune donnée disponible',
       enableSearchFilter: true,
-      labelKey: "name",
-      primaryKey: "_id",
-      classes: "form-control element-spec multiselect"
+      labelKey: 'name',
+      primaryKey: '_id',
+      classes: 'form-control element-spec multiselect',
     };
     this.getCompetences();
     this.getCategories();
     this.getAccredi();
   }
 
-  importFile(event:any) {
+  importFile(event: any) {
     const reader = new FileReader();
 
-    if(event.target.files && event.target.files.length) {
+    if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       console.log(file);
       reader.readAsDataURL(file);
@@ -62,66 +69,85 @@ export class ParametresComponent implements OnInit {
         console.log(reader.result);
         this.form.photo = reader.result as string;
       };
-
     }
   }
 
   saveUser() {
-    this.userService.updateUser(this.form, this.form._id).subscribe(res => {
-      console.log(res);
-      window.location.reload()
-    },error => {
-      window.alert(error.message)
-    });
-    if(this.newPassword != '' && this.newPassword == this.confirmPassword) {
-      this.userService.resetPassword({email : this.form.email, new_password : this.newPassword}).subscribe(res => {
+    this.userService.updateUser(this.form, this.form._id).subscribe(
+      (res) => {
         console.log(res);
-      }, error => {
-        this.errorMessage = error;
-        console.error(this.errorMessage);
-        this.isLoginFailed = true;
-      });
+        window.location.reload();
+      },
+      (error) => {
+        window.alert(error.message);
+      }
+    );
+    if (this.newPassword != '' && this.newPassword == this.confirmPassword) {
+      this.userService
+        .resetPassword({
+          email: this.form.email,
+          new_password: this.newPassword,
+        })
+        .subscribe(
+          (res) => {
+            console.log(res);
+          },
+          (error) => {
+            this.errorMessage = error;
+            console.error(this.errorMessage);
+            this.isLoginFailed = true;
+          }
+        );
     }
   }
 
   getCategories() {
-    this.adminService.getAllCategorys().subscribe(res => {
-      console.log(res);
-      this.userCategory = res;
-    },error => {
-      window.alert(error.message)
-    });
+    this.adminService.getAllCategorys().subscribe(
+      (res) => {
+        console.log(res);
+        this.userCategory = res;
+      },
+      (error) => {
+        window.alert(error.message);
+      }
+    );
   }
 
   getCompetences() {
-    this.adminService.getAllCompetances().subscribe(res => {
-      console.log(res);
-      this.userCompetences = res;
-    },error => {
-      window.alert(error.message)
-    });
+    this.adminService.getAllCompetances().subscribe(
+      (res) => {
+        console.log(res);
+        this.userCompetences = res;
+      },
+      (error) => {
+        window.alert(error.message);
+      }
+    );
   }
 
   getAccredi() {
-    this.adminService.getAllAccreditations().subscribe(res => {
-      console.log(res);
-      this.userAccred = res;
-    },error => {
-      window.alert(error.message)
-    });
+    this.adminService.getAllAccreditations().subscribe(
+      (res) => {
+        console.log(res);
+        this.userAccred = res;
+      },
+      (error) => {
+        window.alert(error.message);
+      }
+    );
   }
 
-  passwordChanged(){
+  passwordChanged() {
     this.passwordChangedFlag = this.form.password.length > 0;
   }
   confirmPasswordChanged() {
     this.confirmPasswordChangedFlag = this.form.password.length > 0;
   }
 
-  importCINFront(event: any){
+  importCINFront(event: any) {
     const reader = new FileReader();
 
-    if(event.target.files && event.target.files.length) {
+    if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       console.log(file);
       reader.readAsDataURL(file);
@@ -130,12 +156,12 @@ export class ParametresComponent implements OnInit {
         console.log(reader.result);
         this.form.cinF = reader.result as string;
       };
-
-    }}
-  importCINBack(event: any){
+    }
+  }
+  importCINBack(event: any) {
     const reader = new FileReader();
 
-    if(event.target.files && event.target.files.length) {
+    if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       console.log(file);
       reader.readAsDataURL(file);
@@ -144,12 +170,12 @@ export class ParametresComponent implements OnInit {
         console.log(reader.result);
         this.form.cinB = reader.result as string;
       };
-
-    }}
-  importKbis(event: any){
+    }
+  }
+  importKbis(event: any) {
     const reader = new FileReader();
 
-    if(event.target.files && event.target.files.length) {
+    if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       console.log(file);
       reader.readAsDataURL(file);
@@ -158,23 +184,25 @@ export class ParametresComponent implements OnInit {
         console.log(reader.result);
         this.form.kbis = reader.result as string;
       };
+    }
+  }
 
-    }}
-
-  private getUserFromDb(id: any){
+  private getUserFromDb(id: any) {
     this.userService.getSingleUser(id).subscribe(
-      user => {
-        this.form = {...user};
+      (user) => {
+        this.form = { ...user };
       },
-      error => { return {};}
-    )
+      (error) => {
+        return {};
+      }
+    );
   }
 
   downloadPdf(base64String, fileName) {
     const source = `data:application/pdf;base64,${base64String}`;
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.href = source;
-    link.download = `${fileName}.pdf`
+    link.download = `${fileName}.pdf`;
     link.click();
   }
 }

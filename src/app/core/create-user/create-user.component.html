@@ -1,17 +1,20 @@
 <div id="main-container-login" class="row">
   <div class="col right-login-pane">
     <div class="image">
-      <img src="assets/img/login/mastercoach.svg" alt="left-pane-image">
+      <img src="assets/img/login/mastercoach.svg" alt="left-pane-image" />
     </div>
     <div class="welcome-title">
-      <span>Créer votre compte {{accountType}}!</span>
+      <span>Créer votre compte {{ accountType }}!</span>
     </div>
     <div class="login-form">
-      <form class="login-form" *ngIf="!isLoggedIn"
-            [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
-            name="form"
-            #f="ngForm"
-            novalidate>
+      <form
+        class="login-form"
+        *ngIf="!isLoggedIn"
+        [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
+        name="form"
+        #f="ngForm"
+        novalidate
+      >
         <div class="form-group">
           <label for="username">Nom d'utilisateur</label>
           <input
@@ -48,8 +51,18 @@
             #email="ngModel"
           />
           <div *ngIf="(email.invalid && email.touched) || email.dirty">
-            <small *ngIf="email.errors?.required" class="alert alert-danger" role="alert">L'email' est obligatoire!</small>
-            <small *ngIf="email.errors?.pattern" class="alert alert-danger" role="alert">Veuillez entrer un email valide</small>
+            <small
+              *ngIf="email.errors?.required"
+              class="alert alert-danger"
+              role="alert"
+              >L'email' est obligatoire!</small
+            >
+            <small
+              *ngIf="email.errors?.pattern"
+              class="alert alert-danger"
+              role="alert"
+              >Veuillez entrer un email valide</small
+            >
           </div>
         </div>
         <div class="form-group">
@@ -70,7 +83,9 @@
             role="alert"
             *ngIf="password.errors && f.submitted"
           >
-            <div *ngIf="password.errors.required">Mot de passe est obligatoire!</div>
+            <div *ngIf="password.errors.required">
+              Mot de passe est obligatoire!
+            </div>
             <div *ngIf="password.errors.minlength">
               Le mot de passe doit avoir au moins 3 caractères
             </div>
@@ -95,8 +110,12 @@
             role="alert"
             *ngIf="confirmPassword.errors && f.submitted"
           >
-            <div *ngIf="confirmPassword.errors.required">Mot de passe est obligatoire!</div>
-            <div *ngIf="confirmPassword.errors.pattern">Les mots de passe ne correspondent pas!</div>
+            <div *ngIf="confirmPassword.errors.required">
+              Mot de passe est obligatoire!
+            </div>
+            <div *ngIf="confirmPassword.errors.pattern">
+              Les mots de passe ne correspondent pas!
+            </div>
             <div *ngIf="confirmPassword.errors.minlength">
               Le mot de passe doit avoir au moins 3 caractères
             </div>
@@ -107,7 +126,9 @@
           <button
             type="submit"
             [disabled]="!f.form.valid"
-            class="btn btn-submit raised-button" (click)="createUser()">
+            class="btn btn-submit raised-button"
+            (click)="createUser()"
+          >
             Créer
           </button>
         </div>

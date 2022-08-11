@@ -3,17 +3,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "typeRoots": [
-      "node_modules/@types"
-    ],"types": [
-      "offscreencanvas"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "types": ["offscreencanvas"]
   },
-  "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["src/**/*.d.ts"]
 }

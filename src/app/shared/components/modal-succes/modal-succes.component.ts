@@ -1,17 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-modal-succes',
   templateUrl: './modal-succes.component.html',
-  styleUrls: ['./modal-succes.component.scss']
+  styleUrls: ['./modal-succes.component.scss'],
 })
 export class ModalSuccesComponent implements OnInit {
+  @Input() description: string;
 
-  @Input() description : string;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

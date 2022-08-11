@@ -7,17 +7,15 @@ import { ModalSatisfactionComponent } from './components/modal-satisfaction/moda
 import { ModalGoogleAgendaComponent } from './components/modal-google-agenda/modal-google-agenda.component';
 import { MessagerieComponent } from './components/messagerie/messagerie.component';
 import { CommandeDetailComponent } from './components/commande-detail/commande-detail.component';
-import {FormsModule} from "@angular/forms";
-import {BsDatepickerModule} from "ngx-bootstrap/datepicker";
-import {TimepickerModule} from "ngx-bootstrap/timepicker";
-import {ComponentsModule} from "../pages/components/components.module";
+import { FormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { ComponentsModule } from '../pages/components/components.module';
 import { ModalWorkingHoursComponent } from './components/modal-working-hours/modal-working-hours.component';
 import { VisioConferenceComponent } from './components/visio-conference/visio-conference.component';
 import { ModalSuccesComponent } from './components/modal-succes/modal-succes.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
-import {TooltipModule} from "ngx-bootstrap/tooltip";
-
-
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -30,30 +28,28 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
     ModalSuccesComponent,
-    CommandeDetailComponent
+    CommandeDetailComponent,
   ],
-    imports: [
-        CommonModule,
-        NgxSmartModalModule.forChild(),
-        FormsModule,
-        BsDatepickerModule,
-        TimepickerModule,
-        ComponentsModule,
-        PickerModule,
-        TooltipModule
-    ],
-    exports: [
-        ModalAjoutSessionComponent,
-        ModalCalendrierComponent,
-        ModalSatisfactionComponent,
-        ModalGoogleAgendaComponent,
-        CommandeDetailComponent ,
-        MessagerieComponent,
-        ModalWorkingHoursComponent,
-        VisioConferenceComponent,
-        ModalSuccesComponent
-    ]
+  imports: [
+    CommonModule,
+    NgxSmartModalModule.forChild(),
+    FormsModule,
+    BsDatepickerModule,
+    TimepickerModule,
+    ComponentsModule,
+    PickerModule,
+    TooltipModule,
+  ],
+  exports: [
+    ModalAjoutSessionComponent,
+    ModalCalendrierComponent,
+    ModalSatisfactionComponent,
+    ModalGoogleAgendaComponent,
+    CommandeDetailComponent,
+    MessagerieComponent,
+    ModalWorkingHoursComponent,
+    VisioConferenceComponent,
+    ModalSuccesComponent,
+  ],
 })
-export class SharedModule { }
-
-
+export class SharedModule {}

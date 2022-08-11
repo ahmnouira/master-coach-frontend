@@ -1,15 +1,15 @@
-import { FormsModule } from "@angular/forms";
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { FormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   DatatableComponent,
   filterData,
   paginatePipe,
-} from "./datatable.component";
+} from './datatable.component';
 
-import { DatatableRowModule } from "./datatable-row/datatable-row.module";
-import { DatatableFooterModule } from "./datatable-footer/datatable-footer.module";
-import { LoadingRowsModule } from "./loading-rows/loading-rows.module";
+import { DatatableRowModule } from './datatable-row/datatable-row.module';
+import { DatatableFooterModule } from './datatable-footer/datatable-footer.module';
+import { LoadingRowsModule } from './loading-rows/loading-rows.module';
 
 @NgModule({
   declarations: [DatatableComponent, filterData, paginatePipe],
@@ -18,7 +18,7 @@ import { LoadingRowsModule } from "./loading-rows/loading-rows.module";
     FormsModule,
     DatatableRowModule,
     DatatableFooterModule,
-    LoadingRowsModule
+    LoadingRowsModule,
   ],
   exports: [DatatableComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,4 +1,14 @@
-<div id="main" class="d-flex" [style.background-color]="getUserRole()?.toLowerCase() == 'coach' ? '#EFFAFD !important':  (getUserRole()?.toLowerCase() == 'admin'?'#E8FDE8 !important':'#FDEFEA !important')">
+<div
+  id="main"
+  class="d-flex"
+  [style.background-color]="
+    getUserRole()?.toLowerCase() == 'coach'
+      ? '#EFFAFD !important'
+      : getUserRole()?.toLowerCase() == 'admin'
+      ? '#E8FDE8 !important'
+      : '#FDEFEA !important'
+  "
+>
   <app-sidebar></app-sidebar>
   <div id="content">
     <router-outlet></router-outlet>
