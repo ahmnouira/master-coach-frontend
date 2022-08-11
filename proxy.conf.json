@@ -1,8 +1,8 @@
 {
   "/api": {
     "target": "https://mastercoach-api.innovant.studio",
-    "secure": false,
+    "secure": true,
     "logLevel": "debug",
-    "changeOrigin": true
+    "changeOrigin": false
   }
 }
