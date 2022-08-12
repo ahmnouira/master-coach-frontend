@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable,} from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { BaseService } from '../services/base-service/base.service';
+import { ForgotPassword } from './interfaces/forgot-password';
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,13 @@ export class AuthService extends BaseService {
   }
 
 
-
+  forgotPassword(forgotPassword: ForgotPassword) : Observable<any> {
+    return this.httpClient
+      .post<any>(
+        this.baseUri + '/forgot_password',
+        JSON.stringify(forgotPassword),
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError));
+  }
 }
