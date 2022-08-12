@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { CoreRoutingModule } from './core-routing.module';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
-  declarations: [LoginComponent, CreateUserComponent, ResetPasswordComponent],
+  declarations: [LoginComponent, CreateUserComponent, ResetPasswordComponent, ForgotPasswordComponent],
   imports: [CoreRoutingModule, CommonModule, FormsModule],
 })
 export class CoreModule {}
