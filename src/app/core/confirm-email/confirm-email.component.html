@@ -6,58 +6,17 @@
     <div class="welcome-title">
       <span>Confirm mot de passe !</span>
     </div>
-    <div class="login-form">
-      <form
-        class="login-form"
-        *ngIf="!isLoggedIn"
-        [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
-        name="form"
-        #f="ngForm"
-        novalidate
-      >
-        <div class="form-group">
-          <label for="code">Code</label>
-          <input
-            type="text"
-            class="form-control"
-            id="code"
-            name="code"
-            aria-describedby="codeHelp"
-            placeholder="Code"
-            [(ngModel)]="form.code"
-            required
-            #code="ngModel"
-          />
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="code.errors && f.submitted"
-          >
-            Code est obligatoire!
-          </div>
+    <div class="center">
+      <div class="form-group">
+        <h1 *ngIf="loading">Confirming....</h1>
+        <div class="alert alert-info" role="alert" *ngIf="successMessage">
+          {{ successMessage }}
         </div>
-
-        <div class="d-flex">
-          <button (click)="confirmEmail()" class="btn btn-submit raised-button">
-            Envoyer
-          </button>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+          {{ errorMessage }}
+          <a routerLink="/login">Login</a>
         </div>
-        <div class="form-group">
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="f.submitted && isLoginFailed"
-          >
-            L'authentification a echoué: {{ errorMessage }}
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="alert alert-info" role="alert" *ngIf="successMessage">
-            {{ successMessage }}
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -11,15 +11,10 @@ import { AuthService } from '../auth.service';
   templateUrl: './confirm-email.component.html',
   styleUrls: ['./confirm-email.component.scss'],
   animations: Animations,
-
 })
-export class ConfirmEmailComponent implements OnInit {
+export class ConfirmEmailComponent implements OnInit, AfterViewInit {
 
-  form: any = {
-    code: null
-  };
-  isLoggedIn = false;
-  isLoginFailed = false;
+  loading = true;
   errorMessage = '';
   successMessage  = ''
   token = ''; 
@@ -28,15 +23,20 @@ export class ConfirmEmailComponent implements OnInit {
     public router: Router,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private tokenStorage: TokenStorageService,
     private titleService: Title,
-    private userService: UserService
   ) {
     this.titleService.setTitle('MasterCoach - Confirm email');
   }
 
   ngOnInit(): void {
     this.getToken()
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.confirmEmail()
+    }, 3000)
+   
   }
 
   getToken() {
@@ -49,18 +49,17 @@ export class ConfirmEmailComponent implements OnInit {
   
 
   async confirmEmail() {
-    const { code } = this.form;
     this.authService
       .confirmEmail({token: this.token})
       .subscribe(
         (res) => {
           console.log('res' ,res, res.success, res.data)
           if(res.success && res.data) this.successMessage = res.data
+          this.loading = false
         },
         (error) => {
           this.errorMessage = error;
-          console.error(this.errorMessage);
-          this.isLoginFailed = true;
+          this.loading = false;
         }
       );
   }

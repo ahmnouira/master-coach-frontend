@@ -28,7 +28,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'confirm-email', 
+    path: 'email-confirmed', 
     component: ConfirmEmailComponent
   }
 
