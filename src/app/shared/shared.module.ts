@@ -16,6 +16,7 @@ import { VisioConferenceComponent } from './components/visio-conference/visio-co
 import { ModalSuccesComponent } from './components/modal-succes/modal-succes.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { FormErrorsComponent } from './components/form-errors/form-errors.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     VisioConferenceComponent,
     ModalSuccesComponent,
     CommandeDetailComponent,
+    FormErrorsComponent,
   ],
   imports: [
     CommonModule,
