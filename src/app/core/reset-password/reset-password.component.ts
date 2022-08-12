@@ -5,6 +5,7 @@ import { TokenStorageService } from '../../services/token-storage.service';
 import { Title } from '@angular/platform-browser';
 import { Animations } from '../../shared/animations';
 import { UserService } from '../../services/user-service.service';
+import { retry } from 'rxjs';
 
 @Component({
   selector: 'app-reset-password',
@@ -12,7 +13,7 @@ import { UserService } from '../../services/user-service.service';
   styleUrls: ['./reset-password.component.scss'],
   animations: Animations,
 })
-export class ResetPasswordComponent implements OnInit, AfterViewInit {
+export class ResetPasswordComponent implements OnInit {
   form: any = {
     email: null,
     password: null,
@@ -32,26 +33,28 @@ export class ResetPasswordComponent implements OnInit, AfterViewInit {
     this.titleService.setTitle('MasterCoach - Récupération de mot de passe');
   }
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
-    
+  ngOnInit(): void {
+    this.getToken()
   }
 
   getToken() {
     this.route.queryParamMap.subscribe((params) => {
-
-      console.log('params', params)
+      console.log('params', params.get('token'))
       //this.paramsObject = { ...params.keys, ...params };
        this.token =  params.get('token');
     });
   }
   
 
-  async changePassword() {
-    const { email, password } = this.form;
+  async restPassword() {
+    const {  password, confirmPassword } = this.form;
+
+  
+    if(!password || !confirmPassword) return
+
+    
     this.authService
-      .resetPassword({ email: email, token: password })
+      .resetPassword({ password, token: this.token })
       .subscribe(
         (res) => {
           this.router.navigate(['/core/login']);
