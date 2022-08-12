@@ -108,6 +108,15 @@
               L'authentification a echoué: {{ errorMessage }}
             </div>
           </div>
+
+          <div class="" *ngIf="!isVerified">
+            <button
+              class="btn btn-submit-secondary raised-button"
+              (click)="verifyEmail()"
+            >
+              Verify email
+            </button>
+          </div>
         </form>
       </div>
     </div>
