@@ -34,7 +34,7 @@ export class ResetPasswordComponent implements OnInit {
 
   async changePassword() {
     const { email, password } = this.form;
-    this.userService
+    this.authService
       .resetPassword({ email: email, new_password: password })
       .subscribe(
         (res) => {

@@ -8,9 +8,7 @@ import { throwError } from 'rxjs';
 })
 export  class BaseService{
 
-  baseUri = environment.apiUrl;
-
-  apiUri = this.baseUri + '/api'
+  baseUri = environment.apiUrl + '/api';
 
   httpOptions = {
     headers: new HttpHeaders({

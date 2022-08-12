@@ -1,25 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { HttpParams } from '@angular/common/http';
+import { Observable,  } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { BaseService } from './base-service/base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
-  private baseUri = environment.apiUrl;
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers':
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-    }),
-  };
-
-  constructor(private httpClient: HttpClient) {}
+export class UserService extends BaseService {
 
   getAllUser() {
     return this.httpClient.get(this.baseUri + '/all_users');
@@ -64,26 +52,4 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
-  resetPassword(resetPasswordData) {
-    return this.httpClient
-      .post<any>(
-        this.baseUri + '/reset_password',
-        JSON.stringify(resetPasswordData),
-        this.httpOptions
-      )
-      .pipe(catchError(this.handleError));
-  }
-
-  handleError(error) {
-    let errorMessage = '';
-    console.error(error);
-    if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = `Error ${error.status} - Message: ${error.error.message}`;
-    }
-    return throwError(errorMessage);
-  }
 }

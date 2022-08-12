@@ -6,15 +6,38 @@ import { BaseService } from '../services/base-service/base.service';
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class AuthService extends BaseService {
 
   login(email: string, password: string): Observable<any> {
     return this.httpClient
       .post<any>(
-        this.apiUri + '/login',
+        this.baseUri,
         JSON.stringify({ email: email, password: password }),
         this.httpOptions
       )
       .pipe(retry(0), catchError(this.handleError));
+  }
+
+
+  register(user: any): Observable<any> {
+    return this.httpClient
+      .post<any>(
+        this.baseUri + '/create_user',
+        JSON.stringify(user),
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  resetPassword(resetPasswordData: object) : Observable<any> {
+    return this.httpClient
+      .post<any>(
+        this.baseUri + '/reset_password',
+        JSON.stringify(resetPasswordData),
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError));
   }
 }
