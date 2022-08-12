@@ -7,10 +7,9 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
-import { AuthWrapperComponent } from './auth-wrapper/auth-wrapper.component';
 
 @NgModule({
-  declarations: [LoginComponent, CreateUserComponent, ResetPasswordComponent, ForgotPasswordComponent, ConfirmEmailComponent, AuthWrapperComponent],
+  declarations: [LoginComponent, CreateUserComponent, ResetPasswordComponent, ForgotPasswordComponent, ConfirmEmailComponent],
   imports: [CoreRoutingModule, CommonModule, FormsModule],
 })
 export class CoreModule {}
