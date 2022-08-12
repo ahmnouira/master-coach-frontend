@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   isVerified = true; 
 
+  successMessage= ""
+
   @ViewChild('main') elem: ElementRef;
   constructor(
     public router: Router,
@@ -43,9 +45,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe(
       (authData) => {
-        //isBlocked: false
-        // isEmailVerified: false
-    
+  
         console.log('authData:', authData)
 
 
@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit {
         console.log("error", err)
         if(err == "Your email is not verified") {
           this.isVerified = false
-
         }
         this.errorMessage = err;
         this.isLoginFailed = true;
@@ -77,8 +76,27 @@ export class LoginComponent implements OnInit {
     );
   }
 
-
   verifyEmail() {
-    alert('Not implemented')
+    const { email } = this.form;
+    if(!email) return
+      try {
+        this.authService.resendVerification({email }).subscribe((res) => {
+
+          this.isVerified = true
+          this.isLoggedIn = true;
+          if(res.success && res.data) {
+            this.successMessage = res.data
+            this.isVerified = true
+          } 
+          
+          
+         })
+      } catch (error) {
+          console.error('error', error)
+          this.successMessage = ""
+          this.errorMessage = String(error);
+          this.isLoginFailed = true;
+      }
+ 
   }
 }

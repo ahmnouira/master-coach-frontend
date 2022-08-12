@@ -4,6 +4,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { BaseService } from '../services/base-service/base.service';
 import { IConfirmEmail } from './interfaces/confirm-email';
 import { IForgotPassword } from './interfaces/forgot-password';
+import { IResendVerification } from './interfaces/resend-verification';
 import { IResetPassword } from './interfaces/reset-password';
 
 @Injectable({
@@ -64,4 +65,16 @@ export class AuthService extends BaseService {
       )
       .pipe(catchError(this.handleError));
   }
+
+  resendVerification(resendVerificationData: IResendVerification) {
+    return this.httpClient
+    .post<any>(
+      this.baseUri + '/resend_verification',
+      JSON.stringify(resendVerificationData),
+      this.httpOptions
+    )
+    .pipe(catchError(this.handleError));
+  }
+
+
     }
