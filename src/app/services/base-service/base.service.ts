@@ -8,7 +8,10 @@ import { throwError } from 'rxjs';
 })
 export  class BaseService{
 
-  protected baseUri = environment.apiUrl;
+  baseUri = environment.apiUrl;
+
+  apiUri = this.baseUri + '/api'
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -29,7 +32,7 @@ export  class BaseService{
       errorMessage = error.error.message;
     } else {
       // Get server-side error    
-      console.log("error.error", error)
+      // console.log("error.error", error)
       errorMessage = error.error.error
     }
     //window.alert(errorMessage);

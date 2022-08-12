@@ -11,7 +11,7 @@ export class AuthService extends BaseService {
   login(email: string, password: string): Observable<any> {
     return this.httpClient
       .post<any>(
-        this.baseUri + '/login',
+        this.apiUri + '/login',
         JSON.stringify({ email: email, password: password }),
         this.httpOptions
       )
