@@ -27,9 +27,7 @@ export class CreateUserComponent implements OnInit {
   constructor(
     public router: Router,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService,
     private titleService: Title,
-    private userService: UserService,
     private activatedRoute: ActivatedRoute
   ) {
     this.titleService.setTitle('MasterCoach - Creation de compte');
@@ -53,7 +51,7 @@ export class CreateUserComponent implements OnInit {
 
   createUser() {
     this.form.role = this.accountType;
-    this.userService.saveUser(this.form).subscribe(
+    this.authService.register(this.form).subscribe(
       (res) => {
         this.router.navigate(['/']);
       },
