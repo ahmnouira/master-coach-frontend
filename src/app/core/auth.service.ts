@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable,} from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { BaseService } from '../services/base-service/base.service';
-import { ForgotPassword } from './interfaces/forgot-password';
+import { IForgotPassword } from './interfaces/forgot-password';
+import { IResetPassword } from './interfaces/reset-password';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +33,7 @@ export class AuthService extends BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  resetPassword(resetPasswordData: object) : Observable<any> {
+  resetPassword(resetPasswordData: IResetPassword) : Observable<any> {
     return this.httpClient
       .post<any>(
         this.baseUri + '/reset_password',
@@ -43,7 +44,7 @@ export class AuthService extends BaseService {
   }
 
 
-  forgotPassword(forgotPassword: ForgotPassword) : Observable<any> {
+  forgotPassword(forgotPassword: IForgotPassword) : Observable<any> {
     return this.httpClient
       .post<any>(
         this.baseUri + '/forgot_password',

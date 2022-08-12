@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
 import { Title } from '@angular/platform-browser';
@@ -12,7 +12,7 @@ import { UserService } from '../../services/user-service.service';
   styleUrls: ['./reset-password.component.scss'],
   animations: Animations,
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit, AfterViewInit {
   form: any = {
     email: null,
     password: null,
@@ -20,9 +20,11 @@ export class ResetPasswordComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
+  token = ''; 
   constructor(
     public router: Router,
     private authService: AuthService,
+    private route: ActivatedRoute,
     private tokenStorage: TokenStorageService,
     private titleService: Title,
     private userService: UserService
@@ -32,10 +34,24 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  ngAfterViewInit(): void {
+    
+  }
+
+  getToken() {
+    this.route.queryParamMap.subscribe((params) => {
+
+      console.log('params', params)
+      //this.paramsObject = { ...params.keys, ...params };
+       this.token =  params.get('token');
+    });
+  }
+  
+
   async changePassword() {
     const { email, password } = this.form;
     this.authService
-      .resetPassword({ email: email, new_password: password })
+      .resetPassword({ email: email, token: password })
       .subscribe(
         (res) => {
           this.router.navigate(['/core/login']);
