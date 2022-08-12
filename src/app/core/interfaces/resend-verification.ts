@@ -1,3 +1,3 @@
 export interface IResendVerification {
-    email: string
+  email: string;
 }

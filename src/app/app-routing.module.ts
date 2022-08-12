@@ -14,7 +14,7 @@ const routes: Routes = [
       import('./pages/pages.module').then((module) => module.PagesModule),
   },
 
-  { path: '',   redirectTo: '/login', pathMatch: 'full' }, 
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
