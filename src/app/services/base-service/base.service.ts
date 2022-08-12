@@ -1,14 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'environment';
 import { throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export  class BaseService{
 
+
   baseUri = environment.apiUrl + '/api';
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,7 +22,11 @@ export  class BaseService{
     }),
   };
 
-  constructor(protected httpClient: HttpClient) {}
+  constructor(protected httpClient: HttpClient) {
+
+ 
+
+  }
 
   /* TODO: fix  deprecated */
   handleError(error: any) {
