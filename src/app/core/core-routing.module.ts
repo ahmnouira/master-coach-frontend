@@ -8,42 +8,48 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
-  {
-    path: '',
+
+{
+    path: '', 
+    redirectTo: 'login', 
+    pathMatch: 'full'
+},
+
+ {
+    path: 'login',
     component: LoginComponent,
-  },
+    pathMatch: 'full',
+  }, 
+
   {
     path: 'create-user/:type',
     component: CreateUserComponent,
+    pathMatch: 'full', // to remove /core/...
   },
 
   {
     path: 'reset-password',
     component: ResetPasswordComponent,
+    pathMatch: 'full',
   },
 
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
+    pathMatch: 'full',
   },
 
   {
     path: 'email-confirmed',
     component: ConfirmEmailComponent,
+    pathMatch: 'full',
   },
 
-   {
-    path: 'verify-email', 
-    component: VerifyEmailComponent
-   }, 
+  {path: 'verify-email', component: VerifyEmailComponent, pathMatch: 'full'},
 
-   {
-    path: "**", 
-    redirectTo: '/', 
-    pathMatch: 'full'
-   }
+  {path: '**', component: LoginComponent}
 
-  
+ 
 ];
 
 @NgModule({
