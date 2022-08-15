@@ -8,11 +8,12 @@ import { AuthService } from '../auth.service';
   templateUrl: './confirm-email.component.html',
   styleUrls: ['./confirm-email.component.scss'],
   animations: Animations,
+
 })
 export class ConfirmEmailComponent implements OnInit, AfterViewInit {
   isLoading = true;
   errorMessage = '';
-  successMessage = '';
+  successMessage = false;
 
   constructor(
     private routeService: RouteService,
@@ -34,13 +35,16 @@ export class ConfirmEmailComponent implements OnInit, AfterViewInit {
       .confirmEmail({ token: this.routeService.getToken })
       .subscribe(
         (res) => {
-          console.log('res', res, res.success, res.data);
-          if (res.success && res.data) this.successMessage = res.data;
-          this.isLoading = false;
+          console.log('res:', res, res.success, res.data);
+          if (res.success && res.data) {
+            this.successMessage = true
+            this.isLoading = false;
+          } 
         },
         (error) => {
           this.errorMessage = error;
           this.isLoading = false;
+          this.successMessage = false
         }
       );
   }

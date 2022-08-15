@@ -5,37 +5,51 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
-  {
+
+{
+    path: '', 
+    redirectTo: 'login', 
+    pathMatch: 'full'
+},
+
+ {
     path: 'login',
     component: LoginComponent,
-  },
+    pathMatch: 'full',
+  }, 
+
   {
     path: 'create-user/:type',
     component: CreateUserComponent,
+    pathMatch: 'full', // to remove /core/...
   },
 
   {
     path: 'reset-password',
     component: ResetPasswordComponent,
+    pathMatch: 'full',
   },
 
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
+    pathMatch: 'full',
   },
 
   {
     path: 'email-confirmed',
     component: ConfirmEmailComponent,
-  },
-
-  {
-    path: '**',
-    redirectTo: 'login',
     pathMatch: 'full',
   },
+
+  {path: 'verify-email', component: VerifyEmailComponent, pathMatch: 'full'},
+
+  {path: '**', component: LoginComponent}
+
+ 
 ];
 
 @NgModule({

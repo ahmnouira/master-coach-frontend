@@ -20,6 +20,7 @@ export class CreateUserComponent implements OnInit {
   isLoginFailed = false; // when action is failed
   errorMessage = '';
   accountType = 'Coach';
+  
   constructor(
     private routeService: RouteService,
     private authService: AuthService

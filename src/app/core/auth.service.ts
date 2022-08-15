@@ -11,6 +11,9 @@ import { IResetPassword } from './interfaces/reset-password';
   providedIn: 'root',
 })
 export class AuthService extends BaseService {
+
+  private  resendEmail =  ''
+
   login(email: string, password: string): Observable<any> {
     return this.httpClient
       .post<any>(
@@ -69,5 +72,14 @@ export class AuthService extends BaseService {
         this.httpOptions
       )
       .pipe(catchError(this.handleError));
+  }
+
+
+  set setResendEmail (email: string) {
+    this.resendEmail = email
+  }
+
+  get getResendEmail () {
+    return this.resendEmail
   }
 }
