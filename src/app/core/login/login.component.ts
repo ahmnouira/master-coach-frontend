@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     email: null,
     password: null,
   };
-  isLoggedIn = false;
+  isLoading = false;
   isLoginFailed = false;
   errorMessage = '';
   isVerified = true;
@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    private userService: UserService,
     private routeService: RouteService
   ) {
     this.routeService.setTitle('MasterCoach - Login');
@@ -43,9 +42,13 @@ export class LoginComponent implements OnInit {
 
     if (!email || !password) return;
 
+    this.isLoading = true;
+
     this.authService.login(email, password).subscribe(
       (authData) => {
+        this.isLoading = false
         console.log('authData:', authData);
+
 
         /*
               if (user.role.toLowerCase() === 'admin') {
@@ -59,7 +62,7 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveTwilioToken(authData.twilio_token);
         this.tokenStorage.saveUser(authData);
         this.isLoginFailed = false;
-        this.isLoggedIn = true;
+       
         this.isVerified = true;
       },
       (err) => {
@@ -69,6 +72,7 @@ export class LoginComponent implements OnInit {
         }
         this.errorMessage = err;
         this.isLoginFailed = true;
+        this.isLoading = false
       }
     );
   }
@@ -79,7 +83,6 @@ export class LoginComponent implements OnInit {
     try {
       this.authService.resendVerification({ email }).subscribe((res) => {
         this.isVerified = true;
-        this.isLoggedIn = true;
         if (res.success && res.data) {
           this.successMessage = res.data;
           this.isVerified = true;
