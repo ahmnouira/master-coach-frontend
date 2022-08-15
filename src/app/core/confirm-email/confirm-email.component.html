@@ -4,7 +4,7 @@
       <img src="assets/img/login/mastercoach.svg" alt="left-pane-image" />
     </div>
     <div class="welcome-title">
-      <span>Confirm mot de passe !</span>
+      <span>Confirmation de compte</span>
     </div>
     <div class="center">
       <div class="form-group">
@@ -13,10 +13,11 @@
           class="d-flex flex-column justify-content-center mt-2 text-center mt-4"
         >
           <app-loader></app-loader>
-          <h1 class="mt-2">Confirming....</h1>
+          <h1 class="mt-2">En trant de confirmer notre compte....</h1>
         </div>
         <div class="alert alert-info" role="alert" *ngIf="successMessage">
-          {{ successMessage }}
+          Votre compte est vérifié
+          <a routerLink="/login">Login</a>
         </div>
         <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
           {{ errorMessage }}

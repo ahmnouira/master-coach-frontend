@@ -5,10 +5,11 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
   },
   {
@@ -30,6 +31,17 @@ const routes: Routes = [
     path: 'email-confirmed',
     component: ConfirmEmailComponent,
   },
+
+   {
+    path: 'verify-email', 
+    component: VerifyEmailComponent
+   }, 
+
+   {
+    path: "**", 
+    redirectTo: '/', 
+    pathMatch: 'full'
+   }
 
   
 ];

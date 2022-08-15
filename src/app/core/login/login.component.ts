@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit  {
     this.routeService.setTitle('MasterCoach - Login');
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   async login() {
@@ -75,22 +75,11 @@ export class LoginComponent implements OnInit  {
     );
   }
 
-  verifyEmail() {
+  verifyEmail(): void {
     const { email } = this.form;
     if (!email) return;
-    try {
-      this.authService.resendVerification({ email }).subscribe((res) => {
-        this.isVerified = true;
-        if (res.success && res.data) {
-          this.successMessage = res.data;
-          this.isVerified = true;
-        }
-      });
-    } catch (error) {
-      console.error('error', error);
-      this.successMessage = '';
-      this.errorMessage = String(error);
-      this.isLoginFailed = true;
-    }
-  }
+    this.authService.setResendEmail = email
+    this.routeService.navigate(['verify-email'])
+}
+
 }

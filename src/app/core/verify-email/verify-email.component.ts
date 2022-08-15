@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { retry } from 'rxjs';
+import { RouteService } from 'src/app/services/route-service/route.service';
+import { runInThisContext } from 'vm';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-verify-email',
@@ -7,9 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifyEmailComponent implements OnInit {
 
-  constructor() { }
+  isLoading = true;
+  errorMessage = '';
+  successMessage = '';
+  isVerified = true;
+  isLoginFailed = false;
+
+  email : string = ''
+
+  constructor(private authService: AuthService, private routeService: RouteService) { }
 
   ngOnInit(): void {
+    this.email = this.authService.getResendEmail
+  }
+
+  resendVerification() {
+    if(!this.email) {
+      this.errorMessage = "Pas d'email"
+      return
+    }
+   
+    try {
+      this.authService.resendVerification({ email: this.email}).subscribe((res) => {
+        this.isVerified = true;
+        if (res.success && res.data) {
+          this.successMessage = res.data;
+          this.isVerified = true;
+        }
+      });
+    } catch (error) {
+      console.error('error', error);
+      this.successMessage = '';
+      this.errorMessage = String(error);
+      this.isLoginFailed = true;
+    }
   }
 
 }
