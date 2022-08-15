@@ -14,6 +14,13 @@ const routes: Routes = [
       import('./pages/pages.module').then((module) => module.PagesModule),
     canActivate: [AuthGuard],
   },
+
+  /** TODO: fix refresh bug in Firefox */
+  {
+    path: '', 
+    redirectTo: '/core/login',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

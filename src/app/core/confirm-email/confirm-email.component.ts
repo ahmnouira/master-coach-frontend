@@ -8,6 +8,7 @@ import { AuthService } from '../auth.service';
   templateUrl: './confirm-email.component.html',
   styleUrls: ['./confirm-email.component.scss'],
   animations: Animations,
+
 })
 export class ConfirmEmailComponent implements OnInit, AfterViewInit {
   isLoading = true;

@@ -8,6 +8,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { SharedModule } from '../shared/shared.module';
+import { AuthBaseComponent } from './auth-base/auth-base.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     ResetPasswordComponent,
     ForgotPasswordComponent,
     ConfirmEmailComponent,
+    AuthBaseComponent,
   ],
   imports: [CoreRoutingModule, CommonModule, FormsModule, SharedModule],
 })

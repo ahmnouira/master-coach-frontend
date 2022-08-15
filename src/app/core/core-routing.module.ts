@@ -31,11 +31,7 @@ const routes: Routes = [
     component: ConfirmEmailComponent,
   },
 
-  {
-    path: '**',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
+  
 ];
 
 @NgModule({

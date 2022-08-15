@@ -1,16 +1,17 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
-import { Animations } from '../../shared/animations';
 import { RouteService } from 'src/app/services/route-service/route.service';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: Animations,
+ animations: Animations,
+
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit  {
   form: any = {
     email: null,
     password: null,
@@ -25,13 +26,14 @@ export class LoginComponent implements OnInit {
   @ViewChild('main') elem: ElementRef;
   constructor(
     private authService: AuthService,
+    private routeService: RouteService,
     private tokenStorage: TokenStorageService,
-    private routeService: RouteService
   ) {
     this.routeService.setTitle('MasterCoach - Login');
   }
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   async login() {
     const { email, password } = this.form;
