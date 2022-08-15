@@ -14,6 +14,10 @@ const routes: Routes = [
       import('./pages/pages.module').then((module) => module.PagesModule),
     canActivate: [AuthGuard]
   },
+
+
+  
+
 ];
 
 @NgModule({

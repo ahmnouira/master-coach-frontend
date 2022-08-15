@@ -14,7 +14,7 @@ export class ForgotPasswordComponent implements OnInit {
     email: null,
     password: null,
   };
-  isLoggedIn = false;
+  isLoading = false;
   isLoginFailed = false;
   errorMessage = '';
   successMessage = '';
@@ -32,12 +32,20 @@ export class ForgotPasswordComponent implements OnInit {
 
   async forgotPassword() {
     const { email } = this.form;
+
+    if(!email) return
+
+    this.isLoading = true
     this.authService.forgotPassword({ email }).subscribe(
       (res) => {
         console.log('res', res.success, res.data);
-        if (res.success && res.data) this.successMessage = res.data;
+        if (res.success && res.data) {
+          this.successMessage = res.data;
+          this.isLoading = false
+        } 
       },
       (error) => {
+        this.isLoading = false
         this.errorMessage = error;
         console.error(this.errorMessage);
         this.isLoginFailed = true;

@@ -7,12 +7,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 const routes: Routes = [
-
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch :'full'
-  },
+ 
   {
     path: 'login',
     component: LoginComponent,
@@ -37,6 +32,11 @@ const routes: Routes = [
     component: ConfirmEmailComponent,
   },
 
+  {
+    path: '**',
+    redirectTo: 'login', 
+    pathMatch: 'full'
+  },
 
 ];
 
