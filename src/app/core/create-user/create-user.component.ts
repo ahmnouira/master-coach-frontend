@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { Title } from '@angular/platform-browser';
 import { Animations } from '../../shared/animations';
+import { RouteService } from 'src/app/services/route-service/route.service';
 
 @Component({
   selector: 'app-create-user',
@@ -22,16 +21,15 @@ export class CreateUserComponent implements OnInit {
   errorMessage = '';
   accountType = 'Coach';
   constructor(
-    public router: Router,
+    private routeService: RouteService,
     private authService: AuthService,
-    private titleService: Title,
-    private activatedRoute: ActivatedRoute
   ) {
-    this.titleService.setTitle('MasterCoach - Creation de compte');
+    this.routeService.setTitle('MasterCoach - Creation de compte');
   }
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
+
+  ngOnInit(): void {  
+    this.routeService.activatedRoute.params.subscribe((params) => {
       this.accountType = params['type'] == 'coach' ? 'Coach' : 'Client';
     });
   }
@@ -57,7 +55,7 @@ export class CreateUserComponent implements OnInit {
       (res) => {
         console.log('createUser:', res);
         this.isLoading = false
-        this.router.navigate(['/']);
+        this.routeService.navigate(['/']);
       },
       (error) => {
         console.error(this.errorMessage);
