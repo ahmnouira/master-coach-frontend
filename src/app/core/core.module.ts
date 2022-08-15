@@ -7,6 +7,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,6 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
     ForgotPasswordComponent,
     ConfirmEmailComponent,
   ],
-  imports: [CoreRoutingModule, CommonModule, FormsModule],
+  imports: [CoreRoutingModule, CommonModule, FormsModule, SharedModule],
 })
 export class CoreModule {}
