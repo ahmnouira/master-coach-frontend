@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { SharedModule } from '../shared/shared.module';
 import { AuthBaseComponent } from './auth-base/auth-base.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthBaseComponent } from './auth-base/auth-base.component';
     ForgotPasswordComponent,
     ConfirmEmailComponent,
     AuthBaseComponent,
+    VerifyEmailComponent,
   ],
   imports: [CoreRoutingModule, CommonModule, FormsModule, SharedModule],
 })
