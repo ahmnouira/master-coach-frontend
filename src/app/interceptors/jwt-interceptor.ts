@@ -24,7 +24,7 @@ export class JwtInterceptor implements HttpInterceptor {
     if (token && !request.url.includes('conversations.twilio.com')) {
       request = request.clone({
         setHeaders: {
-          Authorization: `${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
     }
