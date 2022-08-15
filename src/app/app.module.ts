@@ -9,7 +9,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PagesModule } from './pages/pages.module';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { JwtInterceptor } from './core/interceptors/jwt-interceptor';
+import { JwtInterceptor } from './interceptors/jwt-interceptor';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
