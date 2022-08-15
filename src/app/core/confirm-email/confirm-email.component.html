@@ -8,7 +8,10 @@
     </div>
     <div class="center">
       <div class="form-group">
-        <h1 *ngIf="loading">Confirming....</h1>
+        <div *ngIf="isLoading">
+          <app-loader></app-loader>
+          <h1>Confirming....</h1>
+        </div>
         <div class="alert alert-info" role="alert" *ngIf="successMessage">
           {{ successMessage }}
         </div>

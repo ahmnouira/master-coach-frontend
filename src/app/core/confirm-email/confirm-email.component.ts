@@ -1,8 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { UserService } from 'src/app/services/user-service.service';
+import { RouteService } from 'src/app/services/route-service/route.service';
 import { Animations } from 'src/app/shared/animations';
 import { AuthService } from '../auth.service';
 
@@ -13,22 +10,19 @@ import { AuthService } from '../auth.service';
   animations: Animations,
 })
 export class ConfirmEmailComponent implements OnInit, AfterViewInit {
-  loading = true;
+  isLoading = true;
   errorMessage = '';
   successMessage = '';
-  token = '';
 
   constructor(
-    public router: Router,
+    private routeService: RouteService,
     private authService: AuthService,
-    private route: ActivatedRoute,
-    private titleService: Title
   ) {
-    this.titleService.setTitle('MasterCoach - Confirm email');
+    this.routeService.setTitle('MasterCoach - Confirm email');
   }
 
   ngOnInit(): void {
-    this.getToken();
+   
   }
 
   ngAfterViewInit(): void {
@@ -37,24 +31,16 @@ export class ConfirmEmailComponent implements OnInit, AfterViewInit {
     }, 3000);
   }
 
-  getToken() {
-    this.route.queryParamMap.subscribe((params) => {
-      console.log('params', params.get('token'));
-      //this.paramsObject = { ...params.keys, ...params };
-      this.token = params.get('token');
-    });
-  }
-
   async confirmEmail() {
-    this.authService.confirmEmail({ token: this.token }).subscribe(
+    this.authService.confirmEmail({ token:  this.routeService.getToken }).subscribe(
       (res) => {
         console.log('res', res, res.success, res.data);
         if (res.success && res.data) this.successMessage = res.data;
-        this.loading = false;
+        this.isLoading = false;
       },
       (error) => {
         this.errorMessage = error;
-        this.loading = false;
+        this.isLoading = false;
       }
     );
   }
