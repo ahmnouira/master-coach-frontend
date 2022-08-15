@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { UserService } from 'src/app/services/user-service.service';
+import { RouteService } from 'src/app/services/route-service/route.service';
 import { Animations } from 'src/app/shared/animations';
 import { AuthService } from '../auth.service';
 
@@ -23,16 +20,16 @@ export class ForgotPasswordComponent implements OnInit {
   successMessage = '';
 
   constructor(
-    public router: Router,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService,
-    private titleService: Title,
-    private userService: UserService
+    private routeService: RouteService
   ) {
-    this.titleService.setTitle('MasterCoach - Oublier mot de passe');
+    this.routeService.setTitle('MasterCoach - Oublier mot de passe');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    sessionStorage.setItem('route', 'forgot-password')
+
+  }
 
   async forgotPassword() {
     const { email } = this.form;

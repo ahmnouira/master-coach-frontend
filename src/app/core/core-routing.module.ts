@@ -6,7 +6,15 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
+const route =sessionStorage.getItem('route')
+
 const routes: Routes = [
+
+  {
+    path: '',
+    redirectTo: route ?? 'login',
+    pathMatch :'full'
+  },
   {
     path: 'login',
     component: LoginComponent,
@@ -30,6 +38,8 @@ const routes: Routes = [
     path: 'email-confirmed',
     component: ConfirmEmailComponent,
   },
+
+
 ];
 
 @NgModule({
