@@ -42,8 +42,9 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe(
       (authData) => {
-        this.isLoading = false;
+        this.isLoading = false
         console.log('authData:', authData);
+
 
         /*
               if (user.role.toLowerCase() === 'admin') {
@@ -57,7 +58,7 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveTwilioToken(authData.twilio_token);
         this.tokenStorage.saveUser(authData);
         this.isLoginFailed = false;
-
+       
         this.isVerified = true;
       },
       (err) => {
@@ -67,7 +68,7 @@ export class LoginComponent implements OnInit {
         }
         this.errorMessage = err;
         this.isLoginFailed = true;
-        this.isLoading = false;
+        this.isLoading = false
       }
     );
   }
