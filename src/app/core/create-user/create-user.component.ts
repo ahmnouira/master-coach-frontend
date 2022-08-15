@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { TokenStorageService } from '../../services/token-storage.service';
 import { Title } from '@angular/platform-browser';
 import { Animations } from '../../shared/animations';
-import { UserService } from '../../services/user-service.service';
 
 @Component({
   selector: 'app-create-user',
@@ -17,11 +15,10 @@ export class CreateUserComponent implements OnInit {
     username: null,
     email: null,
     password: null,
-    urssaf: null,
     confirmPassword: null,
   };
-  isLoggedIn = false;
-  isLoginFailed = false;
+  isLoading = false;
+  isLoginFailed = false;  // when action is failed 
   errorMessage = '';
   accountType = 'Coach';
   constructor(
@@ -39,6 +36,9 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
+ 
+  // TODO: Remove this?!
+  /*
   login() {
     const { email, password } = this.form;
     if (email.toString().includes('admin'))
@@ -48,17 +48,21 @@ export class CreateUserComponent implements OnInit {
     else if (email.toString().includes('client'))
       this.router.navigate(['/pages/coach/parametre']);
   }
+  */
 
   createUser() {
     this.form.role = this.accountType;
+    this.isLoading = true
     this.authService.register(this.form).subscribe(
       (res) => {
-        console.log('createUser', res);
+        console.log('createUser:', res);
+        this.isLoading = false
         this.router.navigate(['/']);
       },
       (error) => {
-        this.errorMessage = error;
         console.error(this.errorMessage);
+        this.isLoading = false
+        this.errorMessage = error;
         this.isLoginFailed = true;
       }
     );

@@ -52,6 +52,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
     ModalSuccesComponent,
+    LoaderComponent
   ],
 })
 export class SharedModule {}

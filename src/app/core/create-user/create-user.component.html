@@ -9,7 +9,6 @@
     <div class="login-form">
       <form
         class="login-form"
-        *ngIf="!isLoggedIn"
         [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
         name="form"
         #f="ngForm"
@@ -125,11 +124,12 @@
         <div class="d-flex">
           <button
             type="submit"
-            [disabled]="!f.form.valid"
+            [disabled]="!f.form.valid || isLoading"
             class="btn btn-submit raised-button"
             (click)="createUser()"
           >
-            Créer
+            <span *ngIf="!isLoading">Créer</span>
+            <app-loader *ngIf="isLoading"></app-loader>
           </button>
         </div>
         <div class="form-group">

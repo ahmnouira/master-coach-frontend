@@ -27,7 +27,6 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    sessionStorage.setItem('route', 'forgot-password')
 
   }
 
