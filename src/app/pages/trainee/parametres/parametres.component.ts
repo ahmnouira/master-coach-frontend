@@ -3,6 +3,7 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 import { UserService } from '../../../services/user-service.service';
 import { AdminService } from '../../../services/admin.service';
 import { User } from '../../../core/models/user-model';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-parametres',
@@ -24,6 +25,7 @@ export class ParametresComponent implements OnInit {
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
+    private authService: AuthService,
     private adminService: AdminService
   ) {}
 
@@ -77,10 +79,11 @@ export class ParametresComponent implements OnInit {
       }
     );
     if (this.newPassword != '' && this.newPassword == this.confirmPassword) {
-      this.userService
+      this.authService
         .resetPassword({
-          email: this.form.email,
-          new_password: this.newPassword,
+          password: this.form.password,
+
+          token: '',
         })
         .subscribe(
           (res) => {},

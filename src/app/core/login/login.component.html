@@ -21,7 +21,6 @@
       <div class="login-form">
         <form
           class="login-form"
-          *ngIf="!isLoggedIn"
           [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
           name="form"
           #f="ngForm"
@@ -76,12 +75,18 @@
           </div>
 
           <div class="d-flex">
-            <button (click)="login()" class="btn btn-submit raised-button">
-              Se connecter
+            <button
+              (click)="login()"
+              class="btn btn-submit raised-button"
+              [disabled]="isLoading"
+            >
+              <span *ngIf="!isLoading">Se connecter</span>
+              <app-loader *ngIf="isLoading"></app-loader>
             </button>
           </div>
+
           <div class="d-flex justify-content-end">
-            <a class="login-forgotten-pass" routerLink="/core/reset-password"
+            <a class="login-forgotten-pass" routerLink="/core/forgot-password"
               >Mot de passe oublié ?</a
             >
           </div>
@@ -106,6 +111,21 @@
               *ngIf="f.submitted && isLoginFailed"
             >
               L'authentification a echoué: {{ errorMessage }}
+            </div>
+          </div>
+
+          <div class="" *ngIf="!isVerified">
+            <button
+              class="btn btn-submit-secondary raised-button"
+              (click)="verifyEmail()"
+            >
+              Verify email
+            </button>
+          </div>
+
+          <div class="form-group">
+            <div class="alert alert-info" role="alert" *ngIf="successMessage">
+              {{ successMessage }}
             </div>
           </div>
         </form>

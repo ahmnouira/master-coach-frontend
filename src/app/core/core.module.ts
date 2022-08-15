@@ -5,9 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { CoreRoutingModule } from './core-routing.module';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [LoginComponent, CreateUserComponent, ResetPasswordComponent],
-  imports: [CoreRoutingModule, CommonModule, FormsModule],
+  declarations: [
+    LoginComponent,
+    CreateUserComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    ConfirmEmailComponent,
+  ],
+  imports: [CoreRoutingModule, CommonModule, FormsModule, SharedModule],
 })
 export class CoreModule {}

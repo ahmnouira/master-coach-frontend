@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { TokenStorageService } from '../../services/token-storage.service';
-import { Title } from '@angular/platform-browser';
 import { Animations } from '../../shared/animations';
-import { UserService } from '../../services/user-service.service';
+import { RouteService } from 'src/app/services/route-service/route.service';
 
 @Component({
   selector: 'app-create-user',
@@ -17,30 +14,29 @@ export class CreateUserComponent implements OnInit {
     username: null,
     email: null,
     password: null,
-    urssaf: null,
     confirmPassword: null,
   };
-  isLoggedIn = false;
-  isLoginFailed = false;
+  isLoading = false;
+  isLoginFailed = false;  // when action is failed 
   errorMessage = '';
   accountType = 'Coach';
   constructor(
-    public router: Router,
+    private routeService: RouteService,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService,
-    private titleService: Title,
-    private userService: UserService,
-    private activatedRoute: ActivatedRoute
   ) {
-    this.titleService.setTitle('MasterCoach - Creation de compte');
+    this.routeService.setTitle('MasterCoach - Creation de compte');
   }
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
+
+  ngOnInit(): void {  
+    this.routeService.activatedRoute.params.subscribe((params) => {
       this.accountType = params['type'] == 'coach' ? 'Coach' : 'Client';
     });
   }
 
+ 
+  // TODO: Remove this?!
+  /*
   login() {
     const { email, password } = this.form;
     if (email.toString().includes('admin'))
@@ -50,16 +46,21 @@ export class CreateUserComponent implements OnInit {
     else if (email.toString().includes('client'))
       this.router.navigate(['/pages/coach/parametre']);
   }
+  */
 
   createUser() {
     this.form.role = this.accountType;
-    this.userService.saveUser(this.form).subscribe(
+    this.isLoading = true
+    this.authService.register(this.form).subscribe(
       (res) => {
-        this.router.navigate(['/']);
+        console.log('createUser:', res);
+        this.isLoading = false
+        this.routeService.navigate(['/']);
       },
       (error) => {
-        this.errorMessage = error;
         console.error(this.errorMessage);
+        this.isLoading = false
+        this.errorMessage = error;
         this.isLoginFailed = true;
       }
     );
