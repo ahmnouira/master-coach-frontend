@@ -1,9 +1,6 @@
 body {
   background-color: #ffffff !important;
 }
-:host {
-  background-color: #ffffff !important;
-}
 #main-container-login {
   /* Layout Properties */
 
@@ -13,7 +10,7 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
-  background-color: var(--global-bg-color-effafd) !important;
+  background-color: white;
   margin: 0;
 }
 
@@ -47,7 +44,7 @@ body {
   }
 }
 .right-login-pane {
-  margin: 10px 28px;
+  margin: 29px 28px;
   justify-content: center;
 
   .image {

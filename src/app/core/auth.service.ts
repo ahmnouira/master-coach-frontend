@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable,} from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { BaseService } from '../services/base-service/base.service';
+import { IConfirmEmail } from './interfaces/confirm-email';
 import { IForgotPassword } from './interfaces/forgot-password';
+import { IResendVerification } from './interfaces/resend-verification';
 import { IResetPassword } from './interfaces/reset-password';
 
 @Injectable({
@@ -15,7 +17,7 @@ export class AuthService extends BaseService {
   login(email: string, password: string): Observable<any> {
     return this.httpClient
       .post<any>(
-        this.baseUri,
+        this.baseUri  + '/login',
         JSON.stringify({ email: email, password: password }),
         this.httpOptions
       )
@@ -44,13 +46,35 @@ export class AuthService extends BaseService {
   }
 
 
-  forgotPassword(forgotPassword: IForgotPassword) : Observable<any> {
+  forgotPassword(forgotPasswordData: IForgotPassword) : Observable<any> {
     return this.httpClient
       .post<any>(
         this.baseUri + '/forgot_password',
-        JSON.stringify(forgotPassword),
+        JSON.stringify(forgotPasswordData),
         this.httpOptions
       )
       .pipe(catchError(this.handleError));
   }
-}
+
+  confirmEmail(confirmPasswordData: IConfirmEmail) : Observable<any>  {
+      return this.httpClient
+      .post<any>(
+        this.baseUri + '/verify_email',
+        JSON.stringify(confirmPasswordData),
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  resendVerification(resendVerificationData: IResendVerification) {
+    return this.httpClient
+    .post<any>(
+      this.baseUri + '/resend_verification',
+      JSON.stringify(resendVerificationData),
+      this.httpOptions
+    )
+    .pipe(catchError(this.handleError));
+  }
+
+
+    }

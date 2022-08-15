@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 const routes: Routes = [
 
@@ -26,6 +27,10 @@ const routes: Routes = [
     component: ForgotPasswordComponent
   },
 
+  {
+    path: 'email-confirmed', 
+    component: ConfirmEmailComponent
+  }
 
 ];
 

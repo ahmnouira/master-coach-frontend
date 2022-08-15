@@ -1,0 +1,22 @@
+<div id="main-container-login" class="row">
+  <div class="col right-login-pane">
+    <div class="image">
+      <img src="assets/img/login/mastercoach.svg" alt="left-pane-image" />
+    </div>
+    <div class="welcome-title">
+      <span>Confirm mot de passe !</span>
+    </div>
+    <div class="center">
+      <div class="form-group">
+        <h1 *ngIf="loading">Confirming....</h1>
+        <div class="alert alert-info" role="alert" *ngIf="successMessage">
+          {{ successMessage }}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+          {{ errorMessage }}
+          <a routerLink="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
