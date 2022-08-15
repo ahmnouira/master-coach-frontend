@@ -9,7 +9,13 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 @NgModule({
-  declarations: [LoginComponent, CreateUserComponent, ResetPasswordComponent, ForgotPasswordComponent, ConfirmEmailComponent],
+  declarations: [
+    LoginComponent,
+    CreateUserComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    ConfirmEmailComponent,
+  ],
   imports: [CoreRoutingModule, CommonModule, FormsModule],
 })
 export class CoreModule {}

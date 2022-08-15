@@ -6,8 +6,15 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
+const route =sessionStorage.getItem('route')
+
 const routes: Routes = [
 
+  {
+    path: '',
+    redirectTo: route ?? 'login',
+    pathMatch :'full'
+  },
   {
     path: 'login',
     component: LoginComponent,
@@ -23,14 +30,15 @@ const routes: Routes = [
   },
 
   {
-    path: 'forgot-password', 
-    component: ForgotPasswordComponent
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
   },
 
   {
-    path: 'email-confirmed', 
-    component: ConfirmEmailComponent
-  }
+    path: 'email-confirmed',
+    component: ConfirmEmailComponent,
+  },
+
 
 ];
 

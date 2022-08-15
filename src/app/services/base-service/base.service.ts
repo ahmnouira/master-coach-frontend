@@ -4,13 +4,10 @@ import { throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export  class BaseService{
-
-
+export class BaseService {
   baseUri = environment.apiUrl + '/api';
-
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,11 +19,7 @@ export  class BaseService{
     }),
   };
 
-  constructor(protected httpClient: HttpClient) {
-
- 
-
-  }
+  constructor(protected httpClient: HttpClient) {}
 
   /* TODO: fix  deprecated */
   handleError(error: any) {
@@ -35,12 +28,12 @@ export  class BaseService{
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
-      // Get server-side error    
+      // Get server-side error
       // console.log("error.error", error)
-      errorMessage = error.error.error
+      errorMessage = error.error.error;
     }
     //window.alert(errorMessage);
     /* TODO: change deprecated */
-    return throwError(errorMessage)
+    return throwError(errorMessage);
   }
 }

@@ -81,10 +81,8 @@ export class ParametresComponent implements OnInit {
     if (this.newPassword != '' && this.newPassword == this.confirmPassword) {
       this.authService
         .resetPassword({
-
           password: this.form.password,
 
-          
           token: '',
         })
         .subscribe(

@@ -21,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  token = ''; 
+  token = '';
   constructor(
     public router: Router,
     private authService: AuthService,
@@ -34,36 +34,31 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getToken()
+    this.getToken();
   }
 
   getToken() {
     this.route.queryParamMap.subscribe((params) => {
-      console.log('params', params.get('token'))
+      console.log('params', params.get('token'));
       //this.paramsObject = { ...params.keys, ...params };
-       this.token =  params.get('token');
+      this.token = params.get('token');
     });
   }
-  
 
   async restPassword() {
-    const {  password, confirmPassword } = this.form;
+    const { password, confirmPassword } = this.form;
 
-  
-    if(!password || !confirmPassword) return
+    if (!password || !confirmPassword) return;
 
-    
-    this.authService
-      .resetPassword({ password, token: this.token })
-      .subscribe(
-        (res) => {
-          this.router.navigate(['/core/login']);
-        },
-        (error) => {
-          this.errorMessage = error;
-          console.error(this.errorMessage);
-          this.isLoginFailed = true;
-        }
-      );
+    this.authService.resetPassword({ password, token: this.token }).subscribe(
+      (res) => {
+        this.router.navigate(['/core/login']);
+      },
+      (error) => {
+        this.errorMessage = error;
+        console.error(this.errorMessage);
+        this.isLoginFailed = true;
+      }
+    );
   }
 }

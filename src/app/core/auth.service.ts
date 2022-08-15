@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable,} from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { BaseService } from '../services/base-service/base.service';
 import { IConfirmEmail } from './interfaces/confirm-email';
@@ -10,20 +10,16 @@ import { IResetPassword } from './interfaces/reset-password';
 @Injectable({
   providedIn: 'root',
 })
-
-
 export class AuthService extends BaseService {
-
   login(email: string, password: string): Observable<any> {
     return this.httpClient
       .post<any>(
-        this.baseUri  + '/login',
+        this.baseUri + '/login',
         JSON.stringify({ email: email, password: password }),
         this.httpOptions
       )
       .pipe(retry(0), catchError(this.handleError));
   }
-
 
   register(user: any): Observable<any> {
     return this.httpClient
@@ -35,7 +31,7 @@ export class AuthService extends BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  resetPassword(resetPasswordData: IResetPassword) : Observable<any> {
+  resetPassword(resetPasswordData: IResetPassword): Observable<any> {
     return this.httpClient
       .post<any>(
         this.baseUri + '/reset_password',
@@ -45,8 +41,7 @@ export class AuthService extends BaseService {
       .pipe(catchError(this.handleError));
   }
 
-
-  forgotPassword(forgotPasswordData: IForgotPassword) : Observable<any> {
+  forgotPassword(forgotPasswordData: IForgotPassword): Observable<any> {
     return this.httpClient
       .post<any>(
         this.baseUri + '/forgot_password',
@@ -56,8 +51,8 @@ export class AuthService extends BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  confirmEmail(confirmPasswordData: IConfirmEmail) : Observable<any>  {
-      return this.httpClient
+  confirmEmail(confirmPasswordData: IConfirmEmail): Observable<any> {
+    return this.httpClient
       .post<any>(
         this.baseUri + '/verify_email',
         JSON.stringify(confirmPasswordData),
@@ -68,13 +63,11 @@ export class AuthService extends BaseService {
 
   resendVerification(resendVerificationData: IResendVerification) {
     return this.httpClient
-    .post<any>(
-      this.baseUri + '/resend_verification',
-      JSON.stringify(resendVerificationData),
-      this.httpOptions
-    )
-    .pipe(catchError(this.handleError));
+      .post<any>(
+        this.baseUri + '/resend_verification',
+        JSON.stringify(resendVerificationData),
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError));
   }
-
-
-    }
+}

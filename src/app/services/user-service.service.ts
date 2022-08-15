@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
-import { Observable,  } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BaseService } from './base-service/base.service';
 
@@ -8,7 +8,6 @@ import { BaseService } from './base-service/base.service';
   providedIn: 'root',
 })
 export class UserService extends BaseService {
-
   getAllUser() {
     return this.httpClient.get(this.baseUri + '/all_users');
   }
@@ -51,5 +50,4 @@ export class UserService extends BaseService {
       .delete<any>(this.baseUri + '/delete_user/' + id, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
-
 }

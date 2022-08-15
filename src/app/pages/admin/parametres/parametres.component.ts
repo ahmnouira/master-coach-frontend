@@ -81,7 +81,7 @@ export class ParametresComponent implements OnInit {
         .resetPassword({
           password: this.form.password,
           // new_password: this.newPassword,
-          token: ''
+          token: '',
         })
         .subscribe(
           (res) => {},

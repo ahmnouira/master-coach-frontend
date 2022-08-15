@@ -53,7 +53,7 @@ export class CreateUserComponent implements OnInit {
     this.form.role = this.accountType;
     this.authService.register(this.form).subscribe(
       (res) => {
-        console.log("createUser", res)
+        console.log('createUser', res);
         this.router.navigate(['/']);
       },
       (error) => {
