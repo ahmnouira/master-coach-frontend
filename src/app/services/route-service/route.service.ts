@@ -20,12 +20,15 @@ export class RouteService {
     this.titleService.setTitle(newTitle);
   }
 
-  public navigate(paths: string [], extras?: NavigationExtras): Promise<boolean> {
-    return this.router.navigate(paths, extras)
+  public navigate(
+    paths: string[],
+    extras?: NavigationExtras
+  ): Promise<boolean> {
+    return this.router.navigate(paths, extras);
   }
 
   public get getToken(): string {
-    this.getTokenFormRoute()
+    this.getTokenFormRoute();
     return this.token;
   }
 

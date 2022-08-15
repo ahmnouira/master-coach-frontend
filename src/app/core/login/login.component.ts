@@ -1,11 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
-import { Title } from '@angular/platform-browser';
 import { Animations } from '../../shared/animations';
-import { UserService } from '../../services/user-service.service';
-import { retry } from 'rxjs';
 import { RouteService } from 'src/app/services/route-service/route.service';
 
 @Component({
@@ -46,9 +42,8 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe(
       (authData) => {
-        this.isLoading = false
+        this.isLoading = false;
         console.log('authData:', authData);
-
 
         /*
               if (user.role.toLowerCase() === 'admin') {
@@ -62,7 +57,7 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveTwilioToken(authData.twilio_token);
         this.tokenStorage.saveUser(authData);
         this.isLoginFailed = false;
-       
+
         this.isVerified = true;
       },
       (err) => {
@@ -72,7 +67,7 @@ export class LoginComponent implements OnInit {
         }
         this.errorMessage = err;
         this.isLoginFailed = true;
-        this.isLoading = false
+        this.isLoading = false;
       }
     );
   }

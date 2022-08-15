@@ -7,7 +7,6 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 
 const routes: Routes = [
- 
   {
     path: 'login',
     component: LoginComponent,
@@ -34,10 +33,9 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: 'login', 
-    pathMatch: 'full'
+    redirectTo: 'login',
+    pathMatch: 'full',
   },
-
 ];
 
 @NgModule({

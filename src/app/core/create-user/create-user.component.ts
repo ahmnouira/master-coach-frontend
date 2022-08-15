@@ -17,24 +17,22 @@ export class CreateUserComponent implements OnInit {
     confirmPassword: null,
   };
   isLoading = false;
-  isLoginFailed = false;  // when action is failed 
+  isLoginFailed = false; // when action is failed
   errorMessage = '';
   accountType = 'Coach';
   constructor(
     private routeService: RouteService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     this.routeService.setTitle('MasterCoach - Creation de compte');
   }
 
-
-  ngOnInit(): void {  
+  ngOnInit(): void {
     this.routeService.activatedRoute.params.subscribe((params) => {
       this.accountType = params['type'] == 'coach' ? 'Coach' : 'Client';
     });
   }
 
- 
   // TODO: Remove this?!
   /*
   login() {
@@ -50,16 +48,16 @@ export class CreateUserComponent implements OnInit {
 
   createUser() {
     this.form.role = this.accountType;
-    this.isLoading = true
+    this.isLoading = true;
     this.authService.register(this.form).subscribe(
       (res) => {
         console.log('createUser:', res);
-        this.isLoading = false
+        this.isLoading = false;
         this.routeService.navigate(['/']);
       },
       (error) => {
         console.error(this.errorMessage);
-        this.isLoading = false
+        this.isLoading = false;
         this.errorMessage = error;
         this.isLoginFailed = true;
       }

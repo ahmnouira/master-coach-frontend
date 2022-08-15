@@ -26,26 +26,24 @@ export class ForgotPasswordComponent implements OnInit {
     this.routeService.setTitle('MasterCoach - Oublier mot de passe');
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   async forgotPassword() {
     const { email } = this.form;
 
-    if(!email) return
+    if (!email) return;
 
-    this.isLoading = true
+    this.isLoading = true;
     this.authService.forgotPassword({ email }).subscribe(
       (res) => {
         console.log('res', res.success, res.data);
         if (res.success && res.data) {
           this.successMessage = res.data;
-          this.isLoading = false
-        } 
+          this.isLoading = false;
+        }
       },
       (error) => {
-        this.isLoading = false
+        this.isLoading = false;
         this.errorMessage = error;
         console.error(this.errorMessage);
         this.isLoginFailed = true;
