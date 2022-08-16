@@ -46,7 +46,7 @@ export class NotificationService {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-   console.error(errorMessage);
+    console.error(errorMessage);
     return throwError(errorMessage);
   }
 }

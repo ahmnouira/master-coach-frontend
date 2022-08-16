@@ -64,7 +64,7 @@ export class UsersEditComponent implements OnInit {
         this.userCategory = res;
       },
       (error) => {
-       console.error(error.message);
+        console.error(error.message);
       }
     );
   }
@@ -75,7 +75,7 @@ export class UsersEditComponent implements OnInit {
         this.userCompetences = res;
       },
       (error) => {
-       console.error(error.message);
+        console.error(error.message);
       }
     );
   }
@@ -86,7 +86,7 @@ export class UsersEditComponent implements OnInit {
         this.userAccred = res;
       },
       (error) => {
-       console.error(error.message);
+        console.error(error.message);
       }
     );
   }
@@ -101,7 +101,7 @@ export class UsersEditComponent implements OnInit {
         this.router.navigateByUrl('/pages/admin/users/list');
       },
       (error) => {
-       console.error(error.message);
+        console.error(error.message);
       }
     );
   }

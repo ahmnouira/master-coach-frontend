@@ -31,9 +31,7 @@ export class LoginComponent implements OnInit {
     this.routeService.setTitle('MasterCoach - Login');
   }
   ngOnInit(): void {
-
-    this.routeService
-
+    this.routeService;
   }
 
   async login() {

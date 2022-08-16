@@ -20,7 +20,7 @@ export class RouteService extends SessionStorageService {
     public router: Router,
     private titleService: Title
   ) {
-    super()
+    super();
     // this.getTokenFormRoute();
   }
 
@@ -43,7 +43,7 @@ export class RouteService extends SessionStorageService {
   }
 
   public saveRoute(name: string) {
-    this.setItem("navigation", name)
+    this.setItem('navigation', name);
   }
 
   public get getToken(): string {
