@@ -17,6 +17,7 @@ import { ModalSuccesComponent } from './components/modal-succes/modal-succes.com
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ImportIconComponent } from './icons/import-icon/import-icon.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     ModalSuccesComponent,
     CommandeDetailComponent,
     LoaderComponent,
+    ImportIconComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +55,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     VisioConferenceComponent,
     ModalSuccesComponent,
     LoaderComponent,
+    ImportIconComponent
   ],
 })
 export class SharedModule {}
