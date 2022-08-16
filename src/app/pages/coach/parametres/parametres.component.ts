@@ -147,6 +147,8 @@ export class ParametresComponent implements OnInit {
     this.confirmPasswordChangedFlag = this.form.password.length > 0;
   }
 
+
+  // cin front
   importCINFront(event: any) {
     const reader = new FileReader();
 
@@ -154,7 +156,6 @@ export class ParametresComponent implements OnInit {
       const [file] = event.target.files;
       console.log(file);
       reader.readAsDataURL(file);
-
       reader.onload = () => {
         console.log(reader.result);
         this.form.cinF = reader.result as string;
