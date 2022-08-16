@@ -36,14 +36,12 @@ export class ConfirmEmailComponent implements OnInit, AfterViewInit {
   }
 
   async confirmEmail() {
-
-    console.log("token", this.token)
     this.authService
       .confirmEmail({ token: this.token })
       .subscribe(
         (res) => {
-          console.log('res:', res, res.success, res.data);
-          if (res.success && res.data) {
+          console.log('res:', res, res.success, res.message);
+          if (res.success && res.message) {
             this.successMessage = true
             this.isLoading = false;
           } 

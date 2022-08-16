@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { Animations } from 'src/app/shared/animations';
+import { UserRole } from 'src/app/models/role.enum';
 
 @Component({
   selector: 'app-login',
@@ -74,6 +75,13 @@ export class LoginComponent implements OnInit  {
       }
     );
   }
+
+  createUser(role: string) {
+    this.authService.setUserRole = role as UserRole
+    this.routeService.navigateByUrl(`/create-user/${role.toLowerCase()}`)
+  }
+
+
 
   verifyEmail(): void {
     const { email } = this.form;
