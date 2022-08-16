@@ -73,7 +73,7 @@ export class ParametresComponent implements OnInit {
     this.userService.updateUser(this.form, this.form._id).subscribe(
       (res) => {},
       (error) => {
-        window.alert(error.message);
+        console.error(error.message);
       }
     );
     if (this.newPassword != '' && this.newPassword == this.confirmPassword) {

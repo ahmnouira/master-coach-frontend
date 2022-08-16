@@ -21,15 +21,10 @@ export class BaseService {
 
   constructor(protected httpClient: HttpClient) {}
 
-
   post<T = any, R = any>(url: string, data: T): Observable<R> {
     return this.httpClient
-    .post<R>(
-      this.baseUri + url,
-      JSON.stringify(data),
-      this.httpOptions
-    )
-    .pipe(catchError(this.handleError));
+      .post<R>(this.baseUri + url, JSON.stringify(data), this.httpOptions)
+      .pipe(catchError(this.handleError));
   }
 
   /* TODO: fix  deprecated */

@@ -8,18 +8,17 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
 
-{
-    path: '', 
-    redirectTo: 'login', 
-    pathMatch: 'full'
-},
-
- {
+  {
     path: 'login',
     component: LoginComponent,
     pathMatch: 'full',
-  }, 
+  },
 
   {
     path: 'create-user/:type',
@@ -45,11 +44,9 @@ const routes: Routes = [
     pathMatch: 'full',
   },
 
-  {path: 'verify-email', component: VerifyEmailComponent, pathMatch: 'full'},
+  { path: 'verify-email', component: VerifyEmailComponent, pathMatch: 'full' },
 
-  {path: '**', component: LoginComponent}
-
- 
+  { path: '**', component: LoginComponent },
 ];
 
 @NgModule({

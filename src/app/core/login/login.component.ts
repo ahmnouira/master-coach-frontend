@@ -9,10 +9,9 @@ import { UserRole } from 'src/app/models/role.enum';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
- animations: Animations,
-
+  animations: Animations,
 })
-export class LoginComponent implements OnInit  {
+export class LoginComponent implements OnInit {
   form: any = {
     email: null,
     password: null,
@@ -21,19 +20,18 @@ export class LoginComponent implements OnInit  {
   isLoginFailed = false;
   errorMessage = '';
   isVerified = true;
-
   successMessage = '';
 
   @ViewChild('main') elem: ElementRef;
   constructor(
     private authService: AuthService,
     private routeService: RouteService,
-    private tokenStorage: TokenStorageService,
+    private tokenStorage: TokenStorageService
   ) {
     this.routeService.setTitle('MasterCoach - Login');
   }
   ngOnInit(): void {
-    
+    this.routeService;
   }
 
   async login() {
@@ -45,16 +43,16 @@ export class LoginComponent implements OnInit  {
 
     this.authService.login(email, password).subscribe(
       (authData) => {
-        this.isLoading = false
+        this.isLoading = false;
         console.log('authData:', authData);
         this.tokenStorage.saveToken(authData.token);
         this.tokenStorage.saveTwilioToken(authData.twilio_token);
         this.tokenStorage.saveUser(authData);
         this.isLoginFailed = false;
-       
+
         this.isVerified = true;
-        
-        console.log('role', authData.role)
+
+        console.log('role', authData.role);
 
         if (authData.role.toLowerCase() === 'admin') {
           this.routeService.navigateByUrl('/pages/admin/users/list');
@@ -71,23 +69,20 @@ export class LoginComponent implements OnInit  {
         }
         this.errorMessage = err;
         this.isLoginFailed = true;
-        this.isLoading = false
+        this.isLoading = false;
       }
     );
   }
 
   createUser(role: string) {
-    this.authService.setUserRole = role as UserRole
-    this.routeService.navigateByUrl(`/create-user/${role.toLowerCase()}`)
+    this.authService.setUserRole = role as UserRole;
+    this.routeService.navigateByUrl(`/create-user/${role.toLowerCase()}`);
   }
-
-
 
   verifyEmail(): void {
     const { email } = this.form;
     if (!email) return;
-    this.authService.setResendEmail = email
-    this.routeService.navigate(['verify-email'])
-}
-
+    this.authService.setResendEmail = email;
+    this.routeService.navigate(['verify-email']);
+  }
 }
