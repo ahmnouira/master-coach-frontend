@@ -139,7 +139,7 @@ export class CcListComponent implements OnInit {
           window.location.reload();
         },
         (error) => {
-          window.alert(error.message);
+         console.error(error.message);
         }
       );
   }

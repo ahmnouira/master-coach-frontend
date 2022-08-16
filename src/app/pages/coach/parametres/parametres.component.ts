@@ -81,7 +81,7 @@ export class ParametresComponent implements OnInit {
         window.location.reload();
       },
       (error) => {
-        window.alert(error.message);
+       console.error(error.message);
       }
     );
     if (this.newPassword != '' && this.newPassword == this.confirmPassword) {
@@ -111,7 +111,7 @@ export class ParametresComponent implements OnInit {
         this.userCategory = res;
       },
       (error) => {
-        window.alert(error.message);
+       console.error(error.message);
       }
     );
   }
@@ -123,7 +123,7 @@ export class ParametresComponent implements OnInit {
         this.userCompetences = res;
       },
       (error) => {
-        window.alert(error.message);
+       console.error(error.message);
       }
     );
   }
@@ -135,7 +135,7 @@ export class ParametresComponent implements OnInit {
         this.userAccred = res;
       },
       (error) => {
-        window.alert(error.message);
+       console.error(error.message);
       }
     );
   }
@@ -147,6 +147,8 @@ export class ParametresComponent implements OnInit {
     this.confirmPasswordChangedFlag = this.form.password.length > 0;
   }
 
+
+  // cin front
   importCINFront(event: any) {
     const reader = new FileReader();
 
@@ -154,7 +156,6 @@ export class ParametresComponent implements OnInit {
       const [file] = event.target.files;
       console.log(file);
       reader.readAsDataURL(file);
-
       reader.onload = () => {
         console.log(reader.result);
         this.form.cinF = reader.result as string;
