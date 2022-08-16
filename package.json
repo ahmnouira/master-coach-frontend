@@ -9,6 +9,7 @@
   "scripts": {
     "serve": "ng serve",
     "build": "ng build --verbose --progress",
+    "build:prod": "ng build",
     "start": "http-server dist --cors",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
