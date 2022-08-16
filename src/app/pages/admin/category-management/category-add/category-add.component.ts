@@ -48,7 +48,7 @@ export class CategoryAddComponent implements OnInit {
         this.router.navigateByUrl('/pages/admin/categories/list');
       },
       (error) => {
-       console.error(error.message);
+        console.error(error.message);
       }
     );
   }

@@ -8,9 +8,8 @@ describe('ImportIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImportIconComponent ]
-    })
-    .compileComponents();
+      declarations: [ImportIconComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ImportIconComponent);
     component = fixture.componentInstance;

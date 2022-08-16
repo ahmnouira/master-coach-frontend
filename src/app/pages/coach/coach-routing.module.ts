@@ -12,6 +12,7 @@ import { ListTeamsComponent } from './list-teams/list-teams.component';
 import { MyAppointmentsComponent } from './my-appointments/my-appointments.component';
 import { MessagerieComponent } from 'src/app/shared/components/messagerie/messagerie.component';
 import { BoutiqueComponent } from './boutique/boutique.component';
+import { PlansComponent } from './plans/plans.component';
 
 const routes: Routes = [
   { path: 'profil', component: ProfilCoachComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'coach-client/team/edit', component: EditFormQuizComponent },
   { path: 'calendar', component: MyAppointmentsComponent },
   { path: 'boutique', component: BoutiqueComponent },
+  { path: 'plans', component: PlansComponent },
 ];
 
 @NgModule({

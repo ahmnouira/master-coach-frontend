@@ -81,7 +81,7 @@ export class ParametresComponent implements OnInit {
         window.location.reload();
       },
       (error) => {
-       console.error(error.message);
+        console.error(error.message);
       }
     );
     if (this.newPassword != '' && this.newPassword == this.confirmPassword) {
@@ -111,7 +111,7 @@ export class ParametresComponent implements OnInit {
         this.userCategory = res;
       },
       (error) => {
-       console.error(error.message);
+        console.error(error.message);
       }
     );
   }
@@ -123,7 +123,7 @@ export class ParametresComponent implements OnInit {
         this.userCompetences = res;
       },
       (error) => {
-       console.error(error.message);
+        console.error(error.message);
       }
     );
   }
@@ -135,7 +135,7 @@ export class ParametresComponent implements OnInit {
         this.userAccred = res;
       },
       (error) => {
-       console.error(error.message);
+        console.error(error.message);
       }
     );
   }
@@ -146,7 +146,6 @@ export class ParametresComponent implements OnInit {
   confirmPasswordChanged() {
     this.confirmPasswordChangedFlag = this.form.password.length > 0;
   }
-
 
   // cin front
   importCINFront(event: any) {

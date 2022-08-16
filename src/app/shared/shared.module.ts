@@ -58,7 +58,7 @@ import { FileImportedComponent } from './components/file-imported/file-imported.
     ModalSuccesComponent,
     LoaderComponent,
     ImportIconComponent,
-    FileImportedComponent
+    FileImportedComponent,
   ],
 })
 export class SharedModule {}
