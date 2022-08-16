@@ -183,9 +183,9 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
                 [attr.href]="
                   sanitizer.bypassSecurityTrustResourceUrl(form.cinF)
                 "
-                download="cin-{{ form.nom }}-{{ form.prenom }}.pdf"
-                title="cin-{{ form.nom }}-{{ form.prenom }}.pdf"
-                >cin-{{ form.nom }}-{{ form.prenom }}.pdf</a
+                download="cinF-{{ form.nom }}-{{ form.prenom }}.pdf"
+                title="cinF-{{ form.nom }}-{{ form.prenom }}.pdf"
+                >cinF-{{ form.nom }}-{{ form.prenom }}.pdf</a
               >
               <img
                 (click)="form.cinF = ''"
@@ -194,6 +194,17 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
               />
             </div>
           </div>
+
+          <!-- 
+          <app-file-imported
+            *ngIf="form.cinF"
+            [label]="C.N.I Front"
+            [name]="cinF"
+            [sanitizer]="{{form.cinF}}"
+            [title]="cin-{{ form.nom }}-{{ form.prenom }}.pdf"
+          >
+          </app-file-imported>
+          -->
 
           <!-- CIN  Back -->
           <div *ngIf="!form.cinB" class="col-md-6 form-group">

@@ -18,6 +18,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ImportIconComponent } from './icons/import-icon/import-icon.component';
+import { FileImportedComponent } from './components/file-imported/file-imported.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ImportIconComponent } from './icons/import-icon/import-icon.component';
     CommandeDetailComponent,
     LoaderComponent,
     ImportIconComponent,
+    FileImportedComponent,
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ import { ImportIconComponent } from './icons/import-icon/import-icon.component';
     VisioConferenceComponent,
     ModalSuccesComponent,
     LoaderComponent,
-    ImportIconComponent
+    ImportIconComponent,
+    FileImportedComponent
   ],
 })
 export class SharedModule {}
