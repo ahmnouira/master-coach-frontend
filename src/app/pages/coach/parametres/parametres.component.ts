@@ -81,7 +81,7 @@ export class ParametresComponent implements OnInit {
         window.location.reload();
       },
       (error) => {
-        window.alert(error.message);
+       console.error(error.message);
       }
     );
     if (this.newPassword != '' && this.newPassword == this.confirmPassword) {
@@ -111,7 +111,7 @@ export class ParametresComponent implements OnInit {
         this.userCategory = res;
       },
       (error) => {
-        window.alert(error.message);
+       console.error(error.message);
       }
     );
   }
@@ -123,7 +123,7 @@ export class ParametresComponent implements OnInit {
         this.userCompetences = res;
       },
       (error) => {
-        window.alert(error.message);
+       console.error(error.message);
       }
     );
   }
@@ -135,7 +135,7 @@ export class ParametresComponent implements OnInit {
         this.userAccred = res;
       },
       (error) => {
-        window.alert(error.message);
+       console.error(error.message);
       }
     );
   }
