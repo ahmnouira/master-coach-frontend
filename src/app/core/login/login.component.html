@@ -118,12 +118,13 @@
           <div class="create-account">
             <button
               class="btn btn-submit-secondary raised-button"
-              routerLink="/create-user/coach"
+              (click)="createUser('Coach')"
             >
               Créer mon compte coach
             </button>
             <button
               class="btn btn-submit-secondary raised-button"
+              (click)="createUser('Client')"
               routerLink="/create-user/client"
             >
               Créer mon compte coaché.e

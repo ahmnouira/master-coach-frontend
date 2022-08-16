@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Animations } from '../../shared/animations';
 import { RouteService } from 'src/app/services/route-service/route.service';
+import { UserRole } from 'src/app/models/role.enum';
 
 @Component({
   selector: 'app-create-user',
@@ -15,6 +16,7 @@ export class CreateUserComponent implements OnInit {
     email: null,
     password: null,
     confirmPassword: null,
+    role: UserRole
   };
   isLoading = false;
   isLoginFailed = false; // when action is failed
@@ -27,36 +29,15 @@ export class CreateUserComponent implements OnInit {
   ) {
     this.routeService.setTitle('MasterCoach - Creation de compte');
   }
-
   ngOnInit(): void {
-    this.routeService.activatedRoute.params.subscribe((params) => {
-      console.log(params)
-
-      this.accountType = params['type'] == 'coach' ? 'Coach' : 'Client';
-    });
-
- 
-
+    this.form.role =   this.authService.getUserRole
+   
   }
-
-  // TODO: Remove this?!
-  /*
-  login() {
-    const { email, password } = this.form;
-    if (email.toString().includes('admin'))
-      this.router.navigate(['/pages/admin/users/list']);
-    else if (email.toString().includes('coach'))
-      this.router.navigate(['/pages/coach/parametre']);
-    else if (email.toString().includes('client'))
-      this.router.navigate(['/pages/coach/parametre']);
-  }
-  */
 
   createUser() {
-    this.form.role = this.accountType;
     this.isLoading = true;
-
-
+    console.log('form', this.form)
+  
     this.authService.register(this.form).subscribe(
       (res) => {
         console.log('createUser:', res);
