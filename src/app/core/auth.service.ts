@@ -1,47 +1,58 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { User } from './models/user-model';
-import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { UserRole } from '../models/role.enum';
+import { BaseService } from '../services/base-service/base.service';
+import { IConfirmEmail } from './interfaces/confirm-email';
+import { IForgotPassword } from './interfaces/forgot-password';
+import { IResendVerification } from './interfaces/resend-verification';
+import { IResetPassword } from './interfaces/reset-password';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
-  private baseUri = environment.apiUrl;
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers':
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-    }),
-  };
+export class AuthService extends BaseService {
 
-  constructor(private httpClient: HttpClient) {}
+  private  resendEmail =  ''
+
+  private userRole: UserRole 
 
   login(email: string, password: string): Observable<any> {
-    return this.httpClient
-      .post<any>(
-        this.baseUri + '/login',
-        JSON.stringify({ email: email, password: password }),
-        this.httpOptions
-      )
-      .pipe(retry(0), catchError(this.handleError));
+   return this.post("/login", {email, password})
+  }
+  register(user: any): Observable<any> {
+   return this.post("/create_user", user)
   }
 
-  handleError(error: any) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = `Error ${error.status} -  ${error.message.error.message}`;
-    }
-    //window.alert(errorMessage);
-    return throwError(errorMessage);
+  resetPassword(resetPasswordData: IResetPassword): Observable<any> {
+   return this.post("/reset_password", resetPasswordData)
+  }
+
+  forgotPassword(forgotPasswordData: IForgotPassword): Observable<any> {
+    return this.post("/forgot_password", forgotPasswordData)
+  }
+
+  confirmEmail(confirmPasswordData: IConfirmEmail): Observable<any> {
+    return this.post("/verify_email", confirmPasswordData)
+  }
+
+  resendVerification(resendVerificationData: IResendVerification) {
+    return this.post("/resend_verification", resendVerificationData)
+  }
+
+
+  set setUserRole (role: UserRole) {
+    this.userRole = role
+  }
+
+  get getUserRole () {
+    return this.userRole
+  }
+
+  set setResendEmail (email: string) {
+    this.resendEmail = email
+  }
+
+  get getResendEmail () {
+    return this.resendEmail
   }
 }

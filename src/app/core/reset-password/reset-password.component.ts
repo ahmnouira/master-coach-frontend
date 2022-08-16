@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { TokenStorageService } from '../../services/token-storage.service';
-import { Title } from '@angular/platform-browser';
 import { Animations } from '../../shared/animations';
-import { UserService } from '../../services/user-service.service';
+import { RouteService } from 'src/app/services/route-service/route.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,28 +14,35 @@ export class ResetPasswordComponent implements OnInit {
     email: null,
     password: null,
   };
-  isLoggedIn = false;
+  isLoading = false;
   isLoginFailed = false;
   errorMessage = '';
+
+  token = ""
   constructor(
-    public router: Router,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService,
-    private titleService: Title,
-    private userService: UserService
+    private routeService: RouteService
   ) {
-    this.titleService.setTitle('MasterCoach - Récupération de mot de passe');
+    this.routeService.setTitle('MasterCoach - Récupération de mot de passe');
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.token = this.routeService.getToken
+  }
 
-  async changePassword() {
-    const { email, password } = this.form;
-    this.userService
-      .resetPassword({ email: email, new_password: password })
+
+  async restPassword() {
+    const { password, confirmPassword } = this.form;
+
+    if (!password || !confirmPassword) return;
+
+    this.isLoading = true;
+
+    this.authService
+      .resetPassword({ password, token: this.token })
       .subscribe(
         (res) => {
-          this.router.navigate(['/core/login']);
+          this.routeService.navigate(['/core/login']);
         },
         (error) => {
           this.errorMessage = error;

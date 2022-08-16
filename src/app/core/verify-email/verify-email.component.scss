@@ -1,0 +1,54 @@
+body {
+    background-color: #ffffff !important;
+  }
+  #main-container-login {
+    /* Layout Properties */
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-color: white;
+    margin: 0;
+  }
+  
+  .col {
+    flex: 1; /* additionally, equal width */
+  
+    padding: 1em;
+  }
+  
+
+  .right-login-pane {
+    margin: 29px 28px;
+    justify-content: center;
+  
+    .image {
+      display: flex;
+      align-items: center;
+      img {
+        margin: 45px auto;
+      }
+    }
+    .welcome-title {
+      text-align: center;
+      span {
+        font: var(--global-font-style-normal) normal
+          var(--global-font-weight-normal) 30px/36px
+          var(--global-font-family-fredoka);
+        letter-spacing: var(--global-character-spacing-0);
+        text-align: center;
+        color: #ef6032;
+      }
+    }
+
+    a {
+        text-decoration: underline;
+        font-weight: bold;
+        cursor: pointer;
+    }
+  
+  }
+  

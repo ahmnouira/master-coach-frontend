@@ -5,8 +5,8 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { AuthService } from '../auth.service';
-import { TokenStorageService } from '../../services/token-storage.service';
+import { AuthService } from '../core/auth.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -24,9 +24,11 @@ export class AuthGuard implements CanActivate {
     }
 
     // not logged in so redirect to login page with the return url
+
     this.router.navigate(['/core/login'], {
       queryParams: { returnUrl: state.url },
     });
+
     return false;
   }
 }

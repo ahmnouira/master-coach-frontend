@@ -16,6 +16,7 @@ import { VisioConferenceComponent } from './components/visio-conference/visio-co
 import { ModalSuccesComponent } from './components/modal-succes/modal-succes.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     VisioConferenceComponent,
     ModalSuccesComponent,
     CommandeDetailComponent,
+    LoaderComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -50,6 +53,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
     ModalSuccesComponent,
+    LoaderComponent,
   ],
 })
 export class SharedModule {}

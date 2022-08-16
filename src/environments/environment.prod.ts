@@ -1,7 +1,6 @@
 export const environment = {
   production: true,
-
-  apiUrl: '/api',
+  apiUrl: 'https://mastercoach-api.innovant.studio',
   TWILIO_ACCOUNT_SID: 'ACa00a1b25450c592727057f4fe145085c',
   TWILIO_AUTH_TOKEN: 'db283cfd555ae4075776b408edea239c',
 

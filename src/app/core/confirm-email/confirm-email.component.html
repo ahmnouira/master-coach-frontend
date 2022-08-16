@@ -1,0 +1,28 @@
+<div id="main-container-login" class="row">
+  <div class="col right-login-pane">
+    <div class="image">
+      <img src="assets/img/login/mastercoach.svg" alt="left-pane-image" />
+    </div>
+    <div class="welcome-title">
+      <span>Confirmation de compte</span>
+    </div>
+    <div class="center">
+      <div class="form-group">
+        <div
+          *ngIf="isLoading"
+          class="d-flex flex-column justify-content-center mt-2 text-center mt-4"
+        >
+          <app-loader></app-loader>
+        </div>
+        <div class="alert alert-info" role="alert" *ngIf="successMessage">
+          Compte confirmer
+          <a routerLink="/login">Login</a>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+          {{ errorMessage }}
+          <a routerLink="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
