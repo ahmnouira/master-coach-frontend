@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -20,6 +20,17 @@ export class BaseService {
   };
 
   constructor(protected httpClient: HttpClient) {}
+
+
+  post<T = any, R = any>(url: string, data: T): Observable<R> {
+    return this.httpClient
+    .post<R>(
+      this.baseUri + url,
+      JSON.stringify(data),
+      this.httpOptions
+    )
+    .pipe(catchError(this.handleError));
+  }
 
   /* TODO: fix  deprecated */
   handleError(error: any) {

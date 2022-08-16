@@ -7,9 +7,9 @@
     "url": "https://github.com/Abdou-Hidoussi/Master-Coach/issues"
   },
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "serve": "ng serve",
+    "build": "ng build --verbose --progress",
+    "start": "http-server dist --cors",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier --write \"**/*.{ts,scss,html,json,md,css}\""
@@ -59,6 +59,7 @@
     "@types/node": "^17.0.41",
     "@types/offscreencanvas": "^2019.7.0",
     "@types/twilio-video": "^2.11.0",
+    "http-server": "^14.1.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

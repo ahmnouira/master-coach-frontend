@@ -1,20 +1,18 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
-import { Title } from '@angular/platform-browser';
-import { Animations } from '../../shared/animations';
-import { UserService } from '../../services/user-service.service';
-import { retry } from 'rxjs';
 import { RouteService } from 'src/app/services/route-service/route.service';
+import { Animations } from 'src/app/shared/animations';
+import { UserRole } from 'src/app/models/role.enum';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: Animations,
+ animations: Animations,
+
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit  {
   form: any = {
     email: null,
     password: null,
@@ -29,13 +27,14 @@ export class LoginComponent implements OnInit {
   @ViewChild('main') elem: ElementRef;
   constructor(
     private authService: AuthService,
+    private routeService: RouteService,
     private tokenStorage: TokenStorageService,
-    private routeService: RouteService
   ) {
     this.routeService.setTitle('MasterCoach - Login');
   }
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   async login() {
     const { email, password } = this.form;
@@ -48,22 +47,22 @@ export class LoginComponent implements OnInit {
       (authData) => {
         this.isLoading = false
         console.log('authData:', authData);
-
-
-        /*
-              if (user.role.toLowerCase() === 'admin') {
-                this.router.navigateByUrl('/pages/admin/users/list');
-              } else {
-                this.router.navigateByUrl(
-                  '/pages/' + user.role.toLowerCase() + '/parametre'
-                );
-              }*/
         this.tokenStorage.saveToken(authData.token);
         this.tokenStorage.saveTwilioToken(authData.twilio_token);
         this.tokenStorage.saveUser(authData);
         this.isLoginFailed = false;
        
         this.isVerified = true;
+        
+        console.log('role', authData.role)
+
+        if (authData.role.toLowerCase() === 'admin') {
+          this.routeService.navigateByUrl('/pages/admin/users/list');
+        } else {
+          this.routeService.navigateByUrl(
+            '/pages/' + authData.role.toLowerCase() + '/parametre'
+          );
+        }
       },
       (err) => {
         console.log('error', err);
@@ -77,22 +76,18 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  verifyEmail() {
+  createUser(role: string) {
+    this.authService.setUserRole = role as UserRole
+    this.routeService.navigateByUrl(`/create-user/${role.toLowerCase()}`)
+  }
+
+
+
+  verifyEmail(): void {
     const { email } = this.form;
     if (!email) return;
-    try {
-      this.authService.resendVerification({ email }).subscribe((res) => {
-        this.isVerified = true;
-        if (res.success && res.data) {
-          this.successMessage = res.data;
-          this.isVerified = true;
-        }
-      });
-    } catch (error) {
-      console.error('error', error);
-      this.successMessage = '';
-      this.errorMessage = String(error);
-      this.isLoginFailed = true;
-    }
-  }
+    this.authService.setResendEmail = email
+    this.routeService.navigate(['verify-email'])
+}
+
 }

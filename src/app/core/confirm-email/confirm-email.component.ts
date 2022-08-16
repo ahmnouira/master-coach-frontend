@@ -8,40 +8,49 @@ import { AuthService } from '../auth.service';
   templateUrl: './confirm-email.component.html',
   styleUrls: ['./confirm-email.component.scss'],
   animations: Animations,
+
 })
 export class ConfirmEmailComponent implements OnInit, AfterViewInit {
   isLoading = true;
   errorMessage = '';
-  successMessage = '';
-
+  successMessage = false;
+  token = ''
   constructor(
     private routeService: RouteService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     this.routeService.setTitle('MasterCoach - Confirm email');
   }
 
   ngOnInit(): void {
-   
+
+    this.token = this.routeService.getToken
+
+
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.confirmEmail();
-    }, 3000);
+    }, 1000);
   }
 
   async confirmEmail() {
-    this.authService.confirmEmail({ token:  this.routeService.getToken }).subscribe(
-      (res) => {
-        console.log('res', res, res.success, res.data);
-        if (res.success && res.data) this.successMessage = res.data;
-        this.isLoading = false;
-      },
-      (error) => {
-        this.errorMessage = error;
-        this.isLoading = false;
-      }
-    );
+    this.authService
+      .confirmEmail({ token: this.token })
+      .subscribe(
+        (res) => {
+          console.log('res:', res, res.success, res.message);
+          if (res.success && res.message) {
+            this.successMessage = true
+            this.isLoading = false;
+          } 
+        },
+        (error) => {
+          this.errorMessage = error;
+          this.isLoading = false;
+          this.successMessage = false
+        }
+      );
   }
 }

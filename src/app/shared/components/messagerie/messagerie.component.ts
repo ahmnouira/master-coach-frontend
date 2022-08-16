@@ -7,7 +7,7 @@ import {
   HostListener,
 } from '@angular/core';
 import { Client, Conversation, Message } from '@twilio/conversations';
-import { User } from 'src/app/core/models/user-model';
+import { User } from 'src/app/models/user-model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { TwilioConversationService } from 'src/app/services/twilio.service';
 import { UserService } from 'src/app/services/user-service.service';

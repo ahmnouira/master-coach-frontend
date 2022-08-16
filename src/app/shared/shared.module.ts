@@ -31,6 +31,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     ModalSuccesComponent,
     CommandeDetailComponent,
     LoaderComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -52,7 +53,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
     ModalSuccesComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
 })
 export class SharedModule {}

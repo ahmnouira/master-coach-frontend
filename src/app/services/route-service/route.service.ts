@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationBehaviorOptions, NavigationExtras, Router, UrlTree } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +20,20 @@ export class RouteService {
     this.titleService.setTitle(newTitle);
   }
 
-  public navigate(paths: string [], extras?: NavigationExtras): Promise<boolean> {
-    return this.router.navigate(paths, extras)
+
+  public navigateByUrl(url: string | UrlTree, extras?: NavigationBehaviorOptions) {
+    return this.router.navigateByUrl(url, extras) 
+  }
+
+  public navigate(
+    paths: string[],
+    extras?: NavigationExtras
+  ): Promise<boolean> {
+    return this.router.navigate(paths, extras);
   }
 
   public get getToken(): string {
-    this.getTokenFormRoute()
+    this.getTokenFormRoute();
     return this.token;
   }
 
