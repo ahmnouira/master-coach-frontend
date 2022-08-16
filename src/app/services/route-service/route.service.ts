@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationBehaviorOptions, NavigationExtras, Router, UrlTree } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,11 @@ export class RouteService {
 
   public setTitle(newTitle: string): void {
     this.titleService.setTitle(newTitle);
+  }
+
+
+  public navigateByUrl(url: string | UrlTree, extras?: NavigationBehaviorOptions) {
+    return this.router.navigateByUrl(url, extras) 
   }
 
   public navigate(

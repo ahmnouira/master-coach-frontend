@@ -14,7 +14,7 @@ export class ConfirmEmailComponent implements OnInit, AfterViewInit {
   isLoading = true;
   errorMessage = '';
   successMessage = false;
-
+  token = ''
   constructor(
     private routeService: RouteService,
     private authService: AuthService
@@ -22,17 +22,24 @@ export class ConfirmEmailComponent implements OnInit, AfterViewInit {
     this.routeService.setTitle('MasterCoach - Confirm email');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.token = this.routeService.getToken
+
+
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.confirmEmail();
-    }, 3000);
+    }, 1000);
   }
 
   async confirmEmail() {
+
+    console.log("token", this.token)
     this.authService
-      .confirmEmail({ token: this.routeService.getToken })
+      .confirmEmail({ token: this.token })
       .subscribe(
         (res) => {
           console.log('res:', res, res.success, res.data);

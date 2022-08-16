@@ -85,25 +85,6 @@
             </button>
           </div>
 
-          <div class="d-flex justify-content-end">
-            <a class="login-forgotten-pass" routerLink="/forgot-password"
-              >Mot de passe oublié ?</a
-            >
-          </div>
-          <div class="create-account">
-            <button
-              class="btn btn-submit-secondary raised-button"
-              routerLink="/create-user/coach"
-            >
-              Créer mon compte coach
-            </button>
-            <button
-              class="btn btn-submit-secondary raised-button"
-              routerLink="/create-user/client"
-            >
-              Créer mon compte coaché.e
-            </button>
-          </div>
           <div class="form-group">
             <div
               class="alert alert-danger"
@@ -127,6 +108,26 @@
             <div class="alert alert-info" role="alert" *ngIf="successMessage">
               {{ successMessage }}
             </div>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <a class="login-forgotten-pass" routerLink="/forgot-password"
+              >Mot de passe oublié ?</a
+            >
+          </div>
+          <div class="create-account">
+            <button
+              class="btn btn-submit-secondary raised-button"
+              routerLink="/create-user/coach"
+            >
+              Créer mon compte coach
+            </button>
+            <button
+              class="btn btn-submit-secondary raised-button"
+              routerLink="/create-user/client"
+            >
+              Créer mon compte coaché.e
+            </button>
           </div>
         </form>
       </div>
