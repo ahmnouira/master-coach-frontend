@@ -16,13 +16,13 @@ export class CreateUserComponent implements OnInit {
     email: null,
     password: null,
     confirmPassword: null,
-    role: UserRole
+    role: UserRole,
   };
   isLoading = false;
   isLoginFailed = false; // when action is failed
   errorMessage = '';
   accountType = 'Coach';
-  
+
   constructor(
     private routeService: RouteService,
     private authService: AuthService
@@ -30,14 +30,13 @@ export class CreateUserComponent implements OnInit {
     this.routeService.setTitle('MasterCoach - Creation de compte');
   }
   ngOnInit(): void {
-    this.form.role =   this.authService.getUserRole
-   
+    this.form.role = this.authService.getUserRole;
   }
 
   createUser() {
     this.isLoading = true;
-    console.log('form', this.form)
-  
+    console.log('form', this.form);
+
     this.authService.register(this.form).subscribe(
       (res) => {
         console.log('createUser:', res);

@@ -7,10 +7,9 @@ import { AuthService } from '../auth.service';
   templateUrl: './auth-base.component.html',
   styleUrls: ['./auth-base.component.scss'],
 })
-export class AuthBaseComponent  {
-
-  constructor(  protected authService: AuthService,
-    protected routeService: RouteService) { 
-
-    }
+export class AuthBaseComponent {
+  constructor(
+    protected authService: AuthService,
+    protected routeService: RouteService
+  ) {}
 }

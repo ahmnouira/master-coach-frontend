@@ -11,48 +11,46 @@ import { IResetPassword } from './interfaces/reset-password';
   providedIn: 'root',
 })
 export class AuthService extends BaseService {
+  private resendEmail = '';
 
-  private  resendEmail =  ''
-
-  private userRole: UserRole 
+  private userRole: UserRole;
 
   login(email: string, password: string): Observable<any> {
-   return this.post("/login", {email, password})
+    return this.post('/login', { email, password });
   }
   register(user: any): Observable<any> {
-   return this.post("/create_user", user)
+    return this.post('/create_user', user);
   }
 
   resetPassword(resetPasswordData: IResetPassword): Observable<any> {
-   return this.post("/reset_password", resetPasswordData)
+    return this.post('/reset_password', resetPasswordData);
   }
 
   forgotPassword(forgotPasswordData: IForgotPassword): Observable<any> {
-    return this.post("/forgot_password", forgotPasswordData)
+    return this.post('/forgot_password', forgotPasswordData);
   }
 
   confirmEmail(confirmPasswordData: IConfirmEmail): Observable<any> {
-    return this.post("/verify_email", confirmPasswordData)
+    return this.post('/verify_email', confirmPasswordData);
   }
 
   resendVerification(resendVerificationData: IResendVerification) {
-    return this.post("/resend_verification", resendVerificationData)
+    return this.post('/resend_verification', resendVerificationData);
   }
 
-
-  set setUserRole (role: UserRole) {
-    this.userRole = role
+  set setUserRole(role: UserRole) {
+    this.userRole = role;
   }
 
-  get getUserRole () {
-    return this.userRole
+  get getUserRole() {
+    return this.userRole;
   }
 
-  set setResendEmail (email: string) {
-    this.resendEmail = email
+  set setResendEmail(email: string) {
+    this.resendEmail = email;
   }
 
-  get getResendEmail () {
-    return this.resendEmail
+  get getResendEmail() {
+    return this.resendEmail;
   }
 }
