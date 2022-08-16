@@ -2,34 +2,7 @@
 
 <div class="row sub-component-content">
   <div class="col-2 p-0">
-    <button
-      class="active-tab white-bg pl-0"
-      [routerLink]="['/pages/coach/parametre']"
-    >
-      <span>Mon profil</span>
-      <img src="assets/img/common/arrow-left.svg" />
-    </button>
-    <button class="active-tab" [routerLink]="['/pages/coach/plans']">
-      <span>Mes plans</span>
-      <img src="assets/img/common/arrow-left.svg" />
-    </button>
-
-    <div
-      class="smaller-font pl-0"
-      style="margin-left: 10px"
-      [routerLink]="['/pages/coach/quiz/list']"
-    >
-      <span style="margin-left: 10px">Formulaire de suivi client</span>
-      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px" />
-    </div>
-    <div class="white-bg pl-0 smaller-font mt-3">
-      <span>Politique de confidentialité </span>
-      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px" />
-    </div>
-    <div class="white-bg pl-0 smaller-font mt-3">
-      <span>Conditions générales </span>
-      <img src="assets/img/common/arrow-left.svg" width="5px" height="6px" />
-    </div>
+    <app-coach-menu [active]="'plans'"></app-coach-menu>
   </div>
   <div class="col-10">
     <div class="plans-container">
@@ -41,7 +14,6 @@
 
       <div class="d-flex justify-content-between" style="margin-top: 30px">
         <h3 class="plans-container-title">Migrer vers un nouveau plan</h3>
-
         <div class="form-check form-switch">
           <input
             class="form-check-input"
@@ -56,13 +28,13 @@
         </div>
       </div>
 
-      <div class="row gx-4 plans-container-plans">
-        <div class="col">
+      <div class="row plans-container-plans">
+        <div class="col-6">
           <app-plan-card [plan]="plans[0]"></app-plan-card>
           <app-plan-card [plan]="plans[2]"></app-plan-card>
         </div>
 
-        <div class="col">
+        <div class="col-6">
           <app-plan-card [plan]="plans[1]"></app-plan-card>
 
           <app-plan-card [plan]="plans[3]"></app-plan-card>

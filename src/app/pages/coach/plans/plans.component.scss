@@ -1,6 +1,4 @@
 .sub-component-content {
- 
-
   margin: 24px 10px 10px 0;
 
   .sub-menu {
@@ -8,11 +6,8 @@
   }
 }
 
-
-.plans-container  {
-
-
-&-title {
+.plans-container {
+  &-title {
     font: normal normal normal 18px/22px Fredoka;
     color: #1376a3;
   }
@@ -22,24 +17,14 @@
     color: #3c4d5d;
   }
 
-  &-expire {   
-    color: #26A21B;
+  &-expire {
+    color: #26a21b;
   }
 
-  &-plans  {
+  &-plans {
     margin-top: 20px;
-
   }
-
-
-
 }
-
-
-
-
-
-
 
 input {
   span {
