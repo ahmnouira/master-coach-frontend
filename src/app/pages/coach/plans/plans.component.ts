@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Plan } from 'src/app/models/plan.model';
 
 @Component({
   selector: 'app-plans',
@@ -6,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plans.component.scss'],
 })
 export class PlansComponent implements OnInit {
+
+
+  plans: Plan[] = [
+    {
+      title: "", 
+      price: "", 
+      features: []
+    }
+  ]
+
   constructor() {}
 
   ngOnInit(): void {}
