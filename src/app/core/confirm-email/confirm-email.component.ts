@@ -8,13 +8,12 @@ import { AuthService } from '../auth.service';
   templateUrl: './confirm-email.component.html',
   styleUrls: ['./confirm-email.component.scss'],
   animations: Animations,
-
 })
 export class ConfirmEmailComponent implements OnInit, AfterViewInit {
   isLoading = true;
   errorMessage = '';
   successMessage = false;
-  token = ''
+  token = '';
   constructor(
     private routeService: RouteService,
     private authService: AuthService
@@ -23,10 +22,7 @@ export class ConfirmEmailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
-    this.token = this.routeService.getToken
-
-
+    this.token = this.routeService.getToken;
   }
 
   ngAfterViewInit(): void {
@@ -36,21 +32,19 @@ export class ConfirmEmailComponent implements OnInit, AfterViewInit {
   }
 
   async confirmEmail() {
-    this.authService
-      .confirmEmail({ token: this.token })
-      .subscribe(
-        (res) => {
-          console.log('res:', res, res.success, res.message);
-          if (res.success && res.message) {
-            this.successMessage = true
-            this.isLoading = false;
-          } 
-        },
-        (error) => {
-          this.errorMessage = error;
+    this.authService.confirmEmail({ token: this.token }).subscribe(
+      (res) => {
+        console.log('res:', res, res.success, res.message);
+        if (res.success && res.message) {
+          this.successMessage = true;
           this.isLoading = false;
-          this.successMessage = false
         }
-      );
+      },
+      (error) => {
+        this.errorMessage = error;
+        this.isLoading = false;
+        this.successMessage = false;
+      }
+    );
   }
 }

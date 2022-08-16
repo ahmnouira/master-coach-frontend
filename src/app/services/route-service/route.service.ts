@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationBehaviorOptions, NavigationExtras, Router, UrlTree } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationBehaviorOptions,
+  NavigationExtras,
+  Router,
+  UrlTree,
+} from '@angular/router';
+import { SessionStorageService } from '../session-storage-service/session-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RouteService {
+export class RouteService extends SessionStorageService {
   private token = '';
 
   constructor(
@@ -13,6 +20,7 @@ export class RouteService {
     public router: Router,
     private titleService: Title
   ) {
+    super()
     // this.getTokenFormRoute();
   }
 
@@ -20,9 +28,11 @@ export class RouteService {
     this.titleService.setTitle(newTitle);
   }
 
-
-  public navigateByUrl(url: string | UrlTree, extras?: NavigationBehaviorOptions) {
-    return this.router.navigateByUrl(url, extras) 
+  public navigateByUrl(
+    url: string | UrlTree,
+    extras?: NavigationBehaviorOptions
+  ) {
+    return this.router.navigateByUrl(url, extras);
   }
 
   public navigate(
@@ -30,6 +40,10 @@ export class RouteService {
     extras?: NavigationExtras
   ): Promise<boolean> {
     return this.router.navigate(paths, extras);
+  }
+
+  public saveRoute(name: string) {
+    this.setItem("navigation", name)
   }
 
   public get getToken(): string {

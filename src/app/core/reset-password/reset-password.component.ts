@@ -18,7 +18,7 @@ export class ResetPasswordComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
 
-  token = ""
+  token = '';
   constructor(
     private authService: AuthService,
     private routeService: RouteService
@@ -27,9 +27,8 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.token = this.routeService.getToken
+    this.token = this.routeService.getToken;
   }
-
 
   async restPassword() {
     const { password, confirmPassword } = this.form;
@@ -38,17 +37,15 @@ export class ResetPasswordComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.authService
-      .resetPassword({ password, token: this.token })
-      .subscribe(
-        (res) => {
-          this.routeService.navigate(['/core/login']);
-        },
-        (error) => {
-          this.errorMessage = error;
-          console.error(this.errorMessage);
-          this.isLoginFailed = true;
-        }
-      );
+    this.authService.resetPassword({ password, token: this.token }).subscribe(
+      (res) => {
+        this.routeService.navigate(['/core/login']);
+      },
+      (error) => {
+        this.errorMessage = error;
+        console.error(this.errorMessage);
+        this.isLoginFailed = true;
+      }
+    );
   }
 }
