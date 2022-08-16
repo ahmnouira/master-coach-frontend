@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserRole } from '../models/role.enum';
 import { BaseService } from '../services/base-service/base.service';
 import { IConfirmEmail } from './interfaces/confirm-email';
 import { IForgotPassword } from './interfaces/forgot-password';
@@ -13,6 +14,8 @@ export class AuthService extends BaseService {
 
   private  resendEmail =  ''
 
+  private userRole: UserRole 
+
   login(email: string, password: string): Observable<any> {
    return this.post("/login", {email, password})
   }
@@ -21,7 +24,7 @@ export class AuthService extends BaseService {
   }
 
   resetPassword(resetPasswordData: IResetPassword): Observable<any> {
-   return this.post("/resetPassword", resetPasswordData)
+   return this.post("/reset_password", resetPasswordData)
   }
 
   forgotPassword(forgotPasswordData: IForgotPassword): Observable<any> {
@@ -34,6 +37,15 @@ export class AuthService extends BaseService {
 
   resendVerification(resendVerificationData: IResendVerification) {
     return this.post("/resend_verification", resendVerificationData)
+  }
+
+
+  set setUserRole (role: UserRole) {
+    this.userRole = role
+  }
+
+  get getUserRole () {
+    return this.userRole
   }
 
   set setResendEmail (email: string) {

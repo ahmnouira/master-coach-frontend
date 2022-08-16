@@ -46,22 +46,22 @@ export class LoginComponent implements OnInit  {
       (authData) => {
         this.isLoading = false
         console.log('authData:', authData);
-
-
-        /*
-              if (user.role.toLowerCase() === 'admin') {
-                this.router.navigateByUrl('/pages/admin/users/list');
-              } else {
-                this.router.navigateByUrl(
-                  '/pages/' + user.role.toLowerCase() + '/parametre'
-                );
-              }*/
         this.tokenStorage.saveToken(authData.token);
         this.tokenStorage.saveTwilioToken(authData.twilio_token);
         this.tokenStorage.saveUser(authData);
         this.isLoginFailed = false;
        
         this.isVerified = true;
+        
+        console.log('role', authData.role)
+
+        if (authData.role.toLowerCase() === 'admin') {
+          this.routeService.navigateByUrl('/pages/admin/users/list');
+        } else {
+          this.routeService.navigateByUrl(
+            '/pages/' + authData.role.toLowerCase() + '/parametre'
+          );
+        }
       },
       (err) => {
         console.log('error', err);

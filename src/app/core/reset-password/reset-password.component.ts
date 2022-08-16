@@ -17,6 +17,8 @@ export class ResetPasswordComponent implements OnInit {
   isLoading = false;
   isLoginFailed = false;
   errorMessage = '';
+
+  token = ""
   constructor(
     private authService: AuthService,
     private routeService: RouteService
@@ -24,7 +26,10 @@ export class ResetPasswordComponent implements OnInit {
     this.routeService.setTitle('MasterCoach - Récupération de mot de passe');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.token = this.routeService.getToken
+  }
+
 
   async restPassword() {
     const { password, confirmPassword } = this.form;
@@ -34,7 +39,7 @@ export class ResetPasswordComponent implements OnInit {
     this.isLoading = true;
 
     this.authService
-      .resetPassword({ password, token: this.routeService.getToken })
+      .resetPassword({ password, token: this.token })
       .subscribe(
         (res) => {
           this.routeService.navigate(['/core/login']);

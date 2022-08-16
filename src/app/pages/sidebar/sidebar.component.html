@@ -171,16 +171,17 @@
   </ul>
 
   <ul class="list-unstyled">
-    <li>
-      <a (click)="logout()">
-        <img src="assets/img/common/XMLID_2_.svg" />
-        <span>Déconnexion</span></a
-      >
-    </li>
     <li [class.active]="getUrl().includes('/parametre')">
       <a (click)="goToProfile()">
         <img src="assets/img/common/settings.svg" />
         <span>Paramètres</span></a
+      >
+    </li>
+
+    <li>
+      <a (click)="logout()">
+        <img src="assets/img/common/XMLID_2_.svg" />
+        <span>Déconnexion</span></a
       >
     </li>
   </ul>

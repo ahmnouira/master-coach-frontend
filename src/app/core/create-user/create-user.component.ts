@@ -30,8 +30,13 @@ export class CreateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.routeService.activatedRoute.params.subscribe((params) => {
+      console.log(params)
+
       this.accountType = params['type'] == 'coach' ? 'Coach' : 'Client';
     });
+
+ 
+
   }
 
   // TODO: Remove this?!
@@ -50,6 +55,8 @@ export class CreateUserComponent implements OnInit {
   createUser() {
     this.form.role = this.accountType;
     this.isLoading = true;
+
+
     this.authService.register(this.form).subscribe(
       (res) => {
         console.log('createUser:', res);

@@ -1,8 +1,10 @@
+import { UserRole } from "./role.enum";
+
 export class User {
   password: string;
   userName: string;
   email: string;
-  roles: 'Client' | 'Admin' | 'Coach';
+  roles: UserRole[]
   competance: [];
   category: [];
   accreditation: [];
