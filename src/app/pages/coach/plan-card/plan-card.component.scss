@@ -1,16 +1,14 @@
 .plan {
-  height: 266px;
+  min-height: 266px;
   background: transparent url("/assets/img/plans/plan-card.png") 0% 0% no-repeat
     padding-box;
     padding: 16px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px #0000001a;
 
-    margin-bottom: 40px;
+    margin-bottom: 32px;
 
-    
-
-
+  
   &-title {
     text-transform: uppercase;
     color: #3c4d5d;
