@@ -48,7 +48,7 @@ export class CompetenceAddComponent implements OnInit {
         this.router.navigateByUrl('/pages/admin/competences/list');
       },
       (error) => {
-        window.alert(error.message);
+        console.error(error.message);
       }
     );
   }

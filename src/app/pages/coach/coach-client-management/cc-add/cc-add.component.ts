@@ -88,7 +88,7 @@ export class CcAddComponent implements OnInit {
         this.router.navigate(['/pages/coach/coach-client']);
       },
       (error) => {
-        window.alert(error.message);
+        console.error(error.message);
       }
     );
   }

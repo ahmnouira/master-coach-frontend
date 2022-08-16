@@ -48,7 +48,7 @@ export class AccreditationAddComponent implements OnInit {
         this.router.navigateByUrl('/pages/admin/accreditations/list');
       },
       (error) => {
-        window.alert(error.message);
+        console.error(error.message);
       }
     );
   }

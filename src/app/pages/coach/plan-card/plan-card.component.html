@@ -1,0 +1,18 @@
+<div class="plan">
+  <h1 class="plan-title">{{ plan.title }}</h1>
+  <h2 class="plan-price">{{ plan.price }}</h2>
+
+  <p class="plan-text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor, mi
+    ut ultrices maximus, est nulla placerat ipsum, eget semper ante orci eget
+    quam.
+  </p>
+
+  <p class="plan-meta" *ngFor="let plan of plan.features">
+    Lorem ipsum dolor sit amet
+  </p>
+
+  <div class="d-flex justify-content-center">
+    <button class="btn plan-button">Je choisis</button>
+  </div>
+</div>
