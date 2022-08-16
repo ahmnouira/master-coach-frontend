@@ -31,7 +31,6 @@ import { LoaderComponent } from './components/loader/loader.component';
     ModalSuccesComponent,
     CommandeDetailComponent,
     LoaderComponent,
-   
   ],
   imports: [
     CommonModule,

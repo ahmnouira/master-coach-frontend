@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   isVerified = true;
-
   successMessage = '';
 
   @ViewChild('main') elem: ElementRef;
@@ -31,7 +30,11 @@ export class LoginComponent implements OnInit {
   ) {
     this.routeService.setTitle('MasterCoach - Login');
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.routeService
+
+  }
 
   async login() {
     const { email, password } = this.form;
