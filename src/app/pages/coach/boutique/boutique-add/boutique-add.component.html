@@ -9,31 +9,8 @@
           <h2 class="title">Info</h2>
 
           <!-- Titre -->
-          <div class="form-group">
-            <label class="element-label">Titre</label>
-            <input
-              type="text"
-              [(ngModel)]="form.titre"
-              class="form-control element"
-              placeholder="Titre"
-              required
-              #titre="ngModel"
-            />
-            <div *ngIf="(titre.invalid && titre.touched) || titre.dirty">
-              <small
-                *ngIf="titre.errors?.required"
-                class="alert alert-danger"
-                role="alert"
-                >Titre est obligatoire!</small
-              >
-              <small
-                *ngIf="titre.errors?.pattern"
-                class="alert alert-danger"
-                role="alert"
-                >Veuillez entrer un titre valide</small
-              >
-            </div>
-          </div>
+          <app-text-field [label]="'Titre'" [model]="form.titre">
+          </app-text-field>
 
           <div class="form-group">
             <label class="element-label">Description</label>
@@ -47,34 +24,14 @@
             </textarea>
           </div>
 
-          <!-- Durée -->
-          <div class="form-group">
-            <label class="element-label">Durée</label>
-            <input
-              type="number"
-              [(ngModel)]="form.duration"
-              class="form-control element"
-              placeholder="Min"
-              required
-              #duration="ngModel"
-            />
-            <div
-              *ngIf="(duration.invalid && duration.touched) || duration.dirty"
-            >
-              <small
-                *ngIf="duration.errors?.required"
-                class="alert alert-danger"
-                role="alert"
-                >Duration est obligatoire!</small
-              >
-              <small
-                *ngIf="duration.errors?.pattern"
-                class="alert alert-danger"
-                role="alert"
-                >Veuillez entrer une duration valide</small
-              >
-            </div>
-          </div>
+          <!-- Durée   [required]="false" -->
+          <app-text-field
+            [label]="'Durée'"
+            [model]="form.duration"
+            [placeholder]="'Min'"
+            [type]="'number'"
+          >
+          </app-text-field>
 
           <div class="row">
             <div class="file-input">
@@ -117,30 +74,14 @@
             </div>
 
             <div class="col-9">
-              <div class="form-group">
-                <input
-                  type="number"
-                  [(ngModel)]="form.price"
-                  class="form-control element"
-                  placeholder="Titre"
-                  required
-                  #price="ngModel"
-                />
-                <div *ngIf="(price.invalid && price.touched) || price.dirty">
-                  <small
-                    *ngIf="price.errors?.required"
-                    class="alert alert-danger"
-                    role="alert"
-                    >Tarif est obligatoire!</small
-                  >
-                  <small
-                    *ngIf="price.errors?.pattern"
-                    class="alert alert-danger"
-                    role="alert"
-                    >Veuillez entrer une tarif valide</small
-                  >
-                </div>
-              </div>
+              <app-text-field
+                [model]="form.price"
+                [type]="'number'"
+                [label]="'Price'"
+                [placeholder]="''"
+                [showLabel]="false"
+              >
+              </app-text-field>
             </div>
           </div>
 
@@ -159,8 +100,8 @@
 
           <div class="d-flex justify-content-end">
             <button class="btn btn-primary submit-btn" (click)="save()">
-              Enregistrer</button
-            >&nbsp;
+              Enregistrer
+            </button>
           </div>
         </div>
       </div>
