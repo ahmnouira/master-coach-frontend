@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -21,8 +21,10 @@ export class BaseService {
 
   constructor(protected httpClient: HttpClient) {}
 
-  get< R = any>(url: string, options?: any ): Observable<HttpEvent<R>> {
-    return this.httpClient.get<R>(this.baseUri + url, options)
+  get< R = any>(url: string, params?: HttpParams ): Observable<R> {
+    return this.httpClient.get<R>(this.baseUri + url, {
+      params,
+    })
     .pipe(catchError(this.handleError));
   }
 
@@ -36,7 +38,7 @@ export class BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  put<T = any, R = any>(url: string, data: T): Observable<R> {
+  put<T = any, R = any>(url: string, data?: T): Observable<R> {
     return this.httpClient
       .put<R>(this.baseUri + url, JSON.stringify(data), this.httpOptions)
       .pipe(catchError(this.handleError));

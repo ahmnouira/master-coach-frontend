@@ -17,7 +17,7 @@ export class UserService extends BaseService {
 
   getSingleUserByEmail(email: string): Observable<any> {
     const params = new HttpParams().set('email', email);
-    return this.get('/getUserByEmail', {params})
+    return this.get('/getUserByEmail', params)
   }
 
   saveUser(user: any): Observable<any> {

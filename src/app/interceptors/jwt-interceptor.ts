@@ -23,6 +23,7 @@ export class JwtInterceptor implements HttpInterceptor {
     let token = this.authenticationService.getToken();
     if (token && !request.url.includes('conversations.twilio.com')) {
       request = request.clone({
+        reportProgress: true,
         setHeaders: {
           Authorization: `Bearer ${token}`,
         },
