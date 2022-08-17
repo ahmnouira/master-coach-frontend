@@ -1,0 +1,177 @@
+<app-sub-header [title]="'Ajouter un support de formation'"></app-sub-header>
+
+<div class="sub-component-content">
+  <div class="row mt-4 gx-4">
+    <div class="col">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-10 right-side">
+          <h2 class="title">Info</h2>
+
+          <!-- Titre -->
+          <div class="form-group">
+            <label class="element-label">Titre</label>
+            <input
+              type="text"
+              [(ngModel)]="form.titre"
+              class="form-control element"
+              placeholder="Titre"
+              required
+              #titre="ngModel"
+            />
+            <div *ngIf="(titre.invalid && titre.touched) || titre.dirty">
+              <small
+                *ngIf="titre.errors?.required"
+                class="alert alert-danger"
+                role="alert"
+                >Titre est obligatoire!</small
+              >
+              <small
+                *ngIf="titre.errors?.pattern"
+                class="alert alert-danger"
+                role="alert"
+                >Veuillez entrer un titre valide</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="element-label">Description</label>
+            <textarea
+              rows="5"
+              style="height: 120px"
+              [(ngModel)]="form.bio"
+              class="form-control element"
+              placeholder="davidlaroche@gmail.com"
+            >
+            </textarea>
+          </div>
+
+          <!-- Durée -->
+          <div class="form-group">
+            <label class="element-label">Durée</label>
+            <input
+              type="number"
+              [(ngModel)]="form.duration"
+              class="form-control element"
+              placeholder="Titre"
+              required
+              #duration="ngModel"
+            />
+            <div
+              *ngIf="(duration.invalid && duration.touched) || duration.dirty"
+            >
+              <small
+                *ngIf="duration.errors?.required"
+                class="alert alert-danger"
+                role="alert"
+                >Duration est obligatoire!</small
+              >
+              <small
+                *ngIf="duration.errors?.pattern"
+                class="alert alert-danger"
+                role="alert"
+                >Veuillez entrer une duration valide</small
+              >
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="file-input">
+              <input
+                type="file"
+                required
+                class="form-control form-control-lg element"
+                style="display: none"
+                id="photo"
+                title=" "
+                name="photo"
+                accept="application/png"
+                (change)="addPhoto($event)"
+              />
+              <label for="photo">
+                <app-import-icon></app-import-icon>
+                Ajouter une photo</label
+              >
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <h2 class="title">Tarifs</h2>
+
+          <div class="row d-flex align-items-center">
+            <div class="col-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [(ngModel)]="form.free"
+                  #free="ngModel"
+                  id="flexCheckDefault"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Gratuit
+                </label>
+              </div>
+            </div>
+
+            <div class="col-9">
+              <div class="form-group">
+                <input
+                  type="number"
+                  [(ngModel)]="form.price"
+                  class="form-control element"
+                  placeholder="Titre"
+                  required
+                  #price="ngModel"
+                />
+                <div *ngIf="(price.invalid && price.touched) || price.dirty">
+                  <small
+                    *ngIf="price.errors?.required"
+                    class="alert alert-danger"
+                    role="alert"
+                    >Tarif est obligatoire!</small
+                  >
+                  <small
+                    *ngIf="price.errors?.pattern"
+                    class="alert alert-danger"
+                    role="alert"
+                    >Veuillez entrer une tarif valide</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="element-label">Catégory</label>
+            <angular2-multiselect
+              name="category"
+              [data]="categories"
+              [(ngModel)]="form.category"
+              [settings]="settings"
+            >
+            </angular2-multiselect>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-primary submit-btn" (click)="save()">
+              Enregistrer</button
+            >&nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="image">
+        <img
+          src="assets/img/coach/boutique/add-formation.png"
+          alt="add-formation"
+        />
+      </div>
+    </div>
+  </div>
+</div>
