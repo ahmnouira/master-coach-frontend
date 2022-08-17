@@ -4,8 +4,8 @@ import { Location } from '@angular/common';
 import * as moment from 'moment';
 import { FormControl } from '@angular/forms';
 import { datatable_action } from '../../../shared/datatable/datatable.model';
-import { RdvService } from '../../../services/rdv.service';
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { RdvService } from 'src/app/services/rdv-service/rdv.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-rdv-list',

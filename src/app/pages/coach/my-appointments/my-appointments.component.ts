@@ -1,6 +1,5 @@
 import {
   Component,
-  ElementRef,
   OnInit,
   TemplateRef,
   ViewChild,
@@ -10,7 +9,6 @@ import {
   EventInput,
   FullCalendarComponent,
 } from '@fullcalendar/angular';
-import { RdvService } from '../../../services/rdv.service';
 import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
 import {
   BsModalRef,
@@ -18,11 +16,12 @@ import {
   ModalDirective,
 } from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
-import { GoogleApiWrapperService } from '../../../services/google-api-wrapper.service';
 import { Router } from '@angular/router';
 import { CoachService } from 'src/app/services/coach.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { GoogleApiWrapperService } from 'src/app/services/google-api-wrapper.service';
+import { RdvService } from 'src/app/services/rdv-service/rdv.service';
 
 @Component({
   selector: 'app-my-appointments',
