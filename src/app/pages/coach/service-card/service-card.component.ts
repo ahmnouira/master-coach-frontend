@@ -4,15 +4,12 @@ import { Service } from 'src/app/models/service/service';
 @Component({
   selector: 'app-service-card',
   templateUrl: './service-card.component.html',
-  styleUrls: ['./service-card.component.scss']
+  styleUrls: ['./service-card.component.scss'],
 })
 export class ServiceCardComponent implements OnInit {
+  @Input() service: Service;
 
-  @Input() service: Service
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

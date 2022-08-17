@@ -25,10 +25,13 @@ const routes: Routes = [
       ),
   },
 
-    {
-      path: 'boutique', 
-      loadChildren: () => import ('./boutique/boutique.module').then(module => module.CoachClientManagementModule)
-    },
+  {
+    path: 'boutique',
+    loadChildren: () =>
+      import('./boutique/boutique.module').then(
+        (module) => module.CoachClientManagementModule
+      ),
+  },
 
   { path: 'quiz/view', component: ViewFormQuizComponent },
   { path: 'quiz/add', component: AddFormQuizComponent },
@@ -39,7 +42,7 @@ const routes: Routes = [
   { path: 'coach-client/team/list', component: ListTeamsComponent },
   { path: 'coach-client/team/edit', component: EditFormQuizComponent },
   { path: 'calendar', component: MyAppointmentsComponent },
-  {path: 'services', component: ServicesComponent},
+  { path: 'services', component: ServicesComponent },
   { path: 'plans', component: PlansComponent },
 ];
 
