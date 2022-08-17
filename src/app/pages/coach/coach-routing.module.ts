@@ -13,6 +13,7 @@ import { MyAppointmentsComponent } from './my-appointments/my-appointments.compo
 import { MessagerieComponent } from 'src/app/shared/components/messagerie/messagerie.component';
 import { BoutiqueComponent } from './boutique/boutique.component';
 import { PlansComponent } from './plans/plans.component';
+import { ServicesComponent } from './services/services.component';
 
 const routes: Routes = [
   { path: 'profil', component: ProfilCoachComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'coach-client/team/edit', component: EditFormQuizComponent },
   { path: 'calendar', component: MyAppointmentsComponent },
   { path: 'boutique', component: BoutiqueComponent },
+  {path: 'services', component: ServicesComponent},
   { path: 'plans', component: PlansComponent },
 ];
 
