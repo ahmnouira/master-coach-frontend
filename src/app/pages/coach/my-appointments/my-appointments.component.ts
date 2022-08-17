@@ -17,7 +17,7 @@ import {
 } from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
-import { CoachService } from 'src/app/services/coach.service';
+import { CoachService } from 'src/app/services/coach-service/coach.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { GoogleApiWrapperService } from 'src/app/services/google-api-wrapper.service';

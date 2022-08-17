@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { datatable_action } from '../../../shared/datatable/datatable.model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
-import { CoachService } from 'src/app/services/coach.service';
+import { CoachService } from 'src/app/services/coach-service/coach.service';
 
 @Component({
   selector: 'app-list-teams',

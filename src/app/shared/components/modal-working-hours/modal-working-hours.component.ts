@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { CoachService } from 'src/app/services/coach.service';
+import { CoachService } from 'src/app/services/coach-service/coach.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
