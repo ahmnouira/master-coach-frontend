@@ -1,12 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import * as moment from 'moment';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { TwilioConversationService } from 'src/app/services/twilio.service';
-import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import * as Video from 'twilio-video';
-import { RdvService } from 'src/app/services/rdv.service';
+import { RdvService } from 'src/app/services/rdv-service/rdv.service';
 
 @Component({
   selector: 'app-visio-conference',
