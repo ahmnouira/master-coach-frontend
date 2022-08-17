@@ -11,7 +11,11 @@ import { BoutiqueAddComponent } from './boutique-add/boutique-add.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [BoutiqueCardComponent, BoutiqueListComponent, BoutiqueAddComponent],
+  declarations: [
+    BoutiqueCardComponent,
+    BoutiqueListComponent,
+    BoutiqueAddComponent,
+  ],
   imports: [
     CommonModule,
     BoutiqueRoutingModule,

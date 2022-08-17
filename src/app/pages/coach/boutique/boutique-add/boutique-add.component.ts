@@ -3,19 +3,17 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-boutique-add',
   templateUrl: './boutique-add.component.html',
-  styleUrls: ['./boutique-add.component.scss']
+  styleUrls: ['./boutique-add.component.scss'],
 })
 export class BoutiqueAddComponent implements OnInit {
-
   form: any = {};
 
-  categories = []
+  categories = [];
 
-  settings  ={}
+  settings = {};
   constructor() {}
 
   ngOnInit(): void {
-
     this.settings = {
       text: 'Coaching de carriére...',
       position: 'bottom',
@@ -31,17 +29,9 @@ export class BoutiqueAddComponent implements OnInit {
       primaryKey: '_id',
       classes: 'form-control element-spec multiselect',
     };
-   
-    
   }
 
-  addPhoto(event) {
+  addPhoto(event) {}
 
-  }
-
-  save() {
-
-  }
-
-  
+  save() {}
 }

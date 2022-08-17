@@ -3,13 +3,21 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-service-add',
   templateUrl: './service-add.component.html',
-  styleUrls: ['./service-add.component.scss']
+  styleUrls: ['./service-add.component.scss'],
 })
 export class ServiceAddComponent implements OnInit {
+  form: any = {};
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+
+  addPhoto(event) {
+
   }
 
+  save() {
+    
+  }
 }
