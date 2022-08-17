@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ServicesListComponent } from './services-list/services-list.component';
 import { ServiceCardComponent } from './service-card/service-card.component';
+import { ServiceAddComponent } from './service-add/service-add.component';
 
 @NgModule({
-  declarations: [ServiceCardComponent, ServicesListComponent],
+  declarations: [ServiceCardComponent, ServicesListComponent, ServiceAddComponent],
   imports: [
     CommonModule,
     BoutiqueRoutingModule,
