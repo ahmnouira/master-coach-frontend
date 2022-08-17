@@ -32,10 +32,9 @@
 
   <div class="services">
     <div class="row">
-      <div class="col-lg-4"><app-service-card></app-service-card></div>
-      <div class="col-lg-4"><app-service-card></app-service-card></div>
-      <div class="col-lg-4"><app-service-card></app-service-card></div>
-      <div class="col-lg-4"><app-service-card></app-service-card></div>
+      <div class="col-lg-4" *ngFor="let service of services; index as i">
+        <app-service-card [service]="service"></app-service-card>
+      </div>
     </div>
   </div>
 </div>
