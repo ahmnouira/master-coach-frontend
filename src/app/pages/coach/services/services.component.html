@@ -1,1 +1,41 @@
-<p>services works!</p>
+<app-sub-header [title]="'Mes services'"></app-sub-header>
+
+<div class="sub-component-content">
+  <div class="row mt-4 gx-4">
+    <div class="col-3">
+      <div class="filters-row input-group form-group form-inline p-0">
+        <input
+          class="form-control coach-search"
+          type="text"
+          [(ngModel)]="filterString"
+          (change)="filterInputChanged($event)"
+          (keydown)="filterInputChanged($event)"
+          placeholder="Service"
+        />
+        <span
+          class="material-icons material-icons-inside-input"
+          style="right: 30px; color: #ddf2fa"
+          >search</span
+        >
+      </div>
+    </div>
+
+    <div class="col-9 d-flex flex-column">
+      <div class="d-inline-flex justify-content-end">
+        &nbsp;
+        <a routerLink="/pages/coach/coach-client/add" class="btn align-self-end"
+          ><span class="material-icons">add_circle</span>Ajouter un service</a
+        >&nbsp;
+      </div>
+    </div>
+  </div>
+
+  <div class="services">
+    <div class="row">
+      <div class="col-lg-4"><app-service-card></app-service-card></div>
+      <div class="col-lg-4"><app-service-card></app-service-card></div>
+      <div class="col-lg-4"><app-service-card></app-service-card></div>
+      <div class="col-lg-4"><app-service-card></app-service-card></div>
+    </div>
+  </div>
+</div>

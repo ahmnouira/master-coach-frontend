@@ -29,6 +29,7 @@ import { BoutiqueComponent } from './boutique/boutique.component';
 import { PlansComponent } from './plans/plans.component';
 import { PlanCardComponent } from './plan-card/plan-card.component';
 import { ServicesComponent } from './services/services.component';
+import { ServiceCardComponent } from './service-card/service-card.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -48,6 +49,7 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     PlansComponent,
     PlanCardComponent,
     ServicesComponent,
+    ServiceCardComponent,
   ],
   imports: [
     CommonModule,

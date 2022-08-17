@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicesComponent implements OnInit {
 
+  filterString = '';
+
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  filterInputChanged(event) {
+    
   }
 
 }
