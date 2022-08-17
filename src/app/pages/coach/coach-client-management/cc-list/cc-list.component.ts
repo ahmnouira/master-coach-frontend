@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { elementAt } from 'rxjs';
-import { TwilioConversationService } from 'src/app/services/twilio.service';
+import { TwilioService } from 'src/app/services/twilio-service/twilio.service';
 import { Router } from '@angular/router';
 import { CoachService } from 'src/app/services/coach-service/coach.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -31,7 +31,7 @@ export class CcListComponent implements OnInit {
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
     private modalService: BsModalService,
-    private conversationService: TwilioConversationService,
+    private twilioService: TwilioService,
     public router: Router
   ) {}
   openModal(template: TemplateRef<any>) {
@@ -196,7 +196,7 @@ export class CcListComponent implements OnInit {
   }
 
   createNewConversation(user) {
-    this.conversationService.createNewConversation(user._id).subscribe(
+    this.twilioService.createNewConversation(user._id).subscribe(
       (data) => {
         console.log(data);
         this.router.navigate(['/pages/conversations']);

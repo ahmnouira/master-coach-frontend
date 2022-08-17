@@ -9,7 +9,7 @@ import {
 import { Client, Conversation, Message } from '@twilio/conversations';
 import { User } from 'src/app/models/user-model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { TwilioConversationService } from 'src/app/services/twilio.service';
+import { TwilioService } from 'src/app/services/twilio-service/twilio.service';
 import * as moment from 'moment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -49,7 +49,7 @@ export class MessagerieComponent implements OnInit, AfterViewInit {
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
     private router: Router,
-    private conversationService: TwilioConversationService,
+    private twilioService: TwilioService,
     public sanitizer: DomSanitizer
   ) {}
 
@@ -132,7 +132,7 @@ export class MessagerieComponent implements OnInit, AfterViewInit {
     });
   }
   refreshToken() {
-    let token = this.conversationService.createAccessToken().subscribe(
+    let token = this.twilioService.createAccessToken().subscribe(
       (data) => {
         this.tokenStorageService.saveTwilioToken(data.token);
       },
@@ -317,7 +317,7 @@ export class MessagerieComponent implements OnInit, AfterViewInit {
     this.client.getConversationBySid(conv.sid).then((conv) => {
       conv.delete().then((deleted) => {
         console.log('deleted from twilio');
-        this.conversationService
+        this.twilioService
           .deleteConversation(conv.sid)
           .subscribe((data) => {
             console.log('deleted from db');
