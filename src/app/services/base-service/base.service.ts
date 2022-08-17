@@ -21,14 +21,30 @@ export class BaseService {
 
   constructor(protected httpClient: HttpClient) {}
 
+  get< R = any>(url: string): Observable<R> {
+    return this.httpClient.get<R>(this.baseUri + url)
+    .pipe(catchError(this.handleError));
+  }
+
+  delete<R =any>(url: string): Observable<R> {
+    return this.httpClient.delete<R>(this.baseUri + url).pipe(catchError(this.handleError));
+  }
+
   post<T = any, R = any>(url: string, data: T): Observable<R> {
     return this.httpClient
       .post<R>(this.baseUri + url, JSON.stringify(data), this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
+  put<T = any, R = any>(url: string, data: T): Observable<R> {
+    return this.httpClient
+      .put<R>(this.baseUri + url, JSON.stringify(data), this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+
   /* TODO: fix  deprecated */
-  handleError(error: any) {
+  private handleError(error: any) {
     let errorMessage = '';
     // Get client-side error
     if (error.error instanceof ErrorEvent) {
