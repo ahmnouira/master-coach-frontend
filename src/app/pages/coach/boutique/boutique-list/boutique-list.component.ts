@@ -6,7 +6,6 @@ import { Formation } from 'src/app/models/formation/formation.model';
   selector: 'app-boutique-list',
   templateUrl: './boutique-list.component.html',
   styleUrls: ['./boutique-list.component.scss'],
-  
 })
 export class BoutiqueListComponent implements OnInit {
   filterString = '';
@@ -15,36 +14,35 @@ export class BoutiqueListComponent implements OnInit {
     {
       id: '1',
       image: '',
-      price: "15,00 €", 
-      title: "David Laroche", 
-      subTitle: "Coaching d’équipe",
-      type: FormationType.PDF
+      price: '15,00 €',
+      title: 'David Laroche',
+      subTitle: 'Coaching d’équipe',
+      type: FormationType.PDF,
     },
     {
       id: '2',
       image: '',
-      price: "15,00 €", 
-      title: "David Laroche", 
-      subTitle: "Coaching d’équipe",
-      type: FormationType.PDF
+      price: '15,00 €',
+      title: 'David Laroche',
+      subTitle: 'Coaching d’équipe',
+      type: FormationType.PDF,
     },
     {
       id: '3',
       image: '',
-      price: "15,00 €", 
-      title: "David Laroche", 
-      subTitle: "Coaching d’équipe",
-      type: FormationType.PDF
+      price: '15,00 €',
+      title: 'David Laroche',
+      subTitle: 'Coaching d’équipe',
+      type: FormationType.PDF,
     },
     {
       id: '4',
       image: '',
-      price: "15,00 €", 
-      title: "David Laroche", 
-      subTitle: "Coaching d’équipe",
-      type: FormationType.PDF
+      price: '15,00 €',
+      title: 'David Laroche',
+      subTitle: 'Coaching d’équipe',
+      type: FormationType.PDF,
     },
-   
   ];
 
   constructor() {}

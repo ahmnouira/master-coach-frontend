@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/models/service/service.model';
 
 @Component({
-  selector: 'app-services',
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.scss'],
+  selector: 'app-services-list',
+  templateUrl: './services-list.component.html',
+  styleUrls: ['./services-list.component.scss'],
 })
-export class ServicesComponent implements OnInit {
+export class ServicesListComponent implements OnInit {
   filterString = '';
 
   services: Service[] = [
