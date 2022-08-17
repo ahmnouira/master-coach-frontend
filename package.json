@@ -7,11 +7,11 @@
     "url": "https://github.com/Abdou-Hidoussi/Master-Coach/issues"
   },
   "scripts": {
-    "serve": "ng serve",
+    "serve": "ng serve -o",
     "build": "ng build --verbose --progress",
-    "start:prod": "ng serve --host 0.0.0.0",
-    "start:configprod": "ng serve --host 0.0.0.0 --configuration production",
     "start": "http-server dist --cors",
+    "start:prod": "ng serve --host 0.0.0.0",
+    "start:config:prod": "ng serve --host 0.0.0.0 --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier --write \"**/*.{ts,scss,html,json,md,css}\""

@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import * as moment from 'moment';
 import { CountdownComponent } from 'ngx-countdown';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user-service.service';
+import { UserService } from 'src/app/services/user-service/user-service.service';
 
 const CountdownTimeUnits: Array<[string, number]> = [
   ['Y', 1000 * 60 * 60 * 24 * 365], // years

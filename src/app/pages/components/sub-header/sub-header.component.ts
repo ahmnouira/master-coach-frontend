@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { NotificationService } from '../../../services/notification.service';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
-import { UserService } from '../../../services/user-service.service';
+import { UserService } from 'src/app/services/user-service/user-service.service';
 @Component({
   selector: 'app-sub-header',
   templateUrl: './sub-header.component.html',

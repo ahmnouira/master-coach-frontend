@@ -12,9 +12,6 @@ import {
 } from '@fullcalendar/angular';
 import { RdvService } from '../../../services/rdv.service';
 import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
-import { TokenStorageService } from '../../../services/token-storage.service';
-import { UserService } from '../../../services/user-service.service';
-import { CoachService } from '../../../services/coach.service';
 import {
   BsModalRef,
   BsModalService,
@@ -23,6 +20,9 @@ import {
 import * as moment from 'moment';
 import { GoogleApiWrapperService } from '../../../services/google-api-wrapper.service';
 import { Router } from '@angular/router';
+import { CoachService } from 'src/app/services/coach.service';
+import { UserService } from 'src/app/services/user-service/user-service.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-my-appointments',

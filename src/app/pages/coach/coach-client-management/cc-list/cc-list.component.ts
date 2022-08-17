@@ -1,11 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { CoachService } from '../../../../services/coach.service';
-import { TokenStorageService } from '../../../../services/token-storage.service';
-import { UserService } from '../../../../services/user-service.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { elementAt } from 'rxjs';
 import { TwilioConversationService } from 'src/app/services/twilio.service';
 import { Router } from '@angular/router';
+import { CoachService } from 'src/app/services/coach.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user-service/user-service.service';
 
 @Component({
   selector: 'app-cc-list',

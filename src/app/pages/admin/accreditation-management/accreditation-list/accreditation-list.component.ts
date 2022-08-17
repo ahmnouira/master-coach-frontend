@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { datatable_action } from '../../../../shared/datatable/datatable.model';
 import { Router } from '@angular/router';
-import { UserService } from '../../../../services/user-service.service';
-import { TokenStorageService } from '../../../../services/token-storage.service';
 import { Title } from '@angular/platform-browser';
-import { AdminService } from '../../../../services/admin.service';
+import { UserService } from 'src/app/services/user-service/user-service.service';
+import { AdminService } from 'src/app/services/admin.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-accreditation-list',

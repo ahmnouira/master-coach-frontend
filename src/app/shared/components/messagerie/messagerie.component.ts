@@ -10,10 +10,10 @@ import { Client, Conversation, Message } from '@twilio/conversations';
 import { User } from 'src/app/models/user-model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { TwilioConversationService } from 'src/app/services/twilio.service';
-import { UserService } from 'src/app/services/user-service.service';
 import * as moment from 'moment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user-service/user-service.service';
 
 @Component({
   selector: 'app-messagerie',
