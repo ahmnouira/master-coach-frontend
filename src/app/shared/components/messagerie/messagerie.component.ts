@@ -317,12 +317,10 @@ export class MessagerieComponent implements OnInit, AfterViewInit {
     this.client.getConversationBySid(conv.sid).then((conv) => {
       conv.delete().then((deleted) => {
         console.log('deleted from twilio');
-        this.twilioService
-          .deleteConversation(conv.sid)
-          .subscribe((data) => {
-            console.log('deleted from db');
-            this.getConversations();
-          });
+        this.twilioService.deleteConversation(conv.sid).subscribe((data) => {
+          console.log('deleted from db');
+          this.getConversations();
+        });
       });
     });
   }

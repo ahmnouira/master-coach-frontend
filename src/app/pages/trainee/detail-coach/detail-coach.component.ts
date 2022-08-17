@@ -16,10 +16,7 @@ export class DetailCoachComponent implements OnInit {
   scrollLeft: any;
 
   slider = document.querySelector<HTMLElement>('.wrapper');
-  constructor(
-    private twilioService: TwilioService,
-    private router: Router
-  ) {}
+  constructor(private twilioService: TwilioService, private router: Router) {}
 
   ngOnInit(): void {
     this.coach = history.state?.id;

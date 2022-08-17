@@ -21,15 +21,18 @@ export class BaseService {
 
   constructor(protected httpClient: HttpClient) {}
 
-  get< R = any>(url: string, params?: HttpParams ): Observable<R> {
-    return this.httpClient.get<R>(this.baseUri + url, {
-      params,
-    })
-    .pipe(catchError(this.handleError));
+  get<R = any>(url: string, params?: HttpParams): Observable<R> {
+    return this.httpClient
+      .get<R>(this.baseUri + url, {
+        params,
+      })
+      .pipe(catchError(this.handleError));
   }
 
-  delete<R =any>(url: string): Observable<R> {
-    return this.httpClient.delete<R>(this.baseUri + url, this.httpOptions).pipe(catchError(this.handleError));
+  delete<R = any>(url: string): Observable<R> {
+    return this.httpClient
+      .delete<R>(this.baseUri + url, this.httpOptions)
+      .pipe(catchError(this.handleError));
   }
 
   post<T = any, R = any>(url: string, data: T): Observable<R> {
@@ -43,7 +46,6 @@ export class BaseService {
       .put<R>(this.baseUri + url, JSON.stringify(data), this.httpOptions)
       .pipe(catchError(this.handleError));
   }
-
 
   /* TODO: fix  deprecated */
   private handleError(error: any) {

@@ -7,15 +7,13 @@ import { Plan } from 'src/app/models/plan.model';
   styleUrls: ['./plans.component.scss'],
 })
 export class PlansComponent implements OnInit {
-
-
   plans: Plan[] = [
     {
-      title: "", 
-      price: "", 
-      features: []
-    }
-  ]
+      title: '',
+      price: '',
+      features: [],
+    },
+  ];
 
   constructor() {}
 

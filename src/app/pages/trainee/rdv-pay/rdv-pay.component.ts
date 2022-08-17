@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { TokenStorageService } from '../../../services/token-storage.service';
 import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';

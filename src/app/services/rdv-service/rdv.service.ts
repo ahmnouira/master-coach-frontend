@@ -5,17 +5,16 @@ import { BaseService } from '../base-service/base.service';
   providedIn: 'root',
 })
 export class RdvService extends BaseService {
-
-  createSession(sessionData :any) {
-    return this.post('/create_session', sessionData)
+  createSession(sessionData: any) {
+    return this.post('/create_session', sessionData);
   }
 
-  getSession(sessionId :any) {
-    return this.get('/get_session/' + sessionId)
+  getSession(sessionId: any) {
+    return this.get('/get_session/' + sessionId);
   }
 
   getSessions(userId: any) {
-    return this.get('/get_sessions/' + userId)
+    return this.get('/get_sessions/' + userId);
   }
 
   updateSession(session: any) {
@@ -27,7 +26,6 @@ export class RdvService extends BaseService {
   }
 
   acceptSessionByCoach() {
-    return this.get('/accept_session_by_coach')
+    return this.get('/accept_session_by_coach');
   }
-
 }

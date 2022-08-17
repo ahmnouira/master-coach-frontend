@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TwilioService } from './twilio.service'
+import { TwilioService } from './twilio.service';
 
 describe('TwilioService', () => {
   let service: TwilioService;

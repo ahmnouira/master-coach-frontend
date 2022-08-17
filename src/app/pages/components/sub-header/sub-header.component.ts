@@ -52,7 +52,6 @@ export class SubHeaderComponent implements OnInit {
     this.notifactionService
       .getNotifications(this.tokenStorageService.getUser()?._id)
       .subscribe((data) => {
-        
         this.userNotifications = data.notifications;
         this.userNotifications = this.userNotifications.sort(
           (objA, objB) =>
