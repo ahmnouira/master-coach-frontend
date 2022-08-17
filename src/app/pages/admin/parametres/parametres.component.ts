@@ -3,7 +3,7 @@ import { User } from '../../../models/user-model';
 import { AuthService } from 'src/app/core/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
-import { AdminService } from 'src/app/services/admin.service';
+import { AdminService } from 'src/app/services/admin-service/admin.service';
 
 @Component({
   selector: 'app-parametres',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../../../../services/token-storage.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user-service/user-service.service';
-import { AdminService } from 'src/app/services/admin.service';
+import { AdminService } from 'src/app/services/admin-service/admin.service';
 
 @Component({
   selector: 'app-users-add',
