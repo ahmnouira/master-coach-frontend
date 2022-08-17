@@ -25,7 +25,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyAppointmentsComponent } from './my-appointments/my-appointments.component';
 import { SharedModule } from '../../shared/shared.module';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
-import { BoutiqueComponent } from './boutique/boutique.component';
 import { PlansComponent } from './plans/plans.component';
 import { PlanCardComponent } from './plan-card/plan-card.component';
 import { ServicesComponent } from './services/services.component';
@@ -45,7 +44,6 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     ViewTeamComponent,
     AddTeamComponent,
     MyAppointmentsComponent,
-    BoutiqueComponent,
     PlansComponent,
     PlanCardComponent,
     ServicesComponent,
