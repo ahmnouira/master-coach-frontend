@@ -1,0 +1,30 @@
+.service-card {
+  min-height: 230px;
+  border-radius: 20px;
+  background: transparent linear-gradient(180deg, #ddf2fa00 0%, #ddf2fa 100%) 0%
+    0% no-repeat padding-box;
+  background-size: cover;
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 10px #0000001a;
+  padding: 16px;
+
+  &-label {
+    margin-top: 128px;
+    background: #3c4d5d 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #0000001a;
+    border-radius: 5px;
+    padding: 0px 12px;
+    height: 24px;
+    margin-bottom: 8px;
+
+    p {
+      font: normal normal normal 13px/16px Fredoka;
+      color: #ffffff;
+    }
+  }
+
+  &-text {
+    font: normal normal normal 18px/22px Fredoka;
+    color: #3c4d5d;
+  }
+}

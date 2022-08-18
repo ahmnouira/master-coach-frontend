@@ -11,12 +11,19 @@ import { AddTeamComponent } from './add-team/add-team.component';
 import { ListTeamsComponent } from './list-teams/list-teams.component';
 import { MyAppointmentsComponent } from './my-appointments/my-appointments.component';
 import { MessagerieComponent } from 'src/app/shared/components/messagerie/messagerie.component';
-import { BoutiqueComponent } from './boutique/boutique.component';
 import { PlansComponent } from './plans/plans.component';
 
 const routes: Routes = [
   { path: 'profil', component: ProfilCoachComponent },
-  { path: 'parametre', component: ParametresComponent },
+
+  {
+    path: 'services',
+    loadChildren: () =>
+      import('./services/services.module').then(
+        (module) => module.ServicesModule
+      ),
+  },
+
   {
     path: 'coach-client',
     loadChildren: () =>
@@ -24,6 +31,17 @@ const routes: Routes = [
         (module) => module.CoachClientManagementModule
       ),
   },
+
+  {
+    path: 'boutique',
+    loadChildren: () =>
+      import('./boutique/boutique.module').then(
+        (module) => module.BoutiqueModule
+      ),
+  },
+
+  { path: 'parametre', component: ParametresComponent },
+
   { path: 'quiz/view', component: ViewFormQuizComponent },
   { path: 'quiz/add', component: AddFormQuizComponent },
   { path: 'quiz/list', component: ListFormQuizComponent },
@@ -33,7 +51,6 @@ const routes: Routes = [
   { path: 'coach-client/team/list', component: ListTeamsComponent },
   { path: 'coach-client/team/edit', component: EditFormQuizComponent },
   { path: 'calendar', component: MyAppointmentsComponent },
-  { path: 'boutique', component: BoutiqueComponent },
   { path: 'plans', component: PlansComponent },
 ];
 

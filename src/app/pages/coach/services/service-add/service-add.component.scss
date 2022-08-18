@@ -1,0 +1,41 @@
+.title {
+  font: normal normal normal 18px/22px Fredoka;
+  color: #1376a3;
+}
+
+
+.auto-confirmation {
+    font: normal normal normal 14px/17px Fredoka;
+    color: #3C4D5D;
+    margin-right: 17px;
+    margin-top: 8px;
+}
+
+
+.form-check {
+    display: flex;
+    align-items: center;
+
+    label {
+      margin-left: 8px;
+      font: normal normal normal 14px/17px Fredoka;
+      color: #3C4D5D;
+    }
+  }
+
+
+
+  .add-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+   
+    &-text {
+        margin-left: 4px;
+        margin-top: 6px;
+        font: normal normal normal 12px/15px Fredoka;
+        color: #1376A3;
+    }
+  }
+  
