@@ -13,27 +13,27 @@ export class ServicesListComponent implements OnInit {
     {
       id: '1',
       image: '',
-      label: 'Coaching carrière',
-      text: 'Comment gérer ses émotions au travail ?',
+      title: 'Coaching carrière',
+      description: 'Comment gérer ses émotions au travail ?',
     },
     {
       id: '2',
       image: '',
-      label: 'Coaching carrière',
-      text: 'Comment gérer ses émotions au travail ?',
+      title: 'Coaching carrière',
+      description: 'Comment gérer ses émotions au travail ?',
     },
     {
       id: '3',
       image: '',
-      label: 'Coaching carrière',
-      text: 'Comment gérer ses émotions au travail ?',
+      title: 'Coaching carrière',
+      description: 'Comment gérer ses émotions au travail ?',
     },
 
     {
       id: '4',
       image: '',
-      label: 'Coaching carrière',
-      text: 'Comment gérer ses émotions au travail ?',
+      title: 'Coaching carrière',
+      description: 'Comment gérer ses émotions au travail ?',
     },
   ];
 
