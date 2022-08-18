@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Formation } from 'src/app/models/formation/formation.model';
+import { Product } from 'src/app/models/product/product.model';
 
 @Component({
   selector: 'app-boutique-card',
@@ -7,7 +7,7 @@ import { Formation } from 'src/app/models/formation/formation.model';
   styleUrls: ['./boutique-card.component.scss'],
 })
 export class BoutiqueCardComponent implements OnInit {
-  @Input() formation: Formation;
+  @Input() formation: Product;
 
   constructor() {}
 

@@ -3,16 +3,18 @@ import { Entity } from "../entity/entity.model";
 import { ProductType } from "./product-type.enum";
 
 export class Product extends Entity implements IProduct  {
-  type: ProductType;
   title: string;
   description: string;
-  duration: number;
-  price: number;
-  category: string;
+  duration?: number;
+  type: ProductType;
+  category?: string;
+  price: string;
   isFree?: boolean;
   displayedInShop?: boolean;
-  image: any;
-  files: any[];
+  image?: any;
+  files?: any[];
+  
+ 
 }
 
 

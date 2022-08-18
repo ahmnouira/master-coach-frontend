@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormationType } from 'src/app/models/formation/formation-type.enum';
-import { Formation } from 'src/app/models/formation/formation.model';
+import { ProductType } from 'src/app/models/product/product-type.enum';
+import { Product } from 'src/app/models/product/product.model';
 
 @Component({
   selector: 'app-boutique-list',
@@ -10,38 +10,40 @@ import { Formation } from 'src/app/models/formation/formation.model';
 export class BoutiqueListComponent implements OnInit {
   filterString = '';
 
-  formations: Formation[] = [
+  formations: Product[] = [
     {
       id: '1',
       image: '',
       price: '15,00 €',
       title: 'David Laroche',
-      subTitle: 'Coaching d’équipe',
-      type: FormationType.PDF,
+      description: 'Coaching d’équipe',
+      type: ProductType.DOCUMENT,
     },
     {
       id: '2',
       image: '',
       price: '15,00 €',
       title: 'David Laroche',
-      subTitle: 'Coaching d’équipe',
-      type: FormationType.PDF,
+      description: 'Coaching d’équipe',
+      type: ProductType.DOCUMENT,
+
     },
     {
       id: '3',
       image: '',
       price: '15,00 €',
       title: 'David Laroche',
-      subTitle: 'Coaching d’équipe',
-      type: FormationType.PDF,
+      description: 'Coaching d’équipe',
+      type: ProductType.DOCUMENT,
+
     },
     {
       id: '4',
       image: '',
       price: '15,00 €',
       title: 'David Laroche',
-      subTitle: 'Coaching d’équipe',
-      type: FormationType.PDF,
+      description: 'Coaching d’équipe',
+      type: ProductType.DOCUMENT,
     },
   ];
 
