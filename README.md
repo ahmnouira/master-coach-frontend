@@ -10,7 +10,7 @@ https://documenter.getpostman.com/view/4147167/VUjSEP7h#aea85d15-2b42-402a-bde4-
 
 ## Run in the server
 
-1.
+1. Connect to the server
 
 ```
 ssh ubuntu@51.91.8.233

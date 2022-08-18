@@ -27,6 +27,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { PlansComponent } from './plans/plans.component';
 import { PlanCardComponent } from './plan-card/plan-card.component';
+import { CoachMenuComponent } from './coach-menu/coach-menu.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -44,6 +45,7 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     MyAppointmentsComponent,
     PlansComponent,
     PlanCardComponent,
+    CoachMenuComponent,
   ],
   imports: [
     CommonModule,
