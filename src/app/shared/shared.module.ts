@@ -19,6 +19,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ImportIconComponent } from './icons/import-icon/import-icon.component';
 import { FileImportedComponent } from './components/file-imported/file-imported.component';
+import { DividerComponent } from './components/divider/divider.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,8 @@ import { FileImportedComponent } from './components/file-imported/file-imported.
     LoaderComponent,
     ImportIconComponent,
     FileImportedComponent,
+    DividerComponent,
+
   ],
   imports: [
     CommonModule,
@@ -57,6 +60,7 @@ import { FileImportedComponent } from './components/file-imported/file-imported.
     VisioConferenceComponent,
     ModalSuccesComponent,
     LoaderComponent,
+    DividerComponent,
     ImportIconComponent,
     FileImportedComponent,
   ],
