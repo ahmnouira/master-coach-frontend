@@ -5,7 +5,7 @@ export class Formation {
   image: string;
   price: string;
   /**TODO: add enum */
-  type: FormationType;
+  type: FormationType
   title: string;
   subTitle: string;
 }
