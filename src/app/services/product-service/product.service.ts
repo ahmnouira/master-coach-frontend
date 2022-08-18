@@ -1,21 +1,8 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FormationType } from 'src/app/models/formation/formation-type.enum';
+import { IProduct } from 'src/app/interfaces/product.interface';
 import { BaseService } from '../base-service/base.service';
-
-interface AddProduct {
-  title: string 
-  description: string 
-  duration: number
-  type: FormationType
-  price: number
-  category: string 
-  isFree?: boolean
-  displayedInShop?: boolean
-  image: any
-  files: any[]
-}
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +11,7 @@ interface AddProduct {
 
 export class ProductService extends BaseService {
 
-    addProduct(data: AddProduct) : Observable<any> {
+    addProduct(data: IProduct) : Observable<any> {
       return this.post("/products", data)
     }
 
