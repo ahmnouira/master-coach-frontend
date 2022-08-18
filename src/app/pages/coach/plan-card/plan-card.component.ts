@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Plan } from 'src/app/models/plan.model';
 
 @Component({
@@ -9,7 +9,16 @@ import { Plan } from 'src/app/models/plan.model';
 export class PlanCardComponent implements OnInit {
   @Input() plan: Plan;
 
+
+  @Output()  onClick: EventEmitter<Plan> = new EventEmitter<Plan>();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  handleClick() {
+      this.onClick.emit(this.plan)
+  }
+
+  
 }

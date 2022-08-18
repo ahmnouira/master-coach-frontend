@@ -10,7 +10,7 @@ export class PlansComponent implements OnInit {
   plans: Plan[] = [
     {
       title: `Offer libre\nValable toute l'année`,
-      price: '0€',
+      price: '0 euros HT',
       features: [
         'Page web prsonnalisée',
         'Référencement de votre profil avec un rayonnment optimal',
@@ -20,8 +20,8 @@ export class PlansComponent implements OnInit {
     },
 
     {
-      title: 'Initation',
-      price: '59€',
+      title: 'Initiation',
+      price: '29 euros HT',
       features: [
         'Page web prsonnalisée',
         'Gestion de la ralation client',
@@ -37,7 +37,7 @@ export class PlansComponent implements OnInit {
 
     {
       title: 'Pro',
-      price: '99€',
+      price: '59 euros HT',
       features: [
         'Page web prsonnalisée',
         'Gestion de la ralation client',
@@ -53,7 +53,7 @@ export class PlansComponent implements OnInit {
 
     {
       title: 'Master',
-      price: '139€',
+      price: '150 euros HT',
       features: [
         'Page web prsonnalisée',
         'Gestion de la ralation client',
@@ -68,6 +68,8 @@ export class PlansComponent implements OnInit {
     },
   ];
 
+
+  // monthly by default 
   monthly = true;
 
   constructor() {}
@@ -77,13 +79,13 @@ export class PlansComponent implements OnInit {
   changeOffer(event: any) {
     this.monthly = !this.monthly;
     if (this.monthly) {
-      this.plans[1].price = '59€';
-      this.plans[2].price = '99€';
-      this.plans[3].price = '139€';
+      this.plans[1].price = '29 euros HT';
+      this.plans[2].price = '59 euros HT';
+      this.plans[3].price = '150 euros HT';
     } else {
-      this.plans[1].price = '49€';
-      this.plans[2].price = '82€';
-      this.plans[3].price = '115€';
+      this.plans[1].price = '19 euros HT';
+      this.plans[2].price = '49 euros HT';
+      this.plans[3].price = '140 euros HT';
     }
   }
 }
