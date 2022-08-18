@@ -22,7 +22,7 @@
             for="flexSwitchCheckDefault"
             >Mensuel</label
           >
-          <div class="form-check form-switch">
+          <s class="form-check form-switch">
             <input
               class="form-check-input"
               type="checkbox"
@@ -38,7 +38,7 @@
 
         <div></div>
       </div>
-      <app-stripe-payment [plan]="selectedPlan">
+      <form id="stripeForm">
         <div class="row plans-container-plans">
           <div class="col-6" *ngFor="let plan of plans">
             <app-plan-card
@@ -47,7 +47,7 @@
             ></app-plan-card>
           </div>
         </div>
-      </app-stripe-payment>
+      </form>
     </div>
   </div>
 </div>
