@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TwilioConversationService } from '../../../services/twilio.service';
+import { TwilioService } from '../../../services/twilio-service/twilio.service';
 
 @Component({
   selector: 'app-detail-coach',
@@ -16,10 +16,7 @@ export class DetailCoachComponent implements OnInit {
   scrollLeft: any;
 
   slider = document.querySelector<HTMLElement>('.wrapper');
-  constructor(
-    private conversationService: TwilioConversationService,
-    private router: Router
-  ) {}
+  constructor(private twilioService: TwilioService, private router: Router) {}
 
   ngOnInit(): void {
     this.coach = history.state?.id;
@@ -55,7 +52,7 @@ export class DetailCoachComponent implements OnInit {
   }
 
   createNewConversation(user) {
-    this.conversationService.createNewConversation(user._id).subscribe(
+    this.twilioService.createNewConversation(user._id).subscribe(
       (data) => {
         console.log(data);
         this.router.navigate(['/pages/conversations']);

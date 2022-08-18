@@ -1,11 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { datatable_action } from '../../../shared/datatable/datatable.model';
-import { TokenStorageService } from '../../../services/token-storage.service';
-import { UserService } from '../../../services/user-service.service';
-import { CoachService } from '../../../services/coach.service';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user-service/user-service.service';
+import { CoachService } from 'src/app/services/coach-service/coach.service';
 
 @Component({
   selector: 'app-view-team',

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import 'moment-timezone';
 import { Location } from '@angular/common';
-import { RdvService } from '../../../services/rdv.service';
+import { RdvService } from 'src/app/services/rdv-service/rdv.service';
 
 @Component({
   selector: 'app-rdv-reservation',

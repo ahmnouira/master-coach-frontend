@@ -1,12 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import * as moment from 'moment';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { TwilioConversationService } from 'src/app/services/twilio.service';
-import { environment } from 'src/environments/environment';
+import { TwilioService } from 'src/app/services/twilio-service/twilio.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import * as Video from 'twilio-video';
-import { RdvService } from 'src/app/services/rdv.service';
+import { RdvService } from 'src/app/services/rdv-service/rdv.service';
 
 @Component({
   selector: 'app-visio-conference',
@@ -25,7 +23,7 @@ export class VisioConferenceComponent implements OnInit, AfterViewInit {
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private conversationService: TwilioConversationService,
+    private twilioService: TwilioService,
     private route: ActivatedRoute,
     private router: Router,
     private rdvService: RdvService
@@ -134,7 +132,7 @@ export class VisioConferenceComponent implements OnInit, AfterViewInit {
   };
 
   getToken() {
-    let token = this.conversationService
+    let token = this.twilioService
       .getVideoRoomToken({ room: this.roomName })
       .subscribe(
         (data) => {

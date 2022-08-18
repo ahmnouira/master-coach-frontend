@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { datatable_action } from '../../../../shared/datatable/datatable.model';
 import { FormControl } from '@angular/forms';
-import { UserService } from '../../../../services/user-service.service';
 import { TokenStorageService } from '../../../../services/token-storage.service';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user-service/user-service.service';
 
 @Component({
   selector: 'app-users-list',
