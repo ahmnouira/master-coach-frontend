@@ -31,7 +31,6 @@ export class StripePaymentComponent implements OnInit {
   }
 
   initStripe() {
- 
 
       this.script = this.renderer.createElement('script') as HTMLScriptElement;
       // v2
