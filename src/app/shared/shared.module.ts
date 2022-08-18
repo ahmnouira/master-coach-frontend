@@ -20,6 +20,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ImportIconComponent } from './icons/import-icon/import-icon.component';
 import { FileImportedComponent } from './components/file-imported/file-imported.component';
 import { DividerComponent } from './components/divider/divider.component';
+import { TextFieldComponent } from './components/text-field/text-field.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DividerComponent } from './components/divider/divider.component';
     ImportIconComponent,
     FileImportedComponent,
     DividerComponent,
+    TextFieldComponent,
 
   ],
   imports: [
@@ -59,10 +61,12 @@ import { DividerComponent } from './components/divider/divider.component';
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
     ModalSuccesComponent,
-    LoaderComponent,
-    DividerComponent,
     ImportIconComponent,
     FileImportedComponent,
+    // new components
+    LoaderComponent,
+    DividerComponent,
+    TextFieldComponent
   ],
 })
 export class SharedModule {}
