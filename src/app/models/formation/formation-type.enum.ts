@@ -1,5 +1,5 @@
 export enum FormationType {
-  PDF = 'pdf',
-  PICTURES = 'pictures',
+  DOCUMENT = 'document',
+  PODCAST = 'podcast',
   VIDEO = 'video',
 }
