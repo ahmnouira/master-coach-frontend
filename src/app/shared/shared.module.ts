@@ -41,7 +41,6 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     DividerComponent,
     TextFieldComponent,
     CheckboxComponent,
-
   ],
   imports: [
     CommonModule,
@@ -68,8 +67,8 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     // new components
     LoaderComponent,
     DividerComponent,
-    TextFieldComponent, 
-    CheckboxComponent
+    TextFieldComponent,
+    CheckboxComponent,
   ],
 })
 export class SharedModule {}

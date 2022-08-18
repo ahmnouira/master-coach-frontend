@@ -12,12 +12,7 @@ export class ServiceAddComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  addPhoto(event) {}
 
-  addPhoto(event) {
-
-  }
-
-  save() {
-    
-  }
+  save() {}
 }
