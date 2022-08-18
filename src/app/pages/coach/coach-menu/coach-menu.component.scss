@@ -1,50 +1,49 @@
 .sub-menu {
-    margin-bottom: 13px;
-  }
+  margin-bottom: 13px;
+}
 
 .active-tab {
-    width: 192px;
-    height: 54px;
-    display: block;
-    background: #feefea 0% 0% no-repeat padding-box;
-    border-radius: 10px;
-    padding: 15px 20px;
-    opacity: 1;
-    border: 0;
+  width: 192px;
+  height: 54px;
+  display: block;
+  background: #feefea 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  padding: 15px 20px;
+  opacity: 1;
+  border: 0;
+  text-align: left;
+
+  span {
     text-align: left;
-  
+    font: normal normal normal 18px/22px FredokaMedium;
+    letter-spacing: 0px;
+    color: #3c4d5d;
+    opacity: 1;
+    margin-right: 8px;
+  }
+}
+.white-bg {
+  background-color: #ffffff;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .active-tab {
+    width: unset;
+  }
+}
+@media screen and (max-width: 991px) {
+  .col-separator {
+    padding-bottom: 6px;
+    padding-left: 0;
+  }
+  .active-tab {
+    padding: 15px 13px;
     span {
-      text-align: left;
-      font: normal normal normal 18px/22px FredokaMedium;
-      letter-spacing: 0px;
-      color: #3c4d5d;
-      opacity: 1;
-      margin-right: 8px;
+      font-size: 15px;
     }
   }
-  .white-bg {
-    background-color: #ffffff;
-  }
-
-
-  .cursor-pointer {
-    cursor: pointer !important;
-  }
-  
-  @media screen and (max-width: 1200px) {
-    .active-tab {
-      width: unset;
-    }
-  }
-  @media screen and (max-width: 991px) {
-    .col-separator {
-      padding-bottom: 6px;
-      padding-left: 0;
-    }
-    .active-tab {
-      padding: 15px 13px;
-      span {
-        font-size: 15px;
-      }
-    }
-  }
+}

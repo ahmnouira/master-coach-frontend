@@ -15,6 +15,14 @@ export const environment = {
 
   TWILIO_VIDEO_API_KEY: 'SK958332116250055e9a97995e606b5717',
   TWILIO_VIDEO_SECRET: 'P7cLYKcf5E3iKO3RSZGUgrfMOG4eHS0Z',
+
+  // test stripe keys
+  STRIPE_PUBLISHABLE_KEY:
+    'pk_test_51LVyPOA1THLgkj12rflAkcCedKRC8Jc8pynHiEoKUCdlPieGSuPFHlvkG1MKbRoxqlp8ItUBLMbiWbDROmZUa4jY00GRhlNdto',
+  STRIPE_SECRET_KEY:
+    'sk_test_51LVyPOA1THLgkj12XMDaXP4xU1RNUFviY2Ov7F7mzXJQFzLwlUOGgAzavafGc2GvzsKOFqEPSYlIBcVVv11DNKdp00FbtaQtrC',
+
+  APP_NAME: 'MasterCoach',
 };
 
 /*

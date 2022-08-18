@@ -26,7 +26,6 @@ export class BoutiqueListComponent implements OnInit {
       title: 'David Laroche',
       description: 'Coaching d’équipe',
       type: ProductType.DOCUMENT,
-
     },
     {
       id: '3',
@@ -35,7 +34,6 @@ export class BoutiqueListComponent implements OnInit {
       title: 'David Laroche',
       description: 'Coaching d’équipe',
       type: ProductType.DOCUMENT,
-
     },
     {
       id: '4',

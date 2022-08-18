@@ -9,16 +9,13 @@ import { Plan } from 'src/app/models/plan.model';
 export class PlanCardComponent implements OnInit {
   @Input() plan: Plan;
 
-
-  @Output()  onClick: EventEmitter<Plan> = new EventEmitter<Plan>();
+  @Output() onClick: EventEmitter<Plan> = new EventEmitter<Plan>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
   handleClick() {
-      this.onClick.emit(this.plan)
+    this.onClick.emit(this.plan);
   }
-
-  
 }

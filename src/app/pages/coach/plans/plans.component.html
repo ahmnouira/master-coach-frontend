@@ -38,12 +38,16 @@
 
         <div></div>
       </div>
-
-      <div class="row plans-container-plans">
-        <div class="col-6" *ngFor="let plan of plans">
-          <app-plan-card [plan]="plan"></app-plan-card>
+      <app-stripe-payment [plan]="selectedPlan">
+        <div class="row plans-container-plans">
+          <div class="col-6" *ngFor="let plan of plans">
+            <app-plan-card
+              [plan]="plan"
+              (onClick)="setSelectedPlan($event)"
+            ></app-plan-card>
+          </div>
         </div>
-      </div>
+      </app-stripe-payment>
     </div>
   </div>
 </div>

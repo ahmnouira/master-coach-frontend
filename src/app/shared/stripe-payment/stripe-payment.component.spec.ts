@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CoachMenuComponent } from './coach-menu.component';
+import { StripePaymentComponent } from './stripe-payment.component';
 
-describe('CoachMenuComponent', () => {
-  let component: CoachMenuComponent;
-  let fixture: ComponentFixture<CoachMenuComponent>;
+describe('StripePaymentComponent', () => {
+  let component: StripePaymentComponent;
+  let fixture: ComponentFixture<StripePaymentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CoachMenuComponent],
+      declarations: [StripePaymentComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CoachMenuComponent);
+    fixture = TestBed.createComponent(StripePaymentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
