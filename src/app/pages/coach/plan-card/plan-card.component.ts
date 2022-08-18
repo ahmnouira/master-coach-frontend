@@ -6,11 +6,8 @@ import { Plan } from 'src/app/models/plan.model';
   templateUrl: './plan-card.component.html',
   styleUrls: ['./plan-card.component.scss'],
 })
-
-
 export class PlanCardComponent implements OnInit {
-
-  @Input() plan: Plan
+  @Input() plan: Plan;
 
   constructor() {}
 
