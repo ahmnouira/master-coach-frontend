@@ -21,6 +21,7 @@ import { ImportIconComponent } from './icons/import-icon/import-icon.component';
 import { FileImportedComponent } from './components/file-imported/file-imported.component';
 import { DividerComponent } from './components/divider/divider.component';
 import { TextFieldComponent } from './components/text-field/text-field.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TextFieldComponent } from './components/text-field/text-field.component
     FileImportedComponent,
     DividerComponent,
     TextFieldComponent,
+    CheckboxComponent,
 
   ],
   imports: [
@@ -66,7 +68,8 @@ import { TextFieldComponent } from './components/text-field/text-field.component
     // new components
     LoaderComponent,
     DividerComponent,
-    TextFieldComponent
+    TextFieldComponent, 
+    CheckboxComponent
   ],
 })
 export class SharedModule {}
