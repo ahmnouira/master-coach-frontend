@@ -1,16 +1,13 @@
 {
   "name": "mastercoach-fe",
   "version": "0.0.0",
-  "author": "Mohamed Omar Bouchkati",
+  "author": "Innovant",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Abdou-Hidoussi/Master-Coach/issues"
-  },
   "scripts": {
     "serve": "ng serve",
     "build": "ng build --verbose --progress",
     "start:prod": "ng serve --host 0.0.0.0",
-    "start:configprod": "ng serve --host 0.0.0.0 --configuration production",
+    "start:configprod": "ng serve --host 0.0.0.0 --port 4200 --configuration production",
     "start": "http-server dist --cors",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
