@@ -1,15 +1,13 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PLANS, PLANS_YEARLY } from 'src/app/constants/plans';
 import { Plan } from 'src/app/models/plan.model';
-import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-plans',
-  templateUrl: './plans.component.html',
-  styleUrls: ['./plans.component.scss'],
+  selector: 'app-plan-list',
+  templateUrl: './plan-list.component.html',
+  styleUrls: ['./plan-list.component.scss'],
 })
-export class PlansComponent implements OnInit {
+export class PlanListComponent implements OnInit {
  
   plans  =  PLANS
 

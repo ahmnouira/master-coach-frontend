@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CcListComponent } from './cc-list/cc-list.component';
-import { CcAddComponent } from './cc-add/cc-add.component';
+import { CcListComponent } from '../coach-client-management/cc-list/cc-list.component';
+import { CcAddComponent } from '../coach-client-management/cc-add/cc-add.component';
 
 const routes: Routes = [
   { path: '', component: CcListComponent },
