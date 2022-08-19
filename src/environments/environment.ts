@@ -22,7 +22,11 @@ export const environment = {
   STRIPE_SECRET_KEY:
     'sk_test_51LVyPOA1THLgkj12XMDaXP4xU1RNUFviY2Ov7F7mzXJQFzLwlUOGgAzavafGc2GvzsKOFqEPSYlIBcVVv11DNKdp00FbtaQtrC',
 
+  // the app name
   APP_NAME: 'MasterCoach',
+
+  // the front app url
+  APP_URL: 'http://localhost:4200',
 };
 
 /*

@@ -8,7 +8,6 @@ import {
   Renderer2,
   Inject,
   AfterViewInit,
-  SimpleChange,
   SimpleChanges,
 } from '@angular/core';
 import { Plan } from 'src/app/models/plan.model';
@@ -25,6 +24,10 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
   @Output() onClick: EventEmitter<Plan> = new EventEmitter<Plan>();
 
   form: any;
+
+  redirectUrl = environment.APP_URL + '/pages/coach/plan/paid';
+
+  //http://localhost:5000/pages/coach/plan/paid?stripeToken=tok_1LYS0uA1THLgkj123FcjOzzx&stripeTokenType=card&stripeEmail=ahmnouira%40gmail.com
 
   constructor(
     private renderer: Renderer2,

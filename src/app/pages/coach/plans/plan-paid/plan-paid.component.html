@@ -1,1 +1,23 @@
-<p>plan-paid works!</p>
+<app-sub-header [title]="'Paramètres'"></app-sub-header>
+
+<div class="row sub-component-content">
+  <div class="col-2 p-0">
+    <app-coach-menu [active]="'plans'"></app-coach-menu>
+  </div>
+  <div class="col-10">
+    <div class="container">
+      <h3 class="container-title">Thanks for your subscription</h3>
+      <p class="container-text">
+        You have paid
+        <b class="container-price">{{ plan.price }}</b> from
+        <b class="container-price"> {{ plan.title }}</b> ----
+        <b class="container-price">{{ plan.type }}</b>
+      </p>
+      <p class="container-features" *ngFor="let feature of plan.features">
+        {{ feature }}
+      </p>
+
+      <a href="" onclick="history.back()">Back</a>
+    </div>
+  </div>
+</div>

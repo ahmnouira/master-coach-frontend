@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParamMap } from '@angular/router';
+import { PLANS_ANNUAL } from 'src/app/constants/plans';
 import { Plan } from 'src/app/models/plan.model';
 import { PaymentService } from 'src/app/services/payment-service/payment.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
@@ -11,7 +12,7 @@ import { RouteService } from 'src/app/services/route-service/route.service';
 })
 export class PlanPaidComponent implements OnInit {
   isLoading: true;
-  plan: Plan;
+  plan: Plan = PLANS_ANNUAL[0];
 
   constructor(
     private routeService: RouteService,
@@ -20,7 +21,7 @@ export class PlanPaidComponent implements OnInit {
 
   ngOnInit(): void {
     const params: ParamMap = this.routeService.getParams;
-    this.plan = this.paymentService.getSelectedPlan;
+    // this.plan = this.paymentService.getSelectedPlan;
 
     if (params.has('stripeToken')) {
       this.savePayment(params.get('stripeToken'));

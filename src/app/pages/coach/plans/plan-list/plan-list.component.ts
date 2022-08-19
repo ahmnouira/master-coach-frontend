@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PLANS_MONTHLY, PLANS_ANNUAL } from 'src/app/constants/plans';
 import { Plan } from 'src/app/models/plan.model';
+import { PaymentService } from 'src/app/services/payment-service/payment.service';
 
 @Component({
   selector: 'app-plan-list',
@@ -17,7 +18,7 @@ export class PlanListComponent implements OnInit {
   // monthly by default
   monthly = true;
 
-  constructor() {}
+  constructor(private paymentService: PaymentService) {}
 
   ngOnInit(): void {}
 
@@ -32,6 +33,6 @@ export class PlanListComponent implements OnInit {
 
   setSelectedPlan(plan: Plan) {
     this.selectedPlan = plan;
-    console.log('selectedPlan', plan);
+    this.paymentService.setSelectedPlan = plan;
   }
 }
