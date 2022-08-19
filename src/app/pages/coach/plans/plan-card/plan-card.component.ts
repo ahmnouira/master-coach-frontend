@@ -25,7 +25,7 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
 
   form: any;
 
-  redirectUrl = environment.APP_URL + '/pages/coach/plan/paid';
+  redirectUrl = environment.APP_URL + '/pages/coach/plans/paid';
 
   //http://localhost:5000/pages/coach/plan/paid?stripeToken=tok_1LYS0uA1THLgkj123FcjOzzx&stripeTokenType=card&stripeEmail=ahmnouira%40gmail.com
 
@@ -66,6 +66,7 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
     this.renderer.setAttribute(script, 'data-amount', plan.price);
     this.renderer.setAttribute(script, 'data-name', environment.APP_NAME);
     this.renderer.setAttribute(script, 'data-description', plan.title);
+  
     this.renderer.setAttribute(script, 'data-locale', 'auto');
 
     setTimeout(() => {

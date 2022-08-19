@@ -17,14 +17,11 @@ import { SessionStorageService } from '../session-storage-service/session-storag
 })
 export class RouteService extends SessionStorageService {
   private token = '';
-
-  private params: ParamMap;
-
+  private params: any;
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public location: Location,
-    
     private titleService: Title
 
 
@@ -62,7 +59,7 @@ export class RouteService extends SessionStorageService {
 
   public get getParams(): ParamMap {
     this.getParamsFromRoute();
-    return this.params;
+    return this.params.params as ParamMap;
   }
 
   private getParamsFromRoute() {

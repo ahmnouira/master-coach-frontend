@@ -8,6 +8,7 @@ import { PlanListComponent } from './plan-list/plan-list.component';
 import { PlansRoutingModule } from './plans-routing.module';
 import { CoachMenuComponent } from './coach-menu/coach-menu.component';
 import { PlanPaidComponent } from './plan-paid/plan-paid.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PlanPaidComponent } from './plan-paid/plan-paid.component';
     CommonModule,
     ComponentsModule,
     FormsModule,
+    SharedModule,
     ModalModule,
     PlansRoutingModule,
   ],
