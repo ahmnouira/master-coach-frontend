@@ -7,15 +7,21 @@ import { PlanCardComponent } from './plan-card/plan-card.component';
 import { PlanListComponent } from './plan-list/plan-list.component';
 import { PlansRoutingModule } from './plans-routing.module';
 import { CoachMenuComponent } from './coach-menu/coach-menu.component';
+import { PlanPaidComponent } from './plan-paid/plan-paid.component';
 
 @NgModule({
-  declarations: [PlanCardComponent, PlanListComponent, CoachMenuComponent],
+  declarations: [
+    PlanCardComponent,
+    PlanListComponent,
+    CoachMenuComponent,
+    PlanPaidComponent,
+  ],
   imports: [
     CommonModule,
     ComponentsModule,
     FormsModule,
     ModalModule,
-    PlansRoutingModule
-  ],  
+    PlansRoutingModule,
+  ],
 })
 export class PlansModule {}

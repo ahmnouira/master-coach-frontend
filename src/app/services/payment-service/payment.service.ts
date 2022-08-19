@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Plan } from 'src/app/models/plan.model';
 import { BaseService } from '../base-service/base.service';
 
 interface ISubscribe {
@@ -12,7 +13,17 @@ interface ISubscribe {
   providedIn: 'root',
 })
 export class PaymentService extends BaseService {
-  subscribe(data: ISubscribe): Observable<any> {
+  private selectedPlan: Plan;
+
+  savePlan(data: ISubscribe): Observable<any> {
     return this.post('payment', data);
+  }
+
+  set setSelectedPlan(plan: Plan) {
+    this.selectedPlan = plan;
+  }
+
+  get getSelectedPlan() {
+    return this.selectedPlan;
   }
 }

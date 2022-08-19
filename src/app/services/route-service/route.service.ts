@@ -4,6 +4,7 @@ import {
   ActivatedRoute,
   NavigationBehaviorOptions,
   NavigationExtras,
+  ParamMap,
   Router,
   UrlTree,
 } from '@angular/router';
@@ -14,6 +15,8 @@ import { SessionStorageService } from '../session-storage-service/session-storag
 })
 export class RouteService extends SessionStorageService {
   private token = '';
+
+  private params: ParamMap;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -49,6 +52,17 @@ export class RouteService extends SessionStorageService {
   public get getToken(): string {
     this.getTokenFormRoute();
     return this.token;
+  }
+
+  public get getParams(): ParamMap {
+    this.getParamsFromRoute();
+    return this.params;
+  }
+
+  private getParamsFromRoute() {
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      this.params = params;
+    });
   }
 
   private getTokenFormRoute() {
