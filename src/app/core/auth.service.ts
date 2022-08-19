@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { User } from '@twilio/conversations';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserRole } from '../models/role.enum';
+import { User } from '../models/user-model';
 import { BaseService } from '../services/base-service/base.service';
 import { IConfirmEmail } from './interfaces/confirm-email';
 import { IForgotPassword } from './interfaces/forgot-password';

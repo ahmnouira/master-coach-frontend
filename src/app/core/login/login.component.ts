@@ -46,16 +46,16 @@ export class LoginComponent implements OnInit {
         // console.log('authData:', authData);
         this.tokenStorage.saveToken(authData.token);
         this.tokenStorage.saveTwilioToken(authData.twilio_token);
-        this.tokenStorage.saveUser(authData);
+
+      
         this.authService.loggedInUser().subscribe(
           (userRes) => {
 
-            if(userRes.success) {
+            if(!userRes.success) {
               this.onError(userRes.error)
               return
             }
-            console.log('user', userRes.data)
-          
+            this.tokenStorage.saveUser(userRes.data);
             this.authService.currentUser$.next(userRes.data)
             this.onSuccess()
           
@@ -78,13 +78,13 @@ export class LoginComponent implements OnInit {
   }
 
 
-  onSuccess() {
+  onSuccess = () => {
     this.isLoginFailed = false;
     this.isVerified = true;
     this.isLoading = false;
   }
 
-  onError(err: string) {
+  onError = (err: string) => {
     console.log('error', err);
     if (err == 'Your email is not verified') {
       this.isVerified = false;

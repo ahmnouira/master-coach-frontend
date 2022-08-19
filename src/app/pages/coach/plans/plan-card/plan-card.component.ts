@@ -21,6 +21,8 @@ import { environment } from 'src/environments/environment';
 export class PlanCardComponent implements OnInit, AfterViewInit {
   @Input() plan: Plan;
 
+  @Input()  email: string
+
   @Output() onClick: EventEmitter<Plan> = new EventEmitter<Plan>();
 
   form: any;
@@ -31,13 +33,14 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
 
   constructor(
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
   ) {}
   ngAfterViewInit(): void {
     this.removeButton();
   }
 
   ngOnInit(): void {
+  
     this.initStripe(this.plan);
   }
 
@@ -66,6 +69,7 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
     this.renderer.setAttribute(script, 'data-amount', plan.price);
     this.renderer.setAttribute(script, 'data-name', environment.APP_NAME);
     this.renderer.setAttribute(script, 'data-description', plan.title);
+    this.renderer.setAttribute(script, 'data-email', this.email)
 
     this.renderer.setAttribute(script, 'data-locale', 'auto');
 
