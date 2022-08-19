@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://mastercoach-api.innovant.studio',
+  apiUrl: 'https://api-master-coach.comyweb.com',
   //   apiUrl: 'https://localhost:5000',
 };

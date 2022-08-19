@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://mastercoach-api.innovant.studio",
+    "target": "https://api-master-coach.comyweb.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
