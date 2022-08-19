@@ -7,9 +7,13 @@
   <div class="col-10">
     <div class="plans-container">
       <h3 class="plans-container-title">Mon plan actif</h3>
-      <p class="plans-container-info">Plan actif: Lorem ipsum</p>
       <p class="plans-container-info">
-        Expire dans: <span class="plans-container-expire">15 jours</span>
+        Plan actif:
+        <b class="plans-container-expire">{{ subscriptionType | titlecase }}</b>
+      </p>
+      <p class="plans-container-info">
+        Expire dans:
+        <b class="plans-container-expire">{{ expires }}</b>
       </p>
 
       <div class="d-flex justify-content-between" style="margin-top: 30px">
@@ -42,6 +46,7 @@
       <div class="row plans-container-plans">
         <div class="col-6" *ngFor="let plan of plans">
           <app-plan-card
+            [email]="userEmail"
             [plan]="plan"
             (onClick)="setSelectedPlan($event)"
           ></app-plan-card>

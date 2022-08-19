@@ -59,7 +59,7 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     NgxSmartModalModule.forChild(),
   ],
   exports: [CoachMenuComponent],
-  
+
   providers: [BsModalService],
 })
 export class CoachModule {}
