@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {
@@ -7,6 +8,7 @@ import {
   ParamMap,
   Router,
   UrlTree,
+
 } from '@angular/router';
 import { SessionStorageService } from '../session-storage-service/session-storage.service';
 
@@ -21,7 +23,11 @@ export class RouteService extends SessionStorageService {
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
+    public location: Location,
+    
     private titleService: Title
+
+
   ) {
     super();
     // this.getTokenFormRoute();
