@@ -41,58 +41,53 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.authService.login(email, password).subscribe(
-      (authData) => {
-        // console.log('authData:', authData);
-        this.tokenStorage.saveToken(authData.token);
-        this.tokenStorage.saveTwilioToken(authData.twilio_token);
-
-      
-        this.authService.loggedInUser().subscribe(
-          (userRes) => {
-
-            if(!userRes.success) {
-              this.onError(userRes.error)
-              return
-            }
-            this.tokenStorage.saveUser(userRes.data);
-            this.authService.currentUser$.next(userRes.data)
-            this.onSuccess()
-          
-            if (authData.role.toLowerCase() === 'admin') {
-              this.routeService.navigateByUrl('/pages/admin/users/list');
-            } else {
-              this.routeService.navigateByUrl(
-                '/pages/' + authData.role.toLowerCase() + '/parametre'
-              );
-            }
-          },
-          (err) => {
-            console.error('loggedInUserError', err)
-
+    this.authService.login(email, password).subscribe((authData) => {
+      // console.log('authData:', authData);
+      this.tokenStorage.saveToken(authData.token);
+      this.tokenStorage.saveTwilioToken(authData.twilio_token);
+      setTimeout(() => {
+      this.authService.loggedInUser().subscribe(
+        (userRes) => {
+          if (!userRes.success) {
+            console.log('not', userRes)
+            this.onError(userRes.error);
+            return;
           }
-        );
-      },
-      (this.onError) 
-    );
+          this.tokenStorage.saveUser(userRes.data);
+          this.authService.currentUser$.next(userRes.data);
+          this.onSuccess();
+
+          if (authData.role.toLowerCase() === 'admin') {
+            this.routeService.navigateByUrl('/pages/admin/users/list');
+          } else {
+            this.routeService.navigateByUrl(
+              '/pages/' + authData.role.toLowerCase() + '/parametre'
+            );
+          }
+        },
+        (err) => {
+          console.error('loggedInUserError', err);
+        }
+      )
+    }, 500);
+    }, (err) => this.onError(err));
   }
 
-
-  onSuccess = () => {
+  onSuccess() {
     this.isLoginFailed = false;
     this.isVerified = true;
     this.isLoading = false;
-  }
+  };
 
-  onError = (err: string) => {
+  onError  (err: string)  {
     console.log('error', err);
     if (err == 'Your email is not verified') {
       this.isVerified = false;
     }
-    this.errorMessage = err; 
+    this.errorMessage = err;
     this.isLoginFailed = true;
     this.isLoading = false;
-  }
+  };
 
   createUser(role: string) {
     this.authService.setUserRole = role as UserRole;

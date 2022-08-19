@@ -22,7 +22,7 @@ export class AuthService extends BaseService {
   }
 
   loggedInUser(): Observable<any> {
-    return this.get('/me')
+    return this.get('/me');
   }
 
   register(user: any): Observable<any> {

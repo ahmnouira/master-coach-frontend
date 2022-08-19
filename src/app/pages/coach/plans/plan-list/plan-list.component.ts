@@ -15,34 +15,35 @@ export class PlanListComponent implements OnInit {
   isLoading: true;
   selectedPlan: Plan;
 
-  subscriptionType: string
-  expires: string | number
-  userEmail: string 
+  subscriptionType: string;
+  expires: string | number;
+  userEmail: string;
   // monthly by default
   monthly = true;
 
-  constructor(private paymentService: PaymentService, private authService: AuthService) {}
+  constructor(
+    private paymentService: PaymentService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.authService.currentUser$.subscribe(user => {
-      console.log('user', user)
-      if(user) {
-        this.userEmail = user.email
-        this.subscriptionType  = user.subscriptionType ?? 'free'
-  
-        if(user.subscriptionEnd &&   user.subscriptionStart)  {
-          const difference = new Date(user.subscriptionEnd).getTime() - new Date(user.subscriptionStart).getTime()           
+    this.authService.currentUser$.subscribe((user) => {
+      console.log('user', user);
+      if (user) {
+        this.userEmail = user.email;
+        this.subscriptionType = user.subscriptionType ?? 'free';
+
+        if (user.subscriptionEnd && user.subscriptionStart) {
+          const difference =
+            new Date(user.subscriptionEnd).getTime() -
+            new Date(user.subscriptionStart).getTime();
           const days = Math.ceil(difference / (1000 * 3600 * 24));
-          this.expires = days > 1 ? `${days} jours` : `${days} jour`
-          
+          this.expires = days > 1 ? `${days} jours` : `${days} jour`;
         } else {
-          this.expires = 'No expire its free'
+          this.expires = 'No expire its free';
         }
-
-        
       }
-    })
-
+    });
   }
 
   changeOffer(event: any) {

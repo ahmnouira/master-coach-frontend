@@ -49,6 +49,7 @@ export const PLANS_MONTHLY: Plan[] = [
       'Jusqu`s a 100H de vidéconférence mensuelles',
       'Jusqu`s a 6 produits dans lat Boutique en ligne',
     ],
+
     type: PlanType.Monthly,
   },
   {

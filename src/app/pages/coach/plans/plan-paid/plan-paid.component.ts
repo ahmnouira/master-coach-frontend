@@ -1,7 +1,10 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/auth.service';
+import { getPrice } from 'src/app/helpers/getPrice';
 import { Plan } from 'src/app/models/plan.model';
 import { PaymentService } from 'src/app/services/payment-service/payment.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-plan-paid',
@@ -17,7 +20,9 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
 
   constructor(
     private routeService: RouteService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService, 
+    private authService: AuthService,
+    private tokenService: TokenStorageService
   ) {}
 
   ngOnInit(): void {
@@ -37,11 +42,7 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
       this.params['stripeTokenType'] &&
       this.plan
     ) {
-      console.log(
-        this.plan.title.toLowerCase(),
-        parseInt(this.plan.price.replace(' euros HT', ''))
-      );
-
+      
       this.savePayment(this.params['stripeToken']);
     } else {
       this.errorMessage = 'Invalid data';
@@ -54,11 +55,31 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
     this.paymentService
       .savePlan({
         planDescription: this.plan.title.toLowerCase(),
-        planPrice: parseInt(this.plan.price.replace(' euros HT', '')),
+        planPrice: getPrice(this.plan.price),
         stripeToken,
       })
       .subscribe(
         (res) => {
+
+          this.authService.loggedInUser().subscribe(
+            (userRes) => {
+              console.log('userRes', userRes)
+
+              if (!userRes.success) {
+                return;
+              }
+              this.tokenService.saveUser(userRes.data);
+              this.authService.currentUser$.next(userRes.data);
+              
+  
+            },
+            (err) => {
+              console.error('loggedInUserError', err);
+            }
+          )
+
+
+
           console.log('res:', res, res.success, res.message);
           this.paymentService.clearSelectedPlan();
           this.success = true;

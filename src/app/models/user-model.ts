@@ -14,8 +14,8 @@ export class User {
   tel: string;
   photo: string;
   twilio_sid: string;
-  subscriptionType: string
-  subscriptionEnd:string
-  subscriptionStart: string
-  stripeId: string 
+  subscriptionType: string;
+  subscriptionEnd: string;
+  subscriptionStart: string;
+  stripeId: string;
 }

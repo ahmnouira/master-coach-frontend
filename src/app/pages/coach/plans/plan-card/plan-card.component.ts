@@ -10,6 +10,7 @@ import {
   AfterViewInit,
   SimpleChanges,
 } from '@angular/core';
+import { getPrice } from 'src/app/helpers/getPrice';
 import { Plan } from 'src/app/models/plan.model';
 import { environment } from 'src/environments/environment';
 
@@ -21,7 +22,7 @@ import { environment } from 'src/environments/environment';
 export class PlanCardComponent implements OnInit, AfterViewInit {
   @Input() plan: Plan;
 
-  @Input()  email: string
+  @Input() email: string;
 
   @Output() onClick: EventEmitter<Plan> = new EventEmitter<Plan>();
 
@@ -33,14 +34,13 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
 
   constructor(
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document: Document
   ) {}
   ngAfterViewInit(): void {
     this.removeButton();
   }
 
   ngOnInit(): void {
-  
     this.initStripe(this.plan);
   }
 
@@ -66,10 +66,10 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
       environment.STRIPE_PUBLISHABLE_KEY
     );
 
-    this.renderer.setAttribute(script, 'data-amount', plan.price);
+    this.renderer.setAttribute(script, 'data-amount', getPrice(this.plan.price).toString());
     this.renderer.setAttribute(script, 'data-name', environment.APP_NAME);
     this.renderer.setAttribute(script, 'data-description', plan.title);
-    this.renderer.setAttribute(script, 'data-email', this.email)
+    this.renderer.setAttribute(script, 'data-email', this.email);
 
     this.renderer.setAttribute(script, 'data-locale', 'auto');
 

@@ -6,4 +6,13 @@ export class Plan {
   price: string;
   features: string[];
   type: PlanType;
+
+  /*
+  getPrice(): number {
+    if(this.price.includes(' euros HT')) {
+      return parseInt(this.price.replace(' euros HT', '')) * 100
+    }
+    return parseInt(this.price)   * 100  
+  }
+  */
 }
