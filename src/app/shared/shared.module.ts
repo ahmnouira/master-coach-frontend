@@ -22,6 +22,7 @@ import { FileImportedComponent } from './components/file-imported/file-imported.
 import { DividerComponent } from './components/divider/divider.component';
 import { TextFieldComponent } from './components/text-field/text-field.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { StripePaymentComponent } from './stripe-payment/stripe-payment.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     DividerComponent,
     TextFieldComponent,
     CheckboxComponent,
+    StripePaymentComponent,
   ],
   imports: [
     CommonModule,
@@ -69,6 +71,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     DividerComponent,
     TextFieldComponent,
     CheckboxComponent,
+    StripePaymentComponent,
   ],
 })
 export class SharedModule {}

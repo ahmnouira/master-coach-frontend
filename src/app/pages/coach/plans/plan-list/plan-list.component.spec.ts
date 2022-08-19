@@ -1,17 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PlanListComponent } from './plan-list.component';
 
-import { CoachMenuComponent } from './coach-menu.component';
-
-describe('CoachMenuComponent', () => {
-  let component: CoachMenuComponent;
-  let fixture: ComponentFixture<CoachMenuComponent>;
+describe('PlanListComponent', () => {
+  let component: PlanListComponent;
+  let fixture: ComponentFixture<PlanListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CoachMenuComponent],
+      declarations: [PlanListComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CoachMenuComponent);
+    fixture = TestBed.createComponent(PlanListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

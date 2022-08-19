@@ -11,10 +11,21 @@ import { AddTeamComponent } from './add-team/add-team.component';
 import { ListTeamsComponent } from './list-teams/list-teams.component';
 import { MyAppointmentsComponent } from './my-appointments/my-appointments.component';
 import { MessagerieComponent } from 'src/app/shared/components/messagerie/messagerie.component';
-import { PlansComponent } from './plans/plans.component';
 
 const routes: Routes = [
   { path: 'profil', component: ProfilCoachComponent },
+
+
+
+  
+  { path: 'plans',  loadChildren: () =>
+  import('./plans/plans.module').then(
+    (module) => module.PlansModule
+  ),
+
+  },
+  
+
 
   {
     path: 'services',
@@ -40,6 +51,8 @@ const routes: Routes = [
       ),
   },
 
+ 
+
   { path: 'parametre', component: ParametresComponent },
 
   { path: 'quiz/view', component: ViewFormQuizComponent },
@@ -51,7 +64,7 @@ const routes: Routes = [
   { path: 'coach-client/team/list', component: ListTeamsComponent },
   { path: 'coach-client/team/edit', component: EditFormQuizComponent },
   { path: 'calendar', component: MyAppointmentsComponent },
-  { path: 'plans', component: PlansComponent },
+
 ];
 
 @NgModule({
