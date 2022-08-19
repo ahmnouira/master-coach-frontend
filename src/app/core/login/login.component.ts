@@ -41,38 +41,53 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.authService.login(email, password).subscribe(
-      (authData) => {
-        this.isLoading = false;
-        console.log('authData:', authData);
-        this.tokenStorage.saveToken(authData.token);
-        this.tokenStorage.saveTwilioToken(authData.twilio_token);
-        this.tokenStorage.saveUser(authData);
-        this.isLoginFailed = false;
+    this.authService.login(email, password).subscribe((authData) => {
+      // console.log('authData:', authData);
+      this.tokenStorage.saveToken(authData.token);
+      this.tokenStorage.saveTwilioToken(authData.twilio_token);
+      setTimeout(() => {
+      this.authService.loggedInUser().subscribe(
+        (userRes) => {
+          if (!userRes.success) {
+            console.log('not', userRes)
+            this.onError(userRes.error);
+            return;
+          }
+          this.tokenStorage.saveUser(userRes.data);
+          this.authService.currentUser$.next(userRes.data);
+          this.onSuccess();
 
-        this.isVerified = true;
-
-        console.log('role', authData.role);
-
-        if (authData.role.toLowerCase() === 'admin') {
-          this.routeService.navigateByUrl('/pages/admin/users/list');
-        } else {
-          this.routeService.navigateByUrl(
-            '/pages/' + authData.role.toLowerCase() + '/parametre'
-          );
+          if (authData.role.toLowerCase() === 'admin') {
+            this.routeService.navigateByUrl('/pages/admin/users/list');
+          } else {
+            this.routeService.navigateByUrl(
+              '/pages/' + authData.role.toLowerCase() + '/parametre'
+            );
+          }
+        },
+        (err) => {
+          console.error('loggedInUserError', err);
         }
-      },
-      (err) => {
-        console.log('error', err);
-        if (err == 'Your email is not verified') {
-          this.isVerified = false;
-        }
-        this.errorMessage = err;
-        this.isLoginFailed = true;
-        this.isLoading = false;
-      }
-    );
+      )
+    }, 500);
+    }, (err) => this.onError(err));
   }
+
+  onSuccess() {
+    this.isLoginFailed = false;
+    this.isVerified = true;
+    this.isLoading = false;
+  };
+
+  onError  (err: string)  {
+    console.log('error', err);
+    if (err == 'Your email is not verified') {
+      this.isVerified = false;
+    }
+    this.errorMessage = err;
+    this.isLoginFailed = true;
+    this.isLoading = false;
+  };
 
   createUser(role: string) {
     this.authService.setUserRole = role as UserRole;

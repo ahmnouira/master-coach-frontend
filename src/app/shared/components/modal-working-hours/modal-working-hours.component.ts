@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { RdvService } from '../../../services/rdv.service';
-import { TokenStorageService } from '../../../services/token-storage.service';
-import { CoachService } from '../../../services/coach.service';
+import { CoachService } from 'src/app/services/coach-service/coach.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-modal-working-hours',

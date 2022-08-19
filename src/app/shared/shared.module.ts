@@ -19,6 +19,10 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ImportIconComponent } from './icons/import-icon/import-icon.component';
 import { FileImportedComponent } from './components/file-imported/file-imported.component';
+import { DividerComponent } from './components/divider/divider.component';
+import { TextFieldComponent } from './components/text-field/text-field.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { StripePaymentComponent } from './stripe-payment/stripe-payment.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,10 @@ import { FileImportedComponent } from './components/file-imported/file-imported.
     LoaderComponent,
     ImportIconComponent,
     FileImportedComponent,
+    DividerComponent,
+    TextFieldComponent,
+    CheckboxComponent,
+    StripePaymentComponent,
   ],
   imports: [
     CommonModule,
@@ -56,9 +64,14 @@ import { FileImportedComponent } from './components/file-imported/file-imported.
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
     ModalSuccesComponent,
-    LoaderComponent,
     ImportIconComponent,
     FileImportedComponent,
+    // new components
+    LoaderComponent,
+    DividerComponent,
+    TextFieldComponent,
+    CheckboxComponent,
+    StripePaymentComponent,
   ],
 })
 export class SharedModule {}

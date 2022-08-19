@@ -1,9 +1,9 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { RdvService } from '../../../services/rdv.service';
 import { TokenStorageService } from '../../../services/token-storage.service';
 import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
 import { Router } from '@angular/router';
+import { RdvService } from 'src/app/services/rdv-service/rdv.service';
 
 @Component({
   selector: 'app-rdv-pay',

@@ -1,9 +1,11 @@
+import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {
   ActivatedRoute,
   NavigationBehaviorOptions,
   NavigationExtras,
+  ParamMap,
   Router,
   UrlTree,
 } from '@angular/router';
@@ -14,10 +16,11 @@ import { SessionStorageService } from '../session-storage-service/session-storag
 })
 export class RouteService extends SessionStorageService {
   private token = '';
-
+  private params: any;
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
+    public location: Location,
     private titleService: Title
   ) {
     super();
@@ -49,6 +52,17 @@ export class RouteService extends SessionStorageService {
   public get getToken(): string {
     this.getTokenFormRoute();
     return this.token;
+  }
+
+  public get getParams(): ParamMap {
+    this.getParamsFromRoute();
+    return this.params.params as ParamMap;
+  }
+
+  private getParamsFromRoute() {
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      this.params = params;
+    });
   }
 
   private getTokenFormRoute() {

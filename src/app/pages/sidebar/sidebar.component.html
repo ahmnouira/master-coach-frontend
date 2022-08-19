@@ -61,8 +61,11 @@
         <span>Mon Profil</span>
       </a>
     </li>
-    <li>
-      <a disabled>
+    <li
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      <a routerLink="/pages/coach/services">
         <img src="assets/img/common/customer%20(5).svg" />
         <span>Mes Services</span>
       </a>
