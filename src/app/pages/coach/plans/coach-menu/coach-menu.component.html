@@ -1,0 +1,31 @@
+<div>
+  <button
+    [ngClass]="active == 'profile' ? 'active-tab' : 'active-tab white-bg pl-0'"
+    [routerLink]="['/pages/coach/parametre']"
+  >
+    <span>Mon profil</span>
+    <img src="assets/img/common/arrow-left.svg" />
+  </button>
+  <button
+    [ngClass]="active == 'plans' ? 'active-tab' : 'active-tab white-bg pl-0'"
+    [routerLink]="['/pages/coach/plans']"
+  >
+    <span>Mes plans</span>
+    <img src="assets/img/common/arrow-left.svg" />
+  </button>
+  <div
+    class="smaller-font white-bg pl-0 cursor-pointer sub-menu"
+    [routerLink]="['/pages/coach/quiz/list']"
+  >
+    <span>Formulaire de satisfaction</span>
+    <img src="assets/img/common/arrow-left.svg" width="5px" height="6px" />
+  </div>
+  <div class="white-bg pl-0 smaller-font cursor-pointer sub-menu">
+    <span>Politique de confidentialité</span>
+    <img src="assets/img/common/arrow-left.svg" width="5px" height="6px" />
+  </div>
+  <div class="white-bg pl-0 smaller-font cursor-pointer">
+    <span>Conditions générales</span>
+    <img src="assets/img/common/arrow-left.svg" width="5px" height="6px" />
+  </div>
+</div>

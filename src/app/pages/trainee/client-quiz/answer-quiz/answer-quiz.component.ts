@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { TokenStorageService } from '../../../../services/token-storage.service';
 import { Router } from '@angular/router';
-import { CoachService } from '../../../../services/coach.service';
+import { CoachService } from 'src/app/services/coach-service/coach.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-answer-quiz',

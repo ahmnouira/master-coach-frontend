@@ -1,0 +1,28 @@
+<div class="form-group">
+  <label *ngIf="label && showLabel" class="element-label">{{ label }}</label>
+  <input
+    type="{{ type }}"
+    [(ngModel)]="model"
+    id="{{ id }}"
+    name="{{ name }}"
+    class="form-control element"
+    placeholder="{{ placeholder }}"
+    required="{{ required }}"
+    pattern="{{ pattern }}"
+    #field="ngModel"
+  />
+  <div *ngIf="(field.invalid && field.touched) || field.dirty">
+    <small
+      *ngIf="field.errors?.required"
+      class="alert alert-danger"
+      role="alert"
+      >{{ label }} est obligatoire!</small
+    >
+    <small
+      *ngIf="field.errors?.pattern"
+      class="alert alert-danger"
+      role="alert"
+      >{{ patternError }}</small
+    >
+  </div>
+</div>

@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TokenStorageService } from '../../../services/token-storage.service';
 import { Location } from '@angular/common';
-import { NotificationService } from '../../../services/notification.service';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
-import { UserService } from '../../../services/user-service.service';
+import { UserService } from 'src/app/services/user-service/user-service.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 @Component({
   selector: 'app-sub-header',
   templateUrl: './sub-header.component.html',

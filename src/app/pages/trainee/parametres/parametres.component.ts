@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from '../../../services/token-storage.service';
-import { UserService } from '../../../services/user-service.service';
-import { AdminService } from '../../../services/admin.service';
 import { User } from '../../../models/user-model';
 import { AuthService } from 'src/app/core/auth.service';
+import { UserService } from 'src/app/services/user-service/user-service.service';
+import { AdminService } from 'src/app/services/admin-service/admin.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-parametres',

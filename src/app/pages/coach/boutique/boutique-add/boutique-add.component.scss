@@ -1,0 +1,22 @@
+.right-side {
+  .title {
+    font: normal normal normal 18px/22px Fredoka;
+    color: #1376a3;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+}
+.image {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  img {
+    object-fit: contain;
+    object-position: center;
+  }
+}

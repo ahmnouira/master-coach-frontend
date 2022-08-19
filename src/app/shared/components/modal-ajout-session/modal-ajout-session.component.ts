@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import 'moment-timezone';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { RdvService } from '../../../services/rdv.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale, listLocales } from 'ngx-bootstrap/chronos';
 import { frLocale } from 'ngx-bootstrap/locale';
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { RdvService } from 'src/app/services/rdv-service/rdv.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 defineLocale('fr', frLocale);
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CoachService } from '../../../services/coach.service';
-import { TokenStorageService } from '../../../services/token-storage.service';
+import { CoachService } from 'src/app/services/coach-service/coach.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-add-form-quiz',
