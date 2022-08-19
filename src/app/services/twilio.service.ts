@@ -67,7 +67,7 @@ export class TwilioConversationService {
   }
 
   deleteConversation(convoSid) {
-    /*this.httpOptions.headers.append('Authorization','Basic ' + btoa('ACa00a1b25450c592727057f4fe145085c:db283cfd555ae4075776b408edea239c'))
+    /*this.httpOptions.headers.append('Authorization','Basic ' + btoa('ACf2cc84e73f311b5bc821ee8582a1e6d8:69815c0adf7f62f7b1cfdc6719ad673e'))
       this.httpOptions.headers.append('postman-token', '2498d922-e26e-97a2-4bc2-ca5052b29fe7')
       this.httpOptions.headers.append('cache-control', 'no-cache')*/
     return this.httpClient
