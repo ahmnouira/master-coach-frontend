@@ -1,7 +1,5 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter, Renderer2, Inject, AfterViewInit, SimpleChange, SimpleChanges } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { from } from 'rxjs';
 import { Plan } from 'src/app/models/plan.model';
 import { environment } from 'src/environments/environment';
 
@@ -31,12 +29,10 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
  
   initStripe(plan: Plan) {
 
-      console.log('price', plan.price)
       const scriptScript = this.document.getElementById(`stripe-script-${plan.id}`,)
       if(scriptScript) {
-        console.log('found', scriptScript)
         scriptScript.remove()
-        setTimeout(() => {}, 1000)
+        
       }
 
       let script = this.renderer.createElement('script') as HTMLScriptElement;
@@ -47,9 +43,6 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
       script.type = 'application/javascript';
 
       this.renderer.addClass(script, 'stripe-button');
-
-
-     
       this.renderer.setAttribute(
         script,
         'data-key',
