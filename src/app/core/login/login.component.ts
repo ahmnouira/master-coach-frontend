@@ -43,35 +43,55 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe(
       (authData) => {
-        this.isLoading = false;
-        console.log('authData:', authData);
+        // console.log('authData:', authData);
         this.tokenStorage.saveToken(authData.token);
         this.tokenStorage.saveTwilioToken(authData.twilio_token);
         this.tokenStorage.saveUser(authData);
-        this.isLoginFailed = false;
+        this.authService.loggedInUser().subscribe(
+          (userRes) => {
 
-        this.isVerified = true;
+            if(userRes.success) {
+              this.onError(userRes.error)
+              return
+            }
+            console.log('user', userRes.data)
+          
+            this.authService.currentUser$.next(userRes.data)
+            this.onSuccess()
+          
+            if (authData.role.toLowerCase() === 'admin') {
+              this.routeService.navigateByUrl('/pages/admin/users/list');
+            } else {
+              this.routeService.navigateByUrl(
+                '/pages/' + authData.role.toLowerCase() + '/parametre'
+              );
+            }
+          },
+          (err) => {
+            console.error('loggedInUserError', err)
 
-        console.log('role', authData.role);
-
-        if (authData.role.toLowerCase() === 'admin') {
-          this.routeService.navigateByUrl('/pages/admin/users/list');
-        } else {
-          this.routeService.navigateByUrl(
-            '/pages/' + authData.role.toLowerCase() + '/parametre'
-          );
-        }
+          }
+        );
       },
-      (err) => {
-        console.log('error', err);
-        if (err == 'Your email is not verified') {
-          this.isVerified = false;
-        }
-        this.errorMessage = err;
-        this.isLoginFailed = true;
-        this.isLoading = false;
-      }
+      (this.onError) 
     );
+  }
+
+
+  onSuccess() {
+    this.isLoginFailed = false;
+    this.isVerified = true;
+    this.isLoading = false;
+  }
+
+  onError(err: string) {
+    console.log('error', err);
+    if (err == 'Your email is not verified') {
+      this.isVerified = false;
+    }
+    this.errorMessage = err; 
+    this.isLoginFailed = true;
+    this.isLoading = false;
   }
 
   createUser(role: string) {

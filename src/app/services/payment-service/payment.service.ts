@@ -5,8 +5,6 @@ import { Plan } from 'src/app/models/plan.model';
 import { BaseService } from '../base-service/base.service';
 import { SessionStorageService } from '../session-storage-service/session-storage.service';
 
-
-
 interface ISubscribe {
   stripeToken: string;
   planPrice: number;
@@ -19,8 +17,11 @@ interface ISubscribe {
 export class PaymentService extends BaseService {
   selectedPlan: Plan;
 
-  constructor(protected override httpClient: HttpClient, private sessionStorageService: SessionStorageService) {
-    super(httpClient)
+  constructor(
+    protected override httpClient: HttpClient,
+    private sessionStorageService: SessionStorageService
+  ) {
+    super(httpClient);
   }
 
   savePlan(data: ISubscribe): Observable<any> {
@@ -28,19 +29,16 @@ export class PaymentService extends BaseService {
   }
 
   saveSelectedPlan(plan: Plan) {
-    this.sessionStorageService.setItem('plan', plan)
+    this.sessionStorageService.setItem('plan', plan);
   }
-
 
   getSavedSelectedPlan() {
-    return this.sessionStorageService.getItem<Plan>('plan')
+    return this.sessionStorageService.getItem<Plan>('plan');
   }
-
 
   clearSelectedPlan() {
-    return this.sessionStorageService.clearItem('plan')
+    return this.sessionStorageService.clearItem('plan');
   }
-
 
   set setSelectedPlan(plan: Plan) {
     this.selectedPlan = plan;

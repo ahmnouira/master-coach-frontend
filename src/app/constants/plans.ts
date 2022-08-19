@@ -6,7 +6,7 @@ export const PLANS_MONTHLY: Plan[] = [
     id: 'm-1',
     title: `Offer libre\nValable toute l'année`,
     price: '0 euros HT',
-    
+
     features: [
       'Page web prsonnalisée',
       'Référencement de votre profil avec un rayonnment optimal',

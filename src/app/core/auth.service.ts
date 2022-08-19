@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { User } from '@twilio/conversations';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserRole } from '../models/role.enum';
 import { BaseService } from '../services/base-service/base.service';
 import { IConfirmEmail } from './interfaces/confirm-email';
@@ -12,12 +13,18 @@ import { IResetPassword } from './interfaces/reset-password';
 })
 export class AuthService extends BaseService {
   private resendEmail = '';
-
   private userRole: UserRole;
+
+  currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
   login(email: string, password: string): Observable<any> {
     return this.post('/login', { email, password });
   }
+
+  loggedInUser(): Observable<any> {
+    return this.get('/me')
+  }
+
   register(user: any): Observable<any> {
     return this.post('/create_user', user);
   }

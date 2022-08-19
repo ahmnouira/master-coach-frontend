@@ -66,7 +66,7 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
     this.renderer.setAttribute(script, 'data-amount', plan.price);
     this.renderer.setAttribute(script, 'data-name', environment.APP_NAME);
     this.renderer.setAttribute(script, 'data-description', plan.title);
-  
+
     this.renderer.setAttribute(script, 'data-locale', 'auto');
 
     setTimeout(() => {

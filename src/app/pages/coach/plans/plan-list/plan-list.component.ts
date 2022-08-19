@@ -34,7 +34,7 @@ export class PlanListComponent implements OnInit {
   setSelectedPlan(plan: Plan) {
     // this.paymentService.setSelectedPlan = plan;
     this.selectedPlan = plan;
-    console.log('setSelectedPlan', this.selectedPlan)
-    this.paymentService.saveSelectedPlan(this.selectedPlan)
+    console.log('setSelectedPlan', this.selectedPlan);
+    this.paymentService.saveSelectedPlan(this.selectedPlan);
   }
 }
