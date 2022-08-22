@@ -81,67 +81,27 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
       <div class="col-lg-9 col-12 pl-40">
         <div class="row profil-data mb-17 gx-4">
           <!-- CIN  Front -->
-          <div *ngIf="!form.cinF" class="col-md-6 form-group">
-            <label class="element-label">C.N.I Front</label>
-
-            <div class="file-input">
-              <input
-                type="file"
-                required
-                class="form-control form-control-lg element"
-                style="display: none"
-                id="cinF"
-                title=" "
-                name="cinF"
-                accept="application/pdf"
-                (change)="importCINFront($event)"
-              />
-              <label for="cinF">
-                <app-import-icon></app-import-icon>
-                Choisir un fichier</label
-              >
-            </div>
-          </div>
-
-          <div *ngIf="form.cinF" class="col-md-6">
-            <app-file-imported
+          <div class="col-md-6">
+            <app-file-uploader
               [model]="form.cinF"
+              type="pdf"
               [label]="'C.N.I Front'"
+              [showLabel]="true"
+              (onClick)="importCINFront($event)"
               (onDelete)="form.cinF = ''"
-            >
-            </app-file-imported>
+            ></app-file-uploader>
           </div>
 
           <!-- CIN  Back -->
-          <div *ngIf="!form.cinB" class="col-md-6 form-group">
-            <label class="element-label">C.N.I Back</label>
-
-            <div class="file-input">
-              <input
-                type="file"
-                required
-                class="form-control form-control-lg element"
-                style="display: none"
-                id="cinB"
-                title=" "
-                name="cinB"
-                accept="application/pdf"
-                (change)="importCINBack($event)"
-              />
-              <label for="cinB">
-                <app-import-icon></app-import-icon>
-                Choisir un fichier</label
-              >
-            </div>
-          </div>
-
-          <div *ngIf="form.cinB" class="col-md-6">
-            <app-file-imported
+          <div class="col-md-6">
+            <app-file-uploader
               [model]="form.cinB"
+              type="pdf"
               [label]="'C.N.I Back'"
+              [showLabel]="true"
+              (onClick)="importCINBack($event)"
               (onDelete)="form.cinB = ''"
-            >
-            </app-file-imported>
+            ></app-file-uploader>
           </div>
         </div>
 

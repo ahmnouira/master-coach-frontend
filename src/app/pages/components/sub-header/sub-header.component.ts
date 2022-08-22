@@ -12,8 +12,7 @@ import { NotificationService } from 'src/app/services/notification-service/notif
 })
 export class SubHeaderComponent implements OnInit {
   @Input() title: string;
-  @Input() subTitle: string = "BACK";
-
+  @Input() subTitle: string = 'BACK';
 
   todayDate = new Date();
 
