@@ -12,17 +12,13 @@
           <app-text-field [label]="'Titre'" [model]="form.titre">
           </app-text-field>
 
-          <div class="form-group">
-            <label class="element-label">Description</label>
-            <textarea
-              rows="5"
-              style="height: 120px"
-              [(ngModel)]="form.bio"
-              class="form-control element"
-              placeholder="davidlaroche@gmail.com"
-            >
-            </textarea>
-          </div>
+          <!-- Description -->
+          <app-text-area
+            [label]="'Description'"
+            [model]="form.bio"
+            [placeholder]="'Texte…'"
+          >
+          </app-text-area>
 
           <!-- Duration  [required]="false" -->
           <app-text-field
@@ -74,7 +70,6 @@
 
           <!-- Divider -->
           <app-divider></app-divider>
-
           <h2 class="title">Tarifs</h2>
 
           <label class="label" for="gratuit">Prix</label>
