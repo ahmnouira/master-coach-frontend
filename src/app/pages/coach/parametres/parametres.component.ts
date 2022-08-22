@@ -41,9 +41,7 @@ export class ParametresComponent implements OnInit {
     const user = this.tokenStorageService.getUser();
     this.getUserFromDb(user._id);
 
-    this.form.photo = this.form.photo
-      ? this.form.photo
-      : '/assets/img/common/utilisateur.png';
+ 
     this.settings = {
       text: 'Sélectionner...',
       position: 'bottom',

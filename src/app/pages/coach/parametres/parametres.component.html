@@ -10,28 +10,7 @@
       </div>
       <div class="col-12 col-lg-9 pl-40">
         <div class="row">
-          <div class="image-container">
-            <img
-              class="profil-image"
-              [attr.src]="form.photo"
-              (click)="file.click()"
-              style="height: 160px"
-              alt=""
-            />
-            <input
-              type="file"
-              hidden
-              accept="image/*"
-              (change)="importFile($event)"
-              #file
-            />
-            <button (click)="file.click()">
-              <img
-                class="profil-icon"
-                src="assets/img/common/camera-to-take-photos%20(3).svg"
-              />
-            </button>
-          </div>
+          <app-user-photo [src]="form.photo"></app-user-photo>
         </div>
         <div class="row">
           <div class="col-md-6">

@@ -96,6 +96,7 @@ import { UserPhotoComponent } from './components/user-photo/user-photo.component
     RightImageComponent,
     FormErrorComponent,
     ButtonComponent,
+    UserPhotoComponent
   ],
 })
 export class SharedModule {}

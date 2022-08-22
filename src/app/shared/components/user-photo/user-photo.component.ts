@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-photo',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPhotoComponent implements OnInit {
 
+  @Input() src: string 
+
+  @Output() onChange  = new EventEmitter()
+
   constructor() { }
 
   ngOnInit(): void {
+    this.src = this.src ?? '/assets/img/common/utilisateur.png'
+  }
+
+  handleChange(event :any) {
+    this.onChange.emit(event)
   }
 
 }
