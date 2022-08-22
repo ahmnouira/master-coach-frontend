@@ -42,24 +42,11 @@
               </div>
             </div>
 
-            <div class="col form-group">
-              <div class="file-input">
-                <input
-                  type="file"
-                  required
-                  class="form-control form-control-lg element"
-                  style="display: none"
-                  id="photo"
-                  title=" "
-                  name="photo"
-                  accept="application/png"
-                  (change)="addPhoto($event)"
-                />
-                <label for="photo">
-                  <app-import-icon></app-import-icon>
-                  Ajouter une photo</label
-                >
-              </div>
+            <div class="col">
+              <app-file-uploader
+                [name]="'document'"
+                (onClick)="addPhoto($event)"
+              ></app-file-uploader>
             </div>
           </div>
 
@@ -76,24 +63,11 @@
           <div class="row align-items-center mt-4">
             <div class="checkbox-container">
               <p>Type :</p>
-              <div class="col form-group">
-                <div class="file-input">
-                  <input
-                    type="file"
-                    required
-                    class="form-control form-control-lg element"
-                    style="display: none"
-                    id="photo"
-                    title=" "
-                    name="photo"
-                    accept="application/png"
-                    (change)="addPhoto($event)"
-                  />
-                  <label for="photo">
-                    <app-import-icon></app-import-icon>
-                    Ajouter une photo</label
-                  >
-                </div>
+              <div class="col">
+                <app-file-uploader
+                  [name]="'document'"
+                  (onClick)="addPhoto($event)"
+                ></app-file-uploader>
               </div>
             </div>
           </div>
