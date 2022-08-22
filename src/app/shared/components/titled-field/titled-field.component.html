@@ -1,0 +1,8 @@
+<div class="titled-field-container">
+  <p class="titled-field-container-title" [ngClass]="{ hidden: titleHidden }">
+    {{ title | titlecase }} :
+  </p>
+  <div class="col">
+    <ng-content></ng-content>
+  </div>
+</div>
