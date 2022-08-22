@@ -4,7 +4,7 @@ export interface IProduct {
   title: string;
   description: string;
   duration?: number;
-  type: ProductType;
+  type: ProductType | null;
   category?: string;
   price: string;
   isFree?: boolean;

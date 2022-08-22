@@ -31,11 +31,15 @@
     </div>
   </div>
 
-  <div class="boutique">
-    <div class="row">
-      <div class="col-lg-3" *ngFor="let formation of formations; index as i">
-        <app-boutique-card></app-boutique-card>
+  <app-loader [marginTop]="'64px'" *ngIf="isLoading; elseBlock"></app-loader>
+
+  <ng-template #elseBlock>
+    <div class="boutique">
+      <div class="row">
+        <div class="col-lg-3" *ngFor="let formation of formations; index as i">
+          <app-boutique-card></app-boutique-card>
+        </div>
       </div>
     </div>
-  </div>
+  </ng-template>
 </div>
