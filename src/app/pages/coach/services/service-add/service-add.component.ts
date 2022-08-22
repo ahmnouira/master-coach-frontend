@@ -9,7 +9,7 @@ import { Animations } from 'src/app/shared/animations';
   animations: Animations
 })
 export class ServiceAddComponent implements OnInit {
-  form: any = {
+  form: IService = {
     description: '', 
     title: '', 
     isFree: true, 
@@ -17,8 +17,10 @@ export class ServiceAddComponent implements OnInit {
     testimonies: [], 
     isAutoConfirmed: false, 
     image: '',
-    masked: false
-   
+    duration: '', 
+    category: '', 
+    price: 0 
+  
 
   };
 

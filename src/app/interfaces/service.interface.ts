@@ -1,7 +1,7 @@
 export interface IService {
   title: string;
   description: string;
-  duration?: number;
+  duration?: string;
   price?: number;
   category?: string;
   isFree?: boolean;

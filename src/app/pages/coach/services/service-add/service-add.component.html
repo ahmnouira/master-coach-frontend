@@ -4,8 +4,9 @@
   <div class="row mt-4 gx-4">
     <div class="col">
       <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
+        <div class="col-2"></div>
+
+        <div class="col-10 right-side">
           <form
             [@animate]="{
               value: '*',
@@ -17,250 +18,88 @@
           >
             <h2 class="title">Info</h2>
 
-            <div class="row mb-17 gx-4">
-              <!-- Titre -->
-              <div class="col-md-6 form-group">
-                <label class="element-label">Titre</label>
-                <input
-                  type="text"
-                  [(ngModel)]="form.title"
-                  class="form-control element"
-                  placeholder="Titre"
-                  required
-                  #title="ngModel"
-                />
-                <div *ngIf="(title.invalid && title.touched) || title.dirty">
-                  <small
-                    *ngIf="title.errors?.required"
-                    class="alert alert-danger"
-                    role="alert"
-                    >Titre est obligatoire!</small
-                  >
-                  <small
-                    *ngIf="title.errors?.pattern"
-                    class="alert alert-danger"
-                    role="alert"
-                    >Veuillez entrer un titre valide</small
-                  >
-                </div>
+            <!-- Titre -->
+            <app-text-field [label]="'Titre'" [(model)]="form.title">
+            </app-text-field>
+
+            <!-- Description -->
+            <app-text-area
+              [label]="'Description'"
+              [(model)]="form.description"
+              [placeholder]="'Texte…'"
+            >
+            </app-text-area>
+
+            <!-- Duration  [required]="false" -->
+            <app-text-field
+              [label]="'Durée'"
+              [(model)]="form.duration"
+              [placeholder]="'Min'"
+              [type]="'number'"
+            >
+            </app-text-field>
+
+            <app-titled-field title="Auto confirmation">
+              <app-checkbox
+                [label]="'Les sessions seront auto-confirmés'"
+                [(model)]="form.isAutoConfirmed"
+              >
+              </app-checkbox>
+            </app-titled-field>
+
+            <app-file-uploader
+              [name]="'document'"
+              (onClick)="addPhoto($event)"
+            ></app-file-uploader>
+
+            <!-- Divider -->
+            <app-divider></app-divider>
+
+            <h2 class="title">Tarifs</h2>
+
+            <label class="label" for="gratuit">Prix</label>
+
+            <div class="row align-items-center">
+              <div class="col-2">
+                <app-checkbox [label]="'Gratuit'" [(model)]="form.isFree">
+                </app-checkbox>
               </div>
-
-              <div class="col-md-6 form-group">
-                <label class="element-label">Description</label>
-                <input
-                  type="text"
-                  [(ngModel)]="form.description"
-                  class="form-control element"
-                  placeholder="Texte…"
-                  required
-                  #description="ngModel"
-                />
-
-                <div
-                  *ngIf="
-                    (description.invalid && description.touched) ||
-                    description.dirty
-                  "
+              <div class="col-3">
+                <app-checkbox
+                  [label]="'Masquer le prix'"
+                  [(model)]="form.isFree"
                 >
-                  <small
-                    *ngIf="description.errors?.required"
-                    class="alert alert-danger"
-                    role="alert"
-                    >Description est obligatoire!</small
-                  >
-                  <small
-                    *ngIf="description.errors?.pattern"
-                    class="alert alert-danger"
-                    role="alert"
-                    >Veuillez entrer une description valide</small
-                  >
-                </div>
+                </app-checkbox>
               </div>
-            </div>
 
-            <div class="row mb-17 gx-4">
-              <!-- Durée -->
-              <div class="col-md-6 form-group">
-                <label class="element-label">Durée</label>
-                <input
-                  type="number"
-                  [(ngModel)]="form.duration"
-                  class="form-control element"
-                  placeholder="Min"
-                  required
-                  #duration="ngModel"
-                />
-                <div
-                  *ngIf="
-                    (duration.invalid && duration.touched) || duration.dirty
-                  "
+              <div class="col-2">
+                <app-checkbox [label]="'Fixe'" [(model)]="form.isFixedPrice">
+                </app-checkbox>
+              </div>
+
+              <div class="col">
+                <app-text-field
+                  [(model)]="form.price"
+                  [type]="'number'"
+                  [label]="'Price'"
+                  [placeholder]="'Price'"
+                  [showLabel]="false"
                 >
-                  <small
-                    *ngIf="duration.errors?.required"
-                    class="alert alert-danger"
-                    role="alert"
-                    >Duration est obligatoire!</small
-                  >
-                  <small
-                    *ngIf="duration.errors?.pattern"
-                    class="alert alert-danger"
-                    role="alert"
-                    >Veuillez entrer une duration valide</small
-                  >
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="file-input">
-                  <input
-                    type="file"
-                    required
-                    class="form-control form-control-lg element"
-                    style="display: none"
-                    id="photo"
-                    title=" "
-                    name="photo"
-                    accept="application/png"
-                    (change)="addPhoto($event)"
-                  />
-                  <label for="photo">
-                    <app-import-icon></app-import-icon>
-                    Ajouter une photo</label
-                  >
-                </div>
+                </app-text-field>
               </div>
             </div>
 
-            <div class="row">
-              <div class="d-flex align-items-center">
-                <p class="auto-confirmation">Auto confirmation:</p>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    [(ngModel)]="form.isAutoConfirmed"
-                    #auto="ngModel"
-                    id="auto"
-                  />
-                  <label class="form-check-label" for="auto">
-                    Les sessions seront auto-confirmés
-                  </label>
-                </div>
-              </div>
-            </div>
+            <!-- Divider -->
+            <app-divider></app-divider>
 
-            <div class="row">
-              <div class="col-md-6">
-                <h2 class="title">Tarifs</h2>
-                <div class="row d-flex align-items-center">
-                  <div class="col">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        [(ngModel)]="form.isFree"
-                        #free="ngModel"
-                        id="free"
-                      />
-                      <label class="form-check-label" for="free">
-                        Gratuit
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        [(ngModel)]="form.isFixedPrice"
-                        #isFixedPrice="ngModel"
-                        id="masked"
-                      />
-                      <label class="form-check-label" for="masked">
-                        Masquer le prix
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        [(ngModel)]="form.masked"
-                        #masked="ngModel"
-                        id="fix"
-                      />
-                      <label class="form-check-label" for="fix">Fixe</label>
-                    </div>
-                  </div>
+            <h2 class="title">Témoignage</h2>
 
-                  <div class="col">
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        [(ngModel)]="form.price"
-                        class="form-control element"
-                        placeholder="Tarif"
-                        required
-                        #price="ngModel"
-                      />
-
-                      <div
-                        *ngIf="(price.invalid && price.touched) || price.dirty"
-                      >
-                        <small
-                          *ngIf="price.errors?.required"
-                          class="alert alert-danger"
-                          role="alert"
-                          >Tarif est obligatoire!</small
-                        >
-                        <small
-                          *ngIf="price.errors?.pattern"
-                          class="alert alert-danger"
-                          role="alert"
-                          >Veuillez entrer une tarif valide</small
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <h2 class="title">Témoignage</h2>
-
-                <!-- Témoignage -->
-                <div class="form-group">
-                  <label class="element-label">Témoignage 1</label>
-                  <input
-                    type="text"
-                    [(ngModel)]="form.testimonies[0]"
-                    class="form-control element"
-                    placeholder="Texte…"
-                    required
-                    #temoignage1="ngModel"
-                  />
-                  <div
-                    *ngIf="
-                      (temoignage1.invalid && temoignage1.touched) ||
-                      temoignage1.dirty
-                    "
-                  >
-                    <small
-                      *ngIf="temoignage1.errors?.required"
-                      class="alert alert-danger"
-                      role="alert"
-                      >Temoignage1 est obligatoire!</small
-                    >
-                    <small
-                      *ngIf="temoignage1.errors?.pattern"
-                      class="alert alert-danger"
-                      role="alert"
-                      >Veuillez entrer un témoignage valide</small
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
+            <app-text-field
+              [(model)]="form.testimonies[0]"
+              [label]="'Testimonie1'"
+              [placeholder]="'Text...'"
+            >
+            </app-text-field>
 
             <div class="d-flex justify-content-end" style="margin-top: 16px">
               <div class="add-container">
@@ -275,9 +114,12 @@
               >&nbsp;
             </div>
           </form>
-          <div class="col-1"></div>
         </div>
       </div>
+    </div>
+
+    <div class="col">
+      <app-right-image page="add-service"></app-right-image>
     </div>
   </div>
 </div>

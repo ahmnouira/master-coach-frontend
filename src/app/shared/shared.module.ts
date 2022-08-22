@@ -27,6 +27,7 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
 import { TextAreaComponent } from './components/text-area/text-area.component';
 import { TitledFieldComponent } from './components/titled-field/titled-field.component';
 import { EmptyPageComponent } from './components/empty-page/empty-page.component';
+import { RightImageComponent } from './components/right-image/right-image.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { EmptyPageComponent } from './components/empty-page/empty-page.component
     TitledFieldComponent,
     TitledFieldComponent,
     EmptyPageComponent,
+    RightImageComponent,
   ],
   imports: [
     CommonModule,
@@ -84,7 +86,8 @@ import { EmptyPageComponent } from './components/empty-page/empty-page.component
     CheckboxComponent,
     FileUploaderComponent,
     StripePaymentComponent,
-    EmptyPageComponent
+    EmptyPageComponent,
+    RightImageComponent
   ],
 })
 export class SharedModule {}
