@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CheckboxComponent implements OnInit {
   @Input() model: any;
   @Input() label: string;
-
+  @Input() title: string;
   @Input() id?: string;
 
   constructor() {}

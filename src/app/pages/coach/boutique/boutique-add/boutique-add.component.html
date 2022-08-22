@@ -33,23 +33,68 @@
           >
           </app-text-field>
 
-          <div class="row">
-            <div class="file-input">
-              <input
-                type="file"
-                required
-                class="form-control form-control-lg element"
-                style="display: none"
-                id="photo"
-                title=" "
-                name="photo"
-                accept="application/png"
-                (change)="addPhoto($event)"
-              />
-              <label for="photo">
-                <app-import-icon></app-import-icon>
-                Ajouter une photo</label
-              >
+          <div class="row align-items-center mt-4">
+            <div class="col-4">
+              <div class="checkbox-container">
+                <p>Type :</p>
+                <app-checkbox [label]="'Documents'" [model]="form.free">
+                </app-checkbox>
+              </div>
+            </div>
+
+            <div class="col form-group">
+              <div class="file-input">
+                <input
+                  type="file"
+                  required
+                  class="form-control form-control-lg element"
+                  style="display: none"
+                  id="photo"
+                  title=" "
+                  name="photo"
+                  accept="application/png"
+                  (change)="addPhoto($event)"
+                />
+                <label for="photo">
+                  <app-import-icon></app-import-icon>
+                  Ajouter une photo</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col-4">
+              <div class="checkbox-container">
+                <p style="visibility: hidden">Type :</p>
+                <app-checkbox [label]="'Vidéos'" [model]="form.free">
+                </app-checkbox>
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-items-center mt-4">
+            <div class="checkbox-container">
+              <p>Type :</p>
+              <div class="col form-group">
+                <div class="file-input">
+                  <input
+                    type="file"
+                    required
+                    class="form-control form-control-lg element"
+                    style="display: none"
+                    id="photo"
+                    title=" "
+                    name="photo"
+                    accept="application/png"
+                    (change)="addPhoto($event)"
+                  />
+                  <label for="photo">
+                    <app-import-icon></app-import-icon>
+                    Ajouter une photo</label
+                  >
+                </div>
+              </div>
             </div>
           </div>
 
@@ -58,7 +103,9 @@
 
           <h2 class="title">Tarifs</h2>
 
-          <div class="row">
+          <label class="label" for="gratuit">Prix</label>
+
+          <div class="row align-items-center">
             <div class="col-3">
               <app-checkbox [label]="'Gratuit'" [model]="form.free">
               </app-checkbox>
