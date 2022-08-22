@@ -16,16 +16,23 @@ export class FileUploaderComponent implements OnInit {
 
   @Input() title?: string;
 
+  @Input() filename?: string = ''
+
+
   @Output() onClick = new EventEmitter();
 
   @Output() onDelete = new EventEmitter();
 
+  
+
   constructor() {}
 
   ngOnInit(): void {
+
     switch (this.type) {
       case 'pdf':
-        this.accept = 'application/pdf,application/vnd.ms-excel';
+        // application/vnd.ms-excel
+        this.accept = 'application/pdf';
         this.title = this.title ?? 'Choisir un ficher';
         break;
       case 'photo':
@@ -41,11 +48,12 @@ export class FileUploaderComponent implements OnInit {
   handleChange(event: any) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log('file', file);
+      const [file] = event.target.files as File[];
+      
       reader.readAsDataURL(file);
       reader.onload = () => {
         console.log('result', reader.result);
+        this.filename = this.label.replace(/ /g, '-') + '-' + file.name
         this.onClick.emit(reader.result as string);
       };
     }

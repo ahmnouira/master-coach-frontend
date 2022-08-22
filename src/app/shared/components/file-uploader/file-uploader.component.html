@@ -6,12 +6,11 @@
         #file
         type="file"
         hidden
-        accept="image/*"
         required
         id="{{ name }}"
         title="{{ title }}"
         name="{{ name }}"
-        accept="application/pdf"
+        accept="{{ accept }}"
         class="form-control form-control-lg element"
         (change)="handleChange($event)"
       />
@@ -26,6 +25,7 @@
     <app-file-imported
       [model]="model"
       [label]="label"
+      [filename]="filename"
       (onDelete)="handleDelete()"
     >
     </app-file-imported>
