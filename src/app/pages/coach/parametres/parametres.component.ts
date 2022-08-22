@@ -24,6 +24,11 @@ export class ParametresComponent implements OnInit {
   confirmPassword = '';
   passwordChangedFlag = false;
   confirmPasswordChangedFlag = false;
+
+
+  isLoading = false
+
+
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
