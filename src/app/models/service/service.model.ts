@@ -11,5 +11,4 @@ export class Service extends Entity implements IService {
   testimonies?: any[];
   isAutoConfirmed?: boolean;
   image?: any;
-
 }

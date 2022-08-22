@@ -3,23 +3,20 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-file-uploader',
   templateUrl: './file-uploader.component.html',
-  styleUrls: ['./file-uploader.component.scss']
+  styleUrls: ['./file-uploader.component.scss'],
 })
 export class FileUploaderComponent implements OnInit {
+  @Input() name: string;
 
-  @Input() name :string
+  @Input() label: string = 'Ajouter une photo';
 
-  @Input() label: string =  'Ajouter une photo'
+  @Output() onClick = new EventEmitter();
 
-  @Output() onClick = new EventEmitter()
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   addFile(event: any) {
-    this.onClick.emit(event)
+    this.onClick.emit(event);
   }
-
 }

@@ -8,9 +8,8 @@ describe('EmptyPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmptyPageComponent ]
-    })
-    .compileComponents();
+      declarations: [EmptyPageComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EmptyPageComponent);
     component = fixture.componentInstance;

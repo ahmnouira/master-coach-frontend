@@ -28,6 +28,7 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
 import { TitledFieldComponent } from './components/titled-field/titled-field.component';
 import { EmptyPageComponent } from './components/empty-page/empty-page.component';
 import { RightImageComponent } from './components/right-image/right-image.component';
+import { FormErrorComponent } from './components/form-error/form-error.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { RightImageComponent } from './components/right-image/right-image.compon
     TitledFieldComponent,
     EmptyPageComponent,
     RightImageComponent,
+    FormErrorComponent,
   ],
   imports: [
     CommonModule,
@@ -87,7 +89,8 @@ import { RightImageComponent } from './components/right-image/right-image.compon
     FileUploaderComponent,
     StripePaymentComponent,
     EmptyPageComponent,
-    RightImageComponent
+    RightImageComponent,
+    FormErrorComponent,
   ],
 })
 export class SharedModule {}

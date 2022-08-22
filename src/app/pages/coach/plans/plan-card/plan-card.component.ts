@@ -66,7 +66,11 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
       environment.STRIPE_PUBLISHABLE_KEY
     );
 
-    this.renderer.setAttribute(script, 'data-amount', getPrice(this.plan.price).toString());
+    this.renderer.setAttribute(
+      script,
+      'data-amount',
+      getPrice(this.plan.price).toString()
+    );
     this.renderer.setAttribute(script, 'data-name', environment.APP_NAME);
     this.renderer.setAttribute(script, 'data-description', plan.title);
     this.renderer.setAttribute(script, 'data-email', this.email);
