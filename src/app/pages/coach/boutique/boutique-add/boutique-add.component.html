@@ -108,20 +108,10 @@
             </div>
 
             <app-divider></app-divider>
-
             <app-form-error [error]="error"></app-form-error>
 
-            <div class="d-flex justify-content-end">
-              <button
-                type="submit"
-                class="btn btn-primary submit-btn"
-                (click)="submit()"
-                [disabled]="isLoading"
-              >
-                <span *ngIf="!isLoading">Enregistrer</span>
-                <app-loader *ngIf="isLoading"></app-loader>
-              </button>
-            </div>
+            <app-button (onClick)="submit()" [isLoading]="isLoading">
+            </app-button>
           </form>
         </div>
       </div>

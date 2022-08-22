@@ -29,6 +29,7 @@ import { TitledFieldComponent } from './components/titled-field/titled-field.com
 import { EmptyPageComponent } from './components/empty-page/empty-page.component';
 import { RightImageComponent } from './components/right-image/right-image.component';
 import { FormErrorComponent } from './components/form-error/form-error.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { FormErrorComponent } from './components/form-error/form-error.component
     EmptyPageComponent,
     RightImageComponent,
     FormErrorComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -91,6 +93,7 @@ import { FormErrorComponent } from './components/form-error/form-error.component
     EmptyPageComponent,
     RightImageComponent,
     FormErrorComponent,
+    ButtonComponent,
   ],
 })
 export class SharedModule {}

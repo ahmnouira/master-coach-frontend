@@ -108,15 +108,12 @@
               </div>
             </div>
 
-            <app-driver></app-driver>
+            <app-divider></app-divider>
 
             <app-form-error [error]="error"></app-form-error>
 
-            <div class="d-flex justify-content-end">
-              <button class="btn btn-primary submit-btn" (click)="save()">
-                Enregistrer</button
-              >&nbsp;
-            </div>
+            <app-button (onClick)="submit()" [isLoading]="isLoading">
+            </app-button>
           </form>
         </div>
       </div>
