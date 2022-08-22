@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/interfaces/product.interface';
+import { ProductType } from 'src/app/models/product/product-type.enum';
 import { ProductService } from 'src/app/services/product-service/product.service';
 import { Animations } from 'src/app/shared/animations';
 
@@ -15,8 +16,16 @@ export class BoutiqueAddComponent implements OnInit {
     price: '', 
     title: '', 
     type: null, 
-    isFree: true
+    isFree: true,
+    category: '', 
+    
   };
+
+
+  isVideo: boolean = false
+  isDocument: boolean = false
+
+  error: string  =''
   isLoading = false
   categories = [];
 
@@ -48,26 +57,32 @@ export class BoutiqueAddComponent implements OnInit {
   async submit() {
     const { description, title, price, type } = this.form;
 
-    console.log('form', this.form)
+    if(this.isVideo) this.form.type = ProductType.VIDEO
+    if(this.isDocument) this.form.type = ProductType.DOCUMENT
 
-
-    if (!description || !title) return;
+    // if (!description || !title) return;
 
     this.isLoading = true;
 
 
+    this.productService.addProduct(this.form).subscribe((res) => {
+      console.log('res:', res);
+      if(!res.success) {
+        this.onError(res.error)
+        return
+      }
 
-    /*
-    this.productService.addProduct(this.form).subscribe((data) => {
-      console.log('data:', data);
+      this.error = ''
+      this.isLoading = false
     
-    }, (err) =>  this.onError(err));
-    */
+    }, (err) => this.onError(err));
+  
   }
 
   onError(error: any) {
     console.log(error)
     this.isLoading = false
+    this.error = error
   }
 
   

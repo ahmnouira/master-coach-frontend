@@ -6,6 +6,7 @@
     [(ngModel)]="model"
     class="form-control element"
     placeholder="{{ placeholder }}"
+    (input)="handleChange($event)"
   >
   </textarea>
 </div>

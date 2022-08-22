@@ -10,7 +10,7 @@
     required="{{ required }}"
     pattern="{{ pattern }}"
     #field="ngModel"
-    (onChange)="handleChange($event)"
+    (input)="handleChange($event)"
   />
   <div *ngIf="(field.invalid && field.touched) || field.dirty">
     <small
