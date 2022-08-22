@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IService } from 'src/app/interfaces/service.interface';
@@ -8,16 +7,15 @@ import { BaseService } from '../base-service/base.service';
   providedIn: 'root',
 })
 export class ServicesService extends BaseService {
-  addProduct(data: IService): Observable<any> {
-    return this.post('/products', data);
+  addService(data: IService): Observable<any> {
+    return this.post('/services', data);
   }
 
-  getProducts(displayedInShop = true): Observable<any> {
-    const params = new HttpParams().set('displayedInShop', displayedInShop);
-    return this.get('/products', params);
+  getServices(): Observable<any> {
+    return this.get('/services');
   }
 
-  getProduct(id: string): Observable<any> {
-    return this.get(`/products/${id}`);
+  getService(id: string): Observable<any> {
+    return this.get(`/services/${id}`);
   }
 }

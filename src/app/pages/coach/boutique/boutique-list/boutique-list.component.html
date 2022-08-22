@@ -36,7 +36,7 @@
   </div>
 
   <div class="boutique" *ngIf="!isLoading">
-    <app-empty-page *ngIf="!found"></app-empty-page>
+    <app-empty-page title="products" *ngIf="!found"></app-empty-page>
     <div class="row" *ngIf="found">
       <div class="col-lg-3" *ngFor="let formation of formations; index as i">
         <app-boutique-card></app-boutique-card>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-empty-page',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./empty-page.component.scss']
 })
 export class EmptyPageComponent implements OnInit {
+
+
+  @Input() title: string  = "elements"
 
   constructor() { }
 
