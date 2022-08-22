@@ -11,6 +11,8 @@ export class CheckboxComponent implements OnInit {
   @Input() title: string;
   @Input() id?: string;
 
+  @Input() checked?: boolean 
+
   constructor() {}
 
   ngOnInit(): void {

@@ -6,105 +6,119 @@
       <div class="row">
         <div class="col-2"></div>
         <div class="col-10 right-side">
-          <h2 class="title">Info</h2>
-
-          <!-- Titre -->
-          <app-text-field [label]="'Titre'" [model]="form.titre">
-          </app-text-field>
-
-          <!-- Description -->
-          <app-text-area
-            [label]="'Description'"
-            [model]="form.bio"
-            [placeholder]="'Texte…'"
+          <form
+            [@animate]="{
+              value: '*',
+              params: { duration: '300ms', y: '100px' }
+            }"
+            name="form"
+            #f="ngForm"
+            novalidate
           >
-          </app-text-area>
+            <h2 class="title">Info</h2>
 
-          <!-- Duration  [required]="false" -->
-          <app-text-field
-            [label]="'Durée'"
-            [model]="form.duration"
-            [placeholder]="'Min'"
-            [type]="'number'"
-          >
-          </app-text-field>
+            <!-- Titre -->
+            <app-text-field [label]="'Titre'" [model]="form.titre">
+            </app-text-field>
 
-          <div class="row align-items-center mt-4">
-            <div class="col-4">
-              <app-titled-field title="type">
-                <app-checkbox [label]="'Documents'" [model]="form.free">
-                </app-checkbox>
-              </app-titled-field>
-            </div>
-
-            <div class="col">
-              <app-file-uploader
-                [name]="'document'"
-                (onClick)="addPhoto($event)"
-              ></app-file-uploader>
-            </div>
-          </div>
-
-          <div class="row align-items-center">
-            <div class="col-4">
-              <app-titled-field [title]="'type'" [titleHidden]="true">
-                <app-checkbox [label]="'Vidéos'" [model]="form.free">
-                </app-checkbox>
-              </app-titled-field>
-            </div>
-          </div>
-
-          <div class="row align-items-center mt-4 mb-4">
-            <app-titled-field title="image">
-              <app-file-uploader
-                [name]="'document'"
-                (onClick)="addPhoto($event)"
-              ></app-file-uploader>
-            </app-titled-field>
-          </div>
-
-          <!-- Divider -->
-          <app-divider></app-divider>
-          <h2 class="title">Tarifs</h2>
-
-          <label class="label" for="gratuit">Prix</label>
-
-          <div class="row align-items-center">
-            <div class="col-3">
-              <app-checkbox [label]="'Gratuit'" [model]="form.free">
-              </app-checkbox>
-            </div>
-
-            <div class="col-9">
-              <app-text-field
-                [model]="form.price"
-                [type]="'number'"
-                [label]="'Price'"
-                [placeholder]="''"
-                [showLabel]="false"
-              >
-              </app-text-field>
-            </div>
-          </div>
-
-          <div class="form-group mt-4">
-            <label class="element-label">Catégory</label>
-            <angular2-multiselect
-              name="category"
-              [data]="categories"
-              [(ngModel)]="form.category"
-              [settings]="settings"
+            <!-- Description -->
+            <app-text-area
+              [label]="'Description'"
+              [model]="form.description"
+              [placeholder]="'Texte…'"
             >
-            </angular2-multiselect>
-          </div>
+            </app-text-area>
 
-          <app-divider></app-divider>
+            <!-- Duration  [required]="false" -->
+            <app-text-field
+              [label]="'Durée'"
+              [model]="form.duration"
+              [placeholder]="'Min'"
+              [type]="'number'"
+            >
+            </app-text-field>
 
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-primary submit-btn" (click)="save()">
-              Enregistrer
-            </button>
-          </div>
+            <div class="row align-items-center mt-4">
+              <div class="col-4">
+                <app-titled-field title="type">
+                  <app-checkbox [label]="'Documents'" [model]="form.type">
+                  </app-checkbox>
+                </app-titled-field>
+              </div>
+
+              <div class="col">
+                <app-file-uploader
+                  [name]="'document'"
+                  (onClick)="addPhoto($event)"
+                ></app-file-uploader>
+              </div>
+            </div>
+
+            <div class="row align-items-center">
+              <div class="col-4">
+                <app-titled-field [title]="'type'" [titleHidden]="true">
+                  <app-checkbox [label]="'Vidéos'" [model]="form.type">
+                  </app-checkbox>
+                </app-titled-field>
+              </div>
+            </div>
+
+            <div class="row align-items-center mt-4 mb-4">
+              <app-titled-field title="image">
+                <app-file-uploader
+                  [name]="'document'"
+                  (onClick)="addPhoto($event)"
+                ></app-file-uploader>
+              </app-titled-field>
+            </div>
+
+            <!-- Divider -->
+            <app-divider></app-divider>
+            <h2 class="title">Tarifs</h2>
+
+            <label class="label" for="gratuit">Prix</label>
+
+            <div class="row align-items-center">
+              <div class="col-3">
+                <app-checkbox [label]="'Gratuit'" [model]="form.isFree">
+                </app-checkbox>
+              </div>
+
+              <div class="col-9">
+                <app-text-field
+                  [model]="form.price"
+                  [type]="'number'"
+                  [label]="'Price'"
+                  [placeholder]="'Price'"
+                  [showLabel]="false"
+                >
+                </app-text-field>
+              </div>
+            </div>
+
+            <div class="form-group mt-4">
+              <label class="element-label">Catégory</label>
+              <angular2-multiselect
+                name="category"
+                [data]="categories"
+                [(ngModel)]="form.category"
+                [settings]="settings"
+              >
+              </angular2-multiselect>
+            </div>
+
+            <app-divider></app-divider>
+
+            <div class="d-flex justify-content-end">
+              <button
+                type="submit"
+                class="btn btn-primary submit-btn"
+                (click)="save()"
+              >
+                Enregistrer
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
