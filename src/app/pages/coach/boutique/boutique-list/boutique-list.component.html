@@ -31,15 +31,16 @@
     </div>
   </div>
 
-  <app-loader [marginTop]="'64px'" *ngIf="isLoading; elseBlock"></app-loader>
+  <div *ngIf="isLoading">
+    <app-loader [marginTop]="'64px'"></app-loader>
+  </div>
 
-  <ng-template #elseBlock>
-    <div class="boutique">
-      <div class="row">
-        <div class="col-lg-3" *ngFor="let formation of formations; index as i">
-          <app-boutique-card></app-boutique-card>
-        </div>
+  <div class="boutique" *ngIf="!isLoading">
+    <app-empty-page *ngIf="!found"></app-empty-page>
+    <div class="row" *ngIf="found">
+      <div class="col-lg-3" *ngFor="let formation of formations; index as i">
+        <app-boutique-card></app-boutique-card>
       </div>
     </div>
-  </ng-template>
+  </div>
 </div>
