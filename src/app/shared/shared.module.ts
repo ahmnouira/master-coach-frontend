@@ -32,6 +32,8 @@ import { FormErrorComponent } from './components/form-error/form-error.component
 import { ButtonComponent } from './components/button/button.component';
 import { UserPhotoComponent } from './components/user-photo/user-photo.component';
 import { FormComponent } from './components/form/form.component';
+import { SelectComponent } from './components/select/select.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { FormComponent } from './components/form/form.component';
     ButtonComponent,
     UserPhotoComponent,
     FormComponent,
+    SelectComponent,
   ],
   imports: [
     CommonModule,
@@ -72,6 +75,8 @@ import { FormComponent } from './components/form/form.component';
     ComponentsModule,
     PickerModule,
     TooltipModule,
+    AngularMultiSelectModule
+    
   ],
   exports: [
     ModalAjoutSessionComponent,
@@ -98,8 +103,9 @@ import { FormComponent } from './components/form/form.component';
     RightImageComponent,
     FormErrorComponent,
     ButtonComponent,
+    SelectComponent,
     UserPhotoComponent,
-    FormComponent
+    FormComponent,
   ],
 })
 export class SharedModule {}

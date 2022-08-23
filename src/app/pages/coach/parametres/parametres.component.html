@@ -163,37 +163,31 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
         </div>
         <div class="col-lg-9 col-12 pl-40">
           <div class="row profil-data mb-17 gx-4">
-            <div class="col-md-6 form-group">
-              <label class="element-label">Catégorie</label>
-              <angular2-multiselect
-                name="category"
-                [data]="userCategory"
-                [(ngModel)]="form.category"
-                [settings]="settings"
-              >
-              </angular2-multiselect>
-            </div>
-            <div class="col-md-6 form-group">
-              <label class="element-label">Compétences</label>
-              <angular2-multiselect
-                name="competance"
+            <div class="col-md-6">
+              <app-select
+                [label]="'Catégorie'"
+                [(model)]="form.category"
                 [data]="userCompetences"
-                [(ngModel)]="form.competance"
-                [settings]="settings"
               >
-              </angular2-multiselect>
+              </app-select>
+            </div>
+            <div class="col-md-6">
+              <app-select
+                [label]="'Compétences'"
+                [(model)]="form.competance"
+                [data]="userCompetences"
+              >
+              </app-select>
             </div>
           </div>
           <div class="row profil-data">
-            <div class="col-md-6 form-group gx-4">
-              <label class="element-label">Accreditations</label>
-              <angular2-multiselect
-                name="accreditations"
+            <div class="col-md-6gx-4">
+              <app-select
+                [label]="'Accreditations'"
+                [(model)]="form.accreditation"
                 [data]="userAccred"
-                [(ngModel)]="form.accreditation"
-                [settings]="settings"
               >
-              </angular2-multiselect>
+              </app-select>
             </div>
           </div>
         </div>

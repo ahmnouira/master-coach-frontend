@@ -23,8 +23,7 @@ export class LoginComponent implements OnInit {
   isVerified = true;
   successMessage = '';
 
-  f: NgForm
-
+  f: NgForm;
 
   @ViewChild('main') elem: ElementRef;
   constructor(
@@ -38,9 +37,8 @@ export class LoginComponent implements OnInit {
     this.routeService;
   }
 
-
   onSubmit(event: NgForm) {
-    this.f =  event
+    this.f = event;
   }
 
   handleChange(e: any) {
