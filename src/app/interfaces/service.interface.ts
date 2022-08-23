@@ -8,5 +8,5 @@ export interface IService {
   isFixedPrice?: boolean;
   testimonies?: any[];
   isAutoConfirmed?: boolean;
-  image?: any;
+  image?: File;
 }

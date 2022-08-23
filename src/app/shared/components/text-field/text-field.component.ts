@@ -29,7 +29,6 @@ export class TextFieldComponent implements OnInit {
   }
 
   handleChange(event: any) {
-    console.log('event', event.target.value);
     if (this.type.toLowerCase() === 'number') {
       this.modelChange.emit(parseInt(event.target.value));
     }

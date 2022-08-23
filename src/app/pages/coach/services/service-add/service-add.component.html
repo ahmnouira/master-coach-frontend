@@ -39,7 +39,7 @@
             >
             </app-text-field>
 
-            <app-titled-field title="Auto confirmation">
+            <app-titled-field content="Auto confirmation">
               <app-checkbox
                 [label]="'Les sessions seront auto-confirmés'"
                 [(model)]="form.isAutoConfirmed"
@@ -48,8 +48,12 @@
             </app-titled-field>
 
             <app-file-uploader
-              [name]="'document'"
+              [model]="form.image"
+              type="photo"
+              [style]="'secondary'"
+              [title]="'Ajouter une photo'"
               (onClick)="addPhoto($event)"
+              (onDelete)="form.image = undefined"
             ></app-file-uploader>
 
             <!-- Divider -->
