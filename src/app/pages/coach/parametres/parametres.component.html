@@ -56,18 +56,9 @@
           </div>
 
           <div class="row">
-            <div class="form-group col-md-12">
-              <label class="element-label">Biographie</label>
-              <textarea
-                rows="5"
-                style="height: 120px"
-                [(ngModel)]="form.bio"
-                class="form-control element"
-                placeholder="davidlaroche@gmail.com"
-              >
-Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis massa, id porta turpis euismod a. Aliquam vitae orci semper, lacinia orci nec, tristique risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque fermentum purus leo, vestibulum laoreet tortor aliquam et. Vestibulum fringilla scelerisque faucibus. Nullam a elit eu nisl suscipit tempor sit amet eu erat. Morbi odio lorem.
-</textarea
-              >
+            <div class="col-md-12">
+              <app-text-area [(model)]="form.bio" [label]="'Biographie'">
+              </app-text-area>
             </div>
           </div>
         </div>
@@ -80,7 +71,7 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
         </div>
 
         <div class="col-lg-9 col-12 pl-40">
-          <div class="row profil-data mb-17 gx-4">
+          <div class="row mb-17 gx-4">
             <!-- CIN  Front -->
             <div class="col-md-6">
               <app-file-uploader
@@ -106,51 +97,24 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
             </div>
           </div>
 
-          <div class="row profil-data mb-17 gx-4">
-            <div *ngIf="!form.kbis" class="col-md-6 form-group">
-              <label class="element-label">KBIS</label>
-              <div class="file-input">
-                <input
-                  type="file"
-                  required
-                  class="form-control form-control-lg element"
-                  id="kbis"
-                  style="display: none"
-                  name="kbis"
-                  accept="application/pdf"
-                  (change)="importKbis($event)"
-                />
-
-                <label for="kbis">
-                  <app-import-icon></app-import-icon>
-                  Choisir un fichier</label
-                >
-              </div>
-            </div>
-            <div *ngIf="form.kbis" class="col-md-6">
-              <app-file-imported
+          <div class="row mb-17 gx-4">
+            <!-- KBIS-->
+            <div class="col-md-6">
+              <app-file-uploader
                 [model]="form.kbis"
+                type="pdf"
                 [label]="'KBIS'"
+                [showLabel]="true"
+                (onClick)="importKbis($event)"
                 (onDelete)="form.kbis = ''"
-              >
-              </app-file-imported>
+              ></app-file-uploader>
             </div>
           </div>
 
-          <!-- End KBIS-->
-
-          <div class="row d-flex profil-data gx-4">
-            <div class="form-group col-md-6">
-              <label class="element-label" for="urssaf">URSSAF</label>
-              <input
-                type="text"
-                class="form-control element"
-                id="urssaf"
-                name="urssaf"
-                placeholder="XXXXXXXXXX"
-                [(ngModel)]="form.urssaf"
-                required
-              />
+          <div class="row d-flex gx-4">
+            <div class="col-md-6">
+              <app-text-field [label]="'URSSAF'" [(model)]="form.urssaf">
+              </app-text-field>
             </div>
           </div>
         </div>
@@ -162,7 +126,7 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
           <span class="row-title">Spécialisation</span>
         </div>
         <div class="col-lg-9 col-12 pl-40">
-          <div class="row profil-data mb-17 gx-4">
+          <div class="row mb-17 gx-4">
             <div class="col-md-6">
               <app-select
                 [label]="'Catégorie'"
@@ -180,8 +144,8 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
               </app-select>
             </div>
           </div>
-          <div class="row profil-data">
-            <div class="col-md-6gx-4">
+          <div class="row">
+            <div class="col-md gx-4">
               <app-select
                 [label]="'Accreditations'"
                 [(model)]="form.accreditation"
@@ -199,7 +163,7 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
           <span class="row-title">Mise à jour du mot de passe</span>
         </div>
         <div class="col-lg-9 col-12 pl-40">
-          <div class="row gx-4 profil-data">
+          <div class="row gx-4">
             <div class="col">
               <app-text-field
                 [type]="'password'"
