@@ -13,5 +13,4 @@ export class Product extends Entity implements IProduct {
   displayedInShop?: boolean;
   image?: any;
   files?: any[];
- 
 }

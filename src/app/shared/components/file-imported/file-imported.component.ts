@@ -10,13 +10,23 @@ export class FileImportedComponent implements OnInit {
   @Input() label: string;
   @Input() name: string;
   @Input() filename: string;
-  @Input() model: string;
+  @Input() model: string | any[];
+
+  @Input() multiple?: boolean;
 
   @Output() onDelete = new EventEmitter();
 
+  sanitizerUrl: string;
+
   constructor(public sanitizer: DomSanitizer) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (typeof this.model === 'string') {
+      this.sanitizerUrl = this.model;
+    } else {
+      this.sanitizerUrl = this.label;
+    }
+  }
 
   handleDelete() {
     this.onDelete.emit();

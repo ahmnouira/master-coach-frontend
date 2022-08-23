@@ -18,28 +18,24 @@ export class BoutiqueAddComponent implements OnInit {
     type: null,
     isFree: true,
     category: '',
-    displayedInShop: false, 
-    image: '', 
-    files: [], 
-    duration:  ''
+    displayedInShop: false,
+    image: '',
+    files: [],
+    duration: '',
   };
-
 
   isDocument: boolean = true;
   isVideo: boolean = false;
-  isPodcast: boolean = false
+  isPodcast: boolean = false;
 
   error: string = '';
   isLoading = false;
-  categories : string[] = [];
+  categories: string[] = [];
 
- 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.categories = [...Array(10).keys()].map((el) => `category${el + 1}`) 
-
-    
+    this.categories = [...Array(10).keys()].map((el) => `category${el + 1}`);
   }
 
   async submit() {
@@ -47,10 +43,9 @@ export class BoutiqueAddComponent implements OnInit {
 
     if (this.isVideo) this.form.type = ProductType.VIDEO;
     if (this.isDocument) this.form.type = ProductType.DOCUMENT;
-    if (this.isPodcast) this.form.type = ProductType.PODCAST
+    if (this.isPodcast) this.form.type = ProductType.PODCAST;
 
-
-    console.log('form', this.form)
+    console.log('form', this.form);
 
     // if (!description || !title) return;
 
@@ -78,12 +73,11 @@ export class BoutiqueAddComponent implements OnInit {
   }
 
   importImage(data: any) {
-
-    console.log('data', data)
-    this.form.image = data
+    console.log('data', data);
+    this.form.image = data;
   }
 
-  addPhoto(event: any) {}
-
-  save() {}
+  addFiles(event: any) {
+    console.log('AddFiles', event);
+  }
 }

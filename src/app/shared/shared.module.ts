@@ -77,8 +77,7 @@ import { RadioComponent } from './components/radio/radio.component';
     ComponentsModule,
     PickerModule,
     TooltipModule,
-    AngularMultiSelectModule
-    
+    AngularMultiSelectModule,
   ],
   exports: [
     ModalAjoutSessionComponent,
@@ -108,7 +107,7 @@ import { RadioComponent } from './components/radio/radio.component';
     SelectComponent,
     UserPhotoComponent,
     FormComponent,
-    RadioComponent
+    RadioComponent,
   ],
 })
 export class SharedModule {}

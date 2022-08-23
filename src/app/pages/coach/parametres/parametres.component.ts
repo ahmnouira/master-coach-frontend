@@ -139,7 +139,7 @@ export class ParametresComponent implements OnInit {
   }
 
   importKbis(event: any) {
-    this.form.kbis = event; 
+    this.form.kbis = event;
   }
 
   private getUserFromDb(id: any) {
