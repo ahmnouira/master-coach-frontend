@@ -10,7 +10,6 @@ export class BaseService {
   protected baseUri = environment.apiUrl + '/api';
 
   protected httpOptions = {
-
     // remove these
     headers: new HttpHeaders({
       // 'Content-Type': 'multipart/form-data',
@@ -37,11 +36,16 @@ export class BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  protected post<T = any, R = any>(url: string, data: T, options?: {formData: boolean  }): Observable<R> {
+  protected post<T = any, R = any>(
+    url: string,
+    data: T,
+    options?: { formData: boolean }
+  ): Observable<R> {
+    const dataToSend = options.formData
+      ? (data as any)
+      : (JSON.stringify(data) as any);
 
-    const dataToSend  = options.formData ? data as any : JSON.stringify(data) as any
-
-    console.log('dataToSend', dataToSend, 'isFormData', options.formData )
+    console.log('dataToSend', dataToSend, 'isFormData', options.formData);
 
     return this.httpClient
       .post<R>(this.baseUri + url, dataToSend, this.httpOptions)

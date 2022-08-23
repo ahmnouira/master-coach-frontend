@@ -34,7 +34,13 @@
     <app-loader [marginTop]="'64px'"></app-loader>
   </div>
 
-  <div class="services">
+  <div
+    class="services"
+    [@animate]="{
+      value: '*',
+      params: { duration: '300ms', y: '100px' }
+    }"
+  >
     <app-empty-page title="services" *ngIf="!found"></app-empty-page>
     <div class="row" *ngIf="found">
       <div class="col-lg-4" *ngFor="let service of services; index as i">

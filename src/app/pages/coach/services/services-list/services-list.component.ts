@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/models/service/service.model';
 import { ServicesService } from 'src/app/services/services-service/services.service';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-services-list',
   templateUrl: './services-list.component.html',
   styleUrls: ['./services-list.component.scss'],
+  animations: Animations
 })
 export class ServicesListComponent implements OnInit {
   filterString = '';
@@ -14,33 +16,7 @@ export class ServicesListComponent implements OnInit {
   error: string = '';
   found: boolean;
 
-  services: Service[] = [
-    {
-      id: '1',
-      image: '',
-      title: 'Coaching carrière',
-      description: 'Comment gérer ses émotions au travail ?',
-    },
-    {
-      id: '2',
-      image: '',
-      title: 'Coaching carrière',
-      description: 'Comment gérer ses émotions au travail ?',
-    },
-    {
-      id: '3',
-      image: '',
-      title: 'Coaching carrière',
-      description: 'Comment gérer ses émotions au travail ?',
-    },
-
-    {
-      id: '4',
-      image: '',
-      title: 'Coaching carrière',
-      description: 'Comment gérer ses émotions au travail ?',
-    },
-  ];
+  services: Service[] = [];
 
   constructor(private servicesService: ServicesService) {}
 

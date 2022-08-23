@@ -3,12 +3,13 @@ import { Entity } from '../entity/entity.model';
 export class Service extends Entity implements IService {
   title: string;
   description: string;
-  duration?: string;
+  duration: string;
+  image: File;
   price?: number;
   category?: string;
   isFree?: boolean;
   isFixedPrice?: boolean;
+  isPriceHidden?: boolean;
   testimonies?: any[];
   isAutoConfirmed?: boolean;
-  image?: any;
 }

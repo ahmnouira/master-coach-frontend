@@ -8,13 +8,14 @@ import { BaseService } from '../base-service/base.service';
   providedIn: 'root',
 })
 export class ServicesService extends BaseService {
-
-  private services: BehaviorSubject<Service[]> = new BehaviorSubject<Service[]>([]);
-  services$= this.services.asObservable()
+  private services: BehaviorSubject<Service[]> = new BehaviorSubject<Service[]>(
+    []
+  );
+  services$ = this.services.asObservable();
 
   addService(data: any): Observable<any> {
     return this.post('/services', data, {
-      formData: true
+      formData: true,
     });
   }
 
@@ -26,10 +27,7 @@ export class ServicesService extends BaseService {
     return this.get(`/services/${id}`);
   }
 
-  set setServices(services: Service[])  {
-    this.services.next(services)
+  set setServices(services: Service[]) {
+    this.services.next(services);
   }
-
-
- 
 }

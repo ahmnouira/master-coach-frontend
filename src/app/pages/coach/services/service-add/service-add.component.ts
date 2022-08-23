@@ -17,10 +17,11 @@ export class ServiceAddComponent implements OnInit {
     isFixedPrice: true,
     testimonies: [],
     isAutoConfirmed: false,
+    isPriceHidden: false,
     duration: '',
     category: '',
     price: 0,
-    image: undefined
+    image: undefined,
   };
 
   error: string = '';
@@ -31,24 +32,28 @@ export class ServiceAddComponent implements OnInit {
   ngOnInit(): void {}
 
   addPhoto(data: File) {
-    this.form.image = data as File
+    this.form.image = data as File;
   }
 
   async submit() {
     // this.isLoading = true;
 
-    let formData  = new FormData()
+    const { title, description, duration } = this.form;
 
+    if (!title || !description || !duration) {
+      return;
+    }
+
+    let formData = new FormData();
     for (const key in this.form) {
-      if(key === 'image') {
-        formData.append('image', this.form[key] as File)
-        formData.append('files', this.form[key] as File)
-      } else { 
-        formData.append(key, JSON.stringify(this.form[key]))
-        
+      if (key === 'image') {
+        formData.append('image', this.form[key] as File);
+        formData.append('files', this.form[key] as File);
+      } else {
+        formData.append(key, JSON.stringify(this.form[key]));
       }
-    } 
-    /*
+    }
+
     this.servicesService.addService(formData).subscribe(
       (res) => {
         console.log('res:', res);
@@ -61,12 +66,7 @@ export class ServiceAddComponent implements OnInit {
       },
       (err) => this.onError(err)
     );
-    */
-    
   }
-
-
-  
 
   onError(error: any) {
     console.log(error);

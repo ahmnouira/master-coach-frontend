@@ -73,7 +73,7 @@ export class FileUploaderComponent implements OnInit {
     const reader: FileReader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files as File[];
-      this.onClick.emit(file)
+      this.onClick.emit(file);
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.isEmpty = false;

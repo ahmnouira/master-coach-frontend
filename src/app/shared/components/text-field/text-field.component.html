@@ -12,7 +12,10 @@
     #field="ngModel"
     (input)="handleChange($event)"
   />
-  <div *ngIf="(field.invalid && field.touched) || field.dirty">
+
+  <div
+    *ngIf="(field.invalid && field.touched) || field.dirty || form?.submitted"
+  >
     <small
       *ngIf="field.errors?.required"
       class="alert alert-danger"

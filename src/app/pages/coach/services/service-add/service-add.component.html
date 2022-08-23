@@ -19,7 +19,7 @@
             <h2 class="title">Info</h2>
 
             <!-- Titre -->
-            <app-text-field [label]="'Titre'" [(model)]="form.title">
+            <app-text-field [label]="'Titre'" [(model)]="form.title" [form]="f">
             </app-text-field>
 
             <!-- Description -->
@@ -27,6 +27,7 @@
               [label]="'Description'"
               [(model)]="form.description"
               [placeholder]="'Texte…'"
+              [form]="f"
             >
             </app-text-area>
 
@@ -36,6 +37,7 @@
               [(model)]="form.duration"
               [placeholder]="'Min'"
               [type]="'number'"
+              [form]="f"
             >
             </app-text-field>
 
@@ -50,6 +52,7 @@
             <app-file-uploader
               [model]="form.image"
               type="photo"
+              [label]="'image'"
               [style]="'secondary'"
               [title]="'Ajouter une photo'"
               (onClick)="addPhoto($event)"
@@ -71,7 +74,7 @@
               <div class="col-3">
                 <app-checkbox
                   [label]="'Masquer le prix'"
-                  [(model)]="form.isFree"
+                  [(model)]="form.isPriceHidden"
                 >
                 </app-checkbox>
               </div>
@@ -88,6 +91,7 @@
                   [label]="'Price'"
                   [placeholder]="'Price'"
                   [showLabel]="false"
+                  [form]="f"
                 >
                 </app-text-field>
               </div>

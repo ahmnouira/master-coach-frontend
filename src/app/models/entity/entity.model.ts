@@ -1,5 +1,5 @@
 export class Entity {
-  readonly id: string;
+  readonly _id: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
 }
