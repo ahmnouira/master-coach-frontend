@@ -4,247 +4,249 @@
     <app-coach-menu [active]="'profile'"></app-coach-menu>
   </div>
   <div class="col-lg-10">
-    <div class="row">
-      <div class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0">
-        <span class="row-title">Informations personnelles</span>
-      </div>
-      <div class="col-12 col-lg-9 pl-40">
-        <div class="row">
-          <app-user-photo [src]="form.photo"></app-user-photo>
+    <app-form>
+      <div class="row">
+        <div class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0">
+          <span class="row-title">Informations personnelles</span>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <app-text-field
-              [label]="'Nom'"
-              [(model)]="form.nom"
-              [required]="false"
-            >
-            </app-text-field>
+        <div class="col-12 col-lg-9 pl-40">
+          <div class="row">
+            <app-user-photo [src]="form.photo"></app-user-photo>
           </div>
-          <div class="col-md-6">
-            <app-text-field
-              [label]="'Prénom'"
-              [(model)]="form.prenom"
-              [required]="false"
-            >
-            </app-text-field>
+          <div class="row">
+            <div class="col-md-6">
+              <app-text-field
+                [label]="'Nom'"
+                [(model)]="form.nom"
+                [required]="false"
+              >
+              </app-text-field>
+            </div>
+            <div class="col-md-6">
+              <app-text-field
+                [label]="'Prénom'"
+                [(model)]="form.prenom"
+                [required]="false"
+              >
+              </app-text-field>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <app-text-field
-              type="email"
-              [label]="'Email'"
-              [(model)]="form.email"
-              pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-              [required]="false"
-            >
-            </app-text-field>
+          <div class="row">
+            <div class="col-md-6">
+              <app-text-field
+                type="email"
+                [label]="'Email'"
+                [(model)]="form.email"
+                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                [required]="false"
+              >
+              </app-text-field>
+            </div>
+
+            <div class="col-md-6">
+              <app-text-field
+                type="tel"
+                [label]="'Numéro de téléphone'"
+                [(model)]="form.tel"
+                placeholder="+33 12 34 56 789"
+                pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
+              >
+              </app-text-field>
+            </div>
           </div>
 
-          <div class="col-md-6">
-            <app-text-field
-              type="tel"
-              [label]="'Numéro de téléphone'"
-              [(model)]="form.tel"
-              placeholder="+33 12 34 56 789"
-              pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
-            >
-            </app-text-field>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="form-group col-md-12">
-            <label class="element-label">Biographie</label>
-            <textarea
-              rows="5"
-              style="height: 120px"
-              [(ngModel)]="form.bio"
-              class="form-control element"
-              placeholder="davidlaroche@gmail.com"
-            >
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label class="element-label">Biographie</label>
+              <textarea
+                rows="5"
+                style="height: 120px"
+                [(ngModel)]="form.bio"
+                class="form-control element"
+                placeholder="davidlaroche@gmail.com"
+              >
 Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis massa, id porta turpis euismod a. Aliquam vitae orci semper, lacinia orci nec, tristique risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque fermentum purus leo, vestibulum laoreet tortor aliquam et. Vestibulum fringilla scelerisque faucibus. Nullam a elit eu nisl suscipit tempor sit amet eu erat. Morbi odio lorem.
 </textarea
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div
-        class="center-verticaly col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
-      >
-        <span class="row-title">Documents</span>
-      </div>
-
-      <div class="col-lg-9 col-12 pl-40">
-        <div class="row profil-data mb-17 gx-4">
-          <!-- CIN  Front -->
-          <div class="col-md-6">
-            <app-file-uploader
-              [model]="form.cinF"
-              type="pdf"
-              [label]="'C.N.I Front'"
-              [showLabel]="true"
-              (onClick)="importCINFront($event)"
-              (onDelete)="form.cinF = ''"
-            ></app-file-uploader>
-          </div>
-
-          <!-- CIN  Back -->
-          <div class="col-md-6">
-            <app-file-uploader
-              [model]="form.cinB"
-              type="pdf"
-              [label]="'C.N.I Back'"
-              [showLabel]="true"
-              (onClick)="importCINBack($event)"
-              (onDelete)="form.cinB = ''"
-            ></app-file-uploader>
-          </div>
-        </div>
-
-        <div class="row profil-data mb-17 gx-4">
-          <div *ngIf="!form.kbis" class="col-md-6 form-group">
-            <label class="element-label">KBIS</label>
-            <div class="file-input">
-              <input
-                type="file"
-                required
-                class="form-control form-control-lg element"
-                id="kbis"
-                style="display: none"
-                name="kbis"
-                accept="application/pdf"
-                (change)="importKbis($event)"
-              />
-
-              <label for="kbis">
-                <app-import-icon></app-import-icon>
-                Choisir un fichier</label
               >
             </div>
           </div>
-          <div *ngIf="form.kbis" class="col-md-6">
-            <app-file-imported
-              [model]="form.kbis"
-              [label]="'KBIS'"
-              (onDelete)="form.kbis = ''"
-            >
-            </app-file-imported>
-          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div
+          class="center-verticaly col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
+        >
+          <span class="row-title">Documents</span>
         </div>
 
-        <!-- End KBIS-->
+        <div class="col-lg-9 col-12 pl-40">
+          <div class="row profil-data mb-17 gx-4">
+            <!-- CIN  Front -->
+            <div class="col-md-6">
+              <app-file-uploader
+                [model]="form.cinF"
+                type="pdf"
+                [label]="'C.N.I Front'"
+                [showLabel]="true"
+                (onClick)="importCINFront($event)"
+                (onDelete)="form.cinF = ''"
+              ></app-file-uploader>
+            </div>
 
-        <div class="row d-flex profil-data gx-4">
-          <div class="form-group col-md-6">
-            <label class="element-label" for="urssaf">URSSAF</label>
-            <input
-              type="text"
-              class="form-control element"
-              id="urssaf"
-              name="urssaf"
-              placeholder="XXXXXXXXXX"
-              [(ngModel)]="form.urssaf"
-              required
-            />
+            <!-- CIN  Back -->
+            <div class="col-md-6">
+              <app-file-uploader
+                [model]="form.cinB"
+                type="pdf"
+                [label]="'C.N.I Back'"
+                [showLabel]="true"
+                (onClick)="importCINBack($event)"
+                (onDelete)="form.cinB = ''"
+              ></app-file-uploader>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div
-        class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0 center-verticaly"
-      >
-        <span class="row-title">Spécialisation</span>
-      </div>
-      <div class="col-lg-9 col-12 pl-40">
-        <div class="row profil-data mb-17 gx-4">
-          <div class="col-md-6 form-group">
-            <label class="element-label">Catégorie</label>
-            <angular2-multiselect
-              name="category"
-              [data]="userCategory"
-              [(ngModel)]="form.category"
-              [settings]="settings"
-            >
-            </angular2-multiselect>
+
+          <div class="row profil-data mb-17 gx-4">
+            <div *ngIf="!form.kbis" class="col-md-6 form-group">
+              <label class="element-label">KBIS</label>
+              <div class="file-input">
+                <input
+                  type="file"
+                  required
+                  class="form-control form-control-lg element"
+                  id="kbis"
+                  style="display: none"
+                  name="kbis"
+                  accept="application/pdf"
+                  (change)="importKbis($event)"
+                />
+
+                <label for="kbis">
+                  <app-import-icon></app-import-icon>
+                  Choisir un fichier</label
+                >
+              </div>
+            </div>
+            <div *ngIf="form.kbis" class="col-md-6">
+              <app-file-imported
+                [model]="form.kbis"
+                [label]="'KBIS'"
+                (onDelete)="form.kbis = ''"
+              >
+              </app-file-imported>
+            </div>
           </div>
-          <div class="col-md-6 form-group">
-            <label class="element-label">Compétences</label>
-            <angular2-multiselect
-              name="competance"
-              [data]="userCompetences"
-              [(ngModel)]="form.competance"
-              [settings]="settings"
-            >
-            </angular2-multiselect>
-          </div>
-        </div>
-        <div class="row profil-data">
-          <div class="col-md-6 form-group gx-4">
-            <label class="element-label">Accreditations</label>
-            <angular2-multiselect
-              name="accreditations"
-              [data]="userAccred"
-              [(ngModel)]="form.accreditation"
-              [settings]="settings"
-            >
-            </angular2-multiselect>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div
-        class="col-12 ms-lg-0 col-lg-3 mb-3 p-lg-0 col-margin center-verticaly"
-      >
-        <span class="row-title">Mise à jour du mot de passe</span>
-      </div>
-      <div class="col-lg-9 col-12 pl-40">
-        <div class="row gx-4 profil-data">
-          <div class="col">
-            <app-text-field
-              [type]="'password'"
-              [label]="'Nouveau mot de passe'"
-              [(model)]="newPassword"
-              [required]="false"
-              [name]="'password'"
-            >
-            </app-text-field>
-          </div>
-          <div class="col">
-            <app-text-field
-              [type]="'password'"
-              [label]="'Confirmez le nouveau mot de passe'"
-              [(model)]="confirmPassword"
-              [required]="newPassword.length > 0"
-              [pattern]="newPassword"
-              [name]="'password'"
-            >
-            </app-text-field>
+
+          <!-- End KBIS-->
+
+          <div class="row d-flex profil-data gx-4">
+            <div class="form-group col-md-6">
+              <label class="element-label" for="urssaf">URSSAF</label>
+              <input
+                type="text"
+                class="form-control element"
+                id="urssaf"
+                name="urssaf"
+                placeholder="XXXXXXXXXX"
+                [(ngModel)]="form.urssaf"
+                required
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
-      <div class="col-lg-9 col-12 mt-20 pl-40">
-        <app-divider></app-divider>
+      <div class="row mt-4">
+        <div
+          class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0 center-verticaly"
+        >
+          <span class="row-title">Spécialisation</span>
+        </div>
+        <div class="col-lg-9 col-12 pl-40">
+          <div class="row profil-data mb-17 gx-4">
+            <div class="col-md-6 form-group">
+              <label class="element-label">Catégorie</label>
+              <angular2-multiselect
+                name="category"
+                [data]="userCategory"
+                [(ngModel)]="form.category"
+                [settings]="settings"
+              >
+              </angular2-multiselect>
+            </div>
+            <div class="col-md-6 form-group">
+              <label class="element-label">Compétences</label>
+              <angular2-multiselect
+                name="competance"
+                [data]="userCompetences"
+                [(ngModel)]="form.competance"
+                [settings]="settings"
+              >
+              </angular2-multiselect>
+            </div>
+          </div>
+          <div class="row profil-data">
+            <div class="col-md-6 form-group gx-4">
+              <label class="element-label">Accreditations</label>
+              <angular2-multiselect
+                name="accreditations"
+                [data]="userAccred"
+                [(ngModel)]="form.accreditation"
+                [settings]="settings"
+              >
+              </angular2-multiselect>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <app-form-error></app-form-error>
-
-    <div class="row">
-      <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
-      <div class="col-lg-9 col-12 mt-20 pl-40">
-        <app-button (onClick)="saveUser()" [isLoading]="isLoading">
-        </app-button>
+      <div class="row mt-4">
+        <div
+          class="col-12 ms-lg-0 col-lg-3 mb-3 p-lg-0 col-margin center-verticaly"
+        >
+          <span class="row-title">Mise à jour du mot de passe</span>
+        </div>
+        <div class="col-lg-9 col-12 pl-40">
+          <div class="row gx-4 profil-data">
+            <div class="col">
+              <app-text-field
+                [type]="'password'"
+                [label]="'Nouveau mot de passe'"
+                [(model)]="newPassword"
+                [required]="false"
+                [name]="'password'"
+              >
+              </app-text-field>
+            </div>
+            <div class="col">
+              <app-text-field
+                [type]="'password'"
+                [label]="'Confirmez le nouveau mot de passe'"
+                [(model)]="confirmPassword"
+                [required]="newPassword.length > 0"
+                [pattern]="newPassword"
+                [name]="'password'"
+              >
+              </app-text-field>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+        <div class="col-lg-9 col-12 mt-20 pl-40">
+          <app-divider></app-divider>
+        </div>
+      </div>
+
+      <app-form-error></app-form-error>
+
+      <div class="row">
+        <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+        <div class="col-lg-9 col-12 mt-20 pl-40">
+          <app-button (onClick)="saveUser()" [isLoading]="isLoading">
+          </app-button>
+        </div>
+      </div>
+    </app-form>
   </div>
 </div>
