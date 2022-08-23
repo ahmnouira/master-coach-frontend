@@ -8,15 +8,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class FileUploaderComponent implements OnInit {
   @Input() model: string;
   @Input() name: string;
-  @Input() showLabel: boolean = false;
-  @Input() label: string;
+
   @Input() accept: string;
 
   @Input() type: 'pdf' | 'photo' | undefined;
-
+  @Input() showLabel: boolean = false;
+  @Input() label?: string = '';
   @Input() title?: string;
-
   @Input() filename?: string = '';
+  @Input() style?: 'primary' | 'secondary' = 'primary'
 
   @Output() onClick = new EventEmitter();
 
@@ -49,7 +49,7 @@ export class FileUploaderComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         console.log('result', reader.result);
-        this.filename = this.label.replace(/ /g, '-') + '-' + file.name;
+        this.filename = this.label.trim().replace(/ /g, '-') + '-' + file.name;
         this.onClick.emit(reader.result as string);
       };
     }

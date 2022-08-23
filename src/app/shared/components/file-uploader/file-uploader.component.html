@@ -14,9 +14,22 @@
         class="form-control form-control-lg element"
         (change)="handleChange($event)"
       />
-      <label for="photo">
+
+      <div *ngIf="style === 'secondary'" class="file-input-secondary">
+        <div>
+          <label for="photo" class="secondary">
+            <app-import-icon></app-import-icon>
+            <span style="margin-bottom: -2px">{{ title }}</span></label
+          >
+        </div>
+        <div>
+          <label for="" class="secondary">Max 5 Mo</label>
+        </div>
+      </div>
+
+      <label for="photo" *ngIf="style === 'primary'">
         <app-import-icon></app-import-icon>
-        {{ title }}</label
+        <span style="margin-bottom: -2px">{{ title }}</span></label
       >
     </div>
   </div>

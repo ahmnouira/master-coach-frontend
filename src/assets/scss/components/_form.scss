@@ -121,15 +121,19 @@
     justify-content: center;
     cursor: pointer;
     position: relative;
-
     &:hover,
     &:active {
       background-color: #1376a3;
       label {
         color: #fff;
+        font: normal normal normal 12px/15px Fredoka;
         svg path {
           fill: #fff;
         }
+      }
+      p {
+        color: #fff;
+        font: normal normal normal 12px/15px Fredoka;
       }
     }
     label {
@@ -146,10 +150,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      font: normal normal normal 12px/15px Fredoka;
+      &.secondary {
+        position: static;
+      }
 
       svg {
         margin-right: 5px;
       }
+    }
+
+    p {
+      color: #1376a3;
+      font: normal normal normal 12px/15px Fredoka;
     }
   }
 

@@ -18,6 +18,10 @@ export class BoutiqueAddComponent implements OnInit {
     type: null,
     isFree: true,
     category: '',
+    displayedInShop: false, 
+    image: '', 
+    files: [], 
+    duration:  ''
   };
 
   isVideo: boolean = false;
@@ -25,28 +29,15 @@ export class BoutiqueAddComponent implements OnInit {
 
   error: string = '';
   isLoading = false;
-  categories = [];
+  categories : string[] = [];
 
-  settings = {};
+ 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    // select options
-    this.settings = {
-      text: 'Coaching de carriére...',
-      position: 'bottom',
-      autoPosition: false,
-      searchPlaceholderText: 'Rechercher...',
-      filterSelectAllText: 'Sélectionner tous les résultats filtrés',
-      filterUnSelectAllText: 'Désélectionner tous les résultats filtrés',
-      selectAllText: 'Sélectionner tout',
-      unSelectAllText: 'Désélectionner tout',
-      noDataLabel: 'Aucune donnée disponible',
-      enableSearchFilter: true,
-      labelKey: 'name',
-      primaryKey: '_id',
-      classes: 'form-control element-spec multiselect',
-    };
+    this.categories = [...Array(10).keys()].map((el) => `category${el + 1}`) 
+
+    
   }
 
   async submit() {
@@ -78,6 +69,12 @@ export class BoutiqueAddComponent implements OnInit {
     console.log(error);
     this.isLoading = false;
     this.error = error;
+  }
+
+  importImage(data: any) {
+
+    console.log('data', data)
+    this.form.image = data
   }
 
   addPhoto(event: any) {}

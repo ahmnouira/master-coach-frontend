@@ -66,8 +66,12 @@
             <div class="row align-items-center mt-4 mb-4">
               <app-titled-field title="image">
                 <app-file-uploader
-                  [name]="'document'"
-                  (onClick)="addPhoto($event)"
+                  [model]="form.image"
+                  [title]="'Ajouter une photo'"
+                  type="photo"
+                  [style]="'secondary'"
+                  (onClick)="importImage($event)"
+                  (onDelete)="form.image = ''"
                 ></app-file-uploader>
               </app-titled-field>
             </div>
@@ -97,14 +101,13 @@
             </div>
 
             <div class="form-group mt-4">
-              <label class="element-label">Catégory</label>
-              <angular2-multiselect
-                name="category"
+              <app-select
+                [label]="'Catégory'"
                 [data]="categories"
-                [(ngModel)]="form.category"
-                [settings]="settings"
+                [text]="'Coaching de carriére'"
+                [(model)]="form.category"
               >
-              </angular2-multiselect>
+              </app-select>
             </div>
 
             <app-divider></app-divider>

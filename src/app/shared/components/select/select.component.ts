@@ -11,16 +11,20 @@ export class SelectComponent implements OnInit {
   @Input() label: string = '';
   @Input() name?: string = '';
 
-  @Input() data: string[];
+  @Input() text? :string = "Sélectionner..."
+
+  @Input() data: any;
 
   settings: {};
 
   constructor() {}
 
+  
+
   ngOnInit(): void {
     this.name = this.name ?? this.label.toLowerCase();
     this.settings = {
-      text: 'Sélectionner...',
+      text: this.text,
       position: 'bottom',
       autoPosition: false,
       searchPlaceholderText: 'Rechercher...',

@@ -113,7 +113,11 @@
 
           <div class="row d-flex gx-4">
             <div class="col-md-6">
-              <app-text-field [label]="'URSSAF'" [(model)]="form.urssaf">
+              <app-text-field
+                [label]="'URSSAF'"
+                [(model)]="form.urssaf"
+                [required]="false"
+              >
               </app-text-field>
             </div>
           </div>
