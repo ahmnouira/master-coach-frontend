@@ -41,14 +41,9 @@ export class BaseService {
     data: T,
     options?: { formData: boolean }
   ): Observable<R> {
-    const dataToSend = options.formData
-      ? (data as any)
-      : (JSON.stringify(data) as any);
-
-    console.log('dataToSend', dataToSend, 'isFormData', options.formData);
 
     return this.httpClient
-      .post<R>(this.baseUri + url, dataToSend, this.httpOptions)
+      .post<R>(this.baseUri + url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

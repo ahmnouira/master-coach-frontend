@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'src/app/core/auth.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AdminService } from 'src/app/services/admin-service/admin.service';
+import { IUser } from 'src/app/interfaces/user-interface';
 
 @Component({
   selector: 'app-parametres',
@@ -11,52 +11,54 @@ import { AdminService } from 'src/app/services/admin-service/admin.service';
   styleUrls: ['./parametres.component.scss'],
 })
 export class ParametresComponent implements OnInit {
-  form: any = {};
+  form: Partial<IUser> = {}
+
+  passwordForm = {
+    newPassword : "",
+    confirmPassword: '',
+    passwordChangedFlag : false,
+    confirmPasswordChangedFlag : false,
+  }
+
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
+
   userCategory: any = [];
   userCompetences: any = [];
   userAccred: any = [];
-  newPassword = '';
-  confirmPassword = '';
-  passwordChangedFlag = false;
-  confirmPasswordChangedFlag = false;
-  isLoading = false;
+
+  isLoading = true;
 
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
     private authService: AuthService,
     private adminService: AdminService,
-    public sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
-    const user = this.tokenStorageService.getUser();
-    this.getUserFromDb(user._id);
+    const user = this.tokenStorageService.getUser() as IUser;
+    this.form = {...user}
     this.getCompetences();
     this.getCategories();
     this.getAccredi();
+    this.isLoading = false
   }
 
-  importFile(event: any) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log(file);
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        console.log(reader.result);
-        this.form.photo = reader.result as string;
-      };
-    }
-  }
 
   saveUser() {
-    this.userService.updateUser(this.form, this.form._id).subscribe(
+    this.isLoading = true
+    const { firstName, lastName, bio,  } = this.form;
+
+    if (!firstName || !lastName || !bio) {
+      this.isLoading = false
+      return;
+    }
+
+    let formData = new FormData();
+
+    this.authService.updateProfile(formData).subscribe(
       (res) => {
         console.log(res);
         window.location.reload();
@@ -65,10 +67,18 @@ export class ParametresComponent implements OnInit {
         console.error(error.message);
       }
     );
-    if (this.newPassword != '' && this.newPassword == this.confirmPassword) {
+ 
+  }
+
+
+  resetPassword() {
+
+    const {newPassword, confirmPassword}  = this.passwordForm
+
+    if (newPassword != '' && newPassword == confirmPassword) {
       this.authService
         .resetPassword({
-          password: this.form.password,
+          password: newPassword,
 
           token: '',
         })
@@ -122,11 +132,29 @@ export class ParametresComponent implements OnInit {
   }
 
   passwordChanged() {
-    this.passwordChangedFlag = this.form.password.length > 0;
+    this.passwordForm.passwordChangedFlag = this.passwordForm.newPassword.length > 0;
   }
   confirmPasswordChanged() {
-    this.confirmPasswordChangedFlag = this.form.password.length > 0;
+    this.passwordForm.confirmPasswordChangedFlag = this.passwordForm.newPassword.length > 0;
   }
+
+
+
+  importFile(event: any) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      console.log(file);
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        console.log(reader.result);
+        this.form.photo = reader.result as string;
+      };
+    }
+  }
+
 
   // cin front
   importCINFront(data: any) {
@@ -140,17 +168,6 @@ export class ParametresComponent implements OnInit {
 
   importKbis(event: any) {
     this.form.kbis = event;
-  }
-
-  private getUserFromDb(id: any) {
-    this.userService.getSingleUser(id).subscribe(
-      (user) => {
-        this.form = { ...user };
-      },
-      (error) => {
-        return {};
-      }
-    );
   }
 
   downloadPdf(base64String, fileName) {

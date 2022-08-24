@@ -17,7 +17,7 @@
             <div class="col-md-6">
               <app-text-field
                 [label]="'Nom'"
-                [(model)]="form.nom"
+                [(model)]="form.firstName"
                 [required]="false"
               >
               </app-text-field>
@@ -25,7 +25,7 @@
             <div class="col-md-6">
               <app-text-field
                 [label]="'Prénom'"
-                [(model)]="form.prenom"
+                [(model)]="form.lastName"
                 [required]="false"
               >
               </app-text-field>
@@ -134,7 +134,7 @@
             <div class="col-md-6">
               <app-select
                 [label]="'Catégorie'"
-                [(model)]="form.category"
+                [(model)]="form.categories"
                 [data]="userCompetences"
               >
               </app-select>
@@ -142,7 +142,7 @@
             <div class="col-md-6">
               <app-select
                 [label]="'Compétences'"
-                [(model)]="form.competance"
+                [(model)]="form.skills"
                 [data]="userCompetences"
               >
               </app-select>
@@ -152,7 +152,7 @@
             <div class="col-md gx-4">
               <app-select
                 [label]="'Accreditations'"
-                [(model)]="form.accreditation"
+                [(model)]="form.certifications"
                 [data]="userAccred"
               >
               </app-select>
@@ -172,7 +172,7 @@
               <app-text-field
                 [type]="'password'"
                 [label]="'Nouveau mot de passe'"
-                [(model)]="newPassword"
+                [(model)]="passwordForm.newPassword"
                 [required]="false"
                 [name]="'password'"
               >
@@ -182,9 +182,9 @@
               <app-text-field
                 [type]="'password'"
                 [label]="'Confirmez le nouveau mot de passe'"
-                [(model)]="confirmPassword"
-                [required]="newPassword.length > 0"
-                [pattern]="newPassword"
+                [(model)]="passwordForm.confirmPassword"
+                [required]="passwordForm.newPassword.length > 0"
+                [pattern]="passwordForm.newPassword"
                 [name]="'password'"
               >
               </app-text-field>

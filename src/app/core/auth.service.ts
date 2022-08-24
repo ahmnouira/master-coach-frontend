@@ -21,10 +21,6 @@ export class AuthService extends BaseService {
     return this.post('/login', { email, password });
   }
 
-  loggedInUser(): Observable<any> {
-    return this.get('/me');
-  }
-
   register(user: any): Observable<any> {
     return this.post('/create_user', user);
   }
@@ -44,6 +40,17 @@ export class AuthService extends BaseService {
   resendVerification(resendVerificationData: IResendVerification) {
     return this.post('/resend_verification', resendVerificationData);
   }
+
+
+  loggedInUser(): Observable<any> {
+    return this.get('/me');
+  }
+
+
+  updateProfile(data: any): Observable<any> {
+    return this.get('/update_profile', data)
+  }
+
 
   set setUserRole(role: UserRole) {
     this.userRole = role;
