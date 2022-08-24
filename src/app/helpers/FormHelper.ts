@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { FileHelper } from './FileHelper';
 
 export class FormHelper {
@@ -5,6 +6,8 @@ export class FormHelper {
   success = false;
   isLoading = true; // page is loading
   error = '';
+
+  f: NgForm;
 
   getString(str: string) {
     return str || '';
@@ -37,6 +40,12 @@ export class FormHelper {
     }
 
     return formData;
+  }
+
+  /** TODO: check this if it works **/
+  handleSubmit(f: NgForm) {
+    // console.log('f', f.errors);
+    this.f = f;
   }
 
   onError(error: any) {

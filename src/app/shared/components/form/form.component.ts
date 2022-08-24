@@ -11,6 +11,7 @@ import { Animations } from '../../animations';
 export class FormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<NgForm>();
   @Input() name: any;
+  @Input() animated: boolean = true;
 
   constructor() {}
 

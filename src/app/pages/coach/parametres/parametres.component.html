@@ -12,7 +12,11 @@
     </div>
 
     <ng-template #elseBlock>
-      <app-form (onSubmit)="handleSubmit($event)" [name]="form">
+      <app-form
+        (onSubmit)="handleSubmit($event)"
+        [name]="form"
+        [animated]="false"
+      >
         <div class="row">
           <div
             class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
@@ -174,38 +178,6 @@
             </div>
           </div>
         </div>
-        <div class="row mt-4">
-          <div
-            class="col-12 ms-lg-0 col-lg-3 mb-3 p-lg-0 col-margin center-verticaly"
-          >
-            <span class="row-title">Mise à jour du mot de passe</span>
-          </div>
-          <div class="col-lg-9 col-12 pl-40">
-            <div class="row gx-4">
-              <div class="col">
-                <app-text-field
-                  [type]="'password'"
-                  [label]="'Nouveau mot de passe'"
-                  [(model)]="passwordForm.newPassword"
-                  [required]="false"
-                  [name]="'password'"
-                >
-                </app-text-field>
-              </div>
-              <div class="col">
-                <app-text-field
-                  [type]="'password'"
-                  [label]="'Confirmez le nouveau mot de passe'"
-                  [(model)]="passwordForm.confirmPassword"
-                  [required]="passwordForm.newPassword.length > 0"
-                  [pattern]="passwordForm.newPassword"
-                  [name]="'password'"
-                >
-                </app-text-field>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div class="row">
           <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
@@ -216,7 +188,7 @@
 
         <div class="row" *ngIf="success">
           <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
-          <div class="col-lg-9 col-12 mt-20 pl-40">
+          <div class="col-lg-9 col-12 pl-40">
             <div class="alert alert-info" role="alert">Profile Updated</div>
           </div>
         </div>
@@ -225,12 +197,21 @@
 
         <div class="row">
           <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
-          <div class="col-lg-9 col-12 mt-20 pl-40">
+          <div class="col-lg-9 col-12 pl-40">
             <app-button (onClick)="submit()" [isLoading]="isSubmitting">
             </app-button>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+          <div class="col-lg-9 col-12 mt-20 pl-40">
+            <app-divider></app-divider>
+          </div>
+        </div>
       </app-form>
+
+      <app-rest-password></app-rest-password>
     </ng-template>
   </div>
 </div>
