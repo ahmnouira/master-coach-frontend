@@ -3,213 +3,231 @@
   <div class="col-lg-2 p-0">
     <app-coach-menu [active]="'profile'"></app-coach-menu>
   </div>
+
   <div class="col-lg-10">
-    <app-form (onSubmit)="handleSubmit($event)" [name]="form">
-      <div class="row">
-        <div class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0">
-          <span class="row-title">Informations personnelles</span>
-        </div>
-        <div class="col-12 col-lg-9 pl-40">
-          <div class="row">
-            <app-user-photo [src]="form.photo"></app-user-photo>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <app-text-field
-                [label]="'Nom'"
-                [(model)]="form.firstName"
-                [form]="f"
-              >
-              </app-text-field>
-            </div>
-            <div class="col-md-6">
-              <app-text-field
-                [label]="'Prénom'"
-                [(model)]="form.lastName"
-                [form]="f"
-              >
-              </app-text-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <app-text-field
-                type="email"
-                [label]="'Email'"
-                [(model)]="form.email"
-                [form]="f"
-                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-              >
-              </app-text-field>
-            </div>
-
-            <div class="col-md-6">
-              <app-text-field
-                type="tel"
-                [label]="'Numéro de téléphone'"
-                [(model)]="form.tel"
-                placeholder="+33 12 34 56 789"
-                [form]="f"
-                pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
-              >
-              </app-text-field>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              <app-text-area [(model)]="form.bio" [label]="'Biographie'">
-              </app-text-area>
-            </div>
-          </div>
-        </div>
+    <div *ngIf="isLoading; else elseBlock">
+      <div style="margin-top: 50px">
+        <app-loader></app-loader>
       </div>
-      <div class="row mt-4">
-        <div
-          class="center-verticaly col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
-        >
-          <span class="row-title">Documents</span>
-        </div>
+    </div>
 
-        <div class="col-lg-9 col-12 pl-40">
-          <div class="row mb-17 gx-4">
-            <!-- CIN  Front -->
-            <div class="col-md-6">
-              <app-file-uploader
-                [model]="form.cinF"
-                type="pdf"
-                [label]="'C.N.I Front'"
-                [showLabel]="true"
-                (onClick)="importCINFront($event)"
-                (onDelete)="form.cinF = ''"
-              ></app-file-uploader>
+    <ng-template #elseBlock>
+      <app-form (onSubmit)="handleSubmit($event)" [name]="form">
+        <div class="row">
+          <div
+            class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
+          >
+            <span class="row-title">Informations personnelles</span>
+          </div>
+          <div class="col-12 col-lg-9 pl-40">
+            <div class="row">
+              <app-user-photo
+                [src]="form.photo"
+                (onChange)="form.photo = $event"
+              ></app-user-photo>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <app-text-field
+                  [label]="'Nom'"
+                  [(model)]="form.firstName"
+                  [form]="f"
+                >
+                </app-text-field>
+              </div>
+              <div class="col-md-6">
+                <app-text-field
+                  [label]="'Prénom'"
+                  [(model)]="form.lastName"
+                  [form]="f"
+                >
+                </app-text-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <app-text-field
+                  type="email"
+                  [label]="'Email'"
+                  [(model)]="form.email"
+                  [form]="f"
+                  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                >
+                </app-text-field>
+              </div>
+
+              <div class="col-md-6">
+                <app-text-field
+                  type="tel"
+                  [label]="'Numéro de téléphone'"
+                  [(model)]="form.tel"
+                  placeholder="+33 12 34 56 789"
+                  [form]="f"
+                  pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
+                >
+                </app-text-field>
+              </div>
             </div>
 
-            <!-- CIN  Back -->
-            <div class="col-md-6">
-              <app-file-uploader
-                [model]="form.cinB"
-                type="pdf"
-                [label]="'C.N.I Back'"
-                [showLabel]="true"
-                (onClick)="importCINBack($event)"
-                (onDelete)="form.cinB = ''"
-              ></app-file-uploader>
-            </div>
-          </div>
-
-          <div class="row mb-17 gx-4">
-            <!-- KBIS-->
-            <div class="col-md-6">
-              <app-file-uploader
-                [model]="form.kbis"
-                type="pdf"
-                [label]="'KBIS'"
-                [showLabel]="true"
-                (onClick)="importKbis($event)"
-                (onDelete)="form.kbis = ''"
-              ></app-file-uploader>
-            </div>
-          </div>
-
-          <div class="row d-flex gx-4">
-            <div class="col-md-6">
-              <app-text-field
-                [label]="'URSSAF'"
-                [(model)]="form.urssaf"
-                [required]="false"
-              >
-              </app-text-field>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <div
-          class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0 center-verticaly"
-        >
-          <span class="row-title">Spécialisation</span>
-        </div>
-        <div class="col-lg-9 col-12 pl-40">
-          <div class="row mb-17 gx-4">
-            <div class="col-md-6">
-              <app-select
-                [label]="'Catégorie'"
-                [(model)]="form.categories"
-                [data]="categories"
-              >
-              </app-select>
-            </div>
-            <div class="col-md-6">
-              <app-select
-                [label]="'Compétences'"
-                [(model)]="form.skills"
-                [data]="skills"
-              >
-              </app-select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md gx-4">
-              <app-select
-                [label]="'Accreditations'"
-                [(model)]="form.certifications"
-                [data]="certifications"
-              >
-              </app-select>
+            <div class="row">
+              <div class="col-md-12">
+                <app-text-area
+                  [(model)]="form.bio"
+                  [label]="'Biographie'"
+                  [form]="f"
+                >
+                </app-text-area>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row mt-4">
-        <div
-          class="col-12 ms-lg-0 col-lg-3 mb-3 p-lg-0 col-margin center-verticaly"
-        >
-          <span class="row-title">Mise à jour du mot de passe</span>
-        </div>
-        <div class="col-lg-9 col-12 pl-40">
-          <div class="row gx-4">
-            <div class="col">
-              <app-text-field
-                [type]="'password'"
-                [label]="'Nouveau mot de passe'"
-                [(model)]="passwordForm.newPassword"
-                [required]="false"
-                [name]="'password'"
-              >
-              </app-text-field>
+        <div class="row mt-4">
+          <div
+            class="center-verticaly col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
+          >
+            <span class="row-title">Documents</span>
+          </div>
+
+          <div class="col-lg-9 col-12 pl-40">
+            <div class="row mb-17 gx-4">
+              <!-- CIN  Front -->
+              <div class="col-md-6">
+                <app-file-uploader
+                  [model]="form.cinF"
+                  type="pdf"
+                  [label]="'C.N.I Front'"
+                  [showLabel]="true"
+                  (onClick)="importCINFront($event)"
+                  (onDelete)="form.cinF = ''"
+                ></app-file-uploader>
+              </div>
+
+              <!-- CIN  Back -->
+              <div class="col-md-6">
+                <app-file-uploader
+                  [model]="form.cinB"
+                  type="pdf"
+                  [label]="'C.N.I Back'"
+                  [showLabel]="true"
+                  (onClick)="importCINBack($event)"
+                  (onDelete)="form.cinB = ''"
+                ></app-file-uploader>
+              </div>
             </div>
-            <div class="col">
-              <app-text-field
-                [type]="'password'"
-                [label]="'Confirmez le nouveau mot de passe'"
-                [(model)]="passwordForm.confirmPassword"
-                [required]="passwordForm.newPassword.length > 0"
-                [pattern]="passwordForm.newPassword"
-                [name]="'password'"
-              >
-              </app-text-field>
+
+            <div class="row mb-17 gx-4">
+              <!-- KBIS-->
+              <div class="col-md-6">
+                <app-file-uploader
+                  [model]="form.kbis"
+                  type="pdf"
+                  [label]="'KBIS'"
+                  [showLabel]="true"
+                  (onClick)="importKbis($event)"
+                  (onDelete)="form.kbis = ''"
+                ></app-file-uploader>
+              </div>
+            </div>
+
+            <div class="row d-flex gx-4">
+              <div class="col-md-6">
+                <app-text-field
+                  [label]="'URSSAF'"
+                  [(model)]="form.urssaf"
+                  [required]="false"
+                >
+                </app-text-field>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
-        <div class="col-lg-9 col-12 mt-20 pl-40">
-          <app-divider></app-divider>
+        <div class="row mt-4">
+          <div
+            class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0 center-verticaly"
+          >
+            <span class="row-title">Spécialisation</span>
+          </div>
+          <div class="col-lg-9 col-12 pl-40">
+            <div class="row mb-17 gx-4">
+              <div class="col-md-6">
+                <app-select
+                  [label]="'Catégorie'"
+                  [(model)]="form.categories"
+                  [data]="categories"
+                >
+                </app-select>
+              </div>
+              <div class="col-md-6">
+                <app-select
+                  [label]="'Compétences'"
+                  [(model)]="form.skills"
+                  [data]="skills"
+                >
+                </app-select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md gx-4">
+                <app-select
+                  [label]="'Accreditations'"
+                  [(model)]="form.certifications"
+                  [data]="certifications"
+                >
+                </app-select>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <app-form-error [error]="error"></app-form-error>
-
-      <div class="row">
-        <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
-        <div class="col-lg-9 col-12 mt-20 pl-40">
-          <app-button (onClick)="submit()" [isLoading]="isLoading">
-          </app-button>
+        <div class="row mt-4">
+          <div
+            class="col-12 ms-lg-0 col-lg-3 mb-3 p-lg-0 col-margin center-verticaly"
+          >
+            <span class="row-title">Mise à jour du mot de passe</span>
+          </div>
+          <div class="col-lg-9 col-12 pl-40">
+            <div class="row gx-4">
+              <div class="col">
+                <app-text-field
+                  [type]="'password'"
+                  [label]="'Nouveau mot de passe'"
+                  [(model)]="passwordForm.newPassword"
+                  [required]="false"
+                  [name]="'password'"
+                >
+                </app-text-field>
+              </div>
+              <div class="col">
+                <app-text-field
+                  [type]="'password'"
+                  [label]="'Confirmez le nouveau mot de passe'"
+                  [(model)]="passwordForm.confirmPassword"
+                  [required]="passwordForm.newPassword.length > 0"
+                  [pattern]="passwordForm.newPassword"
+                  [name]="'password'"
+                >
+                </app-text-field>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </app-form>
+
+        <div class="row">
+          <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+          <div class="col-lg-9 col-12 mt-20 pl-40">
+            <app-divider></app-divider>
+          </div>
+        </div>
+
+        <app-form-error [error]="error"></app-form-error>
+
+        <div class="row">
+          <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+          <div class="col-lg-9 col-12 mt-20 pl-40">
+            <app-button (onClick)="submit()" [isLoading]="isSubmitting">
+            </app-button>
+          </div>
+        </div>
+      </app-form>
+    </ng-template>
   </div>
 </div>

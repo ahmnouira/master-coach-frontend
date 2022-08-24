@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IUser } from '../interfaces/user-interface';
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
 const TWILIO_TOKEN_KEY = 'twilio-token';
@@ -49,7 +50,7 @@ export class TokenStorageService {
 
   public getUser(): any {
     let user = window.localStorage.getItem(USER_KEY);
-    if (user) return JSON.parse(user);
+    if (user) return JSON.parse(user) as IUser;
     return {};
   }
 

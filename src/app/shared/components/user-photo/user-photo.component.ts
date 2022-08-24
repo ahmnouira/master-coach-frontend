@@ -29,6 +29,7 @@ export class UserPhotoComponent implements OnInit {
       const [file] = event.target.files as File[];
       this.onChange.emit(file);
       reader.readAsDataURL(file);
+
       reader.onload = () => {
         console.log('reader', reader.result);
         this.src = reader.result as string;

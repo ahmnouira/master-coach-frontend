@@ -7,6 +7,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class FileUploaderComponent implements OnInit {
   @Input() model: any;
+
+  @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
+
+
   @Input() name: string;
 
   @Input() accept: string;
@@ -23,6 +27,8 @@ export class FileUploaderComponent implements OnInit {
 
   @Output() onClick = new EventEmitter();
   @Output() onDelete = new EventEmitter();
+
+  @Input() form?: any = undefined;
 
   isEmpty: boolean;
 
@@ -78,7 +84,9 @@ export class FileUploaderComponent implements OnInit {
       reader.onload = () => {
         this.isEmpty = false;
         this.filename =
-          this.label.toLowerCase() + '-' + file.name.trim().replace(/\s/g, '-');
+          this.label.toLowerCase().trim().replace(/\s/g, '-') +
+          '-' +
+          file.name.trim().replace(/\s/g, '-');
         // this.onClick.emit(reader.result as string);
       };
       reader.onerror = () => {
@@ -86,6 +94,8 @@ export class FileUploaderComponent implements OnInit {
       };
     }
   }
+
+  
 
   handleDelete() {
     this.isEmpty = true;

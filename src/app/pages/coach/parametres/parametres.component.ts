@@ -27,6 +27,7 @@ export class ParametresComponent implements OnInit {
   skills: any = [];
   certifications: any = [];
 
+  isSubmitting = false;
   isLoading = true;
   error = '';
 
@@ -39,11 +40,14 @@ export class ParametresComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const user = this.tokenStorageService.getUser() as IUser;
-    this.form = { ...user };
+    this.getUser();
     this.getSkills();
     this.getCategories();
     this.getCertifications();
+    /*
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 200) */
     this.isLoading = false;
   }
 
@@ -54,10 +58,13 @@ export class ParametresComponent implements OnInit {
   }
 
   submit() {
-    this.isLoading = true;
+    this.isSubmitting = true;
     const { firstName, lastName, bio, tel, email, photo } = this.form;
+
+    console.log('from', this.form);
+
     if (!firstName || !lastName || !bio || !tel || !email || !photo) {
-      this.isLoading = false;
+      this.isSubmitting = false;
       return;
     }
 
@@ -75,6 +82,7 @@ export class ParametresComponent implements OnInit {
   onError(error: any) {
     console.log('error', error);
     this.error = error;
+    this.isSubmitting = false;
     this.isLoading = false;
   }
 
@@ -97,6 +105,28 @@ export class ParametresComponent implements OnInit {
           }
         );
     }
+  }
+
+  getUser() {
+    const user = this.tokenStorageService.getUser() as IUser;
+    // TODO: casting doesn't work property
+    this.form = {
+      bio: user.bio,
+      categories: user.categories,
+      certifications: user.categories,
+      cinB: user.cinB,
+      cinF: user.cinF,
+      email: user.email,
+      firstName: user.firstName,
+      kbis: user.kbis,
+      lastName: user.lastName,
+      photo: user.photo,
+      skills: user.skills,
+      tel: user.tel,
+      urssaf: user.urssaf,
+    };
+
+    console.log('user', user, this.form);
   }
 
   getCategories() {
