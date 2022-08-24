@@ -46,7 +46,7 @@ export class AuthService extends BaseService {
   }
 
   updateProfile(data: any): Observable<any> {
-    return this.get('/update_profile', data);
+    return this.post('/update_profile', data);
   }
 
   set setUserRole(role: UserRole) {

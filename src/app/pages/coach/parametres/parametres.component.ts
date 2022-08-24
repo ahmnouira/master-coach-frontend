@@ -4,6 +4,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AdminService } from 'src/app/services/admin-service/admin.service';
 import { IUser } from 'src/app/interfaces/user-interface';
 import { NgForm } from '@angular/forms';
+import { User } from 'src/app/models/user-model';
+import { Picture } from 'src/app/helpers/getUserPicture';
 
 @Component({
   selector: 'app-parametres',
@@ -57,30 +59,59 @@ export class ParametresComponent implements OnInit {
     this.f = f;
   }
 
+  addPhoto(data: File) {
+    this.form.photo = data as File;
+    console.log('photo: ', data, this.form.photo);
+  }
+
   submit() {
     this.isSubmitting = true;
-    const { firstName, lastName, bio, tel, email, photo } = this.form;
-
-    console.log('from', this.form);
-
-    if (!firstName || !lastName || !bio || !tel || !email || !photo) {
+    const { prenom, nom, bio, tel, email, photo, category } = this.form;
+    // +33122469999
+    if (!prenom || !nom || !bio || !tel || !email || !photo) {
       this.isSubmitting = false;
       return;
     }
 
     let formData = new FormData();
+    for (const key in this.form) {
+      if (this.form[key]) {
+        if (key === 'photo') {
+          if (typeof this.form.photo === 'string') {
+            continue;
+          } else {
+            const file = this.form.photo as File;
+
+            console.log('its File', file);
+            formData.append(key, file);
+          }
+        }
+        formData.append(key, this.form[key]);
+      }
+    }
+
     this.authService.updateProfile(formData).subscribe(
       (res) => {
-        console.log(res);
-        // window.location.reload();
+        console.log('res', res);
+        if (!res.success) {
+          this.onError(res.error);
+          return;
+        }
+
+        this.error = '';
+        this.authService.currentUser$.next(res.data as User);
+        this.tokenStorageService.saveUser(res.data);
+        this.isSubmitting = false;
       },
       (error) => {
+        console.log('submitError', error);
         this.onError(error);
       }
     );
   }
+
   onError(error: any) {
-    console.log('error', error);
+    console.error('error:', error);
     this.error = error;
     this.isSubmitting = false;
     this.isLoading = false;
@@ -107,32 +138,36 @@ export class ParametresComponent implements OnInit {
     }
   }
 
+  removeUndefined(value: string) {
+    return value.replace(/undefined/g, '');
+  }
+
   getUser() {
     const user = this.tokenStorageService.getUser() as IUser;
     // TODO: casting doesn't work property
-    this.form = {
-      bio: user.bio,
-      categories: user.categories,
-      certifications: user.categories,
-      cinB: user.cinB,
-      cinF: user.cinF,
-      email: user.email,
-      firstName: user.firstName,
-      kbis: user.kbis,
-      lastName: user.lastName,
-      photo: user.photo,
-      skills: user.skills,
-      tel: user.tel,
-      urssaf: user.urssaf,
-    };
 
-    console.log('user', user, this.form);
+    console.log('user', user);
+
+    this.form = {
+      bio: user.bio || '',
+      category: [],
+      accreditation: [],
+      cinB: this.removeUndefined(user.cinB as string) || '',
+      cinF: this.removeUndefined(user.cinF as string) || '',
+      email: user.email,
+      prenom: user.prenom || '',
+      kbis: this.removeUndefined(user.kbis as string) || '',
+      nom: user.nom || '',
+      photo: Picture.getUrl(user.photo) || '',
+      competance: [],
+      tel: user.tel || '',
+      urssaf: user.urssaf || '',
+    };
   }
 
   getCategories() {
     this.adminService.getAllCategorys().subscribe(
       (res) => {
-        console.log(res);
         this.categories = res;
       },
       (error) => {
@@ -144,7 +179,6 @@ export class ParametresComponent implements OnInit {
   getSkills() {
     this.adminService.getAllCompetances().subscribe(
       (res) => {
-        console.log(res);
         this.skills = res;
       },
       (error) => {
@@ -156,11 +190,10 @@ export class ParametresComponent implements OnInit {
   getCertifications() {
     this.adminService.getAllAccreditations().subscribe(
       (res) => {
-        console.log(res);
         this.certifications = res;
       },
       (error) => {
-        console.error(error.message);
+        console.error(error);
       }
     );
   }

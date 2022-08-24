@@ -1,7 +1,7 @@
 export interface IUser {
   photo?: File | string;
-  lastName: string;
-  firstName: string;
+  prenom: string;
+  nom: string;
   email: string;
   tel: string;
   bio: string;
@@ -9,7 +9,7 @@ export interface IUser {
   cinB: File | string;
   kbis: File | string;
   urssaf?: string;
-  categories?: string[];
-  certifications?: string[];
-  skills?: string[];
+  category?: string[];
+  accreditation?: string[];
+  competance?: string[];
 }

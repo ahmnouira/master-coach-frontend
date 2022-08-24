@@ -3,19 +3,19 @@ import { Entity } from './entity/entity.model';
 import { UserRole } from './role.enum';
 
 export class User extends Entity implements IUser {
-  lastName: string;
-  firstName: string;
+  photo?: string | File;
+  prenom: string;
+  nom: string;
   email: string;
   tel: string;
   bio: string;
   cinF: string | File;
   cinB: string | File;
   kbis: string | File;
-  photo?: string;
   urssaf?: string;
-  categories?: string[];
-  certifications?: string[];
-  skills?: string[];
+  category?: string[];
+  accreditation?: string[];
+  competance?: string[];
 
   // added fields
   readonly password: string;

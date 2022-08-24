@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Picture } from 'src/app/helpers/getUserPicture';
 
 @Component({
   selector: 'app-user-photo',
@@ -10,16 +11,18 @@ export class UserPhotoComponent implements OnInit {
 
   @Output() onChange = new EventEmitter();
 
+  photo: string;
+
   error: string;
   constructor() {}
   ngOnInit(): void {
     this.getPicture();
   }
   getPicture() {
-    if (!this.src || typeof this.src === 'string') {
-      this.src = this.src ?? '/assets/img/common/utilisateur.png';
+    if (this.src && typeof this.src === 'string') {
+      this.photo = this.src;
     } else {
-      // it's a file
+      this.photo = '/assets/img/common/utilisateur.png';
     }
   }
 
@@ -29,10 +32,9 @@ export class UserPhotoComponent implements OnInit {
       const [file] = event.target.files as File[];
       this.onChange.emit(file);
       reader.readAsDataURL(file);
-
       reader.onload = () => {
-        console.log('reader', reader.result);
-        this.src = reader.result as string;
+        // console.log('reader', reader.result);
+        this.photo = reader.result as string;
       };
       reader.onerror = (err) => {
         console.log('onrerror', reader.error);

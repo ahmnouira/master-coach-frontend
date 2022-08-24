@@ -10,7 +10,6 @@ export class FileUploaderComponent implements OnInit {
 
   @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
 
-
   @Input() name: string;
 
   @Input() accept: string;
@@ -94,8 +93,6 @@ export class FileUploaderComponent implements OnInit {
       };
     }
   }
-
-  
 
   handleDelete() {
     this.isEmpty = true;
