@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Picture } from 'src/app/helpers/getUserPicture';
+import { FileHelper } from 'src/app/helpers/FileHelper';
 
 @Component({
   selector: 'app-user-photo',

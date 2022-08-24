@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { NotificationService } from 'src/app/services/notification-service/notification.service';
-import { Picture } from 'src/app/helpers/getUserPicture';
+import { FileHelper } from 'src/app/helpers/FileHelper';
 @Component({
   selector: 'app-sub-header',
   templateUrl: './sub-header.component.html',
@@ -39,7 +39,7 @@ export class SubHeaderComponent implements OnInit {
 
   getUserPicture() {
     if (this.userData.photo) {
-      return Picture.getUrl(this.userData.photo);
+      return FileHelper.getUrl(this.userData.photo);
     } else return '/assets/img/common/utilisateur.png';
   }
 

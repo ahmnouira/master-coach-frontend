@@ -23,7 +23,7 @@
             <div class="row">
               <app-user-photo
                 [src]="form.photo"
-                (onChange)="addPhoto($event)"
+                (onChange)="handleImportFile($event, 'photo')"
               ></app-user-photo>
             </div>
             <div class="row">
@@ -93,8 +93,8 @@
                   type="pdf"
                   [label]="'C.N.I Front'"
                   [showLabel]="true"
-                  (onClick)="importCINFront($event)"
-                  (onDelete)="form.cinF = ''"
+                  (onClick)="handleImportFile($event, 'cinF')"
+                  (onDelete)="handleDeleteFile('cinF')"
                 ></app-file-uploader>
               </div>
 
@@ -105,7 +105,7 @@
                   type="pdf"
                   [label]="'C.N.I Back'"
                   [showLabel]="true"
-                  (onClick)="importCINBack($event)"
+                  (onClick)="handleImportFile($event, 'cinB')"
                   (onDelete)="form.cinB = ''"
                 ></app-file-uploader>
               </div>
@@ -119,7 +119,7 @@
                   type="pdf"
                   [label]="'KBIS'"
                   [showLabel]="true"
-                  (onClick)="importKbis($event)"
+                  (onClick)="handleImportFile($event, 'kbis')"
                   (onDelete)="form.kbis = ''"
                 ></app-file-uploader>
               </div>

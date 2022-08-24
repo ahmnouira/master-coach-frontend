@@ -5,7 +5,8 @@ import { AdminService } from 'src/app/services/admin-service/admin.service';
 import { IUser } from 'src/app/interfaces/user-interface';
 import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/user-model';
-import { Picture } from 'src/app/helpers/getUserPicture';
+import { FileHelper } from 'src/app/helpers/FileHelper';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-parametres',
@@ -43,13 +44,9 @@ export class ParametresComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    this.getSkills();
-    this.getCategories();
-    this.getCertifications();
-    /*
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 200) */
+    this.getSelectField('skills');
+    this.getSelectField('categories');
+    this.getSelectField('certifications');
     this.isLoading = false;
   }
 
@@ -59,35 +56,26 @@ export class ParametresComponent implements OnInit {
     this.f = f;
   }
 
-  addPhoto(data: File) {
-    this.form.photo = data as File;
-    console.log('photo: ', data, this.form.photo);
-  }
 
   submit() {
     this.isSubmitting = true;
-    const { prenom, nom, bio, tel, email, photo, category } = this.form;
+    const { prenom, nom, bio, tel, email, photo } = this.form;
     // +33122469999
     if (!prenom || !nom || !bio || !tel || !email || !photo) {
       this.isSubmitting = false;
       return;
     }
-
     let formData = new FormData();
     for (const key in this.form) {
-      if (this.form[key]) {
-        if (key === 'photo') {
-          if (typeof this.form.photo === 'string') {
-            continue;
-          } else {
-            const file = this.form.photo as File;
-
-            console.log('its File', file);
-            formData.append(key, file);
-          }
+      if (key === 'photo' && this.form.photo) {
+        if (typeof this.form.photo === 'string') {
+          continue;
+        } else {
+          const file = this.form.photo as File;
+          formData.append(key, file);
         }
-        formData.append(key, this.form[key]);
       }
+      formData.append(key, this.form[key]);
     }
 
     this.authService.updateProfile(formData).subscribe(
@@ -104,7 +92,6 @@ export class ParametresComponent implements OnInit {
         this.isSubmitting = false;
       },
       (error) => {
-        console.log('submitError', error);
         this.onError(error);
       }
     );
@@ -115,6 +102,60 @@ export class ParametresComponent implements OnInit {
     this.error = error;
     this.isSubmitting = false;
     this.isLoading = false;
+  }
+
+  getUser() {
+    const user = this.tokenStorageService.getUser() as IUser;
+    // TODO: casting doesn't work property
+
+    console.log('cinF', user.cinF)
+
+    this.form = {
+      bio: user.bio || '',
+      category: user.category || [],
+      accreditation: user.accreditation || [],
+      cinB: this.getFileUrl(user.cinB),
+      cinF: this.getFileUrl(user.cinF),
+      email: user.email,
+      prenom: user.prenom || '',
+      kbis: this.getFileUrl(user.kbis),
+      nom: user.nom || '',
+      photo: this.getFileUrl(user.photo),
+      competance: user.competance || [],
+      tel: user.tel || '',
+      urssaf: user.urssaf || '',
+    };
+
+    console.log(this.form)
+  }
+
+  getFileUrl(url: any): string {
+    return FileHelper.getUrl(url);
+  }
+
+  getSelectField(name: 'categories' | 'skills' | 'certifications') {
+    let action: Observable<any>;
+    switch (name) {
+      case 'categories':
+        action = this.adminService.getAllCategorys();
+        break;
+      case 'skills':
+        action = this.adminService.getAllCompetances();
+        break;
+      case 'certifications':
+        action = this.adminService.getAllAccreditations();
+        break;
+      default:
+        break;
+    }
+    action.subscribe(
+      (res) => {
+        this[name] = res;
+      },
+      (error) => {
+        this.onError(error);
+      }
+    );
   }
 
   resetPassword() {
@@ -138,66 +179,6 @@ export class ParametresComponent implements OnInit {
     }
   }
 
-  removeUndefined(value: string) {
-    return value.replace(/undefined/g, '');
-  }
-
-  getUser() {
-    const user = this.tokenStorageService.getUser() as IUser;
-    // TODO: casting doesn't work property
-
-    console.log('user', user);
-
-    this.form = {
-      bio: user.bio || '',
-      category: [],
-      accreditation: [],
-      cinB: this.removeUndefined(user.cinB as string) || '',
-      cinF: this.removeUndefined(user.cinF as string) || '',
-      email: user.email,
-      prenom: user.prenom || '',
-      kbis: this.removeUndefined(user.kbis as string) || '',
-      nom: user.nom || '',
-      photo: Picture.getUrl(user.photo) || '',
-      competance: [],
-      tel: user.tel || '',
-      urssaf: user.urssaf || '',
-    };
-  }
-
-  getCategories() {
-    this.adminService.getAllCategorys().subscribe(
-      (res) => {
-        this.categories = res;
-      },
-      (error) => {
-        this.onError(error);
-      }
-    );
-  }
-
-  getSkills() {
-    this.adminService.getAllCompetances().subscribe(
-      (res) => {
-        this.skills = res;
-      },
-      (error) => {
-        this.onError(error);
-      }
-    );
-  }
-
-  getCertifications() {
-    this.adminService.getAllAccreditations().subscribe(
-      (res) => {
-        this.certifications = res;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
   passwordChanged() {
     this.passwordForm.passwordChangedFlag =
       this.passwordForm.newPassword.length > 0;
@@ -207,33 +188,12 @@ export class ParametresComponent implements OnInit {
       this.passwordForm.newPassword.length > 0;
   }
 
-  importFile(event: any) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log(file);
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        console.log(reader.result);
-        this.form.photo = reader.result as string;
-      };
-    }
+  handleDeleteFile(field: any) {
+    this.form[field] = '';
   }
 
-  // cin front
-  importCINFront(data: any) {
-    // blob
-    this.form.cinF = data;
-  }
-
-  importCINBack(data: any) {
-    this.form.cinB = data;
-  }
-
-  importKbis(event: any) {
-    this.form.kbis = event;
+  handleImportFile(data: File, key: string) {
+    this.form[key] = data;
   }
 
   downloadPdf(base64String, fileName) {
