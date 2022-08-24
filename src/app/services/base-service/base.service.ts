@@ -41,7 +41,6 @@ export class BaseService {
     data: T,
     options?: { formData: boolean }
   ): Observable<R> {
-
     return this.httpClient
       .post<R>(this.baseUri + url, data, this.httpOptions)
       .pipe(catchError(this.handleError));

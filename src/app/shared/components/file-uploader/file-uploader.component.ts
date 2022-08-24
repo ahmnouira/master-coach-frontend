@@ -77,7 +77,8 @@ export class FileUploaderComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.isEmpty = false;
-        this.filename = this.label.toLowerCase()  + '-' + file.name.trim().replace(/\s/g, '-');
+        this.filename =
+          this.label.toLowerCase() + '-' + file.name.trim().replace(/\s/g, '-');
         // this.onClick.emit(reader.result as string);
       };
       reader.onerror = () => {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth.service';
-import { UserService } from 'src/app/services/user-service/user-service.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AdminService } from 'src/app/services/admin-service/admin.service';
 import { IUser } from 'src/app/interfaces/user-interface';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-parametres',
@@ -11,69 +11,75 @@ import { IUser } from 'src/app/interfaces/user-interface';
   styleUrls: ['./parametres.component.scss'],
 })
 export class ParametresComponent implements OnInit {
-  form: Partial<IUser> = {}
+  form: Partial<IUser> = {};
 
   passwordForm = {
-    newPassword : "",
+    newPassword: '',
     confirmPassword: '',
-    passwordChangedFlag : false,
-    confirmPasswordChangedFlag : false,
-  }
+    passwordChangedFlag: false,
+    confirmPasswordChangedFlag: false,
+  };
 
   isLoggedIn = false;
   isLoginFailed = false;
-  errorMessage = '';
 
-  userCategory: any = [];
-  userCompetences: any = [];
-  userAccred: any = [];
+  categories: any = [];
+  skills: any = [];
+  certifications: any = [];
 
   isLoading = true;
+  error = '';
+
+  f: NgForm;
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private userService: UserService,
     private authService: AuthService,
-    private adminService: AdminService,
+    private adminService: AdminService
   ) {}
 
   ngOnInit(): void {
     const user = this.tokenStorageService.getUser() as IUser;
-    this.form = {...user}
-    this.getCompetences();
+    this.form = { ...user };
+    this.getSkills();
     this.getCategories();
-    this.getAccredi();
-    this.isLoading = false
+    this.getCertifications();
+    this.isLoading = false;
   }
 
+  /** TODO: check this if it works **/
+  handleSubmit(f: NgForm) {
+    console.log('f', f.errors);
+    this.f = f;
+  }
 
-  saveUser() {
-    this.isLoading = true
-    const { firstName, lastName, bio,  } = this.form;
-
-    if (!firstName || !lastName || !bio) {
-      this.isLoading = false
+  submit() {
+    this.isLoading = true;
+    const { firstName, lastName, bio, tel, email, photo } = this.form;
+    if (!firstName || !lastName || !bio || !tel || !email || !photo) {
+      this.isLoading = false;
       return;
     }
 
     let formData = new FormData();
-
     this.authService.updateProfile(formData).subscribe(
       (res) => {
         console.log(res);
-        window.location.reload();
+        // window.location.reload();
       },
       (error) => {
-        console.error(error.message);
+        this.onError(error);
       }
     );
- 
+  }
+  onError(error: any) {
+    console.log('error', error);
+    this.error = error;
+    this.isLoading = false;
   }
 
-
   resetPassword() {
-
-    const {newPassword, confirmPassword}  = this.passwordForm
+    const { newPassword, confirmPassword } = this.passwordForm;
 
     if (newPassword != '' && newPassword == confirmPassword) {
       this.authService
@@ -87,9 +93,7 @@ export class ParametresComponent implements OnInit {
             console.log(res);
           },
           (error) => {
-            this.errorMessage = error;
-            console.error(this.errorMessage);
-            this.isLoginFailed = true;
+            this.onError(error);
           }
         );
     }
@@ -99,31 +103,31 @@ export class ParametresComponent implements OnInit {
     this.adminService.getAllCategorys().subscribe(
       (res) => {
         console.log(res);
-        this.userCategory = res;
+        this.categories = res;
       },
       (error) => {
-        console.error(error.message);
+        this.onError(error);
       }
     );
   }
 
-  getCompetences() {
+  getSkills() {
     this.adminService.getAllCompetances().subscribe(
       (res) => {
         console.log(res);
-        this.userCompetences = res;
+        this.skills = res;
       },
       (error) => {
-        console.error(error.message);
+        this.onError(error);
       }
     );
   }
 
-  getAccredi() {
+  getCertifications() {
     this.adminService.getAllAccreditations().subscribe(
       (res) => {
         console.log(res);
-        this.userAccred = res;
+        this.certifications = res;
       },
       (error) => {
         console.error(error.message);
@@ -132,13 +136,13 @@ export class ParametresComponent implements OnInit {
   }
 
   passwordChanged() {
-    this.passwordForm.passwordChangedFlag = this.passwordForm.newPassword.length > 0;
+    this.passwordForm.passwordChangedFlag =
+      this.passwordForm.newPassword.length > 0;
   }
   confirmPasswordChanged() {
-    this.passwordForm.confirmPasswordChangedFlag = this.passwordForm.newPassword.length > 0;
+    this.passwordForm.confirmPasswordChangedFlag =
+      this.passwordForm.newPassword.length > 0;
   }
-
-
 
   importFile(event: any) {
     const reader = new FileReader();
@@ -154,7 +158,6 @@ export class ParametresComponent implements OnInit {
       };
     }
   }
-
 
   // cin front
   importCINFront(data: any) {

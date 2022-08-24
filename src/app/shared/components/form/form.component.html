@@ -1,6 +1,6 @@
 <form
   [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
-  name="form"
+  name="{{ name }}"
   #f="ngForm"
   (ngSubmit)="handleSubmit(f)"
   novalidate

@@ -41,7 +41,7 @@ export class ServiceAddComponent implements OnInit {
     const { title, description, duration } = this.form;
 
     if (!title || !description || !duration) {
-      this.isLoading = false
+      this.isLoading = false;
       return;
     }
 

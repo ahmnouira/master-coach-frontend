@@ -4,7 +4,7 @@
     <app-coach-menu [active]="'profile'"></app-coach-menu>
   </div>
   <div class="col-lg-10">
-    <app-form>
+    <app-form (onSubmit)="handleSubmit($event)" [name]="form">
       <div class="row">
         <div class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0">
           <span class="row-title">Informations personnelles</span>
@@ -18,7 +18,7 @@
               <app-text-field
                 [label]="'Nom'"
                 [(model)]="form.firstName"
-                [required]="false"
+                [form]="f"
               >
               </app-text-field>
             </div>
@@ -26,7 +26,7 @@
               <app-text-field
                 [label]="'Prénom'"
                 [(model)]="form.lastName"
-                [required]="false"
+                [form]="f"
               >
               </app-text-field>
             </div>
@@ -37,8 +37,8 @@
                 type="email"
                 [label]="'Email'"
                 [(model)]="form.email"
+                [form]="f"
                 pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                [required]="false"
               >
               </app-text-field>
             </div>
@@ -49,6 +49,7 @@
                 [label]="'Numéro de téléphone'"
                 [(model)]="form.tel"
                 placeholder="+33 12 34 56 789"
+                [form]="f"
                 pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
               >
               </app-text-field>
@@ -135,7 +136,7 @@
               <app-select
                 [label]="'Catégorie'"
                 [(model)]="form.categories"
-                [data]="userCompetences"
+                [data]="categories"
               >
               </app-select>
             </div>
@@ -143,7 +144,7 @@
               <app-select
                 [label]="'Compétences'"
                 [(model)]="form.skills"
-                [data]="userCompetences"
+                [data]="skills"
               >
               </app-select>
             </div>
@@ -153,7 +154,7 @@
               <app-select
                 [label]="'Accreditations'"
                 [(model)]="form.certifications"
-                [data]="userAccred"
+                [data]="certifications"
               >
               </app-select>
             </div>
@@ -200,12 +201,12 @@
         </div>
       </div>
 
-      <app-form-error></app-form-error>
+      <app-form-error [error]="error"></app-form-error>
 
       <div class="row">
         <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
         <div class="col-lg-9 col-12 mt-20 pl-40">
-          <app-button (onClick)="saveUser()" [isLoading]="isLoading">
+          <app-button (onClick)="submit()" [isLoading]="isLoading">
           </app-button>
         </div>
       </div>

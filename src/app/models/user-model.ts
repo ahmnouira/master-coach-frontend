@@ -16,11 +16,11 @@ export class User extends Entity implements IUser {
   categories?: string[];
   certifications?: string[];
   skills?: string[];
- 
-  // added fields 
+
+  // added fields
   readonly password: string;
-  readonly isBlocked: boolean
-  readonly isEmailVerified: boolean
+  readonly isBlocked: boolean;
+  readonly isEmailVerified: boolean;
   readonly stripeId: string;
   readonly twilio_sid: string;
   subscriptionType: string;
