@@ -9,7 +9,7 @@ export interface IUser {
   cinB: File | string;
   kbis: File | string;
   urssaf?: string;
-  category?: string[];
-  accreditation?: string[];
-  competance?: string[];
+  category?: any[];
+  accreditation?: any[];
+  competance?: any[];
 }

@@ -5,15 +5,15 @@ import { AdminService } from 'src/app/services/admin-service/admin.service';
 import { IUser } from 'src/app/interfaces/user-interface';
 import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/user-model';
-import { FileHelper } from 'src/app/helpers/FileHelper';
 import { Observable } from 'rxjs';
+import { FormHelper } from 'src/app/helpers/FormHelper';
 
 @Component({
   selector: 'app-parametres',
   templateUrl: './parametres.component.html',
   styleUrls: ['./parametres.component.scss'],
 })
-export class ParametresComponent implements OnInit {
+export class ParametresComponent extends FormHelper implements OnInit {
   form: Partial<IUser> = {};
 
   passwordForm = {
@@ -23,16 +23,9 @@ export class ParametresComponent implements OnInit {
     confirmPasswordChangedFlag: false,
   };
 
-  isLoggedIn = false;
-  isLoginFailed = false;
-
   categories: any = [];
   skills: any = [];
   certifications: any = [];
-
-  isSubmitting = false;
-  isLoading = true;
-  error = '';
 
   f: NgForm;
 
@@ -40,7 +33,9 @@ export class ParametresComponent implements OnInit {
     private tokenStorageService: TokenStorageService,
     private authService: AuthService,
     private adminService: AdminService
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
     this.getUser();
@@ -52,10 +47,9 @@ export class ParametresComponent implements OnInit {
 
   /** TODO: check this if it works **/
   handleSubmit(f: NgForm) {
-    console.log('f', f.errors);
+    // console.log('f', f.errors);
     this.f = f;
   }
-
 
   submit() {
     this.isSubmitting = true;
@@ -65,31 +59,19 @@ export class ParametresComponent implements OnInit {
       this.isSubmitting = false;
       return;
     }
-    let formData = new FormData();
-    for (const key in this.form) {
-      if (key === 'photo' && this.form.photo) {
-        if (typeof this.form.photo === 'string') {
-          continue;
-        } else {
-          const file = this.form.photo as File;
-          formData.append(key, file);
-        }
-      }
-      formData.append(key, this.form[key]);
-    }
+
+    const formData = this.getFormData(this.form);
 
     this.authService.updateProfile(formData).subscribe(
       (res) => {
-        console.log('res', res);
+        // console.log('res', res);
         if (!res.success) {
           this.onError(res.error);
           return;
         }
-
-        this.error = '';
         this.authService.currentUser$.next(res.data as User);
         this.tokenStorageService.saveUser(res.data);
-        this.isSubmitting = false;
+        this.onSuccess();
       },
       (error) => {
         this.onError(error);
@@ -97,40 +79,24 @@ export class ParametresComponent implements OnInit {
     );
   }
 
-  onError(error: any) {
-    console.error('error:', error);
-    this.error = error;
-    this.isSubmitting = false;
-    this.isLoading = false;
-  }
-
   getUser() {
     const user = this.tokenStorageService.getUser() as IUser;
     // TODO: casting doesn't work property
-
-    console.log('cinF', user.cinF)
-
     this.form = {
-      bio: user.bio || '',
-      category: user.category || [],
-      accreditation: user.accreditation || [],
+      bio: this.getString(user.bio),
+      category: this.getArray(user.category),
+      accreditation: this.getArray(user.accreditation),
       cinB: this.getFileUrl(user.cinB),
       cinF: this.getFileUrl(user.cinF),
-      email: user.email,
-      prenom: user.prenom || '',
+      email: this.getString(user.email),
+      prenom: this.getString(user.prenom),
       kbis: this.getFileUrl(user.kbis),
-      nom: user.nom || '',
+      nom: this.getString(user.nom),
       photo: this.getFileUrl(user.photo),
-      competance: user.competance || [],
-      tel: user.tel || '',
-      urssaf: user.urssaf || '',
+      competance: this.getArray(user.competance),
+      tel: this.getString(user.tel),
+      urssaf: this.getString(user.urssaf),
     };
-
-    console.log(this.form)
-  }
-
-  getFileUrl(url: any): string {
-    return FileHelper.getUrl(url);
   }
 
   getSelectField(name: 'categories' | 'skills' | 'certifications') {
@@ -160,7 +126,6 @@ export class ParametresComponent implements OnInit {
 
   resetPassword() {
     const { newPassword, confirmPassword } = this.passwordForm;
-
     if (newPassword != '' && newPassword == confirmPassword) {
       this.authService
         .resetPassword({

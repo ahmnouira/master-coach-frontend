@@ -14,10 +14,13 @@ export class FileHelper {
     return name;
   }
 
-  static getFileName(label:string, url: string): string {
-    if(!label && !url) {
-      return ''
+  static getFileName(label: string, url: string): string {
+    if (!label && !url) {
+      return '';
     }
-    return label.toLowerCase().trim().replace(/\s/g, '-') +  url.substring(url.lastIndexOf('-'))
+    return (
+      label.toLowerCase().trim().replace(/\s/g, '-') +
+      url.substring(url.lastIndexOf('-'))
+    );
   }
 }

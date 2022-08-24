@@ -214,6 +214,13 @@
           </div>
         </div>
 
+        <div class="row" *ngIf="success">
+          <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+          <div class="col-lg-9 col-12 mt-20 pl-40">
+            <div class="alert alert-info" role="alert">Profile Updated</div>
+          </div>
+        </div>
+
         <app-form-error [error]="error"></app-form-error>
 
         <div class="row">

@@ -66,10 +66,11 @@ export class FileUploaderComponent implements OnInit {
   }
 
   checkEmpty() {
-    if (this.model &&  typeof this.model === 'string' ) {
+    if (this.model && typeof this.model === 'string') {
       this.isEmpty = false;
       // set the filename
-      this.filename = this.filename || FileHelper.getFileName(this.label, this.model)
+      this.filename =
+        this.filename || FileHelper.getFileName(this.label, this.model);
     } else if (Array.isArray(this.model) && this.model.length) {
       this.isEmpty = false;
     } else {
