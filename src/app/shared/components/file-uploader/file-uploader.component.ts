@@ -6,13 +6,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./file-uploader.component.scss'],
 })
 export class FileUploaderComponent implements OnInit {
-  @Input() model: string | any[];
+  @Input() model: any;
   @Input() name: string;
 
   @Input() accept: string;
 
-  @Input() type: 'pdf' | 'photo' | undefined;
   @Input() showLabel: boolean = false;
+
+  @Input() type?: string; //  'pdf' | 'photo' | 'video' | 'audio' | undefined;
   @Input() label?: string = '';
   @Input() title?: string;
   @Input() filename?: string = '';
@@ -23,13 +24,13 @@ export class FileUploaderComponent implements OnInit {
   @Output() onClick = new EventEmitter();
   @Output() onDelete = new EventEmitter();
 
-  isEmpty: boolean
+  isEmpty: boolean;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.checkEmpty()
-    this.setProperties()
+    this.checkEmpty();
+    this.setProperties();
   }
 
   setProperties() {
@@ -43,43 +44,50 @@ export class FileUploaderComponent implements OnInit {
         this.accept = 'image/*';
         this.title = this.title ?? 'Choisir une photo';
         break;
+
+      case 'video':
+        this.accept = 'video/*';
+        this.title = this.title ?? 'Choisir une vidéo';
+        break;
+      case 'audio':
+        this.accept = 'audio/*';
+        this.title = this.title ?? 'Choisir un podcast';
+        break;
       default:
         this.accept = '*';
         this.title = 'Import';
     }
   }
 
-  checkEmpty () {
+  checkEmpty() {
     if (typeof this.model === 'string' && this.model) {
-      this.isEmpty = false
+      this.isEmpty = false;
     } else if (Array.isArray(this.model) && this.model.length) {
-      this.isEmpty = false
-    }  else {
-      this.isEmpty = true
+      this.isEmpty = false;
+    } else {
+      this.isEmpty = true;
     }
   }
 
-
   handleChange(event: any) {
-
     const reader: FileReader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files as File[];
+      this.onClick.emit(file);
       reader.readAsDataURL(file);
       reader.onload = () => {
-        console.log('result', reader.result);
-        this.isEmpty = false
+        this.isEmpty = false;
         this.filename = this.label.trim().replace(/ /g, '-') + '-' + file.name;
-        this.onClick.emit(reader.result as string);
+        // this.onClick.emit(reader.result as string);
       };
-      reader.onerror =() => {
-        this.isEmpty  = true
-      }
+      reader.onerror = () => {
+        this.isEmpty = true;
+      };
     }
   }
 
   handleDelete() {
-    this.isEmpty = true
+    this.isEmpty = true;
     this.onDelete.emit();
   }
 }

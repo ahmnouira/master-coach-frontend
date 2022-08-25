@@ -19,7 +19,7 @@
             <h2 class="title">Info</h2>
 
             <!-- Titre -->
-            <app-text-field [label]="'Titre'" [(model)]="form.title">
+            <app-text-field [label]="'Titre'" [(model)]="form.title" [form]="f">
             </app-text-field>
 
             <!-- Description -->
@@ -27,6 +27,7 @@
               [label]="'Description'"
               [(model)]="form.description"
               [placeholder]="'Texte…'"
+              [form]="f"
             >
             </app-text-area>
 
@@ -36,10 +37,11 @@
               [(model)]="form.duration"
               [placeholder]="'Min'"
               [type]="'number'"
+              [form]="f"
             >
             </app-text-field>
 
-            <app-titled-field title="Auto confirmation">
+            <app-titled-field content="Auto confirmation">
               <app-checkbox
                 [label]="'Les sessions seront auto-confirmés'"
                 [(model)]="form.isAutoConfirmed"
@@ -48,8 +50,13 @@
             </app-titled-field>
 
             <app-file-uploader
-              [name]="'document'"
+              [model]="form.image"
+              type="photo"
+              [label]="'image'"
+              [style]="'secondary'"
+              [title]="'Ajouter une photo'"
               (onClick)="addPhoto($event)"
+              (onDelete)="form.image = undefined"
             ></app-file-uploader>
 
             <!-- Divider -->
@@ -67,7 +74,7 @@
               <div class="col-3">
                 <app-checkbox
                   [label]="'Masquer le prix'"
-                  [(model)]="form.isFree"
+                  [(model)]="form.isPriceHidden"
                 >
                 </app-checkbox>
               </div>
@@ -84,6 +91,7 @@
                   [label]="'Price'"
                   [placeholder]="'Price'"
                   [showLabel]="false"
+                  [form]="f"
                 >
                 </app-text-field>
               </div>

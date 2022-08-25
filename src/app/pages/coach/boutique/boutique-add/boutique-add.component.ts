@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { ProductType } from 'src/app/models/product/product-type.enum';
 import { ProductService } from 'src/app/services/product-service/product.service';
 import { Animations } from 'src/app/shared/animations';
+
+type Form = IProduct & {
+  isDocument: boolean;
+  isVideo: boolean;
+  isPodcast: boolean;
+};
 
 @Component({
   selector: 'app-boutique-add',
@@ -11,7 +17,7 @@ import { Animations } from 'src/app/shared/animations';
   animations: Animations,
 })
 export class BoutiqueAddComponent implements OnInit {
-  form: IProduct = {
+  form: Form = {
     description: '',
     price: '',
     title: '',
@@ -22,11 +28,15 @@ export class BoutiqueAddComponent implements OnInit {
     image: '',
     files: [],
     duration: '',
+    isDocument: true,
+    isVideo: false,
+    isPodcast: false,
   };
 
-  isDocument: boolean = true;
-  isVideo: boolean = false;
-  isPodcast: boolean = false;
+  typeImportFiles = {
+    type: 'pdf',
+    title: 'Ajouter des documents',
+  };
 
   error: string = '';
   isLoading = false;
@@ -38,12 +48,18 @@ export class BoutiqueAddComponent implements OnInit {
     this.categories = [...Array(10).keys()].map((el) => `category${el + 1}`);
   }
 
+  getTitle() {
+    if (this.form.isDocument) return 'xxxx';
+    if (this.form.isPodcast) return 'ttttttt';
+    return '';
+  }
+
   async submit() {
     const { description, title, price, type } = this.form;
 
-    if (this.isVideo) this.form.type = ProductType.VIDEO;
-    if (this.isDocument) this.form.type = ProductType.DOCUMENT;
-    if (this.isPodcast) this.form.type = ProductType.PODCAST;
+    if (this.form.isVideo) this.form.type = ProductType.VIDEO;
+    if (this.form.isDocument) this.form.type = ProductType.DOCUMENT;
+    if (this.form.isPodcast) this.form.type = ProductType.PODCAST;
 
     console.log('form', this.form);
 

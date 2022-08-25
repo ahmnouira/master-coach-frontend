@@ -19,6 +19,7 @@ export class TextFieldComponent implements OnInit {
   @Input() placeholder?: string;
   @Input() patternError?: string;
   @Input() required: boolean = true;
+  @Input() form?: any = undefined;
 
   constructor() {}
 
@@ -29,7 +30,6 @@ export class TextFieldComponent implements OnInit {
   }
 
   handleChange(event: any) {
-    console.log('event', event.target.value);
     if (this.type.toLowerCase() === 'number') {
       this.modelChange.emit(parseInt(event.target.value));
     }

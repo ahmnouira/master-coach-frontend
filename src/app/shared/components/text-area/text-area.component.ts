@@ -18,6 +18,8 @@ export class TextAreaComponent implements OnInit {
   @Input() patternError?: string;
   @Input() required: boolean = true;
 
+  @Input() form?: any = undefined;
+
   constructor() {}
 
   ngOnInit(): void {

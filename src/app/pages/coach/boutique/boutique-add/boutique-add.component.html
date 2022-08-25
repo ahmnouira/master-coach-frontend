@@ -41,7 +41,7 @@
             <div class="row align-items-center mt-4">
               <div class="col-4">
                 <app-titled-field content="type">
-                  <app-radio [label]="'Documents'" [(model)]="isDocument">
+                  <app-radio [label]="'Documents'" [(model)]="form.isDocument">
                   </app-radio>
                 </app-titled-field>
               </div>
@@ -49,8 +49,9 @@
               <div class="col">
                 <app-file-uploader
                   [model]="form.files"
-                  [title]="'Ajouter une photo'"
-                  type="photo"
+                  [title]="getTitle()"
+                  type="pdf"
+                  [multiple]="true"
                   [style]="'secondary'"
                   (onClick)="addFiles($event)"
                   (onDelete)="form.files = []"
@@ -61,7 +62,7 @@
             <div class="row align-items-center">
               <div class="col-4">
                 <app-titled-field [content]="'type'" [titleHidden]="true">
-                  <app-radio [label]="'Vidéos'" [(model)]="isVideo">
+                  <app-radio [label]="'Vidéos'" [(model)]="form.isVideo">
                   </app-radio>
                 </app-titled-field>
               </div>
@@ -70,7 +71,7 @@
             <div class="row align-items-center">
               <div class="col-4">
                 <app-titled-field [content]="'type'" [titleHidden]="true">
-                  <app-radio [label]="'Podcasts'" [(model)]="isPodcast">
+                  <app-radio [label]="'Podcasts'" [(model)]="form.isPodcast">
                   </app-radio>
                 </app-titled-field>
               </div>
