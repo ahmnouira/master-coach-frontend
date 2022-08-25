@@ -25,6 +25,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { StripePaymentComponent } from './stripe-payment/stripe-payment.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { TextAreaComponent } from './components/text-area/text-area.component';
+import { TitledFieldComponent } from './components/titled-field/titled-field.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,8 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
     StripePaymentComponent,
     FileUploaderComponent,
     TextAreaComponent,
+    TitledFieldComponent,
+    TitledFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -75,9 +78,9 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
     DividerComponent,
     TextFieldComponent,
     TextAreaComponent,
+    TitledFieldComponent,
     CheckboxComponent,
     FileUploaderComponent,
-
     StripePaymentComponent,
   ],
 })

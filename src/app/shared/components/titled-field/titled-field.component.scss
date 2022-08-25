@@ -1,0 +1,21 @@
+
+  .titled-field-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding-top: 8px;
+
+    .hidden {
+
+      visibility: hidden;
+
+    }
+
+    &-title { 
+      font: normal normal normal 14px/17px Fredoka;
+      color: #3C4D5D;
+      margin-right: 16px;
+    }
+  }
