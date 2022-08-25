@@ -1,0 +1,47 @@
+<div>
+  <div class="form-group" (click)="file.click()" *ngIf="isEmpty">
+    <label *ngIf="label && showLabel" class="element-label">{{ label }}</label>
+    <div class="file-input">
+      <input
+        #file
+        type="file"
+        hidden
+        required
+        [multiple]="multiple"
+        id="{{ name }}"
+        title="{{ title }}"
+        name="{{ name }}"
+        accept="{{ accept }}"
+        class="form-control form-control-lg element"
+        (change)="handleChange($event)"
+      />
+
+      <div *ngIf="style === 'secondary'" class="file-input-secondary">
+        <div>
+          <label for="photo" class="secondary">
+            <app-import-icon></app-import-icon>
+            <span style="margin-bottom: -2px">{{ title }}</span></label
+          >
+        </div>
+        <div>
+          <label for="" class="secondary">Max 5 Mo</label>
+        </div>
+      </div>
+
+      <label for="photo" *ngIf="style === 'primary'">
+        <app-import-icon></app-import-icon>
+        <span style="margin-bottom: -2px">{{ title }}</span></label
+      >
+    </div>
+  </div>
+
+  <div *ngIf="!isEmpty">
+    <app-file-imported
+      [model]="model"
+      [label]="label"
+      [filename]="filename"
+      (onDelete)="handleDelete()"
+    >
+    </app-file-imported>
+  </div>
+</div>

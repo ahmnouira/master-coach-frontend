@@ -20,7 +20,7 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
 
   constructor(
     private routeService: RouteService,
-    private paymentService: PaymentService, 
+    private paymentService: PaymentService,
     private authService: AuthService,
     private tokenService: TokenStorageService
   ) {}
@@ -42,7 +42,6 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
       this.params['stripeTokenType'] &&
       this.plan
     ) {
-      
       this.savePayment(this.params['stripeToken']);
     } else {
       this.errorMessage = 'Invalid data';
@@ -60,25 +59,20 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
       })
       .subscribe(
         (res) => {
-
           this.authService.loggedInUser().subscribe(
             (userRes) => {
-              console.log('userRes', userRes)
+              console.log('userRes', userRes);
 
               if (!userRes.success) {
                 return;
               }
               this.tokenService.saveUser(userRes.data);
               this.authService.currentUser$.next(userRes.data);
-              
-  
             },
             (err) => {
               console.error('loggedInUserError', err);
             }
-          )
-
-
+          );
 
           console.log('res:', res, res.success, res.message);
           this.paymentService.clearSelectedPlan();

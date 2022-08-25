@@ -1,6 +1,13 @@
+.title {
+  font: normal normal normal 10px/12px Fredoka;
+  color: #3c4d5d;
+  margin-bottom: 8px;
+}
+
 .form-check {
   display: flex;
   align-items: center;
+  margin-bottom: 12px; // TODO: check this
   label {
     margin-left: 8px;
     font: normal normal normal 14px/17px Fredoka;

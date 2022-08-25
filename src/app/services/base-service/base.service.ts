@@ -10,12 +10,15 @@ export class BaseService {
   protected baseUri = environment.apiUrl + '/api';
 
   protected httpOptions = {
+    // remove these
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+      // 'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers':
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+      // 'Cross-Origin-Resource-Policy': 'cross-origins'
+
+      //  'Access-Control-Allow-Headers':
+      //  'Origin, X-Requested-With, Content-Type, Accept, Authorization',
     }),
   };
 
@@ -35,9 +38,13 @@ export class BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  protected post<T = any, R = any>(url: string, data: T): Observable<R> {
+  protected post<T = any, R = any>(
+    url: string,
+    data: T,
+    options?: { formData: boolean }
+  ): Observable<R> {
     return this.httpClient
-      .post<R>(this.baseUri + url, JSON.stringify(data), this.httpOptions)
+      .post<R>(this.baseUri + url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

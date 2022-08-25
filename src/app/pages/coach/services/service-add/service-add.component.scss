@@ -1,35 +1,15 @@
-.title {
-  font: normal normal normal 18px/22px Fredoka;
-  color: #1376a3;
-}
+.right-side {
+  .title {
+    font: normal normal normal 18px/22px Fredoka;
+    color: #1376a3;
+  }
 
-.auto-confirmation {
-  font: normal normal normal 14px/17px Fredoka;
-  color: #3c4d5d;
-  margin-right: 17px;
-  margin-top: 8px;
-}
-
-.form-check {
-  display: flex;
-  align-items: center;
-
-  label {
-    margin-left: 8px;
-    font: normal normal normal 14px/17px Fredoka;
+  .label {
+    font: normal normal normal 10px/12px Fredoka;
     color: #3c4d5d;
   }
-}
 
-.add-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  &-text {
-    margin-left: 4px;
-    margin-top: 6px;
-    font: normal normal normal 12px/15px Fredoka;
-    color: #1376a3;
+  .form-group {
+    margin-bottom: 16px;
   }
 }

@@ -7,6 +7,7 @@ import { IConfirmEmail } from './interfaces/confirm-email';
 import { IForgotPassword } from './interfaces/forgot-password';
 import { IResendVerification } from './interfaces/resend-verification';
 import { IResetPassword } from './interfaces/reset-password';
+import { IUpdatePassword } from './interfaces/update-password';
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +20,6 @@ export class AuthService extends BaseService {
 
   login(email: string, password: string): Observable<any> {
     return this.post('/login', { email, password });
-  }
-
-  loggedInUser(): Observable<any> {
-    return this.get('/me');
   }
 
   register(user: any): Observable<any> {
@@ -43,6 +40,18 @@ export class AuthService extends BaseService {
 
   resendVerification(resendVerificationData: IResendVerification) {
     return this.post('/resend_verification', resendVerificationData);
+  }
+
+  loggedInUser(): Observable<any> {
+    return this.get('/me');
+  }
+
+  updateProfile(data: any): Observable<any> {
+    return this.post('/update_profile', data);
+  }
+
+  updatePassword(data: IUpdatePassword): Observable<any> {
+    return this.post('/update_password', data);
   }
 
   set setUserRole(role: UserRole) {

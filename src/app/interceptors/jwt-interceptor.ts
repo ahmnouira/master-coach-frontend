@@ -8,6 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from '../core/auth.service';
 import { TokenStorageService } from '../services/token-storage.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

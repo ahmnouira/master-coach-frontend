@@ -56,6 +56,10 @@ const routes: Routes = [
   { path: 'coach-client/team/list', component: ListTeamsComponent },
   { path: 'coach-client/team/edit', component: EditFormQuizComponent },
   { path: 'calendar', component: MyAppointmentsComponent },
+
+  { path: '', redirectTo: 'parametre', pathMatch: 'full' },
+
+  { path: '**', redirectTo: 'parametre', pathMatch: 'full' },
 ];
 
 @NgModule({

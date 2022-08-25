@@ -4,6 +4,7 @@ import { TokenStorageService } from '../../services/token-storage.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { Animations } from 'src/app/shared/animations';
 import { UserRole } from 'src/app/models/role.enum';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { UserRole } from 'src/app/models/role.enum';
   animations: Animations,
 })
 export class LoginComponent implements OnInit {
-  form: any = {
+  form = {
     email: null,
     password: null,
   };
@@ -21,6 +22,8 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   isVerified = true;
   successMessage = '';
+
+  f: NgForm;
 
   @ViewChild('main') elem: ElementRef;
   constructor(
@@ -34,52 +37,64 @@ export class LoginComponent implements OnInit {
     this.routeService;
   }
 
+  onSubmit(event: NgForm) {
+    this.f = event;
+  }
+
+  handleChange(e: any) {
+    console.log('change', e);
+  }
+
   async login() {
     const { email, password } = this.form;
+
+    console.log('form', this.form);
 
     if (!email || !password) return;
 
     this.isLoading = true;
+    this.authService.login(email, password).subscribe(
+      (authData) => {
+        // console.log('authData:', authData);
+        this.tokenStorage.saveToken(authData.token);
+        this.tokenStorage.saveTwilioToken(authData.twilio_token);
+        setTimeout(() => {
+          this.authService.loggedInUser().subscribe(
+            (userRes) => {
+              if (!userRes.success) {
+                console.log('not', userRes);
+                this.onError(userRes.error);
+                return;
+              }
+              this.tokenStorage.saveUser(userRes.data);
+              this.authService.currentUser$.next(userRes.data);
+              this.onSuccess();
 
-    this.authService.login(email, password).subscribe((authData) => {
-      // console.log('authData:', authData);
-      this.tokenStorage.saveToken(authData.token);
-      this.tokenStorage.saveTwilioToken(authData.twilio_token);
-      setTimeout(() => {
-      this.authService.loggedInUser().subscribe(
-        (userRes) => {
-          if (!userRes.success) {
-            console.log('not', userRes)
-            this.onError(userRes.error);
-            return;
-          }
-          this.tokenStorage.saveUser(userRes.data);
-          this.authService.currentUser$.next(userRes.data);
-          this.onSuccess();
-
-          if (authData.role.toLowerCase() === 'admin') {
-            this.routeService.navigateByUrl('/pages/admin/users/list');
-          } else {
-            this.routeService.navigateByUrl(
-              '/pages/' + authData.role.toLowerCase() + '/parametre'
-            );
-          }
-        },
-        (err) => {
-          console.error('loggedInUserError', err);
-        }
-      )
-    }, 500);
-    }, (err) => this.onError(err));
+              if (authData.role.toLowerCase() === 'admin') {
+                this.routeService.navigateByUrl('/pages/admin/users/list');
+              } else {
+                this.routeService.navigateByUrl(
+                  '/pages/' + authData.role.toLowerCase() + '/parametre'
+                );
+              }
+            },
+            (err) => {
+              console.error('loggedInUserError', err);
+            }
+          );
+        }, 500);
+      },
+      (err) => this.onError(err)
+    );
   }
 
   onSuccess() {
     this.isLoginFailed = false;
     this.isVerified = true;
     this.isLoading = false;
-  };
+  }
 
-  onError  (err: string)  {
+  onError(err: string) {
     console.log('error', err);
     if (err == 'Your email is not verified') {
       this.isVerified = false;
@@ -87,7 +102,7 @@ export class LoginComponent implements OnInit {
     this.errorMessage = err;
     this.isLoginFailed = true;
     this.isLoading = false;
-  };
+  }
 
   createUser(role: string) {
     this.authService.setUserRole = role as UserRole;

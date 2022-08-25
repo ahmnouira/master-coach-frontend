@@ -1,0 +1,10 @@
+.empty-page-container {
+  margin-top: 64px;
+  display: flex;
+  justify-content: center;
+
+  &-title {
+    font: normal normal medium 18px/22px Fredoka;
+    color: #3c4d5d;
+  }
+}

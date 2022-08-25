@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-checkbox',
@@ -7,9 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CheckboxComponent implements OnInit {
   @Input() model: any;
-  @Input() label: string;
 
+  @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input() label: string;
+  @Input() title: string;
   @Input() id?: string;
+
+  @Input() checked?: boolean;
 
   constructor() {}
 
@@ -17,5 +22,9 @@ export class CheckboxComponent implements OnInit {
     if (this.label && !this.id) {
       this.id = this.label.toLowerCase();
     }
+  }
+
+  handleChange(event: any) {
+    this.modelChange.emit(event.target.checked);
   }
 }

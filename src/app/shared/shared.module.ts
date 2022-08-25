@@ -23,6 +23,19 @@ import { DividerComponent } from './components/divider/divider.component';
 import { TextFieldComponent } from './components/text-field/text-field.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { StripePaymentComponent } from './stripe-payment/stripe-payment.component';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
+import { TextAreaComponent } from './components/text-area/text-area.component';
+import { TitledFieldComponent } from './components/titled-field/titled-field.component';
+import { EmptyPageComponent } from './components/empty-page/empty-page.component';
+import { RightImageComponent } from './components/right-image/right-image.component';
+import { FormErrorComponent } from './components/form-error/form-error.component';
+import { ButtonComponent } from './components/button/button.component';
+import { UserPhotoComponent } from './components/user-photo/user-photo.component';
+import { FormComponent } from './components/form/form.component';
+import { SelectComponent } from './components/select/select.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { RadioComponent } from './components/radio/radio.component';
+import { AddFieldComponent } from './components/add-field/add-field.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +56,19 @@ import { StripePaymentComponent } from './stripe-payment/stripe-payment.componen
     TextFieldComponent,
     CheckboxComponent,
     StripePaymentComponent,
+    FileUploaderComponent,
+    TextAreaComponent,
+    TitledFieldComponent,
+    TitledFieldComponent,
+    EmptyPageComponent,
+    RightImageComponent,
+    FormErrorComponent,
+    ButtonComponent,
+    UserPhotoComponent,
+    FormComponent,
+    SelectComponent,
+    RadioComponent,
+    AddFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +79,7 @@ import { StripePaymentComponent } from './stripe-payment/stripe-payment.componen
     ComponentsModule,
     PickerModule,
     TooltipModule,
+    AngularMultiSelectModule,
   ],
   exports: [
     ModalAjoutSessionComponent,
@@ -70,8 +97,20 @@ import { StripePaymentComponent } from './stripe-payment/stripe-payment.componen
     LoaderComponent,
     DividerComponent,
     TextFieldComponent,
+    TextAreaComponent,
+    TitledFieldComponent,
     CheckboxComponent,
+    FileUploaderComponent,
     StripePaymentComponent,
+    EmptyPageComponent,
+    RightImageComponent,
+    FormErrorComponent,
+    ButtonComponent,
+    SelectComponent,
+    UserPhotoComponent,
+    FormComponent,
+    RadioComponent,
+    AddFieldComponent,
   ],
 })
 export class SharedModule {}

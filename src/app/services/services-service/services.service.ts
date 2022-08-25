@@ -1,23 +1,33 @@
-import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IService } from 'src/app/interfaces/service.interface';
+import { Service } from 'src/app/models/service/service.model';
 import { BaseService } from '../base-service/base.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServicesService extends BaseService {
-  addProduct(data: IService): Observable<any> {
-    return this.post('/products', data);
+  private services: BehaviorSubject<Service[]> = new BehaviorSubject<Service[]>(
+    []
+  );
+  services$ = this.services.asObservable();
+
+  addService(data: any): Observable<any> {
+    return this.post('/services', data, {
+      formData: true,
+    });
   }
 
-  getProducts(displayedInShop = true): Observable<any> {
-    const params = new HttpParams().set('displayedInShop', displayedInShop);
-    return this.get('/products', params);
+  getServices(): Observable<any> {
+    return this.get('/services');
   }
 
-  getProduct(id: string): Observable<any> {
-    return this.get(`/products/${id}`);
+  getService(id: string): Observable<any> {
+    return this.get(`/services/${id}`);
+  }
+
+  set setServices(services: Service[]) {
+    this.services.next(services);
   }
 }

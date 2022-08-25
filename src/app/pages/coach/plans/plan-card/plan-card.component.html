@@ -15,7 +15,10 @@
       {{ feature }}
     </p>
 
-    <div class="d-flex justify-content-center align-items-end">
+    <div
+      class="d-flex justify-content-center align-items-end"
+      [ngStyle]="{ visibility: isFreePlan && 'hidden' }"
+    >
       <button type="type" class="btn btn-primary" (click)="handleClick()">
         Je choisis
       </button>

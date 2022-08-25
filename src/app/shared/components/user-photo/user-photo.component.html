@@ -1,0 +1,21 @@
+<div class="user-photo-container">
+  <img
+    class="user-photo-container-image"
+    src="{{ photo }}"
+    (click)="file.click()"
+    alt=""
+  />
+  <input
+    type="file"
+    hidden
+    accept="image/*"
+    (change)="handleChange($event)"
+    #file
+  />
+  <button (click)="file.click()">
+    <img
+      class="user-photo-container-icon"
+      src="assets/img/common/camera-to-take-photos%20(3).svg"
+    />
+  </button>
+</div>

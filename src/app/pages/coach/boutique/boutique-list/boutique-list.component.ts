@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductType } from 'src/app/models/product/product-type.enum';
 import { Product } from 'src/app/models/product/product.model';
+import { ProductService } from 'src/app/services/product-service/product.service';
 
 @Component({
   selector: 'app-boutique-list',
@@ -10,44 +11,33 @@ import { Product } from 'src/app/models/product/product.model';
 export class BoutiqueListComponent implements OnInit {
   filterString = '';
 
-  formations: Product[] = [
-    {
-      id: '1',
-      image: '',
-      price: '15,00 €',
-      title: 'David Laroche',
-      description: 'Coaching d’équipe',
-      type: ProductType.DOCUMENT,
-    },
-    {
-      id: '2',
-      image: '',
-      price: '15,00 €',
-      title: 'David Laroche',
-      description: 'Coaching d’équipe',
-      type: ProductType.DOCUMENT,
-    },
-    {
-      id: '3',
-      image: '',
-      price: '15,00 €',
-      title: 'David Laroche',
-      description: 'Coaching d’équipe',
-      type: ProductType.DOCUMENT,
-    },
-    {
-      id: '4',
-      image: '',
-      price: '15,00 €',
-      title: 'David Laroche',
-      description: 'Coaching d’équipe',
-      type: ProductType.DOCUMENT,
-    },
-  ];
+  isLoading = true;
+  error: string = '';
+  formations = [];
+  found: boolean;
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.productService
+      .getProducts()
+      .pipe()
+      .subscribe((res) => {
+        if (!res.success) {
+          this.isLoading = false;
+          this.error = res.error;
+          return;
+        }
+        console.log('data', res.data);
+        this.formations = res.data;
+        this.found = Boolean(res.data.length);
+        this.isLoading = false;
+      });
+  }
 
   filterInputChanged(event) {}
 }

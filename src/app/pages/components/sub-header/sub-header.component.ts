@@ -5,15 +5,18 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { NotificationService } from 'src/app/services/notification-service/notification.service';
+import { FileHelper } from 'src/app/helpers/FileHelper';
 @Component({
   selector: 'app-sub-header',
   templateUrl: './sub-header.component.html',
   styleUrls: ['./sub-header.component.scss'],
 })
 export class SubHeaderComponent implements OnInit {
-  todayDate = new Date();
   @Input() title: string;
-  @Input() subTitle: string;
+  @Input() subTitle: string = 'BACK';
+
+  todayDate = new Date();
+
   userNotifications: any = {};
   unreadUserNotifications: any = {};
   userData: any = {};
@@ -36,7 +39,7 @@ export class SubHeaderComponent implements OnInit {
 
   getUserPicture() {
     if (this.userData.photo) {
-      return this.userData.photo;
+      return FileHelper.getUrl(this.userData.photo);
     } else return '/assets/img/common/utilisateur.png';
   }
 

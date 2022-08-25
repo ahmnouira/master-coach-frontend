@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-end">
+  <button
+    type="{{ type }}"
+    class="btn btn-primary submit-btn"
+    (click)="handleClick($event)"
+    [disabled]="disabled"
+  >
+    <span *ngIf="!isLoading">{{ title }}</span>
+    <app-loader *ngIf="isLoading"></app-loader>
+  </button>
+</div>

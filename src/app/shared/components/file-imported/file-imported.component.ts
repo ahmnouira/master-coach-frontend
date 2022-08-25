@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-file-imported',
@@ -8,11 +9,28 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FileImportedComponent implements OnInit {
   @Input() label: string;
   @Input() name: string;
-  @Input() title: string;
-  @Input() sanitizer: any;
-  @Input() onDelete: any;
+  @Input() filename: string;
+  @Input() model: string | any[];
 
-  constructor() {}
+  @Input() multiple?: boolean;
 
-  ngOnInit(): void {}
+  @Output() onDelete = new EventEmitter();
+
+  sanitizerUrl: string;
+
+  constructor(public sanitizer: DomSanitizer) {}
+
+  ngOnInit(): void {
+    if (this.model && typeof this.model === 'string') {
+      this.sanitizerUrl = this.model;
+    } else {
+      this.sanitizerUrl = this.label;
+    }
+
+    console.log(this.filename, this.model);
+  }
+
+  handleDelete() {
+    this.onDelete.emit();
+  }
 }
