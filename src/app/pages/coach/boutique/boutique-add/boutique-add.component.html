@@ -109,11 +109,7 @@
 
             <app-divider></app-divider>
 
-            <div class="form-group">
-              <div class="alert alert-danger" role="alert" *ngIf="error">
-                {{ error }}
-              </div>
-            </div>
+            <app-form-error [error]="error"></app-form-error>
 
             <div class="d-flex justify-content-end">
               <button

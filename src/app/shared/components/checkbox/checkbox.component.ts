@@ -14,7 +14,7 @@ export class CheckboxComponent implements OnInit {
   @Input() title: string;
   @Input() id?: string;
 
-  @Input() checked?: boolean 
+  @Input() checked?: boolean;
 
   constructor() {}
 
@@ -25,6 +25,6 @@ export class CheckboxComponent implements OnInit {
   }
 
   handleChange(event: any) {
-    this.modelChange.emit(event.target.checked)
+    this.modelChange.emit(event.target.checked);
   }
 }

@@ -12,10 +12,15 @@ export class ProductService extends BaseService {
     return this.post('/products', data);
   }
 
-  getProducts(options = {
-    displayedInShop : true
-  }): Observable<any> {
-    const params = new HttpParams().set('displayedInShop', options.displayedInShop);
+  getProducts(
+    options = {
+      displayedInShop: true,
+    }
+  ): Observable<any> {
+    const params = new HttpParams().set(
+      'displayedInShop',
+      options.displayedInShop
+    );
     return this.get('/products', params);
   }
 

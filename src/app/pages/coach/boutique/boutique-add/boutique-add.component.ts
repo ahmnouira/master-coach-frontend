@@ -8,32 +8,29 @@ import { Animations } from 'src/app/shared/animations';
   selector: 'app-boutique-add',
   templateUrl: './boutique-add.component.html',
   styleUrls: ['./boutique-add.component.scss'],
-  animations: Animations
+  animations: Animations,
 })
 export class BoutiqueAddComponent implements OnInit {
   form: IProduct = {
-    description: '', 
-    price: '', 
-    title: '', 
-    type: null, 
+    description: '',
+    price: '',
+    title: '',
+    type: null,
     isFree: true,
-    category: '', 
-    
+    category: '',
   };
 
+  isVideo: boolean = false;
+  isDocument: boolean = false;
 
-  isVideo: boolean = false
-  isDocument: boolean = false
-
-  error: string  =''
-  isLoading = false
+  error: string = '';
+  isLoading = false;
   categories = [];
 
   settings = {};
-  constructor(private productService : ProductService) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-
     // select options
     this.settings = {
       text: 'Coaching de carriére...',
@@ -52,40 +49,36 @@ export class BoutiqueAddComponent implements OnInit {
     };
   }
 
-
-
   async submit() {
     const { description, title, price, type } = this.form;
 
-    if(this.isVideo) this.form.type = ProductType.VIDEO
-    if(this.isDocument) this.form.type = ProductType.DOCUMENT
+    if (this.isVideo) this.form.type = ProductType.VIDEO;
+    if (this.isDocument) this.form.type = ProductType.DOCUMENT;
 
     // if (!description || !title) return;
 
     this.isLoading = true;
 
+    this.productService.addProduct(this.form).subscribe(
+      (res) => {
+        console.log('res:', res);
+        if (!res.success) {
+          this.onError(res.error);
+          return;
+        }
 
-    this.productService.addProduct(this.form).subscribe((res) => {
-      console.log('res:', res);
-      if(!res.success) {
-        this.onError(res.error)
-        return
-      }
-
-      this.error = ''
-      this.isLoading = false
-    
-    }, (err) => this.onError(err));
-  
+        this.error = '';
+        this.isLoading = false;
+      },
+      (err) => this.onError(err)
+    );
   }
 
   onError(error: any) {
-    console.log(error)
-    this.isLoading = false
-    this.error = error
+    console.log(error);
+    this.isLoading = false;
+    this.error = error;
   }
-
-  
 
   addPhoto(event: any) {}
 

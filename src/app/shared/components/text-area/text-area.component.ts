@@ -3,15 +3,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-text-area',
   templateUrl: './text-area.component.html',
-  styleUrls: ['./text-area.component.scss']
+  styleUrls: ['./text-area.component.scss'],
 })
 export class TextAreaComponent implements OnInit {
-
   @Input() model: any;
   @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
 
   @Input() label: string = '';
-  @Input() rows: string = '5'
+  @Input() rows: string = '5';
   @Input() pattern?: string;
   @Input() name?: string;
   @Input() id?: string;
@@ -28,7 +27,6 @@ export class TextAreaComponent implements OnInit {
   }
 
   handleChange(event: any) {
-    this.modelChange.emit(event.target.value)
+    this.modelChange.emit(event.target.value);
   }
-
 }

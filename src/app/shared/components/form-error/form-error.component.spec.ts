@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RightImageComponent } from './right-image.component';
+import { FormErrorComponent } from './form-error.component';
 
-describe('RightImageComponent', () => {
-  let component: RightImageComponent;
-  let fixture: ComponentFixture<RightImageComponent>;
+describe('FormErrorComponent', () => {
+  let component: FormErrorComponent;
+  let fixture: ComponentFixture<FormErrorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RightImageComponent],
+      declarations: [FormErrorComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RightImageComponent);
+    fixture = TestBed.createComponent(FormErrorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
