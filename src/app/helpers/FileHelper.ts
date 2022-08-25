@@ -5,8 +5,8 @@ export class FileHelper {
     if (!url) {
       return '';
     } else {
-      if (url.startsWith(environment.apiUrl + '/uploads')) return url;
-      else return environment.apiUrl + '/uploads' + url;
+      if (url.startsWith(environment.apiUrl + '/uploads')) return new URL(url).href;
+      else return new URL(environment.apiUrl + '/uploads' + url).href;
     }
   }
 

@@ -9,7 +9,10 @@
       <h3 class="plans-container-title">Mon plan actif</h3>
       <p class="plans-container-info">
         Plan actif:
-        <b class="plans-container-expire">{{ subscriptionType | titlecase }}</b>
+        <b class="plans-container-expire"
+          >{{ subscriptionType | titlecase }},
+          {{ subscriptionPeriod | titlecase }}</b
+        >
       </p>
       <p class="plans-container-info">
         Expire dans:
@@ -24,7 +27,7 @@
             class="form-check-label"
             style="margin-right: 8px"
             for="flexSwitchCheckDefault"
-            >Mensuel</label
+            >Monthly</label
           >
           <div class="form-check form-switch">
             <input
@@ -35,7 +38,7 @@
               id="flexSwitchCheckDefault"
             />
             <label class="form-check-label" for="flexSwitchCheckDefault"
-              >Annuel</label
+              >Yearly</label
             >
           </div>
         </div>

@@ -1,9 +1,14 @@
 import { PlanType } from '../models/plan.enum';
 import { Plan } from '../models/plan.model';
 
+
+export const FREE_MONTHLY_PLAN_ID = 'm-1'
+export const FREE_ANNUAL_PLAN_ID = 'a-1'
+
+
 export const PLANS_MONTHLY: Plan[] = [
   {
-    id: 'm-1',
+    id: FREE_MONTHLY_PLAN_ID,
     title: `Offer libre\nValable toute l'année`,
     price: '0 euros HT',
 
@@ -73,7 +78,7 @@ export const PLANS_MONTHLY: Plan[] = [
 
 export const PLANS_ANNUAL: Plan[] = [
   {
-    id: 'a-1',
+    id: FREE_ANNUAL_PLAN_ID,
     title: `Offer libre\nValable toute l'année`,
     price: '0 euros HT',
     features: [

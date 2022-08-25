@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '@twilio/conversations';
 import { PLANS_MONTHLY, PLANS_ANNUAL } from 'src/app/constants/plans';
 import { AuthService } from 'src/app/core/auth.service';
 import { Plan } from 'src/app/models/plan.model';
@@ -16,9 +15,11 @@ export class PlanListComponent implements OnInit {
   selectedPlan: Plan;
 
   subscriptionType: string;
+  subscriptionPeriod:  "yearly" | "monthly"
+
   expires: string | number;
   userEmail: string;
-  // monthly by default
+
   monthly = true;
 
   constructor(
@@ -28,15 +29,18 @@ export class PlanListComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.currentUser$.subscribe((user) => {
-      console.log('user', user);
       if (user) {
         this.userEmail = user.email;
-        this.subscriptionType = user.subscriptionType ?? 'free';
-
-        if (user.subscriptionEnd && user.subscriptionStart) {
+        this.subscriptionType = user.subscriptionType ?? 'free'
+        this.subscriptionPeriod = user.subscriptionPeriod
+        if (user.subscriptionEnd) {
           const difference =
             new Date(user.subscriptionEnd).getTime() -
-            new Date(user.subscriptionStart).getTime();
+            new Date().getTime();
+          if(difference < 0) {
+            this.expires = `Plan is expired`
+            return
+          }
           const days = Math.ceil(difference / (1000 * 3600 * 24));
           this.expires = days > 1 ? `${days} jours` : `${days} jour`;
         } else {
