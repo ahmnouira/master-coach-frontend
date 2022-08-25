@@ -16,7 +16,6 @@ export class UpdatePasswordComponent extends FormHelper implements OnInit {
     confirmPasswordChangedFlag: false,
   };
 
-
   constructor(private authService: AuthService) {
     super();
   }
@@ -28,16 +27,15 @@ export class UpdatePasswordComponent extends FormHelper implements OnInit {
     const { newPassword, confirmPassword, currentPassword } = this.form;
     if (!newPassword || !confirmPassword || !currentPassword) {
       //this.onError('Les champs sont obligatoires!');
-      this.onError('')
+      this.onError('');
       return;
     }
 
     if (newPassword !== confirmPassword) {
       // this.onError('Les mots de passe ne correspondent pas!');
-      this.onError('')
+      this.onError('');
       return;
     }
-
 
     this.authService
       .updatePassword({ newPassword, currentPassword: currentPassword })
@@ -46,20 +44,16 @@ export class UpdatePasswordComponent extends FormHelper implements OnInit {
           console.log('res', res);
           this.onSuccess();
           // reset the form
-          console.log('f', 'dirty', this.f.dirty, 'pristine',  this.f.pristine)
-          this.f?.resetForm() 
-          
+          console.log('f', 'dirty', this.f.dirty, 'pristine', this.f.pristine);
+          this.f?.resetForm();
+
           /**TODO: fix reset fields   **/
-          this.form.newPassword = ''
-         
+          this.form.newPassword = '';
         },
         (error) => {
           this.onError(error);
         }
-      ) 
-
-
-  
+      );
   }
 
   passwordChanged() {

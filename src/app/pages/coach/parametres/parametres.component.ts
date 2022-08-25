@@ -43,17 +43,18 @@ export class ParametresComponent extends FormHelper implements OnInit {
       this.isSubmitting = false;
       return;
     }
-
     const formData = this.getFormData(this.form);
 
     this.authService.updateProfile(formData).subscribe(
       (res) => {
-        // console.log('res', res);
+        
         if (!res.success) {
+
           this.onError(res.error);
           return;
         }
-        this.authService.currentUser$.next(res.data as User);
+        console.log('res', res.data);
+        this.authService.currentUser$.next(res.data);
         this.tokenStorageService.saveUser(res.data);
         this.onSuccess();
       },
@@ -66,6 +67,9 @@ export class ParametresComponent extends FormHelper implements OnInit {
   getUser() {
     const user = this.tokenStorageService.getUser() as IUser;
     // TODO: casting doesn't work property
+
+    console.log('cinF', user.cinF);
+
     this.form = {
       bio: this.getString(user.bio),
       category: this.getArray(user.category),
@@ -113,7 +117,11 @@ export class ParametresComponent extends FormHelper implements OnInit {
   }
 
   handleImportFile(data: File, key: string) {
+
     this.form[key] = data;
+
+    
+
   }
 
   downloadPdf(base64String, fileName) {

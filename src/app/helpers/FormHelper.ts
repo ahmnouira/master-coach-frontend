@@ -24,21 +24,13 @@ export class FormHelper {
   getFormData(form: any): FormData {
     let formData = new FormData();
     for (const key in form) {
-      if (key === 'photo' && form.photo) {
-        if (typeof form.photo === 'string') {
-          continue;
-        } else {
-          const file = form.photo as File;
-          formData.append(key, file);
-        }
-        // check if its an object
-      } else if (typeof form[key] === 'object') {
+      if (Array.isArray(form[key])) {
+        console.log('array', key, form[key]);
         formData.append(key, JSON.stringify(form[key]));
       } else {
         formData.append(key, form[key]);
       }
     }
-
     return formData;
   }
 
@@ -49,7 +41,7 @@ export class FormHelper {
   }
 
   onError(error: any) {
-    if(error) {
+    if (error) {
       console.error('onError:', error);
       this.error = error;
     }
@@ -64,7 +56,6 @@ export class FormHelper {
     this.error = '';
     setTimeout(() => {
       this.success = false;
-   
     }, 3000);
   }
 }
