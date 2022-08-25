@@ -34,13 +34,21 @@ export class LoginComponent implements OnInit {
     this.routeService;
   }
 
+
+  handleChange(e:any) {
+    console.log('change', e)
+  }
+
   async login() {
     const { email, password } = this.form;
 
+    console.log('form', this.form)
+
     if (!email || !password) return;
 
-    this.isLoading = true;
-
+   
+    
+     this.isLoading = true;
     this.authService.login(email, password).subscribe((authData) => {
       // console.log('authData:', authData);
       this.tokenStorage.saveToken(authData.token);
@@ -71,6 +79,7 @@ export class LoginComponent implements OnInit {
       )
     }, 500);
     }, (err) => this.onError(err));
+    
   }
 
   onSuccess() {

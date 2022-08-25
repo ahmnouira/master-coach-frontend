@@ -1,4 +1,4 @@
-<div class="form-group mb-2">
+<div class="form-group mb-20">
   <label *ngIf="label && showLabel" class="element-label">{{ label }}</label>
   <input
     type="{{ type }}"
@@ -10,6 +10,7 @@
     required="{{ required }}"
     pattern="{{ pattern }}"
     #field="ngModel"
+    (onChange)="handleChange($event)"
   />
   <div *ngIf="(field.invalid && field.touched) || field.dirty">
     <small
