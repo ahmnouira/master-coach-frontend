@@ -1,35 +1,18 @@
-<app-sub-header [title]="'Paramètres'"></app-sub-header>
+<app-sub-header [title]="'Paramètres'" subTitle="BACK"></app-sub-header>
 <div class="row sub-component-content">
-  <div class="col-3 p-0">
+  <div class="col-lg-2 p-0">
     <app-coach-menu [active]="'profile'"></app-coach-menu>
   </div>
-  <div class="col-9">
+  <div class="col-lg-10">
     <div class="row">
       <div class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0">
         <span class="row-title">Informations personnelles</span>
       </div>
       <div class="col-12 col-lg-9 pl-40">
-        <div class="image-container">
-          <img
-            class="profil-image"
-            [attr.src]="form.photo"
-            (click)="file.click()"
-          />
-          <input
-            type="file"
-            hidden
-            accept="image/*"
-            (change)="importFile($event)"
-            #file
-          />
-          <button (click)="file.click()">
-            <img
-              class="profil-icon"
-              src="assets/img/common/camera-to-take-photos%20(3).svg"
-            />
-          </button>
+        <div class="row">
+          <app-user-photo [src]="form.photo"></app-user-photo>
         </div>
-        <div class="row profil-data mb-17 gx-4">
+        <div class="row">
           <div class="col-md-6">
             <app-text-field
               [label]="'Nom'"
@@ -47,7 +30,7 @@
             </app-text-field>
           </div>
         </div>
-        <div class="row profil-data mb-17 gx-4">
+        <div class="row">
           <div class="col-md-6">
             <app-text-field
               type="email"
@@ -71,7 +54,7 @@
           </div>
         </div>
 
-        <div class="row profil-data">
+        <div class="row">
           <div class="form-group col-md-12">
             <label class="element-label">Biographie</label>
             <textarea
@@ -287,16 +270,20 @@ Praesent congue commodo sapien eget sodales. Vestibulum facilisis convallis mass
       </div>
     </div>
 
-    <app-divider></app-divider>
+    <div class="row">
+      <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+      <div class="col-lg-9 col-12 mt-20 pl-40">
+        <app-divider></app-divider>
+      </div>
+    </div>
 
     <app-form-error></app-form-error>
 
     <div class="row">
       <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
       <div class="col-lg-9 col-12 mt-20 pl-40">
-        <button class="btn btn-primary align-self-end" (click)="saveUser()">
-          Enregistrer</button
-        >&nbsp;
+        <app-button (onClick)="saveUser()" [isLoading]="isLoading">
+        </app-button>
       </div>
     </div>
   </div>

@@ -24,6 +24,11 @@ export class ParametresComponent implements OnInit {
   confirmPassword = '';
   passwordChangedFlag = false;
   confirmPasswordChangedFlag = false;
+
+
+  isLoading = false
+
+
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
@@ -36,9 +41,7 @@ export class ParametresComponent implements OnInit {
     const user = this.tokenStorageService.getUser();
     this.getUserFromDb(user._id);
 
-    this.form.photo = this.form.photo
-      ? this.form.photo
-      : '/assets/img/common/utilisateur.png';
+ 
     this.settings = {
       text: 'Sélectionner...',
       position: 'bottom',

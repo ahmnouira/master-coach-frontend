@@ -11,9 +11,12 @@ import { NotificationService } from 'src/app/services/notification-service/notif
   styleUrls: ['./sub-header.component.scss'],
 })
 export class SubHeaderComponent implements OnInit {
-  todayDate = new Date();
   @Input() title: string;
-  @Input() subTitle: string;
+  @Input() subTitle: string = "BACK";
+
+
+  todayDate = new Date();
+
   userNotifications: any = {};
   unreadUserNotifications: any = {};
   userData: any = {};

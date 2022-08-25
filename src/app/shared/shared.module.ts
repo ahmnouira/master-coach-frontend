@@ -30,6 +30,7 @@ import { EmptyPageComponent } from './components/empty-page/empty-page.component
 import { RightImageComponent } from './components/right-image/right-image.component';
 import { FormErrorComponent } from './components/form-error/form-error.component';
 import { ButtonComponent } from './components/button/button.component';
+import { UserPhotoComponent } from './components/user-photo/user-photo.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ButtonComponent } from './components/button/button.component';
     RightImageComponent,
     FormErrorComponent,
     ButtonComponent,
+    UserPhotoComponent,
   ],
   imports: [
     CommonModule,
@@ -94,6 +96,7 @@ import { ButtonComponent } from './components/button/button.component';
     RightImageComponent,
     FormErrorComponent,
     ButtonComponent,
+    UserPhotoComponent
   ],
 })
 export class SharedModule {}
