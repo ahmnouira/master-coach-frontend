@@ -21,13 +21,27 @@ export class TextFieldComponent implements OnInit {
   @Input() required: boolean = true;
   @Input() form?: any = undefined;
 
+  @Input() minLength?: number;
+
   constructor() {}
 
   ngOnInit(): void {
     this.name = this.label ? this.label.toLowerCase() : '';
     this.id = this.id ?? this.name ?? '';
     this.placeholder = this.placeholder ?? this.label;
-    this.patternError = this.patternError ?? `${this.label} est invalide!`;
+    if (this.type === 'password') this.minLength = this.minLength ?? 5;
+    this.patternError = this.getPatternMessage();
+  }
+
+  getPatternMessage() {
+    if (this.patternError) {
+      return this.patternError;
+    }
+    if (this.type !== 'password') {
+      return `${this.label} est invalide!`;
+    } else {
+      return 'Les mots de passe ne correspondent pas!';
+    }
   }
 
   handleChange(event: any) {

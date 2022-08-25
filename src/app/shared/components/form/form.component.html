@@ -1,5 +1,7 @@
 <form
-  [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
+  [@animate]="
+    animated && { value: '*', params: { duration: '300ms', y: '100px' } }
+  "
   name="{{ name }}"
   #f="ngForm"
   (ngSubmit)="handleSubmit(f)"

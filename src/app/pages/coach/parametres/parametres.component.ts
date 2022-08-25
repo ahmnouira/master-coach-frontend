@@ -3,7 +3,6 @@ import { AuthService } from 'src/app/core/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AdminService } from 'src/app/services/admin-service/admin.service';
 import { IUser } from 'src/app/interfaces/user-interface';
-import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/user-model';
 import { Observable } from 'rxjs';
 import { FormHelper } from 'src/app/helpers/FormHelper';
@@ -16,18 +15,9 @@ import { FormHelper } from 'src/app/helpers/FormHelper';
 export class ParametresComponent extends FormHelper implements OnInit {
   form: Partial<IUser> = {};
 
-  passwordForm = {
-    newPassword: '',
-    confirmPassword: '',
-    passwordChangedFlag: false,
-    confirmPasswordChangedFlag: false,
-  };
-
   categories: any = [];
   skills: any = [];
   certifications: any = [];
-
-  f: NgForm;
 
   constructor(
     private tokenStorageService: TokenStorageService,
@@ -45,12 +35,6 @@ export class ParametresComponent extends FormHelper implements OnInit {
     this.isLoading = false;
   }
 
-  /** TODO: check this if it works **/
-  handleSubmit(f: NgForm) {
-    // console.log('f', f.errors);
-    this.f = f;
-  }
-
   submit() {
     this.isSubmitting = true;
     const { prenom, nom, bio, tel, email, photo } = this.form;
@@ -59,17 +43,18 @@ export class ParametresComponent extends FormHelper implements OnInit {
       this.isSubmitting = false;
       return;
     }
-
     const formData = this.getFormData(this.form);
 
     this.authService.updateProfile(formData).subscribe(
       (res) => {
-        // console.log('res', res);
+        
         if (!res.success) {
+
           this.onError(res.error);
           return;
         }
-        this.authService.currentUser$.next(res.data as User);
+        console.log('res', res.data);
+        this.authService.currentUser$.next(res.data);
         this.tokenStorageService.saveUser(res.data);
         this.onSuccess();
       },
@@ -82,6 +67,9 @@ export class ParametresComponent extends FormHelper implements OnInit {
   getUser() {
     const user = this.tokenStorageService.getUser() as IUser;
     // TODO: casting doesn't work property
+
+    console.log('cinF', user.cinF);
+
     this.form = {
       bio: this.getString(user.bio),
       category: this.getArray(user.category),
@@ -124,41 +112,16 @@ export class ParametresComponent extends FormHelper implements OnInit {
     );
   }
 
-  resetPassword() {
-    const { newPassword, confirmPassword } = this.passwordForm;
-    if (newPassword != '' && newPassword == confirmPassword) {
-      this.authService
-        .resetPassword({
-          password: newPassword,
-
-          token: '',
-        })
-        .subscribe(
-          (res) => {
-            console.log(res);
-          },
-          (error) => {
-            this.onError(error);
-          }
-        );
-    }
-  }
-
-  passwordChanged() {
-    this.passwordForm.passwordChangedFlag =
-      this.passwordForm.newPassword.length > 0;
-  }
-  confirmPasswordChanged() {
-    this.passwordForm.confirmPasswordChangedFlag =
-      this.passwordForm.newPassword.length > 0;
-  }
-
   handleDeleteFile(field: any) {
     this.form[field] = '';
   }
 
   handleImportFile(data: File, key: string) {
+
     this.form[key] = data;
+
+    
+
   }
 
   downloadPdf(base64String, fileName) {

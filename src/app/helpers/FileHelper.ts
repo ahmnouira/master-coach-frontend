@@ -1,10 +1,13 @@
 import { environment } from 'src/environments/environment';
 
 export class FileHelper {
-  static getUrl(url: any): string {
-    if (url && typeof url === 'string')
-      return environment.apiUrl + '/uploads' + url;
-    return ''; // by default
+  static getUrl(url: string): string {
+    if (!url) {
+      return '';
+    } else {
+      if (url.startsWith(environment.apiUrl + '/uploads')) return url;
+      else return environment.apiUrl + '/uploads' + url;
+    }
   }
 
   static formatName(name: string) {
@@ -15,6 +18,8 @@ export class FileHelper {
   }
 
   static getFileName(label: string, url: string): string {
+    console.log('LABEL', label, url);
+
     if (!label && !url) {
       return '';
     }

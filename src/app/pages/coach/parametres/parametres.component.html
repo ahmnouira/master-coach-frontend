@@ -12,7 +12,7 @@
     </div>
 
     <ng-template #elseBlock>
-      <app-form (onSubmit)="handleSubmit($event)" [name]="form">
+      <form class="login-form" name="form" #f="ngForm" novalidate>
         <div class="row">
           <div
             class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
@@ -106,7 +106,7 @@
                   [label]="'C.N.I Back'"
                   [showLabel]="true"
                   (onClick)="handleImportFile($event, 'cinB')"
-                  (onDelete)="form.cinB = ''"
+                  (onDelete)="handleDeleteFile('cinB')"
                 ></app-file-uploader>
               </div>
             </div>
@@ -120,7 +120,7 @@
                   [label]="'KBIS'"
                   [showLabel]="true"
                   (onClick)="handleImportFile($event, 'kbis')"
-                  (onDelete)="form.kbis = ''"
+                  (onDelete)="handleDeleteFile('kbis')"
                 ></app-file-uploader>
               </div>
             </div>
@@ -174,36 +174,33 @@
             </div>
           </div>
         </div>
-        <div class="row mt-4">
-          <div
-            class="col-12 ms-lg-0 col-lg-3 mb-3 p-lg-0 col-margin center-verticaly"
-          >
-            <span class="row-title">Mise à jour du mot de passe</span>
+
+        <div class="row">
+          <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+          <div class="col-lg-9 col-12 mt-20 pl-40">
+            <app-divider></app-divider>
           </div>
+        </div>
+
+        <div class="row" *ngIf="success || error">
+          <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
           <div class="col-lg-9 col-12 pl-40">
-            <div class="row gx-4">
-              <div class="col">
-                <app-text-field
-                  [type]="'password'"
-                  [label]="'Nouveau mot de passe'"
-                  [(model)]="passwordForm.newPassword"
-                  [required]="false"
-                  [name]="'password'"
-                >
-                </app-text-field>
-              </div>
-              <div class="col">
-                <app-text-field
-                  [type]="'password'"
-                  [label]="'Confirmez le nouveau mot de passe'"
-                  [(model)]="passwordForm.confirmPassword"
-                  [required]="passwordForm.newPassword.length > 0"
-                  [pattern]="passwordForm.newPassword"
-                  [name]="'password'"
-                >
-                </app-text-field>
-              </div>
+            <app-form-error [error]="error" *ngIf="error"></app-form-error>
+            <div class="alert alert-info" role="alert" *ngIf="success">
+              Profile Updated
             </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+          <div class="col-lg-9 col-12 pl-40">
+            <app-button
+              (onClick)="submit()"
+              [isLoading]="isSubmitting"
+              [disabled]="f.dirty"
+            >
+            </app-button>
           </div>
         </div>
 
@@ -213,24 +210,9 @@
             <app-divider></app-divider>
           </div>
         </div>
+      </form>
 
-        <div class="row" *ngIf="success">
-          <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
-          <div class="col-lg-9 col-12 mt-20 pl-40">
-            <div class="alert alert-info" role="alert">Profile Updated</div>
-          </div>
-        </div>
-
-        <app-form-error [error]="error"></app-form-error>
-
-        <div class="row">
-          <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
-          <div class="col-lg-9 col-12 mt-20 pl-40">
-            <app-button (onClick)="submit()" [isLoading]="isSubmitting">
-            </app-button>
-          </div>
-        </div>
-      </app-form>
+      <app-update-password></app-update-password>
     </ng-template>
   </div>
 </div>
