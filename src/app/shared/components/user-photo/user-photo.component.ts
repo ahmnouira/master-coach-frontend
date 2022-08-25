@@ -18,7 +18,7 @@ export class UserPhotoComponent implements OnInit {
   ngOnInit(): void {
     this.getPicture();
 
-    console.log('userPhoto', this.photo, this.src)
+    console.log('userPhoto', this.photo, this.src);
   }
   getPicture() {
     if (this.src && typeof this.src === 'string') {

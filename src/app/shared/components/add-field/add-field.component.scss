@@ -1,0 +1,13 @@
+.add-field-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+
+  &-text {
+    margin-left: 4px;
+    margin-top: 6px;
+    font: normal normal normal 12px/15px Fredoka;
+    color: #1376a3;
+  }
+}

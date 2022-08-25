@@ -35,6 +35,7 @@ import { FormComponent } from './components/form/form.component';
 import { SelectComponent } from './components/select/select.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { RadioComponent } from './components/radio/radio.component';
+import { AddFieldComponent } from './components/add-field/add-field.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { RadioComponent } from './components/radio/radio.component';
     FormComponent,
     SelectComponent,
     RadioComponent,
+    AddFieldComponent,
   ],
   imports: [
     CommonModule,
@@ -108,6 +110,7 @@ import { RadioComponent } from './components/radio/radio.component';
     UserPhotoComponent,
     FormComponent,
     RadioComponent,
+    AddFieldComponent,
   ],
 })
 export class SharedModule {}

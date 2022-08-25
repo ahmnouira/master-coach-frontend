@@ -3,14 +3,15 @@ import { AuthService } from 'src/app/core/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AdminService } from 'src/app/services/admin-service/admin.service';
 import { IUser } from 'src/app/interfaces/user-interface';
-import { User } from 'src/app/models/user-model';
 import { Observable } from 'rxjs';
 import { FormHelper } from 'src/app/helpers/FormHelper';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-parametres',
   templateUrl: './parametres.component.html',
   styleUrls: ['./parametres.component.scss'],
+  animations: Animations,
 })
 export class ParametresComponent extends FormHelper implements OnInit {
   form: Partial<IUser> = {};
@@ -47,9 +48,7 @@ export class ParametresComponent extends FormHelper implements OnInit {
 
     this.authService.updateProfile(formData).subscribe(
       (res) => {
-        
         if (!res.success) {
-
           this.onError(res.error);
           return;
         }
@@ -117,11 +116,7 @@ export class ParametresComponent extends FormHelper implements OnInit {
   }
 
   handleImportFile(data: File, key: string) {
-
     this.form[key] = data;
-
-    
-
   }
 
   downloadPdf(base64String, fileName) {
