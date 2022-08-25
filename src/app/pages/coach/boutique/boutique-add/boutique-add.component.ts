@@ -24,8 +24,10 @@ export class BoutiqueAddComponent implements OnInit {
     duration:  ''
   };
 
+
+  isDocument: boolean = true;
   isVideo: boolean = false;
-  isDocument: boolean = false;
+  isPodcast: boolean = false
 
   error: string = '';
   isLoading = false;
@@ -45,6 +47,10 @@ export class BoutiqueAddComponent implements OnInit {
 
     if (this.isVideo) this.form.type = ProductType.VIDEO;
     if (this.isDocument) this.form.type = ProductType.DOCUMENT;
+    if (this.isPodcast) this.form.type = ProductType.PODCAST
+
+
+    console.log('form', this.form)
 
     // if (!description || !title) return;
 

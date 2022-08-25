@@ -40,9 +40,9 @@
 
             <div class="row align-items-center mt-4">
               <div class="col-4">
-                <app-titled-field title="type">
-                  <app-checkbox [label]="'Documents'" [(model)]="isDocument">
-                  </app-checkbox>
+                <app-titled-field content="type">
+                  <app-radio [label]="'Documents'" [(model)]="isDocument">
+                  </app-radio>
                 </app-titled-field>
               </div>
 
@@ -56,15 +56,24 @@
 
             <div class="row align-items-center">
               <div class="col-4">
-                <app-titled-field [title]="'type'" [titleHidden]="true">
-                  <app-checkbox [label]="'Vidéos'" [(model)]="isVideo">
-                  </app-checkbox>
+                <app-titled-field [content]="'type'" [titleHidden]="true">
+                  <app-radio [label]="'Vidéos'" [(model)]="isVideo">
+                  </app-radio>
+                </app-titled-field>
+              </div>
+            </div>
+
+            <div class="row align-items-center">
+              <div class="col-4">
+                <app-titled-field [content]="'type'" [titleHidden]="true">
+                  <app-radio [label]="'Podcasts'" [(model)]="isPodcast">
+                  </app-radio>
                 </app-titled-field>
               </div>
             </div>
 
             <div class="row align-items-center mt-4 mb-4">
-              <app-titled-field title="image">
+              <app-titled-field content="image">
                 <app-file-uploader
                   [model]="form.image"
                   [title]="'Ajouter une photo'"

@@ -34,6 +34,7 @@ import { UserPhotoComponent } from './components/user-photo/user-photo.component
 import { FormComponent } from './components/form/form.component';
 import { SelectComponent } from './components/select/select.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { RadioComponent } from './components/radio/radio.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     UserPhotoComponent,
     FormComponent,
     SelectComponent,
+    RadioComponent,
   ],
   imports: [
     CommonModule,
@@ -106,6 +108,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     SelectComponent,
     UserPhotoComponent,
     FormComponent,
+    RadioComponent
   ],
 })
 export class SharedModule {}

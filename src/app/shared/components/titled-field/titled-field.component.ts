@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./titled-field.component.scss'],
 })
 export class TitledFieldComponent implements OnInit {
-  @Input() title: string = '';
+  @Input() content: string = '';
 
   @Input() titleHidden: boolean = false;
 
