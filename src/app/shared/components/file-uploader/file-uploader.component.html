@@ -1,19 +1,33 @@
-<div class="form-group">
-  <div class="file-input">
-    <input
-      type="file"
-      required="true"
-      class="form-control form-control-lg element"
-      style="display: none"
-      id="{{ name }}"
-      title=" "
-      name="{{ name }}"
-      accept="application/png"
-      (change)="addFile($event)"
-    />
-    <label for="photo">
-      <app-import-icon></app-import-icon>
-      {{ label }}</label
+<div>
+  <div class="form-group" (click)="file.click()" *ngIf="!model">
+    <label *ngIf="label && showLabel" class="element-label">{{ label }}</label>
+    <div class="file-input">
+      <input
+        #file
+        type="file"
+        hidden
+        required
+        id="{{ name }}"
+        title="{{ title }}"
+        name="{{ name }}"
+        accept="{{ accept }}"
+        class="form-control form-control-lg element"
+        (change)="handleChange($event)"
+      />
+      <label for="photo">
+        <app-import-icon></app-import-icon>
+        {{ title }}</label
+      >
+    </div>
+  </div>
+
+  <div *ngIf="model">
+    <app-file-imported
+      [model]="model"
+      [label]="label"
+      [filename]="filename"
+      (onDelete)="handleDelete()"
     >
+    </app-file-imported>
   </div>
 </div>

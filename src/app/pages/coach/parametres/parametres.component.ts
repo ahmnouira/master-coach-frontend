@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../models/user-model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'src/app/core/auth.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
@@ -25,9 +24,7 @@ export class ParametresComponent implements OnInit {
   passwordChangedFlag = false;
   confirmPasswordChangedFlag = false;
 
-
-  isLoading = false
-
+  isLoading = false;
 
   constructor(
     private tokenStorageService: TokenStorageService,
@@ -41,7 +38,6 @@ export class ParametresComponent implements OnInit {
     const user = this.tokenStorageService.getUser();
     this.getUserFromDb(user._id);
 
- 
     this.settings = {
       text: 'Sélectionner...',
       position: 'bottom',
@@ -151,33 +147,15 @@ export class ParametresComponent implements OnInit {
   }
 
   // cin front
-  importCINFront(event: any) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log(file);
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        console.log(reader.result);
-        this.form.cinF = reader.result as string;
-      };
-    }
+  importCINFront(data: any) {
+    // blob
+    this.form.cinF = data;
   }
-  importCINBack(event: any) {
-    const reader = new FileReader();
 
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log(file);
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        console.log(reader.result);
-        this.form.cinB = reader.result as string;
-      };
-    }
+  importCINBack(data: any) {
+    this.form.cinB = data;
   }
+
   importKbis(event: any) {
     const reader = new FileReader();
 

@@ -6,28 +6,60 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./file-uploader.component.scss'],
 })
 export class FileUploaderComponent implements OnInit {
+  @Input() model: string;
   @Input() name: string;
-
-  @Input() label: string = 'Ajouter une photo';
+  @Input() showLabel: boolean = false;
+  @Input() label: string;
   @Input() accept: string;
+
+  @Input() type: 'pdf' | 'photo' | undefined;
+
+  @Input() title?: string;
+
+  @Input() filename?: string = ''
+
 
   @Output() onClick = new EventEmitter();
 
+  @Output() onDelete = new EventEmitter();
+
+  
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-  addFile(event: any) {
-    console.log(event);
+    switch (this.type) {
+      case 'pdf':
+        // application/vnd.ms-excel
+        this.accept = 'application/pdf';
+        this.title = this.title ?? 'Choisir un ficher';
+        break;
+      case 'photo':
+        this.accept = 'image/*';
+        this.title = this.title ?? 'Choisir une photo';
+        break;
+      default:
+        this.accept = '*';
+        this.title = 'Import';
+    }
+  }
+
+  handleChange(event: any) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log(file);
+      const [file] = event.target.files as File[];
+      
       reader.readAsDataURL(file);
       reader.onload = () => {
-        console.log(reader.result);
+        console.log('result', reader.result);
+        this.filename = this.label.replace(/ /g, '-') + '-' + file.name
         this.onClick.emit(reader.result as string);
       };
     }
+  }
+
+  handleDelete() {
+    this.onDelete.emit();
   }
 }

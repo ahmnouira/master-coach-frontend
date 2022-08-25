@@ -9,14 +9,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class FileImportedComponent implements OnInit {
   @Input() label: string;
   @Input() name: string;
-  @Input() fileName: string;
+  @Input() filename: string;
   @Input() model: string;
 
   @Output() onDelete = new EventEmitter();
 
   constructor(public sanitizer: DomSanitizer) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  
+  }
 
   handleDelete() {
     this.onDelete.emit();
