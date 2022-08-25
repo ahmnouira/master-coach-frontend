@@ -1,0 +1,19 @@
+<div class="form-group">
+  <div class="file-input">
+    <input
+      type="file"
+      required
+      class="form-control form-control-lg element"
+      style="display: none"
+      id="{{ name }}"
+      title=" "
+      name="{{ name }}"
+      accept="application/png"
+      (change)="addFile($event)"
+    />
+    <label for="photo">
+      <app-import-icon></app-import-icon>
+      {{ label }}</label
+    >
+  </div>
+</div>
