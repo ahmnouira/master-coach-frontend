@@ -1,74 +1,135 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'src/app/core/auth.service';
-import { UserService } from 'src/app/services/user-service/user-service.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AdminService } from 'src/app/services/admin-service/admin.service';
+import { IUser } from 'src/app/interfaces/user-interface';
+import { NgForm } from '@angular/forms';
+import { User } from 'src/app/models/user-model';
+import { Observable } from 'rxjs';
+import { FormHelper } from 'src/app/helpers/FormHelper';
 
 @Component({
   selector: 'app-parametres',
   templateUrl: './parametres.component.html',
   styleUrls: ['./parametres.component.scss'],
 })
-export class ParametresComponent implements OnInit {
-  form: any = {};
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  userCategory: any = [];
-  userCompetences: any = [];
-  userAccred: any = [];
-  newPassword = '';
-  confirmPassword = '';
-  passwordChangedFlag = false;
-  confirmPasswordChangedFlag = false;
-  isLoading = false;
+export class ParametresComponent extends FormHelper implements OnInit {
+  form: Partial<IUser> = {};
+
+  passwordForm = {
+    newPassword: '',
+    confirmPassword: '',
+    passwordChangedFlag: false,
+    confirmPasswordChangedFlag: false,
+  };
+
+  categories: any = [];
+  skills: any = [];
+  certifications: any = [];
+
+  f: NgForm;
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private userService: UserService,
     private authService: AuthService,
-    private adminService: AdminService,
-    public sanitizer: DomSanitizer
-  ) {}
+    private adminService: AdminService
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    const user = this.tokenStorageService.getUser();
-    this.getUserFromDb(user._id);
-    this.getCompetences();
-    this.getCategories();
-    this.getAccredi();
+    this.getUser();
+    this.getSelectField('skills');
+    this.getSelectField('categories');
+    this.getSelectField('certifications');
+    this.isLoading = false;
   }
 
-  importFile(event: any) {
-    const reader = new FileReader();
+  /** TODO: check this if it works **/
+  handleSubmit(f: NgForm) {
+    // console.log('f', f.errors);
+    this.f = f;
+  }
 
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log(file);
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        console.log(reader.result);
-        this.form.photo = reader.result as string;
-      };
+  submit() {
+    this.isSubmitting = true;
+    const { prenom, nom, bio, tel, email, photo } = this.form;
+    // +33122469999
+    if (!prenom || !nom || !bio || !tel || !email || !photo) {
+      this.isSubmitting = false;
+      return;
     }
-  }
 
-  saveUser() {
-    this.userService.updateUser(this.form, this.form._id).subscribe(
+    const formData = this.getFormData(this.form);
+
+    this.authService.updateProfile(formData).subscribe(
       (res) => {
-        console.log(res);
-        window.location.reload();
+        // console.log('res', res);
+        if (!res.success) {
+          this.onError(res.error);
+          return;
+        }
+        this.authService.currentUser$.next(res.data as User);
+        this.tokenStorageService.saveUser(res.data);
+        this.onSuccess();
       },
       (error) => {
-        console.error(error.message);
+        this.onError(error);
       }
     );
-    if (this.newPassword != '' && this.newPassword == this.confirmPassword) {
+  }
+
+  getUser() {
+    const user = this.tokenStorageService.getUser() as IUser;
+    // TODO: casting doesn't work property
+    this.form = {
+      bio: this.getString(user.bio),
+      category: this.getArray(user.category),
+      accreditation: this.getArray(user.accreditation),
+      cinB: this.getFileUrl(user.cinB),
+      cinF: this.getFileUrl(user.cinF),
+      email: this.getString(user.email),
+      prenom: this.getString(user.prenom),
+      kbis: this.getFileUrl(user.kbis),
+      nom: this.getString(user.nom),
+      photo: this.getFileUrl(user.photo),
+      competance: this.getArray(user.competance),
+      tel: this.getString(user.tel),
+      urssaf: this.getString(user.urssaf),
+    };
+  }
+
+  getSelectField(name: 'categories' | 'skills' | 'certifications') {
+    let action: Observable<any>;
+    switch (name) {
+      case 'categories':
+        action = this.adminService.getAllCategorys();
+        break;
+      case 'skills':
+        action = this.adminService.getAllCompetances();
+        break;
+      case 'certifications':
+        action = this.adminService.getAllAccreditations();
+        break;
+      default:
+        break;
+    }
+    action.subscribe(
+      (res) => {
+        this[name] = res;
+      },
+      (error) => {
+        this.onError(error);
+      }
+    );
+  }
+
+  resetPassword() {
+    const { newPassword, confirmPassword } = this.passwordForm;
+    if (newPassword != '' && newPassword == confirmPassword) {
       this.authService
         .resetPassword({
-          password: this.form.password,
+          password: newPassword,
 
           token: '',
         })
@@ -77,80 +138,27 @@ export class ParametresComponent implements OnInit {
             console.log(res);
           },
           (error) => {
-            this.errorMessage = error;
-            console.error(this.errorMessage);
-            this.isLoginFailed = true;
+            this.onError(error);
           }
         );
     }
   }
 
-  getCategories() {
-    this.adminService.getAllCategorys().subscribe(
-      (res) => {
-        console.log(res);
-        this.userCategory = res;
-      },
-      (error) => {
-        console.error(error.message);
-      }
-    );
-  }
-
-  getCompetences() {
-    this.adminService.getAllCompetances().subscribe(
-      (res) => {
-        console.log(res);
-        this.userCompetences = res;
-      },
-      (error) => {
-        console.error(error.message);
-      }
-    );
-  }
-
-  getAccredi() {
-    this.adminService.getAllAccreditations().subscribe(
-      (res) => {
-        console.log(res);
-        this.userAccred = res;
-      },
-      (error) => {
-        console.error(error.message);
-      }
-    );
-  }
-
   passwordChanged() {
-    this.passwordChangedFlag = this.form.password.length > 0;
+    this.passwordForm.passwordChangedFlag =
+      this.passwordForm.newPassword.length > 0;
   }
   confirmPasswordChanged() {
-    this.confirmPasswordChangedFlag = this.form.password.length > 0;
+    this.passwordForm.confirmPasswordChangedFlag =
+      this.passwordForm.newPassword.length > 0;
   }
 
-  // cin front
-  importCINFront(data: any) {
-    // blob
-    this.form.cinF = data;
+  handleDeleteFile(field: any) {
+    this.form[field] = '';
   }
 
-  importCINBack(data: any) {
-    this.form.cinB = data;
-  }
-
-  importKbis(event: any) {
-    this.form.kbis = event;
-  }
-
-  private getUserFromDb(id: any) {
-    this.userService.getSingleUser(id).subscribe(
-      (user) => {
-        this.form = { ...user };
-      },
-      (error) => {
-        return {};
-      }
-    );
+  handleImportFile(data: File, key: string) {
+    this.form[key] = data;
   }
 
   downloadPdf(base64String, fileName) {

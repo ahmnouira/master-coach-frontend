@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FileHelper } from 'src/app/helpers/FileHelper';
 
 @Component({
   selector: 'app-file-uploader',
@@ -7,6 +8,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class FileUploaderComponent implements OnInit {
   @Input() model: any;
+
+  @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
+
   @Input() name: string;
 
   @Input() accept: string;
@@ -23,6 +27,8 @@ export class FileUploaderComponent implements OnInit {
 
   @Output() onClick = new EventEmitter();
   @Output() onDelete = new EventEmitter();
+
+  @Input() form?: any = undefined;
 
   isEmpty: boolean;
 
@@ -60,8 +66,11 @@ export class FileUploaderComponent implements OnInit {
   }
 
   checkEmpty() {
-    if (typeof this.model === 'string' && this.model) {
+    if (this.model && typeof this.model === 'string') {
       this.isEmpty = false;
+      // set the filename
+      this.filename =
+        this.filename || FileHelper.getFileName(this.label, this.model);
     } else if (Array.isArray(this.model) && this.model.length) {
       this.isEmpty = false;
     } else {
@@ -77,7 +86,10 @@ export class FileUploaderComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.isEmpty = false;
-        this.filename = this.label.trim().replace(/ /g, '-') + '-' + file.name;
+        this.filename =
+          this.label.toLowerCase().trim().replace(/\s/g, '-') +
+          '-' +
+          file.name.trim().replace(/\s/g, '-');
         // this.onClick.emit(reader.result as string);
       };
       reader.onerror = () => {

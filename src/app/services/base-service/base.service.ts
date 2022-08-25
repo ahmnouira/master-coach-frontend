@@ -13,8 +13,10 @@ export class BaseService {
     // remove these
     headers: new HttpHeaders({
       // 'Content-Type': 'multipart/form-data',
-      // 'Access-Control-Allow-Origin': '*',
-      // 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      // 'Cross-Origin-Resource-Policy': 'cross-origins'
+
       //  'Access-Control-Allow-Headers':
       //  'Origin, X-Requested-With, Content-Type, Accept, Authorization',
     }),
@@ -41,14 +43,8 @@ export class BaseService {
     data: T,
     options?: { formData: boolean }
   ): Observable<R> {
-    const dataToSend = options.formData
-      ? (data as any)
-      : (JSON.stringify(data) as any);
-
-    console.log('dataToSend', dataToSend, 'isFormData', options.formData);
-
     return this.httpClient
-      .post<R>(this.baseUri + url, dataToSend, this.httpOptions)
+      .post<R>(this.baseUri + url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

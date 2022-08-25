@@ -36,11 +36,12 @@ export class ServiceAddComponent implements OnInit {
   }
 
   async submit() {
-    // this.isLoading = true;
+    this.isLoading = true;
 
     const { title, description, duration } = this.form;
 
     if (!title || !description || !duration) {
+      this.isLoading = false;
       return;
     }
 

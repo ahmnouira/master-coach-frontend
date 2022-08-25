@@ -21,11 +21,13 @@ export class FileImportedComponent implements OnInit {
   constructor(public sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
-    if (typeof this.model === 'string') {
+    if (this.model && typeof this.model === 'string') {
       this.sanitizerUrl = this.model;
     } else {
       this.sanitizerUrl = this.label;
     }
+
+    console.log(this.filename, this.model);
   }
 
   handleDelete() {

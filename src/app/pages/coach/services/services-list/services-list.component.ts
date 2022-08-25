@@ -7,7 +7,7 @@ import { Animations } from 'src/app/shared/animations';
   selector: 'app-services-list',
   templateUrl: './services-list.component.html',
   styleUrls: ['./services-list.component.scss'],
-  animations: Animations
+  animations: Animations,
 })
 export class ServicesListComponent implements OnInit {
   filterString = '';

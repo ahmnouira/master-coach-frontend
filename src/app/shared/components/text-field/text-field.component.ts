@@ -27,6 +27,7 @@ export class TextFieldComponent implements OnInit {
     this.name = this.label ? this.label.toLowerCase() : '';
     this.id = this.id ?? this.name ?? '';
     this.placeholder = this.placeholder ?? this.label;
+    this.patternError = this.patternError ?? `${this.label} est invalide!`;
   }
 
   handleChange(event: any) {
