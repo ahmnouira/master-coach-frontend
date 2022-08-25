@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/auth.service';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 
 @Component({
@@ -10,24 +11,55 @@ export class UpdatePasswordComponent extends FormHelper implements OnInit {
   form = {
     newPassword: '',
     confirmPassword: '',
+    currentPassword: '',
     passwordChangedFlag: false,
     confirmPasswordChangedFlag: false,
   };
 
-  constructor() {
+
+  constructor(private authService: AuthService) {
     super();
   }
 
   ngOnInit(): void {}
 
-  // [required]="form.newPassword.length > 0"
-
   async submit() {
-    const { newPassword, confirmPassword } = this.form;
+    this.isSubmitting = true;
+    const { newPassword, confirmPassword, currentPassword } = this.form;
+    if (!newPassword || !confirmPassword || !currentPassword) {
+      //this.onError('Les champs sont obligatoires!');
+      this.onError('')
+      return;
+    }
 
-    if (!newPassword || !confirmPassword) return;
+    if (newPassword !== confirmPassword) {
+      // this.onError('Les mots de passe ne correspondent pas!');
+      this.onError('')
+      return;
+    }
 
-    this.isLoading = true;
+
+    this.authService
+      .updatePassword({ newPassword, currentPassword: currentPassword })
+      .subscribe(
+        (res) => {
+          console.log('res', res);
+          this.onSuccess();
+          // reset the form
+          console.log('f', 'dirty', this.f.dirty, 'pristine',  this.f.pristine)
+          this.f?.resetForm() 
+          
+          /**TODO: fix reset fields   **/
+          this.form.newPassword = ''
+         
+        },
+        (error) => {
+          this.onError(error);
+        }
+      ) 
+
+
+  
   }
 
   passwordChanged() {

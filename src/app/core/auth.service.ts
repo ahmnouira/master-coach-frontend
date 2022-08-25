@@ -51,7 +51,7 @@ export class AuthService extends BaseService {
   }
 
   updatePassword(data: IUpdatePassword): Observable<any> {
-    return this.post('update_password', data)
+    return this.post('/update_password', data);
   }
 
   set setUserRole(role: UserRole) {

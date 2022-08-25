@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ButtonComponent implements OnInit {
   @Input() title = 'Enregistrer';
   @Input() isLoading: boolean = false;
-  @Input() disabled: boolean
+  @Input() disabled: boolean;
 
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
@@ -16,9 +16,7 @@ export class ButtonComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   handleClick(event: any) {
     this.onClick.emit(event);

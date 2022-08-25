@@ -49,8 +49,10 @@ export class FormHelper {
   }
 
   onError(error: any) {
-    console.error('error:', error);
-    this.error = error;
+    if(error) {
+      console.error('onError:', error);
+      this.error = error;
+    }
     this.isSubmitting = false;
     this.success = false;
     this.isLoading = false;
@@ -62,6 +64,7 @@ export class FormHelper {
     this.error = '';
     setTimeout(() => {
       this.success = false;
+   
     }, 3000);
   }
 }

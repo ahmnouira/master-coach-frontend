@@ -182,14 +182,15 @@
           </div>
         </div>
 
-        <div class="row" *ngIf="success">
+        <div class="row" *ngIf="success || error">
           <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
           <div class="col-lg-9 col-12 pl-40">
-            <div class="alert alert-info" role="alert">Profile Updated</div>
+            <app-form-error [error]="error" *ngIf="error"></app-form-error>
+            <div class="alert alert-info" role="alert" *ngIf="success">
+              Profile Updated
+            </div>
           </div>
         </div>
-
-        <app-form-error [error]="error"></app-form-error>
 
         <div class="row">
           <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
