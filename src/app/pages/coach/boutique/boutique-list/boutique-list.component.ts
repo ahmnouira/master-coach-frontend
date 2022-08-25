@@ -14,6 +14,8 @@ export class BoutiqueListComponent implements OnInit {
   isLoading  = true
   error: string = ''
   formations = []
+  found: boolean
+  
 
   constructor(private productService: ProductService) {
    
@@ -32,8 +34,10 @@ export class BoutiqueListComponent implements OnInit {
         this.error = res.error
         return
       }
+      console.log('data', res.data)
       this.formations = res.data
-      this.isLoading = true
+      this.found = Boolean(res.data.length)
+      this.isLoading = false
     })
   }
 

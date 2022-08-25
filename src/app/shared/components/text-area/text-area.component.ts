@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-text-area',
@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TextAreaComponent implements OnInit {
 
   @Input() model: any;
+  @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
+
   @Input() label: string = '';
   @Input() rows: string = '5'
   @Input() pattern?: string;
@@ -23,6 +25,10 @@ export class TextAreaComponent implements OnInit {
     this.name = this.label ? this.label.toLowerCase() : '';
     this.id = this.id ?? this.name ?? '';
     this.placeholder = this.placeholder ?? this.label;
+  }
+
+  handleChange(event: any) {
+    this.modelChange.emit(event.target.value)
   }
 
 }

@@ -37,12 +37,12 @@
               placeholder="Ex : lorem@ipsum.com"
               [(ngModel)]="form.email"
               required
-              #email="ngModel"
+              #field="ngModel"
             />
             <div
               class="alert alert-danger"
               role="alert"
-              *ngIf="email.errors && f.submitted"
+              *ngIf="field.errors && f.submitted"
             >
               L'email' est obligatoire!
             </div>

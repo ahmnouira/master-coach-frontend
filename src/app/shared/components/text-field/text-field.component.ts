@@ -6,7 +6,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./text-field.component.scss'],
 })
 export class TextFieldComponent implements OnInit {
+
+  /** Two way data binding **/
   @Input() model: any;
+  @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
+
   @Input() label: string = '';
   @Input() showLabel = true;
   @Input() type = 'text';
@@ -18,10 +22,6 @@ export class TextFieldComponent implements OnInit {
   @Input() required: boolean = true;
 
   
-
-  @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
-
-
   constructor() {}
 
   ngOnInit(): void {
@@ -31,10 +31,13 @@ export class TextFieldComponent implements OnInit {
   }
 
   handleChange(event: any) {
-    console.log('event', event)
-    this.onChange.emit(event)
-  }
+    console.log('event', event.target.value)
+    if(this.type.toLowerCase()  === "number") {
+      this.modelChange.emit(parseInt(event.target.value))
+    } 
 
+    this.modelChange.emit(event.target.value)
+  }
 
 }
 
