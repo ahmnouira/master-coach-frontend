@@ -4,6 +4,7 @@ import { TokenStorageService } from '../../services/token-storage.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { Animations } from 'src/app/shared/animations';
 import { UserRole } from 'src/app/models/role.enum';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { UserRole } from 'src/app/models/role.enum';
   animations: Animations,
 })
 export class LoginComponent implements OnInit {
-  form: any = {
+  form = {
     email: null,
     password: null,
   };
@@ -21,6 +22,9 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   isVerified = true;
   successMessage = '';
+
+  f: NgForm
+
 
   @ViewChild('main') elem: ElementRef;
   constructor(
@@ -32,6 +36,11 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
     this.routeService;
+  }
+
+
+  onSubmit(event: NgForm) {
+    this.f =  event
   }
 
   handleChange(e: any) {
