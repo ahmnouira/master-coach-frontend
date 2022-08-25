@@ -18,12 +18,10 @@ export class ParametresComponent implements OnInit {
   userCategory: any = [];
   userCompetences: any = [];
   userAccred: any = [];
-  settings = {};
   newPassword = '';
   confirmPassword = '';
   passwordChangedFlag = false;
   confirmPasswordChangedFlag = false;
-
   isLoading = false;
 
   constructor(
@@ -37,22 +35,6 @@ export class ParametresComponent implements OnInit {
   ngOnInit(): void {
     const user = this.tokenStorageService.getUser();
     this.getUserFromDb(user._id);
-
-    this.settings = {
-      text: 'Sélectionner...',
-      position: 'bottom',
-      autoPosition: false,
-      searchPlaceholderText: 'Rechercher...',
-      filterSelectAllText: 'Sélectionner tous les résultats filtrés',
-      filterUnSelectAllText: 'Désélectionner tous les résultats filtrés',
-      selectAllText: 'Sélectionner tout',
-      unSelectAllText: 'Désélectionner tout',
-      noDataLabel: 'Aucune donnée disponible',
-      enableSearchFilter: true,
-      labelKey: 'name',
-      primaryKey: '_id',
-      classes: 'form-control element-spec multiselect',
-    };
     this.getCompetences();
     this.getCategories();
     this.getAccredi();
@@ -157,18 +139,7 @@ export class ParametresComponent implements OnInit {
   }
 
   importKbis(event: any) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log(file);
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        console.log(reader.result);
-        this.form.kbis = reader.result as string;
-      };
-    }
+    this.form.kbis = event; 
   }
 
   private getUserFromDb(id: any) {

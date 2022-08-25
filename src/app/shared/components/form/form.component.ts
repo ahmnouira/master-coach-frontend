@@ -5,22 +5,17 @@ import { Animations } from '../../animations';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'], 
-  animations: Animations
+  styleUrls: ['./form.component.scss'],
+  animations: Animations,
 })
 export class FormComponent implements OnInit {
+  @Output() onSubmit = new EventEmitter<NgForm>();
 
-  @Output() onSubmit  = new EventEmitter<NgForm>()
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 
   handleSubmit(event: NgForm) {
-    this.onSubmit.emit(event)
+    this.onSubmit.emit(event);
   }
-
-
 }

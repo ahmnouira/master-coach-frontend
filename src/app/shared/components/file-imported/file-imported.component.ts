@@ -16,9 +16,7 @@ export class FileImportedComponent implements OnInit {
 
   constructor(public sanitizer: DomSanitizer) {}
 
-  ngOnInit(): void {
-  
-  }
+  ngOnInit(): void {}
 
   handleDelete() {
     this.onDelete.emit();
