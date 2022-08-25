@@ -102,25 +102,39 @@
 
             <h2 class="title">Témoignage</h2>
 
-            <app-text-field
-              [(model)]="form.testimonies[0]"
-              [label]="'Testimonie1'"
-              [placeholder]="'Text...'"
+            <div
+              *ngFor="
+                let testimony of form.testimonies;
+                index as i;
+                trackBy: track
+              "
             >
-            </app-text-field>
-
-            <div class="d-flex justify-content-end" style="margin-top: 16px">
-              <div class="add-container">
-                <img src="../../../../assets/icon/add.svg" alt="add-icon" />
-                <p class="add-container-text">Ajouter un autre témoignage</p>
-              </div>
+              <app-text-field
+                [id]="testimony.id"
+                [(model)]="testimony.text"
+                label="Testimonie{{ i + 1 }}"
+                [placeholder]="'Text...'"
+              >
+              </app-text-field>
             </div>
+
+            <app-add-field
+              [title]="'Ajouter un autre témoignage
+            '"
+              (onAdd)="handleAdd()"
+              (onDelete)="handleDelete()"
+              [hasItems]="form.testimonies.length"
+            ></app-add-field>
 
             <app-divider></app-divider>
 
             <app-form-error [error]="error"></app-form-error>
 
-            <app-button (onClick)="submit()" [isLoading]="isLoading">
+            <div class="alert alert-info" role="alert" *ngIf="success">
+              Service ajouté
+            </div>
+
+            <app-button (onClick)="submit()" [isLoading]="isSubmitting">
             </app-button>
           </form>
         </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IService } from 'src/app/interfaces/service.interface';
 import { ServicesService } from 'src/app/services/services-service/services.service';
 import { Animations } from 'src/app/shared/animations';
@@ -9,7 +10,7 @@ import { Animations } from 'src/app/shared/animations';
   styleUrls: ['./service-add.component.scss'],
   animations: Animations,
 })
-export class ServiceAddComponent implements OnInit {
+export class ServiceAddComponent extends FormHelper implements OnInit {
   form: IService = {
     description: '',
     title: '',
@@ -24,36 +25,27 @@ export class ServiceAddComponent implements OnInit {
     image: undefined,
   };
 
-  error: string = '';
-  isLoading = false;
-
-  constructor(private servicesService: ServicesService) {}
+  constructor(private servicesService: ServicesService) {
+    super();
+  }
 
   ngOnInit(): void {}
 
   addPhoto(data: File) {
-    this.form.image = data as File;
+    this.form.image = data;
   }
 
   async submit() {
-    this.isLoading = true;
+    this.isSubmitting = true;
 
     const { title, description, duration } = this.form;
 
     if (!title || !description || !duration) {
-      this.isLoading = false;
+      this.onError('');
       return;
     }
 
-    let formData = new FormData();
-    for (const key in this.form) {
-      if (key === 'image') {
-        formData.append('image', this.form[key] as File);
-        formData.append('files', this.form[key] as File);
-      } else {
-        formData.append(key, JSON.stringify(this.form[key]));
-      }
-    }
+    let formData = this.getFormData(this.form);
 
     this.servicesService.addService(formData).subscribe(
       (res) => {
@@ -62,16 +54,29 @@ export class ServiceAddComponent implements OnInit {
           this.onError(res.error);
           return;
         }
-        this.error = '';
-        this.isLoading = false;
+        this.onSuccess();
       },
       (err) => this.onError(err)
     );
   }
 
-  onError(error: any) {
-    console.log(error);
-    this.isLoading = false;
-    this.error = error;
+  handleDelete() {
+    if (this.form.testimonies.length) {
+      this.form.testimonies.splice(this.form.testimonies.length - 1, 1);
+    }
+  }
+
+  handleAdd() {
+    this.form.testimonies = [
+      ...this.form.testimonies,
+      {
+        id: new Date().getTime(),
+        text: '',
+      },
+    ];
+  }
+
+  track(item: any, index: number) {
+    return index;
   }
 }
