@@ -273,3 +273,10 @@ input[type="checkbox"] {
     }
   }
 }
+
+
+/** Added **/
+/* remove the stripe button with css better */
+button.stripe-button-el  {
+  display: none;
+}
