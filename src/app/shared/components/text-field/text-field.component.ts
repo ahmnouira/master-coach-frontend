@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { getPackedSettings } from 'http2';
 
 @Component({
   selector: 'app-text-field',

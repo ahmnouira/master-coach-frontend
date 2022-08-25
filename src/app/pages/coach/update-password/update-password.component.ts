@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 
 @Component({
-  selector: 'app-rest-password',
-  templateUrl: './rest-password.component.html',
-  styleUrls: ['./rest-password.component.scss'],
+  selector: 'app-update-password',
+  templateUrl: './update-password.component.html',
+  styleUrls: ['./update-password.component.scss'],
 })
-export class RestPasswordComponent extends FormHelper implements OnInit {
+export class UpdatePasswordComponent extends FormHelper implements OnInit {
   form = {
     newPassword: '',
     confirmPassword: '',

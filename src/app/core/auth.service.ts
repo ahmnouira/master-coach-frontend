@@ -7,6 +7,7 @@ import { IConfirmEmail } from './interfaces/confirm-email';
 import { IForgotPassword } from './interfaces/forgot-password';
 import { IResendVerification } from './interfaces/resend-verification';
 import { IResetPassword } from './interfaces/reset-password';
+import { IUpdatePassword } from './interfaces/update-password';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +48,10 @@ export class AuthService extends BaseService {
 
   updateProfile(data: any): Observable<any> {
     return this.post('/update_profile', data);
+  }
+
+  updatePassword(data: IUpdatePassword): Observable<any> {
+    return this.post('update_password', data)
   }
 
   set setUserRole(role: UserRole) {

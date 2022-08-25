@@ -15,6 +15,7 @@ import { FormHelper } from 'src/app/helpers/FormHelper';
 export class ParametresComponent extends FormHelper implements OnInit {
   form: Partial<IUser> = {};
 
+
   categories: any = [];
   skills: any = [];
   certifications: any = [];
@@ -28,6 +29,7 @@ export class ParametresComponent extends FormHelper implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.getUser();
     this.getSelectField('skills');
     this.getSelectField('categories');
@@ -36,6 +38,9 @@ export class ParametresComponent extends FormHelper implements OnInit {
   }
 
   submit() {
+
+  
+
     this.isSubmitting = true;
     const { prenom, nom, bio, tel, email, photo } = this.form;
     // +33122469999

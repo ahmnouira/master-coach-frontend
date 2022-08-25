@@ -12,11 +12,7 @@
     </div>
 
     <ng-template #elseBlock>
-      <app-form
-        (onSubmit)="handleSubmit($event)"
-        [name]="form"
-        [animated]="false"
-      >
+      <form class="login-form" name="form" #f="ngForm" novalidate>
         <div class="row">
           <div
             class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
@@ -198,7 +194,11 @@
         <div class="row">
           <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
           <div class="col-lg-9 col-12 pl-40">
-            <app-button (onClick)="submit()" [isLoading]="isSubmitting">
+            <app-button
+              (onClick)="submit()"
+              [isLoading]="isSubmitting"
+              [disabled]="f.dirty"
+            >
             </app-button>
           </div>
         </div>
@@ -209,9 +209,9 @@
             <app-divider></app-divider>
           </div>
         </div>
-      </app-form>
+      </form>
 
-      <app-rest-password></app-rest-password>
+      <app-update-password></app-update-password>
     </ng-template>
   </div>
 </div>
