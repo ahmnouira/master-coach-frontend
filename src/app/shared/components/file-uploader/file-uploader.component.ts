@@ -68,7 +68,6 @@ export class FileUploaderComponent implements OnInit {
     if (this.model && typeof this.model === 'string') {
       this.isEmpty = false;
       // set the filename
-
       this.filename = FileHelper.getFileName(this.label, this.model);
     } else if (Array.isArray(this.model) && this.model.length) {
       this.isEmpty = false;
@@ -85,10 +84,11 @@ export class FileUploaderComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.isEmpty = false;
-        this.filename =
-          this.label.toLowerCase().trim().replace(/\s/g, '-') +
-          '-' +
-          file.name.trim().replace(/\s/g, '-');
+        this.filename = this.label
+          ? FileHelper.formatName(this.label) +
+            '-' +
+            FileHelper.formatName(file.name)
+          : FileHelper.formatName(file.name);
         // this.onClick.emit(reader.result as string);
       };
       reader.onerror = () => {

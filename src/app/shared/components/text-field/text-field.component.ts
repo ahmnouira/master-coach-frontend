@@ -13,13 +13,16 @@ export class TextFieldComponent implements OnInit {
   @Input() label: string = '';
   @Input() showLabel = true;
   @Input() type = 'text';
-  @Input() pattern?: string;
+  @Input() pattern?: any;
   @Input() name?: string;
   @Input() id?: string;
   @Input() placeholder?: string;
   @Input() patternError?: string;
   @Input() required: boolean = true;
   @Input() form?: any = undefined;
+  @Input() disabled?: boolean = false 
+
+  @Input() min?: number = undefined
 
   @Input() minLength?: number;
 

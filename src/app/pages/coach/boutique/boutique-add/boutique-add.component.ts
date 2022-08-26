@@ -84,19 +84,41 @@ export class BoutiqueAddComponent extends FormHelper implements OnInit {
     }
   }
 
+
+  handleFree(checked) {
+    if(checked) {
+      this.form.price = ''
+    }
+  }
+
+  durationPattern() {
+    if(!this.form.duration) {
+      return false
+    }
+    return !(parseInt(this.form.duration) >= 30)
+  }
+
   async submit() {
     this.isSubmitting = true;
-    const { description, title, price, type, category } = this.form;
+    const { description, title, price, type, category, isFree, duration } = this.form;
 
     if (!title || !description || !description) {
       this.onError('');
       return;
     }
 
+    console.log("price", price, duration)
+
+    // check if not a free 
+    if(!isFree && !price) {
+      this.onError('')
+      return
+    }
+
+
+
     const formData = this.getFormData(this.form);
-
-    console.log(this.form, category);
-
+    
     this.productService.addProduct(formData).subscribe(
       (res) => {
         console.log('res:', res);
@@ -110,6 +132,7 @@ export class BoutiqueAddComponent extends FormHelper implements OnInit {
       },
       (err) => this.onError(err)
     );
+  
   }
 
   importImage(data: any) {

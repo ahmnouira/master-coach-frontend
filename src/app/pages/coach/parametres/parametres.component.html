@@ -23,7 +23,7 @@
             <div
               class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
             >
-              <span class="row-title">Informations personnelles</span>
+              <span class="row-title">Mes Informations personnelles</span>
             </div>
             <div class="col-12 col-lg-9 pl-40">
               <div class="row">
@@ -133,6 +133,17 @@
                     (onDelete)="handleDeleteFile('kbis')"
                   ></app-file-uploader>
                 </div>
+
+                <div class="col-md-6">
+                  <app-file-uploader
+                    [model]="form.rib"
+                    type="pdf"
+                    [label]="'RIB'"
+                    [showLabel]="true"
+                    (onClick)="handleImportFile($event, 'rib')"
+                    (onDelete)="handleDeleteFile('rib')"
+                  ></app-file-uploader>
+                </div>
               </div>
 
               <div class="row d-flex gx-4">
@@ -151,7 +162,7 @@
             <div
               class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0 center-verticaly"
             >
-              <span class="row-title">Spécialisation</span>
+              <span class="row-title">Mon expterise</span>
             </div>
             <div class="col-lg-9 col-12 pl-40">
               <div class="row mb-17 gx-4">

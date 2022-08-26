@@ -19,8 +19,6 @@ export class FileHelper {
   }
 
   static getFileName(label: string, url: string): string {
-    console.log('LABEL', label, url);
-
     if (!label && !url) {
       return '';
     }
