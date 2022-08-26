@@ -1,12 +1,8 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:5000',
+  production: true, // to remove console logs
+  apiUrl: 'https://mastercoach-api.innovant.studio',
   /* the front app url */
-  APP_URL: 'http://localhost:4200',
+  APP_URL: "https://mastercoach.innovant.studio",
 
   TWILIO_ACCOUNT_SID: 'ACf2cc84e73f311b5bc821ee8582a1e6d8',
   TWILIO_AUTH_TOKEN: '69815c0adf7f62f7b1cfdc6719ad673e',
@@ -26,12 +22,3 @@ export const environment = {
   // the app name
   APP_NAME: 'MasterCoach',
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
