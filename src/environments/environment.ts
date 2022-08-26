@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // apiUrl: 'http://localhost:5000',
-  apiUrl: 'https://api-master-coach.comyweb.com',
+  apiUrl: 'https://mastercoach-api.innovant.studio',
   /* the front app url */
   // APP_URL: 'http://localhost:4200',
   APP_URL: "https://mastercoach.innovant.studio",
