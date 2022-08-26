@@ -4,7 +4,7 @@
   "author": "Innovant",
   "license": "ISC",
   "scripts": {
-    "serve": "ng serve -o",
+    "serve": "ng serve -o --proxy-config proxy.conf.json",
     "build": "ng build --verbose --progress",
     "start": "http-server dist --cors",
     "start:prod": "ng serve --host 0.0.0.0",

@@ -10,7 +10,12 @@ import {
   AfterViewInit,
   SimpleChanges,
 } from '@angular/core';
-import { FREE_ANNUAL_PLAN_ID, FREE_MONTHLY_PLAN_ID, PLANS_ANNUAL, PLANS_MONTHLY } from 'src/app/constants/plans';
+import {
+  FREE_ANNUAL_PLAN_ID,
+  FREE_MONTHLY_PLAN_ID,
+  PLANS_ANNUAL,
+  PLANS_MONTHLY,
+} from 'src/app/constants/plans';
 import { getPrice } from 'src/app/helpers/getPrice';
 import { Plan } from 'src/app/models/plan.model';
 import { environment } from 'src/environments/environment';
@@ -31,8 +36,7 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
 
   redirectUrl = environment.APP_URL + '/pages/coach/plans/paid';
 
-
-  isFreePlan: boolean
+  isFreePlan: boolean;
 
   //http://localhost:5000/pages/coach/plan/paid?stripeToken=tok_1LYS0uA1THLgkj123FcjOzzx&stripeTokenType=card&stripeEmail=ahmnouira%40gmail.com
 
@@ -45,15 +49,15 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.isFreePlan = this.plan.id === FREE_MONTHLY_PLAN_ID || this.plan.id === FREE_ANNUAL_PLAN_ID
+    this.isFreePlan =
+      this.plan.id === FREE_MONTHLY_PLAN_ID ||
+      this.plan.id === FREE_ANNUAL_PLAN_ID;
     this.initStripe(this.plan);
   }
 
   initStripe(plan: Plan) {
-
-    // no need to stripe for free plan 
-    if(this.isFreePlan) return
-
+    // no need to stripe for free plan
+    if (this.isFreePlan) return;
 
     const scriptScript = this.document.getElementById(
       `stripe-script-${plan.id}`

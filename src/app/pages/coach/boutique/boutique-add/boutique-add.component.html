@@ -18,7 +18,7 @@
             <h2 class="title">Info</h2>
 
             <!-- Titre -->
-            <app-text-field [label]="'Titre'" [(model)]="form.title">
+            <app-text-field [label]="'Titre'" [(model)]="form.title" [form]="f">
             </app-text-field>
 
             <!-- Description -->
@@ -26,6 +26,7 @@
               [label]="'Description'"
               [(model)]="form.description"
               [placeholder]="'Texte…'"
+              [form]="f"
             >
             </app-text-area>
 
@@ -35,13 +36,28 @@
               [(model)]="form.duration"
               [placeholder]="'Min'"
               [type]="'number'"
+              [form]="f"
             >
             </app-text-field>
+
+            <app-select
+              [label]="'Catégory'"
+              [data]="categories"
+              [text]="'Coaching de carriére'"
+              [(model)]="form.category"
+            >
+            </app-select>
+
+            <app-divider></app-divider>
 
             <div class="row align-items-center mt-4">
               <div class="col-4">
                 <app-titled-field content="type">
-                  <app-radio [label]="'Documents'" [(model)]="form.isDocument">
+                  <app-radio
+                    [label]="'Documents'"
+                    [(model)]="form.type"
+                    [value]="'document'"
+                  >
                   </app-radio>
                 </app-titled-field>
               </div>
@@ -49,12 +65,11 @@
               <div class="col">
                 <app-file-uploader
                   [model]="form.files"
-                  [title]="getTitle()"
-                  type="pdf"
-                  [multiple]="true"
+                  [title]="getMultiFileFieldData().title"
+                  type="getMultiFileFieldData().type"
                   [style]="'secondary'"
                   (onClick)="addFiles($event)"
-                  (onDelete)="form.files = []"
+                  (onDelete)="form.files = ''"
                 ></app-file-uploader>
               </div>
             </div>
@@ -62,7 +77,11 @@
             <div class="row align-items-center">
               <div class="col-4">
                 <app-titled-field [content]="'type'" [titleHidden]="true">
-                  <app-radio [label]="'Vidéos'" [(model)]="form.isVideo">
+                  <app-radio
+                    [label]="'Vidéos'"
+                    [(model)]="form.type"
+                    [value]="'video'"
+                  >
                   </app-radio>
                 </app-titled-field>
               </div>
@@ -71,7 +90,11 @@
             <div class="row align-items-center">
               <div class="col-4">
                 <app-titled-field [content]="'type'" [titleHidden]="true">
-                  <app-radio [label]="'Podcasts'" [(model)]="form.isPodcast">
+                  <app-radio
+                    [label]="'Podcasts'"
+                    [(model)]="form.type"
+                    [value]="'podcast'"
+                  >
                   </app-radio>
                 </app-titled-field>
               </div>
@@ -114,20 +137,10 @@
               </div>
             </div>
 
-            <div class="form-group mt-4">
-              <app-select
-                [label]="'Catégory'"
-                [data]="categories"
-                [text]="'Coaching de carriére'"
-                [(model)]="form.category"
-              >
-              </app-select>
-            </div>
-
             <app-divider></app-divider>
             <app-form-error [error]="error"></app-form-error>
 
-            <app-button (onClick)="submit()" [isLoading]="isLoading">
+            <app-button (onClick)="submit()" [isLoading]="isSubmitting">
             </app-button>
           </form>
         </div>

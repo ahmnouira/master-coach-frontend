@@ -48,16 +48,17 @@
               >
               </app-checkbox>
             </app-titled-field>
-
-            <app-file-uploader
-              [model]="form.image"
-              type="photo"
-              [label]="'image'"
-              [style]="'secondary'"
-              [title]="'Ajouter une photo'"
-              (onClick)="addPhoto($event)"
-              (onDelete)="form.image = undefined"
-            ></app-file-uploader>
+            <div class="mt-2 mb-4">
+              <app-file-uploader
+                [model]="form.image"
+                type="photo"
+                [label]="'image'"
+                [style]="'secondary'"
+                [title]="'Ajouter une photo'"
+                (onClick)="addPhoto($event)"
+                (onDelete)="form.image = undefined"
+              ></app-file-uploader>
+            </div>
 
             <!-- Divider -->
             <app-divider></app-divider>

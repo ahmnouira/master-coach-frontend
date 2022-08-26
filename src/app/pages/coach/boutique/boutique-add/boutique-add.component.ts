@@ -1,7 +1,11 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { title } from 'process';
+import { AuthService } from 'src/app/core/auth.service';
+import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { ProductType } from 'src/app/models/product/product-type.enum';
 import { ProductService } from 'src/app/services/product-service/product.service';
+import { RouteService } from 'src/app/services/route-service/route.service';
 import { Animations } from 'src/app/shared/animations';
 
 type Form = IProduct & {
@@ -16,21 +20,18 @@ type Form = IProduct & {
   styleUrls: ['./boutique-add.component.scss'],
   animations: Animations,
 })
-export class BoutiqueAddComponent implements OnInit {
-  form: Form = {
+export class BoutiqueAddComponent extends FormHelper implements OnInit {
+  form: IProduct = {
     description: '',
     price: '',
     title: '',
-    type: null,
+    type: ProductType.DOCUMENT,
     isFree: true,
-    category: '',
+    category: [],
     displayedInShop: false,
     image: '',
     files: [],
     duration: '',
-    isDocument: true,
-    isVideo: false,
-    isPodcast: false,
   };
 
   typeImportFiles = {
@@ -38,62 +39,84 @@ export class BoutiqueAddComponent implements OnInit {
     title: 'Ajouter des documents',
   };
 
-  error: string = '';
-  isLoading = false;
   categories: string[] = [];
 
-  constructor(private productService: ProductService) {}
-
-  ngOnInit(): void {
-    this.categories = [...Array(10).keys()].map((el) => `category${el + 1}`);
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService,
+    private routeService: RouteService
+  ) {
+    super();
   }
 
-  getTitle() {
-    if (this.form.isDocument) return 'xxxx';
-    if (this.form.isPodcast) return 'ttttttt';
-    return '';
+  ngOnInit(): void {
+    this.authService.currentUser$.subscribe((user) => {
+      this.categories = this.getArray(user.category);
+    });
+  }
+
+  getMultiFileFieldData() {
+    switch (this.form.type) {
+      case ProductType.DOCUMENT:
+        return {
+          title: 'Ajouter des documents',
+          type: 'pdf',
+        };
+      case ProductType.VIDEO: {
+        return {
+          title: 'Ajouter des vidéos',
+          type: 'video',
+        };
+      }
+
+      case ProductType.PODCAST: {
+        return {
+          title: 'Ajouter des podcasts',
+          type: 'audio',
+        };
+      }
+      // by default is document
+      default:
+        return {
+          title: 'Ajouter des documents',
+          type: 'pdf',
+        };
+    }
   }
 
   async submit() {
-    const { description, title, price, type } = this.form;
+    this.isSubmitting = true;
+    const { description, title, price, type, category } = this.form;
 
-    if (this.form.isVideo) this.form.type = ProductType.VIDEO;
-    if (this.form.isDocument) this.form.type = ProductType.DOCUMENT;
-    if (this.form.isPodcast) this.form.type = ProductType.PODCAST;
+    if (!title || !description || !description) {
+      this.onError('');
+      return;
+    }
 
-    console.log('form', this.form);
+    const formData = this.getFormData(this.form);
 
-    // if (!description || !title) return;
+    console.log(this.form, category);
 
-    this.isLoading = true;
-
-    this.productService.addProduct(this.form).subscribe(
+    this.productService.addProduct(formData).subscribe(
       (res) => {
         console.log('res:', res);
         if (!res.success) {
           this.onError(res.error);
           return;
         }
-
-        this.error = '';
-        this.isLoading = false;
+        this.onSuccess(() => {
+          this.routeService.navigate(['/pages/coach/boutique']);
+        });
       },
       (err) => this.onError(err)
     );
   }
 
-  onError(error: any) {
-    console.log(error);
-    this.isLoading = false;
-    this.error = error;
-  }
-
   importImage(data: any) {
-    console.log('data', data);
     this.form.image = data;
   }
 
-  addFiles(event: any) {
-    console.log('AddFiles', event);
+  addFiles(data: any) {
+    this.form.files = data;
   }
 }

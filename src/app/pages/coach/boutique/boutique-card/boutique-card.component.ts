@@ -7,7 +7,7 @@ import { Product } from 'src/app/models/product/product.model';
   styleUrls: ['./boutique-card.component.scss'],
 })
 export class BoutiqueCardComponent implements OnInit {
-  @Input() formation: Product;
+  @Input() product: Product;
 
   constructor() {}
 

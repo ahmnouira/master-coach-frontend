@@ -4,7 +4,12 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5000',
+  // apiUrl: 'http://localhost:5000',
+  apiUrl: 'https://mastercoach-api.innovant.studio',
+  /* the front app url */
+  // APP_URL: 'http://localhost:4200',
+  APP_URL: "https://mastercoach.innovant.studio",
+
   TWILIO_ACCOUNT_SID: 'ACf2cc84e73f311b5bc821ee8582a1e6d8',
   TWILIO_AUTH_TOKEN: '69815c0adf7f62f7b1cfdc6719ad673e',
   TWILIO_API_KEY: 'SK24f4735fff4acda934acc1d687f7ccb9',
@@ -23,8 +28,7 @@ export const environment = {
   // the app name
   APP_NAME: 'MasterCoach',
 
-  // the front app url
-  APP_URL: 'http://localhost:4200',
+
 };
 
 /*

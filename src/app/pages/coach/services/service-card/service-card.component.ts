@@ -10,19 +10,21 @@ import { Service } from 'src/app/models/service/service.model';
 export class ServiceCardComponent implements OnInit {
   @Input() service: Service;
 
-  backgroundImage : string
-  
+  backgroundImage: string;
+
   constructor() {}
 
   ngOnInit(): void {
-    this.getBackgroundImage()
+    this.getBackgroundImage();
 
-    console.log(this.service.testimonies)
+    console.log(this.service.testimonies);
   }
 
   getBackgroundImage() {
-    if( typeof this.service.image  =="string") {
-      this.backgroundImage = `linear-gradient(180deg, #DDF2FA00 0%, #DDF2FA 100%), url(${FileHelper.getUrl(this.service.image)})`
-      }
+    if (typeof this.service.image == 'string') {
+      this.backgroundImage = `linear-gradient(180deg, #DDF2FA00 0%, #DDF2FA 100%), url(${FileHelper.getUrl(
+        this.service.image
+      )})`;
+    }
   }
 }
