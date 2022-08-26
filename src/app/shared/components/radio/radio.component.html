@@ -4,7 +4,8 @@
     type="radio"
     name="{{ name }}"
     id="{{ id }}"
-    [checked]="model"
+    [checked]="checked"
+    value="{{ value }}"
     (input)="handleChange($event)"
   />
   <label class="form-check-label" for="{{ id }}">{{ label }}</label>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IService } from 'src/app/interfaces/service.interface';
+import { RouteService } from 'src/app/services/route-service/route.service';
 import { ServicesService } from 'src/app/services/services-service/services.service';
 import { Animations } from 'src/app/shared/animations';
 
@@ -25,7 +26,10 @@ export class ServiceAddComponent extends FormHelper implements OnInit {
     image: undefined,
   };
 
-  constructor(private servicesService: ServicesService) {
+  constructor(
+    private servicesService: ServicesService,
+    private routeService: RouteService
+  ) {
     super();
   }
 
@@ -54,7 +58,9 @@ export class ServiceAddComponent extends FormHelper implements OnInit {
           this.onError(res.error);
           return;
         }
-        this.onSuccess();
+        this.onSuccess(() => {
+          this.routeService.navigate(['/pages/coach/services']);
+        });
       },
       (err) => this.onError(err)
     );

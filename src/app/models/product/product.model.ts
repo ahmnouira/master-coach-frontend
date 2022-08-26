@@ -7,7 +7,7 @@ export class Product extends Entity implements IProduct {
   description: string;
   duration?: string;
   type: ProductType;
-  category?: string;
+  category?: string[];
   price: string;
   isFree?: boolean;
   displayedInShop?: boolean;

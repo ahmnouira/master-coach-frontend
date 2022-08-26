@@ -1,10 +1,8 @@
 import { PlanType } from '../models/plan.enum';
 import { Plan } from '../models/plan.model';
 
-
-export const FREE_MONTHLY_PLAN_ID = 'm-1'
-export const FREE_ANNUAL_PLAN_ID = 'a-1'
-
+export const FREE_MONTHLY_PLAN_ID = 'm-1';
+export const FREE_ANNUAL_PLAN_ID = 'a-1';
 
 export const PLANS_MONTHLY: Plan[] = [
   {

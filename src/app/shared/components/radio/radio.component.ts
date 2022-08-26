@@ -9,14 +9,14 @@ export class RadioComponent implements OnInit {
   @Input() model: any;
 
   @Input() name: string = 'radios';
-
+  @Input() value: string;
   @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
 
   @Input() label: string;
   @Input() title: string;
   @Input() id?: string;
 
-  @Input() checked?: boolean;
+  checked?: boolean;
 
   constructor() {}
 
@@ -24,13 +24,12 @@ export class RadioComponent implements OnInit {
     if (this.label && !this.id) {
       this.id = this.label.toLowerCase();
     }
+    this.checked = this.model == this.value;
 
-    this.checked = this.model;
-    console.log(this.label, 'name:', this.name, 'id:', this.id, this.model);
+    console.log('modal', this.model, this.value, this.checked);
   }
 
   handleChange(event: any) {
-    console.log('checked', this.id, event.target.checked);
-    this.modelChange.emit(event.target.checked);
+    this.modelChange.emit(event.target.value);
   }
 }

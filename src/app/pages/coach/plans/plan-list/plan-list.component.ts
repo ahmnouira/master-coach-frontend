@@ -15,7 +15,7 @@ export class PlanListComponent implements OnInit {
   selectedPlan: Plan;
 
   subscriptionType: string;
-  subscriptionPeriod:  "yearly" | "monthly"
+  subscriptionPeriod: 'yearly' | 'monthly';
 
   expires: string | number;
   userEmail: string;
@@ -31,15 +31,14 @@ export class PlanListComponent implements OnInit {
     this.authService.currentUser$.subscribe((user) => {
       if (user) {
         this.userEmail = user.email;
-        this.subscriptionType = user.subscriptionType ?? 'free'
-        this.subscriptionPeriod = user.subscriptionPeriod
+        this.subscriptionType = user.subscriptionType ?? 'free';
+        this.subscriptionPeriod = user.subscriptionPeriod;
         if (user.subscriptionEnd) {
           const difference =
-            new Date(user.subscriptionEnd).getTime() -
-            new Date().getTime();
-          if(difference < 0) {
-            this.expires = `Plan is expired`
-            return
+            new Date(user.subscriptionEnd).getTime() - new Date().getTime();
+          if (difference < 0) {
+            this.expires = `Plan is expired`;
+            return;
           }
           const days = Math.ceil(difference / (1000 * 3600 * 24));
           this.expires = days > 1 ? `${days} jours` : `${days} jour`;

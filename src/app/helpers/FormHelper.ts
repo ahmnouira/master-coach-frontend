@@ -25,6 +25,7 @@ export class FormHelper {
     let formData = new FormData();
     for (const key in form) {
       if (Array.isArray(form[key])) {
+        // multi files remove
         console.log('array', key, form[key]);
         formData.append(key, JSON.stringify(form[key]));
       } else {
@@ -50,12 +51,13 @@ export class FormHelper {
     this.isLoading = false;
   }
 
-  onSuccess() {
+  onSuccess(cb?: Function) {
     this.isSubmitting = false;
     this.success = true;
     this.error = '';
     setTimeout(() => {
       this.success = false;
+      cb();
     }, 3000);
   }
 }

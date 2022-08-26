@@ -5,10 +5,10 @@ export interface IProduct {
   description: string;
   duration?: string;
   type: ProductType | null;
-  category?: string;
+  category?: string[];
   price: string;
   isFree?: boolean;
   displayedInShop?: boolean;
   image?: any;
-  files?: any[];
+  files?: any;
 }
