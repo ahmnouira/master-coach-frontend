@@ -27,7 +27,7 @@ export class SubHeaderComponent implements OnInit {
     private tokenStorageService: TokenStorageService,
     private location: Location,
     private notifactionService: NotificationService,
-    private authService: AuthService, 
+    private authService: AuthService,
     private router: Router
   ) {
     moment.locale('fr');
@@ -90,10 +90,8 @@ export class SubHeaderComponent implements OnInit {
   }
 
   private getUser() {
-    this.authService.currentUser$.subscribe(
-      (user) => {
-        this.user = user;
-      },
-    );
+    this.authService.currentUser$.subscribe((user) => {
+      this.user = user;
+    });
   }
 }

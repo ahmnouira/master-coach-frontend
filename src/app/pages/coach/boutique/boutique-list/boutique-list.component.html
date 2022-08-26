@@ -1,4 +1,4 @@
-<app-sub-header [title]="'Mes services'"></app-sub-header>
+<app-sub-header [title]="'Ma boutique'"></app-sub-header>
 
 <div class="sub-component-content">
   <div class="row mt-4 gx-4">
@@ -35,11 +35,18 @@
     <app-loader [marginTop]="'64px'"></app-loader>
   </div>
 
-  <div class="boutique" *ngIf="!isLoading">
-    <app-empty-page title="products" *ngIf="!found"></app-empty-page>
+  <app-empty-page title="products" *ngIf="!found"></app-empty-page>
+
+  <div
+    class="boutique"
+    [@animate]="{
+      value: '*',
+      params: { duration: '300ms', y: '100px' }
+    }"
+  >
     <div class="row" *ngIf="found">
-      <div class="col-lg-3" *ngFor="let formation of formations; index as i">
-        <app-boutique-card [product]="formation"></app-boutique-card>
+      <div class="col-lg-3" *ngFor="let product of products; index as i">
+        <app-boutique-card [product]="product"></app-boutique-card>
       </div>
     </div>
   </div>

@@ -1,37 +1,35 @@
-.sub-component-content {
-  margin: 35px 10px 10px 10px;
+.product-card {
+  height: 240px;
+  border-radius: 10px;
+  background-size: cover;
+  background-color: #feefea;
+  background-repeat: no-repeat;
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 10px #0000001a;
+  padding: 16px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
 
-  .files-container {
-    width: fit-content;
-    border-radius: 10px;
-    overflow: hidden;
-    .file-desc {
-      position: relative;
+  &-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-      .overlay {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background: transparent
-          linear-gradient(180deg, #feefea00 0%, #feefea 100%) 0% 0% no-repeat
-          padding-box;
-      }
-      .d-flex {
-        z-index: 9999;
-        padding: 0 20px;
-        justify-content: space-between;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-      }
+    &-price {
+      font: normal normal medium 18px/22px Fredoka;
+      color: #3c4d5d;
     }
-    .file-title {
-      background-color: #feefea;
-      padding: 15px 20px 20px 20px;
-    }
+  }
+
+  &-text {
+    font: normal normal normal 18px/22px Fredoka;
+    color: #3c4d5d;
+    margin-bottom: 4px;
+  }
+
+  &-description {
+    font: normal normal normal 12px/15px Fredoka;
+    color: #3c4d5d;
   }
 }

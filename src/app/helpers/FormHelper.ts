@@ -1,29 +1,14 @@
 import { NgForm } from '@angular/forms';
+import { BasicHelper } from './BasicHelper';
 import { FileHelper } from './FileHelper';
 
-export class FormHelper {
+export class FormHelper extends BasicHelper {
   isSubmitting = false; // button submit
   success = false;
   isLoading = true; // page is loading
   error = '';
 
   f: NgForm;
-
-  getString(str: string) {
-    return str || '';
-  }
-
-  getArray(array: any[]): any[] {
-
-    if(!Array.isArray(array)   || !array.length) {
-      return []
-    } 
-    return JSON.parse(array.toString())
-  }
-
-  getFileUrl(url: any): string {
-    return FileHelper.getUrl(url);
-  }
 
   getFormData(form: any): FormData {
     let formData = new FormData();

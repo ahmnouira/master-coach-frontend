@@ -14,7 +14,7 @@ export class ServicesListComponent implements OnInit {
   isLoading = true;
   found: boolean = true;
   error: string = '';
-  services: Service[]
+  services: Service[];
 
   constructor(private servicesService: ServicesService) {}
 

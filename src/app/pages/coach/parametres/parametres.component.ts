@@ -68,10 +68,10 @@ export class ParametresComponent extends FormHelper implements OnInit {
     // TODO: casting doesn't work property
 
     console.log('c', user);
-    
+
     this.form = {
       bio: this.getString(user.bio),
-      category:  this.getArray(user.category),
+      category: this.getArray(user.category),
       accreditation: this.getArray(user.accreditation),
       cinB: this.getFileUrl(user.cinB),
       cinF: this.getFileUrl(user.cinF),
@@ -84,7 +84,6 @@ export class ParametresComponent extends FormHelper implements OnInit {
       tel: this.getString(user.tel),
       urssaf: this.getString(user.urssaf),
     };
-    
   }
 
   getSelectField(name: 'categories' | 'skills' | 'certifications') {
