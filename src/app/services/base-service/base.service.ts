@@ -15,10 +15,11 @@ export class BaseService {
       // 'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      // 'Cross-Origin-Resource-Policy': 'cross-origins'
+      'Cross-Origin-Resource-Policy': 'cross-site',
+  
 
-      //  'Access-Control-Allow-Headers':
-      //  'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+       'Access-Control-Allow-Headers':
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization',
     }),
   };
 

@@ -14,7 +14,11 @@ export class FormHelper {
   }
 
   getArray(array: any[]): any[] {
-    return JSON.parse(array?.toString()) || [];
+
+    if(!Array.isArray(array)   || !array.length) {
+      return []
+    } 
+    return JSON.parse(array.toString())
   }
 
   getFileUrl(url: any): string {

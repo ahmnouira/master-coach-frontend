@@ -11,12 +11,10 @@ import { Animations } from 'src/app/shared/animations';
 })
 export class ServicesListComponent implements OnInit {
   filterString = '';
-
   isLoading = true;
+  found: boolean = true;
   error: string = '';
-  found: boolean;
-
-  services: Service[] = [];
+  services: Service[]
 
   constructor(private servicesService: ServicesService) {}
 
@@ -34,7 +32,6 @@ export class ServicesListComponent implements OnInit {
           this.error = res.error;
           return;
         }
-        console.log('data', res.data);
         this.services = res.data;
         this.found = Boolean(res.data.length);
         this.isLoading = false;
