@@ -67,11 +67,11 @@ export class ParametresComponent extends FormHelper implements OnInit {
     const user = this.tokenStorageService.getUser() as IUser;
     // TODO: casting doesn't work property
 
-    console.log('cinF', user.cinF);
-
+    console.log('c', user.category);
+    
     this.form = {
       bio: this.getString(user.bio),
-      category: this.getArray(user.category),
+      category:  this.getArray(user.category),
       accreditation: this.getArray(user.accreditation),
       cinB: this.getFileUrl(user.cinB),
       cinF: this.getFileUrl(user.cinF),
@@ -84,6 +84,7 @@ export class ParametresComponent extends FormHelper implements OnInit {
       tel: this.getString(user.tel),
       urssaf: this.getString(user.urssaf),
     };
+    
   }
 
   getSelectField(name: 'categories' | 'skills' | 'certifications') {
