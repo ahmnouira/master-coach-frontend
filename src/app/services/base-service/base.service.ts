@@ -12,12 +12,10 @@ export class BaseService {
   protected httpOptions = {
     // remove these
     headers: new HttpHeaders({
-      // 'Content-Type': 'multipart/form-data',
       'Access-Control-Allow-Origin': '*',
+      'Cross-Origin-Resource-Policy': 'cross-origin',
+      'Access-Control-Allow-Credentials' : 'true',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Cross-Origin-Resource-Policy': 'cross-site',
-  
-
        'Access-Control-Allow-Headers':
       'Origin, X-Requested-With, Content-Type, Accept, Authorization',
     }),

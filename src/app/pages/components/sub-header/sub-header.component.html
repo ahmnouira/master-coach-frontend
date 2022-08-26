@@ -108,12 +108,9 @@
           </diV>
         </ul>
       </div>
-      <img
-        width="40px"
-        height="40px"
-        src="{{ getUserPicture() }}"
-        style="border-radius: 50%; cursor: pointer"
-      />
+
+      <app-avatar [photo]="user.photo" [role]="user.role" [title]="user.email">
+      </app-avatar>
     </div>
   </div>
 </div>

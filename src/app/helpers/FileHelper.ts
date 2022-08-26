@@ -1,8 +1,8 @@
 import { environment } from 'src/environments/environment';
 
 export class FileHelper {
-  static getUrl(url: string): string {
-    if (!url) {
+  static getUrl(url: string | File): string {
+    if (!url || typeof url !== 'string') {
       return '';
     } else {
       if (url.startsWith(environment.apiUrl + '/uploads'))

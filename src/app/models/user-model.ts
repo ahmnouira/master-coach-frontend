@@ -16,7 +16,7 @@ export class User extends Entity implements IUser {
   category?: any[];
   accreditation?: any[];
   competance?: any[];
-
+  role: UserRole
   // added fields
   readonly password: string;
   readonly isBlocked: boolean;
