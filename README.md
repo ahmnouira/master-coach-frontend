@@ -21,7 +21,3 @@ ssh ubuntu@51.91.8.233
 ```
 jzjdDNt97Fy5
 ```
-
-pm2 delete all && pm2 start "ng serve --host 0.0.0.0 --port 4200" --name "ng" --time && pm2 log ng
-
-https://mastercoach.innovant.studio/login
