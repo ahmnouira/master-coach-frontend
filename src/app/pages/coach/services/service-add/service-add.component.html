@@ -1,4 +1,4 @@
-<app-sub-header [title]="'Mes services'"></app-sub-header>
+<app-sub-header [title]="'Ajouter un service'"></app-sub-header>
 
 <div class="sub-component-content">
   <div class="row mt-4 gx-4">
@@ -52,7 +52,8 @@
               <app-file-uploader
                 [model]="form.image"
                 type="photo"
-                [label]="'image'"
+                [label]="'Photo qui illustre votre service'"
+                [showLabel]="true"
                 [style]="'secondary'"
                 [title]="'Ajouter une photo'"
                 (onClick)="addPhoto($event)"
@@ -65,7 +66,7 @@
 
             <h2 class="title">Tarifs</h2>
 
-            <label class="label" for="gratuit">Prix</label>
+            <label class="label" for="gratuit">Prix TTC</label>
 
             <div class="row align-items-center">
               <div class="col-2">
@@ -142,8 +143,6 @@
       </div>
     </div>
 
-    <div class="col">
-      <app-right-image page="add-service"></app-right-image>
-    </div>
+    <div class="col"></div>
   </div>
 </div>

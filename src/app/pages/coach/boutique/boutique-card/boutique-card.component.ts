@@ -14,9 +14,8 @@ export class BoutiqueCardComponent extends BasicHelper implements OnInit {
   @Input() product: Product;
 
   categories: any[];
-
-  price: string
-  icon: string
+  price: string;
+  icon: string;
   backgroundImage: string;
 
   constructor() {
@@ -26,42 +25,36 @@ export class BoutiqueCardComponent extends BasicHelper implements OnInit {
   ngOnInit(): void {
     this.categories = this.getArray(this.product.category);
     this.getBackgroundImage();
-    this.getPrice()
-    this.getIcon()
-
-    console.log(
-      'c',
-      this.categories,
-      JSON.parse(JSON.stringify(this.product.category))
-    );
+    this.getPrice();
+    this.getIcon();
   }
-
 
   getIcon() {
     switch (this.product.type) {
       case ProductType.DOCUMENT:
-        this.icon = PDF_ICON
+        this.icon = PDF_ICON;
         break;
-      case ProductType.PODCAST: 
-        this.icon = PODCAST_ICON
-        break
-      case ProductType.VIDEO: 
-        this.icon = VIDEO_ICON
-        break
+      case ProductType.PODCAST:
+        this.icon = PODCAST_ICON;
+        break;
+      case ProductType.VIDEO:
+        this.icon = VIDEO_ICON;
+        break;
       default:
         break;
     }
   }
 
+ 
   getPrice() {
-    if(this.product.isFree || !this.product.price ) {
-      this.price  = "Free"
-    } else  {
-      this.price = this.product.price + '  €'
-    }    
+
+    console.log('price', this.product)
+    if (this.product.isFree || !this.product.price) {
+      this.price = 'Free';
+    } else {
+      this.price = this.product.price + '  €';
+    }
   }
-
-
 
   getBackgroundImage() {
     if (typeof this.product.image == 'string') {

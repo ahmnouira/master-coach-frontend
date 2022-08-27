@@ -12,6 +12,7 @@ export class User extends Entity implements IUser {
   cinF: string | File;
   cinB: string | File;
   kbis: string | File;
+  rib: string | File;
   urssaf?: string;
   category?: any[];
   accreditation?: any[];

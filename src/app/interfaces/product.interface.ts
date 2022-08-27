@@ -6,7 +6,7 @@ export interface IProduct {
   duration?: string;
   type: ProductType | null;
   category?: string[];
-  price: string;
+  price?: string;
   isFree?: boolean;
   displayedInShop?: boolean;
   image?: any;
