@@ -2,9 +2,9 @@
   id="main"
   class="d-flex"
   [style.background-color]="
-    getUserRole()?.toLowerCase() == 'coach'
+    userRole?.toLowerCase() == 'coach'
       ? '#EFFAFD !important'
-      : getUserRole()?.toLowerCase() == 'admin'
+      : userRole?.toLowerCase() == 'admin'
       ? '#E8FDE8 !important'
       : '#FDEFEA !important'
   "
