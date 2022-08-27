@@ -6,6 +6,8 @@ import { UserService } from 'src/app/services/user-service/user-service.service'
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { FileHelper } from 'src/app/helpers/FileHelper';
+import { AuthService } from 'src/app/core/auth.service';
+import { User } from 'src/app/models/user-model';
 @Component({
   selector: 'app-sub-header',
   templateUrl: './sub-header.component.html',
@@ -19,27 +21,27 @@ export class SubHeaderComponent implements OnInit {
 
   userNotifications: any = {};
   unreadUserNotifications: any = {};
-  userData: any = {};
+  user: User;
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private userService: UserService,
     private location: Location,
     private notifactionService: NotificationService,
+    private authService: AuthService, 
     private router: Router
   ) {
     moment.locale('fr');
   }
 
   ngOnInit(): void {
+    this.getUser();
     moment.locale('fr');
     this.getNotifications();
-    this.getUserFromDb(this.tokenStorageService.getUser()._id);
   }
 
   getUserPicture() {
-    if (this.userData.photo) {
-      return FileHelper.getUrl(this.userData.photo);
+    if (this.user.photo) {
+      return FileHelper.getUrl(this.user.photo);
     } else return '/assets/img/common/utilisateur.png';
   }
 
@@ -87,14 +89,11 @@ export class SubHeaderComponent implements OnInit {
       });
   }
 
-  private getUserFromDb(id: any) {
-    this.userService.getSingleUser(id).subscribe(
+  private getUser() {
+    this.authService.currentUser$.subscribe(
       (user) => {
-        this.userData = user;
+        this.user = user;
       },
-      (error) => {
-        return {};
-      }
     );
   }
 }

@@ -67,7 +67,7 @@ export class ParametresComponent extends FormHelper implements OnInit {
     const user = this.tokenStorageService.getUser() as IUser;
     // TODO: casting doesn't work property
 
-    console.log('c', user.category);
+    console.log('c', user);
     
     this.form = {
       bio: this.getString(user.bio),
