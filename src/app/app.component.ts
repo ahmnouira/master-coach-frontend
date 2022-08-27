@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/auth.service';
+import { UserRole } from './models/role.enum';
+import { User } from './models/user-model';
+import { ConsoleService } from './services/console-service/console.service';
 import { TokenStorageService } from './services/token-storage.service';
 
 @Component({
@@ -9,17 +12,20 @@ import { TokenStorageService } from './services/token-storage.service';
 })
 export class AppComponent {
   title = 'mastercoach-fe';
+  user: User
+  userRole: UserRole
+
   constructor(
     private tokenStorageService: TokenStorageService,
-    private authService: AuthService
+    private authService: AuthService, 
+    private consoleService: ConsoleService
   ) {
-    const user = this.tokenStorageService.getUser();
+    this.consoleService.disableConsoleInProduction()
+    const user = this.tokenStorageService.getUser() as User;
     if (user) {
+      this.user = user
+      this.userRole = user.role
       authService.currentUser$.next(user);
     }
-  }
-
-  getUserRole() {
-    return this.tokenStorageService.getUser()?.role;
   }
 }
