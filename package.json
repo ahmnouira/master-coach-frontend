@@ -5,10 +5,12 @@
   "license": "ISC",
   "scripts": {
     "serve": "ng serve -o --proxy-config proxy.conf.json",
+    "serve:staging": "ng serve --host 0.0.0.0 --port 4200 --configuration staging",
+    "serve:prod": "ng serve --host 0.0.0.0 --port 4200 --configuration production",
+    "start:staging": "pm2 start serve:staging",
+    "deploy:staging": "pm2 delete all && start:staging --name 'ng' --time && pm2 log ng",
     "build": "ng build --verbose --progress",
     "start": "http-server dist --cors",
-    "start:prod": "ng serve --host 0.0.0.0",
-    "start:config:prod": "ng serve --host 0.0.0.0 --port 4200 --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier --write \"**/*.{ts,scss,html,json,md,css}\""

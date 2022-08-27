@@ -64,6 +64,16 @@
               ],
               "outputHashing": "all"
             },
+
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
+            }, 
+
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -81,6 +91,9 @@
             "production": {
               "browserTarget": "mastercoach-fe:build:production"
             },
+            "staging": {
+              "browserTarget": "mastercoach-fe:build:staging"
+            }, 
             "development": {
               "browserTarget": "mastercoach-fe:build:development",
               "proxyConfig": "proxy.conf.json"
