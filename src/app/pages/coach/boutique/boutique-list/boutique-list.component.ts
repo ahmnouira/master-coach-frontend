@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductType } from 'src/app/models/product/product-type.enum';
 import { Product } from 'src/app/models/product/product.model';
 import { ProductService } from 'src/app/services/product-service/product.service';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-boutique-list',
   templateUrl: './boutique-list.component.html',
   styleUrls: ['./boutique-list.component.scss'],
+  animations: Animations,
 })
 export class BoutiqueListComponent implements OnInit {
   filterString = '';
 
   isLoading = true;
   error: string = '';
-  formations = [];
+  products: Product[];
   found: boolean;
 
   constructor(private productService: ProductService) {}
@@ -33,7 +34,7 @@ export class BoutiqueListComponent implements OnInit {
           return;
         }
         console.log('data', res.data);
-        this.formations = res.data;
+        this.products = res.data;
         this.found = Boolean(res.data.length);
         this.isLoading = false;
       });

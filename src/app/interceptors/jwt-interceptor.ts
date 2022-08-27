@@ -27,7 +27,6 @@ export class JwtInterceptor implements HttpInterceptor {
         reportProgress: true,
         setHeaders: {
           Authorization: `Bearer ${token}`,
-          
         },
       });
     }

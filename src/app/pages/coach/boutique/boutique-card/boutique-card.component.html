@@ -1,16 +1,11 @@
-<div class="row sub-component-content">
-  <div class="files-container">
-    <div class="file-desc">
-      <img src="../../../../assets/img/file.png" />
-      <div class="d-flex">
-        <img src="../../../../assets/icon/pdf-file.svg" />
-        <div class="price">{{ product.price }} €</div>
-      </div>
-      <div class="overlay"></div>
-    </div>
-    <div class="file-title">
-      <div class="name">{{ product.title }}</div>
-      <div class="subject">{{ product.category[0] }}</div>
-    </div>
+<div class="product-card" [ngStyle]="{ 'background-image': backgroundImage }">
+  <div class="product-card-meta">
+    <img class="product-card-meta-icon" *ngIf="icon" src="{{ icon }}" />
+    <h4 class="product-card-meta-price">
+      <b>{{ price }}</b>
+    </h4>
   </div>
+
+  <h3 class="product-card-text">{{ product.title }}</h3>
+  <p class="product-card-description">{{ product.description }}</p>
 </div>
