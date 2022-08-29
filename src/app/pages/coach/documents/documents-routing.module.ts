@@ -4,12 +4,13 @@ import { DocumentsListComponent } from './documents-list/documents-list.componen
 
 const routes: Routes = [
   {
-    path: '', component: DocumentsListComponent ,
-  }
+    path: '',
+    component: DocumentsListComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DocumentsRoutingModule { }
+export class DocumentsRoutingModule {}

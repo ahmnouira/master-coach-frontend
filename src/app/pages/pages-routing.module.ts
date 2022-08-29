@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccountVerifiedGuard } from '../guards/account-verified/account-verified.guard';
 import { MessagerieComponent } from '../shared/components/messagerie/messagerie.component';
 import { VisioConferenceComponent } from '../shared/components/visio-conference/visio-conference.component';
 import { PreviewComponent } from './preview/preview.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {
     path: 'conversations',
     component: MessagerieComponent,
+    canActivate: [AccountVerifiedGuard],
   },
   {
     path: 'video',
