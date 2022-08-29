@@ -8,12 +8,16 @@ import { ServicesListComponent } from './services-list/services-list.component';
 import { ServiceCardComponent } from './service-card/service-card.component';
 import { ServiceAddComponent } from './service-add/service-add.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ServiceFormComponent } from './service-form/service-form.component';
+import { ServiceEditComponent } from './service-edit/service-edit.component';
 
 @NgModule({
   declarations: [
     ServiceCardComponent,
     ServicesListComponent,
     ServiceAddComponent,
+    ServiceFormComponent,
+    ServiceEditComponent,
   ],
   imports: [
     CommonModule,
