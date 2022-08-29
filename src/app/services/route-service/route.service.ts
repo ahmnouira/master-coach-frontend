@@ -20,8 +20,8 @@ export class RouteService extends SessionStorageService {
   constructor(
     public router: Router,
     public location: Location,
-    private titleService: Title, 
-    public activatedRoute: ActivatedRoute,
+    private titleService: Title,
+    public activatedRoute: ActivatedRoute
   ) {
     super();
     // this.getTokenFormRoute();
@@ -73,9 +73,6 @@ export class RouteService extends SessionStorageService {
       this.params = params;
     });
   }
-
-
-
 
   private getTokenFormRoute() {
     this.activatedRoute.queryParamMap.subscribe((params) => {
