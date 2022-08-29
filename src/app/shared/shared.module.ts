@@ -39,6 +39,7 @@ import { AddFieldComponent } from './components/add-field/add-field.component';
 import { LayoutModule } from './layout/layout.module';
 import { SidebarItemComponent } from './layout/sidebar-item/sidebar-item.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { ModalComponent } from './components/modal/modal.component';
     RadioComponent,
     AddFieldComponent,
     ModalComponent,
+    FormWrapperComponent,
   ],
   imports: [
     CommonModule,
@@ -118,6 +120,7 @@ import { ModalComponent } from './components/modal/modal.component';
     AddFieldComponent,
     SidebarItemComponent,
     ModalComponent,
+    FormWrapperComponent
   ],
 })
 export class SharedModule {}

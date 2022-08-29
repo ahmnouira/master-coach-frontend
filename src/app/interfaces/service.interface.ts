@@ -3,7 +3,7 @@ export interface IService {
   description: string;
   duration: string;
   image: File | string;
-  price?: number;
+  price?: string;
   category?: string;
   isFree?: boolean;
   isFixedPrice?: boolean;

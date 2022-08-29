@@ -24,7 +24,7 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
     isPriceHidden: false,
     duration: '',
     category: '',
-    price: 0,
+    price: '',
     image: undefined,
   };
 
@@ -72,7 +72,7 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
   async submit() {
     this.isSubmitting = true;
 
-    const { title, description, duration } = this.form;
+    const { title, description, duration, price, } = this.form;
 
     if (!title || !description || !duration) {
       this.onError('');
@@ -81,6 +81,14 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
 
     let formData = this.getFormData(this.form);
 
+
+    formData.set('price', parseInt(price).toString())
+
+    console.log(this.form)
+    
+
+
+    /*
     this.servicesService.addService(formData).subscribe(
       (res) => {
         console.log('res:', res);
@@ -94,6 +102,7 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
       },
       (err) => this.onError(err)
     );
+    */
   }
 
   handleDelete() {
