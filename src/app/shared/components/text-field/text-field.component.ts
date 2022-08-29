@@ -20,9 +20,9 @@ export class TextFieldComponent implements OnInit {
   @Input() patternError?: string;
   @Input() required: boolean = true;
   @Input() form?: any = undefined;
-  @Input() disabled?: boolean = false 
+  @Input() disabled?: boolean = false;
 
-  @Input() min?: number = undefined
+  @Input() min?: number = undefined;
 
   @Input() minLength?: number;
 

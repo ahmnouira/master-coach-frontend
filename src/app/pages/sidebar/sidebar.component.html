@@ -52,72 +52,10 @@
     *ngIf="getUserRole()?.toLowerCase() === 'coach'"
     class="list-unstyled components"
   >
-    <li
-      [routerLinkActive]="['active']"
-      [routerLinkActiveOptions]="{ exact: false }"
-    >
-      <a routerLink="/pages/coach/profil">
-        <img class="profil_icon" src="assets/img/common/account%20(2).svg" />
-        <span>Mon Profil</span>
-      </a>
-    </li>
-    <li
-      [routerLinkActive]="['active']"
-      [routerLinkActiveOptions]="{ exact: false }"
-    >
-      <a routerLink="/pages/coach/services">
-        <img src="assets/img/common/customer%20(5).svg" />
-        <span>Mes Services</span>
-      </a>
-    </li>
-    <li
-      [routerLinkActive]="['active']"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <a routerLink="/pages/coach/boutique">
-        <img src="assets/img/common/clothing-store.svg" />
-        <span>Ma boutique</span>
-      </a>
-    </li>
-    <li
-      [routerLinkActive]="['active']"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <a routerLink="/pages/coach/calendar">
-        <img src="assets/img/common/deadline.svg" />
-        <span>Mes rendez-vous</span></a
-      >
-    </li>
-    <li
-      [routerLinkActive]="['active']"
-      [routerLinkActiveOptions]="{ exact: false }"
-    >
-      <a routerLink="/pages/coach/coach-client">
-        <img src="assets/img/common/rating%20(1).svg" />
-        <span>Mes clients</span></a
-      >
-    </li>
-    <li>
-      <a disabled>
-        <img src="assets/img/common/presentation%20(2).svg" />
-        <span>Paiements</span></a
-      >
-    </li>
-    <li
-      [routerLinkActive]="['active']"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <a routerLink="/pages/conversations">
-        <img src="assets/img/common/chatting%20(1).svg" />
-        <span>Messagerie</span></a
-      >
-    </li>
-    <li>
-      <a disabled>
-        <img src="assets/img/common/file%20(5).svg" />
-        <span>Mes documents</span></a
-      >
-    </li>
+    <app-sidebar-item
+      *ngFor="let item of coachSidebar"
+      [item]="item"
+    ></app-sidebar-item>
   </ul>
   <ul
     *ngIf="getUserRole()?.toLowerCase() === 'client'"
