@@ -53,6 +53,14 @@ const routes: Routes = [
       ),
   },
 
+  {
+    path: 'documents',
+    loadChildren: () =>
+      import('./documents/documents.module').then(
+        (module) => module.DocumentsModule
+      ),
+  },
+
   { path: 'parametre', component: ParametresComponent },
 
   { path: 'quiz/view', component: ViewFormQuizComponent },

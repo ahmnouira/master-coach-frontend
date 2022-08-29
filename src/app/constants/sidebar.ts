@@ -41,7 +41,7 @@ export const COACH_SIDEBAR: SidebarItem[] = [
   },
   {
     icon: 'assets/img/common/file%20(5).svg',
-    route: '/pages/coach/payments',
+    route: '/pages/coach/documents',
     title: 'Mes documents',
   },
 ];
