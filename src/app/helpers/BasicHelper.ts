@@ -9,7 +9,13 @@ export class BasicHelper {
     if (!Array.isArray(array) || !array.length) {
       return [];
     }
-    return JSON.parse(array.toString());
+    try {
+      return JSON.parse(array.toString());
+    } catch (e) {
+      // console.log('JSON Error', e)
+      return []
+    }
+    
   }
 
   getFileUrl(url: any): string {
