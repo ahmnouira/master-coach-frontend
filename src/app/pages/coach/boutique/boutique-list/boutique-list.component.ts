@@ -25,7 +25,10 @@ export class BoutiqueListComponent implements OnInit {
 
   getProducts() {
     this.productService
-      .getProducts()
+      .getProducts({
+        all: false, 
+        displayedInShop: false
+      })
       .pipe()
       .subscribe((res) => {
         if (!res.success) {
@@ -37,6 +40,10 @@ export class BoutiqueListComponent implements OnInit {
         this.products = res.data;
         this.found = Boolean(res.data.length);
         this.isLoading = false;
+      }, (error) => {
+          this.found = false
+          this.isLoading = false;
+          this.error = error;
       });
   }
 

@@ -145,6 +145,7 @@
       Service ajouté
     </div>
 
-    <app-button (onClick)="submit()" [isLoading]="isSubmitting"> </app-button>
+    <app-button (onClick)="submit()" [isLoading]="isSubmitting" *ngIf="!id">
+    </app-button>
   </div>
 </form>

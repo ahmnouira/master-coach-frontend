@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-boutique-edit',
@@ -6,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./boutique-edit.component.scss'],
 })
 export class BoutiqueEditComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit(): void {}
-}
+  id: string
+  constructor(private activatedRoute: ActivatedRoute) {}
+
+   ngOnInit(): void {
+     this.activatedRoute.params.subscribe(params => {
+      this.id =  params['id']
+    })
+  }
+  }
+
