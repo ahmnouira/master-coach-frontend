@@ -13,6 +13,7 @@ export class BasicHelper {
       return JSON.parse(array.toString());
     } catch (e) {
       // console.log('JSON Error', e)
+      //[ Object Object]: error 
       return []
     }
     
