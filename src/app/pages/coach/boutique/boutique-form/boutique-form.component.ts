@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { copyFile } from 'fs';
 import { AuthService } from 'src/app/core/auth.service';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { ProductType } from 'src/app/models/product/product-type.enum';
+import { Product } from 'src/app/models/product/product.model';
 import { ProductService } from 'src/app/services/product-service/product.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 
@@ -43,9 +45,38 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.currentUser$.subscribe((user) => {
-      this.categories = this.getArray(user.category);
-    });
+    if(this.id) {
+      this.isLoading = true
+      // means edit
+      this.productService.getProduct(this.id).subscribe((res) => {
+        if(!res.success) {
+          this.onError(res.error)
+          return
+        }
+        const product = res.data as IProduct
+
+        console.log(product.type, this.getFileUrl(product.image) )
+
+        this.form = {
+          description: this.getString(product.description), 
+          title: this.getString(product.title), 
+          type: product.type, 
+          category: this.getArray(product.category), 
+          isFree: product.isFree, 
+          duration: this.getString(product.duration), 
+          image: this.getFileUrl(product.image), 
+          files: this.getFileUrl(product.files), 
+          price: this.getString(product.price), 
+          displayedInShop: product.displayedInShop
+        }
+      })
+    } else {
+      this.authService.currentUser$.subscribe((user) => {
+        this.categories = this.getArray(user.category);
+      });
+    } 
+    this.isLoading = false
+
   }
 
   getMultiFileFieldData() {

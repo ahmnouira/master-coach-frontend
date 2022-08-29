@@ -32,7 +32,7 @@ const routes: Routes = [
       import('./services/services.module').then(
         (module) => module.ServicesModule
       ),
-    canActivate: [AccountVerifiedGuard],
+   // canActivate: [AccountVerifiedGuard],
   },
 
   {
@@ -60,7 +60,7 @@ const routes: Routes = [
       import('./boutique/boutique.module').then(
         (module) => module.BoutiqueModule
       ),
-    canActivate: [AccountVerifiedGuard],
+   // canActivate: [AccountVerifiedGuard],
   },
 
   {
