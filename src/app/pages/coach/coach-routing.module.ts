@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'profil',
     component: ProfilCoachComponent,
-    canActivate: [AccountVerifiedGuard],
+    // canActivate: [AccountVerifiedGuard],
   },
 
   {
@@ -41,7 +41,7 @@ const routes: Routes = [
       import('./coach-client-management/coach-client-management.module').then(
         (module) => module.CoachClientManagementModule
       ),
-    canActivate: [AccountVerifiedGuard],
+    // canActivate: [AccountVerifiedGuard],
   },
 
   {
@@ -51,7 +51,7 @@ const routes: Routes = [
         (module) => module.PaymentsModule
       ),
 
-    canActivate: [AccountVerifiedGuard],
+  //  canActivate: [AccountVerifiedGuard],
   },
 
   {
@@ -85,7 +85,7 @@ const routes: Routes = [
   {
     path: 'calendar',
     component: MyAppointmentsComponent,
-    canActivate: [AccountVerifiedGuard],
+    // canActivate: [AccountVerifiedGuard],
   },
 
   { path: '', redirectTo: 'parametre', pathMatch: 'full' },
