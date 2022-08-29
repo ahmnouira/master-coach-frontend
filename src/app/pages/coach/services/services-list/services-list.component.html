@@ -34,7 +34,10 @@
     <app-loader [marginTop]="'64px'"></app-loader>
   </div>
 
-  <app-empty-page title="services" *ngIf="!found"></app-empty-page>
+  <app-empty-page
+    title="services"
+    *ngIf="!found && !isLoading"
+  ></app-empty-page>
 
   <div
     class="services"
