@@ -117,7 +117,7 @@ import { ModalComponent } from './components/modal/modal.component';
     RadioComponent,
     AddFieldComponent,
     SidebarItemComponent,
-    ModalComponent
+    ModalComponent,
   ],
 })
 export class SharedModule {}

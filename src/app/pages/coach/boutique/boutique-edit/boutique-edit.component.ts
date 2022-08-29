@@ -7,14 +7,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./boutique-edit.component.scss'],
 })
 export class BoutiqueEditComponent implements OnInit {
-
-  id: string
+  id: string;
   constructor(private activatedRoute: ActivatedRoute) {}
 
-   ngOnInit(): void {
-     this.activatedRoute.params.subscribe(params => {
-      this.id =  params['id']
-    })
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      this.id = params['id'];
+    });
   }
-  }
-
+}

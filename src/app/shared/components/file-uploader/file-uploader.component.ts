@@ -35,6 +35,8 @@ export class FileUploaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    console.log('image', this.model);
+
     this.checkEmpty();
     this.setProperties();
   }

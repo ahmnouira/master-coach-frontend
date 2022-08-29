@@ -7,11 +7,13 @@ import { ProductType } from 'src/app/models/product/product-type.enum';
 import { Product } from 'src/app/models/product/product.model';
 import { ProductService } from 'src/app/services/product-service/product.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-boutique-form',
   templateUrl: './boutique-form.component.html',
   styleUrls: ['./boutique-form.component.scss'],
+  animations: Animations,
 })
 export class BoutiqueFormComponent extends FormHelper implements OnInit {
   @Input() id: string = ''; // if id means edit
@@ -25,7 +27,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     category: [],
     displayedInShop: false,
     image: '',
-    files: [],
+    files: '',
     duration: '',
   };
 
@@ -45,38 +47,38 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.id) {
-      this.isLoading = true
+    if (this.id) {
+      this.isLoading = true;
       // means edit
       this.productService.getProduct(this.id).subscribe((res) => {
-        if(!res.success) {
-          this.onError(res.error)
-          return
+        if (!res.success) {
+          this.onError(res.error);
+          return;
         }
-        const product = res.data as IProduct
+        const product = res.data as IProduct;
 
-        console.log(product.type, this.getFileUrl(product.image) )
+        console.log('files', this.getFileUrl(product.files));
 
         this.form = {
-          description: this.getString(product.description), 
-          title: this.getString(product.title), 
-          type: product.type, 
-          category: this.getArray(product.category), 
-          isFree: product.isFree, 
-          duration: this.getString(product.duration), 
-          image: this.getFileUrl(product.image), 
-          files: this.getFileUrl(product.files), 
-          price: this.getString(product.price), 
-          displayedInShop: product.displayedInShop
-        }
-      })
+          description: this.getString(product.description),
+          title: this.getString(product.title),
+          type: product.type,
+          category: this.getArray(product.category),
+          isFree: product.isFree,
+          duration: this.getString(product.duration),
+          image: this.getFileUrl(product.image),
+          files: this.getFileUrl(product.files),
+          price: this.getString(product.price),
+          displayedInShop: product.displayedInShop,
+        };
+        this.isLoading = false;
+      });
     } else {
       this.authService.currentUser$.subscribe((user) => {
         this.categories = this.getArray(user.category);
+        this.isLoading = false;
       });
-    } 
-    this.isLoading = false
-
+    }
   }
 
   getMultiFileFieldData() {
