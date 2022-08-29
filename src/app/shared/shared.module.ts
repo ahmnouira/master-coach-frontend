@@ -36,6 +36,8 @@ import { SelectComponent } from './components/select/select.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { RadioComponent } from './components/radio/radio.component';
 import { AddFieldComponent } from './components/add-field/add-field.component';
+import { LayoutModule } from './layout/layout.module';
+import { SidebarItemComponent } from './layout/sidebar-item/sidebar-item.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,7 @@ import { AddFieldComponent } from './components/add-field/add-field.component';
     PickerModule,
     TooltipModule,
     AngularMultiSelectModule,
+    LayoutModule,
   ],
   exports: [
     ModalAjoutSessionComponent,
@@ -111,6 +114,7 @@ import { AddFieldComponent } from './components/add-field/add-field.component';
     FormComponent,
     RadioComponent,
     AddFieldComponent,
+    SidebarItemComponent,
   ],
 })
 export class SharedModule {}

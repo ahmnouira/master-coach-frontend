@@ -1,0 +1,9 @@
+<li
+  [routerLinkActive]="['active']"
+  [routerLinkActiveOptions]="{ exact: false }"
+>
+  <a routerLink="{{ item.route }}">
+    <img src="{{ item.icon }}" />
+    <span>{{ item.title }}</span>
+  </a>
+</li>
