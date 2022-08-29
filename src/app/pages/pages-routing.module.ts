@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: 'conversations',
     component: MessagerieComponent,
-    canActivate: [AccountVerifiedGuard],
+    // canActivate: [AccountVerifiedGuard],
   },
   {
     path: 'video',
