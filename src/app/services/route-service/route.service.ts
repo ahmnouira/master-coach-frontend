@@ -45,6 +45,11 @@ export class RouteService extends SessionStorageService {
     return this.router.navigate(paths, extras);
   }
 
+  public redirectTo(uri: string) {
+    // this.back()
+    this.navigateByUrl(uri, { replaceUrl: true });
+  }
+
   public back() {
     this.location.back();
   }

@@ -32,11 +32,11 @@ export class AccountVerifiedGuard implements CanActivate {
       if (currentUser.isBlocked) {
         return true;
       }
-      this.route.navigate([`/pages/coach/${currentUser.role.toLowerCase()}`]);
+      this.route.redirectTo(`/pages/coach/${currentUser.role.toLowerCase()}`);
       // this.route.back()
       return false;
     }
-   
+
     return false;
   }
 }
