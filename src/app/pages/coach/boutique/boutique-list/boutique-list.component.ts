@@ -25,19 +25,29 @@ export class BoutiqueListComponent implements OnInit {
 
   getProducts() {
     this.productService
-      .getProducts()
+      .getProducts({
+        all: false,
+        displayedInShop: false,
+      })
       .pipe()
-      .subscribe((res) => {
-        if (!res.success) {
+      .subscribe(
+        (res) => {
+          if (!res.success) {
+            this.isLoading = false;
+            this.error = res.error;
+            return;
+          }
+          console.log('data', res.data);
+          this.products = res.data;
+          this.found = Boolean(res.data.length);
           this.isLoading = false;
-          this.error = res.error;
-          return;
+        },
+        (error) => {
+          this.found = false;
+          this.isLoading = false;
+          this.error = error;
         }
-        console.log('data', res.data);
-        this.products = res.data;
-        this.found = Boolean(res.data.length);
-        this.isLoading = false;
-      });
+      );
   }
 
   filterInputChanged(event) {}

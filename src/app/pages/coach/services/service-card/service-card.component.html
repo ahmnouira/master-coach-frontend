@@ -1,4 +1,8 @@
-<div class="service-card" [ngStyle]="{ 'background-image': backgroundImage }">
+<div
+  class="service-card"
+  [ngStyle]="{ 'background-image': backgroundImage }"
+  routerLink="/pages/coach/services/edit/{{ service._id }}"
+>
   <div class="service-card-label d-inline-flex">
     <p>{{ service.title }}</p>
   </div>

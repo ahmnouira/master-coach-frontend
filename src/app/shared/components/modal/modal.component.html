@@ -1,0 +1,17 @@
+<ngx-smart-modal
+  #modal
+  identifier="modal"
+  [customClass]="'modal-satisfaction'"
+  [closable]="true"
+>
+  <div class="bloc-img">
+    <img src="/assets/img/common/salut.png" class="img-fluid" alt="" />
+  </div>
+  <p>{{ title }}</p>
+  <div class="description">
+    <p>{{ description }}</p>
+  </div>
+  <div class="text-center">
+    <button class="btn-blue">Fermer</button>
+  </div>
+</ngx-smart-modal>

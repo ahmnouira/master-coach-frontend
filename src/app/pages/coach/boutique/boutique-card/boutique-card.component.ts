@@ -45,10 +45,8 @@ export class BoutiqueCardComponent extends BasicHelper implements OnInit {
     }
   }
 
- 
   getPrice() {
-
-    console.log('price', this.product)
+    console.log('price', this.product);
     if (this.product.isFree || !this.product.price) {
       this.price = 'Free';
     } else {

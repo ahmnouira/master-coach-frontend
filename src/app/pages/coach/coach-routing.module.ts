@@ -11,9 +11,14 @@ import { AddTeamComponent } from './add-team/add-team.component';
 import { ListTeamsComponent } from './list-teams/list-teams.component';
 import { MyAppointmentsComponent } from './my-appointments/my-appointments.component';
 import { MessagerieComponent } from 'src/app/shared/components/messagerie/messagerie.component';
+import { AccountVerifiedGuard } from 'src/app/guards/account-verified/account-verified.guard';
 
 const routes: Routes = [
-  { path: 'profil', component: ProfilCoachComponent },
+  {
+    path: 'profil',
+    component: ProfilCoachComponent,
+    canActivate: [AccountVerifiedGuard],
+  },
 
   {
     path: 'plans',
@@ -27,6 +32,7 @@ const routes: Routes = [
       import('./services/services.module').then(
         (module) => module.ServicesModule
       ),
+    // canActivate: [AccountVerifiedGuard],
   },
 
   {
@@ -35,6 +41,17 @@ const routes: Routes = [
       import('./coach-client-management/coach-client-management.module').then(
         (module) => module.CoachClientManagementModule
       ),
+    canActivate: [AccountVerifiedGuard],
+  },
+
+  {
+    path: 'payments',
+    loadChildren: () =>
+      import('./payments/payments.module').then(
+        (module) => module.PaymentsModule
+      ),
+
+    canActivate: [AccountVerifiedGuard],
   },
 
   {
@@ -43,6 +60,16 @@ const routes: Routes = [
       import('./boutique/boutique.module').then(
         (module) => module.BoutiqueModule
       ),
+    // canActivate: [AccountVerifiedGuard],
+  },
+
+  {
+    path: 'documents',
+    loadChildren: () =>
+      import('./documents/documents.module').then(
+        (module) => module.DocumentsModule
+      ),
+    //canActivate: [AccountVerifiedGuard],
   },
 
   { path: 'parametre', component: ParametresComponent },
@@ -55,7 +82,11 @@ const routes: Routes = [
   { path: 'coach-client/team/add', component: AddTeamComponent },
   { path: 'coach-client/team/list', component: ListTeamsComponent },
   { path: 'coach-client/team/edit', component: EditFormQuizComponent },
-  { path: 'calendar', component: MyAppointmentsComponent },
+  {
+    path: 'calendar',
+    component: MyAppointmentsComponent,
+    canActivate: [AccountVerifiedGuard],
+  },
 
   { path: '', redirectTo: 'parametre', pathMatch: 'full' },
 

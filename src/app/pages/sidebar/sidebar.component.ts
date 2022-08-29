@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { COACH_SIDEBAR } from 'src/app/constants/sidebar';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 
@@ -14,6 +15,8 @@ export class SidebarComponent implements OnInit {
   role: string = '';
   userData = {};
   form: any = {};
+
+  coachSidebar = COACH_SIDEBAR;
 
   constructor(
     private router: Router,

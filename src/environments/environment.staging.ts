@@ -1,8 +1,8 @@
 export const environment = {
-  production: true, // to remove console logs
+  production: true, //  to test this with prod
   apiUrl: 'https://mastercoach-api.innovant.studio',
   /* the front app url */
-  APP_URL: "https://mastercoach.innovant.studio",
+  APP_URL: 'https://mastercoach.innovant.studio',
 
   TWILIO_ACCOUNT_SID: 'ACf2cc84e73f311b5bc821ee8582a1e6d8',
   TWILIO_AUTH_TOKEN: '69815c0adf7f62f7b1cfdc6719ad673e',

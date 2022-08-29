@@ -72,7 +72,7 @@
                   "with": "src/environments/environment.staging.ts"
                 }
               ]
-            }, 
+            },
 
             "development": {
               "buildOptimizer": false,
@@ -93,7 +93,7 @@
             },
             "staging": {
               "browserTarget": "mastercoach-fe:build:staging"
-            }, 
+            },
             "development": {
               "browserTarget": "mastercoach-fe:build:development",
               "proxyConfig": "proxy.conf.json"

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BoutiqueAddComponent } from './boutique-add/boutique-add.component';
+import { BoutiqueEditComponent } from './boutique-edit/boutique-edit.component';
 import { BoutiqueListComponent } from './boutique-list/boutique-list.component';
 
 const routes: Routes = [
@@ -9,6 +10,7 @@ const routes: Routes = [
     path: 'add',
     component: BoutiqueAddComponent,
   },
+  { path: 'edit/:id', component: BoutiqueEditComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

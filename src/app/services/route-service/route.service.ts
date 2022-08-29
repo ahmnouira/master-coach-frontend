@@ -18,10 +18,10 @@ export class RouteService extends SessionStorageService {
   private token = '';
   private params: any;
   constructor(
-    public activatedRoute: ActivatedRoute,
     public router: Router,
     public location: Location,
-    private titleService: Title
+    private titleService: Title,
+    public activatedRoute: ActivatedRoute
   ) {
     super();
     // this.getTokenFormRoute();
@@ -43,6 +43,15 @@ export class RouteService extends SessionStorageService {
     extras?: NavigationExtras
   ): Promise<boolean> {
     return this.router.navigate(paths, extras);
+  }
+
+  public redirectTo(uri: string) {
+    // this.back()
+    this.navigateByUrl(uri, { replaceUrl: true });
+  }
+
+  public back() {
+    this.location.back();
   }
 
   public saveRoute(name: string) {
