@@ -12,19 +12,19 @@ import { TokenStorageService } from './services/token-storage.service';
 })
 export class AppComponent {
   title = 'mastercoach-fe';
-  user: User
-  userRole: UserRole
+  user: User;
+  userRole: UserRole;
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private authService: AuthService, 
+    private authService: AuthService,
     private consoleService: ConsoleService
   ) {
-    this.consoleService.disableConsoleInProduction()
+    this.consoleService.disableConsoleInProduction();
     const user = this.tokenStorageService.getUser() as User;
     if (user) {
-      this.user = user
-      this.userRole = user.role
+      this.user = user;
+      this.userRole = user.role;
       authService.currentUser$.next(user);
     }
   }

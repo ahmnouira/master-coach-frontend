@@ -24,18 +24,27 @@ export class ServicesListComponent implements OnInit {
 
   getServices() {
     this.servicesService
-      .getServices()
+      .getServices({
+        all: false,
+      })
       .pipe()
-      .subscribe((res) => {
-        if (!res.success) {
+      .subscribe(
+        (res) => {
+          if (!res.success) {
+            this.isLoading = false;
+            this.error = res.error;
+            return;
+          }
+          this.services = res.data;
+          this.found = Boolean(res.data.length);
           this.isLoading = false;
-          this.error = res.error;
-          return;
+        },
+        (error) => {
+          this.isLoading = false;
+          this.found = false;
+          this.error = error;
         }
-        this.services = res.data;
-        this.found = Boolean(res.data.length);
-        this.isLoading = false;
-      });
+      );
   }
 
   filterInputChanged(event) {}

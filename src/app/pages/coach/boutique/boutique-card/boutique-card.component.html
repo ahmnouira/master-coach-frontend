@@ -1,4 +1,8 @@
-<div class="product-card" [ngStyle]="{ 'background-image': backgroundImage }">
+<div
+  class="product-card"
+  [ngStyle]="{ 'background-image': backgroundImage }"
+  routerLink="/pages/coach/boutique/edit/{{ product._id }}"
+>
   <div class="product-card-meta">
     <img
       class="product-card-meta-icon"
@@ -10,7 +14,6 @@
       <b>{{ price }}</b>
     </h4>
   </div>
-
   <h3 class="product-card-text">{{ product.title }}</h3>
   <p class="product-card-description">{{ product.description }}</p>
 </div>

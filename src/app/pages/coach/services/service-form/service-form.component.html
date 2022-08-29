@@ -1,0 +1,141 @@
+<div *ngIf="isLoading; else elseBlock">
+  <div style="margin-top: 50px">
+    <app-loader></app-loader>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="form-container">
+    <form
+      [@animate]="{
+        value: '*',
+        params: { duration: '300ms', y: '100px' }
+      }"
+      name="form"
+      #f="ngForm"
+      novalidate
+    >
+      <h2 class="title">Info</h2>
+
+      <!-- Titre -->
+      <app-text-field [label]="'Titre'" [(model)]="form.title" [form]="f">
+      </app-text-field>
+
+      <!-- Description -->
+      <app-text-area
+        [label]="'Description'"
+        [(model)]="form.description"
+        [placeholder]="'Texte…'"
+        [form]="f"
+      >
+      </app-text-area>
+
+      <!-- Duration  [required]="false" -->
+      <app-text-field
+        [label]="'Durée'"
+        [(model)]="form.duration"
+        [placeholder]="'Min'"
+        [type]="'number'"
+        [form]="f"
+      >
+      </app-text-field>
+
+      <app-titled-field content="Auto confirmation">
+        <app-checkbox
+          [label]="'Les sessions seront auto-confirmés'"
+          [(model)]="form.isAutoConfirmed"
+        >
+        </app-checkbox>
+      </app-titled-field>
+      <div class="mt-2 mb-4">
+        <app-file-uploader
+          [model]="form.image"
+          type="photo"
+          [label]="'Photo qui illustre votre service'"
+          [showLabel]="true"
+          [style]="'secondary'"
+          [title]="'Ajouter une photo'"
+          (onClick)="addPhoto($event)"
+          (onDelete)="form.image = undefined"
+        ></app-file-uploader>
+      </div>
+
+      <!-- Divider -->
+      <app-divider></app-divider>
+
+      <h2 class="title">Tarifs</h2>
+
+      <label class="label" for="gratuit">Prix TTC</label>
+
+      <div class="row align-items-center">
+        <div class="col-2">
+          <app-checkbox [label]="'Gratuit'" [(model)]="form.isFree">
+          </app-checkbox>
+        </div>
+        <div class="col-3">
+          <app-checkbox
+            [label]="'Masquer le prix'"
+            [(model)]="form.isPriceHidden"
+          >
+          </app-checkbox>
+        </div>
+
+        <div class="col-2">
+          <app-checkbox [label]="'Fixe'" [(model)]="form.isFixedPrice">
+          </app-checkbox>
+        </div>
+
+        <div class="col">
+          <app-text-field
+            [(model)]="form.price"
+            [type]="'number'"
+            [label]="'Price'"
+            [placeholder]="'Price'"
+            [showLabel]="false"
+            [form]="f"
+          >
+          </app-text-field>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <app-divider></app-divider>
+
+      <h2 class="title">Témoignage</h2>
+
+      <div
+        *ngFor="let testimony of form.testimonies; index as i; trackBy: track"
+      >
+        <app-text-field
+          [id]="testimony.id"
+          [(model)]="testimony.text"
+          label="Testimonie{{ i + 1 }}"
+          [placeholder]="'Text...'"
+        >
+        </app-text-field>
+      </div>
+
+      <app-add-field
+        [title]="'Ajouter un autre témoignage
+            '"
+        (onAdd)="handleAdd()"
+        (onDelete)="handleDelete()"
+        [hasItems]="form.testimonies.length"
+      ></app-add-field>
+
+      <app-divider></app-divider>
+
+      <app-form-error [error]="error"></app-form-error>
+
+      <div class="alert alert-info" role="alert" *ngIf="success">
+        Service ajouté
+      </div>
+
+      <app-button
+        (onClick)="submit()"
+        [isLoading]="isSubmitting"
+        [disabled]="id ? true : false"
+      >
+      </app-button>
+    </form>
+  </div>
+</ng-template>
