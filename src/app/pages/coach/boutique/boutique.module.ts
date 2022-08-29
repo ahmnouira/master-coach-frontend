@@ -20,9 +20,7 @@ import { BoutiqueEditComponent } from './boutique-edit/boutique-edit.component';
     BoutiqueFormComponent,
     BoutiqueEditComponent,
   ],
-  exports: [
-    BoutiqueCardComponent
-  ], 
+  exports: [BoutiqueCardComponent],
 
   imports: [
     CommonModule,

@@ -3,11 +3,13 @@ import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IService } from 'src/app/interfaces/service.interface';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { ServicesService } from 'src/app/services/services-service/services.service';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-service-form',
   templateUrl: './service-form.component.html',
   styleUrls: ['./service-form.component.scss'],
+  animations: Animations,
 })
 export class ServiceFormComponent extends FormHelper implements OnInit {
   @Input() id: string = '';
@@ -43,9 +45,6 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
           return;
         }
         const service = res.data as IService;
-
-        console.log('service', service);
-
         this.form = {
           description: service.description,
           title: service.title,
@@ -55,8 +54,14 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
           isFree: service.isFree,
           isPriceHidden: service.isPriceHidden,
           isFixedPrice: service.isFixedPrice,
+          testimonies: this.getArray(service.testimonies),
+          category: service.category,
+          isAutoConfirmed: service.isAutoConfirmed,
         };
+        this.isLoading = false;
       });
+    } else {
+      this.isLoading = false;
     }
   }
 

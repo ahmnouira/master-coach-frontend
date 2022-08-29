@@ -7,11 +7,13 @@ import { ProductType } from 'src/app/models/product/product-type.enum';
 import { Product } from 'src/app/models/product/product.model';
 import { ProductService } from 'src/app/services/product-service/product.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-boutique-form',
   templateUrl: './boutique-form.component.html',
   styleUrls: ['./boutique-form.component.scss'],
+  animations: Animations,
 })
 export class BoutiqueFormComponent extends FormHelper implements OnInit {
   @Input() id: string = ''; // if id means edit
@@ -25,7 +27,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     category: [],
     displayedInShop: false,
     image: '',
-    files: [],
+    files: '',
     duration: '',
   };
 
@@ -55,7 +57,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
         }
         const product = res.data as IProduct;
 
-        console.log(product.type, this.getFileUrl(product.image));
+        console.log('files', this.getFileUrl(product.files));
 
         this.form = {
           description: this.getString(product.description),
@@ -69,13 +71,14 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
           price: this.getString(product.price),
           displayedInShop: product.displayedInShop,
         };
+        this.isLoading = false;
       });
     } else {
       this.authService.currentUser$.subscribe((user) => {
         this.categories = this.getArray(user.category);
+        this.isLoading = false;
       });
     }
-    this.isLoading = false;
   }
 
   getMultiFileFieldData() {

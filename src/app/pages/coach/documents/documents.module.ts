@@ -9,6 +9,13 @@ import { BoutiqueModule } from '../boutique/boutique.module';
 
 @NgModule({
   declarations: [DocumentsListComponent],
-  imports: [CommonModule, DocumentsRoutingModule,  SharedModule, ComponentsModule, FormsModule, BoutiqueModule ],
+  imports: [
+    CommonModule,
+    DocumentsRoutingModule,
+    SharedModule,
+    ComponentsModule,
+    FormsModule,
+    BoutiqueModule,
+  ],
 })
 export class DocumentsModule {}
