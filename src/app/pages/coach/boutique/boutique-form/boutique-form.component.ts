@@ -1,26 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { title } from 'process';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth.service';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { ProductType } from 'src/app/models/product/product-type.enum';
 import { ProductService } from 'src/app/services/product-service/product.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
-import { Animations } from 'src/app/shared/animations';
-
-type Form = IProduct & {
-  isDocument: boolean;
-  isVideo: boolean;
-  isPodcast: boolean;
-};
 
 @Component({
-  selector: 'app-boutique-add',
-  templateUrl: './boutique-add.component.html',
-  styleUrls: ['./boutique-add.component.scss'],
-  animations: Animations,
+  selector: 'app-boutique-form',
+  templateUrl: './boutique-form.component.html',
+  styleUrls: ['./boutique-form.component.scss'],
 })
-export class BoutiqueAddComponent extends FormHelper implements OnInit {
+export class BoutiqueFormComponent extends FormHelper implements OnInit {
+  @Input() id: string = ''; // if id means edit
+
   form: IProduct = {
     description: '',
     price: '',

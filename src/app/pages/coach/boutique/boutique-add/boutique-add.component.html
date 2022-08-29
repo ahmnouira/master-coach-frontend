@@ -142,6 +142,8 @@
                   [form]="f"
                   [required]="!form.isFree"
                   [disabled]="form.isFree"
+                  [min]="1"
+                  pattern="[0-9]+"
                 >
                 </app-text-field>
               </div>
