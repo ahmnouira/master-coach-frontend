@@ -45,6 +45,10 @@ export class RouteService extends SessionStorageService {
     return this.router.navigate(paths, extras);
   }
 
+  public back() {
+    this.location.back();
+  }
+
   public saveRoute(name: string) {
     this.setItem('navigation', name);
   }
