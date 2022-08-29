@@ -38,6 +38,14 @@ const routes: Routes = [
   },
 
   {
+    path: 'payments',
+    loadChildren: () =>
+      import('./payments/payments.module').then(
+        (module) => module.PaymentsModule
+      ),
+  },
+
+  {
     path: 'boutique',
     loadChildren: () =>
       import('./boutique/boutique.module').then(
