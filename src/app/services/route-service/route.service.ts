@@ -9,12 +9,11 @@ import {
   Router,
   UrlTree,
 } from '@angular/router';
-import { SessionStorageService } from '../session-storage-service/session-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RouteService extends SessionStorageService {
+export class RouteService  {
   private token = '';
   private params: any;
   constructor(
@@ -23,8 +22,7 @@ export class RouteService extends SessionStorageService {
     private titleService: Title,
     public activatedRoute: ActivatedRoute
   ) {
-    super();
-    // this.getTokenFormRoute();
+  
   }
 
   public setTitle(newTitle: string): void {
@@ -54,27 +52,25 @@ export class RouteService extends SessionStorageService {
     this.location.back();
   }
 
-  public saveRoute(name: string) {
-    this.setItem('navigation', name);
-  }
 
-  public get getToken(): string {
-    this.getTokenFormRoute();
+  public get getQueryParamToken(): string {
+    this.getQueryTokenFormRoute();
     return this.token;
   }
 
-  public get getParams(): ParamMap {
-    this.getParamsFromRoute();
+  public get getQueryParams(): ParamMap {
+    this.getQueryParamsFromRoute();
     return this.params.params as ParamMap;
   }
 
-  private getParamsFromRoute() {
+
+  private getQueryParamsFromRoute() {
     this.activatedRoute.queryParamMap.subscribe((params) => {
       this.params = params;
     });
   }
 
-  private getTokenFormRoute() {
+  private getQueryTokenFormRoute() {
     this.activatedRoute.queryParamMap.subscribe((params) => {
       console.log('params', params.get('token'));
       //this.paramsObject = { ...params.keys, ...params };

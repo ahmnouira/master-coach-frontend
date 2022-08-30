@@ -22,7 +22,7 @@ export class ConfirmEmailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.token = this.routeService.getToken;
+    this.token = this.routeService.getQueryParamToken;
   }
 
   ngAfterViewInit(): void {
