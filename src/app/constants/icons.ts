@@ -14,4 +14,5 @@ export const PDF_ICON = getSVGIcon('pdf-file');
 export const VIDEO_ICON = getSVGIcon('video-file');
 export const PODCAST_ICON = getSVGIcon('podcast-file');
 
+
 export const SIDEBAR_ICON = getSidebarIcon('clothing-store');
