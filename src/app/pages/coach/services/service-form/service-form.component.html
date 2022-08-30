@@ -55,6 +55,7 @@
           [showLabel]="true"
           [style]="'secondary'"
           [title]="'Ajouter une photo'"
+          [prefix]="'service-photo'"
           (onClick)="addPhoto($event)"
           (onDelete)="form.image = undefined"
         ></app-file-uploader>
@@ -76,12 +77,17 @@
           <app-checkbox
             [label]="'Masquer le prix'"
             [(model)]="form.isPriceHidden"
+            [disabled]="form.isFree"
           >
           </app-checkbox>
         </div>
 
         <div class="col-2">
-          <app-checkbox [label]="'Fixe'" [(model)]="form.isFixedPrice">
+          <app-checkbox
+            [label]="'Fixe'"
+            [(model)]="form.isFixedPrice"
+            [disabled]="form.isFree"
+          >
           </app-checkbox>
         </div>
 

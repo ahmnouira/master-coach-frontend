@@ -20,6 +20,7 @@ export class FileUploaderComponent implements OnInit {
 
   @Input() type: string; //  'pdf' | 'photo' | 'video' | 'audio' | undefined;
   @Input() label?: string = '';
+  @Input() prefix? :string  =''
 
   @Input() style?: 'primary' | 'secondary' = 'primary';
 
@@ -37,6 +38,7 @@ export class FileUploaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.prefix = this.prefix ? this.prefix : this.label
     this.checkEmpty();
     this.setProperties();
   }
@@ -70,7 +72,7 @@ export class FileUploaderComponent implements OnInit {
     if (this.model && typeof this.model === 'string') {
       this.isEmpty = false;
       // set the filename
-      this.filename = FileHelper.getFileName(this.label, this.model);
+      this.filename = FileHelper.getFileName(this.prefix, this.model);
     } else if (Array.isArray(this.model) && this.model.length) {
       this.isEmpty = false;
     } else {
@@ -86,8 +88,8 @@ export class FileUploaderComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.isEmpty = false;
-        this.filename = this.label
-          ? FileHelper.formatName(this.label) +
+        this.filename = this.prefix
+          ? FileHelper.formatName(this.prefix) +
             '-' +
             FileHelper.formatName(file.name)
           : FileHelper.formatName(file.name);
