@@ -120,7 +120,7 @@ import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.com
     AddFieldComponent,
     SidebarItemComponent,
     ModalComponent,
-    FormWrapperComponent
+    FormWrapperComponent,
   ],
 })
 export class SharedModule {}

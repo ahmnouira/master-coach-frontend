@@ -72,7 +72,7 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
   async submit() {
     this.isSubmitting = true;
 
-    const { title, description, duration, price, } = this.form;
+    const { title, description, duration, price } = this.form;
 
     if (!title || !description || !duration) {
       this.onError('');
@@ -81,12 +81,9 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
 
     let formData = this.getFormData(this.form);
 
+    formData.set('price', parseInt(price).toString());
 
-    formData.set('price', parseInt(price).toString())
-
-    console.log(this.form)
-    
-
+    console.log(this.form);
 
     /*
     this.servicesService.addService(formData).subscribe(

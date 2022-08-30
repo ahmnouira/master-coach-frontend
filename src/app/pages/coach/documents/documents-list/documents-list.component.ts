@@ -14,6 +14,13 @@ export class DocumentsListComponent implements OnInit {
   error: string = '';
   products: Product[];
   found: boolean;
+  data: any = [];
+
+  quizList: any = [];
+
+  loadingAnimation: boolean = false;
+  selectedStatus = 'status';
+  selectedType = 'type';
 
   constructor(private productService: ProductService) {}
 
@@ -49,4 +56,20 @@ export class DocumentsListComponent implements OnInit {
   }
 
   filterInputChanged(event) {}
+
+  public onOptionsSelected(event, selectname: string) {
+    const value = event.target.value;
+    console.log(value);
+    if (this.quizList.length == 0) this.quizList = this.data;
+    if (selectname == 'type') {
+      this.quizList = this.data.filter((elem) =>
+        elem?.type.toLowerCase().includes(value.toLowerCase())
+      );
+    }
+    if (selectname == 'status') {
+      this.quizList = this.data.filter((elem) =>
+        elem?.status.toLowerCase().includes(value.toLowerCase())
+      );
+    }
+  }
 }
