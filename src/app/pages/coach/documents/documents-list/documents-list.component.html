@@ -42,47 +42,30 @@
       </div>
     </div>
 
-    <div class="col-3 d-flex flex-column">
-      <div class="d-inline-flex justify-content-end">
-        &nbsp;
-        <a routerLink="/pages/coach/documents/add" class="btn align-self-end"
-          ><span class="material-icons">add_circle</span>Ajouter un document</a
-        >&nbsp;
-      </div>
+    <div class="col-3">
+      <app-button [title]="'Ajouter un document'" [variant]="'add'">
+      </app-button>
     </div>
   </div>
 
-  <div *ngIf="isLoading; else elseBlock">
-    <app-loader [marginTop]="'64px'"></app-loader>
-  </div>
-  <ng-template #elseBlock>
-    <app-empty-page title="documents" *ngIf="!found && !error"></app-empty-page>
-
-    <app-form-error [error]="error"></app-form-error>
-
-    <div
-      *ngIf="found"
-      class="boutique"
-      [@animate]="{
-        value: '*',
-        params: { duration: '300ms', y: '100px' }
-      }"
-    >
-      <div class="row" *ngIf="found">
-        <div class="table-responsive">
-          <loading-card [loading]="loadingAnimation">
-            <datatable
-              [datatable]="documents"
-              (datatableChange)="datatableChange($event)"
-              [checkboxes]="true"
-              [Actions]="ACTION_COLUMNS"
-              (onActionClicked)="onActionClicked($event)"
-              [searchvalue]="filterString"
-              [displayedColomn]="DISPLAYED_COLUMNS"
-            ></datatable>
-          </loading-card>
-        </div>
-      </div>
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'documents'"
+  >
+    <div class="table-responsive">
+      <loading-card [loading]="loadingAnimation">
+        <datatable
+          [datatable]="documents"
+          (datatableChange)="datatableChange($event)"
+          [checkboxes]="true"
+          [Actions]="ACTION_COLUMNS"
+          (onActionClicked)="onActionClicked($event)"
+          [searchvalue]="filterString"
+          [displayedColomn]="DISPLAYED_COLUMNS"
+        ></datatable>
+      </loading-card>
     </div>
-  </ng-template>
+  </app-page-list-wrapper>
 </div>

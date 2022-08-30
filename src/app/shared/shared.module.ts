@@ -41,6 +41,7 @@ import { SidebarItemComponent } from './layout/sidebar-item/sidebar-item.compone
 import { ModalComponent } from './components/modal/modal.component';
 import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.component';
 import { PageListWrapperComponent } from './components/page-list-wrapper/page-list-wrapper.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { PageListWrapperComponent } from './components/page-list-wrapper/page-li
     TooltipModule,
     AngularMultiSelectModule,
     LayoutModule,
+    RouterModule, // to use routerLink
   ],
   exports: [
     ModalAjoutSessionComponent,
