@@ -105,7 +105,7 @@ export class DocumentsListComponent implements OnInit {
       quizData: element.item,
     };
     if (element.action == 'view') {
-      this.routerService.navigateByUrl('/pages/client/docs/quiz/play', {
+      this.routerService.navigateByUrl('/pages/coach/documents/edit', {
         state: { id: quizObject },
       });
     }
