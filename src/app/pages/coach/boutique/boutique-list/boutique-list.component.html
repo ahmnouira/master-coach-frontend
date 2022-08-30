@@ -50,7 +50,7 @@
     }"
   >
     <div class="row" *ngIf="found">
-      <div class="col-lg-3" *ngFor="let product of products; index as i">
+      <div class="col-lg-3" *ngFor="let product of data; index as i">
         <app-boutique-card [product]="product"></app-boutique-card>
       </div>
     </div>

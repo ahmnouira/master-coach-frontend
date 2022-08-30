@@ -39,8 +39,7 @@ export class ResetPasswordComponent implements OnInit {
 
     this.authService.resetPassword({ password, token: this.token }).subscribe(
       (res) => {
-          // use window location 
-          window.location.replace('/login')
+        this.routeService.replace('/login');
       },
       (error) => {
         this.errorMessage = error;

@@ -129,8 +129,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
 
   async submit() {
     this.isSubmitting = true;
-    const { description, title, price, isFree, duration } =
-      this.form;
+    const { description, title, price, isFree, duration } = this.form;
 
     if (!title || !description || !duration) {
       this.onError('');
@@ -146,7 +145,6 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     const formData = this.getFormData(this.form);
 
     formData.set('price', parseInt(price).toString());
-
 
     this.productService.addProduct(formData).subscribe(
       (res) => {

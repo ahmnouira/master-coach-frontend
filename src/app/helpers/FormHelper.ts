@@ -3,9 +3,22 @@ import { BasicHelper } from './BasicHelper';
 import { FileHelper } from './FileHelper';
 
 export class FormHelper extends BasicHelper {
-  isSubmitting = false; // button submit
+  /**
+   * @description button is submitting
+   */
+  isSubmitting = false;
+  /**
+   * @description success from the server
+   */
   success = false;
-  isLoading = true; // page is loading
+  /**
+   * @description page is loading
+   */
+  isLoading = true;
+
+  /**
+   * @description error from the server
+   */
   error = '';
 
   f: NgForm;
@@ -14,7 +27,6 @@ export class FormHelper extends BasicHelper {
     let formData = new FormData();
     for (const key in form) {
       if (Array.isArray(form[key])) {
-        // multi files remove
         console.log('array', key, form[key]);
         formData.append(key, JSON.stringify(form[key]));
       } else {
@@ -28,6 +40,14 @@ export class FormHelper extends BasicHelper {
   handleSubmit(f: NgForm) {
     // console.log('f', f.errors);
     this.f = f;
+  }
+
+  handleSeverResponse(res) {
+    if (!res.success) {
+      this.onError(res.error);
+      return;
+    }
+    this.onSuccess();
   }
 
   onError(error: any) {

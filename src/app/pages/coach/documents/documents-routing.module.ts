@@ -15,9 +15,7 @@ const routes: Routes = [
     component: DocumentsAddComponent,
   },
 
-  {path: 'edit/:id', 
-  component: DocumentsEditComponent 
-  }, 
+  { path: 'edit/:id', component: DocumentsEditComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

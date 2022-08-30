@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { PageHelper } from 'src/app/helpers/PageHelper';
 import { Service } from 'src/app/models/service/service.model';
 import { ServicesService } from 'src/app/services/services-service/services.service';
 import { Animations } from 'src/app/shared/animations';
@@ -9,45 +10,27 @@ import { Animations } from 'src/app/shared/animations';
   styleUrls: ['./services-list.component.scss'],
   animations: Animations,
 })
-export class ServicesListComponent implements OnInit {
+export class ServicesListComponent
+  extends PageHelper<Service[]>
+  implements OnInit, AfterViewInit
+{
   filterString = '';
-  isLoading = true;
-  found: boolean = true;
-  error: string = '';
-  services: Service[];
 
-  constructor(private servicesService: ServicesService) {}
+  constructor(private servicesService: ServicesService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.getServices();
   }
 
   getServices() {
-    this.servicesService
-      .getServices({
-        all: false,
-      })
-      .pipe()
-      .subscribe(
-        (res) => {
-          if (!res.success) {
-            this.isLoading = false;
-            this.error = res.error;
-            return;
-          }
-          this.services = res.data;
-
-          console.log(this.services.map((el) => el.price));
-          this.found = Boolean(res.data.length);
-          this.isLoading = false;
-        },
-        (error) => {
-          this.isLoading = false;
-          this.found = false;
-          this.error = error;
-        }
-      );
+    this.getData(this.servicesService.getServices({ all: false }), {
+      debug: true,
+    });
   }
+
+  ngAfterViewInit(): void {}
 
   filterInputChanged(event) {}
 }
