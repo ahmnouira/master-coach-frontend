@@ -10,13 +10,16 @@ import { Animations } from 'src/app/shared/animations';
   styleUrls: ['./boutique-list.component.scss'],
   animations: Animations,
 })
-export class BoutiqueListComponent extends PageHelper<Product[]> implements OnInit {
+export class BoutiqueListComponent
+  extends PageHelper<Product[]>
+  implements OnInit
+{
   filterString = '';
 
   constructor(private productService: ProductService) {
     super();
   }
-  
+
   ngOnInit(): void {
     this.getProducts();
   }
@@ -26,9 +29,10 @@ export class BoutiqueListComponent extends PageHelper<Product[]> implements OnIn
       this.productService.getProducts({
         all: false,
         displayedInShop: false,
-  }), {
-    debug: true
-  }
+      }),
+      {
+        debug: true,
+      }
     );
   }
 
