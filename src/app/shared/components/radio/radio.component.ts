@@ -16,6 +16,8 @@ export class RadioComponent implements OnInit {
   @Input() title: string;
   @Input() id?: string;
 
+  @Input() disabled?: boolean;
+
   checked?: boolean;
 
   constructor() {}

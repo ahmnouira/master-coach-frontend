@@ -1,4 +1,4 @@
-<div class="form-check">
+<div class="form-check radio-container">
   <input
     class="form-check-input"
     type="radio"
@@ -6,6 +6,7 @@
     id="{{ id }}"
     [checked]="checked"
     value="{{ value }}"
+    [disabled]="disabled"
     (input)="handleChange($event)"
   />
   <label class="form-check-label" for="{{ id }}">{{ label }}</label>

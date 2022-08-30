@@ -11,9 +11,8 @@ const routes: Routes = [
 
   {
     path: 'add',
-    component: DocumentsAddComponent
-
-  }, 
+    component: DocumentsAddComponent,
+  },
 
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

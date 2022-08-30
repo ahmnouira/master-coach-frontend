@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IService } from 'src/app/interfaces/service.interface';
+import { ServiceFormat } from 'src/app/models/service/service-format.enum';
+import { ServiceSession } from 'src/app/models/service/service-session.enum';
+import { ServiceWith } from 'src/app/models/service/service.with.enum';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { ServicesService } from 'src/app/services/services-service/services.service';
 import { Animations } from 'src/app/shared/animations';
@@ -26,6 +29,9 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
     category: '',
     price: '',
     image: undefined,
+    format: ServiceFormat.CONFERENCE,
+    with: ServiceWith.CLIENT,
+    session: ServiceSession.COLLECTIVE,
   };
 
   constructor(
@@ -57,6 +63,10 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
           testimonies: this.getArray(service.testimonies),
           category: service.category,
           isAutoConfirmed: service.isAutoConfirmed,
+          // these  '||' for old created services
+          format: service.format || ServiceFormat.CONFERENCE,
+          with: service.with || ServiceWith.CLIENT,
+          session: service.session || ServiceSession.COLLECTIVE,
         };
         this.isLoading = false;
       });
@@ -86,7 +96,7 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
     }
     let formData = this.getFormData(this.form);
 
-    formData.set("price", parseInt(price).toString())
+    formData.set('price', parseInt(price).toString());
 
     this.servicesService.addService(formData).subscribe(
       (res) => {
@@ -101,7 +111,6 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
       },
       (err) => this.onError(err)
     );
-    
   }
 
   handleDelete() {

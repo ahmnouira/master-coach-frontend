@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'add', component: ServiceAddComponent },
 
   { path: 'edit/:id', component: ServiceEditComponent },
+
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

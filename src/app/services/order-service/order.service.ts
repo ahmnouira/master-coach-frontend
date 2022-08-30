@@ -3,14 +3,13 @@ import { Observable } from 'rxjs';
 import { BaseService } from '../base-service/base.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrderService extends BaseService {
-  
   addOrder(data: any): Observable<any> {
     return this.post('/documents', data);
   }
-  getOrders(): Observable<any> { 
+  getOrders(): Observable<any> {
     return this.get('orders');
   }
 }

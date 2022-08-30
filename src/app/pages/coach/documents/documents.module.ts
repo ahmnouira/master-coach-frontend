@@ -20,7 +20,7 @@ import { DocumentsAddComponent } from './documents-add/documents-add.component';
     FormsModule,
     BoutiqueModule,
     LoadingCardModule,
-    DatatableModule
+    DatatableModule,
   ],
 })
 export class DocumentsModule {}

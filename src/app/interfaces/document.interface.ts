@@ -1,6 +1,5 @@
 export interface IDocument {
-    ref: string;
-    title: string;
-    type?: string;
-  }
-  
+  ref: string;
+  title: string;
+  type?: string;
+}
