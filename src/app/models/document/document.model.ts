@@ -7,7 +7,7 @@ export class Document extends Entity implements IDocument {
   description: string;
   duration: string;
   type: DocumentType;
-  category: string[];
+  category: any;
   image: any;
   files: any;
 }

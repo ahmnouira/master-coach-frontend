@@ -5,12 +5,13 @@ import { ProductType } from './product-type.enum';
 export class Product extends Entity implements IProduct {
   title: string;
   description: string;
-  duration?: string;
+  duration: string;
   type: ProductType;
-  category?: string[];
+  category: string;
+  image: any;
+  files: any;
   price?: string;
   isFree?: boolean;
   displayedInShop?: boolean;
-  image?: any;
-  files?: any[];
+ 
 }

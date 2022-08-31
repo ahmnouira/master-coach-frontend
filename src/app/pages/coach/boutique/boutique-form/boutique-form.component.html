@@ -46,7 +46,9 @@
         [label]="'Catégory'"
         [data]="categories"
         [text]="'Coaching de carriére'"
-        [(model)]="form.category"
+        [(model)]="selectedCategories"
+        (onItemOneSelect)="form.category = $event"
+        [singleSelection]="true"
       >
       </app-select>
 

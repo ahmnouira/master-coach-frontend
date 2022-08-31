@@ -5,7 +5,7 @@ export interface IDocument {
   description: string;
   duration: string;
   type: DocumentType;
-  category: string[];
+  category: any;
   image: any;
   files: any;
 }

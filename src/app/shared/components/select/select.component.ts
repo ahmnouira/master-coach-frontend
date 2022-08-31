@@ -8,6 +8,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class SelectComponent implements OnInit {
   @Input() model: any;
   @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output() onItemOneSelect = new EventEmitter<any>();
   @Input() label: string = '';
   @Input() name?: string = '';
 
@@ -39,5 +41,10 @@ export class SelectComponent implements OnInit {
       primaryKey: '_id',
       classes: 'form-control element-spec multiselect',
     };
+  }
+
+  handleItemSelect(item: any) {
+    const { _id, name } = item;
+    this.onItemOneSelect.emit(name);
   }
 }

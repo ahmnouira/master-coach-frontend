@@ -27,8 +27,6 @@ export class RadioComponent implements OnInit {
       this.id = this.label.toLowerCase();
     }
     this.checked = this.model == this.value;
-
-    console.log('modal', this.model, this.value, this.checked);
   }
 
   handleChange(event: any) {

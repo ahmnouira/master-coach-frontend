@@ -8,7 +8,7 @@ import { DatatableInputcheckboxTemplateModule } from '../datatable-inputcheckbox
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MomentModule } from 'ngx-moment';
 import { RouterModule } from '@angular/router';
-import { ActionItemComponent } from './action-item/action-item.component';
+import { ActionItemComponent } from '../action-item/action-item.component';
 
 @NgModule({
   declarations: [DataTableRowComponent, ActionItemComponent],

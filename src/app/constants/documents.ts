@@ -22,6 +22,13 @@ export const COACH_DOCS_DISPLAYED_COLUMNS = [
     search: true,
     sort: true,
   },
+  {
+    data: 'category',
+    value: 'Catégory',
+    type: 'text',
+    search: true,
+    sort: true,
+  },
 ];
 
 export const COACH_DOCS_ACTION_COLUMNS: DatableTableAction[] = [

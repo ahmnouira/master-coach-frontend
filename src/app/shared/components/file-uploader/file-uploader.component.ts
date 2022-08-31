@@ -51,7 +51,7 @@ export class FileUploaderComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.title, this.type);
+    // console.log(this.title, this.type);
     this.setProperties();
   }
 

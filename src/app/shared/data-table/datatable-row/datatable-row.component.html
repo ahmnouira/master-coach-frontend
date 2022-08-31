@@ -18,6 +18,7 @@
       <span
         [class]="row[title.data + '_class']"
         [ngClass]="{ badge: title.type === 'badge' }"
+        [ngStyle]="title.data === 'type' && { 'text-transform': 'capitalize' }"
       >
         {{ row[title.data] || row[title.data] === 0 ? row[title.data] : "-" }}
       </span>
