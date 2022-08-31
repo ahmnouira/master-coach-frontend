@@ -15,7 +15,6 @@ interface GetDataOptions {
 type Format = 'json' | 'txt';
 
 export class PageHelper<T = any> extends BaseHelper {
-
   /**
    * @description found data
    */
@@ -27,7 +26,7 @@ export class PageHelper<T = any> extends BaseHelper {
   data: T;
 
   constructor() {
-    super()
+    super();
   }
 
   /**
@@ -84,7 +83,7 @@ export class PageHelper<T = any> extends BaseHelper {
     }
   }
 
- private handleSeverResponse(res: Response<T>) {
+  private handleSeverResponse(res: Response<T>) {
     if (!res.success) {
       this.onError(res.error);
       return;
@@ -93,10 +92,8 @@ export class PageHelper<T = any> extends BaseHelper {
     this.found = Array.isArray(res.data) ? Boolean(res.data.length) : true;
   }
 
-
-  
   protected override onError(error: any) {
-    super.onError(error)
-    this.found = false 
+    super.onError(error);
+    this.found = false;
   }
 }

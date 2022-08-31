@@ -9,7 +9,6 @@ export class FormHelper extends BasicHelper {
   /**
    * @description success from the server
    */
- 
 
   f: NgForm;
 
@@ -56,7 +55,9 @@ export class FormHelper extends BasicHelper {
     this.error = '';
     setTimeout(() => {
       this.success = false;
-      cb();
+      if(cb) {
+        cb()
+      }
     }, 3000);
   }
 }

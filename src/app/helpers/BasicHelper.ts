@@ -2,7 +2,6 @@ import { BaseHelper } from './BaseHelper';
 import { FileHelper } from './FileHelper';
 
 export class BasicHelper extends BaseHelper {
-
   getString(str: string) {
     return str || '';
   }

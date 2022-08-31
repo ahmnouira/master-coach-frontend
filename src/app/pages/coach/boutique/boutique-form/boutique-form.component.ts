@@ -81,26 +81,26 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     switch (this.form.type) {
       case ProductType.DOCUMENT:
         return {
-          title: 'Ajouter des document',
+          title: 'Ajouter un document',
           type: 'pdf',
         };
       case ProductType.VIDEO: {
         return {
-          title: 'Ajouter des vidéos',
+          title: 'Ajouter une vidéo',
           type: 'video',
         };
       }
 
       case ProductType.PODCAST: {
         return {
-          title: 'Ajouter des podcasts',
+          title: 'Ajouter un podcast',
           type: 'audio',
         };
       }
       // by default is document
       default:
         return {
-          title: 'Ajouter des documents',
+          title: 'Ajouter un document',
           type: 'pdf',
         };
     }

@@ -11,18 +11,15 @@ import { Animations } from 'src/app/shared/animations';
   styleUrls: ['./services-list.component.scss'],
   animations: Animations,
 })
-export class ServicesListComponent
-  extends PageHelper
-  implements OnInit
-{
+export class ServicesListComponent extends PageHelper implements OnInit {
   filterString = '';
 
   constructor(private servicesService: ServicesService) {
-    super()
-  } 
+    super();
+  }
 
   ngOnInit(): void {
-    this.getServices();  
+    this.getServices();
   }
 
   getServices() {

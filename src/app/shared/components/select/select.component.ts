@@ -15,6 +15,8 @@ export class SelectComponent implements OnInit {
 
   @Input() data: any;
 
+  @Input() singleSelection = false;
+
   settings: {};
 
   constructor() {}
@@ -23,6 +25,7 @@ export class SelectComponent implements OnInit {
     this.name = this.name ?? this.label.toLowerCase();
     this.settings = {
       text: this.text,
+      singleSelection: this.singleSelection,
       position: 'bottom',
       autoPosition: false,
       searchPlaceholderText: 'Rechercher...',
@@ -37,4 +40,5 @@ export class SelectComponent implements OnInit {
       classes: 'form-control element-spec multiselect',
     };
   }
+
 }

@@ -1,4 +1,3 @@
-
 export class BaseHelper {
   /**
    * @description success from the server
@@ -15,9 +14,9 @@ export class BaseHelper {
   error: string;
 
   constructor() {
-    this.success = false
-    this.isLoading = true; 
-    this.error = ''
+    this.success = false;
+    this.isLoading = true;
+    this.error = '';
   }
 
   protected onError(error: any) {

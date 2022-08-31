@@ -10,23 +10,11 @@ import { datatable_action } from 'src/app/shared/datatable/datatable.model';
   templateUrl: './documents-list.component.html',
   styleUrls: ['./documents-list.component.scss'],
 })
-export class DocumentsListComponent extends PageHelper implements OnInit {
+export class DocumentsListComponent
+  extends PageHelper<Document[]>
+  implements OnInit
+{
   filterString = '';
-
-  documents: Document[] = [
-    {
-      _id: '1',
-      ref: '001',
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      type: 'Quizz',
-    },
-    {
-      _id: '2',
-      ref: '002',
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      type: 'Rapport',
-    },
-  ];
 
   selectedProfiles: any = [];
 
@@ -106,7 +94,7 @@ export class DocumentsListComponent extends PageHelper implements OnInit {
   onActionClicked(element: any) {
     console.log('Element', element);
 
-    let coachObject = this.documents.filter(
+    let coachObject = this.data.filter(
       (obj) => obj._id == element.item.coach_id
     );
     let quizObject = {
@@ -130,15 +118,10 @@ export class DocumentsListComponent extends PageHelper implements OnInit {
   public onOptionsSelected(event: any, selectname: string) {
     const value = event.target.value;
     console.log(value);
-    if (this.documents.length == 0) this.documents = this.data;
+    if (this.data.length == 0) this.data = this.data;
     if (selectname == 'type') {
-      this.documents = this.data.filter((elem) =>
+      this.data = this.data.filter((elem) =>
         elem?.type.toLowerCase().includes(value.toLowerCase())
-      );
-    }
-    if (selectname == 'status') {
-      this.documents = this.data.filter((elem) =>
-        elem?.status.toLowerCase().includes(value.toLowerCase())
       );
     }
   }

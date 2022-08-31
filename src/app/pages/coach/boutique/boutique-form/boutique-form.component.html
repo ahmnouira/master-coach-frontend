@@ -56,7 +56,7 @@
         <div class="col-4">
           <app-titled-field content="type">
             <app-radio
-              [label]="'Documents'"
+              [label]="'Document'"
               [(model)]="form.type"
               [value]="'document'"
             >
@@ -68,7 +68,7 @@
           <app-file-uploader
             [model]="form.files"
             [title]="getMultiFileFieldData().title"
-            type="getMultiFileFieldData().type"
+            [type]="getMultiFileFieldData().type"
             [style]="'secondary'"
             [prefix]="'service-type'"
             (onClick)="addFiles($event)"
@@ -81,7 +81,7 @@
         <div class="col-4">
           <app-titled-field [content]="'type'" [titleHidden]="true">
             <app-radio
-              [label]="'Vidéos'"
+              [label]="'Vidéo'"
               [(model)]="form.type"
               [value]="'video'"
             >
@@ -94,7 +94,7 @@
         <div class="col-4">
           <app-titled-field [content]="'type'" [titleHidden]="true">
             <app-radio
-              [label]="'Podcasts'"
+              [label]="'Podcast'"
               [(model)]="form.type"
               [value]="'podcast'"
             >
