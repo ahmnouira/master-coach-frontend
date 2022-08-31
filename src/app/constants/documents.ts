@@ -1,3 +1,5 @@
+import { DatableTableAction } from '../shared/data-table/action.model';
+
 export const COACH_DOCS_DISPLAYED_COLUMNS = [
   {
     data: '_id',
@@ -19,5 +21,35 @@ export const COACH_DOCS_DISPLAYED_COLUMNS = [
     type: 'text',
     search: true,
     sort: true,
+  },
+];
+
+export const COACH_DOCS_ACTION_COLUMNS: DatableTableAction[] = [
+  {
+    value: '',
+    children: [
+      {
+        type: 'view',
+        iconClass: 'view',
+      },
+    ],
+  },
+  {
+    value: '',
+    children: [
+      {
+        type: 'edit',
+        iconClass: 'edit',
+      },
+    ],
+  },
+  {
+    value: '',
+    children: [
+      {
+        type: 'delete',
+        iconClass: 'delete',
+      },
+    ],
   },
 ];

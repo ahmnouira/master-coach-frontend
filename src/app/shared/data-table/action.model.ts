@@ -3,6 +3,7 @@ export class Action {
   iconClass: string;
   disabledAttr?: string;
   tooltipAttr?: string;
+
   constructor(
     type: string,
     iconClass: string,

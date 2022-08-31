@@ -8,7 +8,7 @@ import { DatableTableAction } from '../action.model';
   templateUrl: './datatable-row.component.html',
   styleUrls: ['./datatable-row.component.scss'],
 })
-export class DatatableRowComponent implements OnInit {
+export class DataTableRowComponent implements OnInit {
   @Input() set row(value) {
     this._row = value;
   }
@@ -30,11 +30,11 @@ export class DatatableRowComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  rowClicked(row) {
+  rowClicked(row: any) {
     this.onrowClicked.emit(row);
   }
 
-  actionClicked(action, item) {
+  actionClicked(action: any, item: any) {
     this.onActionClicked.emit({ item: item, action: action.type });
   }
 

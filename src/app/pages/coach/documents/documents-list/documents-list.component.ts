@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { COACH_DOCS_DISPLAYED_COLUMNS } from 'src/app/constants/documents';
+import {
+  COACH_DOCS_ACTION_COLUMNS,
+  COACH_DOCS_DISPLAYED_COLUMNS,
+} from 'src/app/constants/documents';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { Document } from 'src/app/models/document/document.model';
 import { DocumentsService } from 'src/app/services/document-service/documents.service';
@@ -19,8 +22,7 @@ export class DocumentsListComponent
 
   selectedProfiles: any = [];
 
-  ACTION_COLUMNS: DatableTableAction[] = [];
-
+  ACTION_COLUMNS: DatableTableAction[] = COACH_DOCS_ACTION_COLUMNS;
   DISPLAYED_COLUMNS: any[] = COACH_DOCS_DISPLAYED_COLUMNS;
 
   loadingAnimation: boolean = false;
@@ -35,27 +37,6 @@ export class DocumentsListComponent
   }
 
   ngOnInit(): void {
-    this.ACTION_COLUMNS.push(
-      {
-        value: '',
-        children: [
-          {
-            type: 'view',
-            iconClass: 'view',
-          },
-        ],
-      },
-      {
-        value: '',
-        children: [
-          {
-            type: 'trash',
-            iconClass: 'trash',
-          },
-        ],
-      }
-    );
-
     this.getDocuments();
   }
 
@@ -70,20 +51,23 @@ export class DocumentsListComponent
     );
   }
 
+  // when action is clicked
   onActionClicked(element: any) {
-    console.log('Element', element);
-
-    let coachObject = this.data.filter(
-      (obj) => obj._id == element.item.coach_id
-    );
-    let quizObject = {
-      coachData: coachObject,
-      quizData: element.item,
-    };
-    if (element.action == 'view') {
-      this.routerService.navigateByUrl('/pages/coach/documents/edit', {
-        state: { id: quizObject },
-      });
+    const { action, item } = element;
+    switch (action) {
+      case 'view':
+        this.routerService.navigate([
+          `/pages/coach/documents/edit/${item._id}`,
+        ]);
+        break;
+      case 'edit':
+        this.routerService.navigate([
+          `/pages/coach/documents/edit/${item._id}`,
+        ]);
+        break;
+      case 'delete':
+        window.alert('NOT IMPLEMENTED!');
+        break;
     }
   }
 
