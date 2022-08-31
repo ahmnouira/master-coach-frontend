@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { datatable_action } from '../../../shared/datatable/datatable.model';
+import { DatableTableAction } from '../../../shared/data-table/action.model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { CoachService } from 'src/app/services/coach-service/coach.service';
@@ -15,7 +15,7 @@ export class ListTeamsComponent implements OnInit {
   searchValue: string = '';
   filter = new FormControl('');
 
-  ACTION_COLUMNS: datatable_action[] = [];
+  ACTION_COLUMNS: DatableTableAction[] = [];
 
   DISPLAYED_COLUMNS: any[] = [];
   data: any[] = [];
@@ -33,7 +33,7 @@ export class ListTeamsComponent implements OnInit {
   ngOnInit(): void {
     this.ACTION_COLUMNS.push({
       value: '',
-      childrens: [
+      children: [
         {
           type: 'view',
           iconClass: 'view',
@@ -42,7 +42,7 @@ export class ListTeamsComponent implements OnInit {
     });
     this.ACTION_COLUMNS.push({
       value: '',
-      childrens: [
+      children: [
         {
           type: 'delete',
           iconClass: 'delete',

@@ -13,7 +13,7 @@ import { EditFormQuizComponent } from './edit-form-quiz/edit-form-quiz.component
 import { ListTeamsComponent } from './list-teams/list-teams.component';
 import { ViewTeamComponent } from './view-team/view-team.component';
 import { AddTeamComponent } from './add-team/add-team.component';
-import { DatatableModule } from '../../shared/datatable/datatable.module';
+import { DatatableModule } from '../../shared/data-table/datatable.module';
 import { LoadingCardModule } from '../../shared/loading-card/loading-card.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';

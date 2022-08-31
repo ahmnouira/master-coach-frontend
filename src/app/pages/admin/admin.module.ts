@@ -8,7 +8,7 @@ import { UsersListComponent } from './user-management/users-list/users-list.comp
 import { UsersAddComponent } from './user-management/users-add/users-add.component';
 import { UsersEditComponent } from './user-management/users-edit/users-edit.component';
 import { LoadingCardModule } from '../../shared/loading-card/loading-card.module';
-import { DatatableModule } from '../../shared/datatable/datatable.module';
+import { DatatableModule } from '../../shared/data-table/datatable.module';
 import { FormsModule } from '@angular/forms';
 import { CompetenceListComponent } from './competence-management/competence-list/competence-list.component';
 import { CompetenceAddComponent } from './competence-management/competence-add/competence-add.component';

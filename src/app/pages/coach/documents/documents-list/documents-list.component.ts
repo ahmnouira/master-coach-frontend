@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { COACH_DOCS_DISPLAYED_COLUMNS } from 'src/app/constants/documents';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { Document } from 'src/app/models/document/document.model';
 import { DocumentsService } from 'src/app/services/document-service/documents.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
-import { datatable_action } from 'src/app/shared/datatable/datatable.model';
+import { DatableTableAction } from 'src/app/shared/data-table/action.model';
 
 @Component({
   selector: 'app-documents-list',
@@ -18,8 +19,10 @@ export class DocumentsListComponent
 
   selectedProfiles: any = [];
 
-  ACTION_COLUMNS: datatable_action[] = [];
-  DISPLAYED_COLUMNS: any[] = [];
+  ACTION_COLUMNS: DatableTableAction[] = [];
+
+  
+  DISPLAYED_COLUMNS: any[] = COACH_DOCS_DISPLAYED_COLUMNS;
 
   loadingAnimation: boolean = false;
   selectedStatus = 'status';
@@ -36,7 +39,7 @@ export class DocumentsListComponent
     this.ACTION_COLUMNS.push(
       {
         value: '',
-        childrens: [
+        children: [
           {
             type: 'view',
             iconClass: 'view',
@@ -45,7 +48,7 @@ export class DocumentsListComponent
       },
       {
         value: '',
-        childrens: [
+        children: [
           {
             type: 'trash',
             iconClass: 'trash',
@@ -54,29 +57,7 @@ export class DocumentsListComponent
       }
     );
 
-    this.DISPLAYED_COLUMNS = [
-      {
-        data: 'ref',
-        value: 'ref',
-        type: 'text',
-        search: true,
-        sort: true,
-      },
-      {
-        data: 'title',
-        value: 'title',
-        type: 'text',
-        search: true,
-        sort: true,
-      },
-      {
-        data: 'type',
-        value: 'type',
-        type: 'text',
-        search: true,
-        sort: true,
-      },
-    ];
+
     this.getDocuments();
   }
 

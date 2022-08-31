@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { datatable_action } from '../../../../shared/datatable/datatable.model';
+import { DatableTableAction} from '../../../../shared/data-table/action.model';
 import { FormControl } from '@angular/forms';
 import { TokenStorageService } from '../../../../services/token-storage.service';
 import { Title } from '@angular/platform-browser';
@@ -15,7 +15,7 @@ export class UsersListComponent implements OnInit {
   searchValue: string = '';
   filter = new FormControl('');
 
-  ACTION_COLUMNS: datatable_action[] = [];
+  ACTION_COLUMNS: DatableTableAction[] = [];
 
   DISPLAYED_COLUMNS: any[] = [];
   data: any[] = [];
@@ -40,7 +40,7 @@ export class UsersListComponent implements OnInit {
     if (true) {
       this.ACTION_COLUMNS.push({
         value: '',
-        childrens: [
+        children: [
           {
             type: 'edit',
             iconClass: 'edit',
@@ -49,7 +49,7 @@ export class UsersListComponent implements OnInit {
       });
       this.ACTION_COLUMNS.push({
         value: '',
-        childrens: [
+        children: [
           {
             type: 'delete',
             iconClass: 'delete',
