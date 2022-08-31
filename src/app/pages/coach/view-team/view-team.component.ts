@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { DatableTableAction } from '../../../shared/data-table/action.model';
+import { DatableTableAction } from '../../../shared/datatable/action.model';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TokenStorageService } from 'src/app/services/token-storage.service';

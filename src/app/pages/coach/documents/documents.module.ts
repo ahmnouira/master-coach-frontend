@@ -7,7 +7,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { BoutiqueModule } from '../boutique/boutique.module';
 import { LoadingCardModule } from 'src/app/shared/loading-card/loading-card.module';
-import { DatatableModule } from 'src/app/shared/data-table/datatable.module';
+import { DatatableModule } from 'src/app/shared/datatable/datatable.module';
 import { DocumentsAddComponent } from './documents-add/documents-add.component';
 import { DocumentsFormComponent } from './documents-form/documents-form.component';
 import { DocumentsEditComponent } from './documents-edit/documents-edit.component';

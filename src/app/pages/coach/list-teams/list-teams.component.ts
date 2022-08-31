@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { DatableTableAction } from '../../../shared/data-table/action.model';
+import { DatableTableAction } from '../../../shared/datatable/action.model';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { CoachService } from 'src/app/services/coach-service/coach.service';

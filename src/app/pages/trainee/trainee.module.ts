@@ -9,7 +9,7 @@ import { FindCoachComponent } from './find-coach/find-coach.component';
 import { MesDocQuizComponent } from './client-quiz/mes-doc-quiz/mes-doc-quiz.component';
 import { AnswerQuizComponent } from './client-quiz/answer-quiz/answer-quiz.component';
 import { LoadingCardModule } from '../../shared/loading-card/loading-card.module';
-import { DatatableModule } from '../../shared/data-table/datatable.module';
+import { DatatableModule } from '../../shared/datatable/datatable.module';
 import { DetailCoachComponent } from './detail-coach/detail-coach.component';
 import { FormationDetailComponent } from './formation-detail/formation-detail.component';
 import { RdvListComponent } from './rdv-list/rdv-list.component';

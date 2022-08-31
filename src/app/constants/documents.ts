@@ -1,4 +1,4 @@
-import { DatableTableAction } from '../shared/data-table/action.model';
+import { DatableTableAction } from '../shared/datatable/action.model';
 
 export const COACH_DOCS_DISPLAYED_COLUMNS = [
   {
@@ -60,3 +60,25 @@ export const COACH_DOCS_ACTION_COLUMNS: DatableTableAction[] = [
     ],
   },
 ];
+
+
+export const COACH_DOCS_FILTERS_TYPES  = [{
+
+  _id: '1', 
+  name: 'Achat'
+}, {
+
+  _id: '2', 
+  name: 'Réservation'
+}]
+
+
+export const COACH_DOCS_FILTERS_WITH  = [{
+
+  _id: '1', 
+  name: 'Coach'
+}, {
+
+  _id: '2', 
+  name: 'Client'
+}]

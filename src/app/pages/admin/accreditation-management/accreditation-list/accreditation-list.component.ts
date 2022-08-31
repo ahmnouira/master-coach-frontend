@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { DatableTableAction } from '../../../../shared/data-table/action.model';
+import { DatableTableAction } from '../../../../shared/datatable/action.model';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { UserService } from 'src/app/services/user-service/user-service.service';

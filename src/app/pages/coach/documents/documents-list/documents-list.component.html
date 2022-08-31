@@ -3,42 +3,45 @@
 <div class="sub-component-content">
   <div class="row mt-4 gx-4">
     <div class="col-9">
-      <div class="filters-row input-group form-group form-inline d-flex">
-        <select
-          class="selectFilter mlr-10"
-          [(ngModel)]="selectedStatus"
-          (change)="onOptionsSelected($event, 'status')"
-        >
-          <option selected disabled value="status">Achat / Réservation</option>
-          <option value="En attente">En attente</option>
-          <option value="Clos">Clos</option>
-        </select>
-        <select
-          class="selectFilter mlr-10"
-          [(ngModel)]="selectedType"
-          (change)="onOptionsSelected($event, 'type')"
-        >
-          <option selected disabled value="type">Coachée</option>
-          <option value="quiz">Quiz</option>
-          <option value="support">Support de formation</option>
-        </select>
-        <div
-          class="filters-row input-group form-group form-inline"
-          style="width: 250px"
-        >
-          <input
-            class="form-control searchBox mlr-10"
-            type="text"
-            [(ngModel)]="filterString"
-            placeholder="Titre"
-          />
-          <span
-            class="material-icons material-icons-inside-input"
-            style="right: 30px; color: #1376a3"
-            >search</span
-          >
+      <div class="filters row">
+        <div class="col">
+          <app-select
+            [data]="FILTER_TYPES"
+            [text]="'Achat / Réservation'"
+            [(model)]="selectedTypes"
+            (onItemOneSelect)="filters.type = $event"
+            [singleSelection]="true"
+          ></app-select>
         </div>
-        <button class="btn mlr-10">Rechercher</button>
+        <app-select
+          class="col"
+          [data]="FILTER_WITH"
+          [text]="'Coachée'"
+          [(model)]="selectedWith"
+          (onItemOneSelect)="filters.with = $event"
+          [singleSelection]="true"
+        ></app-select>
+        <div class="col">
+          <div
+            class="filters-row input-group form-group form-inline"
+            style="width: 250px"
+          >
+            <input
+              class="form-control searchBox mlr-10"
+              type="text"
+              [(ngModel)]="filterString"
+              placeholder="Titre"
+            />
+            <span
+              class="material-icons material-icons-inside-input"
+              style="right: 30px; color: #1376a3"
+              >search</span
+            >
+          </div>
+        </div>
+        <div class="col">
+          <app-button [title]="'Rechercher'" [variant]="'basic'"> </app-button>
+        </div>
       </div>
     </div>
 

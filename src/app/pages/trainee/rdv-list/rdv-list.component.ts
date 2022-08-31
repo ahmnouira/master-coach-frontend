@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import * as moment from 'moment';
 import { FormControl } from '@angular/forms';
-import { DatableTableAction } from '../../../shared/data-table/action.model';
+import { DatableTableAction } from '../../../shared/datatable/action.model';
 import { RdvService } from 'src/app/services/rdv-service/rdv.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 

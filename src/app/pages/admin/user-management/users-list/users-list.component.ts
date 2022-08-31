@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatableTableAction } from '../../../../shared/data-table/action.model';
+import { DatableTableAction } from '../../../../shared/datatable/action.model';
 import { FormControl } from '@angular/forms';
 import { TokenStorageService } from '../../../../services/token-storage.service';
 import { Title } from '@angular/platform-browser';
