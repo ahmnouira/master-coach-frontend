@@ -21,7 +21,7 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
     type: DocumentType.DOCUMENT,
     category: '',
     image: '',
-    files: '',
+    file: '',
     duration: '',
   };
 
@@ -60,7 +60,7 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
           category: this.getString(document.category),
           duration: this.getString(document.duration),
           image: this.getFileUrl(document.image),
-          files: this.getFileUrl(document.files),
+          file: this.getFileUrl(document.file),
         };
         const category = this.categories?.find(
           (el) => el.name === this.form.category
@@ -110,12 +110,8 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
     }
   }
 
-  importImage(data: any) {
-    this.form.image = data;
-  }
-
-  addFiles(data: any) {
-    this.form.files = data;
+  importFile(data: any, key: string) {
+    this.form[key] = data;
   }
 
   async submit() {
@@ -127,12 +123,7 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
       this.onError('');
       return;
     }
-
-    // console.log('Form', this.form);
-
     const formData = this.getFormData(this.form);
-
-    // transform fields to array
 
     this.documentService.addDocument(formData).subscribe(
       (res) => {

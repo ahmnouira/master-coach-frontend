@@ -68,13 +68,13 @@
 
         <div class="col">
           <app-file-uploader
-            [model]="form.files"
+            [model]="form.file"
             [title]="getMultiFileFieldData().title"
             [type]="getMultiFileFieldData().type"
             [style]="'secondary'"
             [prefix]="'service-type'"
-            (onClick)="addFiles($event)"
-            (onDelete)="form.files = ''"
+            (onClick)="importFile($event, 'file')"
+            (onDelete)="form.file = ''"
           ></app-file-uploader>
         </div>
       </div>
@@ -115,7 +115,7 @@
             [showLabel]="true"
             [prefix]="'service-image'"
             [label]="'Photo qui illustre votre produit'"
-            (onClick)="importImage($event)"
+            (onClick)="importFile($event, 'image')"
             (onDelete)="form.image = ''"
           ></app-file-uploader>
         </app-titled-field>

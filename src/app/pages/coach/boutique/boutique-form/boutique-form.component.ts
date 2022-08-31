@@ -25,7 +25,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     category: '',
     displayedInShop: false,
     image: '',
-    files: '',
+    file: '',
     duration: '',
   };
 
@@ -33,7 +33,6 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     type: 'pdf',
     title: 'Ajouter des documents',
   };
-
 
   selectedCategories: any = [];
   categories: any[] = [];
@@ -65,7 +64,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
           isFree: product.isFree,
           duration: this.getString(product.duration),
           image: this.getFileUrl(product.image),
-          files: this.getFileUrl(product.files),
+          file: this.getFileUrl(product.file),
           price: this.getString(product.price),
           displayedInShop: product.displayedInShop,
         };
@@ -83,7 +82,6 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
       this.isLoading = false;
     }
   }
-
 
   getCategories() {
     this.authService.currentUser$.subscribe((user) => {
@@ -174,11 +172,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     );
   }
 
-  importImage(data: any) {
-    this.form.image = data;
-  }
-
-  addFiles(data: any) {
-    this.form.files = data;
+  importFile(data: any, key: string) {
+    this.form[key] = data;
   }
 }

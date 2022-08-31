@@ -16,8 +16,7 @@ export class BoutiqueCardComponent implements OnInit {
   icon: string;
   backgroundImage: string;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.getBackgroundImage();

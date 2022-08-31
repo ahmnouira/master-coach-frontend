@@ -7,5 +7,5 @@ export interface IDocument {
   type: DocumentType;
   category: any;
   image: any;
-  files: any;
+  file: any;
 }

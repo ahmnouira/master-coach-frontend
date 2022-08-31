@@ -7,9 +7,8 @@ export interface IProduct {
   type: ProductType | null;
   category: string;
   image: any;
-  files: any;
+  file: any;
   price?: string;
   isFree?: boolean;
   displayedInShop?: boolean;
- 
 }

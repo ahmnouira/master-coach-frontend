@@ -9,5 +9,5 @@ export class Document extends Entity implements IDocument {
   type: DocumentType;
   category: any;
   image: any;
-  files: any;
+  file: any;
 }

@@ -9,9 +9,8 @@ export class Product extends Entity implements IProduct {
   type: ProductType;
   category: string;
   image: any;
-  files: any;
+  file: any;
   price?: string;
   isFree?: boolean;
   displayedInShop?: boolean;
- 
 }
