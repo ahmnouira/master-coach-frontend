@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { title } from 'process';
 import { AuthService } from 'src/app/core/auth.service';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IProduct } from 'src/app/interfaces/product.interface';

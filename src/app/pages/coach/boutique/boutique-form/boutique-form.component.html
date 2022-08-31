@@ -103,14 +103,14 @@
         </div>
       </div>
 
-      <div class="row align-items-center mt-4 mb-4">
+      <div class="row align-items-center mt-4 mb-5">
         <app-titled-field content="image">
           <app-file-uploader
             [model]="form.image"
             [title]="'Ajouter une photo'"
             type="photo"
             [style]="'secondary'"
-            [showLabel]="false"
+            [showLabel]="true"
             [prefix]="'service-image'"
             [label]="'Photo qui illustre votre produit'"
             (onClick)="importImage($event)"

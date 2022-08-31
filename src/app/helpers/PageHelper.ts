@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { BaseHelper } from './BaseHelper';
 
 interface Response<T = any> {
   success: boolean;
@@ -13,20 +14,7 @@ interface GetDataOptions {
 }
 type Format = 'json' | 'txt';
 
-export class PageHelper<T = any> {
-  /**
-   * @description success from the server
-   */
-  success = false;
-  /**
-   * @description page is loading
-   */
-  isLoading = true;
-
-  /**
-   * @description error from the server
-   */
-  error = '';
+export class PageHelper<T = any> extends BaseHelper {
 
   /**
    * @description found data
@@ -37,6 +25,10 @@ export class PageHelper<T = any> {
    * @description represent the data returned
    */
   data: T;
+
+  constructor() {
+    super()
+  }
 
   /**
    *
@@ -73,7 +65,7 @@ export class PageHelper<T = any> {
         'isLoading:',
         this.isLoading,
 
-        'isFound:',
+        'found:',
         this.found,
 
         'error: ',
@@ -92,7 +84,7 @@ export class PageHelper<T = any> {
     }
   }
 
-  private handleSeverResponse(res: Response<T>) {
+ private handleSeverResponse(res: Response<T>) {
     if (!res.success) {
       this.onError(res.error);
       return;
@@ -101,23 +93,10 @@ export class PageHelper<T = any> {
     this.found = Array.isArray(res.data) ? Boolean(res.data.length) : true;
   }
 
-  private onError(error: any) {
-    if (error) {
-      console.error('onError:', error);
-      this.error = error;
-    }
-    this.found = false;
-    this.success = false;
-    this.isLoading = false;
-  }
 
-  private onSuccess(cb?: Function) {
-    this.success = true;
-    this.error = '';
-    this.isLoading = false;
-    setTimeout(() => {
-      this.success = false;
-      if (cb) cb();
-    }, 3000);
+  
+  protected override onError(error: any) {
+    super.onError(error)
+    this.found = false 
   }
 }

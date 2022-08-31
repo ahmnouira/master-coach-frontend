@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { throws } from 'assert';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { Service } from 'src/app/models/service/service.model';
 import { ServicesService } from 'src/app/services/services-service/services.service';
@@ -11,17 +12,17 @@ import { Animations } from 'src/app/shared/animations';
   animations: Animations,
 })
 export class ServicesListComponent
-  extends PageHelper<Service[]>
-  implements OnInit, AfterViewInit
+  extends PageHelper
+  implements OnInit
 {
   filterString = '';
 
   constructor(private servicesService: ServicesService) {
-    super();
-  }
+    super()
+  } 
 
   ngOnInit(): void {
-    this.getServices();
+    this.getServices();  
   }
 
   getServices() {
@@ -29,8 +30,6 @@ export class ServicesListComponent
       debug: true,
     });
   }
-
-  ngAfterViewInit(): void {}
 
   filterInputChanged(event) {}
 }

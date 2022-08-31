@@ -1,6 +1,5 @@
 import { NgForm } from '@angular/forms';
 import { BasicHelper } from './BasicHelper';
-import { FileHelper } from './FileHelper';
 
 export class FormHelper extends BasicHelper {
   /**
@@ -10,16 +9,7 @@ export class FormHelper extends BasicHelper {
   /**
    * @description success from the server
    */
-  success = false;
-  /**
-   * @description page is loading
-   */
-  isLoading = true;
-
-  /**
-   * @description error from the server
-   */
-  error = '';
+ 
 
   f: NgForm;
 
@@ -50,7 +40,7 @@ export class FormHelper extends BasicHelper {
     this.onSuccess();
   }
 
-  onError(error: any) {
+  override onError(error: any) {
     if (error) {
       console.error('onError:', error);
       this.error = error;
@@ -60,7 +50,7 @@ export class FormHelper extends BasicHelper {
     this.isLoading = false;
   }
 
-  onSuccess(cb?: Function) {
+  override onSuccess(cb?: Function) {
     this.isSubmitting = false;
     this.success = true;
     this.error = '';

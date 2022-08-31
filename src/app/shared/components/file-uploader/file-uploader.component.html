@@ -1,7 +1,7 @@
 <div>
-  <div class="form-group" (click)="file.click()" *ngIf="isEmpty">
+  <div class="form-group" *ngIf="isEmpty">
     <label *ngIf="label && showLabel" class="element-label">{{ label }}</label>
-    <div class="file-input">
+    <div class="file-input" (click)="file.click()">
       <input
         #file
         type="file"
