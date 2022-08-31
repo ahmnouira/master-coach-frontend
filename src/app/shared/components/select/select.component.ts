@@ -40,5 +40,4 @@ export class SelectComponent implements OnInit {
       classes: 'form-control element-spec multiselect',
     };
   }
-
 }

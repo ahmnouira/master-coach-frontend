@@ -1,4 +1,5 @@
-export const COACH_DOCS_DISPLAYED_COLUMNS = [{
+export const COACH_DOCS_DISPLAYED_COLUMNS = [
+  {
     data: '_id',
     value: 'ref',
     type: 'text',
@@ -18,5 +19,5 @@ export const COACH_DOCS_DISPLAYED_COLUMNS = [{
     type: 'text',
     search: true,
     sort: true,
-  }
-]
+  },
+];

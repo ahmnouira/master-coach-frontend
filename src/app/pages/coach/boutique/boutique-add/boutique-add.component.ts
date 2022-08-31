@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   templateUrl: './boutique-add.component.html',
   styleUrls: ['./boutique-add.component.scss'],
 })
-export class BoutiqueAddComponent  {
+export class BoutiqueAddComponent {
   constructor() {}
-
 }

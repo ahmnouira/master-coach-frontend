@@ -46,7 +46,7 @@
     <td *ngIf="title.type === 'icon'">
       <i
         class="material-icons icon-satatus"
-        [matTooltip]="row[title.hovericondata]"
+        [matTooltip]="row[title.hoverIconData]"
       >
         {{ row[title.data] }}
       </i>
@@ -70,24 +70,22 @@
       <ng-container *ngFor="let action of Actions">
         <ng-template [ngIf]="!row.actionHidden">
           <div class="d-flex" class="icon-datatable" tabindex="0">
-            <ng-container *ngFor="let child of action.childrens; let x = index">
+            <ng-container *ngFor="let child of action.children; let x = index">
               <div
-                [tooltip]="row[child.tooltipAttribut]"
+                [tooltip]="row[child.tooltipAttr]"
                 [adaptivePosition]="false"
                 placement="left"
                 class="actionitem"
                 [style.border-right]="
-                  x + 1 === action.childrens.length ? 'none' : ''
+                  x + 1 === action.children.length ? 'none' : ''
                 "
               >
                 <div
                   (click)="
-                    !row[child.disabledAttribut]
-                      ? actionClicked(child, row)
-                      : ''
+                    !row[child.disabledAttr] ? actionClicked(child, row) : ''
                   "
                   [style.text-align]="'center'"
-                  [ngClass]="row[child.disabledAttribut] ? 'icon-disabled' : ''"
+                  [ngClass]="row[child.disabledAttr] ? 'icon-disabled' : ''"
                   [class]="
                     'material-icons cursor-pointer m-auto color-primary-onhover material-icons-action'
                   "

@@ -55,8 +55,8 @@ export class FormHelper extends BasicHelper {
     this.error = '';
     setTimeout(() => {
       this.success = false;
-      if(cb) {
-        cb()
+      if (cb) {
+        cb();
       }
     }, 3000);
   }

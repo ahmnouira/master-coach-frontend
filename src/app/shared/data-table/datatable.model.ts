@@ -17,4 +17,4 @@ export class DatableDisplayedColumn {
 export type Tag = {
   value: number;
   display: string;
-}
+};

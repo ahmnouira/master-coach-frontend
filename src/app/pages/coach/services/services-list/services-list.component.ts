@@ -24,5 +24,5 @@ export class ServicesListComponent extends PageHelper implements OnInit {
     });
   }
 
-  filterInputChanged(event) {}
+  filterInputChanged(event: any) {}
 }

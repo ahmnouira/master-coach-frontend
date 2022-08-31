@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 
 @Component({
@@ -43,12 +50,10 @@ export class FileUploaderComponent implements OnInit {
     this.setProperties();
   }
 
-
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.title, this.type)
-    this.setProperties()
+    console.log(this.title, this.type);
+    this.setProperties();
   }
-
 
   setProperties() {
     if (!this.multiple && this.type) {
@@ -68,8 +73,6 @@ export class FileUploaderComponent implements OnInit {
           this.title = this.title ?? 'Choisir une vidéo';
           break;
         case 'audio':
-
-      
           this.accept = 'audio/*';
           this.title = this.title ?? 'Choisir un podcast';
           break;

@@ -21,7 +21,6 @@ export class DocumentsListComponent
 
   ACTION_COLUMNS: DatableTableAction[] = [];
 
-  
   DISPLAYED_COLUMNS: any[] = COACH_DOCS_DISPLAYED_COLUMNS;
 
   loadingAnimation: boolean = false;
@@ -56,7 +55,6 @@ export class DocumentsListComponent
         ],
       }
     );
-
 
     this.getDocuments();
   }

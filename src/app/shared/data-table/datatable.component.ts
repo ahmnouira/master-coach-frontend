@@ -12,11 +12,9 @@ import {
   ViewEncapsulation,
   TemplateRef,
 } from '@angular/core';
-import {
-  datatable_action,
-  datatable_displayedColomn,
-  tag,
-} from './datatable.model';
+import { DatableDisplayedColumn, Tag } from './datatable.model';
+
+import { DatableTableAction } from './action.model';
 
 import * as cloneDeep from 'lodash/cloneDeep';
 import { Animations } from '../animations';
@@ -86,7 +84,7 @@ export class DatatableComponent implements OnInit {
   //************server Side search///////////////////////
 
   //columns to display from datatable
-  @Input() set displayedColomn(value: datatable_displayedColomn[]) {
+  @Input() set displayedColomn(value: DatableDisplayedColumn[]) {
     let searchexist = value.find((el) => {
       return el.search == true;
     });
@@ -95,15 +93,15 @@ export class DatatableComponent implements OnInit {
       return el;
     });
   }
-  displayedColomnList: datatable_displayedColomn[] = [];
+  displayedColomnList: DatableDisplayedColumn[] = [];
   //list of actions
-  @Input() set Actions(value: datatable_action[]) {
+  @Input() set Actions(value: DatableTableAction[]) {
     this._Actions = value;
     this._Actions = value.map((el) => {
       return el;
     });
   }
-  _Actions: datatable_action[] = [];
+  _Actions: DatableTableAction[] = [];
   get Actions() {
     return this._Actions;
   }
@@ -147,7 +145,7 @@ export class DatatableComponent implements OnInit {
     this.refreshPagination();
   }
   _searchvalue: any = '';
-  sortByItem: datatable_displayedColomn;
+  sortByItem: DatableDisplayedColumn;
   startItem: number = 0;
   endItem: number = 10;
   dataChild: any = [];
