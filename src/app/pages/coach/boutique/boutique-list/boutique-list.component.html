@@ -3,56 +3,26 @@
 <div class="sub-component-content">
   <div class="row mt-4 gx-4">
     <div class="col-3">
-      <div class="filters-row input-group form-group form-inline p-0">
-        <input
-          class="form-control coach-search"
-          type="text"
-          [(ngModel)]="filterString"
-          (change)="filterInputChanged($event)"
-          (keydown)="filterInputChanged($event)"
-          placeholder="Recherche"
-        />
-        <span
-          class="material-icons material-icons-inside-input"
-          style="right: 30px; color: #ddf2fa"
-          >search</span
-        >
-      </div>
+      <app-search
+        [(model)]="search"
+        (modelChange)="handleSearch($event)"
+      ></app-search>
     </div>
 
-    <div class="col-9 d-flex flex-column">
-      <div class="d-inline-flex justify-content-end">
-        &nbsp;
-        <a routerLink="/pages/coach/boutique/add" class="btn align-self-end"
-          ><span class="material-icons">add_circle</span>Ajouter un support de
-          formation</a
-        >&nbsp;
-      </div>
+    <div class="col-9">
+      <app-button [title]="'Ajouter un product'" [variant]="'add'">
+      </app-button>
     </div>
   </div>
 
-  <div *ngIf="isLoading">
-    <app-loader [marginTop]="'64px'"></app-loader>
-  </div>
-
-  <app-empty-page
-    title="products"
-    *ngIf="!found && !isLoading && !error"
-  ></app-empty-page>
-
-  <app-form-error [error]="error"></app-form-error>
-
-  <div
-    class="boutique"
-    [@animate]="{
-      value: '*',
-      params: { duration: '300ms', y: '100px' }
-    }"
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'products'"
   >
-    <div class="row" *ngIf="found">
-      <div class="col-lg-3" *ngFor="let product of products; index as i">
-        <app-boutique-card [product]="product"></app-boutique-card>
-      </div>
+    <div class="col-lg-3" *ngFor="let product of data; index as i">
+      <app-boutique-card [product]="product"></app-boutique-card>
     </div>
-  </div>
+  </app-page-list-wrapper>
 </div>

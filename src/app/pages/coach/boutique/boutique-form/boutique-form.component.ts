@@ -1,10 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { copyFile } from 'fs';
 import { AuthService } from 'src/app/core/auth.service';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { ProductType } from 'src/app/models/product/product-type.enum';
-import { Product } from 'src/app/models/product/product.model';
 import { ProductService } from 'src/app/services/product-service/product.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { Animations } from 'src/app/shared/animations';
@@ -24,10 +22,10 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     title: '',
     type: ProductType.DOCUMENT,
     isFree: true,
-    category: [],
+    category: '',
     displayedInShop: false,
     image: '',
-    files: '',
+    file: '',
     duration: '',
   };
 
@@ -36,7 +34,8 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     title: 'Ajouter des documents',
   };
 
-  categories: string[] = [];
+  selectedCategories: any = [];
+  categories: any[] = [];
 
   constructor(
     private productService: ProductService,
@@ -47,8 +46,8 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCategories();
     if (this.id) {
-      this.isLoading = true;
       // means edit
       this.productService.getProduct(this.id).subscribe((res) => {
         if (!res.success) {
@@ -57,54 +56,62 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
         }
         const product = res.data as IProduct;
 
-        console.log('files', this.getFileUrl(product.files));
-
         this.form = {
           description: this.getString(product.description),
           title: this.getString(product.title),
           type: product.type,
-          category: this.getArray(product.category),
+          category: this.getString(product.category),
           isFree: product.isFree,
           duration: this.getString(product.duration),
           image: this.getFileUrl(product.image),
-          files: this.getFileUrl(product.files),
+          file: this.getFileUrl(product.file),
           price: this.getString(product.price),
           displayedInShop: product.displayedInShop,
         };
+
+        const category = this.categories?.find(
+          (el) => el.name === this.form.category
+        );
+        if (category) {
+          this.selectedCategories = [category];
+        }
+
         this.isLoading = false;
       });
     } else {
-      this.authService.currentUser$.subscribe((user) => {
-        this.categories = this.getArray(user.category);
-        this.isLoading = false;
-      });
+      this.isLoading = false;
     }
   }
 
+  getCategories() {
+    this.authService.currentUser$.subscribe((user) => {
+      this.categories = this.getArray(user.category);
+    });
+  }
   getMultiFileFieldData() {
     switch (this.form.type) {
       case ProductType.DOCUMENT:
         return {
-          title: 'Ajouter des documents',
+          title: 'Ajouter un document',
           type: 'pdf',
         };
       case ProductType.VIDEO: {
         return {
-          title: 'Ajouter des vidéos',
+          title: 'Ajouter une vidéo',
           type: 'video',
         };
       }
 
       case ProductType.PODCAST: {
         return {
-          title: 'Ajouter des podcasts',
+          title: 'Ajouter un podcast',
           type: 'audio',
         };
       }
       // by default is document
       default:
         return {
-          title: 'Ajouter des documents',
+          title: 'Ajouter un document',
           type: 'pdf',
         };
     }
@@ -133,15 +140,12 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
 
   async submit() {
     this.isSubmitting = true;
-    const { description, title, price, type, category, isFree, duration } =
-      this.form;
+    const { description, title, price, isFree, duration } = this.form;
 
-    if (!title || !description || !description) {
+    if (!title || !description || !duration) {
       this.onError('');
       return;
     }
-
-    console.log('price', price, duration);
 
     // check if not a free
     if (!isFree && !price) {
@@ -150,6 +154,8 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     }
 
     const formData = this.getFormData(this.form);
+
+    formData.set('price', parseInt(price).toString());
 
     this.productService.addProduct(formData).subscribe(
       (res) => {
@@ -166,11 +172,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     );
   }
 
-  importImage(data: any) {
-    this.form.image = data;
-  }
-
-  addFiles(data: any) {
-    this.form.files = data;
+  importFile(data: any, key: string) {
+    this.form[key] = data;
   }
 }

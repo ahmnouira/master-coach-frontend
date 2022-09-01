@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageHelper } from 'src/app/helpers/PageHelper';
 import { Product } from 'src/app/models/product/product.model';
 import { ProductService } from 'src/app/services/product-service/product.service';
 import { Animations } from 'src/app/shared/animations';
@@ -9,46 +10,65 @@ import { Animations } from 'src/app/shared/animations';
   styleUrls: ['./boutique-list.component.scss'],
   animations: Animations,
 })
-export class BoutiqueListComponent implements OnInit {
-  filterString = '';
+export class BoutiqueListComponent
+  extends PageHelper<Product[]>
+  implements OnInit
+{
+  search = '';
+  filteredData: Product[]
 
-  isLoading = true;
-  error: string = '';
-  products: Product[];
-  found: boolean;
-
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+    super();
+  }
 
   ngOnInit(): void {
     this.getProducts();
+    this.filteredData = this.data
   }
 
   getProducts() {
-    this.productService
-      .getProducts({
+    this.getData(
+      this.productService.getProducts({
         all: false,
         displayedInShop: false,
-      })
-      .pipe()
-      .subscribe(
-        (res) => {
-          if (!res.success) {
-            this.isLoading = false;
-            this.error = res.error;
-            return;
-          }
-          console.log('data', res.data);
-          this.products = res.data;
-          this.found = Boolean(res.data.length);
-          this.isLoading = false;
-        },
-        (error) => {
-          this.found = false;
-          this.isLoading = false;
-          this.error = error;
-        }
-      );
+      }),
+      {
+        debug: true,
+      }
+    );
   }
 
-  filterInputChanged(event) {}
+
+  resetFilters() {
+    this.filteredData = this.data;
+    // this.selectedComp = 'Compétences';
+    // this.selectedAccr = 'Accréditations';
+    // this.selectedCoachType = 'Type de coach';
+    // this.selectedContent = 'Type de contenus';
+    // this.filterString = '';
+    this.search = ''
+  }
+
+  handleSearch(search: string) {
+
+    console.log("thisSearch", this.search, search)
+    if (search == '') {
+      this.isLoading = true
+      this.getProducts()
+    } else {
+      if(!this.data.length) {
+        this.isLoading = true
+        this.getProducts()
+      }  
+      this.data = this.data.filter(
+        (elem) =>
+          elem.title?.toLowerCase().includes(search.toLowerCase()) 
+          // ||
+         //  elem.prenom?.toLowerCase().includes(this.filterString.toLowerCase())
+      );
+      if(this.data.length < 1) {
+        this.found = false
+      }
+    }
+  }
 }

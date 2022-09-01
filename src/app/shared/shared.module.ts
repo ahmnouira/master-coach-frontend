@@ -39,6 +39,10 @@ import { AddFieldComponent } from './components/add-field/add-field.component';
 import { LayoutModule } from './layout/layout.module';
 import { SidebarItemComponent } from './layout/sidebar-item/sidebar-item.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.component';
+import { PageListWrapperComponent } from './components/page-list-wrapper/page-list-wrapper.component';
+import { RouterModule } from '@angular/router';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +77,9 @@ import { ModalComponent } from './components/modal/modal.component';
     RadioComponent,
     AddFieldComponent,
     ModalComponent,
+    FormWrapperComponent,
+    PageListWrapperComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
@@ -85,6 +92,7 @@ import { ModalComponent } from './components/modal/modal.component';
     TooltipModule,
     AngularMultiSelectModule,
     LayoutModule,
+    RouterModule, // to use routerLink
   ],
   exports: [
     ModalAjoutSessionComponent,
@@ -118,6 +126,9 @@ import { ModalComponent } from './components/modal/modal.component';
     AddFieldComponent,
     SidebarItemComponent,
     ModalComponent,
+    FormWrapperComponent,
+    PageListWrapperComponent,
+    SearchComponent
   ],
 })
 export class SharedModule {}

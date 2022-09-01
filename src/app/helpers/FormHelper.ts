@@ -1,12 +1,14 @@
 import { NgForm } from '@angular/forms';
 import { BasicHelper } from './BasicHelper';
-import { FileHelper } from './FileHelper';
 
 export class FormHelper extends BasicHelper {
-  isSubmitting = false; // button submit
-  success = false;
-  isLoading = true; // page is loading
-  error = '';
+  /**
+   * @description button is submitting
+   */
+  isSubmitting = false;
+  /**
+   * @description success from the server
+   */
 
   f: NgForm;
 
@@ -14,7 +16,6 @@ export class FormHelper extends BasicHelper {
     let formData = new FormData();
     for (const key in form) {
       if (Array.isArray(form[key])) {
-        // multi files remove
         console.log('array', key, form[key]);
         formData.append(key, JSON.stringify(form[key]));
       } else {
@@ -30,7 +31,15 @@ export class FormHelper extends BasicHelper {
     this.f = f;
   }
 
-  onError(error: any) {
+  handleSeverResponse(res) {
+    if (!res.success) {
+      this.onError(res.error);
+      return;
+    }
+    this.onSuccess();
+  }
+
+  override onError(error: any) {
     if (error) {
       console.error('onError:', error);
       this.error = error;
@@ -40,13 +49,15 @@ export class FormHelper extends BasicHelper {
     this.isLoading = false;
   }
 
-  onSuccess(cb?: Function) {
+  override onSuccess(cb?: Function) {
     this.isSubmitting = false;
     this.success = true;
     this.error = '';
     setTimeout(() => {
       this.success = false;
-      cb();
+      if (cb) {
+        cb();
+      }
     }, 3000);
   }
 }

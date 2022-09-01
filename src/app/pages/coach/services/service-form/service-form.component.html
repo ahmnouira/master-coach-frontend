@@ -36,8 +36,76 @@
         [placeholder]="'Min'"
         [type]="'number'"
         [form]="f"
+        [min]="10"
+        pattern="\d+"
       >
       </app-text-field>
+
+      <app-divider></app-divider>
+
+      <app-titled-field content="Format">
+        <div class="form-container-radios">
+          <app-radio
+            [label]="'Visioconférence'"
+            [(model)]="form.format"
+            [value]="'visio-conference'"
+            [name]="'service-format'"
+          >
+          </app-radio>
+
+          <app-radio
+            [label]="'Présentiel'"
+            [(model)]="form.format"
+            [value]="'presentiel'"
+            [name]="'service-format'"
+          >
+          </app-radio>
+        </div>
+      </app-titled-field>
+
+      <app-titled-field content="Chez">
+        <div class="form-container-radios">
+          <app-radio
+            [label]="'Client'"
+            [(model)]="form.with"
+            [value]="'client'"
+            [disabled]="form.format !== 'presentiel'"
+            [name]="'service-with'"
+          >
+          </app-radio>
+
+          <app-radio
+            [label]="'Coach'"
+            [(model)]="form.with"
+            [value]="'coach'"
+            [disabled]="form.format !== 'presentiel'"
+            [name]="'service-with'"
+          >
+          </app-radio>
+        </div>
+      </app-titled-field>
+
+      <app-titled-field content="Type de session">
+        <div class="form-container-radios">
+          <app-radio
+            [label]="'Collective'"
+            [(model)]="form.session"
+            [value]="'collective'"
+            [name]="'service-session'"
+          >
+          </app-radio>
+
+          <app-radio
+            [label]="'Individuel'"
+            [(model)]="form.session"
+            [value]="'individuel'"
+            [name]="'service-session'"
+          >
+          </app-radio>
+        </div>
+      </app-titled-field>
+
+      <app-divider></app-divider>
 
       <app-titled-field content="Auto confirmation">
         <app-checkbox
@@ -54,6 +122,7 @@
           [showLabel]="true"
           [style]="'secondary'"
           [title]="'Ajouter une photo'"
+          [prefix]="'service-photo'"
           (onClick)="addPhoto($event)"
           (onDelete)="form.image = undefined"
         ></app-file-uploader>
@@ -75,12 +144,17 @@
           <app-checkbox
             [label]="'Masquer le prix'"
             [(model)]="form.isPriceHidden"
+            [disabled]="form.isFree"
           >
           </app-checkbox>
         </div>
 
         <div class="col-2">
-          <app-checkbox [label]="'Fixe'" [(model)]="form.isFixedPrice">
+          <app-checkbox
+            [label]="'Fixe'"
+            [(model)]="form.isFixedPrice"
+            [disabled]="form.isFree"
+          >
           </app-checkbox>
         </div>
 
@@ -91,7 +165,10 @@
             [label]="'Price'"
             [placeholder]="'Price'"
             [showLabel]="false"
+            [min]="10"
             [form]="f"
+            [disabled]="form.isFree"
+            pattern="\d+"
           >
           </app-text-field>
         </div>

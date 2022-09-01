@@ -1,0 +1,142 @@
+<div *ngIf="isLoading; else elseBlock">
+  <div style="margin-top: 50px">
+    <app-loader></app-loader>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <form
+    [@animate]="{
+      value: '*',
+      params: { duration: '300ms', y: '100px' }
+    }"
+    name="form"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="form-container">
+      <h2 class="title">Info</h2>
+
+      <!-- Titre -->
+      <app-text-field [label]="'Titre'" [(model)]="form.title" [form]="f">
+      </app-text-field>
+
+      <!-- Description -->
+      <app-text-area
+        [label]="'Description'"
+        [(model)]="form.description"
+        [placeholder]="'Texte…'"
+        [form]="f"
+      >
+      </app-text-area>
+
+      <!-- Duration  [required]="false" -->
+      <app-text-field
+        [label]="'Durée'"
+        [(model)]="form.duration"
+        [placeholder]="'Min'"
+        [type]="'number'"
+        [form]="f"
+        [min]="30"
+        pattern="\d+"
+      >
+      </app-text-field>
+
+      <app-select
+        [label]="'Catégory'"
+        [data]="categories"
+        [text]="'Coaching de carriére'"
+        [(model)]="selectedCategories"
+        (onItemOneSelect)="form.category = $event"
+        [singleSelection]="true"
+      >
+      </app-select>
+
+      <app-divider></app-divider>
+
+      <div class="row align-items-center mt-4">
+        <div class="col-4">
+          <app-titled-field content="type">
+            <app-radio
+              [label]="'Document'"
+              [(model)]="form.type"
+              [value]="'document'"
+            >
+            </app-radio>
+          </app-titled-field>
+        </div>
+
+        <div class="col">
+          <app-file-uploader
+            [model]="form.file"
+            [title]="getMultiFileFieldData().title"
+            [type]="getMultiFileFieldData().type"
+            [style]="'secondary'"
+            [prefix]="'document-type'"
+            (onClick)="importFile($event, 'file')"
+            (onDelete)="form.file = ''"
+            [showLabel]="true"
+          ></app-file-uploader>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-4">
+          <app-titled-field [content]="'type'" [titleHidden]="true">
+            <app-radio
+              [label]="'Vidéo'"
+              [(model)]="form.type"
+              [value]="'video'"
+            >
+            </app-radio>
+          </app-titled-field>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col-4">
+          <app-titled-field [content]="'type'" [titleHidden]="true">
+            <app-radio
+              [label]="'Podcast'"
+              [(model)]="form.type"
+              [value]="'podcast'"
+            >
+            </app-radio>
+          </app-titled-field>
+        </div>
+      </div>
+
+      <div class="row align-items-center mt-4 mb-5">
+        <app-titled-field content="image">
+          <app-file-uploader
+            [model]="form.image"
+            [title]="'Ajouter une photo'"
+            type="photo"
+            [style]="'secondary'"
+            [showLabel]="true"
+            [prefix]="'document-image'"
+            [label]="'Photo qui illustre votre document'"
+            (onClick)="importFile($event, 'image')"
+            (onDelete)="form.image = ''"
+          ></app-file-uploader>
+        </app-titled-field>
+      </div>
+
+      <!-- Divider -->
+      <app-divider></app-divider>
+
+      <app-form-error [error]="error"></app-form-error>
+
+      <div class="alert alert-info" role="alert" *ngIf="success">
+        Documnet ajouté
+      </div>
+
+      <app-button
+        (onClick)="submit()"
+        [isLoading]="isSubmitting"
+        [disabled]="id ? true : false"
+      >
+      </app-button>
+    </div>
+  </form>
+</ng-template>

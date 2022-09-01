@@ -1,15 +1,5 @@
 <app-sub-header [title]="'Modifier service'"></app-sub-header>
 
-<div class="sub-component-content">
-  <div class="row mt-4 gx-4">
-    <div class="col">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-10 right-side">
-          <app-service-form [id]="id"></app-service-form>
-        </div>
-      </div>
-    </div>
-    <div class="col"></div>
-  </div>
-</div>
+<app-form-wrapper>
+  <app-service-form [id]="id"></app-service-form>
+</app-form-wrapper>

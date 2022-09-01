@@ -6,9 +6,19 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ComponentsModule } from '../../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { BoutiqueModule } from '../boutique/boutique.module';
+import { LoadingCardModule } from 'src/app/shared/loading-card/loading-card.module';
+import { DatatableModule } from 'src/app/shared/datatable/datatable.module';
+import { DocumentsAddComponent } from './documents-add/documents-add.component';
+import { DocumentsFormComponent } from './documents-form/documents-form.component';
+import { DocumentsEditComponent } from './documents-edit/documents-edit.component';
 
 @NgModule({
-  declarations: [DocumentsListComponent],
+  declarations: [
+    DocumentsListComponent,
+    DocumentsAddComponent,
+    DocumentsFormComponent,
+    DocumentsEditComponent,
+  ],
   imports: [
     CommonModule,
     DocumentsRoutingModule,
@@ -16,6 +26,8 @@ import { BoutiqueModule } from '../boutique/boutique.module';
     ComponentsModule,
     FormsModule,
     BoutiqueModule,
+    LoadingCardModule,
+    DatatableModule,
   ],
 })
 export class DocumentsModule {}

@@ -32,9 +32,14 @@ export class AvatarComponent implements OnInit {
   handleClick() {
     this.routeService.navigate([`/pages/${this.role.toLowerCase()}/parametre`]);
   }
-
   getUserPicture() {
     if (this.photo) {
+      if (
+        typeof this.photo === 'string' &&
+        this.photo == '/assets/img/common/utilisateur.png'
+      ) {
+        return;
+      }
       this.photo = FileHelper.getUrl(this.photo);
     } else this.photo = '/assets/img/common/utilisateur.png';
   }

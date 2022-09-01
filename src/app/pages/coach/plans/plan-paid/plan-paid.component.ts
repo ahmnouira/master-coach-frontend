@@ -26,7 +26,7 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.params = this.routeService.getParams;
+    this.params = this.routeService.getQueryParams;
     this.plan = this.paymentService.getSavedSelectedPlan();
     if (!this.plan) {
       this.errorMessage = 'No plan is selected';

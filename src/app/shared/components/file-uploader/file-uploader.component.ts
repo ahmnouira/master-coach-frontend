@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 
 @Component({
@@ -20,7 +27,8 @@ export class FileUploaderComponent implements OnInit {
 
   @Input() type: string; //  'pdf' | 'photo' | 'video' | 'audio' | undefined;
   @Input() label?: string = '';
-  @Input() filename?: string = '';
+  @Input() prefix?: string = '';
+
   @Input() style?: 'primary' | 'secondary' = 'primary';
 
   @Input() multiple?: boolean = false;
@@ -32,12 +40,18 @@ export class FileUploaderComponent implements OnInit {
 
   isEmpty: boolean;
 
+  filename: string = '';
+
   constructor() {}
 
   ngOnInit(): void {
-    console.log('image', this.model);
-
+    this.prefix = this.prefix ? this.prefix : this.label;
     this.checkEmpty();
+    this.setProperties();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // console.log(this.title, this.type);
     this.setProperties();
   }
 
@@ -70,7 +84,7 @@ export class FileUploaderComponent implements OnInit {
     if (this.model && typeof this.model === 'string') {
       this.isEmpty = false;
       // set the filename
-      this.filename = FileHelper.getFileName(this.label, this.model);
+      this.filename = FileHelper.getFileName(this.prefix, this.model);
     } else if (Array.isArray(this.model) && this.model.length) {
       this.isEmpty = false;
     } else {
@@ -86,8 +100,8 @@ export class FileUploaderComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.isEmpty = false;
-        this.filename = this.label
-          ? FileHelper.formatName(this.label) +
+        this.filename = this.prefix
+          ? FileHelper.formatName(this.prefix) +
             '-' +
             FileHelper.formatName(file.name)
           : FileHelper.formatName(file.name);

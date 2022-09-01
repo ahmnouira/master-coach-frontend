@@ -11,6 +11,8 @@ const routes: Routes = [
     component: BoutiqueAddComponent,
   },
   { path: 'edit/:id', component: BoutiqueEditComponent },
+
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
