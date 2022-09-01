@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PageHelper } from 'src/app/helpers/PageHelper';
 import { Document } from 'src/app/models/document/document.model';
-import { ProductService } from 'src/app/services/product-service/product.service';
+import { DocumentsService } from 'src/app/services/document-service/documents.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { datatable_action } from 'src/app/shared/datatable/datatable.model';
 
@@ -9,11 +10,9 @@ import { datatable_action } from 'src/app/shared/datatable/datatable.model';
   templateUrl: './documents-list.component.html',
   styleUrls: ['./documents-list.component.scss'],
 })
-export class DocumentsListComponent implements OnInit {
+export class DocumentsListComponent extends PageHelper implements OnInit {
   filterString = '';
 
-  isLoading = true;
-  error: string = '';
   documents: Document[] = [
     {
       _id: '1',
@@ -28,8 +27,7 @@ export class DocumentsListComponent implements OnInit {
       type: 'Rapport',
     },
   ];
-  found: boolean = true;
-  data: any = [];
+
   selectedProfiles: any = [];
 
   ACTION_COLUMNS: datatable_action[] = [];
@@ -40,10 +38,11 @@ export class DocumentsListComponent implements OnInit {
   selectedType = 'type';
 
   constructor(
-    private productService: ProductService,
-
+    private documentService: DocumentsService,
     private routerService: RouteService
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
     this.ACTION_COLUMNS.push(
@@ -90,8 +89,18 @@ export class DocumentsListComponent implements OnInit {
         sort: true,
       },
     ];
+    this.getDocuments();
+  }
 
-    this.isLoading = false;
+  getDocuments() {
+    this.getData(
+      this.documentService.getDocuments({
+        all: false,
+      }),
+      {
+        debug: true,
+      }
+    );
   }
 
   onActionClicked(element: any) {
