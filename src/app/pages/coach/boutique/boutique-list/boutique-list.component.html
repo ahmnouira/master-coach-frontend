@@ -3,21 +3,10 @@
 <div class="sub-component-content">
   <div class="row mt-4 gx-4">
     <div class="col-3">
-      <div class="filters-row input-group form-group form-inline p-0">
-        <input
-          class="form-control coach-search"
-          type="text"
-          [(ngModel)]="filterString"
-          (change)="filterInputChanged($event)"
-          (keydown)="filterInputChanged($event)"
-          placeholder="Recherche"
-        />
-        <span
-          class="material-icons material-icons-inside-input"
-          style="right: 30px; color: #ddf2fa"
-          >search</span
-        >
-      </div>
+      <app-search
+        [(model)]="search"
+        (modelChange)="handleSearch($event)"
+      ></app-search>
     </div>
 
     <div class="col-9">
