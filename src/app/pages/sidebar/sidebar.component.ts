@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { COACH_SIDEBAR } from 'src/app/constants/sidebar';
+import { RouteService } from 'src/app/services/route-service/route.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 
@@ -19,18 +19,18 @@ export class SidebarComponent implements OnInit {
   coachSidebar = COACH_SIDEBAR;
 
   constructor(
-    private router: Router,
+    private route: RouteService,
     private tokenStorageService: TokenStorageService,
     private userService: UserService
   ) {
     let token = this.tokenStorageService.getToken();
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (token) {
-      if (this.tokenExpired(token)) this.router.navigate(['/core/login']);
+      if (this.tokenExpired(token)) this.route.navigate(['/core/login']);
       const user = this.tokenStorageService.getUser();
       this.getUserFromDb(user._id);
     } else {
-      this.router.navigate(['/']);
+      this.route.navigate(['/']);
     }
   }
 
@@ -41,18 +41,18 @@ export class SidebarComponent implements OnInit {
   }
 
   goToProfile() {
-    this.router.navigateByUrl(
+    this.route.navigateByUrl(
       '/pages/' + this.getUserRole().toLowerCase() + '/parametre'
     );
   }
 
   logout() {
     this.tokenStorageService.signOut();
-    window.location.reload();
+    this.route.navigate(['/login'])
   }
 
   getUrl() {
-    return this.router.url;
+    return this.route.router.url;
   }
 
   private getUserFromDb(id: any) {
