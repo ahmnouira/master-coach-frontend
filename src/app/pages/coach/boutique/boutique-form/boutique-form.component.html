@@ -38,6 +38,7 @@
         [type]="'number'"
         [form]="f"
         [min]="30"
+        pattern="\d+"
       >
       </app-text-field>
 
@@ -145,7 +146,7 @@
             [required]="!form.isFree"
             [disabled]="form.isFree"
             [min]="1"
-            pattern="[0-9]+"
+            pattern="\d+"
           >
           </app-text-field>
         </div>

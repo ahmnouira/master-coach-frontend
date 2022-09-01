@@ -4,7 +4,7 @@ export const COACH_SIDEBAR: SidebarItem[] = [
   {
     icon: 'assets/img/common/account%20(2).svg',
     route: '/pages/coach/profil',
-    title: 'Mon Profil',
+    title: 'Tableau de board',
   },
   {
     icon: 'assets/img/common/customer%20(5).svg',
