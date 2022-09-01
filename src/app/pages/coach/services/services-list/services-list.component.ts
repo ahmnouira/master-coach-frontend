@@ -8,7 +8,7 @@ import { ServicesService } from 'src/app/services/services-service/services.serv
   styleUrls: ['./services-list.component.scss'],
 })
 export class ServicesListComponent extends PageHelper implements OnInit {
-  filterString = '';
+  search = '';
 
   constructor(private servicesService: ServicesService) {
     super();
