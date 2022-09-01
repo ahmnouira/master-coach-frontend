@@ -25,7 +25,7 @@ import { ResetPasswordModule } from './reset-password/reset-password.module';
     FormsModule,
     SharedModule,
     ForgotPasswordModule,
-    ResetPasswordModule
+    ResetPasswordModule,
   ],
 })
 export class CoreModule {}

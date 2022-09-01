@@ -9,16 +9,15 @@ import { Animations } from 'src/app/shared/animations';
 @Component({
   selector: 'app-documents-form',
   templateUrl: './documents-form.component.html',
-  styleUrls: ['./documents-form.component.scss'], 
-  animations: Animations
+  styleUrls: ['./documents-form.component.scss'],
+  animations: Animations,
 })
 export class DocumentsFormComponent extends FormHelper implements OnInit {
-
-  @Input() id: string = ''; 
+  @Input() id: string = '';
 
   form: IDocument = {
-    ref: '', 
-    title: '', 
+    ref: '',
+    title: '',
   };
 
   typeImportFiles = {
@@ -48,8 +47,8 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
         const document = res.data as IDocument;
 
         this.form = {
-          ref: '', 
-          title: ''
+          ref: '',
+          title: '',
         };
         this.isLoading = false;
       });
@@ -61,12 +60,9 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
     }
   }
 
-
-
   async submit() {
     this.isSubmitting = true;
-    const { ref  } =
-      this.form;
+    const { ref } = this.form;
 
     if (!ref) {
       this.onError('');
@@ -97,5 +93,4 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
       (err) => this.onError(err)
     );
   }
-
 }

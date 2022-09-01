@@ -16,7 +16,6 @@ const routes: Routes = [
     component: CreateUserComponent,
   },
 
-  
   {
     path: 'reset-password',
     loadChildren: () =>

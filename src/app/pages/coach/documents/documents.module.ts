@@ -13,7 +13,12 @@ import { DocumentsFormComponent } from './documents-form/documents-form.componen
 import { DocumentsEditComponent } from './documents-edit/documents-edit.component';
 
 @NgModule({
-  declarations: [DocumentsListComponent, DocumentsAddComponent, DocumentsFormComponent, DocumentsEditComponent],
+  declarations: [
+    DocumentsListComponent,
+    DocumentsAddComponent,
+    DocumentsFormComponent,
+    DocumentsEditComponent,
+  ],
   imports: [
     CommonModule,
     DocumentsRoutingModule,

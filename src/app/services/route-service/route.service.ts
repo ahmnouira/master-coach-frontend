@@ -9,11 +9,12 @@ import {
   Router,
   UrlTree,
 } from '@angular/router';
+import { WindowLocationService } from '../window-location-service/window-location.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RouteService  {
+export class RouteService extends WindowLocationService {
   private token = '';
   private params: any;
   constructor(
@@ -22,7 +23,7 @@ export class RouteService  {
     private titleService: Title,
     public activatedRoute: ActivatedRoute
   ) {
-  
+    super();
   }
 
   public setTitle(newTitle: string): void {
@@ -52,7 +53,6 @@ export class RouteService  {
     this.location.back();
   }
 
-
   public get getQueryParamToken(): string {
     this.getQueryTokenFormRoute();
     return this.token;
@@ -62,7 +62,6 @@ export class RouteService  {
     this.getQueryParamsFromRoute();
     return this.params.params as ParamMap;
   }
-
 
   private getQueryParamsFromRoute() {
     this.activatedRoute.queryParamMap.subscribe((params) => {

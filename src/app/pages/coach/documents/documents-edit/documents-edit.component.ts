@@ -4,10 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-documents-edit',
   templateUrl: './documents-edit.component.html',
-  styleUrls: ['./documents-edit.component.scss']
+  styleUrls: ['./documents-edit.component.scss'],
 })
 export class DocumentsEditComponent implements OnInit {
-
   id: string;
   constructor(private activatedRoute: ActivatedRoute) {}
 
