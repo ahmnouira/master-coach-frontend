@@ -131,6 +131,7 @@ import { FormFooterComponent } from './components/form-footer/form-footer.compon
     FormWrapperComponent,
     PageListWrapperComponent,
     SearchComponent,
+    FormFooterComponent
   ],
 })
 export class SharedModule {}

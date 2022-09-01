@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-form-footer',
@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-footer.component.scss']
 })
 export class FormFooterComponent implements OnInit {
+
+  @Input() error: any
+
+  @Input() success :boolean
+
+  @Input() successMessage: string
 
   constructor() { }
 
