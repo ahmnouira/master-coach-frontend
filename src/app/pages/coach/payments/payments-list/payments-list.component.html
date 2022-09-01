@@ -1,1 +1,55 @@
-<p>payments-list works!</p>
+<app-sub-header [title]="'Mes documents'"></app-sub-header>
+
+<div class="sub-component-content">
+  <div class="row mt-4 gx-4">
+    <div class="col-9">
+      <div class="filters row">
+        <div class="col">
+          <app-select
+            [data]="FILTER_TYPES"
+            [text]="'Achat / Réservation'"
+            [(model)]="selectedTypes"
+            (onItemOneSelect)="filters.type = $event"
+            [singleSelection]="true"
+          ></app-select>
+        </div>
+        <app-select
+          class="col"
+          [data]="FILTER_WITH"
+          [text]="'Coachée'"
+          [(model)]="selectedWith"
+          (onItemOneSelect)="filters.with = $event"
+          [singleSelection]="true"
+        ></app-select>
+        <div class="col">
+          <app-search
+            [(model)]="search"
+            (modelChange)="handleSearch($event)"
+          ></app-search>
+        </div>
+        <div class="col">
+          <app-button [title]="'Rechercher'" [variant]="'basic'"> </app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'payments'"
+  >
+    <div class="table-responsive">
+      <loading-card [loading]="loadingAnimation">
+        <datatable
+          [datatable]="data"
+          (datatableChange)="datatableChange($event)"
+          [checkboxes]="true"
+          [searchvalue]="search"
+          [displayedColomn]="DISPLAYED_COLUMNS"
+        ></datatable>
+      </loading-card>
+    </div>
+  </app-page-list-wrapper>
+</div>
