@@ -48,7 +48,7 @@
           <app-radio
             [label]="'Visioconférence'"
             [(model)]="form.format"
-            [value]="'visio-conference'"
+            [value]="'visioconference'"
             [name]="'service-format'"
           >
           </app-radio>
@@ -67,19 +67,19 @@
         <div class="form-container-radios">
           <app-radio
             [label]="'Client'"
-            [(model)]="form.with"
+            [(model)]="form.chez"
             [value]="'client'"
             [disabled]="form.format !== 'presentiel'"
-            [name]="'service-with'"
+            [name]="'service-chez'"
           >
           </app-radio>
 
           <app-radio
             [label]="'Coach'"
-            [(model)]="form.with"
+            [(model)]="form.chez"
             [value]="'coach'"
             [disabled]="form.format !== 'presentiel'"
-            [name]="'service-with'"
+            [name]="'service-chez'"
           >
           </app-radio>
         </div>
@@ -89,7 +89,7 @@
         <div class="form-container-radios">
           <app-radio
             [label]="'Collective'"
-            [(model)]="form.session"
+            [(model)]="form.sessionType"
             [value]="'collective'"
             [name]="'service-session'"
           >
@@ -97,7 +97,7 @@
 
           <app-radio
             [label]="'Individuel'"
-            [(model)]="form.session"
+            [(model)]="form.sessionType"
             [value]="'individuel'"
             [name]="'service-session'"
           >

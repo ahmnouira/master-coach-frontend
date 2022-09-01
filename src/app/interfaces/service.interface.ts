@@ -1,6 +1,6 @@
 import { ServiceFormat } from '../models/service/service-format.enum';
-import { ServiceSession } from '../models/service/service-session.enum';
-import { ServiceWith } from '../models/service/service.with.enum';
+import { SessionType } from '../models/service/service-type.enum';
+import { ServiceChez } from '../models/service/service-chez.enum';
 
 export interface IService {
   title: string;
@@ -15,6 +15,6 @@ export interface IService {
   testimonies?: any[];
   isAutoConfirmed?: boolean;
   format?: ServiceFormat;
-  session?: ServiceSession;
-  with?: ServiceWith;
+  sessionType?: SessionType;
+  chez?: ServiceChez;
 }
