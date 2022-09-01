@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 
 @Component({
@@ -40,6 +47,11 @@ export class FileUploaderComponent implements OnInit {
   ngOnInit(): void {
     this.prefix = this.prefix ? this.prefix : this.label;
     this.checkEmpty();
+    this.setProperties();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // console.log(this.title, this.type);
     this.setProperties();
   }
 

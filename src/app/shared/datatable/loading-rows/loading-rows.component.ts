@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {
-  datatable_action,
-  datatable_displayedColomn,
-} from '../datatable.model';
+import { DatableDisplayedColumn } from '../datatable.model';
+
+import { DatableTableAction } from '../action.model';
 
 @Component({
   selector: '[loading-rows]',
@@ -25,8 +24,8 @@ import {
   styleUrls: ['./loading-rows.component.scss'],
 })
 export class LoadingRowsComponent implements OnInit {
-  @Input() displayedColomnList: datatable_displayedColomn[] = [];
-  @Input() Actions: datatable_action[] = [];
+  @Input() displayedColomnList: DatableDisplayedColumn[] = [];
+  @Input() Actions: DatableTableAction[] = [];
   @Input() nbRows: number = 4;
   @Input() checkboxes: boolean = false;
   constructor() {}

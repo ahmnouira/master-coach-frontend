@@ -1,19 +1,13 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PageHelper } from 'src/app/helpers/PageHelper';
-import { Service } from 'src/app/models/service/service.model';
 import { ServicesService } from 'src/app/services/services-service/services.service';
-import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-services-list',
   templateUrl: './services-list.component.html',
   styleUrls: ['./services-list.component.scss'],
-  animations: Animations,
 })
-export class ServicesListComponent
-  extends PageHelper<Service[]>
-  implements OnInit, AfterViewInit
-{
+export class ServicesListComponent extends PageHelper implements OnInit {
   filterString = '';
 
   constructor(private servicesService: ServicesService) {
@@ -30,7 +24,5 @@ export class ServicesListComponent
     });
   }
 
-  ngAfterViewInit(): void {}
-
-  filterInputChanged(event) {}
+  filterInputChanged(event: any) {}
 }

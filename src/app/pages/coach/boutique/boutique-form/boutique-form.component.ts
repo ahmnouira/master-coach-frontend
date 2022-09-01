@@ -22,10 +22,10 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     title: '',
     type: ProductType.DOCUMENT,
     isFree: true,
-    category: [],
+    category: '',
     displayedInShop: false,
     image: '',
-    files: '',
+    file: '',
     duration: '',
   };
 
@@ -34,7 +34,8 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     title: 'Ajouter des documents',
   };
 
-  categories: string[] = [];
+  selectedCategories: any = [];
+  categories: any[] = [];
 
   constructor(
     private productService: ProductService,
@@ -45,8 +46,8 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCategories();
     if (this.id) {
-      this.isLoading = true;
       // means edit
       this.productService.getProduct(this.id).subscribe((res) => {
         if (!res.success) {
@@ -59,48 +60,58 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
           description: this.getString(product.description),
           title: this.getString(product.title),
           type: product.type,
-          category: this.getArray(product.category),
+          category: this.getString(product.category),
           isFree: product.isFree,
           duration: this.getString(product.duration),
           image: this.getFileUrl(product.image),
-          files: this.getFileUrl(product.files),
+          file: this.getFileUrl(product.file),
           price: this.getString(product.price),
           displayedInShop: product.displayedInShop,
         };
+
+        const category = this.categories?.find(
+          (el) => el.name === this.form.category
+        );
+        if (category) {
+          this.selectedCategories = [category];
+        }
+
         this.isLoading = false;
       });
     } else {
-      this.authService.currentUser$.subscribe((user) => {
-        this.categories = this.getArray(user.category);
-        this.isLoading = false;
-      });
+      this.isLoading = false;
     }
   }
 
+  getCategories() {
+    this.authService.currentUser$.subscribe((user) => {
+      this.categories = this.getArray(user.category);
+    });
+  }
   getMultiFileFieldData() {
     switch (this.form.type) {
       case ProductType.DOCUMENT:
         return {
-          title: 'Ajouter des document',
+          title: 'Ajouter un document',
           type: 'pdf',
         };
       case ProductType.VIDEO: {
         return {
-          title: 'Ajouter des vidéos',
+          title: 'Ajouter une vidéo',
           type: 'video',
         };
       }
 
       case ProductType.PODCAST: {
         return {
-          title: 'Ajouter des podcasts',
+          title: 'Ajouter un podcast',
           type: 'audio',
         };
       }
       // by default is document
       default:
         return {
-          title: 'Ajouter des documents',
+          title: 'Ajouter un document',
           type: 'pdf',
         };
     }
@@ -161,11 +172,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     );
   }
 
-  importImage(data: any) {
-    this.form.image = data;
-  }
-
-  addFiles(data: any) {
-    this.form.files = data;
+  importFile(data: any, key: string) {
+    this.form[key] = data;
   }
 }

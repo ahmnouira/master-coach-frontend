@@ -4,6 +4,7 @@
     class="btn btn-primary submit-btn"
     (click)="handleClick($event)"
     [disabled]="disabled"
+    style="height: 50px"
   >
     <span *ngIf="!isLoading">{{ title }}</span>
     <app-loader *ngIf="isLoading"></app-loader>
@@ -12,7 +13,11 @@
 
 <div class="d-flex justify-content-end" *ngIf="variant === 'add'">
   &nbsp;
-  <a [routerLink]="path" class="btn align-self-end"
+  <a [routerLink]="path" class="btn btn-basic align-self-end"
     ><span class="material-icons">add_circle</span>{{ title }}</a
   >&nbsp;
 </div>
+
+<button class="btn btn-basic mlr-10" *ngIf="variant === 'basic'">
+  {{ title }}
+</button>

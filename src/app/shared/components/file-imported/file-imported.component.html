@@ -1,5 +1,7 @@
 <div class="file-box">
-  <label class="element-label" for="{{ name }}">{{ label }}</label>
+  <label class="element-label" *ngIf="label" for="{{ name }}">{{
+    label
+  }}</label>
   <div class="d-flex">
     <a
       class="mlr-10"

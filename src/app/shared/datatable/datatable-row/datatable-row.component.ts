@@ -1,16 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {
-  datatable_displayedColomn,
-  tag,
-  datatable_action,
-} from '../datatable.model';
+import { DatableDisplayedColumn, Tag } from '../datatable.model';
+
+import { DatableTableAction } from '../action.model';
 
 @Component({
   selector: '[datatable-row]',
   templateUrl: './datatable-row.component.html',
   styleUrls: ['./datatable-row.component.scss'],
 })
-export class DatatableRowComponent implements OnInit {
+export class DataTableRowComponent implements OnInit {
   @Input() set row(value) {
     this._row = value;
   }
@@ -18,8 +16,8 @@ export class DatatableRowComponent implements OnInit {
     return this._row;
   }
   _row: any = {};
-  @Input() displayedColomnList: datatable_displayedColomn[] = [];
-  @Input() Actions: datatable_action[] = [];
+  @Input() displayedColomnList: DatableDisplayedColumn[] = [];
+  @Input() Actions: DatableTableAction[] = [];
   @Input() checkboxes: boolean = false;
   @Input() textalign: any = 'left';
   @Input() sortByItem: any;
@@ -32,11 +30,11 @@ export class DatatableRowComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  rowClicked(row) {
+  rowClicked(row: any) {
     this.onrowClicked.emit(row);
   }
 
-  actionClicked(action, item) {
+  actionClicked(action: any, item: any) {
     this.onActionClicked.emit({ item: item, action: action.type });
   }
 

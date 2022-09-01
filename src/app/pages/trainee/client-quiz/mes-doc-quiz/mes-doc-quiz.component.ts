@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { datatable_action } from '../../../../shared/datatable/datatable.model';
+import { DatableTableAction } from '../../../../shared/datatable/action.model';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
@@ -15,7 +15,7 @@ export class MesDocQuizComponent implements OnInit {
   filterString = '';
   filter = new FormControl('');
 
-  ACTION_COLUMNS: datatable_action[] = [];
+  ACTION_COLUMNS: DatableTableAction[] = [];
 
   DISPLAYED_COLUMNS: any[] = [];
   coachList: any = [];
@@ -36,7 +36,7 @@ export class MesDocQuizComponent implements OnInit {
   ngOnInit(): void {
     this.ACTION_COLUMNS.push({
       value: '',
-      childrens: [
+      children: [
         {
           type: 'view',
           iconClass: 'view',
