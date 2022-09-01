@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
@@ -17,9 +16,13 @@ const routes: Routes = [
     component: CreateUserComponent,
   },
 
+  
   {
     path: 'reset-password',
-    component: ResetPasswordComponent,
+    loadChildren: () =>
+      import('./reset-password/reset-password.module').then(
+        (module) => module.ResetPasswordModule
+      ),
   },
 
   {

@@ -27,7 +27,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.token = this.routeService.getToken;
+    this.token = this.routeService.getQueryParamToken;
   }
 
   async restPassword() {
@@ -39,7 +39,8 @@ export class ResetPasswordComponent implements OnInit {
 
     this.authService.resetPassword({ password, token: this.token }).subscribe(
       (res) => {
-        this.routeService.navigate(['/core/login']);
+          // use window location 
+          window.location.replace('/login')
       },
       (error) => {
         this.errorMessage = error;
