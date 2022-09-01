@@ -43,6 +43,7 @@ import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.com
 import { PageListWrapperComponent } from './components/page-list-wrapper/page-list-wrapper.component';
 import { RouterModule } from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
+import { FormFooterComponent } from './components/form-footer/form-footer.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { SearchComponent } from './components/search/search.component';
     FormWrapperComponent,
     PageListWrapperComponent,
     SearchComponent,
+    FormFooterComponent,
   ],
   imports: [
     CommonModule,
