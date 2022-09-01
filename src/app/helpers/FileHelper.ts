@@ -23,7 +23,8 @@ export class FileHelper {
       return '';
     }
     return (
-      this.formatName(label) + '-' +
+      this.formatName(label) +
+      '-' +
       this.formatName(url.substring(url.indexOf('-') + 1)).replace(/%20/g, '-')
     );
   }

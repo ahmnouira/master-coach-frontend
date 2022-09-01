@@ -14,21 +14,20 @@ export class DocumentsListComponent implements OnInit {
 
   isLoading = true;
   error: string = '';
-  documents: Document[] = [{
-    _id: "1", 
-    ref: '001', 
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', 
-    type: "Quizz", 
-
-  }, 
-  {
-    _id: "2", 
-    ref: '002', 
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', 
-    type: "Rapport", 
-
-  }
-];
+  documents: Document[] = [
+    {
+      _id: '1',
+      ref: '001',
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      type: 'Quizz',
+    },
+    {
+      _id: '2',
+      ref: '002',
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      type: 'Rapport',
+    },
+  ];
   found: boolean = true;
   data: any = [];
   selectedProfiles: any = [];
@@ -36,37 +35,36 @@ export class DocumentsListComponent implements OnInit {
   ACTION_COLUMNS: datatable_action[] = [];
   DISPLAYED_COLUMNS: any[] = [];
 
-
   loadingAnimation: boolean = false;
   selectedStatus = 'status';
   selectedType = 'type';
 
+  constructor(
+    private productService: ProductService,
 
-  constructor(private productService: ProductService, 
-    
-      private routerService: RouteService
-    ) {}
+    private routerService: RouteService
+  ) {}
 
   ngOnInit(): void {
-
-    this.ACTION_COLUMNS.push({
-      value: '',
-      childrens: [
-        {
-          type: 'view',
-          iconClass: 'view',
-        },
-      ],
-    }, 
-    {
-      value: '',
-      childrens: [
-        {
-          type: 'trash',
-          iconClass: 'trash',
-        },
-      ],
-    }
+    this.ACTION_COLUMNS.push(
+      {
+        value: '',
+        childrens: [
+          {
+            type: 'view',
+            iconClass: 'view',
+          },
+        ],
+      },
+      {
+        value: '',
+        childrens: [
+          {
+            type: 'trash',
+            iconClass: 'trash',
+          },
+        ],
+      }
     );
 
     this.DISPLAYED_COLUMNS = [
@@ -93,12 +91,11 @@ export class DocumentsListComponent implements OnInit {
       },
     ];
 
-    this.isLoading = false
+    this.isLoading = false;
   }
 
-
   onActionClicked(element: any) {
-    console.log('Element', element)
+    console.log('Element', element);
 
     let coachObject = this.documents.filter(
       (obj) => obj._id == element.item.coach_id

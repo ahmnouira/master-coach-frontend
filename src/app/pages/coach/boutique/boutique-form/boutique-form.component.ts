@@ -1,10 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { copyFile } from 'fs';
 import { AuthService } from 'src/app/core/auth.service';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { ProductType } from 'src/app/models/product/product-type.enum';
-import { Product } from 'src/app/models/product/product.model';
 import { ProductService } from 'src/app/services/product-service/product.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { Animations } from 'src/app/shared/animations';
@@ -56,8 +54,6 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
           return;
         }
         const product = res.data as IProduct;
-
-        console.log('files', this.getFileUrl(product.files));
 
         this.form = {
           description: this.getString(product.description),
@@ -140,8 +136,6 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
       this.onError('');
       return;
     }
-
-    console.log('price', price, duration);
 
     // check if not a free
     if (!isFree && !price) {

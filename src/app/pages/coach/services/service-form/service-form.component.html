@@ -40,6 +40,72 @@
       >
       </app-text-field>
 
+      <app-divider></app-divider>
+
+      <app-titled-field content="Format">
+        <div class="form-container-radios">
+          <app-radio
+            [label]="'Visioconférence'"
+            [(model)]="form.format"
+            [value]="'visio-conference'"
+            [name]="'service-format'"
+          >
+          </app-radio>
+
+          <app-radio
+            [label]="'Présentiel'"
+            [(model)]="form.format"
+            [value]="'presentiel'"
+            [name]="'service-format'"
+          >
+          </app-radio>
+        </div>
+      </app-titled-field>
+
+      <app-titled-field content="Chez">
+        <div class="form-container-radios">
+          <app-radio
+            [label]="'Client'"
+            [(model)]="form.with"
+            [value]="'client'"
+            [disabled]="form.format !== 'presentiel'"
+            [name]="'service-with'"
+          >
+          </app-radio>
+
+          <app-radio
+            [label]="'Coach'"
+            [(model)]="form.with"
+            [value]="'coach'"
+            [disabled]="form.format !== 'presentiel'"
+            [name]="'service-with'"
+          >
+          </app-radio>
+        </div>
+      </app-titled-field>
+
+      <app-titled-field content="Type de session">
+        <div class="form-container-radios">
+          <app-radio
+            [label]="'Collective'"
+            [(model)]="form.session"
+            [value]="'collective'"
+            [name]="'service-session'"
+          >
+          </app-radio>
+
+          <app-radio
+            [label]="'Individuel'"
+            [(model)]="form.session"
+            [value]="'individuel'"
+            [name]="'service-session'"
+          >
+          </app-radio>
+        </div>
+      </app-titled-field>
+
+      <app-divider></app-divider>
+
       <app-titled-field content="Auto confirmation">
         <app-checkbox
           [label]="'Les sessions seront auto-confirmés'"

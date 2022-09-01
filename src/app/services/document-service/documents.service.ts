@@ -7,14 +7,13 @@ type GetDocumentsOptions = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DocumentsService extends BaseService {
-
   addDocument(data: any): Observable<any> {
     return this.post('/documents', data);
   }
-  getDocuments(options: GetDocumentsOptions): Observable<any> { 
+  getDocuments(options: GetDocumentsOptions): Observable<any> {
     return this.get(options.all ? '/documents' : '/documents/mine');
   }
   getDocument(id: string): Observable<any> {

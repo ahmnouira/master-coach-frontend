@@ -20,7 +20,7 @@ export class FileUploaderComponent implements OnInit {
 
   @Input() type: string; //  'pdf' | 'photo' | 'video' | 'audio' | undefined;
   @Input() label?: string = '';
-  @Input() prefix? :string  =''
+  @Input() prefix?: string = '';
 
   @Input() style?: 'primary' | 'secondary' = 'primary';
 
@@ -38,7 +38,7 @@ export class FileUploaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.prefix = this.prefix ? this.prefix : this.label
+    this.prefix = this.prefix ? this.prefix : this.label;
     this.checkEmpty();
     this.setProperties();
   }
