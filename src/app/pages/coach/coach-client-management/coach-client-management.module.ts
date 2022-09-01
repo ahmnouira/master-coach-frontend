@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [CcListComponent, CcAddComponent],
