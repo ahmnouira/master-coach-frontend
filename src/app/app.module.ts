@@ -10,10 +10,11 @@ import { PagesModule } from './pages/pages.module';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { JwtInterceptor } from './interceptors/jwt-interceptor';
+import { ClientComponent } from './models/client/client.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ClientComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
