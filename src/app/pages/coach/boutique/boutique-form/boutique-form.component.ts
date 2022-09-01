@@ -85,7 +85,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     switch (this.form.type) {
       case ProductType.DOCUMENT:
         return {
-          title: 'Ajouter des documents',
+          title: 'Ajouter des document',
           type: 'pdf',
         };
       case ProductType.VIDEO: {

@@ -12,10 +12,10 @@ export class FileHelper {
   }
 
   static formatName(name: string) {
-    if (name) {
-      return name.toLowerCase().trim().replace(/\s/g, '-');
+    if (!name) {
+      return name;
     }
-    return name;
+    return name.toLowerCase().trim().replace(/\s/g, '-');
   }
 
   static getFileName(label: string, url: string): string {
@@ -23,8 +23,8 @@ export class FileHelper {
       return '';
     }
     return (
-      label.toLowerCase().trim().replace(/\s/g, '-') +
-      url.substring(url.lastIndexOf('-'))
+      this.formatName(label) + '-' +
+      this.formatName(url.substring(url.indexOf('-') + 1)).replace(/%20/g, '-')
     );
   }
 }

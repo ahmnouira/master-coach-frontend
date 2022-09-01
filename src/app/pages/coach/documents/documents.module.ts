@@ -8,9 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { BoutiqueModule } from '../boutique/boutique.module';
 import { LoadingCardModule } from 'src/app/shared/loading-card/loading-card.module';
 import { DatatableModule } from 'src/app/shared/datatable/datatable.module';
+import { DocumentsAddComponent } from './documents-add/documents-add.component';
 
 @NgModule({
-  declarations: [DocumentsListComponent],
+  declarations: [DocumentsListComponent, DocumentsAddComponent],
   imports: [
     CommonModule,
     DocumentsRoutingModule,

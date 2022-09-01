@@ -69,6 +69,7 @@
             [title]="getMultiFileFieldData().title"
             type="getMultiFileFieldData().type"
             [style]="'secondary'"
+            [prefix]="'service-type'"
             (onClick)="addFiles($event)"
             (onDelete)="form.files = ''"
           ></app-file-uploader>
@@ -109,6 +110,7 @@
             type="photo"
             [style]="'secondary'"
             [showLabel]="false"
+            [prefix]="'service-image'"
             [label]="'Photo qui illustre votre produit'"
             (onClick)="importImage($event)"
             (onDelete)="form.image = ''"
