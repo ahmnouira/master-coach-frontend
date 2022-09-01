@@ -45,6 +45,7 @@ import { RouterModule } from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
 import { FormFooterComponent } from './components/form-footer/form-footer.component';
 import { PageHeaderWrapperComponent } from './components/page-header-wrapper/page-header-wrapper.component';
+import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { PageHeaderWrapperComponent } from './components/page-header-wrapper/pag
     SearchComponent,
     FormFooterComponent,
     PageHeaderWrapperComponent,
+    PageWrapperComponent,
   ],
   imports: [
     CommonModule,
@@ -134,7 +136,8 @@ import { PageHeaderWrapperComponent } from './components/page-header-wrapper/pag
     PageListWrapperComponent,
     SearchComponent,
     FormFooterComponent,
-    PageHeaderWrapperComponent
+    PageHeaderWrapperComponent,
+    PageWrapperComponent,
   ],
 })
 export class SharedModule {}

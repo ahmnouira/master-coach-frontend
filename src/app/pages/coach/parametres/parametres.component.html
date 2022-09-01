@@ -165,7 +165,7 @@
               <span class="row-title">Mon expertise</span>
             </div>
             <div class="col-lg-9 col-12 pl-40">
-              <div class="row mb-17 gx-4">
+              <div class="row gx-4">
                 <div class="col-md-6">
                   <app-select
                     [label]="'Catégorie'"
@@ -189,6 +189,7 @@
                     [label]="'Accreditations'"
                     [(model)]="form.accreditation"
                     [data]="certifications"
+                    [disableMargin]="true"
                   >
                   </app-select>
                 </div>

@@ -1,38 +1,38 @@
-<app-sub-header [title]="'Mes documents'"></app-sub-header>
+<app-sub-header [title]="'Mes Paiements'"></app-sub-header>
 
-<div class="sub-component-content">
-  <div class="row mt-4 gx-4">
-    <div class="col-9">
-      <div class="filters row">
-        <div class="col">
-          <app-select
-            [data]="FILTER_TYPES"
-            [text]="'Achat / Réservation'"
-            [(model)]="selectedTypes"
-            (onItemOneSelect)="filters.type = $event"
-            [singleSelection]="true"
-          ></app-select>
-        </div>
-        <app-select
-          class="col"
-          [data]="FILTER_WITH"
-          [text]="'Coachée'"
-          [(model)]="selectedWith"
-          (onItemOneSelect)="filters.with = $event"
-          [singleSelection]="true"
-        ></app-select>
-        <div class="col">
-          <app-search
-            [(model)]="search"
-            (modelChange)="handleSearch($event)"
-          ></app-search>
-        </div>
-        <div class="col">
-          <app-button [title]="'Rechercher'" [variant]="'basic'"> </app-button>
-        </div>
-      </div>
+<app-page-wrapper>
+  <app-page-header-wrapper>
+    <div class="row align-items-center" start>
+      <app-select
+        class="col"
+        [data]="FILTER_TYPES"
+        [text]="'Achat / Réservation'"
+        [(model)]="selectedTypes"
+        (onItemOneSelect)="filters.type = $event"
+        [singleSelection]="true"
+      ></app-select>
+      <app-select
+        class="col"
+        [data]="FILTER_WITH"
+        [text]="'Coachée'"
+        [(model)]="selectedWith"
+        (onItemOneSelect)="filters.with = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-search
+        class="col"
+        [(model)]="search"
+        (modelChange)="handleSearch($event)"
+      ></app-search>
+
+      <app-button
+        class="col"
+        [title]="'Rechercher'"
+        [variant]="'basic'"
+      ></app-button>
     </div>
-  </div>
+  </app-page-header-wrapper>
 
   <app-page-list-wrapper
     [error]="error"
@@ -52,4 +52,4 @@
       </loading-card>
     </div>
   </app-page-list-wrapper>
-</div>
+</app-page-wrapper>

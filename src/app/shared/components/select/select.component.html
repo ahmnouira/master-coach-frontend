@@ -1,4 +1,4 @@
-<div class="form-group mb-20">
+<div class="form-group" [ngClass]="{ 'mb-20': !disableMargin }">
   <label class="element-label">{{ label }}</label>
   <angular2-multiselect
     name="{{ name }}"
