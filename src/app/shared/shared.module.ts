@@ -44,6 +44,7 @@ import { PageListWrapperComponent } from './components/page-list-wrapper/page-li
 import { RouterModule } from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
 import { FormFooterComponent } from './components/form-footer/form-footer.component';
+import { PageHeaderWrapperComponent } from './components/page-header-wrapper/page-header-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { FormFooterComponent } from './components/form-footer/form-footer.compon
     PageListWrapperComponent,
     SearchComponent,
     FormFooterComponent,
+    PageHeaderWrapperComponent,
   ],
   imports: [
     CommonModule,
@@ -132,6 +134,7 @@ import { FormFooterComponent } from './components/form-footer/form-footer.compon
     PageListWrapperComponent,
     SearchComponent,
     FormFooterComponent,
+    PageHeaderWrapperComponent
   ],
 })
 export class SharedModule {}
