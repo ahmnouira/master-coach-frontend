@@ -1,97 +1,70 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../../../../services/token-storage.service';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { CoachService } from 'src/app/services/coach-service/coach.service';
+import { IClient } from 'src/app/interfaces/client.interface';
+import { FormHelper } from 'src/app/helpers/FormHelper';
 
 @Component({
   selector: 'app-cc-add',
   templateUrl: './cc-add.component.html',
   styleUrls: ['./cc-add.component.scss'],
 })
-export class CcAddComponent implements OnInit {
-  form: any = {
-    password: 'password',
-    role: 'Client',
-    status: 'En attente',
-    competance: [],
-    photo: 'assets/img/common/utilisateur.png',
+export class CcAddComponent extends FormHelper implements OnInit {
+  form: IClient = {
+    email: '',
+    equip: '',
+    nom: '',
+    notes: '',
+    prenom: '',
+    tel: '',
   };
+
   teamsList: any = [];
   selectedTeam: any = 'NO_TEAM';
-  coachObject: any = {};
+
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
-    private coachService: CoachService,
-    private router: Router
-  ) {}
+    private coachService: CoachService
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    const user = this.tokenStorageService.getUser();
-    this.getUserFromDb(user._id);
     this.getTeamsList();
   }
 
-  importFile(event: any) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log(file);
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        console.log(reader.result);
-        this.form.photo = reader.result as string;
-      };
+  submit() {
+    this.isSubmitting = true;
+    const { prenom, nom, notes, tel, email, equip } = this.form;
+    // +33122469999
+    if (!prenom || !nom || !tel || !email) {
+      this.isSubmitting = false;
+      return;
     }
-  }
+    const formData = this.getFormData(this.form);
 
-  saveUser() {
-    this.form['username'] =
-      this.form['nom'].toLowerCase() + '.' + this.form['prenom'].toLowerCase();
-    this.form.photo = this.form.photo
-      ? this.form.photo
-      : '/assets/img/common/utilisateur.png';
-    this.userService.saveUser(this.form).subscribe(
-      (newUser) => {
-        console.log(newUser);
-        let a = [];
-        a.push(newUser.user);
-        if (this.teamsList.length > 0 && this.selectedTeam != 'NO_TEAM') {
-          console.log(this.selectedTeam);
-          let team = this.teamsList.filter(
-            (elem) => elem._id == this.selectedTeam
-          )[0];
-          team.team_id = team._id;
-          team.users.push(newUser.user);
-          console.log(team);
-          this.coachService.UpdateTeam(team).subscribe(
-            (addData) => {},
-            (error) => {
-              console.log(error);
-            }
-          );
+    /*
+    this.coachService.ad(formData).subscribe(
+      (res) => {
+        if (!res.success) {
+          this.onError(res.error);
+          return;
         }
-        this.coachObject.clients = [...this.coachObject.clients, newUser.user];
-        this.userService
-          .updateUser(this.coachObject, this.coachObject._id)
-          .subscribe(
-            (data) => {
-              console.log(data);
-            },
-            (error) => {
-              console.log(error);
-            }
-          );
-        this.router.navigate(['/pages/coach/coach-client']);
+        console.log('res', res.data);
+        this.authService.currentUser$.next(res.data);
+        this.tokenStorageService.saveUser(res.data);
+        this.onSuccess();
       },
       (error) => {
-        console.error(error.message);
+        this.onError(error);
       }
     );
+    */
+    this.isSubmitting = false;
   }
+
 
   getTeamsList() {
     this.coachService
@@ -105,16 +78,5 @@ export class CcAddComponent implements OnInit {
           console.log(error);
         }
       );
-  }
-
-  private getUserFromDb(id: any) {
-    this.userService.getSingleUser(id).subscribe(
-      (user) => {
-        this.coachObject = user;
-      },
-      (error) => {
-        return {};
-      }
-    );
   }
 }

@@ -4,26 +4,10 @@
 ></app-sub-header>
 <div class="sub-component-content">
   <div class="col-10">
-    <form class="login-form" name="form" #f="ngForm" novalidate>
+    <form name="form" #f="ngForm" novalidate>
       <div class="row">
         <div class="col-10">
-          <div class="image-container" (click)="file.click()">
-            <img class="profil-image" [attr.src]="form.photo" />
-            <input
-              type="file"
-              hidden
-              accept="image/*"
-              (change)="importFile($event)"
-              #file
-            />
-            <button>
-              <img
-                class="profil-icon"
-                src="assets/img/common/camera-to-take-photos%20(3).svg"
-              />
-            </button>
-          </div>
-          <div class="row d-flex">
+          <div class="row">
             <div class="col">
               <app-text-field [label]="'Nom'" [(model)]="form.nom" [form]="f">
               </app-text-field>
@@ -78,7 +62,7 @@
           </div>
           <div class="row">
             <app-text-area
-              [(model)]="form.bio"
+              [(model)]="form.notes"
               [label]="'Notes'"
               [placeholder]="Text..."
               [form]="f"
@@ -86,11 +70,20 @@
             </app-text-area>
           </div>
 
-          <div class="d-flex justify-content-start mt-4">
-            <button class="btn btn-primary align-self-end" (click)="saveUser()">
-              Enregistrer</button
-            >&nbsp;
+          <app-divider></app-divider>
+
+          <app-form-error [error]="error"></app-form-error>
+
+          <div class="alert alert-info" role="alert" *ngIf="success">
+            Client ajouté
           </div>
+
+          <app-button
+            (onClick)="submit()"
+            [isLoading]="isSubmitting"
+            [disabled]="isSubmitting"
+          >
+          </app-button>
         </div>
       </div>
     </form>

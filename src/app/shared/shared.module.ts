@@ -128,7 +128,7 @@ import { SearchComponent } from './components/search/search.component';
     ModalComponent,
     FormWrapperComponent,
     PageListWrapperComponent,
-    SearchComponent
+    SearchComponent,
   ],
 })
 export class SharedModule {}
