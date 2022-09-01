@@ -24,7 +24,7 @@ export class ClientFormComponent extends FormHelper implements OnInit {
   };
 
   teamsList: any = [];
-  selectedTeam: any = 'NO_TEAM';
+  selectedTeam: any =  [] 
 
   constructor(
     private tokenStorageService: TokenStorageService,
