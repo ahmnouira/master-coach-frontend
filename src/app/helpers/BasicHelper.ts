@@ -24,18 +24,16 @@ export class BasicHelper extends BaseHelper {
     return FileHelper.getUrl(url);
   }
 
-
   getSelectItems(array: string[], from: SelectItem[]) {
-    let items = []
+    let items = [];
     array.forEach((name: string) => {
-      console.log(from)
-    
-      const obj = from.find((el) => el.name === name)
-      if(obj) {
-        items.push(obj)
-      }
-    })
-    return items
-  }
+      console.log(from);
 
+      const obj = from.find((el) => el.name === name);
+      if (obj) {
+        items.push(obj);
+      }
+    });
+    return items;
+  }
 }

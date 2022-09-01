@@ -11,12 +11,14 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [PaymentsListComponent],
-  imports: [CommonModule, PaymentsRoutingModule, 
+  imports: [
+    CommonModule,
+    PaymentsRoutingModule,
     SharedModule,
     ComponentsModule,
     LoadingCardModule,
     DatatableModule,
-    FormsModule
+    FormsModule,
   ],
 })
 export class PaymentsModule {}

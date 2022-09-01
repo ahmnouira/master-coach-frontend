@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { COACH_DOCS_ACTION_COLUMNS, COACH_DOCS_DISPLAYED_COLUMNS, COACH_DOCS_FILTERS_TYPES, COACH_DOCS_FILTERS_WITH } from 'src/app/constants/documents';
+import {
+  COACH_DOCS_ACTION_COLUMNS,
+  COACH_DOCS_DISPLAYED_COLUMNS,
+  COACH_DOCS_FILTERS_TYPES,
+  COACH_DOCS_FILTERS_WITH,
+} from 'src/app/constants/documents';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { PaymentService } from 'src/app/services/payment-service/payment.service';
 import { DatableTableAction } from 'src/app/shared/datatable/action.model';
@@ -10,7 +15,6 @@ import { DatableTableAction } from 'src/app/shared/datatable/action.model';
   styleUrls: ['./payments-list.component.scss'],
 })
 export class PaymentsListComponent extends PageHelper implements OnInit {
-
   search = '';
 
   filters = {
@@ -33,11 +37,7 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
   selectedStatus = 'status';
   selectedType = 'type';
 
- 
-  constructor(
-    private paymentService: PaymentService,
-
-  ) {
+  constructor(private paymentService: PaymentService) {
     super();
   }
 
@@ -56,12 +56,10 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
       }
     );
     */
-   this.data = []
-   this.isLoading = false
-   this.found = false
+    this.data = [];
+    this.isLoading = false;
+    this.found = false;
   }
-
-  
 
   datatableChange(ev: any) {
     this.selectedProfiles = ev.filter((el: any) => el.selected);

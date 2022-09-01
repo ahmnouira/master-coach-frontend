@@ -9,11 +9,10 @@ import { Animations } from 'src/app/shared/animations';
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
-  styleUrls: ['./client-form.component.scss'], 
-  animations: Animations
+  styleUrls: ['./client-form.component.scss'],
+  animations: Animations,
 })
 export class ClientFormComponent extends FormHelper implements OnInit {
-
   form: IClient = {
     email: '',
     equip: '',
@@ -24,7 +23,7 @@ export class ClientFormComponent extends FormHelper implements OnInit {
   };
 
   teamsList: any = [];
-  selectedTeam: any =  [] 
+  selectedTeam: any = [];
 
   constructor(
     private tokenStorageService: TokenStorageService,
@@ -36,7 +35,7 @@ export class ClientFormComponent extends FormHelper implements OnInit {
 
   ngOnInit(): void {
     this.getTeamsList();
-    this.isLoading = false
+    this.isLoading = false;
   }
 
   submit() {
@@ -69,7 +68,6 @@ export class ClientFormComponent extends FormHelper implements OnInit {
     this.isSubmitting = false;
   }
 
-
   getTeamsList() {
     this.coachService
       .GetTeams(this.tokenStorageService.getUser()._id)
@@ -83,5 +81,4 @@ export class ClientFormComponent extends FormHelper implements OnInit {
         }
       );
   }
-
 }

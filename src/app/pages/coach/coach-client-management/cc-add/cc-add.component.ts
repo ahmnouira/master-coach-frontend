@@ -5,9 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './cc-add.component.html',
   styleUrls: ['./cc-add.component.scss'],
 })
-export class CcAddComponent  {
-
-  constructor () {
-
-  } 
+export class CcAddComponent {
+  constructor() {}
 }
