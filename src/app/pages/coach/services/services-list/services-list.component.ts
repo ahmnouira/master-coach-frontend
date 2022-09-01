@@ -36,6 +36,8 @@ export class ServicesListComponent implements OnInit {
             return;
           }
           this.services = res.data;
+
+          console.log(this.services.map((el) => el.price));
           this.found = Boolean(res.data.length);
           this.isLoading = false;
         },

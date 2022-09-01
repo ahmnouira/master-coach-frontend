@@ -20,7 +20,7 @@ export class FileUploaderComponent implements OnInit {
 
   @Input() type: string; //  'pdf' | 'photo' | 'video' | 'audio' | undefined;
   @Input() label?: string = '';
-  @Input() filename?: string = '';
+
   @Input() style?: 'primary' | 'secondary' = 'primary';
 
   @Input() multiple?: boolean = false;
@@ -32,11 +32,11 @@ export class FileUploaderComponent implements OnInit {
 
   isEmpty: boolean;
 
+  filename: string = '';
+
   constructor() {}
 
   ngOnInit(): void {
-    console.log('image', this.model);
-
     this.checkEmpty();
     this.setProperties();
   }

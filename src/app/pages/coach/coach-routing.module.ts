@@ -51,7 +51,7 @@ const routes: Routes = [
         (module) => module.PaymentsModule
       ),
 
-  //  canActivate: [AccountVerifiedGuard],
+    //  canActivate: [AccountVerifiedGuard],
   },
 
   {

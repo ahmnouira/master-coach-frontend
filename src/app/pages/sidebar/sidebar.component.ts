@@ -48,7 +48,7 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.tokenStorageService.signOut();
-    this.route.navigate(['/login'])
+    this.route.navigate(['/login']);
   }
 
   getUrl() {

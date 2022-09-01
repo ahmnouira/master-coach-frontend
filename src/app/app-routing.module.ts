@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
+console.log('sdsdsdsdsdsds');
+
 const routes: Routes = [
   {
     path: 'core',
@@ -20,6 +22,9 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
+      useHash: true,
+      enableTracing: true,
+      urlUpdateStrategy: 'eager',
     }),
   ],
   exports: [RouterModule],
