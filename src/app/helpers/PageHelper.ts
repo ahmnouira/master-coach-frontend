@@ -1,4 +1,4 @@
-import { Observable, Subscriber } from 'rxjs';
+import { Observable } from 'rxjs';
 
 interface Response<T = any> {
   success: boolean;

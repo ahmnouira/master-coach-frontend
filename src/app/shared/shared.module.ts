@@ -40,6 +40,7 @@ import { LayoutModule } from './layout/layout.module';
 import { SidebarItemComponent } from './layout/sidebar-item/sidebar-item.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.component';
+import { PageListWrapperComponent } from './components/page-list-wrapper/page-list-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.com
     AddFieldComponent,
     ModalComponent,
     FormWrapperComponent,
+    PageListWrapperComponent,
   ],
   imports: [
     CommonModule,
@@ -121,6 +123,7 @@ import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.com
     SidebarItemComponent,
     ModalComponent,
     FormWrapperComponent,
+    PageListWrapperComponent,
   ],
 })
 export class SharedModule {}

@@ -1,0 +1,25 @@
+<div>
+  <div *ngIf="isLoading; else elseBlock">
+    <app-loader [marginTop]="'64px'"></app-loader>
+  </div>
+  <ng-template #elseBlock>
+    <app-form-error [error]="error"></app-form-error>
+
+    <app-empty-page
+      title="{{ title }}"
+      *ngIf="!found && !error"
+    ></app-empty-page>
+
+    <div
+      class="page-list-wrapper-container"
+      [@animate]="{
+        value: '*',
+        params: { duration: '300ms', y: '100px' }
+      }"
+    >
+      <div class="row" *ngIf="found && !error">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </ng-template>
+</div>
