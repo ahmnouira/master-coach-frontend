@@ -2,21 +2,11 @@
 <div class="sub-component-content">
   <div class="row mt-4 gx-4" style="height: 100%">
     <div class="col-3">
-      <div class="filters-row input-group form-group form-inline p-0">
-        <input
-          class="form-control coach-search"
-          type="text"
-          [(ngModel)]="filterString"
-          (change)="filterInputChanged($event)"
-          (keydown)="filterInputChanged($event)"
-          placeholder="Client"
-        />
-        <span
-          class="material-icons material-icons-inside-input"
-          style="right: 30px; color: #ddf2fa"
-          >search</span
-        >
-      </div>
+      <app-search
+        [(model)]="filterString"
+        (modelChange)="filterInputChanged($event)"
+        placeholder="Client"
+      ></app-search>
       <div class="select-all d-flex">
         <input
           type="checkbox"
@@ -89,8 +79,8 @@
           ><span class="material-icons">manage_accounts</span>Gérer les
           équipes</a
         >&nbsp;
-        <a routerLink="/pages/coach/coach-client/add" class="btn align-self-end"
-          ><span class="material-icons">add_circle</span>Ajouter un client</a
+        <app-button [title]="'Ajouter un client'" [variant]="'add'">
+        </app-button
         >&nbsp;
       </div>
 

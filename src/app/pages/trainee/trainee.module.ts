@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfilClientComponent } from './profil-client/profil-client.component';
 import { TraineeRoutingModule } from './trainee-routing.module';
 import { ComponentsModule } from '../components/components.module';
 import { ParametresComponent } from './parametres/parametres.component';
@@ -22,7 +21,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
-    ProfilClientComponent,
     ParametresComponent,
     FindCoachComponent,
     MesDocQuizComponent,

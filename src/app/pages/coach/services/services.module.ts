@@ -19,6 +19,7 @@ import { ServiceEditComponent } from './service-edit/service-edit.component';
     ServiceFormComponent,
     ServiceEditComponent,
   ],
+  exports: [ServiceCardComponent, ServicesListComponent],
   imports: [
     CommonModule,
     BoutiqueRoutingModule,

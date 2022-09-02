@@ -1,5 +1,6 @@
 import { IProduct } from 'src/app/interfaces/product.interface';
 import { Entity } from '../entity/entity.model';
+import { User } from '../user-model';
 import { ProductType } from './product-type.enum';
 
 export class Product extends Entity implements IProduct {
@@ -13,4 +14,6 @@ export class Product extends Entity implements IProduct {
   price?: string;
   isFree?: boolean;
   displayedInShop?: boolean;
+
+  readonly user: User;
 }

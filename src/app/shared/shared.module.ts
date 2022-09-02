@@ -43,6 +43,11 @@ import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.com
 import { PageListWrapperComponent } from './components/page-list-wrapper/page-list-wrapper.component';
 import { RouterModule } from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
+import { FormFooterComponent } from './components/form-footer/form-footer.component';
+import { PageHeaderWrapperComponent } from './components/page-header-wrapper/page-header-wrapper.component';
+import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { ProductInfoComponent } from './components/product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +85,11 @@ import { SearchComponent } from './components/search/search.component';
     FormWrapperComponent,
     PageListWrapperComponent,
     SearchComponent,
+    FormFooterComponent,
+    PageHeaderWrapperComponent,
+    PageWrapperComponent,
+    UserCardComponent,
+    ProductInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -128,7 +138,12 @@ import { SearchComponent } from './components/search/search.component';
     ModalComponent,
     FormWrapperComponent,
     PageListWrapperComponent,
-    SearchComponent
+    SearchComponent,
+    FormFooterComponent,
+    PageHeaderWrapperComponent,
+    PageWrapperComponent,
+    UserCardComponent,
+    ProductInfoComponent,
   ],
 })
 export class SharedModule {}

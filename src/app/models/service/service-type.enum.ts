@@ -1,4 +1,4 @@
-export enum ServiceSession {
+export enum SessionType {
   COLLECTIVE = 'collective',
   INDIVIDUAL = 'individuel',
 }

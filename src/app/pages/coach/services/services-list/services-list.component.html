@@ -1,16 +1,14 @@
 <app-sub-header [title]="'Mes services'"></app-sub-header>
 
-<div class="sub-component-content">
-  <div class="row mt-4 gx-4">
-    <div class="col-3">
-      <app-search [(model)]="search"></app-search>
+<app-page-wrapper>
+  <app-page-header-wrapper>
+    <div class="row" start>
+      <app-search [(model)]="search" class="col-4"></app-search>
     </div>
 
-    <div class="col-9">
-      <app-button [title]="'Ajouter un service'" [variant]="'add'">
-      </app-button>
-    </div>
-  </div>
+    <app-button [title]="'Ajouter un service'" [variant]="'add'" end>
+    </app-button>
+  </app-page-header-wrapper>
 
   <app-page-list-wrapper
     [error]="error"
@@ -22,4 +20,4 @@
       <app-service-card [service]="service"></app-service-card>
     </div>
   </app-page-list-wrapper>
-</div>
+</app-page-wrapper>

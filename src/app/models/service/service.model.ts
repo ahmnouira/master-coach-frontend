@@ -1,11 +1,12 @@
 import { IService } from 'src/app/interfaces/service.interface';
 import { Entity } from '../entity/entity.model';
+import { ServiceChez } from './service-chez.enum';
 import { ServiceFormat } from './service-format.enum';
-import { ServiceSession } from './service-session.enum';
+import { SessionType } from './service-type.enum';
 export class Service extends Entity implements IService {
   format?: ServiceFormat;
-  session?: ServiceSession;
-  with?: any;
+  sessionType?: SessionType;
+  chez?: ServiceChez;
   title: string;
   description: string;
   duration: string;

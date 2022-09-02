@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServerResponse } from 'src/app/interfaces/server-response';
 import { AdminService } from 'src/app/services/admin-service/admin.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 
@@ -51,11 +52,9 @@ export class FindCoachComponent implements OnInit {
   }
 
   getUserProfileList() {
-    this.userService.getAllUser().subscribe((response) => {
-      this.data = (response as any).filter((elem) => elem.role == 'Coach');
-      this.filteredData = (response as any).filter(
-        (elem) => elem.role == 'Coach'
-      );
+    this.userService.getUsers().subscribe((response: ServerResponse) => {
+      this.data = response.data.filter((elem) => elem.role == 'Coach');
+      this.filteredData = response.data.filter((elem) => elem.role == 'Coach');
       this.filteredData.forEach((elem) => {
         let a = [];
         elem.competance?.forEach((el) => {

@@ -16,7 +16,7 @@ export class FormHelper extends BasicHelper {
     let formData = new FormData();
     for (const key in form) {
       if (Array.isArray(form[key])) {
-        console.log('array', key, form[key]);
+        // console.log('array', key, form[key]);
         formData.append(key, JSON.stringify(form[key]));
       } else {
         formData.append(key, form[key]);
@@ -31,7 +31,7 @@ export class FormHelper extends BasicHelper {
     this.f = f;
   }
 
-  handleSeverResponse(res) {
+  handleSeverResponse(res: any) {
     if (!res.success) {
       this.onError(res.error);
       return;

@@ -20,7 +20,7 @@ export class AppComponent {
     private authService: AuthService,
     private consoleService: ConsoleService
   ) {
-    // this.consoleService.disableConsoleInProduction();
+    this.consoleService.disableConsoleInProduction();
     const user = this.tokenStorageService.getUser() as User;
     if (user) {
       this.user = user;

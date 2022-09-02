@@ -9,14 +9,7 @@ import { TokenStorageService } from '../services/token-storage.service';
 export class PagesComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService) {}
 
-  ngOnInit() {
-    if (!localStorage.getItem('foo')) {
-      localStorage.setItem('foo', 'no reload');
-      location.reload();
-    } else {
-      localStorage.removeItem('foo');
-    }
-  }
+  ngOnInit() {}
 
   getUserRole() {
     return this.tokenStorageService.getUser()?.role;

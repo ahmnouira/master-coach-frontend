@@ -7,9 +7,9 @@ import { BaseService } from '../base-service/base.service';
 })
 export class OrderService extends BaseService {
   addOrder(data: any): Observable<any> {
-    return this.post('/documents', data);
+    return this.post('/orders', data);
   }
   getOrders(): Observable<any> {
-    return this.get('orders');
+    return this.get('/orders');
   }
 }

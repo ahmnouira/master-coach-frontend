@@ -20,30 +20,27 @@ export class DocumentsListComponent
   extends PageHelper<Document[]>
   implements OnInit
 {
-  filterString = '';
+  search = '';
 
   filters = {
-    type: '', 
-    with: ''
-  }
+    type: '',
+    with: '',
+  };
 
   selectedProfiles: any = [];
 
-  selectedTypes: any[] =[]
-  selectedWith: any[] = []
+  selectedTypes: any[] = [];
+  selectedWith: any[] = [];
 
   ACTION_COLUMNS: DatableTableAction[] = COACH_DOCS_ACTION_COLUMNS;
   DISPLAYED_COLUMNS: any[] = COACH_DOCS_DISPLAYED_COLUMNS;
 
-  FILTER_TYPES  = COACH_DOCS_FILTERS_TYPES
-  FILTER_WITH = COACH_DOCS_FILTERS_WITH
-
+  FILTER_TYPES = COACH_DOCS_FILTERS_TYPES;
+  FILTER_WITH = COACH_DOCS_FILTERS_WITH;
 
   loadingAnimation: boolean = false;
   selectedStatus = 'status';
   selectedType = 'type';
-
-
 
   constructor(
     private documentService: DocumentsService,
@@ -92,7 +89,7 @@ export class DocumentsListComponent
     console.log(ev);
   }
 
-  filterInputChanged(event) {}
+  handleSearch(event) {}
 
   public onOptionsSelected(event: any, selectname: string) {
     const value = event.target.value;

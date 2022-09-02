@@ -1,55 +1,39 @@
 <app-sub-header [title]="'Mes documents'"></app-sub-header>
 
-<div class="sub-component-content">
-  <div class="row mt-4 gx-4">
-    <div class="col-9">
-      <div class="filters row">
-        <div class="col">
-          <app-select
-            [data]="FILTER_TYPES"
-            [text]="'Achat / Réservation'"
-            [(model)]="selectedTypes"
-            (onItemOneSelect)="filters.type = $event"
-            [singleSelection]="true"
-          ></app-select>
-        </div>
-        <app-select
-          class="col"
-          [data]="FILTER_WITH"
-          [text]="'Coachée'"
-          [(model)]="selectedWith"
-          (onItemOneSelect)="filters.with = $event"
-          [singleSelection]="true"
-        ></app-select>
-        <div class="col">
-          <div
-            class="filters-row input-group form-group form-inline"
-            style="width: 250px"
-          >
-            <input
-              class="form-control searchBox mlr-10"
-              type="text"
-              [(ngModel)]="filterString"
-              placeholder="Titre"
-            />
-            <span
-              class="material-icons material-icons-inside-input"
-              style="right: 30px; color: #1376a3"
-              >search</span
-            >
-          </div>
-        </div>
-        <div class="col">
-          <app-button [title]="'Rechercher'" [variant]="'basic'"> </app-button>
-        </div>
-      </div>
-    </div>
+<app-page-wrapper>
+  <app-page-header-wrapper>
+    <div class="row align-items-center" start>
+      <app-select
+        class="col"
+        [data]="FILTER_TYPES"
+        [text]="'Achat / Réservation'"
+        [(model)]="selectedTypes"
+        (onItemOneSelect)="filters.type = $event"
+        [singleSelection]="true"
+      ></app-select>
 
-    <div class="col-3">
-      <app-button [title]="'Ajouter un document'" [variant]="'add'">
+      <app-select
+        class="col"
+        [data]="FILTER_WITH"
+        [text]="'Coachée'"
+        [(model)]="selectedWith"
+        (onItemOneSelect)="filters.with = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-search
+        class="col"
+        [(model)]="search"
+        (modelChange)="handleSearch($event)"
+      ></app-search>
+
+      <app-button class="col" [title]="'Rechercher'" [variant]="'basic'">
       </app-button>
     </div>
-  </div>
+
+    <app-button [title]="'Ajouter un document'" [variant]="'add'" end>
+    </app-button>
+  </app-page-header-wrapper>
 
   <app-page-list-wrapper
     [error]="error"
@@ -65,10 +49,10 @@
           [checkboxes]="true"
           [Actions]="ACTION_COLUMNS"
           (onActionClicked)="onActionClicked($event)"
-          [searchvalue]="filterString"
+          [searchvalue]="search"
           [displayedColomn]="DISPLAYED_COLUMNS"
         ></datatable>
       </loading-card>
     </div>
   </app-page-list-wrapper>
-</div>
+</app-page-wrapper>

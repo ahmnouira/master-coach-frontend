@@ -1,4 +1,4 @@
 export enum ServiceFormat {
-  CONFERENCE = 'visio-conference',
+  CONFERENCE = 'visioconference',
   PRESENT = 'presentiel',
 }
