@@ -1,0 +1,7 @@
+<div>
+  <app-divider></app-divider>
+  <app-form-error [error]="error"></app-form-error>
+  <div class="alert alert-info" role="alert" *ngIf="success">
+    {{ successMessage }}
+  </div>
+</div>

@@ -31,7 +31,7 @@ export class FormHelper extends BasicHelper {
     this.f = f;
   }
 
-  handleSeverResponse(res) {
+  handleSeverResponse(res: any) {
     if (!res.success) {
       this.onError(res.error);
       return;

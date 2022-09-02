@@ -15,7 +15,7 @@ export class BoutiqueListComponent
   implements OnInit
 {
   search = '';
-  filteredData: Product[]
+  filteredData: Product[];
 
   constructor(private productService: ProductService) {
     super();
@@ -23,7 +23,7 @@ export class BoutiqueListComponent
 
   ngOnInit(): void {
     this.getProducts();
-    this.filteredData = this.data
+    this.filteredData = this.data;
   }
 
   getProducts() {
@@ -38,7 +38,6 @@ export class BoutiqueListComponent
     );
   }
 
-
   resetFilters() {
     this.filteredData = this.data;
     // this.selectedComp = 'Compétences';
@@ -46,28 +45,26 @@ export class BoutiqueListComponent
     // this.selectedCoachType = 'Type de coach';
     // this.selectedContent = 'Type de contenus';
     // this.filterString = '';
-    this.search = ''
+    this.search = '';
   }
 
   handleSearch(search: string) {
-
-    console.log("thisSearch", this.search, search)
+    console.log('thisSearch', this.search, search);
     if (search == '') {
-      this.isLoading = true
-      this.getProducts()
+      this.isLoading = true;
+      this.getProducts();
     } else {
-      if(!this.data.length) {
-        this.isLoading = true
-        this.getProducts()
-      }  
+      if (!this.data.length) {
+        this.isLoading = true;
+        this.getProducts();
+      }
       this.data = this.data.filter(
-        (elem) =>
-          elem.title?.toLowerCase().includes(search.toLowerCase()) 
-          // ||
-         //  elem.prenom?.toLowerCase().includes(this.filterString.toLowerCase())
+        (elem) => elem.title?.toLowerCase().includes(search.toLowerCase())
+        // ||
+        //  elem.prenom?.toLowerCase().includes(this.filterString.toLowerCase())
       );
-      if(this.data.length < 1) {
-        this.found = false
+      if (this.data.length < 1) {
+        this.found = false;
       }
     }
   }

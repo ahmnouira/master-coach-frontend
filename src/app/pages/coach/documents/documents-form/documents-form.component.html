@@ -122,14 +122,11 @@
         </app-titled-field>
       </div>
 
-      <!-- Divider -->
-      <app-divider></app-divider>
-
-      <app-form-error [error]="error"></app-form-error>
-
-      <div class="alert alert-info" role="alert" *ngIf="success">
-        Documnet ajouté
-      </div>
+      <app-form-footer
+        [error]="error"
+        [success]="success"
+        [successMessage]="'Documnet ajouté'"
+      ></app-form-footer>
 
       <app-button
         (onClick)="submit()"
