@@ -1,0 +1,37 @@
+<app-sub-header
+  [title]="'Page détails de support formation'"
+  [subTitle]="'BACK'"
+></app-sub-header>
+
+<app-page-wrapper>
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'product'"
+  >
+    <div class="formation-content row gx-4 gx-lg-5">
+      <div class="col-8 col-xxl-9">
+        <app-product-info *ngIf="data" [product]="data"></app-product-info>
+      </div>
+
+      <div class="col-4 col-xxl-3">
+        <app-user-card
+          *ngIf="data && data.user"
+          [user]="data.user"
+          [product]="data"
+        ></app-user-card>
+
+        <div class="mt-20">
+          <app-button
+            (onClick)="addToCart()"
+            [title]="'Ajouter au panier'"
+            [isLoading]="isSubmitting"
+            [disabled]="true"
+          >
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>

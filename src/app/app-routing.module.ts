@@ -20,6 +20,9 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
+      useHash: true,
+      enableTracing: true,
+      urlUpdateStrategy: 'eager',
     }),
   ],
   exports: [RouterModule],

@@ -1,16 +1,13 @@
 <nav id="sidebar" class="d-none d-md-block">
   <div class="sidebar-header mb-5">
     <img
-      routerLink="/pages"
+      [routerLink]="path"
       src="assets/img/login/mastercoach.svg"
       alt="logo"
     />
   </div>
 
-  <ul
-    *ngIf="getUserRole()?.toLowerCase() === 'admin'"
-    class="list-unstyled components"
-  >
+  <ul *ngIf="role === 'admin'" class="list-unstyled components">
     <li
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: false }"
@@ -49,66 +46,13 @@
     </li>
   </ul>
   <ul
-    *ngIf="getUserRole()?.toLowerCase() === 'coach'"
+    *ngIf="role === 'coach' || role === 'client'"
     class="list-unstyled components"
   >
     <app-sidebar-item
-      *ngFor="let item of coachSidebar"
+      *ngFor="let item of sidebarItems"
       [item]="item"
     ></app-sidebar-item>
-  </ul>
-  <ul
-    *ngIf="getUserRole()?.toLowerCase() === 'client'"
-    class="list-unstyled components"
-  >
-    <li>
-      <a>
-        <img class="profil_icon" src="assets/img/common/account%20(2).svg" />
-        <span>Mon Profil</span>
-      </a>
-    </li>
-    <li [class.active]="getUrl().includes('/client/coach')">
-      <a routerLink="/pages/client/coach-list">
-        <img src="assets/img/common/edit.svg" />
-        <span>Trouver un coach</span>
-      </a>
-    </li>
-    <li [class.active]="getUrl().includes('/client/rdv')">
-      <a routerLink="/pages/client/rdv/list">
-        <img src="assets/img/common/deadline.svg" />
-        <span>Mes rendez-vous</span></a
-      >
-    </li>
-    <li>
-      <a>
-        <img src="assets/icon/shopping-cart.svg" />
-        <span>Mes achats</span>
-      </a>
-    </li>
-    <li
-      [routerLinkActive]="['active']"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <a routerLink="/pages/conversations">
-        <img src="assets/img/common/chatting%20(1).svg" />
-        <span>Messagerie</span></a
-      >
-    </li>
-    <li
-      [routerLinkActive]="['active']"
-      [routerLinkActiveOptions]="{ exact: false }"
-    >
-      <a routerLink="/pages/client/docs">
-        <img src="assets/img/common/file%20(5).svg " />
-        <span>Mes outils de suivi</span></a
-      >
-    </li>
-    <li>
-      <a>
-        <img src="assets/img/common/clothing-store.svg" />
-        <span>Ma bibliothèque</span></a
-      >
-    </li>
   </ul>
 
   <ul class="list-unstyled">
@@ -126,7 +70,7 @@
       >
     </li>
   </ul>
-  <div *ngIf="getUserRole()?.toLowerCase() === 'client'" class="nav_img">
+  <div *ngIf="role === 'client'" class="nav_img">
     <img src="assets/img/menu-img.png" />
   </div>
 </nav>

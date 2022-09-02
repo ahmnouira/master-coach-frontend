@@ -1,1 +1,55 @@
-<p>payments-list works!</p>
+<app-sub-header [title]="'Mes Paiements'"></app-sub-header>
+
+<app-page-wrapper>
+  <app-page-header-wrapper>
+    <div class="row align-items-center" start>
+      <app-select
+        class="col"
+        [data]="FILTER_TYPES"
+        [text]="'Achat / Réservation'"
+        [(model)]="selectedTypes"
+        (onItemOneSelect)="filters.type = $event"
+        [singleSelection]="true"
+      ></app-select>
+      <app-select
+        class="col"
+        [data]="FILTER_WITH"
+        [text]="'Coachée'"
+        [(model)]="selectedWith"
+        (onItemOneSelect)="filters.with = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-search
+        class="col"
+        [(model)]="search"
+        (modelChange)="handleSearch($event)"
+      ></app-search>
+
+      <app-button
+        class="col"
+        [title]="'Rechercher'"
+        [variant]="'basic'"
+      ></app-button>
+    </div>
+  </app-page-header-wrapper>
+
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'payments'"
+  >
+    <div class="table-responsive">
+      <loading-card [loading]="loadingAnimation">
+        <datatable
+          [datatable]="data"
+          (datatableChange)="datatableChange($event)"
+          [checkboxes]="true"
+          [searchvalue]="search"
+          [displayedColomn]="DISPLAYED_COLUMNS"
+        ></datatable>
+      </loading-card>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>

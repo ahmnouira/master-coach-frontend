@@ -20,6 +20,8 @@ export class ParametresComponent extends FormHelper implements OnInit {
   skills: any = [];
   certifications: any = [];
 
+  selectedCategories: any[] = [];
+
   constructor(
     private tokenStorageService: TokenStorageService,
     private authService: AuthService,
@@ -38,13 +40,15 @@ export class ParametresComponent extends FormHelper implements OnInit {
 
   submit() {
     this.isSubmitting = true;
-    const { prenom, nom, bio, tel, email, photo } = this.form;
+    const { prenom, nom, bio, tel, email, photo, category } = this.form;
     // +33122469999
     if (!prenom || !nom || !bio || !tel || !email || !photo) {
       this.isSubmitting = false;
       return;
     }
     const formData = this.getFormData(this.form);
+
+    console.log('category', category);
 
     this.authService.updateProfile(formData).subscribe(
       (res) => {
@@ -66,15 +70,13 @@ export class ParametresComponent extends FormHelper implements OnInit {
   getUser() {
     const user = this.tokenStorageService.getUser() as IUser;
     // TODO: casting doesn't work property
-
-    console.log('user', user);
-
     this.form = {
       bio: this.getString(user.bio),
       category: this.getArray(user.category),
       accreditation: this.getArray(user.accreditation),
       cinB: this.getFileUrl(user.cinB),
       cinF: this.getFileUrl(user.cinF),
+      rib: this.getFileUrl(user.rib),
       email: this.getString(user.email),
       prenom: this.getString(user.prenom),
       kbis: this.getFileUrl(user.kbis),

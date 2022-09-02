@@ -38,6 +38,7 @@
         [type]="'number'"
         [form]="f"
         [min]="30"
+        pattern="\d+"
       >
       </app-text-field>
 
@@ -45,7 +46,9 @@
         [label]="'Catégory'"
         [data]="categories"
         [text]="'Coaching de carriére'"
-        [(model)]="form.category"
+        [(model)]="selectedCategories"
+        (onItemOneSelect)="form.category = $event"
+        [singleSelection]="true"
       >
       </app-select>
 
@@ -55,7 +58,7 @@
         <div class="col-4">
           <app-titled-field content="type">
             <app-radio
-              [label]="'Documents'"
+              [label]="'Document'"
               [(model)]="form.type"
               [value]="'document'"
             >
@@ -65,12 +68,13 @@
 
         <div class="col">
           <app-file-uploader
-            [model]="form.files"
+            [model]="form.file"
             [title]="getMultiFileFieldData().title"
-            type="getMultiFileFieldData().type"
+            [type]="getMultiFileFieldData().type"
             [style]="'secondary'"
-            (onClick)="addFiles($event)"
-            (onDelete)="form.files = ''"
+            [prefix]="'service-type'"
+            (onClick)="importFile($event, 'file')"
+            (onDelete)="form.file = ''"
           ></app-file-uploader>
         </div>
       </div>
@@ -79,7 +83,7 @@
         <div class="col-4">
           <app-titled-field [content]="'type'" [titleHidden]="true">
             <app-radio
-              [label]="'Vidéos'"
+              [label]="'Vidéo'"
               [(model)]="form.type"
               [value]="'video'"
             >
@@ -92,7 +96,7 @@
         <div class="col-4">
           <app-titled-field [content]="'type'" [titleHidden]="true">
             <app-radio
-              [label]="'Podcasts'"
+              [label]="'Podcast'"
               [(model)]="form.type"
               [value]="'podcast'"
             >
@@ -101,16 +105,17 @@
         </div>
       </div>
 
-      <div class="row align-items-center mt-4 mb-4">
+      <div class="row align-items-center mt-4 mb-5">
         <app-titled-field content="image">
           <app-file-uploader
             [model]="form.image"
             [title]="'Ajouter une photo'"
             type="photo"
             [style]="'secondary'"
-            [showLabel]="false"
+            [showLabel]="true"
+            [prefix]="'service-image'"
             [label]="'Photo qui illustre votre produit'"
-            (onClick)="importImage($event)"
+            (onClick)="importFile($event, 'image')"
             (onDelete)="form.image = ''"
           ></app-file-uploader>
         </app-titled-field>
@@ -143,7 +148,7 @@
             [required]="!form.isFree"
             [disabled]="form.isFree"
             [min]="1"
-            pattern="[0-9]+"
+            pattern="\d+"
           >
           </app-text-field>
         </div>

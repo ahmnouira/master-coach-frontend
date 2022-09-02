@@ -1,0 +1,30 @@
+.product-info {
+  height: 432px;
+  border-radius: 20px;
+  background-size: cover;
+  background-color: #feefea;
+  background-repeat: no-repeat;
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 10px #0000001a;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .play-button {
+    cursor: pointer;
+    background: transparent url("/assets/img/common/play-button%20(5).svg") 0%
+      0% no-repeat padding-box;
+    width: 57.45px;
+    height: 57.45px;
+    border-radius: 50%;
+  }
+}
+.desc {
+  margin: 20px 0;
+  p {
+    font: normal normal 300 14px/20px Fredoka;
+    color: #3c4d5d;
+  }
+}

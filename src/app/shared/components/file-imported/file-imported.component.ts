@@ -26,8 +26,6 @@ export class FileImportedComponent implements OnInit {
     } else {
       this.sanitizerUrl = this.label;
     }
-
-    console.log(this.filename, this.model);
   }
 
   handleDelete() {

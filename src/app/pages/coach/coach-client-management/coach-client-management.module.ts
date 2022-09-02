@@ -6,14 +6,21 @@ import { CcAddComponent } from './cc-add/cc-add.component';
 import { ComponentsModule } from '../../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { RouterModule } from '@angular/router';
+import { ClientFormComponent } from './client-form/client-form.component';
 
 @NgModule({
-  declarations: [CcListComponent, CcAddComponent],
+  declarations: [CcListComponent, CcAddComponent, ClientFormComponent],
   imports: [
     CommonModule,
     CoachClientManagementRoutingModule,
+    CommonModule,
     ComponentsModule,
     FormsModule,
+    SharedModule,
+    AngularMultiSelectModule,
     ModalModule,
   ],
 })

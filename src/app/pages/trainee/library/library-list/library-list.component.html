@@ -1,0 +1,27 @@
+<app-sub-header [title]="'Ma boutique'"></app-sub-header>
+
+<app-page-wrapper>
+  <app-page-header-wrapper>
+    <div class="row align-items-center" start>
+      <app-search
+        class="col-4"
+        [(model)]="search"
+        (modelChange)="handleSearch($event)"
+      ></app-search>
+    </div>
+  </app-page-header-wrapper>
+
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'products'"
+  >
+    <div class="col-lg-3" *ngFor="let product of data; index as i">
+      <app-boutique-card
+        [product]="product"
+        [forClient]="true"
+      ></app-boutique-card>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>

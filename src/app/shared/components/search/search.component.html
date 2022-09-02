@@ -1,0 +1,16 @@
+<div class="filters-row input-group form-group form-inline">
+  <input
+    class="form-control coach-search"
+    type="search"
+    role="searchbox"
+    [(ngModel)]="model"
+    (change)="handleChange($event)"
+    (keydown)="handleChange($event)"
+    placeholder="{{ placeholder }}"
+  />
+  <span
+    class="material-icons material-icons-inside-input"
+    style="right: 30px; color: #ddf2fa"
+    >search</span
+  >
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { datatable_action } from '../../../shared/datatable/datatable.model';
+import { DatableTableAction } from '../../../shared/datatable/action.model';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -17,7 +17,7 @@ export class ViewTeamComponent implements OnInit {
   searchValue: string = '';
   filter = new FormControl('');
 
-  ACTION_COLUMNS: datatable_action[] = [];
+  ACTION_COLUMNS: DatableTableAction[] = [];
 
   DISPLAYED_COLUMNS: any[] = [];
   data: any[] = [];
@@ -40,7 +40,7 @@ export class ViewTeamComponent implements OnInit {
   ngOnInit(): void {
     this.ACTION_COLUMNS.push({
       value: '',
-      childrens: [
+      children: [
         {
           type: 'delete',
           iconClass: 'delete',

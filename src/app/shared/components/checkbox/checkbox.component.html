@@ -6,6 +6,7 @@
     [(ngModel)]="model"
     #field="ngModel"
     id="{{ id }}"
+    [disabled]="disabled"
     (input)="handleChange($event)"
   />
   <label class="form-check-label" for="{{ id }}">{{ label }}</label>

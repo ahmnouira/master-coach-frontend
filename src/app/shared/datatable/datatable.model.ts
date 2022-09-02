@@ -1,6 +1,6 @@
 import { TemplateRef } from '@angular/core';
 
-export class datatable_displayedColomn {
+export class DatableDisplayedColumn {
   data: string;
   template?: TemplateRef<any>;
   value: string;
@@ -10,33 +10,11 @@ export class datatable_displayedColomn {
   sort: boolean = false;
   sorted?: boolean;
   extraData?: any;
-  hovericondata?: string;
+  hoverIconData?: string;
   dateFormat?: string;
 }
 
-export class action {
-  type: string;
-  iconClass: string;
-  disabledAttribut?: string;
-  tooltipAttribut?: string;
-  constructor(
-    type: string,
-    iconClass: string,
-    disabledAttribut?: string,
-    tooltipAttribut?: string
-  ) {
-    this.type = type;
-    this.iconClass = iconClass;
-    if (disabledAttribut) this.disabledAttribut = disabledAttribut;
-    if (tooltipAttribut) this.tooltipAttribut = tooltipAttribut;
-  }
-}
-export class datatable_action {
-  value: any;
-  childrens: action[];
-}
-
-export class tag {
+export type Tag = {
   value: number;
   display: string;
-}
+};

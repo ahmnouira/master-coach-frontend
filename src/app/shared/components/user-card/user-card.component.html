@@ -1,0 +1,16 @@
+<div class="form-card d-flex">
+  <img class="coach-image" [src]="photo" />
+  <div class="rating" *ngIf="rating">
+    <img src="assets/img/common/Layer%202.svg" />
+    <img src="assets/img/common/Layer%202.svg" />
+    <img src="assets/img/common/Layer%202.svg" />
+    <img src="assets/img/common/Layer%202.svg" />
+    <img src="assets/img/common/Layer%202-1.svg" />
+  </div>
+  <p class="form-card-title">{{ user?.nom }} {{ user?.prenom }}</p>
+  <small class="form-card-subtitle" *ngIf="equip">{{ equip }}</small>
+
+  <h4 class="form-card-price">
+    <b>{{ price }}</b>
+  </h4>
+</div>

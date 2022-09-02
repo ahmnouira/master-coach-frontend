@@ -1,56 +1,55 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
-
-  {
     path: 'login',
     component: LoginComponent,
-    pathMatch: 'full',
   },
 
   {
     path: 'create-user/:type',
     component: CreateUserComponent,
-    pathMatch: 'full', // to remove /core/...
   },
 
   {
     path: 'reset-password',
-    component: ResetPasswordComponent,
-    pathMatch: 'full',
+    loadChildren: () =>
+      import('./reset-password/reset-password.module').then(
+        (module) => module.ResetPasswordModule
+      ),
   },
 
   {
     path: 'forgot-password',
-    component: ForgotPasswordComponent,
-    pathMatch: 'full',
+    loadChildren: () =>
+      import('./forgot-password/forgot-password.module').then(
+        (module) => module.ForgotPasswordModule
+      ),
   },
 
   {
     path: 'email-confirmed',
     component: ConfirmEmailComponent,
-    pathMatch: 'full',
   },
 
-  { path: 'verify-email', component: VerifyEmailComponent, pathMatch: 'full' },
+  { path: 'verify-email', component: VerifyEmailComponent },
 
-  { path: '**', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class CoreRoutingModule {}

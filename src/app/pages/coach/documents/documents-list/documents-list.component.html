@@ -1,48 +1,58 @@
 <app-sub-header [title]="'Mes documents'"></app-sub-header>
 
-<div class="sub-component-content">
-  <div class="row mt-4 gx-4">
-    <div class="col">
-      <div class="filters-row input-group form-group form-inline p-0">
-        <input
-          class="form-control coach-search"
-          type="text"
-          [(ngModel)]="filterString"
-          (change)="filterInputChanged($event)"
-          (keydown)="filterInputChanged($event)"
-          placeholder="Recherche"
-        />
-        <span
-          class="material-icons material-icons-inside-input"
-          style="right: 30px; color: #ddf2fa"
-          >search</span
-        >
-      </div>
+<app-page-wrapper>
+  <app-page-header-wrapper>
+    <div class="row align-items-center" start>
+      <app-select
+        class="col"
+        [data]="FILTER_TYPES"
+        [text]="'Achat / Réservation'"
+        [(model)]="selectedTypes"
+        (onItemOneSelect)="filters.type = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-select
+        class="col"
+        [data]="FILTER_WITH"
+        [text]="'Coachée'"
+        [(model)]="selectedWith"
+        (onItemOneSelect)="filters.with = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-search
+        class="col"
+        [(model)]="search"
+        (modelChange)="handleSearch($event)"
+      ></app-search>
+
+      <app-button class="col" [title]="'Rechercher'" [variant]="'basic'">
+      </app-button>
     </div>
-  </div>
 
-  <div *ngIf="isLoading">
-    <app-loader [marginTop]="'64px'"></app-loader>
-  </div>
+    <app-button [title]="'Ajouter un document'" [variant]="'add'" end>
+    </app-button>
+  </app-page-header-wrapper>
 
-  <app-empty-page
-    title="products"
-    *ngIf="!found && !isLoading && !error"
-  ></app-empty-page>
-
-  <app-form-error [error]="error"></app-form-error>
-
-  <div
-    class="boutique"
-    [@animate]="{
-      value: '*',
-      params: { duration: '300ms', y: '100px' }
-    }"
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'documents'"
   >
-    <div class="row" *ngIf="found">
-      <div class="col-lg-3" *ngFor="let product of products; index as i">
-        <app-boutique-card [product]="product"></app-boutique-card>
-      </div>
+    <div class="table-responsive">
+      <loading-card [loading]="loadingAnimation">
+        <datatable
+          [datatable]="data"
+          (datatableChange)="datatableChange($event)"
+          [checkboxes]="true"
+          [Actions]="ACTION_COLUMNS"
+          (onActionClicked)="onActionClicked($event)"
+          [searchvalue]="search"
+          [displayedColomn]="DISPLAYED_COLUMNS"
+        ></datatable>
+      </loading-card>
     </div>
-  </div>
-</div>
+  </app-page-list-wrapper>
+</app-page-wrapper>

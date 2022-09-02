@@ -13,6 +13,7 @@ export class CheckboxComponent implements OnInit {
   @Input() label: string;
   @Input() title: string;
   @Input() id?: string;
+  @Input() disabled?: boolean;
 
   @Input() checked?: boolean;
 
