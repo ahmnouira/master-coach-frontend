@@ -22,22 +22,10 @@
           [singleSelection]="true"
         ></app-select>
         <div class="col">
-          <div
-            class="filters-row input-group form-group form-inline"
-            style="width: 250px"
-          >
-            <input
-              class="form-control searchBox mlr-10"
-              type="text"
-              [(ngModel)]="filterString"
-              placeholder="Titre"
-            />
-            <span
-              class="material-icons material-icons-inside-input"
-              style="right: 30px; color: #1376a3"
-              >search</span
-            >
-          </div>
+          <app-search
+            [(model)]="search"
+            (modelChange)="handleSearch($event)"
+          ></app-search>
         </div>
         <div class="col">
           <app-button [title]="'Rechercher'" [variant]="'basic'"> </app-button>
@@ -65,7 +53,7 @@
           [checkboxes]="true"
           [Actions]="ACTION_COLUMNS"
           (onActionClicked)="onActionClicked($event)"
-          [searchvalue]="filterString"
+          [searchvalue]="search"
           [displayedColomn]="DISPLAYED_COLUMNS"
         ></datatable>
       </loading-card>

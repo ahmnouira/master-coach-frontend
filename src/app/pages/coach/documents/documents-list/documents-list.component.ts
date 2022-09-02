@@ -20,7 +20,7 @@ export class DocumentsListComponent
   extends PageHelper<Document[]>
   implements OnInit
 {
-  filterString = '';
+  search = '';
 
   filters = {
     type: '',
@@ -89,7 +89,7 @@ export class DocumentsListComponent
     console.log(ev);
   }
 
-  filterInputChanged(event) {}
+  handleSearch(event) {}
 
   public onOptionsSelected(event: any, selectname: string) {
     const value = event.target.value;
