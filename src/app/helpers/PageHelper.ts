@@ -1,11 +1,6 @@
 import { Observable } from 'rxjs';
+import { ServerResponse } from '../interfaces/server-response';
 import { BaseHelper } from './BaseHelper';
-
-interface Response<T = any> {
-  success: boolean;
-  error: any;
-  data: T;
-}
 
 interface GetDataOptions {
   onSuccess?: Function;
@@ -83,7 +78,7 @@ export class PageHelper<T = any> extends BaseHelper {
     }
   }
 
-  private handleSeverResponse(res: Response<T>) {
+  private handleSeverResponse(res: ServerResponse<T>) {
     if (!res.success) {
       this.onError(res.error);
       return;
