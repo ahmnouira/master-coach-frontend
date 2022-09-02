@@ -1,0 +1,13 @@
+<div class="form-card d-flex">
+  <img class="coach-image mlr-10" width="40px" height="40px" [attr.src]="" />
+  <div class="rating" *ngIf="rating">
+    <img src="assets/img/common/Layer%202.svg" />
+    <img src="assets/img/common/Layer%202.svg" />
+    <img src="assets/img/common/Layer%202.svg" />
+    <img src="assets/img/common/Layer%202.svg" />
+    <img src="assets/img/common/Layer%202-1.svg" />
+  </div>
+  <p class="form-card-title">{{ user?.getFullName() }}</p>
+  <small class="form-card-subtitle">{{ user?.competance || [] }}</small>
+  <p class="form-card-price">15,00 €</p>
+</div>

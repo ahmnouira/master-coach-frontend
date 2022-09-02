@@ -46,6 +46,7 @@ import { SearchComponent } from './components/search/search.component';
 import { FormFooterComponent } from './components/form-footer/form-footer.component';
 import { PageHeaderWrapperComponent } from './components/page-header-wrapper/page-header-wrapper.component';
 import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.com
     FormFooterComponent,
     PageHeaderWrapperComponent,
     PageWrapperComponent,
+    UserCardComponent,
   ],
   imports: [
     CommonModule,
@@ -138,6 +140,7 @@ import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.com
     FormFooterComponent,
     PageHeaderWrapperComponent,
     PageWrapperComponent,
+    UserCardComponent
   ],
 })
 export class SharedModule {}
