@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IService } from 'src/app/interfaces/service.interface';
+import { ServiceChez } from 'src/app/models/service/service-chez.enum';
 import { ServiceFormat } from 'src/app/models/service/service-format.enum';
-import { ServiceSession } from 'src/app/models/service/service-session.enum';
-import { ServiceWith } from 'src/app/models/service/service.with.enum';
+import { SessionType } from 'src/app/models/service/service-type.enum';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { ServicesService } from 'src/app/services/services-service/services.service';
 import { Animations } from 'src/app/shared/animations';
@@ -30,8 +30,8 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
     price: '',
     image: undefined,
     format: ServiceFormat.CONFERENCE,
-    with: ServiceWith.CLIENT,
-    session: ServiceSession.COLLECTIVE,
+    chez: ServiceChez.CLIENT,
+    sessionType: SessionType.COLLECTIVE,
   };
 
   constructor(
@@ -65,8 +65,8 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
           isAutoConfirmed: service.isAutoConfirmed,
           // these  '||' for old created services
           format: service.format || ServiceFormat.CONFERENCE,
-          with: service.with || ServiceWith.CLIENT,
-          session: service.session || ServiceSession.COLLECTIVE,
+          chez: service.chez || ServiceChez.CLIENT,
+          sessionType: service.sessionType || SessionType.COLLECTIVE,
         };
         this.isLoading = false;
       });
