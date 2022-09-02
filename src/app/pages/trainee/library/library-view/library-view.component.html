@@ -38,25 +38,7 @@
       </div>
 
       <div class="col-4 col-xxl-3">
-        <div class="form-card d-flex">
-          <img
-            class="coach-image mlr-10"
-            width="40px"
-            height="40px"
-            [attr.src]=""
-          />
-          <div class="rating">
-            <img src="assets/img/common/Layer%202.svg" />
-            <img src="assets/img/common/Layer%202.svg" />
-            <img src="assets/img/common/Layer%202.svg" />
-            <img src="assets/img/common/Layer%202.svg" />
-            <img src="assets/img/common/Layer%202-1.svg" />
-          </div>
-          <span class="form-card-title"
-            >{{ coach?.prenom || "sdsds" }} {{ coach?.nom || "nom" }}</span
-          >
-          <p>{{ coach?.competance || [] }}</p>
-        </div>
+        <app-user-card></app-user-card>
 
         <div class="mt-20">
           <app-button

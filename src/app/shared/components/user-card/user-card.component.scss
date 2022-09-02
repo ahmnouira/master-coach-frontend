@@ -1,0 +1,55 @@
+  
+  .form-card {
+    height: 350px;
+    
+    background: transparent url("/assets/img/common/Groupe de masques 50.png") 0%
+      0% no-repeat padding-box;
+    opacity: 1;
+    background-size: cover;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px #0000001a;
+    border-radius: 10px;
+    .rating {
+      display: flex;
+      width: 33%;
+      justify-content: space-around;
+      position: relative;
+      margin: 0 auto;
+      img {
+        width: 12px;
+        height: 12px;
+        position: unset;
+        top: unset;
+        left: unset;
+      }
+    }
+    .coach-image {
+      width: 160px;
+      height: 160px;
+      margin: 30px auto 20px auto;
+      border-radius: 50%;
+      border-left: 4px solid transparent;
+      border-top: 4px solid #1376a3;
+      border-right: 4px solid #1376a3;
+      border-bottom: 4px solid #1376a3;
+    }
+    .form-card-title {
+      text-align: center;
+      font: normal normal normal 18px/22px Fredoka;
+      color: #3C4D5D;
+      margin-top: 15px
+    }
+    .form-card-subtitle {
+      text-align: center;
+      font: normal normal normal 14px/20px Fredoka;
+      color: #3C4D5D;
+      margin-top: 4px;
+    }
+
+    &-price {
+        text-align: center;
+        font: normal normal medium 24px/29px Fredoka;
+        color: #3C4D5D;
+        margin-top: 8px;
+      }
+  }
