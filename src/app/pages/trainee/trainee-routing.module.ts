@@ -15,13 +15,17 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./dashboard/dashboard.module').then((module) => module.DashboardModule),
+      import('./dashboard/dashboard.module').then(
+        (module) => module.DashboardModule
+      ),
   },
 
   {
     path: 'purchases',
     loadChildren: () =>
-      import('./purchases/purchases.module').then((module) => module.PurchasesModule),
+      import('./purchases/purchases.module').then(
+        (module) => module.PurchasesModule
+      ),
   },
 
   { path: 'parametre', component: ParametresComponent },

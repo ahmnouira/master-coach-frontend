@@ -9,9 +9,7 @@ import { TokenStorageService } from '../services/token-storage.service';
 export class PagesComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   getUserRole() {
     return this.tokenStorageService.getUser()?.role;

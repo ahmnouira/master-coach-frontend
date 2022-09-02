@@ -1,0 +1,10 @@
+<div>
+  <div class="product-info" [ngStyle]="{ 'background-image': backgroundImage }">
+    <div class="play-button" *ngIf="isVideo"></div>
+  </div>
+  <div class="desc">
+    <p>
+      {{ product?.description }}
+    </p>
+  </div>
+</div>

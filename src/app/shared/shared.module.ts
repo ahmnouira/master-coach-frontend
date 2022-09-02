@@ -47,6 +47,7 @@ import { FormFooterComponent } from './components/form-footer/form-footer.compon
 import { PageHeaderWrapperComponent } from './components/page-header-wrapper/page-header-wrapper.component';
 import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { ProductInfoComponent } from './components/product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     PageHeaderWrapperComponent,
     PageWrapperComponent,
     UserCardComponent,
+    ProductInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -140,7 +142,8 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     FormFooterComponent,
     PageHeaderWrapperComponent,
     PageWrapperComponent,
-    UserCardComponent
+    UserCardComponent,
+    ProductInfoComponent,
   ],
 })
 export class SharedModule {}

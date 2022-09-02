@@ -3,7 +3,6 @@ import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BaseService } from '../base-service/base.service';
 
-
 type GetUsersOptions = {
   q: string;
   category: string;
