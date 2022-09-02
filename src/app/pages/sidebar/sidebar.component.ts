@@ -13,6 +13,7 @@ export class SidebarComponent implements OnInit {
   isLoggedIn = false;
   username?: string;
   role: string = '';
+  path: string =  ""
   userData = {};
   form: any = {};
 
@@ -36,13 +37,10 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getUserRole() {
-    return this.tokenStorageService.getUser()?.role;
-  }
 
   goToProfile() {
     this.route.navigateByUrl(
-      '/pages/' + this.getUserRole().toLowerCase() + '/parametre'
+      this.path
     );
   }
 
@@ -59,8 +57,9 @@ export class SidebarComponent implements OnInit {
     this.userService.getSingleUser(id).subscribe(
       (user) => {
         this.userData = user;
-        this.role = user.role;
+        this.role = user.role.toLowerCase();
         this.username = user.userName;
+        this.path = '/pages/' + this.role + '/parametre'
       },
       (error) => {
         return {};

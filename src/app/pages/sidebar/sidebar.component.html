@@ -1,16 +1,13 @@
 <nav id="sidebar" class="d-none d-md-block">
   <div class="sidebar-header mb-5">
     <img
-      routerLink="/pages"
+      [routerLink]="path"
       src="assets/img/login/mastercoach.svg"
       alt="logo"
     />
   </div>
 
-  <ul
-    *ngIf="getUserRole()?.toLowerCase() === 'admin'"
-    class="list-unstyled components"
-  >
+  <ul *ngIf="role === 'admin'" class="list-unstyled components">
     <li
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: false }"
@@ -48,19 +45,13 @@
       </a>
     </li>
   </ul>
-  <ul
-    *ngIf="getUserRole()?.toLowerCase() === 'coach'"
-    class="list-unstyled components"
-  >
+  <ul *ngIf="role === 'coach'" class="list-unstyled components">
     <app-sidebar-item
       *ngFor="let item of coachSidebar"
       [item]="item"
     ></app-sidebar-item>
   </ul>
-  <ul
-    *ngIf="getUserRole()?.toLowerCase() === 'client'"
-    class="list-unstyled components"
-  >
+  <ul *ngIf="role === 'client'" class="list-unstyled components">
     <li>
       <a>
         <img class="profil_icon" src="assets/img/common/account%20(2).svg" />
@@ -126,7 +117,7 @@
       >
     </li>
   </ul>
-  <div *ngIf="getUserRole()?.toLowerCase() === 'client'" class="nav_img">
+  <div *ngIf="role === 'client'" class="nav_img">
     <img src="assets/img/menu-img.png" />
   </div>
 </nav>
