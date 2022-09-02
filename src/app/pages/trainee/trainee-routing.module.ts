@@ -24,6 +24,12 @@ const routes: Routes = [
   { path: 'rdv/reserver', component: RdvReservationComponent },
   { path: 'rdv/pay', component: RdvPayComponent },
   { path: 'rdv/detail', component: RdvDetailComponent },
+  {
+    path: 'library',
+    loadChildren: () =>
+      import('./library/library.module').then((module) => module.LibraryModule),
+    //canActivate: [AccountVerifiedGuard],
+  },
 ];
 
 @NgModule({

@@ -19,7 +19,7 @@ export class SelectComponent implements OnInit {
 
   @Input() singleSelection = false;
 
-  @Input() disableMargin = false; 
+  @Input() disableMargin = false;
 
   settings: {};
 

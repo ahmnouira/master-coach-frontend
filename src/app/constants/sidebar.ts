@@ -45,3 +45,43 @@ export const COACH_SIDEBAR: SidebarItem[] = [
     title: 'Mes documents',
   },
 ];
+
+export const CLIENT_SIDEBAR: SidebarItem[] = [
+  {
+    icon: 'assets/img/common/account%20(2).svg',
+    route: '/pages/client/profil',
+    title: 'Tableau de board',
+  },
+  {
+    icon: 'assets/img/common/edit.svg',
+    route: '/pages/client/coach-list',
+    title: 'Trouver un coach',
+  },
+  {
+    icon: 'assets/img/common/deadline.svg',
+    route: '/pages/client/rdv/list',
+    title: 'Mes rendez-vous',
+  },
+
+  {
+    icon: 'assets/icon/shopping-cart.svg',
+    route: '/pages/client/purchases',
+    title: 'Mes achats',
+  },
+  {
+    icon: 'assets/img/common/chatting%20(1).svg',
+    route: '/pages/conversations',
+    title: 'Messagerie',
+  },
+
+  {
+    icon: 'assets/img/common/file%20(5).svg',
+    route: '/pages/client/docs',
+    title: 'Mes outils de suivi',
+  },
+  {
+    icon: 'assets/img/common/clothing-store.svg',
+    route: '/pages/client/library',
+    title: 'Ma bibliothèque',
+  },
+];
