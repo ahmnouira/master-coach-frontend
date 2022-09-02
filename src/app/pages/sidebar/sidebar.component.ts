@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { COACH_SIDEBAR } from 'src/app/constants/sidebar';
+import { CLIENT_SIDEBAR, COACH_SIDEBAR } from 'src/app/constants/sidebar';
+import { User } from 'src/app/models/user-model';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
@@ -11,13 +12,13 @@ import { UserService } from 'src/app/services/user-service/user-service.service'
 })
 export class SidebarComponent implements OnInit {
   isLoggedIn = false;
-  username?: string;
   role: string = '';
   path: string =  ""
   userData = {};
   form: any = {};
 
   coachSidebar = COACH_SIDEBAR;
+  clientSidebar = CLIENT_SIDEBAR
 
   constructor(
     private route: RouteService,
@@ -28,8 +29,9 @@ export class SidebarComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (token) {
       if (this.tokenExpired(token)) this.route.navigate(['/core/login']);
-      const user = this.tokenStorageService.getUser();
-      this.getUserFromDb(user._id);
+      const user = this.tokenStorageService.getUser() as User;
+      this.role = user.role.toLowerCase();
+      this.path = '/pages/' + this.role + '/parametre'
     } else {
       this.route.navigate(['/']);
     }
@@ -53,21 +55,7 @@ export class SidebarComponent implements OnInit {
     return this.route.router.url;
   }
 
-  private getUserFromDb(id: any) {
-    this.userService.getSingleUser(id).subscribe(
-      (user) => {
-        this.userData = user;
-        this.role = user.role.toLowerCase();
-        this.username = user.userName;
-        this.path = '/pages/' + this.role + '/parametre'
-      },
-      (error) => {
-        return {};
-      }
-    );
-  }
-
-  private tokenExpired(token: string) {
+  private tokenExpired(token: string): boolean {
     const expiry = JSON.parse(atob(token.split('.')[1])).exp;
     return Math.floor(new Date().getTime() / 1000) >= expiry;
   }
