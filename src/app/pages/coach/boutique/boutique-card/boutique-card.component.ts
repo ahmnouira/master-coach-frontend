@@ -11,10 +11,13 @@ import { Product } from 'src/app/models/product/product.model';
 })
 export class BoutiqueCardComponent implements OnInit {
   @Input() product: Product;
+  @Input() forClient: boolean
 
   price: string;
   icon: string;
   backgroundImage: string;
+
+  path: string =''
 
   constructor() {}
 
@@ -22,6 +25,7 @@ export class BoutiqueCardComponent implements OnInit {
     this.getBackgroundImage();
     this.getPrice();
     this.getIcon();
+    this.getPath()
   }
 
   getIcon() {
@@ -38,6 +42,15 @@ export class BoutiqueCardComponent implements OnInit {
       default:
         break;
     }
+  }
+
+
+  getPath() {
+    if(this.forClient) {
+     this.path = `/pages/client/library/view/${this.product._id }`
+    } else {
+    this.path =  `/pages/coach/boutique/edit/${this.product._id}`
+  }
   }
 
   getPrice() {
