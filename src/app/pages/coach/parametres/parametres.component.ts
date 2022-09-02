@@ -20,9 +20,7 @@ export class ParametresComponent extends FormHelper implements OnInit {
   skills: any = [];
   certifications: any = [];
 
-
-  selectedCategories: any[] =  []
- 
+  selectedCategories: any[] = [];
 
   constructor(
     private tokenStorageService: TokenStorageService,
@@ -50,7 +48,7 @@ export class ParametresComponent extends FormHelper implements OnInit {
     }
     const formData = this.getFormData(this.form);
 
-    console.log('category', category)
+    console.log('category', category);
 
     this.authService.updateProfile(formData).subscribe(
       (res) => {
@@ -78,7 +76,7 @@ export class ParametresComponent extends FormHelper implements OnInit {
       accreditation: this.getArray(user.accreditation),
       cinB: this.getFileUrl(user.cinB),
       cinF: this.getFileUrl(user.cinF),
-      rib: this.getFileUrl(user.rib), 
+      rib: this.getFileUrl(user.rib),
       email: this.getString(user.email),
       prenom: this.getString(user.prenom),
       kbis: this.getFileUrl(user.kbis),

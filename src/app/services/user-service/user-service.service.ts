@@ -3,10 +3,37 @@ import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BaseService } from '../base-service/base.service';
 
+type GetUsersOptions = {
+  q: string;
+  category: string;
+  competance: string;
+  accreditation: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService extends BaseService {
+  getUsers(options?: Partial<GetUsersOptions>) {
+    const params = new HttpParams();
+    if (options) {
+      for (const key in options) {
+        if (options[key]) {
+          params.set(key, options[key]);
+        }
+      }
+    }
+    return this.get('/users', params);
+  }
+
+  getUser(id: string) {
+    return this.get(`/users/${id}`);
+  }
+
+  changeUserState(id: any) {
+    return this.put('/users/change_status/' + id);
+  }
+
   getAllUser() {
     return this.get('/all_users');
   }
@@ -30,5 +57,13 @@ export class UserService extends BaseService {
 
   deleteUser(id: any) {
     return this.delete('/delete_user/' + id);
+  }
+
+  getUserServices(id: string): Observable<any> {
+    return this.get(`/users/${id}/services`);
+  }
+
+  getUserProducts(id: string): Observable<any> {
+    return this.get(`/users/${id}/products`);
   }
 }
