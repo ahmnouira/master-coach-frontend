@@ -45,15 +45,12 @@
       </a>
     </li>
   </ul>
-  <ul *ngIf="role === 'coach'" class="list-unstyled components">
+  <ul
+    *ngIf="role === 'coach' || role === 'client'"
+    class="list-unstyled components"
+  >
     <app-sidebar-item
-      *ngFor="let item of coachSidebar"
-      [item]="item"
-    ></app-sidebar-item>
-  </ul>
-  <ul *ngIf="role === 'client'" class="list-unstyled components">
-    <app-sidebar-item
-      *ngFor="let item of clientSidebar"
+      *ngFor="let item of sidebarItems"
       [item]="item"
     ></app-sidebar-item>
   </ul>

@@ -46,7 +46,6 @@ export const COACH_SIDEBAR: SidebarItem[] = [
   },
 ];
 
-
 export const CLIENT_SIDEBAR: SidebarItem[] = [
   {
     icon: 'assets/img/common/account%20(2).svg',
@@ -86,4 +85,3 @@ export const CLIENT_SIDEBAR: SidebarItem[] = [
     title: 'Ma bibliothèque',
   },
 ];
-
