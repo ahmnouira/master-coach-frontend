@@ -49,7 +49,7 @@ export const COACH_SIDEBAR: SidebarItem[] = [
 export const CLIENT_SIDEBAR: SidebarItem[] = [
   {
     icon: 'assets/img/common/account%20(2).svg',
-    route: '/pages/client/profil',
+    route: '/pages/client/dashboard',
     title: 'Tableau de board',
   },
   {

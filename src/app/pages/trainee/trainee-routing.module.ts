@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfilClientComponent } from './profil-client/profil-client.component';
 import { ParametresComponent } from './parametres/parametres.component';
 import { FindCoachComponent } from './find-coach/find-coach.component';
 import { MesDocQuizComponent } from './client-quiz/mes-doc-quiz/mes-doc-quiz.component';
@@ -13,7 +12,18 @@ import { RdvPayComponent } from './rdv-pay/rdv-pay.component';
 import { RdvDetailComponent } from './rdv-detail/rdv-detail.component';
 
 const routes: Routes = [
-  { path: 'profil', component: ProfilClientComponent },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((module) => module.DashboardModule),
+  },
+
+  {
+    path: 'purchases',
+    loadChildren: () =>
+      import('./purchases/purchases.module').then((module) => module.PurchasesModule),
+  },
+
   { path: 'parametre', component: ParametresComponent },
   { path: 'coach-list', component: FindCoachComponent },
   { path: 'coach-detail', component: DetailCoachComponent },

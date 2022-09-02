@@ -1,1 +1,73 @@
-<p>library-view works!</p>
+<app-sub-header
+  [title]="'Page détails de support formation'"
+  [subTitle]="'BACK'"
+></app-sub-header>
+
+<app-page-wrapper>
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'product'"
+  >
+    <div class="formation-content row gx-4 gx-lg-5">
+      <div class="col-8 col-xxl-9">
+        <div class="video">
+          <div class="play-button"></div>
+          <div class="bottom-blur"></div>
+        </div>
+        <div class="desc">
+          <span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Pellentesque condimentum ipsum consectetur nulla sodales, at aliquam
+            ligula iaculis. Fusce sed leo rhoncus, commodo lectus vel, accumsan
+            sapien. Nullam nulla libero, laoreet in rutrum sed, blandit a nibh.
+            Curabitur ultrices ante in malesuada sagittis. Fusce id elit sit
+            amet sem eleifend varius. Ut ullamcorper dignissim dui vehicula
+            egestas. Vivamus nec aliquam mauris. Nulla vestibulum tempor sapien
+            quis malesuada. Vestibulum eu sapien purus. Nunc vitae tortor
+            ultrices, scelerisque nibh ac, interdum nulla. Pellentesque dapibus
+            sapien eu aliquet congue. Etiam aliquet nulla sit amet sapien
+            eleifend, at rhoncus neque hendrerit. Suspendisse semper, urna vitae
+            lobortis faucibus, mauris libero euismod enim, a malesuada diam
+            nulla ut velit. Donec accumsan ullamcorper turpis, a sollicitudin mi
+            maximus ut. Vestibulum commodo tempor aliquam. Phasellus metus
+            neque, commodo a nulla quis, auctor ultrices.
+          </span>
+        </div>
+      </div>
+
+      <div class="col-4 col-xxl-3">
+        <div class="form-card d-flex">
+          <img
+            class="coach-image mlr-10"
+            width="40px"
+            height="40px"
+            [attr.src]=""
+          />
+          <div class="rating">
+            <img src="assets/img/common/Layer%202.svg" />
+            <img src="assets/img/common/Layer%202.svg" />
+            <img src="assets/img/common/Layer%202.svg" />
+            <img src="assets/img/common/Layer%202.svg" />
+            <img src="assets/img/common/Layer%202-1.svg" />
+          </div>
+          <span class="form-card-title"
+            >{{ coach?.prenom || "sdsds" }} {{ coach?.nom || "nom" }}</span
+          >
+          <p>{{ coach?.competance || [] }}</p>
+        </div>
+
+        <div class="mt-20">
+          <app-button
+            (onClick)="addToCart()"
+            [title]="'Réserver'"
+            [isLoading]="isSubmitting"
+            [disabled]="isSubmitting"
+          >
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>
