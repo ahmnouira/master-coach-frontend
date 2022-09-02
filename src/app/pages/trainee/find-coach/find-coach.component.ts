@@ -53,12 +53,8 @@ export class FindCoachComponent implements OnInit {
 
   getUserProfileList() {
     this.userService.getUsers().subscribe((response: ServerResponse) => {
-
-
       this.data = response.data.filter((elem) => elem.role == 'Coach');
-      this.filteredData = response.data.filter(
-        (elem) => elem.role == 'Coach'
-      );
+      this.filteredData = response.data.filter((elem) => elem.role == 'Coach');
       this.filteredData.forEach((elem) => {
         let a = [];
         elem.competance?.forEach((el) => {

@@ -12,33 +12,15 @@
   >
     <div class="formation-content row gx-4 gx-lg-5">
       <div class="col-8 col-xxl-9">
-        <div class="video">
-          <div class="play-button"></div>
-          <div class="bottom-blur"></div>
-        </div>
-        <div class="desc">
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque condimentum ipsum consectetur nulla sodales, at aliquam
-            ligula iaculis. Fusce sed leo rhoncus, commodo lectus vel, accumsan
-            sapien. Nullam nulla libero, laoreet in rutrum sed, blandit a nibh.
-            Curabitur ultrices ante in malesuada sagittis. Fusce id elit sit
-            amet sem eleifend varius. Ut ullamcorper dignissim dui vehicula
-            egestas. Vivamus nec aliquam mauris. Nulla vestibulum tempor sapien
-            quis malesuada. Vestibulum eu sapien purus. Nunc vitae tortor
-            ultrices, scelerisque nibh ac, interdum nulla. Pellentesque dapibus
-            sapien eu aliquet congue. Etiam aliquet nulla sit amet sapien
-            eleifend, at rhoncus neque hendrerit. Suspendisse semper, urna vitae
-            lobortis faucibus, mauris libero euismod enim, a malesuada diam
-            nulla ut velit. Donec accumsan ullamcorper turpis, a sollicitudin mi
-            maximus ut. Vestibulum commodo tempor aliquam. Phasellus metus
-            neque, commodo a nulla quis, auctor ultrices.
-          </span>
-        </div>
+        <app-product-info *ngIf="data" [product]="data"></app-product-info>
       </div>
 
       <div class="col-4 col-xxl-3">
-        <app-user-card></app-user-card>
+        <app-user-card
+          *ngIf="data && data.user"
+          [user]="data.user"
+          [product]="data"
+        ></app-user-card>
 
         <div class="mt-20">
           <app-button

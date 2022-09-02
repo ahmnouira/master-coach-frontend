@@ -10,24 +10,27 @@ import { ProductService } from 'src/app/services/product-service/product.service
   templateUrl: './library-view.component.html',
   styleUrls: ['./library-view.component.scss'],
 })
-export class LibraryViewComponent extends PageHelper<Product> implements OnInit {
+export class LibraryViewComponent
+  extends PageHelper<Product>
+  implements OnInit
+{
+  id: string = '';
 
-  id: string = ''
+  coach: Partial<IUser> = {};
 
-  coach: Partial<IUser> = {}
+  isSubmitting: boolean;
 
-
-  isSubmitting: boolean
-
-  isIndiv: boolean
-  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService ) {
-      super()
-
+  isIndiv: boolean;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductService
+  ) {
+    super();
   }
 
   ngOnInit(): void {
-    this.getId()
-    this.getProducts()
+    this.getId();
+    this.getProducts();
   }
 
   getId() {
@@ -36,21 +39,11 @@ export class LibraryViewComponent extends PageHelper<Product> implements OnInit 
     });
   }
 
-
   getProducts() {
+    this.getData(this.productService.getProduct(this.id), {
+      debug: true,
+    });
+  }
 
-   console.log('id', this.id)
-
-    this.getData(
-      this.productService.getProduct(this.id),
-      {
-        debug: true,
-      }
-    );
-}
-
-    addToCart() {
-
-    }
-
+  addToCart() {}
 }
