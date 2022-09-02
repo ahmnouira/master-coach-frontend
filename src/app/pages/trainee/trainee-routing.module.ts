@@ -17,6 +17,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((module) => module.DashboardModule),
   },
+
+  {
+    path: 'purchases',
+    loadChildren: () =>
+      import('./purchases/purchases.module').then((module) => module.PurchasesModule),
+  },
+
   { path: 'parametre', component: ParametresComponent },
   { path: 'coach-list', component: FindCoachComponent },
   { path: 'coach-detail', component: DetailCoachComponent },
