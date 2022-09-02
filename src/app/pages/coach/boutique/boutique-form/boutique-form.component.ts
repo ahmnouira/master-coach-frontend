@@ -29,11 +29,6 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     duration: '',
   };
 
-  typeImportFiles = {
-    type: 'pdf',
-    title: 'Ajouter des documents',
-  };
-
   selectedCategories: any = [];
   categories: any[] = [];
 
