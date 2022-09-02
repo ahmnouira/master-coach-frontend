@@ -10,12 +10,7 @@ export class PagesComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService) {}
 
   ngOnInit() {
-    if (!localStorage.getItem('foo')) {
-      localStorage.setItem('foo', 'no reload');
-      location.reload();
-    } else {
-      localStorage.removeItem('foo');
-    }
+    
   }
 
   getUserRole() {
