@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 import { IProduct } from 'src/app/interfaces/product.interface';
+import { ProductType } from 'src/app/models/product/product-type.enum';
 
 @Component({
   selector: 'app-product-info',
@@ -12,10 +13,22 @@ export class ProductInfoComponent implements OnInit {
 
   backgroundImage: string;
 
+
+  isVideo :boolean
+
+  isAudio: boolean
+
+  
+
   constructor() {}
 
   ngOnInit(): void {
     this.getBackgroundImage();
+    this.getProductType()
+  }
+
+  getProductType() {
+    this.isVideo = this.product.type === ProductType.VIDEO
   }
 
   getBackgroundImage() {
