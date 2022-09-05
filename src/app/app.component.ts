@@ -31,25 +31,11 @@ export class AppComponent {
     if (user) {
       this.user = user;
       this.role = user.role;
-
-      console.log('role', this.role)
-      if(user.role === UserRole.Client) {
-        this.getClientOrders()
-      }
       authService.currentUser$.next(user);
     } else {
-      // login
+      // login, not logged in
     }
 
     this.isLoading = false
-  }
-
-
-
-  private  getClientOrders() {
-   const orders = this.orderService.getOrdersFromStorage()
-   if(Array.isArray(orders) && orders.length) {
-    this.orderService.setOrders = orders
-   }
   }
 }

@@ -25,10 +25,16 @@ export class OrderItemComponent implements OnInit {
   }
 
   getOrders() {
+    this.setOrders()
     this.orderService.orders.subscribe((orders) => {
-
-      console.log('orders', orders )
       this.orders = orders;
     });
   }
+
+  private setOrders() {
+    const orders = this.orderService.getOrdersFromStorage()
+    if(Array.isArray(orders) && orders.length) {
+     this.orderService.setOrders = orders
+    }
+   }
 }

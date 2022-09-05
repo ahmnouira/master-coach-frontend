@@ -24,7 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyAppointmentsComponent } from './my-appointments/my-appointments.component';
 import { SharedModule } from '../../shared/shared.module';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
-import { CoachMenuComponent } from './coach-menu/coach-menu.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -39,7 +38,6 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     ViewTeamComponent,
     AddTeamComponent,
     MyAppointmentsComponent,
-    CoachMenuComponent,
   ],
   imports: [
     CommonModule,
@@ -56,7 +54,7 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     SharedModule,
     NgxSmartModalModule.forChild(),
   ],
-  exports: [CoachMenuComponent],
+  exports: [],
 
   providers: [BsModalService],
 })

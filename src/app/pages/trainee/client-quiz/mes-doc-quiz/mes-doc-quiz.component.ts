@@ -106,6 +106,7 @@ export class MesDocQuizComponent implements OnInit {
   }
 
   getUserProfileList() {
+    /*
     this.userService.getAllUser().subscribe((response) => {
       this.coachList = (response as any)?.filter(
         (elem) => elem.role == 'Coach'
@@ -147,6 +148,7 @@ export class MesDocQuizComponent implements OnInit {
       });
       this.getQuizList();
     });
+    */
   }
 
   getQuizList() {

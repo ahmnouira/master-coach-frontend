@@ -18,8 +18,8 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () =>
-      import('./settings/settings.module').then(
-        (module) => module.SettingsModule
+      import('./coach-settings/coach-settings.module').then(
+        (module) => module.CoachSettingsModule
       ),
   },
 
