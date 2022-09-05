@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserRole } from '../models/role.enum';
 import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
@@ -7,11 +8,18 @@ import { TokenStorageService } from '../services/token-storage.service';
   styleUrls: ['./pages.component.scss'],
 })
 export class PagesComponent implements OnInit {
-  constructor(private tokenStorageService: TokenStorageService) {}
+  
+  role: UserRole
+  
+  constructor(private tokenStorageService: TokenStorageService) {
 
-  ngOnInit() {}
+  }
+
+  ngOnInit() {
+    this.role
+  }
 
   getUserRole() {
-    return this.tokenStorageService.getUser()?.role;
+    this.role = this.tokenStorageService.getUser()?.role;
   }
 }

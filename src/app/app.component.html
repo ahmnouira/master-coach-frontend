@@ -2,14 +2,14 @@
   id="main"
   class="d-flex"
   [style.background-color]="
-    userRole?.toLowerCase() == 'coach'
+    role == 'Coach'
       ? '#EFFAFD !important'
-      : userRole?.toLowerCase() == 'admin'
+      : role == 'Admin'
       ? '#E8FDE8 !important'
       : '#FDEFEA !important'
   "
 >
-  <app-sidebar></app-sidebar>
+  <app-sidebar [role]="role"></app-sidebar>
   <div id="content">
     <router-outlet></router-outlet>
   </div>

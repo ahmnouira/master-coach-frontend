@@ -13,7 +13,7 @@ import { TokenStorageService } from './services/token-storage.service';
 export class AppComponent {
   title = 'mastercoach-fe';
   user: User;
-  userRole: UserRole;
+  role: UserRole;
 
   constructor(
     private tokenStorageService: TokenStorageService,
@@ -24,7 +24,7 @@ export class AppComponent {
     const user = this.tokenStorageService.getUser() as User;
     if (user) {
       this.user = user;
-      this.userRole = user.role;
+      this.role = user.role;
       authService.currentUser$.next(user);
     }
   }

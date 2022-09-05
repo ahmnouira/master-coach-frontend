@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommandeDetailComponent } from './commande-detail.component';
+import { SettingsComponent } from './settings.component';
 
-describe('CommandeDetailComponent', () => {
-  let component: CommandeDetailComponent;
-  let fixture: ComponentFixture<CommandeDetailComponent>;
+describe('SettingsComponent', () => {
+  let component: SettingsComponent;
+  let fixture: ComponentFixture<SettingsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CommandeDetailComponent],
+      declarations: [SettingsComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommandeDetailComponent);
+    fixture = TestBed.createComponent(SettingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,11 +3,10 @@
 <app-page-wrapper>
   <app-page-list-wrapper
     [error]="error"
-    [found]="found"
+    [found]="true"
     [isLoading]="isLoading"
-    [title]="'documents'"
+    [title]="'orders'"
   >
+    <app-cart-card></app-cart-card>
   </app-page-list-wrapper>
-
-  <app-cart-card></app-cart-card>
 </app-page-wrapper>

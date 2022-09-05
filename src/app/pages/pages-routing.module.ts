@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MessagerieComponent } from '../shared/components/messagerie/messagerie.component';
 import { VisioConferenceComponent } from '../shared/components/visio-conference/visio-conference.component';
-import { PreviewComponent } from './preview/preview.component';
 import { RdvDetailCommonComponent } from './rdv-detail-common/rdv-detail-common.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
@@ -27,10 +26,6 @@ const routes: Routes = [
     path: 'cart',
     loadChildren: () =>
       import('./cart/cart.module').then((module) => module.CartModule),
-  },
-  {
-    path: 'preview',
-    component: PreviewComponent,
   },
   {
     path: 'conversations',

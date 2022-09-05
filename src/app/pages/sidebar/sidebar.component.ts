@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CLIENT_SIDEBAR, COACH_SIDEBAR } from 'src/app/constants/sidebar';
-import { AuthService } from 'src/app/core/auth.service';
 import { UserRole } from 'src/app/models/role.enum';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -12,10 +11,8 @@ import { SidebarItem } from 'src/app/types/sidebar-item.type';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  isLoggedIn = false;
-  role: string;
-  form: any = {};
-  isLoading: boolean = true;
+
+  @Input() role: UserRole
 
   sidebarItems: SidebarItem[] = [];
 
@@ -23,30 +20,23 @@ export class SidebarComponent implements OnInit {
     private route: RouteService,
     private tokenStorageService: TokenStorageService
   ) {
-    this.isLoading = true;
-    let token = this.tokenStorageService.getToken();
-    const role = this.getRole();
-
-    setTimeout(() => {
-      if (token) {
-        const expired = this.tokenExpired(token);
-        if (expired) {
-          this.route.navigate(['/core/login']);
-        }
-        if (role) {
-          if (role === UserRole.Coach) this.sidebarItems = COACH_SIDEBAR;
-          else if (role === UserRole.Client) this.sidebarItems = CLIENT_SIDEBAR;
-          this.role = role.toLowerCase();
-          this.isLoading = false;
-        }
-      } else {
-        this.isLoading = true;
-        this.route.navigate(['/']);
-      }
-    }, 100);
+   
+    
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getSidebarItems()
+  
+  }
+  getSidebarItems() {
+    if(this.role === UserRole.Client) {
+      this.sidebarItems = CLIENT_SIDEBAR
+    } else if(this.role === UserRole.Coach) {
+      this.sidebarItems = COACH_SIDEBAR
+    }
+  }
+
+
 
   logout() {
     this.tokenStorageService.signOut();
@@ -58,7 +48,7 @@ export class SidebarComponent implements OnInit {
   }
 
   getPath() {
-    return `/pages/${this.role}/parametre`;
+    return `/pages/${this.role.toLowerCase()}/parametre`;
   }
 
   goToProfile() {

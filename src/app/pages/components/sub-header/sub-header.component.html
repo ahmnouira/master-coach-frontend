@@ -30,8 +30,8 @@
         <span class="d-none d-lg-inline-block">Lien de réservation</span>
       </a>
       <input class="search" type="text" placeholder="Recherche..." />
+      <app-order-item *ngIf="user.role === 'Client'"></app-order-item>
 
-      <app-order-item></app-order-item>
       <app-notification-item></app-notification-item>
 
       <app-avatar [photo]="user.photo" [role]="user.role" [title]="user.email">

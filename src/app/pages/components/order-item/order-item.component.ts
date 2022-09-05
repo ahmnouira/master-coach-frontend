@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/models/order/order.model';
 import { OrderService } from 'src/app/services/order-service/order.service';
+import { RouteService } from 'src/app/services/route-service/route.service';
 
 @Component({
   selector: 'app-order-item',
@@ -12,10 +13,15 @@ export class OrderItemComponent implements OnInit {
 
   orders: Order[]
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private routeService: RouteService) { }
 
   ngOnInit(): void {
     this.getOrders()
+  }
+
+
+  handleClick() {
+    this.routeService.navigate(['/pages/cart'])
   }
 
 

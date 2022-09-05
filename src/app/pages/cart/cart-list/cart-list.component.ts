@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageHelper } from 'src/app/helpers/PageHelper';
-import { PaymentService } from 'src/app/services/payment-service/payment.service';
+import { OrderService } from 'src/app/services/order-service/order.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -8,20 +8,18 @@ import { PaymentService } from 'src/app/services/payment-service/payment.service
   styleUrls: ['./cart-list.component.scss'],
 })
 export class CartListComponent extends PageHelper implements OnInit {
-  constructor(private paymentService: PaymentService) {
+  constructor(private orderService: OrderService) {
     super();
   }
 
   ngOnInit(): void {
-    //  this.getServices();
+    this.getOrders();
   }
 
-  /*
-  getServices() {
-    this.getData(this.paymentService.({ all: false }), {
-      debug: true,
-    });
-  }
 
-  */
+  getOrders() {
+    this.getData(this.orderService.orders, {
+      debug: true
+    })
+  }
 }

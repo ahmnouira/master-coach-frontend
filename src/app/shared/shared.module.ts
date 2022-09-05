@@ -6,7 +6,6 @@ import { ModalCalendrierComponent } from './components/modal-calendrier/modal-ca
 import { ModalSatisfactionComponent } from './components/modal-satisfaction/modal-satisfaction.component';
 import { ModalGoogleAgendaComponent } from './components/modal-google-agenda/modal-google-agenda.component';
 import { MessagerieComponent } from './components/messagerie/messagerie.component';
-import { CommandeDetailComponent } from './components/commande-detail/commande-detail.component';
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
@@ -53,7 +52,6 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 @NgModule({
   declarations: [
     ModalAjoutSessionComponent,
-    CommandeDetailComponent,
     ModalCalendrierComponent,
     ModalSatisfactionComponent,
     ModalGoogleAgendaComponent,
@@ -61,7 +59,6 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
     ModalSuccesComponent,
-    CommandeDetailComponent,
     LoaderComponent,
     ImportIconComponent,
     FileImportedComponent,
@@ -111,7 +108,6 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
     ModalCalendrierComponent,
     ModalSatisfactionComponent,
     ModalGoogleAgendaComponent,
-    CommandeDetailComponent,
     MessagerieComponent,
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
