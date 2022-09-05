@@ -13,8 +13,6 @@ import { MessagerieComponent } from 'src/app/shared/components/messagerie/messag
 import { AccountVerifiedGuard } from 'src/app/guards/account-verified/account-verified.guard';
 
 const routes: Routes = [
-
-
   {
     path: 'settings',
     loadChildren: () =>
@@ -80,8 +78,6 @@ const routes: Routes = [
       ),
     //canActivate: [AccountVerifiedGuard],
   },
-
- 
 
   { path: 'quiz/view', component: ViewFormQuizComponent },
   { path: 'quiz/add', component: AddFormQuizComponent },

@@ -11,14 +11,16 @@ import { TokenStorageService } from '../services/token-storage.service';
 export class PagesComponent implements OnInit {
   role: UserRole;
 
-  constructor(private tokenStorageService: TokenStorageService, private orderService: OrderService) {}
+  constructor(
+    private tokenStorageService: TokenStorageService,
+    private orderService: OrderService
+  ) {}
 
   ngOnInit() {
-    this.getUserRole()
+    this.getUserRole();
   }
 
   getUserRole() {
     this.role = this.tokenStorageService.getUser()?.role;
-    
   }
 }

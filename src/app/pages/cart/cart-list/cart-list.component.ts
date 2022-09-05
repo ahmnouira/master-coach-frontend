@@ -21,13 +21,26 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
 
   getOrders() {
     this.data = this.orderService.getOrdersFromStorage();
-
-    console.log('data', this.data);
-    if (this.data && this.data.length) {
+    if (Array.isArray(this.data) && this.data) {
       this.onSuccess();
     } else {
       this.onError('');
     }
+  }
+
+  hasItems() {
+    return Boolean(this.data && this.data.length);
+  }
+
+  handleDelete(id: string) {
+    const filteredOrders = this.data.filter((el) => el._id !== id);
+    this.data = [...filteredOrders];
+    this.orderService.setOrders = filteredOrders;
+    this.orderService.addOrdersToStorage(filteredOrders);
+  }
+
+  trackById(index: number, order: Order) {
+    return order._id;
   }
 
   submit() {}

@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
                 return;
               }
 
-              const user  = userRes.data 
+              const user = userRes.data;
               this.tokenStorage.saveUser(user);
               this.authService.currentUser$.next(user);
 

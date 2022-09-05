@@ -5,6 +5,7 @@
     (click)="handleClick($event)"
     [disabled]="disabled"
     style="height: 50px"
+    [ngStyle]="{ width: fullWith && '100%' }"
   >
     <span *ngIf="!isLoading">{{ title }}</span>
     <app-loader *ngIf="isLoading"></app-loader>

@@ -23,7 +23,7 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     CoreModule,
     PagesModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

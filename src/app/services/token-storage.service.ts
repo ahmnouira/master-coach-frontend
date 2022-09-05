@@ -9,16 +9,12 @@ const TWILIO_TOKEN_VIDEO_KEY = 'twilio-video-token';
   providedIn: 'root',
 })
 export class TokenStorageService {
-  constructor() {
-
-
-  }
-
+  constructor() {}
 
   logout() {
-    window.localStorage.removeItem(TOKEN_KEY)
+    window.localStorage.removeItem(TOKEN_KEY);
     window.localStorage.removeItem(USER_KEY);
-    window.localStorage.removeItem(TWILIO_TOKEN_KEY); 
+    window.localStorage.removeItem(TWILIO_TOKEN_KEY);
   }
 
   public saveToken(token: string): void {

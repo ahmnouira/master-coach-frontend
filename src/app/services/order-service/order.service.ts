@@ -22,12 +22,16 @@ export class OrderService extends BaseService {
   addOrderToStorage(order: any) {
     const previousOrders = this.getOrdersFromStorage();
     if (previousOrders && previousOrders.length) {
-      this.setOrders = [...previousOrders, order];
-      this.localStorageService.setItem('orders', [...previousOrders, order]);
+      this.setOrders = [...previousOrders, order]; // for state management
+      this.addOrdersToStorage([...previousOrders, order]);
     } else {
       this.setOrders = [order];
-      this.localStorageService.setItem('orders', [order]);
+      this.addOrdersToStorage([order]);
     }
+  }
+
+  addOrdersToStorage(orders: Order[]) {
+    this.localStorageService.setItem('orders', orders);
   }
 
   getOrdersFromStorage() {

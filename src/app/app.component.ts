@@ -16,16 +16,16 @@ export class AppComponent {
   title = 'mastercoach-fe';
   user: User;
   role: UserRole;
-  isLoading: boolean = true
+  isLoading: boolean = true;
 
   constructor(
     private tokenStorageService: TokenStorageService,
     private authService: AuthService,
     private consoleService: ConsoleService,
-    private routService: RouteService, 
+    private routService: RouteService,
     private orderService: OrderService
   ) {
-    this.isLoading = true
+    this.isLoading = true;
     this.consoleService.disableConsoleInProduction();
     const user = this.tokenStorageService.getUser() as User;
     if (user) {
@@ -36,6 +36,6 @@ export class AppComponent {
       // login, not logged in
     }
 
-    this.isLoading = false
+    this.isLoading = false;
   }
 }

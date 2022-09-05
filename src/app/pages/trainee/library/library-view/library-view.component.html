@@ -22,12 +22,13 @@
           [product]="data"
         ></app-user-card>
 
-        <div class="mt-20">
+        <div class="add-btn">
           <app-button
             (onClick)="addToCart()"
             [title]="orderExist ? 'Déjà existe' : 'Ajouter au panier'"
             [isLoading]="isSubmitting"
             [disabled]="orderExist"
+            [fullWith]="true"
           >
           </app-button>
         </div>

@@ -14,20 +14,19 @@ import { SidebarItem } from 'src/app/types/sidebar-item.type';
 export class SidebarComponent implements OnInit {
   role: UserRole;
 
-  sidebarItems: SidebarItem[]
+  sidebarItems: SidebarItem[];
 
   constructor(
     private route: RouteService,
-    private tokenStorageService: TokenStorageService, 
+    private tokenStorageService: TokenStorageService,
     private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.authService.currentUser$.subscribe((user) => {
-      this.role = user.role
+      this.role = user.role;
       this.getSidebarItems(user.role);
-    })
-    
+    });
   }
 
   getSidebarItems(role: UserRole) {
@@ -35,9 +34,9 @@ export class SidebarComponent implements OnInit {
       case UserRole.Client:
         this.sidebarItems = CLIENT_SIDEBAR;
         break;
-      case UserRole.Coach: 
+      case UserRole.Coach:
         this.sidebarItems = COACH_SIDEBAR;
-        break
+        break;
       default:
         break;
     }
@@ -45,7 +44,7 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.tokenStorageService.logout();
-    window.location.reload() // required
+    window.location.reload(); // required
   }
 
   getUrl() {
@@ -53,14 +52,13 @@ export class SidebarComponent implements OnInit {
   }
 
   getPath() {
-    if(!this.role) return '#'
+    if (!this.role) return '#';
     return `/pages/${this.role.toLowerCase()}/settings`;
   }
 
   goToProfile() {
     this.route.navigateByUrl(this.getPath());
   }
-
 
   private tokenExpired(token: string): boolean {
     const expiry = JSON.parse(atob(token.split('.')[1])).exp;

@@ -3,13 +3,16 @@
 <app-page-wrapper>
   <app-page-list-wrapper
     [error]="error"
-    [found]="true"
+    [found]="hasItems()"
     [isLoading]="isLoading"
     [title]="'orders'"
   >
     <div>
-      <div *ngFor="let item of data; index as i">
-        <app-cart-card></app-cart-card>
+      <div *ngFor="let order of data; index as i; trackBy: trackById">
+        <app-cart-card
+          [order]="order"
+          (onDelete)="handleDelete($event)"
+        ></app-cart-card>
       </div>
 
       <app-button
