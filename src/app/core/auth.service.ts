@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { UserRole } from '../models/role.enum';
 import { User } from '../models/user-model';
 import { BaseService } from '../services/base-service/base.service';
+import { LocalStorageService } from '../services/local-storage-service/local-storage.service';
 import { IConfirmEmail } from './interfaces/confirm-email';
 import { IForgotPassword } from './interfaces/forgot-password';
 import { IResendVerification } from './interfaces/resend-verification';
@@ -21,7 +22,6 @@ export class AuthService extends BaseService {
   login(email: string, password: string): Observable<any> {
     return this.post('/login', { email, password });
   }
-
   register(user: any): Observable<any> {
     return this.post('/create_user', user);
   }

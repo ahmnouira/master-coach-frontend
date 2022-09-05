@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilCoachComponent } from './profil-coach/profil-coach.component';
-import { SettingsComponent } from './settings/settings.component';
 import { ViewFormQuizComponent } from './view-form-quiz/view-form-quiz.component';
 import { AddFormQuizComponent } from './add-form-quiz/add-form-quiz.component';
 import { ListFormQuizComponent } from './list-form-quiz/list-form-quiz.component';
@@ -14,6 +13,16 @@ import { MessagerieComponent } from 'src/app/shared/components/messagerie/messag
 import { AccountVerifiedGuard } from 'src/app/guards/account-verified/account-verified.guard';
 
 const routes: Routes = [
+
+
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('./settings/settings.module').then(
+        (module) => module.SettingsModule
+      ),
+  },
+
   {
     path: 'profil',
     component: ProfilCoachComponent,
@@ -72,13 +81,7 @@ const routes: Routes = [
     //canActivate: [AccountVerifiedGuard],
   },
 
-  {
-    path: 'settings',
-    loadChildren: () =>
-      import('./settings/settings.module').then(
-        (module) => module.SettingsModule
-      ),
-  },
+ 
 
   { path: 'quiz/view', component: ViewFormQuizComponent },
   { path: 'quiz/add', component: AddFormQuizComponent },

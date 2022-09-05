@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { CLIENT_SIDEBAR, COACH_SIDEBAR } from 'src/app/constants/sidebar';
 import { UserRole } from 'src/app/models/role.enum';
 import { RouteService } from 'src/app/services/route-service/route.service';
@@ -23,16 +23,24 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.getSidebarItems();
   }
+
   getSidebarItems() {
-    if (this.role === UserRole.Client) {
-      this.sidebarItems = CLIENT_SIDEBAR;
-    } else if (this.role === UserRole.Coach) {
-      this.sidebarItems = COACH_SIDEBAR;
+
+    switch (this.role) {
+      case UserRole.Client:
+        this.sidebarItems = CLIENT_SIDEBAR;
+        break;
+      case UserRole.Coach: 
+        this.sidebarItems = COACH_SIDEBAR;
+        break
+     
+      default:
+        break;
     }
   }
 
   logout() {
-    this.tokenStorageService.signOut();
+    this.tokenStorageService.logout();
     this.route.navigate(['/login']);
   }
 

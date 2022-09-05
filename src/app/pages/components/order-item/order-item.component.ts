@@ -26,6 +26,8 @@ export class OrderItemComponent implements OnInit {
 
   getOrders() {
     this.orderService.orders.subscribe((orders) => {
+
+      console.log('orders', orders )
       this.orders = orders;
     });
   }

@@ -9,8 +9,14 @@
       : '#FDEFEA !important'
   "
 >
-  <app-sidebar [role]="role"></app-sidebar>
-  <div id="content">
-    <router-outlet></router-outlet>
+  <div *ngIf="isLoading; else elseBlock">
+    <p>Loading...</p>
   </div>
+
+  <ng-template #elseBlock>
+    <app-sidebar [role]="role" *ngIf="role && user"></app-sidebar>
+    <div id="content">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-template>
 </div>
