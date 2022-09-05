@@ -10,10 +10,9 @@ import { Animations } from 'src/app/shared/animations';
   selector: 'app-parametres',
   templateUrl: './parametres.component.html',
   styleUrls: ['./parametres.component.scss'],
-  animations: Animations
+  animations: Animations,
 })
 export class ParametresComponent extends FormHelper implements OnInit {
-
   form: Partial<IClient> = {};
 
   categories: any = [];
@@ -39,10 +38,16 @@ export class ParametresComponent extends FormHelper implements OnInit {
     this.isSubmitting = true;
     const { prenom, nom, tel, email, photo } = this.form;
     // +33122469999
-    if (!prenom || !nom || !tel || !email || !photo) {
-      this.isSubmitting = false;
+    if (!prenom || !nom || !tel || !email) {
+      this.onError();
       return;
     }
+
+    if (!photo) {
+      this.onError('Photo is required');
+      return;
+    }
+
     const formData = this.getFormData(this.form);
 
     this.authService.updateProfile(formData).subscribe(

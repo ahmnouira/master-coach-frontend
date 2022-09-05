@@ -91,7 +91,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
     PageWrapperComponent,
     UserCardComponent,
     ProductInfoComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -146,7 +146,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
     PageWrapperComponent,
     UserCardComponent,
     ProductInfoComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
   ],
 })
 export class SharedModule {}

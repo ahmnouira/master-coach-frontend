@@ -10,5 +10,5 @@ export class Client extends Entity implements IClient {
   equip: string;
   photo: string | File;
 
-  readonly password: string
+  readonly password: string;
 }
