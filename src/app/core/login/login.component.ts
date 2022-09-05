@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
           this.authService.loggedInUser().subscribe(
             (userRes) => {
               if (!userRes.success) {
-                console.log('not', userRes);
                 this.onError(userRes.error);
                 return;
               }
