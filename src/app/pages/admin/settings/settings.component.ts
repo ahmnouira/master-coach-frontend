@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../models/user-model';
 import { AuthService } from 'src/app/core/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { AdminService } from 'src/app/services/admin-service/admin.service';
 
 @Component({
-  selector: 'app-parametres',
-  templateUrl: './parametres.component.html',
-  styleUrls: ['./parametres.component.scss'],
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss'],
 })
-export class ParametresComponent implements OnInit {
+export class SettingsComponent implements OnInit {
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;

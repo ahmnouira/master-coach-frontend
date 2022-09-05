@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilCoachComponent } from './profil-coach/profil-coach.component';
-import { ParametresComponent } from './parametres/parametres.component';
+import { SettingsComponent } from './settings/settings.component';
 import { ViewFormQuizComponent } from './view-form-quiz/view-form-quiz.component';
 import { AddFormQuizComponent } from './add-form-quiz/add-form-quiz.component';
 import { ListFormQuizComponent } from './list-form-quiz/list-form-quiz.component';
@@ -72,7 +72,15 @@ const routes: Routes = [
     //canActivate: [AccountVerifiedGuard],
   },
 
-  { path: 'parametre', component: ParametresComponent },
+
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('./settings/settings.module').then(
+        (module) => module.SettingsModule
+      ),
+  },
+
 
   { path: 'quiz/view', component: ViewFormQuizComponent },
   { path: 'quiz/add', component: AddFormQuizComponent },
@@ -88,9 +96,9 @@ const routes: Routes = [
     // canActivate: [AccountVerifiedGuard],
   },
 
-  { path: '', redirectTo: 'parametre', pathMatch: 'full' },
+  { path: '', redirectTo: 'settings', pathMatch: 'full' },
 
-  { path: '**', redirectTo: 'parametre', pathMatch: 'full' },
+  { path: '**', redirectTo: 'settings', pathMatch: 'full' },
 ];
 
 @NgModule({

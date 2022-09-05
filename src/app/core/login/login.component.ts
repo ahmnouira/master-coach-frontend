@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
                 this.routeService.navigateByUrl('/pages/admin/users/list');
               } else {
                 this.routeService.navigateByUrl(
-                  '/pages/' + authData.role.toLowerCase() + '/parametre'
+                  '/pages/' + authData.role.toLowerCase() + '/settings'
                 );
               }
             },

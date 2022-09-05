@@ -48,7 +48,7 @@ export class SidebarComponent implements OnInit {
   }
 
   getPath() {
-    return `/pages/${this.role.toLowerCase()}/parametre`;
+    return `/pages/${this.role.toLowerCase()}/settings`;
   }
 
   goToProfile() {
