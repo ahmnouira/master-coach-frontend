@@ -1,5 +1,8 @@
 <div class="btn-group" dropdown placement="bottom left">
-  <app-sub-header-item [items]="notifications"></app-sub-header-item>
+  <app-sub-header-item
+    [items]="notifications"
+    [name]="'notification'"
+  ></app-sub-header-item>
   <ul
     id="dropdown-basic"
     *dropdownMenu

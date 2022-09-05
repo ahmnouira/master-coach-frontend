@@ -1,0 +1,89 @@
+.left-side-elements {
+    margin-left: auto;
+    align-items: center;
+  
+    a.dropdown-toggle::after {
+      border: unset;
+      content: "";
+      background-image: url(../../../../assets/icon/arrow-down-link.svg);
+      background-repeat: no-repeat;
+      width: 10px;
+      height: 10px;
+      position: relative;
+      top: 9px;
+      left: 2px;
+    }
+    .burger-menu-container {
+      gap: 20px;
+    }
+    .res-link {
+      text-align: left;
+      font: normal normal normal 12px/15px Fredoka;
+      letter-spacing: 0px;
+      color: #ef6032;
+      opacity: 1;
+      text-decoration: unset;
+      margin-right: 40px;
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+  
+  .sub-component-title {
+    h6 {
+      text-align: left;
+      font: normal normal normal 18px/22px Fredoka;
+      letter-spacing: 0px;
+      color: #3c4d5d;
+      font-weight: bold;
+    }
+    span {
+      text-align: left;
+      font: normal normal normal 14px/17px Fredoka;
+      letter-spacing: 0px;
+      color: #3c4d5d;
+      opacity: 0.5;
+    }
+  }
+  .mlr-10 {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+  #dropdown-basic {
+    transform: translate(-12.5vw, 0px) !important;
+    overflow-y: auto;
+    max-height: 400px;
+    width: 250px;
+    border-radius: 10px;
+    .notif-massage {
+      font: normal normal normal 14px/17px Fredoka;
+      letter-spacing: 0px;
+      color: #1376a3;
+    }
+    .notif-date {
+      font: normal normal normal 12px/17px Fredoka;
+      letter-spacing: 0px;
+      color: #3c4d5d;
+    }
+    .unread-dot {
+      width: 5px;
+      height: 5px;
+      /* UI Properties */
+      background: #1376a3 0% 0% no-repeat padding-box;
+      border-radius: 50%;
+    }
+    .dropdown-item {
+      overflow-wrap: break-word;
+      white-space: pre-line;
+    }
+  }
+  
+  @media screen and (max-width: 991px) {
+    .left-side-elements {
+      width: 100%;
+      margin-bottom: 28px;
+    }
+  }
+  

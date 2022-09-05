@@ -12,6 +12,10 @@ import { RdvPayComponent } from './rdv-pay/rdv-pay.component';
 import { RdvDetailComponent } from './rdv-detail/rdv-detail.component';
 
 const routes: Routes = [
+
+  { path: 'parametre', component: ParametresComponent },
+
+
   {
     path: 'dashboard',
     loadChildren: () =>
@@ -28,7 +32,6 @@ const routes: Routes = [
       ),
   },
 
-  { path: 'parametre', component: ParametresComponent },
   { path: 'coach-list', component: FindCoachComponent },
   { path: 'coach-detail', component: DetailCoachComponent },
   { path: 'docs', component: MesDocQuizComponent },

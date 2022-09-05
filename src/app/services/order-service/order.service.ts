@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of, retry } from 'rxjs';
 import { Order } from 'src/app/models/order/order.model';
 import { BaseService } from '../base-service/base.service';
 import { LocalStorageService } from '../local-storage-service/local-storage.service';
@@ -9,7 +9,7 @@ import { LocalStorageService } from '../local-storage-service/local-storage.serv
   providedIn: 'root',
 })
 export class OrderService extends BaseService {
-  private orders: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
+  orders: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
   orders$ = this.orders.asObservable();
 
   constructor(
@@ -19,11 +19,18 @@ export class OrderService extends BaseService {
     super(httpClient);
   }
 
-  addOrdersToStorage(orders: any[]) {
-    this.localStorageService.setItem('orders', orders);
+  addOrderToStorage(order: any) {
+    const previousOrders  = this.getOrdersFromStorage()
+    if(previousOrders && previousOrders.length)  {
+      this.setOrders = [...previousOrders, order]
+      this.localStorageService.setItem('orders', [...previousOrders, order])
+    } else {
+      this.setOrders = [order]
+      this.localStorageService.setItem('orders', [order]);
+    }
   }
 
-  getOrdersFromStorage(orders: any[]) {
+  getOrdersFromStorage() {
     return this.localStorageService.getItem<Order[]>('orders');
   }
 
@@ -38,4 +45,15 @@ export class OrderService extends BaseService {
   set setOrders(orders: Order[]) {
     this.orders.next(orders);
   }
+
+  exist(id: string): boolean {
+    const orders  = this.getOrdersFromStorage()
+    if(orders &&  orders.length) {
+      const found  = orders.find(el => el._id === id)
+      if(found) {
+        return true
+      }
+    } 
+    return false
+  } 
 }

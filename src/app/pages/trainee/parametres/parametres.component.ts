@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth.service';
-import { AdminService } from 'src/app/services/admin-service/admin.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { IClient } from 'src/app/interfaces/client.interface';
 import { FormHelper } from 'src/app/helpers/FormHelper';
@@ -24,7 +23,6 @@ export class ParametresComponent extends FormHelper implements OnInit {
   constructor(
     private tokenStorageService: TokenStorageService,
     private authService: AuthService,
-    private adminService: AdminService
   ) {
     super();
   }
