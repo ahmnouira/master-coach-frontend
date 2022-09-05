@@ -8,24 +8,24 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SubHeaderItemComponent implements OnInit {
   @Input() items: any[];
 
-  @Input() name: string
+  @Input() name: string;
 
-  icon: string = ''
+  icon: string = '';
 
   constructor() {}
 
   ngOnInit(): void {
-    this.getIcon()
+    this.getIcon();
   }
 
   getIcon() {
     switch (this.name) {
-      case 'notification' :
-        this.icon = 'assets/img/common/notification%20(4).svg'
+      case 'notification':
+        this.icon = 'assets/img/common/notification%20(4).svg';
         break;
-      case 'orders': 
-        this.icon = "assets/img/common/bag.svg"
-        break
+      case 'orders':
+        this.icon = 'assets/img/common/bag.svg';
+        break;
       default:
         break;
     }

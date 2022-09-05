@@ -22,7 +22,7 @@ export class SettingsComponent extends FormHelper implements OnInit {
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     super();
   }

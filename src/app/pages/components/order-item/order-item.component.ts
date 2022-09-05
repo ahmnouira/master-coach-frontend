@@ -6,29 +6,27 @@ import { RouteService } from 'src/app/services/route-service/route.service';
 @Component({
   selector: 'app-order-item',
   templateUrl: './order-item.component.html',
-  styleUrls: ['./order-item.component.scss']
+  styleUrls: ['./order-item.component.scss'],
 })
 export class OrderItemComponent implements OnInit {
+  orders: Order[];
 
-
-  orders: Order[]
-
-  constructor(private orderService: OrderService, private routeService: RouteService) { }
+  constructor(
+    private orderService: OrderService,
+    private routeService: RouteService
+  ) {}
 
   ngOnInit(): void {
-    this.getOrders()
+    this.getOrders();
   }
-
 
   handleClick() {
-    this.routeService.navigate(['/pages/cart'])
+    this.routeService.navigate(['/pages/cart']);
   }
-
 
   getOrders() {
     this.orderService.orders.subscribe((orders) => {
-      this.orders = orders
-    })
+      this.orders = orders;
+    });
   }
-
 }

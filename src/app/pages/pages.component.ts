@@ -8,15 +8,12 @@ import { TokenStorageService } from '../services/token-storage.service';
   styleUrls: ['./pages.component.scss'],
 })
 export class PagesComponent implements OnInit {
-  
-  role: UserRole
-  
-  constructor(private tokenStorageService: TokenStorageService) {
+  role: UserRole;
 
-  }
+  constructor(private tokenStorageService: TokenStorageService) {}
 
   ngOnInit() {
-    this.role
+    this.role;
   }
 
   getUserRole() {

@@ -11,32 +11,25 @@ import { SidebarItem } from 'src/app/types/sidebar-item.type';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-
-  @Input() role: UserRole
+  @Input() role: UserRole;
 
   sidebarItems: SidebarItem[] = [];
 
   constructor(
     private route: RouteService,
     private tokenStorageService: TokenStorageService
-  ) {
-   
-    
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.getSidebarItems()
-  
+    this.getSidebarItems();
   }
   getSidebarItems() {
-    if(this.role === UserRole.Client) {
-      this.sidebarItems = CLIENT_SIDEBAR
-    } else if(this.role === UserRole.Coach) {
-      this.sidebarItems = COACH_SIDEBAR
+    if (this.role === UserRole.Client) {
+      this.sidebarItems = CLIENT_SIDEBAR;
+    } else if (this.role === UserRole.Coach) {
+      this.sidebarItems = COACH_SIDEBAR;
     }
   }
-
-
 
   logout() {
     this.tokenStorageService.signOut();

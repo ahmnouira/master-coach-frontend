@@ -13,7 +13,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule,  LoadingCardModule,
-    DatatableModule, ComponentsModule, SharedModule],
+  exports: [
+    RouterModule,
+    LoadingCardModule,
+    DatatableModule,
+    ComponentsModule,
+    SharedModule,
+  ],
 })
 export class PurchasesRoutingModule {}

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { COACH_DOCS_ACTION_COLUMNS, COACH_DOCS_DISPLAYED_COLUMNS, COACH_DOCS_FILTERS_TYPES, COACH_DOCS_FILTERS_WITH } from 'src/app/constants/documents';
+import {
+  COACH_DOCS_ACTION_COLUMNS,
+  COACH_DOCS_DISPLAYED_COLUMNS,
+  COACH_DOCS_FILTERS_TYPES,
+  COACH_DOCS_FILTERS_WITH,
+} from 'src/app/constants/documents';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { PaymentService } from 'src/app/services/payment-service/payment.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
@@ -33,7 +38,10 @@ export class PurchasesListComponent extends PageHelper implements OnInit {
   selectedStatus = 'status';
   selectedType = 'type';
 
-  constructor(private paymentService: PaymentService, private routerService: RouteService) {
+  constructor(
+    private paymentService: PaymentService,
+    private routerService: RouteService
+  ) {
     super();
   }
 
@@ -61,7 +69,6 @@ export class PurchasesListComponent extends PageHelper implements OnInit {
     this.selectedProfiles = ev.filter((el: any) => el.selected);
     console.log(ev);
   }
-
 
   onActionClicked(element: any) {
     const { action, item } = element;

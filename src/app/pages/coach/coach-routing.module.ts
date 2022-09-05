@@ -72,7 +72,6 @@ const routes: Routes = [
     //canActivate: [AccountVerifiedGuard],
   },
 
-
   {
     path: 'settings',
     loadChildren: () =>
@@ -80,7 +79,6 @@ const routes: Routes = [
         (module) => module.SettingsModule
       ),
   },
-
 
   { path: 'quiz/view', component: ViewFormQuizComponent },
   { path: 'quiz/add', component: AddFormQuizComponent },

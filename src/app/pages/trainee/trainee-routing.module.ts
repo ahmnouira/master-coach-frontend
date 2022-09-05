@@ -11,7 +11,6 @@ import { RdvPayComponent } from './rdv-pay/rdv-pay.component';
 import { RdvDetailComponent } from './rdv-detail/rdv-detail.component';
 
 const routes: Routes = [
-
   {
     path: 'settings',
     loadChildren: () =>

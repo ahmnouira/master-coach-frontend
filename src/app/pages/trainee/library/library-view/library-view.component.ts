@@ -21,13 +21,13 @@ export class LibraryViewComponent
 
   isSubmitting: boolean;
 
-  orderExist: boolean
+  orderExist: boolean;
 
   isIndiv: boolean;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService, 
-    private orderService: OrderService 
+    private productService: ProductService,
+    private orderService: OrderService
   ) {
     super();
   }
@@ -35,7 +35,7 @@ export class LibraryViewComponent
   ngOnInit(): void {
     this.getId();
     this.getProduct();
-    this.orderExist = this.orderService.exist(this.id)
+    this.orderExist = this.orderService.exist(this.id);
   }
 
   getId() {
@@ -51,12 +51,12 @@ export class LibraryViewComponent
   }
 
   addToCart() {
-    this.isSubmitting = true
-    const exist = this.orderService.exist(this.data._id)
-    if(!exist) {
-      this.orderService.addOrderToStorage(this.data)
-      this.orderExist = true
+    this.isSubmitting = true;
+    const exist = this.orderService.exist(this.data._id);
+    if (!exist) {
+      this.orderService.addOrderToStorage(this.data);
+      this.orderExist = true;
     }
-    this.isSubmitting = false
+    this.isSubmitting = false;
   }
 }

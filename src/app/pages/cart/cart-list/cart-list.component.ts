@@ -9,9 +9,7 @@ import { OrderService } from 'src/app/services/order-service/order.service';
   styleUrls: ['./cart-list.component.scss'],
 })
 export class CartListComponent extends PageHelper<Order[]> implements OnInit {
-
-  isSubmitting  = false
-
+  isSubmitting = false;
 
   constructor(private orderService: OrderService) {
     super();
@@ -21,20 +19,16 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
     this.getOrders();
   }
 
-
   getOrders() {
-      this.data =  this.orderService.getOrdersFromStorage()
+    this.data = this.orderService.getOrdersFromStorage();
 
-      console.log('data', this.data)
-      if(this.data && this.data.length) {
-        this.onSuccess()
-      
-      } else {
-        this.onError('')
-      }
+    console.log('data', this.data);
+    if (this.data && this.data.length) {
+      this.onSuccess();
+    } else {
+      this.onError('');
+    }
   }
 
-  submit() {
-
-  }
+  submit() {}
 }
