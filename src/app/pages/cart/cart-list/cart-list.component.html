@@ -7,6 +7,16 @@
     [isLoading]="isLoading"
     [title]="'orders'"
   >
-    <app-cart-card></app-cart-card>
+    <div>
+      <div *ngFor="let item of data; index as i">
+        <app-cart-card></app-cart-card>
+      </div>
+
+      <app-button
+        [title]="'Procéder au paiement'"
+        (onClick)="submit()"
+        [isLoading]="isSubmitting"
+      ></app-button>
+    </div>
   </app-page-list-wrapper>
 </app-page-wrapper>

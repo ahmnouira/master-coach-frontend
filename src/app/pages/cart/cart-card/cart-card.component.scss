@@ -1,12 +1,12 @@
 .commande-container {
   gap: 40px;
+  margin-bottom: 40px;
   .commande {
     background: rgb(43 118 163 / 15%);
     border-radius: 10px;
     padding: 14px 10px 14px 30px;
     position: relative;
     box-shadow: 0px 0px 10px #0000001a;
-    cursor: pointer;
 
     .commande-img {
       text-align: center;
@@ -27,6 +27,8 @@
       position: absolute;
       right: 10px;
       top: 10px;
+      cursor: pointer;
+
     }
     .item {
       margin-bottom: 5px;
