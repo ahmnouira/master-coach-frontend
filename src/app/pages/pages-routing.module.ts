@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountVerifiedGuard } from '../guards/account-verified/account-verified.guard';
 import { MessagerieComponent } from '../shared/components/messagerie/messagerie.component';
 import { VisioConferenceComponent } from '../shared/components/visio-conference/visio-conference.component';
 import { PreviewComponent } from './preview/preview.component';
@@ -22,6 +21,12 @@ const routes: Routes = [
     path: 'client',
     loadChildren: () =>
       import('./trainee/trainee.module').then((module) => module.TraineeModule),
+  },
+
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./cart/cart.module').then((module) => module.CartModule),
   },
   {
     path: 'preview',
