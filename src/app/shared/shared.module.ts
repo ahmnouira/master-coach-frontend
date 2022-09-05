@@ -48,6 +48,7 @@ import { PageHeaderWrapperComponent } from './components/page-header-wrapper/pag
 import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     PageWrapperComponent,
     UserCardComponent,
     ProductInfoComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -144,6 +146,7 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     PageWrapperComponent,
     UserCardComponent,
     ProductInfoComponent,
+    UpdatePasswordComponent
   ],
 })
 export class SharedModule {}

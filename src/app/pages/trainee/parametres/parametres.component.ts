@@ -1,138 +1,84 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../models/user-model';
 import { AuthService } from 'src/app/core/auth.service';
-import { UserService } from 'src/app/services/user-service/user-service.service';
 import { AdminService } from 'src/app/services/admin-service/admin.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { IClient } from 'src/app/interfaces/client.interface';
+import { FormHelper } from 'src/app/helpers/FormHelper';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-parametres',
   templateUrl: './parametres.component.html',
   styleUrls: ['./parametres.component.scss'],
+  animations: Animations
 })
-export class ParametresComponent implements OnInit {
-  form: any = {};
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  userCategory: any = [];
-  userCompetences: any = [];
-  settings = {};
-  newPassword = '';
-  confirmPassword = '';
-  passwordChangedFlag = false;
-  confirmPasswordChangedFlag = false;
+export class ParametresComponent extends FormHelper implements OnInit {
+
+  form: Partial<IClient> = {};
+
+  categories: any = [];
+  skills: any = [];
+  certifications: any = [];
+
+  selectedCategories: any[] = [];
+
   constructor(
     private tokenStorageService: TokenStorageService,
-    private userService: UserService,
     private authService: AuthService,
     private adminService: AdminService
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    const user = this.tokenStorageService.getUser();
-    this.getUserFromDb(user._id);
-    this.form.photo = this.form.photo
-      ? this.form.photo
-      : '/assets/img/common/utilisateur.png';
-    this.settings = {
-      text: 'Sélectionner...',
-      searchPlaceholderText: 'Rechercher...',
-      filterSelectAllText: 'Sélectionner tous les résultats filtrés',
-      filterUnSelectAllText: 'Désélectionner tous les résultats filtrés',
-      selectAllText: 'Sélectionner tout',
-      unSelectAllText: 'Désélectionner tout',
-      noDataLabel: 'Aucune donnée disponible',
-      enableSearchFilter: true,
-      labelKey: 'name',
-      primaryKey: '_id',
-      classes: 'form-control element-spec',
+    this.getUser();
+    this.isLoading = false;
+  }
+
+  submit() {
+    this.isSubmitting = true;
+    const { prenom, nom, tel, email, photo } = this.form;
+    // +33122469999
+    if (!prenom || !nom || !tel || !email || !photo) {
+      this.isSubmitting = false;
+      return;
+    }
+    const formData = this.getFormData(this.form);
+
+    this.authService.updateProfile(formData).subscribe(
+      (res) => {
+        if (!res.success) {
+          this.onError(res.error);
+          return;
+        }
+        console.log('res', res.data);
+        this.authService.currentUser$.next(res.data);
+        this.tokenStorageService.saveUser(res.data);
+        this.onSuccess();
+      },
+      (error) => {
+        this.onError(error);
+      }
+    );
+  }
+
+  getUser() {
+    const user = this.tokenStorageService.getUser() as IClient;
+    // TODO: casting doesn't work property
+    this.form = {
+      email: this.getString(user.email),
+      prenom: this.getString(user.prenom),
+      nom: this.getString(user.nom),
+      photo: this.getFileUrl(user.photo),
+      tel: this.getString(user.tel),
     };
-    this.getCompetences();
-    this.getCategories();
   }
 
-  importFile(event: any) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-        this.form.photo = reader.result as string;
-
-        /*this.imageSrc = reader.result as string;
-
-        this.myForm.patchValue({
-          fileSource: reader.result
-        });*/
-      };
-    }
+  handleDeleteFile(field: any) {
+    this.form[field] = '';
   }
 
-  saveUser() {
-    this.userService.updateUser(this.form, this.form._id).subscribe(
-      (res) => {},
-      (error) => {
-        console.error(error.message);
-      }
-    );
-    if (this.newPassword != '' && this.newPassword == this.confirmPassword) {
-      this.authService
-        .resetPassword({
-          password: this.form.password,
-
-          token: '',
-        })
-        .subscribe(
-          (res) => {},
-          (error) => {
-            this.errorMessage = error;
-            console.error(this.errorMessage);
-            this.isLoginFailed = true;
-          }
-        );
-    }
-  }
-
-  getCategories() {
-    this.adminService.getAllCategorys().subscribe(
-      (res) => {
-        this.userCategory = res;
-      },
-      (error) => {
-        console.error(error.message);
-      }
-    );
-  }
-
-  getCompetences() {
-    this.adminService.getAllCompetances().subscribe(
-      (res) => {
-        this.userCompetences = res;
-      },
-      (error) => {
-        console.error(error.message);
-      }
-    );
-  }
-
-  passwordChanged() {
-    this.passwordChangedFlag = this.newPassword.length > 0;
-  }
-  confirmPasswordChanged() {
-    this.confirmPasswordChangedFlag = this.confirmPassword.length > 0;
-  }
-
-  private getUserFromDb(id: any) {
-    this.userService.getSingleUser(id).subscribe(
-      (user) => {
-        this.form = user;
-      },
-      (error) => {
-        return {};
-      }
-    );
+  handleImportFile(data: File, key: string) {
+    this.form[key] = data;
   }
 }

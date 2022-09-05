@@ -12,8 +12,9 @@ import { NotificationItemComponent } from './notification-item/notification-item
     AvatarComponent,
     SubHeaderItemComponent,
     NotificationItemComponent,
+    
   ],
-  exports: [SubHeaderComponent],
+  exports: [SubHeaderComponent ],
   imports: [CommonModule, BsDropdownModule],
 })
 export class ComponentsModule {}

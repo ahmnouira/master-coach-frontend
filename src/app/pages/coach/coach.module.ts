@@ -26,7 +26,6 @@ import { MyAppointmentsComponent } from './my-appointments/my-appointments.compo
 import { SharedModule } from '../../shared/shared.module';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { CoachMenuComponent } from './coach-menu/coach-menu.component';
-import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
@@ -43,7 +42,6 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     AddTeamComponent,
     MyAppointmentsComponent,
     CoachMenuComponent,
-    UpdatePasswordComponent,
   ],
   imports: [
     CommonModule,
