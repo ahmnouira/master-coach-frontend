@@ -1,13 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import * as moment from 'moment';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user-service/user-service.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 import { AuthService } from 'src/app/core/auth.service';
 import { User } from 'src/app/models/user-model';
+import { RouteService } from 'src/app/services/route-service/route.service';
 @Component({
   selector: 'app-sub-header',
   templateUrl: './sub-header.component.html',
@@ -25,10 +23,9 @@ export class SubHeaderComponent implements OnInit {
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private location: Location,
+    private routerService: RouteService,
     private notifactionService: NotificationService,
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {
     moment.locale('fr');
   }
@@ -50,7 +47,7 @@ export class SubHeaderComponent implements OnInit {
   }
 
   back(): void {
-    this.location.back();
+    this.routerService.back();
   }
 
   getNotifications() {
@@ -74,10 +71,13 @@ export class SubHeaderComponent implements OnInit {
   markOneAsRead(notif) {
     this.notifactionService.markOneAsRead(notif._id).subscribe((data) => {
       this.getNotifications();
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
+      this.routerService.router.routeReuseStrategy.shouldReuseRoute = () =>
+        false;
+      this.routerService.router.onSameUrlNavigation = 'reload';
       if (notif.type == 'session')
-        this.router.navigate(['/pages/rdv/detail'], { state: { id: notif } });
+        this.routerService.navigate(['/pages/rdv/detail'], {
+          state: { id: notif },
+        });
     });
   }
 

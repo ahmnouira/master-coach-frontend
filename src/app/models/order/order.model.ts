@@ -4,8 +4,8 @@ import { Entity } from '../entity/entity.model';
 import { Product } from '../product/product.model';
 
 export class Order extends Entity implements IOrder {
-    user: User;
-    products: Product[];
-    price: number;
-    stripePaymentId: string;
+  user: User;
+  products: Product[];
+  price: number;
+  stripePaymentId: string;
 }

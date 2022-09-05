@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Order } from 'src/app/models/oder/order.model';
+import { Order } from 'src/app/models/order/order.model';
 import { BaseService } from '../base-service/base.service';
 import { LocalStorageService } from '../local-storage-service/local-storage.service';
 
@@ -9,9 +9,7 @@ import { LocalStorageService } from '../local-storage-service/local-storage.serv
   providedIn: 'root',
 })
 export class OrderService extends BaseService {
-  private orders: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>(
-    []
-  );
+  private orders: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
   orders$ = this.orders.asObservable();
 
   constructor(
@@ -22,23 +20,22 @@ export class OrderService extends BaseService {
   }
 
   addOrdersToStorage(orders: any[]) {
-    this.localStorageService.setItem('orders', JSON.stringify(orders))
+    this.localStorageService.setItem('orders', orders);
   }
 
   getOrdersFromStorage(orders: any[]) {
-   JSON.parse(this.localStorageService.getItem('orders'))
+    return this.localStorageService.getItem<Order[]>('orders');
   }
 
   addOrder(data: any): Observable<any> {
     return this.post('/orders', data);
   }
-  
+
   getOrders(): Observable<any> {
     return this.get('/orders');
   }
 
-
   set setOrders(orders: Order[]) {
-    this.orders.next(orders)
+    this.orders.next(orders);
   }
 }
