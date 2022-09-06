@@ -3,7 +3,6 @@ import { AuthService } from 'src/app/core/auth.service';
 import { getPrice } from 'src/app/helpers/getPrice';
 import { Plan } from 'src/app/models/plan.model';
 import { OrderService } from 'src/app/services/order-service/order.service';
-import { PaymentService } from 'src/app/services/payment-service/payment.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
