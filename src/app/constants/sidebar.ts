@@ -76,7 +76,7 @@ export const CLIENT_SIDEBAR: SidebarItem[] = [
 
   {
     icon: 'assets/img/common/file%20(5).svg',
-    route: '/pages/client/docs',
+    route: '/pages/client/documents',
     title: 'Mes outils de suivi',
   },
   {

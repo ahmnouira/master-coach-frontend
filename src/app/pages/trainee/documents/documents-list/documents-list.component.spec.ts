@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MesDocQuizComponent } from './mes-doc-quiz.component';
+import { DocumentsListComponent } from './documents-list.component';
 
-describe('MesDocQuizComponent', () => {
-  let component: MesDocQuizComponent;
-  let fixture: ComponentFixture<MesDocQuizComponent>;
+describe('DocumentsListComponent', () => {
+  let component: DocumentsListComponent;
+  let fixture: ComponentFixture<DocumentsListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MesDocQuizComponent],
+      declarations: [DocumentsListComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MesDocQuizComponent);
+    fixture = TestBed.createComponent(DocumentsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

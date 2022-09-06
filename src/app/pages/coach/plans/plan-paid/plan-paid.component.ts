@@ -50,7 +50,6 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
     }
   }
 
-
   back(): void {
     this.routeService.back();
   }
