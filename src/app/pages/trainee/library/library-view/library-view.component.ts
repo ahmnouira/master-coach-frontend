@@ -22,7 +22,7 @@ export class LibraryViewComponent
   isSubmitting: boolean;
 
   orderExist: boolean;
-  freeOrder: boolean
+  freeOrder: boolean;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -31,13 +31,11 @@ export class LibraryViewComponent
   ) {
     super();
   }
-  
 
   ngOnInit(): void {
     this.getId();
     this.getProduct();
     this.orderExist = this.orderService.exist(this.id);
-
   }
 
   getId() {

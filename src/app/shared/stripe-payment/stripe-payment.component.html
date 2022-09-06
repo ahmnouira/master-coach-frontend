@@ -1,3 +1,11 @@
-<form id="stripeForm">
+<form
+  id="stripeForm-{{ stripe?.id }}"
+  name="form"
+  #f="ngForm"
+  (submit)="onSubmit($event)"
+  method="get"
+  action="{{ redirectUrl }}"
+  class="form"
+>
   <ng-content></ng-content>
 </form>
