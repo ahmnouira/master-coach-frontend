@@ -1,0 +1,50 @@
+<div class="card">
+  <img
+    [attr.src]="
+      coach.photo
+        ? coach.photo
+        : '/assets/img/common/blank-profile-picture-973460.png'
+    "
+  />
+  <div class="bottom-info">
+    <div class="title-rating">
+      <div class="rating">
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202-1.svg" />
+      </div>
+      <span class="badge">Coaching carrière</span>
+    </div>
+    <div class="partial-info">
+      <span class="coach-name">{{ coach.prenom }} {{ coach.nom }}</span
+      ><br />
+      <span class="coach-skills">{{
+        coach.competances.replace(", ", " - ")
+      }}</span>
+    </div>
+  </div>
+  <div class="info">
+    <div class="title-rating">
+      <div class="rating">
+        <img src="assets/img/common/Layer 2-dark.svg" />
+        <img src="assets/img/common/Layer 2-dark.svg" />
+        <img src="assets/img/common/Layer 2-dark.svg" />
+        <img src="assets/img/common/Layer 2-dark.svg" />
+        <img src="assets/img/common/Layer 2-dark empty.svg" />
+      </div>
+      <span class="badge">Coaching carrière</span>
+    </div>
+    <div class="partial-info">
+      <span class="coach-name">{{ coach.prenom }} {{ coach.nom }}</span
+      ><br />
+      <span class="coach-skills">{{
+        coach.competances.replace(", ", " - ")
+      }}</span>
+    </div>
+    <p>
+      {{ coach.bio }}
+    </p>
+  </div>
+</div>

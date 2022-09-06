@@ -18,6 +18,16 @@ const routes: Routes = [
       ),
   },
 
+
+  {
+    path: 'coach-list',
+    loadChildren: () =>
+      import('./coach/coach-routing.module').then(
+        (module) => module.CoachRoutingModule
+      ),
+  },
+
+
   {
     path: 'dashboard',
     loadChildren: () =>
@@ -25,6 +35,11 @@ const routes: Routes = [
         (module) => module.DashboardModule
       ),
   },
+
+
+
+  { path: 'find-coach', component: FindCoachComponent },
+
 
   {
     path: 'documents',
@@ -42,8 +57,8 @@ const routes: Routes = [
       ),
   },
 
-  { path: 'coach-list', component: FindCoachComponent },
-  { path: 'coach-detail', component: DetailCoachComponent },
+
+ // { path: 'coach-detail', component: DetailCoachComponent },
   { path: 'docs/quiz/play', component: AnswerQuizComponent },
   { path: 'rdv/list', component: RdvListComponent },
   { path: 'rdv/detail-formation', component: FormationDetailComponent },
