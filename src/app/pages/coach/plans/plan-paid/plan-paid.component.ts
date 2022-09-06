@@ -50,6 +50,11 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+  back(): void {
+    this.routeService.back();
+  }
+
   savePayment(stripeToken: string) {
     this.paymentService
       .savePlan({

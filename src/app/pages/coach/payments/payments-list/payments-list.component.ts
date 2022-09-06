@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  COACH_DOCS_ACTION_COLUMNS,
-  COACH_DOCS_DISPLAYED_COLUMNS,
+  
   COACH_DOCS_FILTERS_TYPES,
   COACH_DOCS_FILTERS_WITH,
 } from 'src/app/constants/documents';
+import { COACH_PAYMENTS_ACTION_COLUMNS, COACH_PAYMENTS_DISPLAYED_COLUMNS } from 'src/app/constants/payments';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { PaymentService } from 'src/app/services/payment-service/payment.service';
 import { DatableTableAction } from 'src/app/shared/datatable/action.model';
@@ -27,8 +27,9 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
   selectedTypes: any[] = [];
   selectedWith: any[] = [];
 
-  ACTION_COLUMNS: DatableTableAction[] = COACH_DOCS_ACTION_COLUMNS;
-  DISPLAYED_COLUMNS: any[] = COACH_DOCS_DISPLAYED_COLUMNS;
+  ACTION_COLUMNS: DatableTableAction[] = COACH_PAYMENTS_ACTION_COLUMNS;
+  DISPLAYED_COLUMNS: any[] = COACH_PAYMENTS_DISPLAYED_COLUMNS
+  ;
 
   FILTER_TYPES = COACH_DOCS_FILTERS_TYPES;
   FILTER_WITH = COACH_DOCS_FILTERS_WITH;
@@ -46,19 +47,12 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
   }
 
   getDocuments() {
-    /*
     this.getData(
-      this.paymentService.gte({
-        all: false,
-      }),
+      this.paymentService.getPayments(),
       {
         debug: true,
       }
     );
-    */
-    this.data = [];
-    this.isLoading = false;
-    this.found = false;
   }
 
   datatableChange(ev: any) {
