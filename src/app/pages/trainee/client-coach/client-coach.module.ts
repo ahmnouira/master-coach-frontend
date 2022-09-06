@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoachRoutingModule } from './coach-routing.module';
-import { ComponentsModule } from '../../components/components.module';
+import { ClientCoachRoutingModule} from './client-coach-routing.module';
 import { CoachListComponent } from './coach-list/coach-list.component';
 import { CoachCardComponent } from './coach-card/coach-card.component';
 import { CoachDetailsComponent } from './coach-details/coach-details.component';
@@ -9,18 +8,20 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { DatatableModule } from 'src/app/shared/datatable/datatable.module';
 import { LoadingCardModule } from 'src/app/shared/loading-card/loading-card.module';
+import { ComponentsModule } from '../../components/components.module';
 
 
 @NgModule({
-  declarations: [CoachListComponent],
+  declarations: [CoachListComponent, CoachDetailsComponent, CoachCardComponent],
   imports: [
     CommonModule,
-    CoachRoutingModule,
+    ClientCoachRoutingModule,
     FormsModule,
-    SharedModule,
     ComponentsModule,
+    SharedModule,
+   
     LoadingCardModule,
     DatatableModule,
   ]
 })
-export class CoachModule { }
+export class ClientCoachModule { }

@@ -15,4 +15,13 @@ export class CoachCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  renderSkills() {
+    if(this.coach.category) {
+      console.log('category', this.coach.category)
+        // return this.coach.category.join('-')
+    }
+    return ''
+  }
+
 }

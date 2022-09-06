@@ -5,7 +5,7 @@ import { CoachListComponent } from './coach-list/coach-list.component';
 
 const routes: Routes = [
 
-  { path: '', component: CoachDetailsComponent },
+  { path: '', component: CoachListComponent },
 
   { path: 'details/:id', component: CoachDetailsComponent },
 
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CoachRoutingModule { }
+export class ClientCoachRoutingModule { }
