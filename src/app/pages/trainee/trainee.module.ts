@@ -16,7 +16,7 @@ import { RdvDetailComponent } from './rdv-detail/rdv-detail.component';
 import { CountdownModule } from 'ngx-countdown';
 import { SharedModule } from '../../shared/shared.module';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { CoachModule } from '../coach/coach.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
     RdvReservationComponent,
     RdvPayComponent,
     RdvDetailComponent,
-    
   ],
   imports: [
     CommonModule,

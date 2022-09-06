@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CoachCardComponent } from './coach-card.component';
+import { CoachBannerComponent } from './coach-banner.component';
 
-describe('CoachCardComponent', () => {
-  let component: CoachCardComponent;
-  let fixture: ComponentFixture<CoachCardComponent>;
+describe('CoachBannerComponent', () => {
+  let component: CoachBannerComponent;
+  let fixture: ComponentFixture<CoachBannerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CoachCardComponent],
+      declarations: [CoachBannerComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CoachCardComponent);
+    fixture = TestBed.createComponent(CoachBannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

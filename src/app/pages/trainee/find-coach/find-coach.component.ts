@@ -33,22 +33,6 @@ export class FindCoachComponent implements OnInit {
     this.getCompétences();
     this.getAccreditations();
     this.getAllCategorys();
-
-    this.settings = {
-      text: 'Sélectionner...',
-      position: 'bottom',
-      autoPosition: false,
-      searchPlaceholderText: 'Rechercher...',
-      filterSelectAllText: 'Sélectionner tous les résultats filtrés',
-      filterUnSelectAllText: 'Désélectionner tous les résultats filtrés',
-      selectAllText: 'Sélectionner tout',
-      unSelectAllText: 'Désélectionner tout',
-      noDataLabel: 'Aucune donnée disponible',
-      enableSearchFilter: true,
-      labelKey: 'name',
-      primaryKey: '_id',
-      classes: 'form-control element-spec multiselect',
-    };
   }
 
   getUserProfileList() {

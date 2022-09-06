@@ -16,8 +16,6 @@ export class ServiceCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBackgroundImage();
-
-    console.log(this.service.testimonies);
   }
 
   getBackgroundImage() {

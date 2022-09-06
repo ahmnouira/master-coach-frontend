@@ -10,7 +10,7 @@
 
   <div class="filters">
     <app-button
-      [title]="'Réinitialiser'"
+      [title]="'Tous'"
       [variant]="'basic'"
       (onClick)="resetFilters($event)"
     >
@@ -37,7 +37,16 @@
 
       <app-select
         class="col"
-        [data]="FILTER_WITH"
+        [data]="categories"
+        [text]="'Catégorie'"
+        [(model)]="selectedCompetence"
+        (onItemOneSelect)="filters.categorie = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-select
+        class="col"
+        [data]="skills"
         [text]="'Compétences'"
         [(model)]="selectedCompetence"
         (onItemOneSelect)="filters.competence = $event"
@@ -46,7 +55,7 @@
 
       <app-select
         class="col"
-        [data]="FILTER_WITH"
+        [data]="certifications"
         [text]="'Accréditations'"
         [(model)]="selectedAccreditation"
         (onItemOneSelect)="filters.accreditation = $event"
@@ -68,8 +77,11 @@
     [isLoading]="isLoading"
     [title]="'coach'"
   >
-    <div class="col-lg-4" *ngFor="let coach of data; index as i">
-      <app-coach-card></app-coach-card>
+    <div
+      class="col-12 col-sm-6 col-lg-4 col-xxl-3"
+      *ngFor="let coach of data; index as i"
+    >
+      <app-coach-card [coach]="coach" *ngIf="coach"></app-coach-card>
     </div>
   </app-page-list-wrapper>
 </app-page-wrapper>

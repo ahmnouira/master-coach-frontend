@@ -1,0 +1,69 @@
+<div>
+  <div class="coach-banner">
+    <img
+      class="coach-img"
+      [attr.src]="
+        coach.photo
+          ? coach.photo
+          : '/assets/img/common/blank-profile-picture-973460.png'
+      "
+    />
+    <div
+      class="col-3"
+      style="
+        display: flex;
+        height: 80%;
+        align-content: center;
+        justify-content: space-between;
+        flex-direction: column;
+      "
+    >
+      <div class="rating">
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202-1.svg" />
+      </div>
+      <span class="coach-name">{{ coach.prenom }} {{ coach.nom }}</span>
+      <span class="coach-badge">Coaching carrière</span>
+    </div>
+    <div class="col-3" style="justify-content: space-around">
+      <img
+        src="assets/img/common/world-wide-web.svg"
+        style="margin-right: 5px"
+      />
+      <span class="coach-name">{{ coach.email }}</span>
+    </div>
+    <div class="col-3">
+      <button (click)="createNewConversation(coach)" class="btn-rdv">
+        <span class="material-icons">send</span> Envoyer un message
+      </button>
+    </div>
+  </div>
+
+  <div style="padding: 20px 10px 20px 160px">
+    <div class="row">
+      <span class="coach-comps">{{ getCompetences() }}</span>
+    </div>
+    <div class="row mt-2">
+      <span class="coach-desc" *ngIf="coach.bio">
+        {{ coach.bio }}
+      </span>
+    </div>
+    <div class="row mt-3 bloc-comp-accr">
+      <span class="elem-lab">Accreditations légales</span>
+      <div class="row d-inline-flex flex-wrap elem-group">
+        <span class="elem" *ngFor="let acc of coach.accreditation">{{
+          acc.name
+        }}</span>
+      </div>
+      <span class="elem-lab">Compétences</span>
+      <div class="row d-inline-flex flex-wrap elem-group">
+        <span class="elem" *ngFor="let comp of coach.competance">{{
+          comp.name
+        }}</span>
+      </div>
+    </div>
+  </div>
+</div>
