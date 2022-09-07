@@ -35,8 +35,6 @@ import { SelectComponent } from './components/select/select.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { RadioComponent } from './components/radio/radio.component';
 import { AddFieldComponent } from './components/add-field/add-field.component';
-import { LayoutModule } from './layout/layout.module';
-import { SidebarItemComponent } from './layout/sidebar-item/sidebar-item.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.component';
 import { PageListWrapperComponent } from './components/page-list-wrapper/page-list-wrapper.component';
@@ -102,7 +100,6 @@ import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.compon
     PickerModule,
     TooltipModule,
     AngularMultiSelectModule,
-    LayoutModule,
     RouterModule, // to use routerLink
   ],
   exports: [
@@ -134,7 +131,6 @@ import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.compon
     FormComponent,
     RadioComponent,
     AddFieldComponent,
-    SidebarItemComponent,
     ModalComponent,
     FormWrapperComponent,
     PageListWrapperComponent,

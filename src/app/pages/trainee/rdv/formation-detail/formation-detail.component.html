@@ -20,10 +20,14 @@
           [page]="'view-service'"
         ></app-user-card>
         <div class="service-infos">
-          <app-service-info [type]="data.sessionType"></app-service-info>
           <app-service-info
+            [type]="data.sessionType"
+            *ngIf="data && data.sessionType"
+          ></app-service-info>
+          <app-service-info
+            *ngIf="data && data.format"
             [format]="data.format"
-            [chez]="data.chez"
+            [chez]="data?.chez"
           ></app-service-info>
         </div>
       </div>
