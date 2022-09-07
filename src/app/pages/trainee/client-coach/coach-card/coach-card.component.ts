@@ -9,12 +9,12 @@ import { User } from 'src/app/models/user-model';
 export class CoachCardComponent implements OnInit {
   @Input() coach: User;
 
-  path: string 
+  path: string;
 
   constructor() {}
 
   ngOnInit(): void {
-     this.path = '/pages/client/coaches/details/' + this.coach._id  
+    this.path = '/pages/client/coaches/details/' + this.coach._id;
   }
 
   renderSkills() {

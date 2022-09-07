@@ -54,8 +54,6 @@ const routes: Routes = [
       ),
   },
 
-
-
   { path: 'docs/quiz/play', component: AnswerQuizComponent },
   { path: 'rdv/list', component: RdvListComponent },
   { path: 'rdv/detail-formation', component: FormationDetailComponent },

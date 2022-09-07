@@ -7,12 +7,13 @@ import { UserService } from 'src/app/services/user-service/user-service.service'
 @Component({
   selector: 'app-coach-services',
   templateUrl: './coach-services.component.html',
-  styleUrls: ['./coach-services.component.scss']
+  styleUrls: ['./coach-services.component.scss'],
 })
-export class CoachServicesComponent extends PageHelper<Service[]> implements OnInit {
-
-
-  @Input() id: string 
+export class CoachServicesComponent
+  extends PageHelper<Service[]>
+  implements OnInit
+{
+  @Input() id: string;
   mouseDown = false;
 
   startX: any;
@@ -22,11 +23,11 @@ export class CoachServicesComponent extends PageHelper<Service[]> implements OnI
   slider = document.querySelector<HTMLElement>('.wrapper');
 
   constructor(private route: RouteService, private userService: UserService) {
-    super()
+    super();
   }
 
   ngOnInit(): void {
-      this.getServices()
+    this.getServices();
   }
 
   getServices() {

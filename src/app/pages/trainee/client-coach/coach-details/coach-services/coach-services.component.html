@@ -1,22 +1,28 @@
-<div class="coach-services">
-  <h1 class="coach-services-title">Formations</h1>
-  <app-page-list-wrapper
-    [error]="error"
-    [found]="found"
-    [isLoading]="isLoading"
-    [title]="'formations'"
-  >
-    <div
-      class="cards-container row"
-      #elemt
-      (mousedown)="startDragging($event, false, elemt)"
-      (mouseup)="stopDragging($event, false)"
-      (mouseleave)="stopDragging($event, false)"
-      (mousemove)="moveEvent($event, elemt)"
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col coach-services">
+    <h1 class="coach-services-title">Formations</h1>
+    <app-page-list-wrapper
+      [error]="error"
+      [found]="found"
+      [isLoading]="isLoading"
+      [title]="'formations'"
     >
-      <div class="col-6 col-lg-3" *ngFor="let service of data; index as i">
-        <app-service-card [service]="service"></app-service-card>
+      <div
+        class="cards-container"
+        #elemt
+        (mousedown)="startDragging($event, false, elemt)"
+        (mouseup)="stopDragging($event, false)"
+        (mouseleave)="stopDragging($event, false)"
+        (mousemove)="moveEvent($event, elemt)"
+      >
+        <div *ngFor="let service of data; index as i">
+          <app-service-card
+            [service]="service"
+            [forClient]="true"
+          ></app-service-card>
+        </div>
       </div>
-    </div>
-  </app-page-list-wrapper>
+    </app-page-list-wrapper>
+  </div>
 </div>

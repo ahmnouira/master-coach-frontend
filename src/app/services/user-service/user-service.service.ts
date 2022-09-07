@@ -65,7 +65,7 @@ export class UserService extends BaseService {
   }
 
   /**
-   * @description get coach services 
+   * @description get coach services
    * @param id user id: coach id
    * @returns Observable<any>
    */
