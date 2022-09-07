@@ -21,23 +21,11 @@
   </div>
   <div class="formation-content row gx-4 gx-lg-5">
     <div class="col-4 col-xxl-3">
-      <div class="form-card d-flex">
-        <img
-          class="coach-image mlr-10"
-          width="40px"
-          height="40px"
-          [attr.src]="coach.photo"
-        />
-        <div class="rating">
-          <img src="assets/img/common/Layer%202.svg" />
-          <img src="assets/img/common/Layer%202.svg" />
-          <img src="assets/img/common/Layer%202.svg" />
-          <img src="assets/img/common/Layer%202.svg" />
-          <img src="assets/img/common/Layer%202-1.svg" />
-        </div>
-        <span class="form-card-title">{{ coach.prenom }} {{ coach.nom }}</span>
-        <p>{{ coach.competances }}</p>
-      </div>
+      <app-user-card
+        *ngIf="data && data.user"
+        [user]="data.user"
+      ></app-user-card>
+
       <div class="d-flex align-items-center" style="width: 100%">
         <input
           type="checkbox"
@@ -48,7 +36,7 @@
           style="margin-top: 15px"
         />
         <button class="rdv-btn mt-3">
-          <img src="assets/img/common/profile%20(1).svg" /> Session individuelle</button
+          <img src="assets/img/common/profile%20(1).svg" />Session individuelle</button
         >&nbsp;
       </div>
       <div class="d-flex align-items-center" style="width: 100%">
