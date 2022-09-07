@@ -12,14 +12,20 @@
   >
     <div class="formation-content row gx-4 gx-lg-5">
       <div class="col-8 col-xxl-9">
-        <app-product-info *ngIf="data" [product]="data"></app-product-info>
+        <app-product-info
+          *ngIf="data"
+          [image]="data.image"
+          [type]="data.type"
+          [description]="data.description"
+        ></app-product-info>
       </div>
 
       <div class="col-4 col-xxl-3">
         <app-user-card
           *ngIf="data && data.user"
           [user]="data.user"
-          [product]="data"
+          [data]="data"
+          [page]="'view-product'"
         ></app-user-card>
 
         <div class="add-btn">

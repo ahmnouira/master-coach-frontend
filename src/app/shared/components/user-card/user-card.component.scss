@@ -34,17 +34,24 @@
     border-right: 4px solid #1376a3;
     border-bottom: 4px solid #1376a3;
   }
-  .form-card-title {
+
+
+  &-title {
     text-align: center;
     font: normal normal normal 18px/22px Fredoka;
     color: #3c4d5d;
     margin-top: 15px;
   }
-  .form-card-subtitle {
+  &-subtitle {
     text-align: center;
     font: normal normal normal 14px/20px Fredoka;
     color: #3c4d5d;
     margin-top: 4px;
+  }
+
+  &-categories {
+    margin: 0 50px;
+    text-align: center;
   }
 
   &-price {

@@ -11,7 +11,7 @@ export class Service extends Entity implements IService {
   title: string;
   description: string;
   duration: string;
-  image: File;
+  image: File | string;
   price?: string;
   category?: string;
   isFree?: boolean;
