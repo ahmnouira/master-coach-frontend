@@ -11,6 +11,7 @@ import { LoadingCardModule } from 'src/app/shared/loading-card/loading-card.modu
 import { ComponentsModule } from '../../components/components.module';
 import { CoachBannerComponent } from './coach-details/coach-banner/coach-banner.component';
 import { CoachServicesComponent } from './coach-details/coach-services/coach-services.component';
+import { CoachExpertiseComponent } from './coach-details/coach-expertise/coach-expertise.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CoachServicesComponent } from './coach-details/coach-services/coach-ser
     CoachCardComponent,
     CoachBannerComponent,
     CoachServicesComponent,
+    CoachExpertiseComponent,
   ],
 
   exports: [CoachCardComponent, CoachBannerComponent],

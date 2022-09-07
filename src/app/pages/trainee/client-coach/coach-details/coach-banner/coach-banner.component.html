@@ -52,18 +52,14 @@
       </span>
     </div>
     <div class="row mt-3 bloc-comp-accr">
-      <span class="elem-lab">Accreditations légales</span>
-      <div class="row d-inline-flex flex-wrap elem-group">
-        <span class="elem" *ngFor="let acc of coach.accreditation">{{
-          acc.name
-        }}</span>
-      </div>
-      <span class="elem-lab">Compétences</span>
-      <div class="row d-inline-flex flex-wrap elem-group">
-        <span class="elem" *ngFor="let comp of coach.competance">{{
-          comp.name
-        }}</span>
-      </div>
+      <app-coach-expertise
+        [title]="'Accreditations légales'"
+        [expertise]="getExpertise('accreditation')"
+      ></app-coach-expertise>
+      <app-coach-expertise
+        [title]="'Compétences'"
+        [expertise]="getExpertise('competance')"
+      ></app-coach-expertise>
     </div>
   </div>
 </div>
