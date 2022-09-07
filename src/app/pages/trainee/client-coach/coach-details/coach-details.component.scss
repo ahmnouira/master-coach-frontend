@@ -1,3 +1,14 @@
 .content  {
     margin-top: 36px;
 }
+
+.services  {
+    
+    margin: 0px 120px;
+    margin-top: 24px;
+    overflow: hidden;
+    &-scroll {
+        max-width: 1440px;
+       
+    }
+}

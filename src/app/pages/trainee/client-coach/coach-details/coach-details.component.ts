@@ -11,7 +11,6 @@ import { UserService } from 'src/app/services/user-service/user-service.service'
   styleUrls: ['./coach-details.component.scss'],
 })
 export class CoachDetailsComponent extends PageHelper<User> implements OnInit {
-  coach: any = {};
 
   id: string 
 

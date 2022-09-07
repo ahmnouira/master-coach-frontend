@@ -9,9 +9,15 @@
     <div class="row content">
       <div class="col-2"></div>
       <div class="col">
-        <app-coach-banner [coach]="data"></app-coach-banner>
+        <app-coach-banner [coach]="data" *ngIf="data"></app-coach-banner>
       </div>
       <div class="col-2"></div>
+    </div>
+
+    <div class="services">
+      <div class="services-scroll">
+        <app-coach-services [id]="id"></app-coach-services>
+      </div>
     </div>
   </app-page-list-wrapper>
 </app-page-wrapper>

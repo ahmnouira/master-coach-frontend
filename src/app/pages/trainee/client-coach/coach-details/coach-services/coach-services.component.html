@@ -1,28 +1,22 @@
-<div
-  class="cards-container col-11 col-xl-10 row g-4 p-0"
-  #elemt
-  (mousedown)="startDragging($event, false, elemt)"
-  (mouseup)="stopDragging($event, false)"
-  (mouseleave)="stopDragging($event, false)"
-  (mousemove)="moveEvent($event, elemt)"
->
-  <div
-    (click)="goToDetailFormation($event, 1)"
-    style="margin-left: 10px; margin-right: 10px"
-    class="col-6 col-lg-3"
+<div class="coach-services">
+  <h1 class="coach-services-title">Formations</h1>
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'formations'"
   >
-    <div class="card">
-      <img src="assets/img/common/pbk5@2x.png" />
-      <div class="bottom-info">
-        <div class="title-rating">
-          <span class="badge">Coaching carrière</span>
-        </div>
-        <div class="partial-info">
-          <span class="coach-skills"
-            >Comment gérer ses émotions au travail ?</span
-          >
-        </div>
+    <div
+      class="cards-container row"
+      #elemt
+      (mousedown)="startDragging($event, false, elemt)"
+      (mouseup)="stopDragging($event, false)"
+      (mouseleave)="stopDragging($event, false)"
+      (mousemove)="moveEvent($event, elemt)"
+    >
+      <div class="col-6 col-lg-3" *ngFor="let service of data; index as i">
+        <app-service-card [service]="service"></app-service-card>
       </div>
     </div>
-  </div>
+  </app-page-list-wrapper>
 </div>
