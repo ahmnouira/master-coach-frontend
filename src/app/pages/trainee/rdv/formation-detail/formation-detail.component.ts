@@ -10,8 +10,10 @@ import { ServicesService } from 'src/app/services/services-service/services.serv
   templateUrl: './formation-detail.component.html',
   styleUrls: ['./formation-detail.component.scss'],
 })
-export class FormationDetailComponent extends PageHelper<Service> implements OnInit {
-
+export class FormationDetailComponent
+  extends PageHelper<Service>
+  implements OnInit
+{
   id: string = '';
 
   isSubmitting: boolean;
@@ -19,9 +21,9 @@ export class FormationDetailComponent extends PageHelper<Service> implements OnI
   orderExist: boolean;
   freeOrder: boolean;
 
-  isIndiv:boolean
+  isIndiv: boolean;
 
-  isVid: boolean
+  isVid: boolean;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,7 +45,9 @@ export class FormationDetailComponent extends PageHelper<Service> implements OnI
   }
 
   getService() {
-    this.getData(this.servicesService.getService(this.id));
+    this.getData(this.servicesService.getService(this.id), {
+      debug: true,
+    });
   }
 
   reserver() {

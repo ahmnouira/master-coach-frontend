@@ -21,5 +21,4 @@ export class Service extends Entity implements IService {
   isAutoConfirmed?: boolean;
 
   readonly user: User;
-
 }

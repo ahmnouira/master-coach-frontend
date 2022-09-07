@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TabsWizardComponent } from './tabs-wizard.component';
+import { ServiceInfoComponent } from './service-info.component';
 
-describe('TabsWizardComponent', () => {
-  let component: TabsWizardComponent;
-  let fixture: ComponentFixture<TabsWizardComponent>;
+describe('ServiceInfoComponent', () => {
+  let component: ServiceInfoComponent;
+  let fixture: ComponentFixture<ServiceInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TabsWizardComponent],
+      declarations: [ServiceInfoComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TabsWizardComponent);
+    fixture = TestBed.createComponent(ServiceInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,13 +5,12 @@ import { RdvListComponent } from './rdv-list/rdv-list.component';
 
 const routes: Routes = [
   { path: '', component: RdvListComponent },
-  { path: 'detail-formation/:id', component: FormationDetailComponent  },
+  { path: 'detail-formation/:id', component: FormationDetailComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RdvRoutingModule { }
+export class RdvRoutingModule {}

@@ -12,9 +12,9 @@ import { User } from 'src/app/models/user-model';
 export class UserCardComponent implements OnInit {
   @Input() user: User;
 
-  @Input() data: any
+  @Input() data: any;
 
-  @Input() page: 'view-product' | 'view-service'
+  @Input() page: 'view-product' | 'view-service';
 
   @Input() rating: boolean = false;
 
@@ -27,16 +27,15 @@ export class UserCardComponent implements OnInit {
   ngOnInit(): void {
     this.getPhoto();
 
-    if(this.page === 'view-product') { 
-      const data  = this.data as Product
-      this.getPrice(data.isFree, data.price)
+    if (this.page === 'view-product') {
+      const data = this.data as Product;
+      this.getPrice(data.isFree, data.price);
     }
-    if(this.page === 'view-service') {
-      const data  = this.data as Service
+    if (this.page === 'view-service') {
+      const data = this.data as Service;
       this.getCategory(data.category);
     }
   }
-
 
   getCompetences(): string {
     const array = this.getExpertise('category');
@@ -47,15 +46,12 @@ export class UserCardComponent implements OnInit {
   }
 
   getExpertise(name: 'category' | 'accreditation' | 'competance'): string[] {
-    console.log('user', this.user.category)
-
     if (!Array.isArray(this.user[name])) {
       return [];
     }
     try {
       const parsedArray = JSON.parse(this.user[name].toString()) as any[];
 
-     
       return parsedArray.map((el) => el.name);
     } catch (error) {
       return [];
@@ -69,12 +65,10 @@ export class UserCardComponent implements OnInit {
   }
 
   getCategory(category: any) {
-    if(!category) {
-      return 
+    if (!category) {
+      return;
     }
-    this.equip = category.toLowerCase().startsWith('Coaching')
-      ? category
-      : '';
+    this.equip = category.toLowerCase().startsWith('Coaching') ? category : '';
   }
 
   getPrice(isFree: boolean, price: string) {

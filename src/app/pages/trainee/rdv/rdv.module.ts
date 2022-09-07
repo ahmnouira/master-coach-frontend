@@ -6,16 +6,16 @@ import { ComponentsModule } from '../../components/components.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { FormationDetailComponent } from './formation-detail/formation-detail.component';
-
+import { ServiceInfoComponent } from './formation-detail/service-info/service-info.component';
 
 @NgModule({
-  declarations: [FormationDetailComponent],
+  declarations: [FormationDetailComponent, ServiceInfoComponent],
   imports: [
     CommonModule,
-    RdvRoutingModule, 
-    ComponentsModule, 
-    SharedModule, 
-    FormsModule
-  ]
+    RdvRoutingModule,
+    ComponentsModule,
+    SharedModule,
+    FormsModule,
+  ],
 })
-export class RdvModule { }
+export class RdvModule {}

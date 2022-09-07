@@ -21,7 +21,7 @@ import { DetailCoachComponent } from './client-coach/detail-coach/detail-coach.c
     FindCoachComponent,
     AnswerQuizComponent,
     DetailCoachComponent,
-    
+
     RdvListComponent,
     RdvReservationComponent,
     RdvPayComponent,

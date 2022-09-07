@@ -56,9 +56,7 @@ const routes: Routes = [
   {
     path: 'rdv',
     loadChildren: () =>
-      import('./rdv/rdv.module').then(
-        (module) => module.RdvModule
-      ),
+      import('./rdv/rdv.module').then((module) => module.RdvModule),
   },
 
   { path: 'docs/quiz/play', component: AnswerQuizComponent },

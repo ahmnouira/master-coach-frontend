@@ -145,7 +145,7 @@ import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.compon
     UserCardComponent,
     ProductInfoComponent,
     UpdatePasswordComponent,
-    TabsWizardComponent
+    TabsWizardComponent,
   ],
 })
 export class SharedModule {}

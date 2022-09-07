@@ -8,9 +8,9 @@ import { ProductType } from 'src/app/models/product/product-type.enum';
   styleUrls: ['./product-info.component.scss'],
 })
 export class ProductInfoComponent implements OnInit {
-  @Input() image :any
-  @Input() type: ProductType 
-  @Input() description: string
+  @Input() image: any;
+  @Input() type: ProductType;
+  @Input() description: string;
 
   backgroundImage: string;
 

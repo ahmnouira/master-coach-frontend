@@ -28,5 +28,4 @@ export class User extends Entity implements IUser {
   subscriptionEnd: string;
   subscriptionStart: string;
   subscriptionPeriod: 'yearly' | 'monthly';
-
 }
