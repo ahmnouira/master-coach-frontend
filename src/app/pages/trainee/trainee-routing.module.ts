@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AnswerQuizComponent } from './client-quiz/answer-quiz/answer-quiz.component';
-import { RdvDetailComponent } from './rdv/rdv-detail/rdv-detail.component';
 import { FindCoachComponent } from './client-coach/find-coach/find-coach.component';
-import { RdvListComponent } from './rdv/rdv-list/rdv-list.component';
-import { RdvPayComponent } from './rdv/rdv-pay/rdv-pay.component';
-import { RdvReservationComponent } from './rdv/rdv-reservation/rdv-reservation.component';
 import { DetailCoachComponent } from './client-coach/detail-coach/detail-coach.component';
 
 const routes: Routes = [
@@ -45,6 +41,8 @@ const routes: Routes = [
       ),
   },
 
+  { path: 'docs/quiz/play', component: AnswerQuizComponent },
+
   {
     path: 'purchases',
     loadChildren: () =>
@@ -52,23 +50,16 @@ const routes: Routes = [
         (module) => module.PurchasesModule
       ),
   },
-
   {
     path: 'rdv',
     loadChildren: () =>
       import('./rdv/rdv.module').then((module) => module.RdvModule),
   },
 
-  { path: 'docs/quiz/play', component: AnswerQuizComponent },
-  { path: 'rdv/list', component: RdvListComponent },
-  { path: 'rdv/reserver', component: RdvReservationComponent },
-  { path: 'rdv/pay', component: RdvPayComponent },
-  { path: 'rdv/detail', component: RdvDetailComponent },
   {
     path: 'library',
     loadChildren: () =>
       import('./library/library.module').then((module) => module.LibraryModule),
-    //canActivate: [AccountVerifiedGuard],
   },
 ];
 
