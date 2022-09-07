@@ -11,7 +11,6 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { RdvDetailCommonComponent } from './rdv-detail-common/rdv-detail-common.component';
 import { ComponentsModule } from './components/components.module';
 import { CountdownModule } from 'ngx-countdown';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { FormsModule } from '@angular/forms';
     PagesComponent,
     SidebarComponent,
     RdvDetailCommonComponent,
-    UserProfileComponent,
   ],
   exports: [SidebarComponent, RdvDetailCommonComponent],
   imports: [
