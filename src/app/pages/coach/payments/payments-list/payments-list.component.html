@@ -46,6 +46,8 @@
           [datatable]="data"
           (datatableChange)="datatableChange($event)"
           [checkboxes]="true"
+          [Actions]="ACTION_COLUMNS"
+          (onActionClicked)="onActionClicked($event)"
           [searchvalue]="search"
           [displayedColomn]="DISPLAYED_COLUMNS"
         ></datatable>
