@@ -56,6 +56,14 @@ export class OrderService extends BaseService {
     return this.get('/orders');
   }
 
+  getOrder(id: string) : Observable<any> {
+    return this.get(`/orders/${id}`);
+  }
+
+  generatePDF(id: string): Observable<any> {
+   return  this.get(`/api/orders/${id}/generate/pdf`)
+  }
+
   set setOrders(orders: Order[]) {
     this.orders.next(orders);
   }
