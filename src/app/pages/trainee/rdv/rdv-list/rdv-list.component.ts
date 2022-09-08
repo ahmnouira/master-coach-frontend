@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 import * as moment from 'moment';
 import { FormControl } from '@angular/forms';
 import { RdvService } from 'src/app/services/rdv-service/rdv.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { DatableTableAction } from 'src/app/shared/datatable/action.model';
+import { DatableDisplayedColumn } from 'src/app/shared/datatable/datatable.model';
+import { PageHelper } from 'src/app/helpers/PageHelper';
 
 @Component({
   selector: 'app-rdv-list',
   templateUrl: './rdv-list.component.html',
   styleUrls: ['./rdv-list.component.scss'],
 })
-export class RdvListComponent implements OnInit {
+export class RdvListComponent extends PageHelper implements OnInit {
   localeString: string = 'fr';
   viewDate: any;
   weekDays = [];
@@ -23,9 +24,9 @@ export class RdvListComponent implements OnInit {
   filter = new FormControl('');
 
   ACTION_COLUMNS: DatableTableAction[] = [];
+  DISPLAYED_COLUMNS: DatableDisplayedColumn[] = [];
 
-  DISPLAYED_COLUMNS: any[] = [];
-  data: any = [];
+
   filteredData: any = [];
   sessionList: any = [];
   selectedProfiles: any = [];
@@ -38,10 +39,10 @@ export class RdvListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private location: Location,
     private rdvService: RdvService,
     private tokenStorageService: TokenStorageService
   ) {
+    super()
     moment.locale(this.localeString);
     //this.viewDate = moment();
     //this.selectedDate = moment();
@@ -60,15 +61,6 @@ export class RdvListComponent implements OnInit {
         },
       ],
     });
-    /*this.ACTION_COLUMNS.push({
-      value: '',
-      childrens: [
-        {
-          type: 'edit',
-          iconClass: 'edit',
-        },
-      ],
-    });*/
     this.ACTION_COLUMNS.push({
       value: '',
       children: [
@@ -251,6 +243,9 @@ export class RdvListComponent implements OnInit {
             new Date(objA.date).getTime() - new Date(objB.date).getTime()
         );
         this.data = [...this.sessionList];
+        this.found = Boolean(this.data.length)
+        this.isLoading = false 
+
       });
   }
 

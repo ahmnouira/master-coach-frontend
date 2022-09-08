@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { TraineeRoutingModule } from './trainee-routing.module';
 import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
-import { FindCoachComponent } from './client-coach/find-coach/find-coach.component';
 import { AnswerQuizComponent } from './client-quiz/answer-quiz/answer-quiz.component';
 import { LoadingCardModule } from '../../shared/loading-card/loading-card.module';
 import { DatatableModule } from '../../shared/datatable/datatable.module';
@@ -13,7 +12,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { DetailCoachComponent } from './client-coach/detail-coach/detail-coach.component';
 
 @NgModule({
-  declarations: [FindCoachComponent, AnswerQuizComponent, DetailCoachComponent],
+  declarations: [AnswerQuizComponent, DetailCoachComponent],
   imports: [
     CommonModule,
     TraineeRoutingModule,

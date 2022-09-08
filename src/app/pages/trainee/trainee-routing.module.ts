@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AnswerQuizComponent } from './client-quiz/answer-quiz/answer-quiz.component';
-import { FindCoachComponent } from './client-coach/find-coach/find-coach.component';
 import { DetailCoachComponent } from './client-coach/detail-coach/detail-coach.component';
 
 const routes: Routes = [
@@ -29,7 +28,6 @@ const routes: Routes = [
       ),
   },
 
-  { path: 'coach-list', component: FindCoachComponent },
 
   { path: 'coach-detail', component: DetailCoachComponent },
 
