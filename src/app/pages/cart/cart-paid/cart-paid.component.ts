@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { BaseHelper } from 'src/app/helpers/BaseHelper';
-import { Order } from 'src/app/models/order/order.model';
 import { Product } from 'src/app/models/product/product.model';
 import { OrderService } from 'src/app/services/order-service/order.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
@@ -52,6 +51,8 @@ export class CartPaidComponent extends BaseHelper implements OnInit, AfterViewIn
   }
 
   saveOrder(stripeToken: string) {
+
+    console.log(this.products, stripeToken)
     this.orderService
       .addOrder({
         products: this.products,
@@ -63,11 +64,13 @@ export class CartPaidComponent extends BaseHelper implements OnInit, AfterViewIn
             this.onError(res.error)
             return;
           }
+
+          console.log(res.data)
           this.data = res.data.products
-          this.clear()
-          this.success = true;
-          this.error = '';
-          this.isLoading = false;
+         // this.clear()
+         // this.success = true;
+         // this.error = '';
+         //  this.isLoading = false;
           
         },
         (error) => {

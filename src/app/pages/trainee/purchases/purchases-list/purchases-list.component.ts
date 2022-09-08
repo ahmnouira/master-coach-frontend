@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { CLIENT_PURCHASES_ACTION_COLUMNS, CLIENT_PURCHASES_DISPLAYED_COLUMNS } from 'src/app/constants/client/purchases';
 import {
-  COACH_DOCS_ACTION_COLUMNS,
-  COACH_DOCS_DISPLAYED_COLUMNS,
   COACH_DOCS_FILTERS_TYPES,
   COACH_DOCS_FILTERS_WITH,
 } from 'src/app/constants/documents';
 import { PageHelper } from 'src/app/helpers/PageHelper';
-import { PaymentService } from 'src/app/services/payment-service/payment.service';
+import { OrderService } from 'src/app/services/order-service/order.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { DatableTableAction } from 'src/app/shared/datatable/action.model';
 
@@ -28,8 +27,8 @@ export class PurchasesListComponent extends PageHelper implements OnInit {
   selectedTypes: any[] = [];
   selectedWith: any[] = [];
 
-  ACTION_COLUMNS: DatableTableAction[] = COACH_DOCS_ACTION_COLUMNS;
-  DISPLAYED_COLUMNS: any[] = COACH_DOCS_DISPLAYED_COLUMNS;
+  ACTION_COLUMNS: DatableTableAction[] = CLIENT_PURCHASES_ACTION_COLUMNS;
+  DISPLAYED_COLUMNS: any[] = CLIENT_PURCHASES_DISPLAYED_COLUMNS;
 
   FILTER_TYPES = COACH_DOCS_FILTERS_TYPES;
   FILTER_WITH = COACH_DOCS_FILTERS_WITH;
@@ -39,30 +38,24 @@ export class PurchasesListComponent extends PageHelper implements OnInit {
   selectedType = 'type';
 
   constructor(
-    private paymentService: PaymentService,
+    private orderService: OrderService,
     private routerService: RouteService
   ) {
     super();
   }
 
   ngOnInit(): void {
-    this.getDocuments();
+    this.getOrders();
   }
 
-  getDocuments() {
-    /*
+  getOrders() {
     this.getData(
-      this.paymentService.gte({
-        all: false,
-      }),
+      this.orderService.getOrders(),
       {
         debug: true,
       }
     );
-    */
-    this.data = [];
-    this.isLoading = false;
-    this.found = false;
+
   }
 
   datatableChange(ev: any) {
@@ -74,13 +67,11 @@ export class PurchasesListComponent extends PageHelper implements OnInit {
     const { action, item } = element;
     switch (action) {
       case 'view':
-        window.alert('NOT IMPLEMENTED!');
+        
         break;
-      case 'edit':
-        window.alert('NOT IMPLEMENTED!');
-        break;
-      case 'delete':
-        window.alert('NOT IMPLEMENTED!');
+   
+      case 'download':
+        
         break;
     }
   }
