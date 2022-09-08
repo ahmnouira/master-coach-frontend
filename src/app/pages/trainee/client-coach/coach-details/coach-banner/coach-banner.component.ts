@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserHelper } from 'src/app/helpers/UserHelper';
 import { User } from 'src/app/models/user-model';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { TwilioService } from 'src/app/services/twilio-service/twilio.service';
@@ -8,34 +9,18 @@ import { TwilioService } from 'src/app/services/twilio-service/twilio.service';
   templateUrl: './coach-banner.component.html',
   styleUrls: ['./coach-banner.component.scss'],
 })
-export class CoachBannerComponent implements OnInit {
-  @Input() coach: User;
+export class CoachBannerComponent extends UserHelper implements OnInit {
+  @Input()  coach: User;
 
   constructor(
     private twilioService: TwilioService,
     private route: RouteService
-  ) {}
-
-  ngOnInit(): void {}
-
-  getCompetences(): string {
-    const array = this.getExpertise('category');
-    if (!array.length) {
-      return '';
-    }
-    return array.join(' - ');
+  ) {
+    super()
   }
 
-  getExpertise(name: 'category' | 'accreditation' | 'competance'): string[] {
-    if (!Array.isArray(this.coach[name])) {
-      return [];
-    }
-    try {
-      const parsedArray = JSON.parse(this.coach[name].toString()) as any[];
-      return parsedArray.map((el) => el.name);
-    } catch (error) {
-      return [];
-    }
+  ngOnInit(): void {
+    this.init(this.coach)
   }
 
   createNewConversation(user: any) {
