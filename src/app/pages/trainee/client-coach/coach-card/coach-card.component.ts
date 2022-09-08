@@ -11,12 +11,12 @@ export class CoachCardComponent extends UserHelper implements OnInit {
   @Input() coach: User;
 
   constructor() {
-    super()
+    super();
   }
 
   ngOnInit(): void {
-    const path = '/pages/client/coaches/details/' + this.coach._id
-    this.init(this.coach, path)
+    const path = '/pages/client/coaches/details/' + this.coach._id;
+    this.init(this.coach, path);
   }
 
   renderSkills() {

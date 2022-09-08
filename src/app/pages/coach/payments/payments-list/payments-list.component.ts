@@ -61,7 +61,6 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
 
   handleSearch(event) {}
 
-
   onActionClicked(element: any) {
     const { action, item } = element;
     switch (action) {
@@ -78,9 +77,9 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
   generatePDF(id: string) {
     this.paymentService.generatePDF(id).subscribe(
       (res) => {
-        console.log(typeof res)
-        FileHelper.createFile(res as Blob, `payment-${id}`)
-        this.loadingAnimation = false
+        console.log(typeof res);
+        FileHelper.createFile(res as Blob, `payment-${id}`);
+        this.loadingAnimation = false;
       },
       (error) => {
         console.error(error);

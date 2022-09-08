@@ -79,9 +79,9 @@ export class PurchasesListComponent extends PageHelper implements OnInit {
   generatePDF(id: string) {
     this.orderService.generatePDF(id).subscribe(
       (res) => {
-        console.log(typeof res)
-        FileHelper.createFile(res as Blob, `order-${id}`)
-        this.loadingAnimation = false
+        console.log(typeof res);
+        FileHelper.createFile(res as Blob, `order-${id}`);
+        this.loadingAnimation = false;
       },
       (error) => {
         console.error(error);

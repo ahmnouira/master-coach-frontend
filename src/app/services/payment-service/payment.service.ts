@@ -48,7 +48,6 @@ export class PaymentService extends BaseService {
     return this.get('/payments');
   }
 
-
   getPayment(id: string): Observable<any> {
     return this.get(`/payments/${id}`);
   }
@@ -57,7 +56,6 @@ export class PaymentService extends BaseService {
     return this.getFile(`/payments/${id}/generate/pdf
    `);
   }
-
 
   set setSelectedPlan(plan: Plan) {
     this.selectedPlan = plan;

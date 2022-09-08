@@ -16,11 +16,11 @@ export class CoachBannerComponent extends UserHelper implements OnInit {
     private twilioService: TwilioService,
     private route: RouteService
   ) {
-    super()
+    super();
   }
 
   ngOnInit(): void {
-    this.init(this.coach)
+    this.init(this.coach);
   }
 
   createNewConversation(user: any) {

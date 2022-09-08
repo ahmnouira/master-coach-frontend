@@ -29,7 +29,7 @@ export class FileHelper {
     );
   }
 
-  static createFile(blob: any, name: string ) {
+  static createFile(blob: any, name: string) {
     const fileName = `master-coach-${name}`;
 
     // It is necessary to create a new blob object with mime-type explicitly set
@@ -52,7 +52,7 @@ export class FileHelper {
     var link = document.createElement('a');
     link.href = data;
     link.download = fileName;
-    
+
     // this is necessary as link.click() does not work on the latest firefox
     link.dispatchEvent(
       new MouseEvent('click', {
@@ -66,8 +66,6 @@ export class FileHelper {
       // For Firefox it is necessary to delay revoking the ObjectURL
       window.URL.revokeObjectURL(data);
       link.remove();
-      
     }, 100);
   }
-
 }

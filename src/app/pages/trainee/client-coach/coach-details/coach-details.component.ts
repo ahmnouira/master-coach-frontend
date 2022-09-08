@@ -26,8 +26,6 @@ export class CoachDetailsComponent extends PageHelper<User> implements OnInit {
     this.getCoach();
   }
 
-
-
   getId() {
     this.activatedRoute.params.subscribe((params) => {
       this.id = params['id'];
