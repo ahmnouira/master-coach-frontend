@@ -10,7 +10,7 @@ import { TwilioService } from 'src/app/services/twilio-service/twilio.service';
   styleUrls: ['./coach-banner.component.scss'],
 })
 export class CoachBannerComponent extends UserHelper implements OnInit {
-  @Input()  coach: User;
+  @Input() coach: User;
 
   constructor(
     private twilioService: TwilioService,

@@ -5,13 +5,11 @@ export class UserHelper {
 
     photo: string
     user: User
+    path: string
 
-    constructor(user?: User) {
-            this.init(user)
-    }
-
-    public init(user: User) {
+    public init(user: User, path?: string ) {
         this.user = user
+        this.path = path
         this.getPhoto()
     }
 
