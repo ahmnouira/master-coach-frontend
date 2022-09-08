@@ -10,7 +10,7 @@ export class CartCardComponent implements OnInit {
 
   @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
 
-  @Input() allowDelete: boolean = true 
+  @Input() allowDelete: boolean = true;
 
   constructor() {}
 

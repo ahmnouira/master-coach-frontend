@@ -9,23 +9,26 @@ import { RouteService } from 'src/app/services/route-service/route.service';
   templateUrl: './cart-paid.component.html',
   styleUrls: ['./cart-paid.component.scss'],
 })
-export class CartPaidComponent extends BaseHelper implements OnInit, AfterViewInit {
+export class CartPaidComponent
+  extends BaseHelper
+  implements OnInit, AfterViewInit
+{
   products: string[];
   params: any;
-  data: Product[]
-  
+  data: Product[];
+
   constructor(
     private routeService: RouteService,
     private orderService: OrderService
   ) {
-    super()
+    super();
   }
 
   ngOnInit(): void {
     this.params = this.routeService.getQueryParams;
     this.products = this.orderService.getOrdersFromSessionStorage();
     if (!this.products) {
-      this.onError('No Orders are selected')
+      this.onError('No Orders are selected');
     }
   }
 
@@ -41,18 +44,17 @@ export class CartPaidComponent extends BaseHelper implements OnInit, AfterViewIn
     ) {
       this.saveOrder(this.params['stripeToken']);
     } else {
-      this.onError('Invalid data')
+      this.onError('Invalid data');
     }
   }
 
   clear() {
     this.orderService.clearOrdersFormStorage();
-    this.orderService.clearOrdersFromSessionStorage()
+    this.orderService.clearOrdersFromSessionStorage();
   }
 
   saveOrder(stripeToken: string) {
-
-    console.log(this.products, stripeToken)
+    console.log(this.products, stripeToken);
     this.orderService
       .addOrder({
         products: this.products,
@@ -61,20 +63,19 @@ export class CartPaidComponent extends BaseHelper implements OnInit, AfterViewIn
       .subscribe(
         (res) => {
           if (!res.success) {
-            this.onError(res.error)
+            this.onError(res.error);
             return;
           }
 
-          console.log(res.data)
-          this.data = res.data.products
-         // this.clear()
-         // this.success = true;
-         // this.error = '';
-         //  this.isLoading = false;
-          
+          console.log(res.data);
+          this.data = res.data.products;
+          this.clear();
+          this.success = true;
+          this.error = '';
+          this.isLoading = false;
         },
         (error) => {
-          this.onError(error)
+          this.onError(error);
         }
       );
   }

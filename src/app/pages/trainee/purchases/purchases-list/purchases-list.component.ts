@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CLIENT_PURCHASES_ACTION_COLUMNS, CLIENT_PURCHASES_DISPLAYED_COLUMNS } from 'src/app/constants/client/purchases';
+import {
+  CLIENT_PURCHASES_ACTION_COLUMNS,
+  CLIENT_PURCHASES_DISPLAYED_COLUMNS,
+} from 'src/app/constants/client/purchases';
 import {
   COACH_DOCS_FILTERS_TYPES,
   COACH_DOCS_FILTERS_WITH,
 } from 'src/app/constants/documents';
+import { FileHelper } from 'src/app/helpers/FileHelper';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { OrderService } from 'src/app/services/order-service/order.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
@@ -49,13 +53,9 @@ export class PurchasesListComponent extends PageHelper implements OnInit {
   }
 
   getOrders() {
-    this.getData(
-      this.orderService.getOrders(),
-      {
-        debug: true,
-      }
-    );
-
+    this.getData(this.orderService.getOrders(), {
+      debug: true,
+    });
   }
 
   datatableChange(ev: any) {
@@ -67,13 +67,27 @@ export class PurchasesListComponent extends PageHelper implements OnInit {
     const { action, item } = element;
     switch (action) {
       case 'view':
-        
         break;
-   
+
       case 'download':
-        
+        this.loadingAnimation = true;
+        this.generatePDF(item._id);
         break;
     }
+  }
+
+  generatePDF(id: string) {
+    this.orderService.generatePDF(id).subscribe(
+      (res) => {
+        console.log(typeof res)
+        FileHelper.createFile(res as Blob, `order-${id}`)
+        this.loadingAnimation = false
+      },
+      (error) => {
+        console.error(error);
+        this.loadingAnimation = false;
+      }
+    );
   }
 
   handleSearch(event) {}

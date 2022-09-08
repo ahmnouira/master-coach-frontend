@@ -136,6 +136,6 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
   }
 
   submit() {
-     this.orderService.saveOrdersToSessionStorage(this.data.map(el => el._id))
+    this.orderService.saveOrdersToSessionStorage(this.data.map((el) => el._id));
   }
 }
