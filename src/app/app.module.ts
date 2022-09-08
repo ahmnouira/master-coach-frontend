@@ -25,7 +25,7 @@ registerLocaleData(localeFr, 'fr');
     CoreModule,
     PagesModule,
     SharedModule,
-    LayoutModule
+    LayoutModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

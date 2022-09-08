@@ -144,7 +144,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     ProductInfoComponent,
     UpdatePasswordComponent,
     TabsWizardComponent,
-    CalendarComponent
+    CalendarComponent,
   ],
 })
 export class SharedModule {}

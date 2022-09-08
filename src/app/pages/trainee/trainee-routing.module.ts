@@ -28,7 +28,6 @@ const routes: Routes = [
       ),
   },
 
-
   { path: 'coach-detail', component: DetailCoachComponent },
 
   {

@@ -4,11 +4,9 @@ import moment from 'moment';
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements OnInit {
-
-
   data: any = [];
 
   sessionList: any = [];
@@ -19,17 +17,14 @@ export class CalendarComponent implements OnInit {
 
   gridArr: any;
 
-
-  constructor() {
-   }
+  constructor() {}
 
   ngOnInit(): void {
     moment.locale(this.local);
     this.viewDate = moment();
-    this.selectedDate = moment()
-    this.makeGrid()
+    this.selectedDate = moment();
+    this.makeGrid();
   }
-
 
   makeGrid() {
     this.gridArr = [];
@@ -55,32 +50,24 @@ export class CalendarComponent implements OnInit {
     this.makeGrid();
   }
 
-
   isAvailable(num: number): boolean {
     return true;
     //return this.weekDays.filter(day => day.number +1 == num)[0]?.isSelected;
   }
 
   onDateClick(day: any) {
-
-    console.log('day', day)
+    console.log('day', day);
 
     const date = moment(
       day.value + '/' + this.viewDate.format('MM/YYYY'),
       'DD/MM/YYYY'
     );
-    this.selectedDate = date
+    this.selectedDate = date;
 
-    // return data 
-
+    // return data
 
     this.sessionList = this.data.filter((elem) =>
-      elem?.date
-        ?.toLowerCase()
-        .includes(
-          date.format('YYYY-MM-DD')
-        )
+      elem?.date?.toLowerCase().includes(date.format('YYYY-MM-DD'))
     );
   }
-
 }

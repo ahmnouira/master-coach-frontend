@@ -12,10 +12,12 @@
 
     <div
       class="page-list-wrapper-container"
-      [@animate]="{
-        value: '*',
-        params: { duration: '300ms', y: '100px' }
-      }"
+      [@animate]="
+        animated && {
+          value: '*',
+          params: { duration: '300ms', y: '100px' }
+        }
+      "
     >
       <div class="row" *ngIf="found && !error">
         <ng-content></ng-content>

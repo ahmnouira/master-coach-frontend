@@ -26,7 +26,6 @@ export class RdvListComponent extends PageHelper implements OnInit {
   ACTION_COLUMNS: DatableTableAction[] = [];
   DISPLAYED_COLUMNS: DatableDisplayedColumn[] = [];
 
-
   filteredData: any = [];
   sessionList: any = [];
   selectedProfiles: any = [];
@@ -42,7 +41,7 @@ export class RdvListComponent extends PageHelper implements OnInit {
     private rdvService: RdvService,
     private tokenStorageService: TokenStorageService
   ) {
-    super()
+    super();
     moment.locale(this.localeString);
     //this.viewDate = moment();
     //this.selectedDate = moment();
@@ -243,9 +242,8 @@ export class RdvListComponent extends PageHelper implements OnInit {
             new Date(objA.date).getTime() - new Date(objB.date).getTime()
         );
         this.data = [...this.sessionList];
-        this.found = Boolean(this.data.length)
-        this.isLoading = false 
-
+        this.found = Boolean(this.data.length);
+        this.isLoading = false;
       });
   }
 

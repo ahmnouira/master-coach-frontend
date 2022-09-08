@@ -13,9 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { LayoutModule } from '../shared/layout/layout.module';
 
 @NgModule({
-  declarations: [
-    PagesComponent,
-  ],
+  declarations: [PagesComponent],
   exports: [],
   imports: [
     CommonModule,
@@ -29,7 +27,7 @@ import { LayoutModule } from '../shared/layout/layout.module';
     ComponentsModule,
     CountdownModule,
     FormsModule,
-    LayoutModule
+    LayoutModule,
   ],
 })
 export class PagesModule {}

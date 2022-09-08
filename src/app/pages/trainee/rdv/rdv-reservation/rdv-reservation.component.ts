@@ -19,12 +19,10 @@ export class RdvReservationComponent implements OnInit {
   localeString: string = 'fr';
   viewDate: any;
 
-
   coach: User & {
-    working_hours?: any
-  }
+    working_hours?: any;
+  };
   formation: Service;
-
 
   isVideoSession = false;
   weekDays = [
@@ -86,19 +84,16 @@ export class RdvReservationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-   
     let passedData = history?.state?.id as Service;
 
-    if(!passedData) {
-        this.routeService.back()
-        return
+    if (!passedData) {
+      this.routeService.back();
+      return;
     }
 
     this.coach = passedData?.user;
-    this.formation = passedData
+    this.formation = passedData;
     this.isVideoSession = passedData?.format === ServiceFormat.CONFERENCE;
-
 
     this.getCoachSessions(this.coach._id);
     if (this.coach?.working_hours) {
@@ -204,7 +199,9 @@ export class RdvReservationComponent implements OnInit {
       },
       isVideoSession: this.isVideoSession,
     };
-    this.routeService.navigateByUrl('/pages/client/rdv/pay', { state: { id: data } });
+    this.routeService.navigateByUrl('/pages/client/rdv/pay', {
+      state: { id: data },
+    });
   }
 
   back() {
