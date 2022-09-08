@@ -8,9 +8,11 @@
   a {
     display: block;
     margin: 0;
+    padding: 0;
     flex: 1;
     margin-right: 10px;
-    height: 50px;
+    min-height: 50px;
+    max-height: 120px;
     box-shadow: 0px 0px 10px #0000001a;
     border: 1px solid #1376a3;
     border-radius: 10px;
@@ -19,6 +21,8 @@
     justify-content: center;
     text-decoration: unset;
     color: #1376a3;
+    padding: 8px 16px;
+    overflow: auto;
   }
   .d-flex {
     align-items: center;

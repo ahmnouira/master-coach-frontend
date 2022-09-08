@@ -13,22 +13,19 @@ export class ProductInfoComponent implements OnInit {
 
   backgroundImage: string;
 
+  isVideo: boolean;
 
-  isVideo :boolean
-
-  isAudio: boolean
-
-  
+  isAudio: boolean;
 
   constructor() {}
 
   ngOnInit(): void {
     this.getBackgroundImage();
-    this.getProductType()
+    this.getProductType();
   }
 
   getProductType() {
-    this.isVideo = this.product.type === ProductType.VIDEO
+    this.isVideo = this.product.type === ProductType.VIDEO;
   }
 
   getBackgroundImage() {
