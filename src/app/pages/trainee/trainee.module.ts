@@ -4,7 +4,6 @@ import { TraineeRoutingModule } from './trainee-routing.module';
 import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { FindCoachComponent } from './find-coach/find-coach.component';
-import { MesDocQuizComponent } from './client-quiz/mes-doc-quiz/mes-doc-quiz.component';
 import { AnswerQuizComponent } from './client-quiz/answer-quiz/answer-quiz.component';
 import { LoadingCardModule } from '../../shared/loading-card/loading-card.module';
 import { DatatableModule } from '../../shared/datatable/datatable.module';
@@ -21,7 +20,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [
     FindCoachComponent,
-    MesDocQuizComponent,
     AnswerQuizComponent,
     DetailCoachComponent,
     FormationDetailComponent,

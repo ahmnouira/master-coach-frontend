@@ -5,82 +5,61 @@ import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { CoachService } from 'src/app/services/coach-service/coach.service';
+import {
+  COACH_DOCS_FILTERS_TYPES,
+  COACH_DOCS_FILTERS_WITH,
+} from 'src/app/constants/documents';
+import { PageHelper } from 'src/app/helpers/PageHelper';
+import {
+  CLIENT_DOCS_ACTION_COLUMNS,
+  CLIENT_DOCS_DISPLAYED_COLUMNS,
+  CLIENT_DOCS_FILTER_STATUS,
+  CLIENT_DOCS_FILTER_THEMATIC,
+} from 'src/app/constants/client/documents';
 
 @Component({
-  selector: 'app-mes-doc-quiz',
-  templateUrl: './mes-doc-quiz.component.html',
-  styleUrls: ['./mes-doc-quiz.component.scss'],
+  selector: 'app-documents-list',
+  templateUrl: './documents-list.component.html',
+  styleUrls: ['./documents-list.component.scss'],
 })
-export class MesDocQuizComponent implements OnInit {
+export class DocumentsListComponent extends PageHelper implements OnInit {
   filterString = '';
   filter = new FormControl('');
 
-  ACTION_COLUMNS: DatableTableAction[] = [];
+  search = '';
 
-  DISPLAYED_COLUMNS: any[] = [];
+  filters = {
+    thematic: '',
+    status: '',
+  };
+
+  ACTION_COLUMNS: DatableTableAction[] = CLIENT_DOCS_ACTION_COLUMNS;
+
+  DISPLAYED_COLUMNS: any[] = CLIENT_DOCS_DISPLAYED_COLUMNS;
+
+  selectedStatus: any[] = [];
+  selectedThematic: any[] = [];
+
+  FILTER_STATUS = CLIENT_DOCS_FILTER_STATUS;
+  FILTER_THEMATIC = CLIENT_DOCS_FILTER_THEMATIC;
+
   coachList: any = [];
   quizList: any = [];
-  data: any = [];
   filteredData: any = [];
   selectedProfiles: any = [];
   loadingAnimation: boolean = false;
-  selectedStatus = 'status';
-  selectedType = 'type';
+
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
     private coachService: CoachService,
     private router: Router
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.ACTION_COLUMNS.push({
-      value: '',
-      children: [
-        {
-          type: 'view',
-          iconClass: 'view',
-        },
-      ],
-    });
-
-    this.DISPLAYED_COLUMNS = [
-      {
-        data: 'quizName',
-        value: 'Titre',
-        type: 'text',
-        search: true,
-        sort: true,
-      },
-      {
-        data: 'coachName',
-        value: 'Coach',
-        type: 'text',
-        search: true,
-        sort: true,
-      },
-      {
-        data: 'datelimite',
-        value: 'Date limite',
-        type: 'date',
-        search: true,
-        sort: true,
-      },
-      {
-        data: 'type',
-        value: 'Type',
-        type: 'text',
-        search: false,
-        sort: true,
-      },
-      {
-        data: 'status',
-        value: 'Status',
-        type: 'badge',
-        search: true,
-        sort: true,
-      },
-    ];
+    this.isLoading = false;
     this.getUserProfileList();
   }
 
@@ -178,6 +157,8 @@ export class MesDocQuizComponent implements OnInit {
       (error) => {}
     );
   }
+
+  handleSearch(event) {}
 
   getCoachname(coachId) {
     let result = this.coachList.filter((obj) => obj._id == coachId);

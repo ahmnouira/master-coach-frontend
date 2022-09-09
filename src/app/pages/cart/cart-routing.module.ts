@@ -5,7 +5,7 @@ import { CartPaidComponent } from './cart-paid/cart-paid.component';
 
 const routes: Routes = [
   { path: '', component: CartListComponent },
-  {path: 'paid', component: CartPaidComponent},
+  { path: 'paid', component: CartPaidComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

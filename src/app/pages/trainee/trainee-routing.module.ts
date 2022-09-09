@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FindCoachComponent } from './find-coach/find-coach.component';
-import { MesDocQuizComponent } from './client-quiz/mes-doc-quiz/mes-doc-quiz.component';
 import { AnswerQuizComponent } from './client-quiz/answer-quiz/answer-quiz.component';
 import { DetailCoachComponent } from './detail-coach/detail-coach.component';
 import { FormationDetailComponent } from './formation-detail/formation-detail.component';
@@ -28,6 +27,14 @@ const routes: Routes = [
   },
 
   {
+    path: 'documents',
+    loadChildren: () =>
+      import('./documents/documents.module').then(
+        (module) => module.DocumentsModule
+      ),
+  },
+
+  {
     path: 'purchases',
     loadChildren: () =>
       import('./purchases/purchases.module').then(
@@ -37,7 +44,6 @@ const routes: Routes = [
 
   { path: 'coach-list', component: FindCoachComponent },
   { path: 'coach-detail', component: DetailCoachComponent },
-  { path: 'docs', component: MesDocQuizComponent },
   { path: 'docs/quiz/play', component: AnswerQuizComponent },
   { path: 'rdv/list', component: RdvListComponent },
   { path: 'rdv/detail-formation', component: FormationDetailComponent },
