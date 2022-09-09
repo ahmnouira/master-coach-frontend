@@ -48,8 +48,6 @@ export class RdvListComponent extends PageHelper implements OnInit {
     //this.selectedDate = moment();
   }
 
-
-
   ngOnInit(): void {
     moment.locale(this.localeString);
     this.viewDate = moment();
@@ -163,18 +161,17 @@ export class RdvListComponent extends PageHelper implements OnInit {
     );
   }
 
-
   onActionClicked(element: any) {
     const { action, item } = element;
     switch (action) {
       case 'view':
         this.routeService.navigateByUrl(
-          `/pages/client/rdv/detail/${item._id}`, { state: { id: item },}
+          `/pages/client/rdv/detail/${item._id}`,
+          { state: { id: item } }
         );
         break;
+    }
   }
-}
-
 
   datatableChange(ev: any) {
     this.selectedProfiles = ev.filter((el: any) => el.selected);

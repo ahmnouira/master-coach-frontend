@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import moment from 'moment';
-import { CountdownComponent as NgxCountdownComponent} from 'ngx-countdown';
+import { CountdownComponent as NgxCountdownComponent } from 'ngx-countdown';
 
 const CountdownTimeUnits: Array<[string, number]> = [
   ['Y', 1000 * 60 * 60 * 24 * 365], // years
@@ -15,23 +15,19 @@ const CountdownTimeUnits: Array<[string, number]> = [
 @Component({
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
-  styleUrls: ['./countdown.component.scss']
+  styleUrls: ['./countdown.component.scss'],
 })
-
 export class CountdownComponent implements OnInit {
+  config: any;
 
-  config: any
-
-  session: any
+  session: any;
 
   leftTime: any;
   @ViewChild('cd', { static: false }) private countdown: NgxCountdownComponent;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-
-
     this.session.dateString = moment(
       this.session.date.replace('00:00:00', this.session.time)
     ).format('DD/MM/YYYY');
@@ -67,5 +63,4 @@ export class CountdownComponent implements OnInit {
       },
     };
   }
-
 }

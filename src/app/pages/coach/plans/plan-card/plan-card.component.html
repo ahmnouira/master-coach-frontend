@@ -11,13 +11,20 @@
     <h1 class="plan-title">{{ plan.title }}</h1>
     <h2 class="plan-price">{{ plan.price }}</h2>
 
-    <p class="plan-meta" *ngFor="let feature of plan.features">
-      {{ feature }}
-    </p>
-
+    <div class="plan-meta" *ngFor="let feature of plan.features; index as i">
+      <span
+        class="material-icons"
+        [ngStyle]="{ color: isFreePlan && i >= 5 ? 'red' : 'green' }"
+        >{{ isFreePlan && i >= 5 ? "error" : "check_circle" }}</span
+      >
+      <p class="plan-meta-text">
+        {{ feature }}
+      </p>
+    </div>
     <div
       class="d-flex justify-content-center align-items-end"
       [ngStyle]="{ visibility: isFreePlan && 'hidden' }"
+      style="margin-top: 15px"
     >
       <button type="submit" class="btn btn-primary" (click)="handleClick()">
         Je choisis

@@ -26,13 +26,12 @@ export class RdvDetailComponent implements OnInit {
   leftTime: any;
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
 
-  constructor(private router: Router, private rdvService: RdvService,
-    ) {}
+  constructor(private router: Router, private rdvService: RdvService) {}
 
   ngOnInit(): void {
     this.session = history.state?.id;
 
-    console.log('session', this.session)
+    console.log('session', this.session);
 
     this.coach = history.state?.id.coach;
     this.coach.competances = this.coach.competance
