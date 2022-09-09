@@ -23,24 +23,21 @@
         <h3 class="plans-container-title">Migrer vers un nouveau plan</h3>
 
         <div class="d-flex align-items-center" style="margin-right: 250px">
-          <label
-            class="form-check-label"
-            style="margin-right: 8px"
-            for="flexSwitchCheckDefault"
-            >Monthly</label
+          <app-radio
+            [label]="'Yearly'"
+            [(model)]="form.subscriptionPeriod"
+            [value]="'yearly'"
+            (modelChange)="changeOffer($event)"
           >
-          <div class="form-check form-switch">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              role="switch"
-              (change)="changeOffer($event)"
-              id="flexSwitchCheckDefault"
-            />
-            <label class="form-check-label" for="flexSwitchCheckDefault"
-              >Yearly</label
-            >
-          </div>
+          </app-radio>
+
+          <app-radio
+            [label]="'Monthly'"
+            [(model)]="form.subscriptionPeriod"
+            [value]="'monthly'"
+            (modelChange)="changeOffer($event)"
+          >
+          </app-radio>
         </div>
 
         <div></div>

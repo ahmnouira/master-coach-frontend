@@ -48,6 +48,8 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { CountdownComponent } from './countdown/countdown.component';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     UpdatePasswordComponent,
     TabsWizardComponent,
     CalendarComponent,
+    CountdownComponent,
   ],
   imports: [
     CommonModule,
@@ -102,6 +105,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     PickerModule,
     TooltipModule,
     AngularMultiSelectModule,
+    CountdownModule,
     RouterModule, // to use routerLink
   ],
   exports: [

@@ -91,7 +91,7 @@ export const PLANS_ANNUAL: Plan[] = [
   {
     id: 'a-2',
     title: 'Initiation',
-    price: '19 euros HT',
+    price: `${19 * 12} euros HT`,
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -109,7 +109,7 @@ export const PLANS_ANNUAL: Plan[] = [
   {
     id: 'a-3',
     title: 'Pro',
-    price: '49 euros HT',
+    price: `${49 * 12} euros HT`,
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -126,7 +126,7 @@ export const PLANS_ANNUAL: Plan[] = [
   {
     id: 'a-4',
     title: 'Master',
-    price: '140 euros HT',
+    price: `${140 * 12} euros HT`,
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',

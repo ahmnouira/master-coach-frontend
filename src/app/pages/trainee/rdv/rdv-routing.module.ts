@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'detail-formation/:id', component: FormationDetailComponent },
   { path: 'reserver', component: RdvReservationComponent },
   { path: 'pay', component: RdvPayComponent },
-  { path: 'detail', component: RdvDetailComponent },
+  { path: 'detail/:id', component: RdvDetailComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
