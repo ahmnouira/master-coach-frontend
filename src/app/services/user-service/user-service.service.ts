@@ -64,6 +64,11 @@ export class UserService extends BaseService {
     return this.delete('/delete_user/' + id);
   }
 
+  /**
+   * @description get coach services
+   * @param id user id: coach id
+   * @returns Observable<any>
+   */
   getUserServices(id: string): Observable<any> {
     return this.get(`/users/${id}/services`);
   }

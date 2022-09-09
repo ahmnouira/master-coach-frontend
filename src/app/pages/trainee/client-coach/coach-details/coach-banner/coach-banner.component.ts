@@ -18,29 +18,27 @@ export class CoachBannerComponent implements OnInit {
 
   ngOnInit(): void {}
 
-
-  getCompetences (): string {
-    const array = this.getExpertise('category')
-    if(!array.length) {
-      return ''
+  getCompetences(): string {
+    const array = this.getExpertise('category');
+    if (!array.length) {
+      return '';
     }
-    return array.join(' - ')
+    return array.join(' - ');
   }
 
+  getExpertise(name: 'category' | 'accreditation' | 'competance'): string[] {
+    if (!Array.isArray(this.coach[name])) {
+      return [];
+    }
+    try {
+      const parsedArray = JSON.parse(this.coach[name].toString()) as any[];
+      return parsedArray.map((el) => el.name);
+    } catch (error) {
+      return [];
+    }
+  }
 
-  getExpertise(name: 'category'  | 'accreditation' | 'competance'): string[] {
-    if(!Array.isArray(this.coach[name])) {
-      return []
-    }
-      try {
-        const parsedArray = JSON.parse(this.coach[name].toString()) as any[]
-        return parsedArray.map(el => el.name)
-      } catch (error) {
-          return  []
-      }
-    }
-  
-  createNewConversation(user :any) {
+  createNewConversation(user: any) {
     this.twilioService.createNewConversation(user._id).subscribe(
       (data) => {
         console.log(data);

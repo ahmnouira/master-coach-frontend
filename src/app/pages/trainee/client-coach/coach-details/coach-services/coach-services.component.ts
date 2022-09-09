@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PageHelper } from 'src/app/helpers/PageHelper';
+import { Service } from 'src/app/models/service/service.model';
 import { RouteService } from 'src/app/services/route-service/route.service';
+import { UserService } from 'src/app/services/user-service/user-service.service';
 
 @Component({
   selector: 'app-coach-services',
   templateUrl: './coach-services.component.html',
-  styleUrls: ['./coach-services.component.scss']
+  styleUrls: ['./coach-services.component.scss'],
 })
-export class CoachServicesComponent implements OnInit {
-
-  coach: any = {};
+export class CoachServicesComponent
+  extends PageHelper<Service[]>
+  implements OnInit
+{
+  @Input() id: string;
   mouseDown = false;
 
   startX: any;
@@ -17,24 +22,22 @@ export class CoachServicesComponent implements OnInit {
 
   slider = document.querySelector<HTMLElement>('.wrapper');
 
-  constructor(private route: RouteService) {}
+  constructor(private route: RouteService, private userService: UserService) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.coach = history.state?.id;
-    console.log(this.coach);
+    this.getServices();
   }
 
-
-  goToDetailFormation(e, formation) {
-    e.preventDefault();
-    let data = {
-      coach: this.coach,
-      formation: formation,
-    };
-    this.route.navigateByUrl('/pages/client/rdv/detail-formation', {
-      state: { id: data },
+  getServices() {
+    this.getData(this.userService.getUserServices(this.id), {
+      debug: true,
     });
   }
+
+  // /pages/client/rdv/detail-formation
+
   startDragging(e: any, flag: any, el: any) {
     this.mouseDown = true;
     this.startX = e.pageX - el.offsetLeft;
@@ -52,5 +55,4 @@ export class CoachServicesComponent implements OnInit {
     const scroll = x - this.startX;
     el.scrollLeft = this.scrollLeft - scroll;
   }
-
 }

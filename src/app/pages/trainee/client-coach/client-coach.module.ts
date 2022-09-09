@@ -12,6 +12,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { CoachBannerComponent } from './coach-details/coach-banner/coach-banner.component';
 import { CoachServicesComponent } from './coach-details/coach-services/coach-services.component';
 import { CoachExpertiseComponent } from './coach-details/coach-expertise/coach-expertise.component';
+import { ServicesModule } from '../../coach/services/services.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CoachExpertiseComponent } from './coach-details/coach-expertise/coach-e
     FormsModule,
     LoadingCardModule,
     DatatableModule,
+    ServicesModule,
     SharedModule,
   ],
 })

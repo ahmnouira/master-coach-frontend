@@ -11,18 +11,20 @@ import { UserService } from 'src/app/services/user-service/user-service.service'
   styleUrls: ['./coach-details.component.scss'],
 })
 export class CoachDetailsComponent extends PageHelper<User> implements OnInit {
-  coach: any = {};
+  id: string;
 
-  id: string 
-
-  constructor(private route: RouteService, private activatedRoute: ActivatedRoute, private userService: UserService) {
-    super()
+  constructor(
+    private route: RouteService,
+    private activatedRoute: ActivatedRoute,
+    private userService: UserService
+  ) {
+    super();
   }
 
   ngOnInit(): void {
-    this.getId()
-    this.getCoach()
-  }  
+    this.getId();
+    this.getCoach();
+  }
 
   getId() {
     this.activatedRoute.params.subscribe((params) => {
@@ -32,9 +34,7 @@ export class CoachDetailsComponent extends PageHelper<User> implements OnInit {
 
   getCoach() {
     this.getData(this.userService.getUser(this.id), {
-      debug: true
+      debug: true,
     });
   }
 }
-
-

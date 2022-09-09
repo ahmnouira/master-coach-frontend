@@ -1,30 +1,30 @@
 .bloc-comp-accr {
-    background: #ffffff 0% 0% no-repeat padding-box;
-    box-shadow: 0px 0px 10px #0000001a;
-    border-radius: 10px;
-    padding: 15px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.elem {
+  box-shadow: 0px 0px 10px #0000001a;
+  border: 1px solid #3c4d5d;
+  font: normal normal normal 14px/20px Fredoka;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #3c4d5d;
+  margin-right: 10px;
+  max-width: fit-content;
+  &:last-child {
+    margin-right: 0px;
   }
-  
-  .elem {
-    box-shadow: 0px 0px 10px #0000001a;
-    border: 1px solid #3c4d5d;
-    font: normal normal normal 14px/20px Fredoka;
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: #3c4d5d;
-    margin-right: 10px;
-    max-width: fit-content;
-    &:last-child {
-       margin-right: 0px;
-    }
-  }
-  .elem-lab {
-    font: normal normal normal 14px/17px Fredoka;
-    color: #1376a3;
-    margin-bottom: 8px;
-  }
-  
-  .elem-group {
-    row-gap: 10px;
-    margin: 10px 1px;
-  }
+}
+.elem-lab {
+  font: normal normal normal 14px/17px Fredoka;
+  color: #1376a3;
+  margin-bottom: 8px;
+}
+
+.elem-group {
+  row-gap: 10px;
+  margin: 10px 1px;
+}
