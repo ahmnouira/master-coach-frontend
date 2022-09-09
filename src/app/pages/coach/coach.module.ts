@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ProfilCoachComponent } from './profil-coach/profil-coach.component';
 import { CoachRoutingModule } from './coach-routing.module';
 import { ComponentsModule } from '../components/components.module';
-import { ParametresComponent } from './parametres/parametres.component';
 import { FormsModule } from '@angular/forms';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { AddFormQuizComponent } from './add-form-quiz/add-form-quiz.component';
@@ -25,15 +24,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyAppointmentsComponent } from './my-appointments/my-appointments.component';
 import { SharedModule } from '../../shared/shared.module';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
-import { CoachMenuComponent } from './coach-menu/coach-menu.component';
-import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
 
 @NgModule({
   declarations: [
     ProfilCoachComponent,
-    ParametresComponent,
     AddFormQuizComponent,
     ViewFormQuizComponent,
     ListFormQuizComponent,
@@ -42,8 +38,6 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     ViewTeamComponent,
     AddTeamComponent,
     MyAppointmentsComponent,
-    CoachMenuComponent,
-    UpdatePasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -60,7 +54,7 @@ FullCalendarModule.registerPlugins([interactionPlugin, dayGridPlugin]);
     SharedModule,
     NgxSmartModalModule.forChild(),
   ],
-  exports: [CoachMenuComponent],
+  exports: [],
 
   providers: [BsModalService],
 })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilAdminComponent } from './profil-admin/profil-admin.component';
-import { ParametresComponent } from './parametres/parametres.component';
+import { SettingsComponent } from './settings/settings.component';
 import { UsersListComponent } from './user-management/users-list/users-list.component';
 import { UsersAddComponent } from './user-management/users-add/users-add.component';
 import { UsersEditComponent } from './user-management/users-edit/users-edit.component';
@@ -18,7 +18,7 @@ import { CategoryEditComponent } from './category-management/category-edit/categ
 const routes: Routes = [
   { path: '', component: ProfilAdminComponent },
   { path: 'profil', component: ProfilAdminComponent },
-  { path: 'parametre', component: ParametresComponent },
+  { path: 'settings', component: SettingsComponent },
   { path: 'users/list', component: UsersListComponent },
   { path: 'users/add', component: UsersAddComponent },
   { path: 'users/edit', component: UsersEditComponent },

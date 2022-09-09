@@ -1,0 +1,24 @@
+.coach-services {
+  // background-color: yellow;
+  position: relative;
+  width: 100%;
+  &-title {
+    font: normal normal normal 22px/24px Fredoka;
+    color: #3c4d5d;
+  }
+}
+.cards-container {
+  column-gap: 20px;
+  display: flex;
+  // background-color: saddlebrown;
+  max-width: 1380px;
+  overflow: scroll;
+  // flex-flow: row;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  cursor: pointer;
+}
+
+.cards-container::-webkit-scrollbar {
+  display: none;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page-wrapper',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-wrapper.component.scss'],
 })
 export class PageWrapperComponent implements OnInit {
+  @Input() container: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}

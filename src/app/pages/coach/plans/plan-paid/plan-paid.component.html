@@ -17,7 +17,7 @@
         <h3 class="container-title">Thanks for your subscription</h3>
         <p class="container-text">
           You have paid
-          <b class="container-price">{{ plan.price }}</b> from
+          <b class="container-price">{{ plan.price }}</b>
           <b class="container-price"> {{ plan.title }}</b> ----
           <b class="container-price">{{ plan.type }}</b>
           for the following features:
@@ -26,12 +26,12 @@
           {{ feature }}
         </p>
 
-        <a href="" onclick="history.back()">Back</a>
+        <a class="link link-primary" (click)="back()">Back</a>
       </div>
 
       <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
         {{ errorMessage }}
-        <a href="" onclick="history.back()">Back</a>
+        <a class="link link-primary" (click)="back()">Back</a>
       </div>
     </ng-template>
   </div>

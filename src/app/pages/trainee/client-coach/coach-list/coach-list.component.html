@@ -1,0 +1,87 @@
+<app-sub-header [title]="'Trouver mon coach'"></app-sub-header>
+
+<app-page-wrapper>
+  <app-search
+    [(model)]="search"
+    [placeholder]="
+      'Rechercher ‘Carrière’, ‘ Vie’, ‘Entrepreneuriat’, ‘Coaching d’équipe’ ou ‘David Laroche’...'
+    "
+  ></app-search>
+
+  <div class="filters">
+    <app-button
+      [title]="'Tous'"
+      [variant]="'basic'"
+      (onClick)="resetFilters($event)"
+    >
+    </app-button>
+
+    <div class="row" style="width: 100%">
+      <app-select
+        class="col"
+        [data]="FILTER_TYPES"
+        [text]="'Type de coach'"
+        [(model)]="selectedCoachType"
+        (onItemOneSelect)="filters.typeCoach = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-select
+        class="col"
+        [data]="FILTER_WITH"
+        [text]="'Type de contenus'"
+        [(model)]="selectedContent"
+        (onItemOneSelect)="filters.typeContent = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-select
+        class="col"
+        [data]="categories"
+        [text]="'Catégorie'"
+        [(model)]="selectedCompetence"
+        (onItemOneSelect)="filters.categorie = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-select
+        class="col"
+        [data]="skills"
+        [text]="'Compétences'"
+        [(model)]="selectedCompetence"
+        (onItemOneSelect)="filters.competence = $event"
+        [singleSelection]="true"
+      ></app-select>
+
+      <app-select
+        class="col"
+        [data]="certifications"
+        [text]="'Accréditations'"
+        [(model)]="selectedAccreditation"
+        (onItemOneSelect)="filters.accreditation = $event"
+        [singleSelection]="true"
+      ></app-select>
+    </div>
+
+    <app-button
+      [title]="'Réinitialiser'"
+      [variant]="'basic'"
+      (onClick)="resetFilters($event)"
+    >
+    </app-button>
+  </div>
+
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'coach'"
+  >
+    <div
+      class="col-12 col-sm-6 col-lg-4 col-xxl-3"
+      *ngFor="let coach of data; index as i"
+    >
+      <app-coach-card [coach]="coach" *ngIf="coach"></app-coach-card>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>

@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  SimpleChange,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 import { UserRole } from 'src/app/models/role.enum';
 import { RouteService } from 'src/app/services/route-service/route.service';
@@ -30,7 +24,7 @@ export class AvatarComponent implements OnInit {
   }
 
   handleClick() {
-    this.routeService.navigate([`/pages/${this.role.toLowerCase()}/parametre`]);
+    this.routeService.navigate([`/pages/${this.role.toLowerCase()}/settings`]);
   }
   getUserPicture() {
     if (this.photo) {

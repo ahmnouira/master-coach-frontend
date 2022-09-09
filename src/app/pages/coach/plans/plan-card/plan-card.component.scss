@@ -1,5 +1,6 @@
 .plan {
   min-width: 350px;
+  min-height: 500px;
   background: transparent url("/assets/img/plans/plan-card.png") 0% 0% no-repeat
     padding-box;
 
@@ -30,9 +31,15 @@
   }
 
   &-meta {
-    font: normal normal normal 14px/17px Fredoka;
-    color: #1376a3;
-    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &-text {
+      margin-left: 8px;
+      font: normal normal normal 14px/17px Fredoka;
+      color: #1376a3;
+      margin-top: 10px;
+    }
   }
 
   &-button {

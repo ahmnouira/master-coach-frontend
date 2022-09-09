@@ -54,7 +54,7 @@ export const CLIENT_SIDEBAR: SidebarItem[] = [
   },
   {
     icon: 'assets/img/common/edit.svg',
-    route: '/pages/client/coach-list',
+    route: '/pages/client/coaches',
     title: 'Trouver un coach',
   },
   {
@@ -76,7 +76,7 @@ export const CLIENT_SIDEBAR: SidebarItem[] = [
 
   {
     icon: 'assets/img/common/file%20(5).svg',
-    route: '/pages/client/docs',
+    route: '/pages/client/documents',
     title: 'Mes outils de suivi',
   },
   {

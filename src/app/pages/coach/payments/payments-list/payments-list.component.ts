@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  COACH_DOCS_ACTION_COLUMNS,
-  COACH_DOCS_DISPLAYED_COLUMNS,
   COACH_DOCS_FILTERS_TYPES,
   COACH_DOCS_FILTERS_WITH,
 } from 'src/app/constants/documents';
+import {
+  COACH_PAYMENTS_ACTION_COLUMNS,
+  COACH_PAYMENTS_DISPLAYED_COLUMNS,
+} from 'src/app/constants/coach/payments';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { PaymentService } from 'src/app/services/payment-service/payment.service';
 import { DatableTableAction } from 'src/app/shared/datatable/action.model';
+import { FileHelper } from 'src/app/helpers/FileHelper';
 
 @Component({
   selector: 'app-payments-list',
@@ -27,8 +30,8 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
   selectedTypes: any[] = [];
   selectedWith: any[] = [];
 
-  ACTION_COLUMNS: DatableTableAction[] = COACH_DOCS_ACTION_COLUMNS;
-  DISPLAYED_COLUMNS: any[] = COACH_DOCS_DISPLAYED_COLUMNS;
+  ACTION_COLUMNS: DatableTableAction[] = COACH_PAYMENTS_ACTION_COLUMNS;
+  DISPLAYED_COLUMNS: any[] = COACH_PAYMENTS_DISPLAYED_COLUMNS;
 
   FILTER_TYPES = COACH_DOCS_FILTERS_TYPES;
   FILTER_WITH = COACH_DOCS_FILTERS_WITH;
@@ -46,19 +49,9 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
   }
 
   getDocuments() {
-    /*
-    this.getData(
-      this.paymentService.gte({
-        all: false,
-      }),
-      {
-        debug: true,
-      }
-    );
-    */
-    this.data = [];
-    this.isLoading = false;
-    this.found = false;
+    this.getData(this.paymentService.getPayments(), {
+      debug: true,
+    });
   }
 
   datatableChange(ev: any) {
@@ -67,6 +60,33 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
   }
 
   handleSearch(event) {}
+
+  onActionClicked(element: any) {
+    const { action, item } = element;
+    switch (action) {
+      case 'view':
+        break;
+
+      case 'download':
+        this.loadingAnimation = true;
+        this.generatePDF(item._id);
+        break;
+    }
+  }
+
+  generatePDF(id: string) {
+    this.paymentService.generatePDF(id).subscribe(
+      (res) => {
+        console.log(typeof res);
+        FileHelper.createFile(res as Blob, `payment-${id}`);
+        this.loadingAnimation = false;
+      },
+      (error) => {
+        console.error(error);
+        this.loadingAnimation = false;
+      }
+    );
+  }
 
   public onOptionsSelected(event: any, selectname: string) {
     const value = event.target.value;

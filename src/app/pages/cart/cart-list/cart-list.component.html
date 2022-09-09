@@ -1,0 +1,36 @@
+<app-sub-header [title]="'Panier'"></app-sub-header>
+
+<app-page-wrapper>
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="hasItems()"
+    [isLoading]="isLoading"
+    [title]="'orders'"
+    [animated]="false"
+  >
+    <div>
+      <form
+        id="stripeForm-cart"
+        name="form"
+        #f="ngForm"
+        (submit)="onSubmit($event)"
+        method="get"
+        action="{{ redirectUrl }}"
+        class="form"
+      >
+        <div *ngFor="let order of data; index as i; trackBy: trackById">
+          <app-cart-card
+            [order]="order"
+            (onDelete)="handleDelete($event)"
+          ></app-cart-card>
+        </div>
+
+        <app-button
+          [title]="'Procéder au paiement'"
+          (onClick)="submit()"
+          [isLoading]="isSubmitting"
+        ></app-button>
+      </form>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>

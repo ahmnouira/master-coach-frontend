@@ -1,0 +1,135 @@
+<app-sub-header [title]="'Paramètres'" subTitle="BACK"></app-sub-header>
+<div class="row sub-component-content">
+  <div class="col-lg-2"></div>
+
+  <div class="col-lg-10">
+    <div *ngIf="isLoading; else elseBlock">
+      <div style="margin-top: 50px">
+        <app-loader></app-loader>
+      </div>
+    </div>
+
+    <ng-template #elseBlock>
+      <div
+        [@animate]="{
+          value: '*',
+          params: { duration: '300ms', y: '100px' }
+        }"
+      >
+        <form class="login-form" name="form" #f="ngForm" novalidate>
+          <div class="row mb-40">
+            <div
+              class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
+            >
+              <span class="row-title">Mes Informations personnelles</span>
+            </div>
+            <div class="col-12 col-lg-9 pl-40">
+              <div class="row">
+                <app-user-photo
+                  [src]="form.photo"
+                  (onChange)="handleImportFile($event, 'photo')"
+                ></app-user-photo>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <app-text-field
+                    [label]="'Nom'"
+                    [(model)]="form.nom"
+                    [form]="f"
+                  >
+                  </app-text-field>
+                </div>
+                <div class="col-md-6">
+                  <app-text-field
+                    [label]="'Prénom'"
+                    [(model)]="form.prenom"
+                    [form]="f"
+                  >
+                  </app-text-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <app-text-field
+                    type="email"
+                    [label]="'Email'"
+                    [(model)]="form.email"
+                    [form]="f"
+                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  >
+                  </app-text-field>
+                </div>
+
+                <div class="col-md-6">
+                  <app-text-field
+                    type="tel"
+                    [label]="'Numéro de téléphone'"
+                    [(model)]="form.tel"
+                    placeholder="+33 12 34 56 789"
+                    [form]="f"
+                    pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
+                  >
+                  </app-text-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-40">
+            <div
+              class="col-12 ms-lg-0 col-lg-3 col-separator p-lg-0 mb-3 mb-lg-0"
+            >
+              <span class="row-title">Moyen de paiement</span>
+            </div>
+            <div class="col-12 col-lg-9 pl-40">
+              <div class="col-lg-6 form-group">
+                <a class="btn btn-primary full-width" style="height: 50px">
+                  <span class="material-icons">add_circle</span>Ajouter une
+                  nouvelle carte
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+            <div class="col-lg-9 col-12 mt-20 pl-40">
+              <app-divider></app-divider>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="success || error">
+            <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+            <div class="col-lg-9 col-12 pl-40">
+              <app-form-error [error]="error" *ngIf="error"></app-form-error>
+              <div class="alert alert-info" role="alert" *ngIf="success">
+                Profile Updated
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+            <div class="col-lg-9 col-12 pl-40">
+              <app-button
+                (onClick)="submit()"
+                [isLoading]="isSubmitting"
+                [disabled]="f.dirty"
+              >
+              </app-button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-3 col-12 p-0 hidden-md col-margin"></div>
+            <div class="col-lg-9 col-12 mt-20 pl-40">
+              <app-divider></app-divider>
+            </div>
+          </div>
+        </form>
+
+        <app-update-password></app-update-password>
+      </div>
+    </ng-template>
+  </div>
+</div>

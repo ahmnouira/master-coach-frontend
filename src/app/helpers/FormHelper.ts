@@ -39,7 +39,7 @@ export class FormHelper extends BasicHelper {
     this.onSuccess();
   }
 
-  override onError(error: any) {
+  override onError(error?: any) {
     if (error) {
       console.error('onError:', error);
       this.error = error;

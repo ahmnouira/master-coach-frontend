@@ -4,23 +4,28 @@ import { AuthService } from 'src/app/core/auth.service';
 import { Plan } from 'src/app/models/plan.model';
 import { PaymentService } from 'src/app/services/payment-service/payment.service';
 
+type SubscriptionPeriod = 'yearly' | 'monthly';
 @Component({
   selector: 'app-plan-list',
   templateUrl: './plan-list.component.html',
   styleUrls: ['./plan-list.component.scss'],
 })
 export class PlanListComponent implements OnInit {
-  plans = PLANS_ANNUAL;
+  plans = PLANS_MONTHLY;
   isLoading: true;
   selectedPlan: Plan;
 
   subscriptionType: string;
-  subscriptionPeriod: 'yearly' | 'monthly';
+  subscriptionPeriod: SubscriptionPeriod;
 
   expires: string | number;
   userEmail: string;
 
   monthly = true;
+
+  form: any = {
+    subscriptionPeriod: 'monthly',
+  };
 
   constructor(
     private paymentService: PaymentService,
@@ -49,19 +54,18 @@ export class PlanListComponent implements OnInit {
     });
   }
 
-  changeOffer(event: any) {
+  changeOffer(event: SubscriptionPeriod) {
+    console.log('event', event);
     this.monthly = !this.monthly;
-    if (this.monthly) {
+    if (event === 'monthly') {
       this.plans = PLANS_MONTHLY;
-    } else {
+    } else if (event === 'yearly') {
       this.plans = PLANS_ANNUAL;
     }
   }
 
   setSelectedPlan(plan: Plan) {
-    // this.paymentService.setSelectedPlan = plan;
     this.selectedPlan = plan;
-    console.log('setSelectedPlan', this.selectedPlan);
     this.paymentService.saveSelectedPlan(this.selectedPlan);
   }
 }

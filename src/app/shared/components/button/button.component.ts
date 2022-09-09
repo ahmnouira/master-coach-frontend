@@ -13,7 +13,7 @@ export class ButtonComponent implements OnInit {
 
   @Input() variant?: 'submit' | 'add' | 'basic' = 'submit';
 
-  @Input() fullWith: boolean = false
+  @Input() fullWith: boolean = false;
 
   @Input() path?: string;
 

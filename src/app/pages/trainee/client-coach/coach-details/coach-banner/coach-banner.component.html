@@ -1,0 +1,58 @@
+<div>
+  <div class="coach-banner">
+    <img class="coach-img" [src]="photo" />
+    <div
+      class="col-3"
+      style="
+        display: flex;
+        height: 80%;
+        align-content: center;
+        justify-content: space-between;
+        flex-direction: column;
+      "
+    >
+      <div class="rating">
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202.svg" />
+        <img src="assets/img/common/Layer%202-1.svg" />
+      </div>
+      <span class="coach-name">{{ coach.prenom }} {{ coach.nom }}</span>
+      <span class="coach-badge">Coaching carrière</span>
+    </div>
+    <div class="col-3" style="justify-content: space-around">
+      <img
+        src="assets/img/common/world-wide-web.svg"
+        style="margin-right: 5px"
+      />
+      <span class="coach-name">{{ coach.email }}</span>
+    </div>
+    <div class="col-3">
+      <button (click)="createNewConversation(coach)" class="btn-rdv">
+        <span class="material-icons">send</span> Envoyer un message
+      </button>
+    </div>
+  </div>
+
+  <div style="padding: 20px 10px 20px 160px">
+    <div class="row">
+      <span class="coach-comps">{{ getCompetences() }}</span>
+    </div>
+    <div class="row mt-2">
+      <span class="coach-desc" *ngIf="coach.bio">
+        {{ coach.bio }}
+      </span>
+    </div>
+    <div class="row mt-3 bloc-comp-accr">
+      <app-coach-expertise
+        [title]="'Accreditations légales'"
+        [expertise]="getExpertise('accreditation')"
+      ></app-coach-expertise>
+      <app-coach-expertise
+        [title]="'Compétences'"
+        [expertise]="getExpertise('competance')"
+      ></app-coach-expertise>
+    </div>
+  </div>
+</div>

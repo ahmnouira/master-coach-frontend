@@ -5,4 +5,5 @@ export interface IClient {
   tel: string;
   notes: string;
   equip: string;
+  photo?: string | File;
 }

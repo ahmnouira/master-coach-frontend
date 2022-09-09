@@ -2,15 +2,21 @@
   id="main"
   class="d-flex"
   [style.background-color]="
-    userRole?.toLowerCase() == 'coach'
+    role == 'Coach'
       ? '#EFFAFD !important'
-      : userRole?.toLowerCase() == 'admin'
+      : role == 'Admin'
       ? '#E8FDE8 !important'
       : '#FDEFEA !important'
   "
 >
-  <app-sidebar></app-sidebar>
-  <div id="content">
-    <router-outlet></router-outlet>
+  <div *ngIf="isLoading; else elseBlock">
+    <p>Loading...</p>
   </div>
+
+  <ng-template #elseBlock>
+    <app-sidebar></app-sidebar>
+    <div id="content">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-template>
 </div>

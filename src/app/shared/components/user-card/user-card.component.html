@@ -9,8 +9,11 @@
   </div>
   <p class="form-card-title">{{ user?.nom }} {{ user?.prenom }}</p>
   <small class="form-card-subtitle" *ngIf="equip">{{ equip }}</small>
+  <div *ngIf="page === 'view-service'" class="form-card-categories">
+    <small class="form-card-subtitle">{{ getCompetences() }}</small>
+  </div>
 
-  <h4 class="form-card-price">
+  <h4 class="form-card-price" *ngIf="price">
     <b>{{ price }}</b>
   </h4>
 </div>

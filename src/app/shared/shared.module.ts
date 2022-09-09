@@ -6,7 +6,6 @@ import { ModalCalendrierComponent } from './components/modal-calendrier/modal-ca
 import { ModalSatisfactionComponent } from './components/modal-satisfaction/modal-satisfaction.component';
 import { ModalGoogleAgendaComponent } from './components/modal-google-agenda/modal-google-agenda.component';
 import { MessagerieComponent } from './components/messagerie/messagerie.component';
-import { CommandeDetailComponent } from './components/commande-detail/commande-detail.component';
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
@@ -36,8 +35,6 @@ import { SelectComponent } from './components/select/select.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { RadioComponent } from './components/radio/radio.component';
 import { AddFieldComponent } from './components/add-field/add-field.component';
-import { LayoutModule } from './layout/layout.module';
-import { SidebarItemComponent } from './layout/sidebar-item/sidebar-item.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { FormWrapperComponent } from './components/form-wrapper/form-wrapper.component';
 import { PageListWrapperComponent } from './components/page-list-wrapper/page-list-wrapper.component';
@@ -48,11 +45,15 @@ import { PageHeaderWrapperComponent } from './components/page-header-wrapper/pag
 import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { CountdownComponent } from './countdown/countdown.component';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
     ModalAjoutSessionComponent,
-    CommandeDetailComponent,
     ModalCalendrierComponent,
     ModalSatisfactionComponent,
     ModalGoogleAgendaComponent,
@@ -60,7 +61,6 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
     ModalSuccesComponent,
-    CommandeDetailComponent,
     LoaderComponent,
     ImportIconComponent,
     FileImportedComponent,
@@ -90,6 +90,10 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     PageWrapperComponent,
     UserCardComponent,
     ProductInfoComponent,
+    UpdatePasswordComponent,
+    TabsWizardComponent,
+    CalendarComponent,
+    CountdownComponent,
   ],
   imports: [
     CommonModule,
@@ -101,7 +105,7 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     PickerModule,
     TooltipModule,
     AngularMultiSelectModule,
-    LayoutModule,
+    CountdownModule,
     RouterModule, // to use routerLink
   ],
   exports: [
@@ -109,7 +113,6 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     ModalCalendrierComponent,
     ModalSatisfactionComponent,
     ModalGoogleAgendaComponent,
-    CommandeDetailComponent,
     MessagerieComponent,
     ModalWorkingHoursComponent,
     VisioConferenceComponent,
@@ -134,7 +137,6 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     FormComponent,
     RadioComponent,
     AddFieldComponent,
-    SidebarItemComponent,
     ModalComponent,
     FormWrapperComponent,
     PageListWrapperComponent,
@@ -144,6 +146,9 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     PageWrapperComponent,
     UserCardComponent,
     ProductInfoComponent,
+    UpdatePasswordComponent,
+    TabsWizardComponent,
+    CalendarComponent,
   ],
 })
 export class SharedModule {}
