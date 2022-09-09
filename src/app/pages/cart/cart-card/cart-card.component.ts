@@ -12,7 +12,10 @@ export class CartCardComponent implements OnInit {
 
   @Input() allowDelete: boolean = true;
 
+  @Input() facture : boolean = false  
+
   constructor() {}
+
 
   ngOnInit(): void {}
 

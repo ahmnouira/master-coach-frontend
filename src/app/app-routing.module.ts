@@ -3,24 +3,29 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'core',
-    loadChildren: () =>
-      import('./core/core.module').then((module) => module.CoreModule),
-  },
+ 
   {
     path: 'pages',
     loadChildren: () =>
       import('./pages/pages.module').then((module) => module.PagesModule),
     canActivate: [AuthGuard],
   },
+
+  {
+    path: '',
+    loadChildren: () =>
+      import('./core/core.module').then((module) => module.CoreModule),
+    canLoad: [], 
+  },
 ];
 
 @NgModule({
+
+  
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
-      useHash: true,
+      useHash: false,
       enableTracing: true,
       urlUpdateStrategy: 'eager',
     }),

@@ -11,6 +11,10 @@ import { CartPaidComponent } from './cart-paid/cart-paid.component';
 
 @NgModule({
   declarations: [CartListComponent, CartCardComponent, CartPaidComponent],
+
+  exports: [CartCardComponent],
+
+
   imports: [
     CommonModule,
     CartRoutingModule,

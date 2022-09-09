@@ -1,0 +1,40 @@
+<app-sub-header [title]="'Détail command'" [subTitle]="'BACK'"></app-sub-header>
+<app-page-wrapper>
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'command'"
+  >
+    <div class="row">
+      <app-cart-card
+        [order]="data"
+        [allowDelete]="false"
+        [facture]="true"
+      ></app-cart-card>
+    </div>
+
+    <div class="row gx-4 gx-lg-5">
+      <h1>Produits</h1>
+
+      <div class="col-4 col-xxl-3">
+        <app-user-card
+          *ngIf="data && data.user"
+          [data]="data"
+          [page]="'view-service'"
+        ></app-user-card>
+      </div>
+
+      <div class="col-8 col-xxl-9">
+        <div *ngFor="let product of data.products; index as i">
+          <app-product-info
+            *ngIf="product"
+            [image]="product.image"
+            [type]="product.type"
+            [description]="product.description"
+          ></app-product-info>
+        </div>
+      </div>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>
