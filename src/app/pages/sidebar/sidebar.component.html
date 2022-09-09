@@ -1,7 +1,7 @@
-<nav id="sidebar" class="d-none d-md-block">
+<nav id="sidebar" class="d-none d-md-block" *ngIf="!isLoading">
   <div class="sidebar-header mb-5">
     <img
-      [routerLink]="path"
+      [routerLink]="getPath()"
       src="assets/img/login/mastercoach.svg"
       alt="logo"
     />
