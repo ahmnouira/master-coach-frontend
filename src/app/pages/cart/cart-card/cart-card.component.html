@@ -1,4 +1,7 @@
-<div class="commande-container d-flex flex-column">
+<div
+  class="commande-container d-flex flex-column"
+  [ngStyle]="{ 'margin-bottom': allowDelete ? '15px' : '40px' }"
+>
   <div class="commande d-flex align-items-center justify-content-between">
     <div class="details">
       <div class="details-title d-flex align-middle">
@@ -11,23 +14,11 @@
         </div>
         <div class="price">{{ order.price }} €</div>
       </div>
-      <div class="item d-flex">
-        <div class="item-title">
-          1 Support de formation pdf : Coaching d’équipe
-        </div>
-        <div class="price">50,00 €</div>
-      </div>
-      <div class="item d-flex">
-        <div class="item-title">
-          1 Support de formation pdf : Gestion des conflits
-        </div>
-        <div class="price">25,00 €</div>
-      </div>
     </div>
     <div class="commande-img">
       <img src="../../../../assets/img/commande.png" />
     </div>
-    <div class="close-icon" (click)="handleDelete()">
+    <div class="close-icon" (click)="handleDelete()" *ngIf="allowDelete">
       <img src="../../../../assets/icon/close.svg" />
     </div>
   </div>

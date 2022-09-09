@@ -1,10 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { AuthService } from 'src/app/core/auth.service';
+import { getCartTotalPrice } from 'src/app/helpers/getPrice';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { IStripe } from 'src/app/interfaces/stripe.interface';
 import { Order } from 'src/app/models/order/order.model';
 import { OrderService } from 'src/app/services/order-service/order.service';
+import { RouteService } from 'src/app/services/route-service/route.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -18,11 +20,14 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
 
   redirectUrl = environment.APP_URL + '/pages/cart/paid';
 
+  price: number;
+
   constructor(
     private orderService: OrderService,
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document,
-    private authService: AuthService
+    private authService: AuthService,
+    private routeService: RouteService
   ) {
     super();
   }
@@ -32,13 +37,23 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
     this.getOrders();
     this.getUserEmail();
 
+    this.getPrice();
+
     const stripe: IStripe = {
       email: this.email,
       id: 'cart',
-      price: 20,
-      title: 'Order Title',
+      price: this.price,
+      title: 'Acheter des produits',
     };
     this.initStripe(stripe);
+  }
+
+  getPrice() {
+    try {
+      this.price = getCartTotalPrice(this.data);
+    } catch (error) {
+      this.onError('error price');
+    }
   }
 
   getUserEmail() {
@@ -61,10 +76,12 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
   }
 
   handleDelete(id: string) {
+    this.isLoading = true;
     const filteredOrders = this.data.filter((el) => el._id !== id);
     this.data = [...filteredOrders];
     this.orderService.setOrders = filteredOrders;
     this.orderService.addOrdersToStorage(filteredOrders);
+    this.routeService.reload();
   }
 
   trackById(index: number, order: Order) {
@@ -113,10 +130,12 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
     }, 200);
   }
 
-  onSubmit($event) {
-    console.log('onSubmit');
-    $event.preventDefault();
+  onSubmit(event) {
+    event.preventDefault();
+    console.log('onSubmit', event);
   }
 
-  submit() {}
+  submit() {
+     this.orderService.saveOrdersToSessionStorage(this.data.map(el => el._id))
+  }
 }

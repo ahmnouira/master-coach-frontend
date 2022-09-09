@@ -1,38 +1,25 @@
 <app-sub-header [title]="'Panier'"></app-sub-header>
 
 <app-page-wrapper>
-  <div class="row">
-    <div class="col-2"></div>
-
-    <div class="col-10">
-      <div *ngIf="isLoading; else elseBlock">
-        <div style="margin-top: 50px">
-          <app-loader></app-loader>
-        </div>
-      </div>
-
-      <ng-template #elseBlock>
-        <div class="container" *ngIf="success">
-          <h3 class="container-title">Thanks for your purchafes</h3>
-          <p class="container-text">
-            You have paid
-            <b class="container-price">{{ plan.price }}</b> from
-            <b class="container-price"> {{ plan.title }}</b> ----
-            <b class="container-price">{{ plan.type }}</b>
-            for the following features:
-          </p>
-          <p class="container-features" *ngFor="let feature of plan.features">
-            {{ feature }}
-          </p>
-
-          <a (click)="back()">Back</a>
-        </div>
-
-        <div class="alert alert-danger" role="alert" *ngIf="error">
-          {{ error }}
-          <a (click)="back()">Back</a>
-        </div>
-      </ng-template>
+  <div *ngIf="isLoading; else elseBlock">
+    <div style="margin-top: 50px">
+      <app-loader></app-loader>
     </div>
   </div>
+
+  <ng-template #elseBlock>
+    <div class="container" *ngIf="success">
+      <h3 class="container-title">Thanks for your purchases</h3>
+      <p class="container-text">You have paid for for the following orders:</p>
+      <div *ngFor="let order of data; index as i" class="container-features">
+        <app-cart-card [order]="order" [allowDelete]="false"></app-cart-card>
+      </div>
+      <a class="link link-primary" (click)="back()">Back</a>
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+      {{ error }}
+      <a class="link link-primary" (click)="back()">Back</a>
+    </div>
+  </ng-template>
 </app-page-wrapper>

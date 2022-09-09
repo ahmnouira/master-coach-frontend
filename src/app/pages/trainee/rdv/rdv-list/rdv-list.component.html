@@ -2,31 +2,9 @@
   [title]="'Mes rendez-vous'"
   [subTitle]="'BACK'"
 ></app-sub-header>
-<div class="row sub-component-content">
-  <div class="day-selector">
-    <div class="custom-day-selector-title">
-      <button class="btn-prev" (click)="changeViewDate(-1, 'month')">
-        <span class="material-icons">keyboard_arrow_left</span>
-      </button>
-      <div class="day-selector-title">{{ viewDate.format("MMMM YYYY") }}</div>
-      <button class="btn-next" (click)="changeViewDate(1, 'month')">
-        <span class="material-icons">keyboard_arrow_right</span>
-      </button>
-    </div>
-    <div class="d-flex row-of-days">
-      <button
-        *ngFor="let day of gridArr"
-        class="date-item"
-        (click)="onDateClick(day)"
-        [ngClass]="
-          day.value == selectedDate?.format('DD') ? 'selected-day' : ''
-        "
-      >
-        <span class="day-name">{{ day.name }}</span>
-        <span class="day-number">{{ day.value }}</span>
-      </button>
-    </div>
-  </div>
+<app-page-wrapper>
+  <app-calendar></app-calendar>
+
   <div
     class="filters-row input-group form-group form-inline mt-3 mlr-10 d-flex"
   >
@@ -66,8 +44,12 @@
     </div>
     <button class="btn mlr-10">Rechercher</button>
   </div>
-  <br />
-  <div class="">
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'documents'"
+  >
     <div class="table-responsive">
       <loading-card [loading]="loadingAnimation">
         <datatable
@@ -81,5 +63,5 @@
         ></datatable>
       </loading-card>
     </div>
-  </div>
-</div>
+  </app-page-list-wrapper>
+</app-page-wrapper>

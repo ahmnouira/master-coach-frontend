@@ -47,6 +47,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.compon
     ProductInfoComponent,
     UpdatePasswordComponent,
     TabsWizardComponent,
+    CalendarComponent,
   ],
   imports: [
     CommonModule,
@@ -142,6 +144,7 @@ import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.compon
     ProductInfoComponent,
     UpdatePasswordComponent,
     TabsWizardComponent,
+    CalendarComponent,
   ],
 })
 export class SharedModule {}
