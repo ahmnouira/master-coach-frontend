@@ -1,12 +1,12 @@
 <a
   id="button-basic"
-  dropdownToggle
+  dropdownToggle="dropdown"
   type="button"
   class="notif-link"
-  aria-controls="dropdown-basic"
+  aria-controls="dropdown && dropdown-basic"
 >
   <img
-    src="assets/img/common/notification%20(4).svg"
+    [src]="icon"
     style="left: 6px; top: 5px; position: relative"
     [ngClass]="
       items.length != 0

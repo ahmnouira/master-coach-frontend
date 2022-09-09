@@ -5,6 +5,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AvatarComponent } from './avatar/avatar.component';
 import { SubHeaderItemComponent } from './sub-header-item/sub-header-item.component';
 import { NotificationItemComponent } from './notification-item/notification-item.component';
+import { OrderItemComponent } from './order-item/order-item.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { NotificationItemComponent } from './notification-item/notification-item
     AvatarComponent,
     SubHeaderItemComponent,
     NotificationItemComponent,
+    OrderItemComponent,
   ],
   exports: [SubHeaderComponent],
   imports: [CommonModule, BsDropdownModule],

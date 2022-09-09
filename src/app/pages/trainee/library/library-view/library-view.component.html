@@ -25,9 +25,9 @@
         <div class="mt-20">
           <app-button
             (onClick)="addToCart()"
-            [title]="'Ajouter au panier'"
+            [title]="orderExist ? 'Déjà existe' : 'Ajouter au panier'"
             [isLoading]="isSubmitting"
-            [disabled]="true"
+            [disabled]="orderExist"
           >
           </app-button>
         </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { IUser } from 'src/app/interfaces/user-interface';
 import { Product } from 'src/app/models/product/product.model';
+import { OrderService } from 'src/app/services/order-service/order.service';
 import { ProductService } from 'src/app/services/product-service/product.service';
 
 @Component({
@@ -20,17 +21,21 @@ export class LibraryViewComponent
 
   isSubmitting: boolean;
 
+  orderExist: boolean
+
   isIndiv: boolean;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService, 
+    private orderService: OrderService 
   ) {
     super();
   }
 
   ngOnInit(): void {
     this.getId();
-    this.getProducts();
+    this.getProduct();
+    this.orderExist = this.orderService.exist(this.id)
   }
 
   getId() {
@@ -39,11 +44,19 @@ export class LibraryViewComponent
     });
   }
 
-  getProducts() {
+  getProduct() {
     this.getData(this.productService.getProduct(this.id), {
       debug: true,
     });
   }
 
-  addToCart() {}
+  addToCart() {
+    this.isSubmitting = true
+    const exist = this.orderService.exist(this.data._id)
+    if(!exist) {
+      this.orderService.addOrderToStorage(this.data)
+      this.orderExist = true
+    }
+    this.isSubmitting = false
+  }
 }
