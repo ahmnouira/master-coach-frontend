@@ -11,6 +11,7 @@
     accept="image/*"
     (change)="handleChange($event)"
     #file
+    required
   />
   <button (click)="file.click()">
     <img
@@ -18,4 +19,10 @@
       src="assets/img/common/camera-to-take-photos%20(3).svg"
     />
   </button>
+
+  <div class="user-photo-container-icon">
+    <small *ngIf="error" class="alert alert-danger" role="alert"
+      >{{ label }} est invalid!</small
+    >
+  </div>
 </div>

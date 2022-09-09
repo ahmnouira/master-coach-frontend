@@ -11,11 +11,16 @@ export class UserPhotoComponent implements OnInit {
 
   @Output() onChange = new EventEmitter();
 
+  @Input() label?: string = '';
+  @Input() required: boolean = true;
+  @Input() form?: any = undefined;
+
   photo: string;
 
   error: string;
   constructor() {}
   ngOnInit(): void {
+    this.label = this.label ?? 'Photo';
     this.getPicture();
   }
   getPicture() {

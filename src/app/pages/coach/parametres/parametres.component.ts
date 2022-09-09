@@ -40,15 +40,19 @@ export class ParametresComponent extends FormHelper implements OnInit {
 
   submit() {
     this.isSubmitting = true;
-    const { prenom, nom, bio, tel, email, photo, category } = this.form;
+    const { prenom, nom, bio, tel, email, photo } = this.form;
     // +33122469999
-    if (!prenom || !nom || !bio || !tel || !email || !photo) {
-      this.isSubmitting = false;
+    if (!prenom || !nom || !bio || !tel || !email) {
+      this.onError();
       return;
     }
-    const formData = this.getFormData(this.form);
 
-    console.log('category', category);
+    if (!photo) {
+      this.onError('Photo is required');
+      return;
+    }
+
+    const formData = this.getFormData(this.form);
 
     this.authService.updateProfile(formData).subscribe(
       (res) => {
