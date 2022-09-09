@@ -1,34 +1,49 @@
-.commande-container {
-  gap: 40px;
-  .commande {
-    background: rgb(43 118 163 / 15%);
-    border-radius: 10px;
-    padding: 14px 10px 14px 30px;
-    position: relative;
-    box-shadow: 0px 0px 10px #0000001a;
+.order {
+  background: rgb(43 118 163 / 15%);
+  border-radius: 10px;
+  padding: 25px 30px;
+  box-shadow: 0px 0px 10px #0000001a;
+  margin-bottom: 35px;
 
-    .commande-img {
-      text-align: center;
-      flex: 1;
+  &-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    h2 {
+      font: normal normal normal 18px/22px Fredoka;
+      color: #1376a3;
+      margin: 0 8px;
     }
-    .details {
-      flex: 1;
-      max-width: 500px;
-      .details-title {
-        margin-bottom: 13px;
-        img {
-          margin-right: 8px;
-        }
-      }
-    }
-    .item {
-      margin-bottom: 5px;
+  }
+
+  &-content {
+    align-items: center;
+
+    &-item {
+      margin-right: 64px;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
+      p {
+        font: normal normal normal 14px/17px Fredoka;
+        color: #3c4d5d;
+      }
+
       span {
         font-family: "FredokaMedium";
       }
-      .price {
+      &-price {
         font-family: "FredokaMedium";
+      }
+    }
+
+    &-end {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      img {
+        object-fit: contain;
+        object-position: center;
       }
     }
   }

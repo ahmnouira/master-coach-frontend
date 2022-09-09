@@ -6,25 +6,34 @@
     [isLoading]="isLoading"
     [title]="'command'"
   >
-    <div class="row">
-      <app-purchases-total
-        [products]="data.products"
-        *ngIf="data && data.products"
-      ></app-purchases-total>
-    </div>
+    <app-purchases-total
+      [products]="data.products"
+      [id]="id"
+      *ngIf="data && data.products"
+    ></app-purchases-total>
 
-    <div class="row gx-4 gx-lg-5" *ngIf="data && data.products">
-      <h1>Produits</h1>
+    <div *ngIf="data && data.products">
+      <h1 class="products">Produits</h1>
       <div *ngFor="let product of data.products; index as i">
-        <div class="col-4 col-xxl-3"></div>
+        <div class="row gx-4 gx-lg-5">
+          <div class="col-sm col-lg-4 col-xxl-3">
+            <app-user-card
+              *ngIf="product && product.user"
+              [user]="product.user"
+              [data]="product"
+              [rating]="true"
+              [page]="'view-service'"
+            ></app-user-card>
+          </div>
 
-        <div class="col-8 col-xxl-9">
-          <app-product-info
-            *ngIf="product"
-            [image]="product.image"
-            [type]="product.type"
-            [description]="product.description"
-          ></app-product-info>
+          <div class="col-sm col-lg-8 col-xxl-9">
+            <app-product-info
+              *ngIf="product"
+              [image]="product.image"
+              [type]="product.type"
+              [description]="product.description"
+            ></app-product-info>
+          </div>
         </div>
       </div>
     </div>

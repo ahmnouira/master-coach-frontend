@@ -1,24 +1,33 @@
-<div
-  class="commande-container d-flex flex-column"
-  [ngStyle]="{ 'margin-bottom': '40px' }"
->
-  <div class="commande d-flex align-items-center justify-content-between">
-    <div class="details">
-      <div class="details-title d-flex align-middle">
-        <img src="../../../../assets/icon/list.svg" />
-        <div class="blue-title">Détails commande</div>
-      </div>
-
+<div class="order">
+  <div class="order-header">
+    <img src="../../../../assets/icon/list.svg" />
+    <h2>{{ cart.title }}</h2>
+  </div>
+  <div class="order-content row">
+    <div class="col">
       <div *ngFor="let item of products; index as i">
-        <div class="item d-flex">
-          <div class="item-title">
-            <span>{{ item.type | titlecase }} </span>: {{ item.category }}
+        <div class="order-content-item">
+          <div class="order-content-item-title">
+            <p>
+              <span>{{ item.type | titlecase }} </span>: {{ item.category }}
+            </p>
           </div>
-          <div class="price">{{ item.price }} €</div>
+          <p class="order-content-item-price">{{ item.price }} €</p>
         </div>
-        <div class="commande-img">
-          <img src="../../../../assets/img/commande.png" />
-        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="order-content-end">
+        <app-button
+          [title]="'Télécharger votre facture'"
+          (click)="generatePDF()"
+          [disabled]="isLoading"
+        ></app-button>
+
+        <img
+          class="order-content-img"
+          src="../../../../assets/img/commande.png"
+        />
       </div>
     </div>
   </div>

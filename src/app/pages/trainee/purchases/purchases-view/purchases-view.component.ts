@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { Cart } from 'src/app/models/cart/cart.model';
