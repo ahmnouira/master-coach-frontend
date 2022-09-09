@@ -7,6 +7,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { DatableTableAction } from 'src/app/shared/datatable/action.model';
 import { DatableDisplayedColumn } from 'src/app/shared/datatable/datatable.model';
 import { PageHelper } from 'src/app/helpers/PageHelper';
+import { RouteService } from 'src/app/services/route-service/route.service';
 
 @Component({
   selector: 'app-rdv-list',
@@ -37,7 +38,7 @@ export class RdvListComponent extends PageHelper implements OnInit {
   heureFin: Date = new Date();
 
   constructor(
-    private router: Router,
+    private routeService: RouteService,
     private rdvService: RdvService,
     private tokenStorageService: TokenStorageService
   ) {
@@ -161,17 +162,14 @@ export class RdvListComponent extends PageHelper implements OnInit {
   }
 
   onActionClicked(element: any) {
-    console.log(element);
-    let data = {
-      session: element.item,
-    };
-
-    if (element.action == 'view') {
-      this.router.navigateByUrl('/pages/client/rdv/detail', {
-        state: { id: element.item },
-      });
-    } else if (element.action == 'delete') {
-      this.deleteSession(element.item);
+    const { action, item } = element;
+    switch (action) {
+      case 'view':
+        this.routeService.navigateByUrl(
+          `/pages/client/rdv/detail/${item._id}`,
+          { state: { id: item } }
+        );
+        break;
     }
   }
 

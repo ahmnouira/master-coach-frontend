@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
-import * as moment from 'moment';
-import { CountdownComponent } from 'ngx-countdown';
-import { Router } from '@angular/router';
-import { RdvService } from 'src/app/services/rdv-service/rdv.service';
+import moment from 'moment';
+import { CountdownComponent as NgxCountdownComponent } from 'ngx-countdown';
 
 const CountdownTimeUnits: Array<[string, number]> = [
   ['Y', 1000 * 60 * 60 * 24 * 365], // years
@@ -14,43 +11,37 @@ const CountdownTimeUnits: Array<[string, number]> = [
   ['s', 1000], // seconds
   ['S', 1], // million seconds
 ];
-@Component({
-  selector: 'app-rdv-detail',
-  templateUrl: './rdv-detail.component.html',
-  styleUrls: ['./rdv-detail.component.scss'],
-})
-export class RdvDetailComponent implements OnInit {
-  session: any = {};
-  coach: any = {};
-  config: any = {};
-  leftTime: any;
-  @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
 
-  constructor(private router: Router, private rdvService: RdvService) {}
+@Component({
+  selector: 'app-countdown',
+  templateUrl: './countdown.component.html',
+  styleUrls: ['./countdown.component.scss'],
+})
+export class CountdownComponent implements OnInit {
+  config: any;
+
+  session: any;
+
+  leftTime: any;
+  @ViewChild('cd', { static: false }) private countdown: NgxCountdownComponent;
+
+  constructor() {}
 
   ngOnInit(): void {
-    this.session = history.state?.id;
-
-    console.log('session', this.session);
-
-    this.coach = history.state?.id.coach;
-    this.coach.competances = this.coach.competance
-      .map((elem) => elem.name)
-      .join(' - ');
     this.session.dateString = moment(
       this.session.date.replace('00:00:00', this.session.time)
     ).format('DD/MM/YYYY');
     this.session.timeString = moment(
       this.session.date.replace('00:00:00', this.session.time)
     ).format('HH:mm');
+
     let moment1 = moment(
       this.session.date.replace('00:00:00', this.session.time)
     );
+
     let moment2 = moment(new Date());
     this.leftTime = moment1.diff(moment2, 'seconds');
-    console.log(moment1);
-    console.log(moment2);
-    console.log(this.leftTime);
+
     this.config = {
       leftTime: this.leftTime,
       formatDate: ({ date, formatStr }) => {
@@ -71,19 +62,5 @@ export class RdvDetailComponent implements OnInit {
         }, formatStr);
       },
     };
-  }
-
-  isTimeAndDay() {
-    let moment1 = moment(
-      this.session.date.replace('00:00:00', this.session.time)
-    );
-    let moment2 = moment(new Date());
-    return Math.abs(moment1.diff(moment2, 'minutes')) < 90;
-  }
-
-  joinVideo() {
-    this.router.navigate(['/pages/video'], {
-      queryParams: { rdv: this.session._id },
-    });
   }
 }
