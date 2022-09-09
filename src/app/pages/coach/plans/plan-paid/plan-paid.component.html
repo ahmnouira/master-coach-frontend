@@ -26,12 +26,12 @@
           {{ feature }}
         </p>
 
-        <a href="" onclick="history.back()">Back</a>
+        <a (click)="back()">Back</a>
       </div>
 
       <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
         {{ errorMessage }}
-        <a href="" onclick="history.back()">Back</a>
+        <a (click)="back()">Back</a>
       </div>
     </ng-template>
   </div>

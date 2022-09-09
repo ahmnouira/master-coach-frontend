@@ -36,6 +36,10 @@ export class CartPaidComponent implements OnInit, AfterViewInit {
     }
   }
 
+  back(): void {
+    this.routeService.back();
+  }
+
   ngAfterViewInit(): void {
     if (
       this.params['stripeToken'] &&
