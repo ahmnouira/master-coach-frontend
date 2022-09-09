@@ -1,0 +1,36 @@
+<app-sub-header [title]="'Paramètres'"></app-sub-header>
+
+<div class="row sub-component-content">
+  <div class="col-2 p-0"></div>
+
+  <div class="col-10">
+    <div *ngIf="isLoading; else elseBlock">
+      <div style="margin-top: 50px">
+        <app-loader></app-loader>
+      </div>
+    </div>
+
+    <ng-template #elseBlock>
+      <div class="container" *ngIf="success">
+        <h3 class="container-title">Thanks for your purchafes</h3>
+        <p class="container-text">
+          You have paid
+          <b class="container-price">{{ plan.price }}</b> from
+          <b class="container-price"> {{ plan.title }}</b> ----
+          <b class="container-price">{{ plan.type }}</b>
+          for the following features:
+        </p>
+        <p class="container-features" *ngFor="let feature of plan.features">
+          {{ feature }}
+        </p>
+
+        <a href="" onclick="history.back()">Back</a>
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{ error }}
+        <a href="" onclick="history.back()">Back</a>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -13,8 +13,6 @@ import {
 import {
   FREE_ANNUAL_PLAN_ID,
   FREE_MONTHLY_PLAN_ID,
-  PLANS_ANNUAL,
-  PLANS_MONTHLY,
 } from 'src/app/constants/plans';
 import { getPrice } from 'src/app/helpers/getPrice';
 import { Plan } from 'src/app/models/plan.model';

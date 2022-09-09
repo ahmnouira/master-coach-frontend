@@ -1,15 +1,8 @@
-import {
-  Component,
-  Inject,
-  Input,
-  OnInit,
-  Renderer2,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Inject, Input, OnInit, Renderer2 } from '@angular/core';
 
 import { DOCUMENT } from '@angular/common';
 import { environment } from 'src/environments/environment';
-import { Plan } from 'src/app/models/plan.model';
+import { IStripe } from 'src/app/interfaces/stripe.interface';
 
 @Component({
   selector: 'app-stripe-payment',
@@ -17,9 +10,13 @@ import { Plan } from 'src/app/models/plan.model';
   styleUrls: ['./stripe-payment.component.scss'],
 })
 export class StripePaymentComponent implements OnInit {
-  @Input() plan: Plan;
+  @Input() stripe: IStripe;
+
+  @Input() url: string = '';
 
   script: HTMLScriptElement;
+
+  redirectUrl: string;
 
   constructor(
     private renderer: Renderer2,
@@ -27,61 +24,46 @@ export class StripePaymentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initStripe();
+    console.log('Stripe', this.stripe);
+    this.initStripe(this.stripe);
+    this.redirectUrl = environment.APP_URL + this.url;
   }
 
-  initStripe() {
-    this.script = this.renderer.createElement('script') as HTMLScriptElement;
+  initStripe(stripe: IStripe) {
+    if (stripe.render) {
+      return;
+    }
+    const scriptScript = this.document.getElementById(
+      `stripe-script-${stripe.id}`
+    );
+    if (scriptScript) {
+      scriptScript.remove();
+    }
+
+    let script = this.renderer.createElement('script') as HTMLScriptElement;
     // v2
     // script.src = "https://checkout.stripe.com/v2/checkout.js"
-    this.script.src = 'https://checkout.stripe.com/checkout.js';
-    this.script.id = 'stripe-script';
-    this.script.type = 'application/javascript';
+    script.src = 'https://checkout.stripe.com/checkout.js';
+    script.id = `stripe-script-${stripe.id}`;
+    script.type = 'application/javascript';
 
-    this.renderer.addClass(this.script, 'stripe-button');
+    this.renderer.addClass(script, 'stripe-button');
     this.renderer.setAttribute(
-      this.script,
+      script,
       'data-key',
       environment.STRIPE_PUBLISHABLE_KEY
     );
-    const price = this.plan && this.plan.price ? this.plan.price : '';
-    const title = this.plan && this.plan.title ? this.plan.title : '';
 
-    console.log('initStripe Runs with', price);
+    this.renderer.setAttribute(script, 'data-amount', stripe.price.toString());
+    this.renderer.setAttribute(script, 'data-name', environment.APP_NAME);
+    this.renderer.setAttribute(script, 'data-description', stripe.title);
+    this.renderer.setAttribute(script, 'data-email', stripe.email);
 
-    this.renderer.setAttribute(this.script, 'data-amount', price);
-    this.renderer.setAttribute(this.script, 'data-name', environment.APP_NAME);
-    this.renderer.setAttribute(this.script, 'data-description', title);
-    this.renderer.setAttribute(this.script, 'data-locale', 'auto');
-    this.renderer.appendChild(
-      this.document.getElementById('stripeForm'),
-      this.script
-    );
-
-    setTimeout(() => {
-      const button = this.document.getElementsByClassName(
-        'stripe-button-el'
-      )[0] as HTMLButtonElement;
-      button.style.display = 'none';
-    }, 500);
+    this.renderer.setAttribute(script, 'data-locale', 'auto');
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('ngOnChanges');
-
-    if (this.script) {
-      const el = this.document.getElementById(
-        'stripe-script'
-      ) as HTMLScriptElement;
-      if (el) {
-        el.remove();
-        console.info('script removed');
-      }
-      setTimeout(() => {
-        this.initStripe();
-      }, 1000);
-    }
-
-    /// this.initStripe();
+  onSubmit($event) {
+    console.log('onSubmit');
+    $event.preventDefault();
   }
 }
