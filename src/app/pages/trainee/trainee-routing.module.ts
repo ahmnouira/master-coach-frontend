@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FindCoachComponent } from './find-coach/find-coach.component';
 import { AnswerQuizComponent } from './client-quiz/answer-quiz/answer-quiz.component';
-import { DetailCoachComponent } from './detail-coach/detail-coach.component';
 import { FormationDetailComponent } from './formation-detail/formation-detail.component';
 import { RdvListComponent } from './rdv-list/rdv-list.component';
 import { RdvReservationComponent } from './rdv-reservation/rdv-reservation.component';
@@ -18,11 +16,22 @@ const routes: Routes = [
       ),
   },
 
+
+
   {
     path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then(
         (module) => module.DashboardModule
+      ),
+  },
+
+
+  {
+    path: 'coach-list',
+    loadChildren: () =>
+      import('./client-coach/client-coach.module').then(
+        (module) => module.ClientCoachModule
       ),
   },
 
@@ -42,8 +51,6 @@ const routes: Routes = [
       ),
   },
 
-  { path: 'coach-list', component: FindCoachComponent },
-  { path: 'coach-detail', component: DetailCoachComponent },
   { path: 'docs/quiz/play', component: AnswerQuizComponent },
   { path: 'rdv/list', component: RdvListComponent },
   { path: 'rdv/detail-formation', component: FormationDetailComponent },
