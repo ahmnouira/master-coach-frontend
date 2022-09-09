@@ -6,7 +6,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AdminModule } from './admin/admin.module';
 import { CoachModule } from './coach/coach.module';
 import { TraineeModule } from './trainee/trainee.module';
-import { PreviewComponent } from './preview/preview.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { RdvDetailCommonComponent } from './rdv-detail-common/rdv-detail-common.component';
@@ -19,11 +18,10 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     PagesComponent,
     SidebarComponent,
-    PreviewComponent,
     RdvDetailCommonComponent,
     UserProfileComponent,
   ],
-  exports: [SidebarComponent, PreviewComponent, RdvDetailCommonComponent],
+  exports: [SidebarComponent, RdvDetailCommonComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

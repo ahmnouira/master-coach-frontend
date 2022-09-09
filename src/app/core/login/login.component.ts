@@ -48,8 +48,6 @@ export class LoginComponent implements OnInit {
   async login() {
     const { email, password } = this.form;
 
-    console.log('form', this.form);
-
     if (!email || !password) return;
 
     this.isLoading = true;
@@ -65,15 +63,18 @@ export class LoginComponent implements OnInit {
                 this.onError(userRes.error);
                 return;
               }
-              this.tokenStorage.saveUser(userRes.data);
-              this.authService.currentUser$.next(userRes.data);
+
+              const user = userRes.data;
+              this.tokenStorage.saveUser(user);
+              this.authService.currentUser$.next(user);
+
               this.onSuccess();
 
               if (authData.role.toLowerCase() === 'admin') {
                 this.routeService.navigateByUrl('/pages/admin/users/list');
               } else {
                 this.routeService.navigateByUrl(
-                  '/pages/' + authData.role.toLowerCase() + '/parametre'
+                  '/pages/' + authData.role.toLowerCase() + '/settings'
                 );
               }
             },

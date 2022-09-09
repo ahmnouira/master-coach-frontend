@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TraineeRoutingModule } from './trainee-routing.module';
 import { ComponentsModule } from '../components/components.module';
-import { ParametresComponent } from './parametres/parametres.component';
 import { FormsModule } from '@angular/forms';
 import { FindCoachComponent } from './find-coach/find-coach.component';
 import { MesDocQuizComponent } from './client-quiz/mes-doc-quiz/mes-doc-quiz.component';
@@ -21,7 +20,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
-    ParametresComponent,
     FindCoachComponent,
     MesDocQuizComponent,
     AnswerQuizComponent,

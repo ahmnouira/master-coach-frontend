@@ -6,12 +6,12 @@ import { FormHelper } from 'src/app/helpers/FormHelper';
 import { Animations } from 'src/app/shared/animations';
 
 @Component({
-  selector: 'app-parametres',
-  templateUrl: './parametres.component.html',
-  styleUrls: ['./parametres.component.scss'],
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss'],
   animations: Animations,
 })
-export class ParametresComponent extends FormHelper implements OnInit {
+export class SettingsComponent extends FormHelper implements OnInit {
   form: Partial<IClient> = {};
 
   categories: any = [];
@@ -22,7 +22,7 @@ export class ParametresComponent extends FormHelper implements OnInit {
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
     super();
   }

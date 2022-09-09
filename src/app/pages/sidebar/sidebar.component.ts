@@ -12,45 +12,39 @@ import { SidebarItem } from 'src/app/types/sidebar-item.type';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  isLoggedIn = false;
-  role: string;
-  form: any = {};
-  isLoading: boolean = true;
+  role: UserRole;
 
-  sidebarItems: SidebarItem[] = [];
+  sidebarItems: SidebarItem[];
 
   constructor(
     private route: RouteService,
-    private tokenStorageService: TokenStorageService
-  ) {
-    this.isLoading = true;
-    let token = this.tokenStorageService.getToken();
-    const role = this.getRole();
+    private tokenStorageService: TokenStorageService,
+    private authService: AuthService
+  ) {}
 
-    setTimeout(() => {
-      if (token) {
-        const expired = this.tokenExpired(token);
-        if (expired) {
-          this.route.navigate(['/core/login']);
-        }
-        if (role) {
-          if (role === UserRole.Coach) this.sidebarItems = COACH_SIDEBAR;
-          else if (role === UserRole.Client) this.sidebarItems = CLIENT_SIDEBAR;
-          this.role = role.toLowerCase();
-          this.isLoading = false;
-        }
-      } else {
-        this.isLoading = true;
-        this.route.navigate(['/']);
-      }
-    }, 100);
+  ngOnInit(): void {
+    this.authService.currentUser$.subscribe((user) => {
+      this.role = user.role;
+      this.getSidebarItems(user.role);
+    });
   }
 
-  ngOnInit(): void {}
+  getSidebarItems(role: UserRole) {
+    switch (role) {
+      case UserRole.Client:
+        this.sidebarItems = CLIENT_SIDEBAR;
+        break;
+      case UserRole.Coach:
+        this.sidebarItems = COACH_SIDEBAR;
+        break;
+      default:
+        break;
+    }
+  }
 
   logout() {
-    this.tokenStorageService.signOut();
-    this.route.navigate(['/login']);
+    this.tokenStorageService.logout();
+    window.location.reload(); // required
   }
 
   getUrl() {
@@ -58,15 +52,12 @@ export class SidebarComponent implements OnInit {
   }
 
   getPath() {
-    return `/pages/${this.role}/parametre`;
+    if (!this.role) return '#';
+    return `/pages/${this.role.toLowerCase()}/settings`;
   }
 
   goToProfile() {
     this.route.navigateByUrl(this.getPath());
-  }
-
-  private getRole() {
-    return this.tokenStorageService.getUser()?.role as UserRole;
   }
 
   private tokenExpired(token: string): boolean {

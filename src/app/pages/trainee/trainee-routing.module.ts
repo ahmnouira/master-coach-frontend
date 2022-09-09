@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ParametresComponent } from './parametres/parametres.component';
 import { FindCoachComponent } from './find-coach/find-coach.component';
 import { MesDocQuizComponent } from './client-quiz/mes-doc-quiz/mes-doc-quiz.component';
 import { AnswerQuizComponent } from './client-quiz/answer-quiz/answer-quiz.component';
@@ -12,9 +11,13 @@ import { RdvPayComponent } from './rdv-pay/rdv-pay.component';
 import { RdvDetailComponent } from './rdv-detail/rdv-detail.component';
 
 const routes: Routes = [
-
-  { path: 'parametre', component: ParametresComponent },
-
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('./settings/settings.module').then(
+        (module) => module.SettingsModule
+      ),
+  },
 
   {
     path: 'dashboard',

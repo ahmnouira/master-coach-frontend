@@ -1,4 +1,4 @@
-<nav id="sidebar" class="d-none d-md-block" *ngIf="!isLoading">
+<nav id="sidebar" class="d-none d-md-block">
   <div class="sidebar-header mb-5">
     <img
       [routerLink]="getPath()"
@@ -7,7 +7,7 @@
     />
   </div>
 
-  <ul *ngIf="role === 'admin'" class="list-unstyled components">
+  <ul *ngIf="role === 'Admin'" class="list-unstyled components">
     <li
       [routerLinkActive]="['active']"
       [routerLinkActiveOptions]="{ exact: false }"
@@ -45,10 +45,7 @@
       </a>
     </li>
   </ul>
-  <ul
-    *ngIf="role === 'coach' || role === 'client'"
-    class="list-unstyled components"
-  >
+  <ul class="list-unstyled components">
     <app-sidebar-item
       *ngFor="let item of sidebarItems"
       [item]="item"
@@ -56,7 +53,7 @@
   </ul>
 
   <ul class="list-unstyled">
-    <li [class.active]="getUrl().includes('/parametre')">
+    <li [class.active]="getUrl().includes('/settings')">
       <a (click)="goToProfile()">
         <img src="assets/img/common/settings.svg" />
         <span>Paramètres</span></a
@@ -70,7 +67,7 @@
       >
     </li>
   </ul>
-  <div *ngIf="role === 'client'" class="nav_img">
+  <div *ngIf="role === 'Client'" class="nav_img">
     <img src="assets/img/menu-img.png" />
   </div>
 </nav>

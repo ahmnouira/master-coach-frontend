@@ -1,10 +1,11 @@
 <div class="d-flex justify-content-end" *ngIf="variant === 'submit'">
   <button
     type="{{ type }}"
-    class="btn btn-primary submit-btn"
+    class="btn btn-primary"
     (click)="handleClick($event)"
     [disabled]="disabled"
     style="height: 50px"
+    [ngStyle]="{ width: fullWith && '100%' }"
   >
     <span *ngIf="!isLoading">{{ title }}</span>
     <app-loader *ngIf="isLoading"></app-loader>

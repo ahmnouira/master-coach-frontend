@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { IUser } from 'src/app/interfaces/user-interface';
@@ -21,21 +21,23 @@ export class LibraryViewComponent
 
   isSubmitting: boolean;
 
-  orderExist: boolean
+  orderExist: boolean;
+  freeOrder: boolean
 
-  isIndiv: boolean;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService, 
-    private orderService: OrderService 
+    private productService: ProductService,
+    private orderService: OrderService
   ) {
     super();
   }
+  
 
   ngOnInit(): void {
     this.getId();
     this.getProduct();
-    this.orderExist = this.orderService.exist(this.id)
+    this.orderExist = this.orderService.exist(this.id);
+
   }
 
   getId() {
@@ -45,18 +47,16 @@ export class LibraryViewComponent
   }
 
   getProduct() {
-    this.getData(this.productService.getProduct(this.id), {
-      debug: true,
-    });
+    this.getData(this.productService.getProduct(this.id));
   }
 
   addToCart() {
-    this.isSubmitting = true
-    const exist = this.orderService.exist(this.data._id)
-    if(!exist) {
-      this.orderService.addOrderToStorage(this.data)
-      this.orderExist = true
+    this.isSubmitting = true;
+    const exist = this.orderService.exist(this.data._id);
+    if (!exist) {
+      this.orderService.addOrderToStorage(this.data);
+      this.orderExist = true;
     }
-    this.isSubmitting = false
+    this.isSubmitting = false;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cart-card',
@@ -6,7 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-card.component.scss'],
 })
 export class CartCardComponent implements OnInit {
+  @Input() order: any;
+
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  handleDelete() {
+    this.onDelete.emit(this.order._id);
+  }
 }

@@ -3,11 +3,23 @@
 <app-page-wrapper>
   <app-page-list-wrapper
     [error]="error"
-    [found]="found"
+    [found]="hasItems()"
     [isLoading]="isLoading"
-    [title]="'documents'"
+    [title]="'orders'"
   >
-  </app-page-list-wrapper>
+    <div>
+      <div *ngFor="let order of data; index as i; trackBy: trackById">
+        <app-cart-card
+          [order]="order"
+          (onDelete)="handleDelete($event)"
+        ></app-cart-card>
+      </div>
 
-  <app-cart-card></app-cart-card>
+      <app-button
+        [title]="'Procéder au paiement'"
+        (onClick)="submit()"
+        [isLoading]="isSubmitting"
+      ></app-button>
+    </div>
+  </app-page-list-wrapper>
 </app-page-wrapper>

@@ -24,7 +24,7 @@ export class AvatarComponent implements OnInit {
   }
 
   handleClick() {
-    this.routeService.navigate([`/pages/${this.role.toLowerCase()}/parametre`]);
+    this.routeService.navigate([`/pages/${this.role.toLowerCase()}/settings`]);
   }
   getUserPicture() {
     if (this.photo) {

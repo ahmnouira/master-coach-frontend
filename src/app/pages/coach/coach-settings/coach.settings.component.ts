@@ -8,12 +8,12 @@ import { FormHelper } from 'src/app/helpers/FormHelper';
 import { Animations } from 'src/app/shared/animations';
 
 @Component({
-  selector: 'app-parametres',
-  templateUrl: './parametres.component.html',
-  styleUrls: ['./parametres.component.scss'],
+  selector: 'app-coach-settings',
+  templateUrl: './coach-settings.component.html',
+  styleUrls: ['./coach-settings.component.scss'],
   animations: Animations,
 })
-export class ParametresComponent extends FormHelper implements OnInit {
+export class CoachSettingsComponent extends FormHelper implements OnInit {
   form: Partial<IUser> = {};
 
   categories: any = [];
