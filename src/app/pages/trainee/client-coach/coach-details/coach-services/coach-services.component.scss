@@ -1,0 +1,220 @@
+.sub-component-content .col-9:first-child {
+    margin-top: 50px;
+  }
+  .sub-component-content .col-9:nth-child(2) {
+    margin-top: 10px;
+  }
+  .sub-component-content {
+    margin: 50px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .coach-banner {
+    height: 110px;
+    /* UI Properties */
+    background: #1376a3 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #0000001a;
+    border-radius: 10px;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    .coach-img {
+      right: 40px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      position: relative;
+      border-left: 3px solid transparent;
+      border-top: 3px solid #1376a3;
+      border-right: 3px solid #1376a3;
+      border-bottom: 3px solid #1376a3;
+    }
+    .coach-name {
+      color: white;
+      font: normal normal normal 14px/22px Fredoka;
+      letter-spacing: 0px;
+      margin: 5px 0;
+    }
+    .rating {
+      display: flex;
+      width: 20%;
+      justify-content: space-between;
+      margin: 5px 0;
+      gap: 5px;
+  
+      img {
+        width: 12px;
+        height: 12px;
+        position: unset;
+        top: unset;
+        left: unset;
+      }
+    }
+    .coach-badge {
+      color: white;
+      border: 1px solid white;
+      font: normal normal normal 11px/15px Fredoka;
+      padding: 2px 10px;
+      border-radius: 5px;
+      margin: 5px 0;
+      max-width: fit-content;
+    }
+    .btn-rdv {
+      font: normal normal normal 14px/17px Fredoka;
+      letter-spacing: 0px;
+      color: #1376a3;
+      background-color: #ffffff;
+      border-radius: 20px;
+      height: 40px;
+      padding: 10px 20px;
+      border: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+  
+  .coach-comps {
+    font: normal normal normal 18px/22px Fredoka;
+    letter-spacing: 0px;
+    color: #1376a3;
+    font-weight: bold;
+  }
+  
+  .coach-desc {
+    text-align: left;
+    font: normal normal normal 14px/20px Fredoka;
+    letter-spacing: 0px;
+    color: #3c4d5d;
+  }
+  .bloc-comp-accr {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #0000001a;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  
+  .elem {
+    box-shadow: 0px 0px 10px #0000001a;
+    border: 1px solid #3c4d5d;
+    font: normal normal normal 14px/20px Fredoka;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #3c4d5d;
+    margin-right: 10px;
+    max-width: fit-content;
+  }
+  .elem-lab {
+    font: normal normal normal 14px/17px Fredoka;
+    letter-spacing: 0px;
+    color: #1376a3;
+  }
+  
+  .elem-group {
+    margin: 10px 1px;
+  }
+  .cards-container {
+    display: flex;
+    overflow-x: scroll;
+    flex-flow: row nowrap;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    cursor: pointer;
+    .card {
+      max-width: 340px;
+      height: 200px !important;
+      border-radius: 10px;
+      background: white;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      transition: 0.25s ease-out;
+      box-shadow: 0px 0px 10px #0000001a;
+      border: 0;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .card img {
+      -o-object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+  
+      border-radius: 10px;
+    }
+    .card .bottom-info {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-radius: 0px 0px 10px 10px;
+    }
+    .card .bottom-info .partial-info {
+      background: linear-gradient(
+        to top,
+        rgba(221, 242, 250, 1),
+        rgba(221, 242, 250, 0.8)
+      );
+      min-width: 100%;
+      height: 62px;
+      padding-right: 30px;
+      bottom: 0;
+      left: 0;
+      z-index: 99999999;
+      position: relative;
+      border-radius: 0px 0px 10px 10px;
+      .coach-name {
+        font: normal normal normal 20px/22px Fredoka;
+        left: 20px;
+        font-weight: bold;
+        position: relative;
+        top: 10px;
+      }
+      .coach-skills {
+        font: normal normal normal 18px/15px Fredoka;
+        left: 20px;
+        position: relative;
+        top: 10px;
+      }
+    }
+    .card .bottom-info .title-rating {
+      background: transparent url("/assets/img/common/Rectangle%20547.svg") 0% 0%
+        no-repeat padding-box;
+      opacity: 1;
+      width: 100%;
+      height: 100px;
+      background-size: cover;
+      position: relative;
+      .rating {
+        display: flex;
+        width: 33%;
+        justify-content: space-evenly;
+        left: 20px;
+        top: 50px;
+        position: absolute;
+        img {
+          width: 12px;
+          height: 12px;
+          position: unset;
+          top: unset;
+          left: unset;
+        }
+      }
+      span {
+        background-color: #3c4d5d;
+        border: 1px white;
+        color: white;
+        left: 20px;
+        position: relative;
+        top: 70px;
+        font: normal normal normal 12px/15px Fredoka;
+      }
+    }
+  }
+  
+  .cards-container::-webkit-scrollbar {
+    display: none;
+  }
+  

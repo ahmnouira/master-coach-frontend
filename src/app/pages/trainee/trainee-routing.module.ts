@@ -6,6 +6,8 @@ import { RdvListComponent } from './rdv-list/rdv-list.component';
 import { RdvReservationComponent } from './rdv-reservation/rdv-reservation.component';
 import { RdvPayComponent } from './rdv-pay/rdv-pay.component';
 import { RdvDetailComponent } from './rdv-detail/rdv-detail.component';
+import { FindCoachComponent } from './find-coach/find-coach.component';
+import { DetailCoachComponent } from './detail-coach/detail-coach.component';
 
 const routes: Routes = [
   {
@@ -16,8 +18,6 @@ const routes: Routes = [
       ),
   },
 
-
-
   {
     path: 'dashboard',
     loadChildren: () =>
@@ -26,14 +26,17 @@ const routes: Routes = [
       ),
   },
 
-
   {
-    path: 'coach-list',
+    path: 'coaches',
     loadChildren: () =>
       import('./client-coach/client-coach.module').then(
         (module) => module.ClientCoachModule
       ),
   },
+
+  { path: 'coach-list', component: FindCoachComponent },
+
+  { path: 'coach-detail', component: DetailCoachComponent },
 
   {
     path: 'documents',
@@ -50,6 +53,8 @@ const routes: Routes = [
         (module) => module.PurchasesModule
       ),
   },
+
+
 
   { path: 'docs/quiz/play', component: AnswerQuizComponent },
   { path: 'rdv/list', component: RdvListComponent },

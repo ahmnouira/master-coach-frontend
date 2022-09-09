@@ -54,7 +54,7 @@ export const CLIENT_SIDEBAR: SidebarItem[] = [
   },
   {
     icon: 'assets/img/common/edit.svg',
-    route: '/pages/client/coach-list',
+    route: '/pages/client/coaches',
     title: 'Trouver un coach',
   },
   {

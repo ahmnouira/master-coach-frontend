@@ -4,24 +4,24 @@ import { User } from 'src/app/models/user-model';
 @Component({
   selector: 'app-coach-card',
   templateUrl: './coach-card.component.html',
-  styleUrls: ['./coach-card.component.scss']
+  styleUrls: ['./coach-card.component.scss'],
 })
 export class CoachCardComponent implements OnInit {
+  @Input() coach: User;
 
-  @Input() coach: User
+  path: string 
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+     this.path = '/pages/client/coaches/details/' + this.coach._id  
   }
-
 
   renderSkills() {
-    if(this.coach.category) {
-      console.log('category', this.coach.category)
-        // return this.coach.category.join('-')
+    if (this.coach.category) {
+      console.log('category', this.coach.category);
+      // return this.coach.category.join('-')
     }
-    return ''
+    return '';
   }
-
 }
