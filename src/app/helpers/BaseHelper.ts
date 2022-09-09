@@ -28,10 +28,12 @@ export class BaseHelper {
     this.isLoading = false;
   }
 
-  protected onSuccess(cb?: Function) {
+  protected onSuccess(cb?: Function, keepLoading?: boolean) {
     this.success = true;
     this.error = '';
-    this.isLoading = false;
+    if (!keepLoading) {
+      this.isLoading = false;
+    }
     setTimeout(() => {
       this.success = false;
       if (cb) cb();

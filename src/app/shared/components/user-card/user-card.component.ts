@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FileHelper } from 'src/app/helpers/FileHelper';
+import { UserHelper } from 'src/app/helpers/UserHelper';
 import { Product } from 'src/app/models/product/product.model';
 import { Service } from 'src/app/models/service/service.model';
 import { User } from 'src/app/models/user-model';
@@ -9,8 +9,8 @@ import { User } from 'src/app/models/user-model';
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.scss'],
 })
-export class UserCardComponent implements OnInit {
-  @Input() user: User;
+export class UserCardComponent extends UserHelper implements OnInit {
+  @Input() override user: User;
 
   @Input() data: any;
 
@@ -20,12 +20,13 @@ export class UserCardComponent implements OnInit {
 
   equip: string;
   price: string;
-  photo: string;
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {
-    this.getPhoto();
+    this.init(this.user);
 
     if (this.page === 'view-product') {
       const data = this.data as Product;
@@ -34,33 +35,6 @@ export class UserCardComponent implements OnInit {
     if (this.page === 'view-service') {
       const data = this.data as Service;
       this.getCategory(data.category);
-    }
-  }
-
-  getCompetences(): string {
-    const array = this.getExpertise('category');
-    if (!array.length) {
-      return '';
-    }
-    return array.join(' - ');
-  }
-
-  getExpertise(name: 'category' | 'accreditation' | 'competance'): string[] {
-    if (!Array.isArray(this.user[name])) {
-      return [];
-    }
-    try {
-      const parsedArray = JSON.parse(this.user[name].toString()) as any[];
-
-      return parsedArray.map((el) => el.name);
-    } catch (error) {
-      return [];
-    }
-  }
-
-  getPhoto() {
-    if (this.user && this.user.photo) {
-      this.photo = FileHelper.getUrl(this.user.photo);
     }
   }
 

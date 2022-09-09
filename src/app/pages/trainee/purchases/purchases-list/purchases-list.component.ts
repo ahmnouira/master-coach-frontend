@@ -67,6 +67,9 @@ export class PurchasesListComponent extends PageHelper implements OnInit {
     const { action, item } = element;
     switch (action) {
       case 'view':
+        this.routerService.navigate([
+          `/pages/client/purchases/view/${item._id}`,
+        ]);
         break;
 
       case 'download':

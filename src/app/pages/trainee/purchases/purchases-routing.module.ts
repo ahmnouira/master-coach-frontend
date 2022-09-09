@@ -5,9 +5,11 @@ import { LoadingCardModule } from 'src/app/shared/loading-card/loading-card.modu
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ComponentsModule } from '../../components/components.module';
 import { PurchasesListComponent } from './purchases-list/purchases-list.component';
+import { PurchasesViewComponent } from './purchases-view/purchases-view.component';
 
 const routes: Routes = [
   { path: '', component: PurchasesListComponent },
+  { path: 'view/:id', component: PurchasesViewComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

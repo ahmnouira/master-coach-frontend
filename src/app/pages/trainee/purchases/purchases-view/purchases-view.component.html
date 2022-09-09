@@ -1,0 +1,41 @@
+<app-sub-header [title]="'Détail command'" [subTitle]="'BACK'"></app-sub-header>
+<app-page-wrapper>
+  <app-page-list-wrapper
+    [error]="error"
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'command'"
+  >
+    <app-purchases-total
+      [products]="data.products"
+      [id]="id"
+      *ngIf="data && data.products"
+    ></app-purchases-total>
+
+    <div *ngIf="data && data.products">
+      <h1 class="products">Produits</h1>
+      <div *ngFor="let product of data.products; index as i">
+        <div class="row gx-4 gx-lg-5">
+          <div class="col-sm col-lg-4 col-xxl-3">
+            <app-user-card
+              *ngIf="product && product.user"
+              [user]="product.user"
+              [data]="product"
+              [rating]="true"
+              [page]="'view-service'"
+            ></app-user-card>
+          </div>
+
+          <div class="col-sm col-lg-8 col-xxl-9">
+            <app-product-info
+              *ngIf="product"
+              [image]="product.image"
+              [type]="product.type"
+              [description]="product.description"
+            ></app-product-info>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>
