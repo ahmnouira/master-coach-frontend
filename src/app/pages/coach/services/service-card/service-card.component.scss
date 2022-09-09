@@ -1,10 +1,10 @@
 .service-card {
-  min-height: 230px;
   border-radius: 10px;
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: 30px;
   box-shadow: 0px 0px 10px #0000001a;
+  transition: 0.25s ease-out;
   padding: 16px;
   cursor: pointer;
 

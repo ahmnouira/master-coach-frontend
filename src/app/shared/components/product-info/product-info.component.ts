@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FileHelper } from 'src/app/helpers/FileHelper';
-import { IProduct } from 'src/app/interfaces/product.interface';
 import { ProductType } from 'src/app/models/product/product-type.enum';
 
 @Component({
@@ -9,32 +8,31 @@ import { ProductType } from 'src/app/models/product/product-type.enum';
   styleUrls: ['./product-info.component.scss'],
 })
 export class ProductInfoComponent implements OnInit {
-  @Input() product: IProduct;
+  @Input() image: any;
+  @Input() type: ProductType;
+  @Input() description: string;
 
   backgroundImage: string;
 
+  isVideo: boolean;
 
-  isVideo :boolean
-
-  isAudio: boolean
-
-  
+  isAudio: boolean;
 
   constructor() {}
 
   ngOnInit(): void {
     this.getBackgroundImage();
-    this.getProductType()
+    this.getProductType();
   }
 
   getProductType() {
-    this.isVideo = this.product.type === ProductType.VIDEO
+    this.isVideo = this.type === ProductType.VIDEO;
   }
 
   getBackgroundImage() {
-    if (typeof this.product.image == 'string') {
-      this.backgroundImage = `linear-gradient(180deg, #FEEFEA00 0%, #FEEFEA 100%), url(${FileHelper.getUrl(
-        this.product.image
+    if (typeof this.image == 'string') {
+      this.backgroundImage = `linear-gradient(180deg, #DDF2FA00 0%, #DDF2FA 100%), url(${FileHelper.getUrl(
+        this.image
       )})`;
     }
   }

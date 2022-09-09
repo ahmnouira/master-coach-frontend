@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ProfilAdminComponent } from './profil-admin/profil-admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ComponentsModule } from '../components/components.module';
-import { ParametresComponent } from './parametres/parametres.component';
 import { UsersListComponent } from './user-management/users-list/users-list.component';
 import { UsersAddComponent } from './user-management/users-add/users-add.component';
 import { UsersEditComponent } from './user-management/users-edit/users-edit.component';
@@ -23,11 +22,11 @@ import { CategoryEditComponent } from './category-management/category-edit/categ
 import { ListFormCategoryComponent } from './form-category-management/list-form-category/list-form-category.component';
 import { AddFormCategoryComponent } from './form-category-management/add-form-category/add-form-category.component';
 import { EditFormCategoryComponent } from './form-category-management/edit-form-category/edit-form-category.component';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [
     ProfilAdminComponent,
-    ParametresComponent,
     UsersListComponent,
     UsersAddComponent,
     UsersEditComponent,
@@ -51,6 +50,7 @@ import { EditFormCategoryComponent } from './form-category-management/edit-form-
     LoadingCardModule,
     DatatableModule,
     FormsModule,
+    SettingsModule,
     AngularMultiSelectModule,
   ],
 })

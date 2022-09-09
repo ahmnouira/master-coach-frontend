@@ -30,84 +30,9 @@
         <span class="d-none d-lg-inline-block">Lien de réservation</span>
       </a>
       <input class="search" type="text" placeholder="Recherche..." />
-      <div class="btn-group" dropdown placement="bottom left">
-        <a
-          id="button-basic"
-          dropdownToggle
-          type="button"
-          class="notif-link"
-          aria-controls="dropdown-basic"
-        >
-          <img
-            src="assets/img/common/notification%20(4).svg"
-            style="left: 6px; top: 5px; position: relative"
-            [ngClass]="
-              unreadUserNotifications.length != 0
-                ? 'animate__animated animate__swing animate__delay-3s animate__infinite'
-                : ''
-            "
-          />
-          <sup
-            ><span
-              *ngIf="unreadUserNotifications.length < 100"
-              class="badge ml-2"
-              [ngClass]="
-                unreadUserNotifications.length == 0 ? 'bg-success' : 'bg-danger'
-              "
-              style="border-radius: 50%"
-              >{{ unreadUserNotifications.length }}</span
-            ></sup
-          >
-          <sup
-            ><span
-              *ngIf="unreadUserNotifications.length >= 100"
-              class="badge ml-2"
-              [ngClass]="
-                unreadUserNotifications.length == 0 ? 'bg-success' : 'bg-danger'
-              "
-              style="border-radius: 50%"
-              >:)</span
-            ></sup
-          >
-        </a>
-        <ul
-          id="dropdown-basic"
-          *dropdownMenu
-          class="dropdown-menu"
-          role="menu"
-          aria-labelledby="button-basic"
-        >
-          <diV *ngIf="userNotifications.length > 0">
-            <li role="menuitem" *ngFor="let notif of userNotifications">
-              <a class="dropdown-item d-flex" (click)="markOneAsRead(notif)">
-                <div style="margin-right: 20px">
-                  <span class="notif-message">{{ notif.message }}</span
-                  ><br />
-                  <span class="notif-date">{{ notif.date }}</span>
-                </div>
-                <div
-                  class="d-flex"
-                  style="width: 10px; align-items: center"
-                  *ngIf="!notif.read"
-                >
-                  <span class="unread-dot"></span>
-                </div>
-              </a>
-            </li>
-            <li class="divider dropdown-divider"></li>
-            <li role="menuitem">
-              <a class="dropdown-item" (click)="markAllAsRead()"
-                >Marquer tout comme lu</a
-              >
-            </li>
-          </diV>
-          <diV *ngIf="userNotifications.length == 0">
-            <li role="menuitem">
-              <a class="dropdown-item">Vous n'avez pas de notifications</a>
-            </li>
-          </diV>
-        </ul>
-      </div>
+      <app-order-item *ngIf="user.role === 'Client'"></app-order-item>
+
+      <app-notification-item></app-notification-item>
 
       <app-avatar [photo]="user.photo" [role]="user.role" [title]="user.email">
       </app-avatar>

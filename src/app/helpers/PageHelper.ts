@@ -6,6 +6,7 @@ interface GetDataOptions {
   onSuccess?: Function;
   debug?: boolean;
   format?: Format;
+  keepLoading?: boolean;
 }
 type Format = 'json' | 'txt';
 
@@ -34,13 +35,14 @@ export class PageHelper<T = any> extends BaseHelper {
     method: Observable<any>,
     options: GetDataOptions = {
       debug: false,
+      keepLoading: false,
       format: 'json',
     }
   ) {
     return method.pipe().subscribe(
       (res) => {
         this.handleSeverResponse(res);
-        this.onSuccess(options.onSuccess);
+        this.onSuccess(options.onSuccess, options.keepLoading);
         if (options.debug) {
           this.info(options.format);
         }

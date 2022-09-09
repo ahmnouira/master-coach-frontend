@@ -15,7 +15,6 @@ const routes: Routes = [
     path: 'create-user/:type',
     component: CreateUserComponent,
   },
-
   {
     path: 'reset-password',
     loadChildren: () =>
@@ -46,9 +45,16 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    RouterModule.forChild(routes),
+
+    /*
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
+      useHash: true,
+      enableTracing: true,
+      urlUpdateStrategy: 'eager',
     }),
+  */
   ],
   exports: [RouterModule],
 })

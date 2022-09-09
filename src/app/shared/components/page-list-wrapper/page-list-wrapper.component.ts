@@ -16,6 +16,8 @@ export class PageListWrapperComponent implements OnInit {
 
   @Input() title: string;
 
+  @Input() animated: boolean = true;
+
   constructor() {}
 
   ngOnInit(): void {}

@@ -15,6 +15,11 @@ export const PLANS_MONTHLY: Plan[] = [
       'Référencement de votre profil avec un rayonnment optimal',
       'Messagerie sécurisée',
       'Synchronisation automatique de vos agendas et prise de rendez-vous',
+      'Factures automatiques',
+      'Gestion de la ralation client',
+      'Jusqu`s a 3 fromulaires de suivi',
+      'Jusqu`s a 50H de vidéconférence mensuelles',
+      'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
     type: PlanType.Monthly,
   },
@@ -84,6 +89,11 @@ export const PLANS_ANNUAL: Plan[] = [
       'Référencement de votre profil avec un rayonnment optimal',
       'Messagerie sécurisée',
       'Synchronisation automatique de vos agendas et prise de rendez-vous',
+      'Factures automatiques',
+      'Gestion de la ralation client',
+      'Jusqu`s a 3 fromulaires de suivi',
+      'Jusqu`s a 50H de vidéconférence mensuelles',
+      'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
     type: PlanType.Annual,
   },
@@ -91,7 +101,7 @@ export const PLANS_ANNUAL: Plan[] = [
   {
     id: 'a-2',
     title: 'Initiation',
-    price: '19 euros HT',
+    price: `${19 * 12} euros HT`,
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -109,7 +119,7 @@ export const PLANS_ANNUAL: Plan[] = [
   {
     id: 'a-3',
     title: 'Pro',
-    price: '49 euros HT',
+    price: `${49 * 12} euros HT`,
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -126,7 +136,7 @@ export const PLANS_ANNUAL: Plan[] = [
   {
     id: 'a-4',
     title: 'Master',
-    price: '140 euros HT',
+    price: `${140 * 12} euros HT`,
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',

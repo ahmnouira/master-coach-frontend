@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FileHelper } from 'src/app/helpers/FileHelper';
+import { UserHelper } from 'src/app/helpers/UserHelper';
 import { Product } from 'src/app/models/product/product.model';
+import { Service } from 'src/app/models/service/service.model';
 import { User } from 'src/app/models/user-model';
 
 @Component({
@@ -8,42 +9,47 @@ import { User } from 'src/app/models/user-model';
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.scss'],
 })
-export class UserCardComponent implements OnInit {
-  @Input() user: User;
+export class UserCardComponent extends UserHelper implements OnInit {
+  @Input() override user: User;
 
-  @Input() product: Product;
+  @Input() data: any;
+
+  @Input() page: 'view-product' | 'view-service';
 
   @Input() rating: boolean = false;
 
   equip: string;
   price: string;
-  photo: string;
 
-  constructor() {}
-
-  ngOnInit(): void {
-    this.getCategory();
-    this.getPrice();
-    this.getPhoto();
+  constructor() {
+    super();
   }
 
-  getPhoto() {
-    if (this.user) {
-      this.photo = FileHelper.getUrl(this.user.photo);
+  ngOnInit(): void {
+    this.init(this.user);
+
+    if (this.page === 'view-product') {
+      const data = this.data as Product;
+      this.getPrice(data.isFree, data.price);
+    }
+    if (this.page === 'view-service') {
+      const data = this.data as Service;
+      this.getCategory(data.category);
     }
   }
 
-  getCategory() {
-    this.equip = this.product.category.toLowerCase().startsWith('Coaching')
-      ? this.product.category
-      : '';
+  getCategory(category: any) {
+    if (!category) {
+      return;
+    }
+    this.equip = category.toLowerCase().startsWith('Coaching') ? category : '';
   }
 
-  getPrice() {
-    if (this.product.isFree || !this.product.price) {
+  getPrice(isFree: boolean, price: string) {
+    if (isFree || !price) {
       this.price = 'Free';
     } else {
-      this.price = this.product.price + '  €';
+      this.price = price + '  €';
     }
   }
 }

@@ -1,0 +1,73 @@
+<nav id="sidebar" class="d-none d-md-block">
+  <div class="sidebar-header mb-5">
+    <img
+      [routerLink]="getPath()"
+      src="assets/img/login/mastercoach.svg"
+      alt="logo"
+    />
+  </div>
+
+  <ul *ngIf="role === 'Admin'" class="list-unstyled components">
+    <li
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      <a routerLink="/pages/admin/users/list">
+        <img src="assets/img/common/account%20(2).svg" />
+        <span>Gestions des utilisateurs</span>
+      </a>
+    </li>
+    <li
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      <a routerLink="/pages/admin/categories/list">
+        <img src="assets/img/common/customer%20(5).svg" />
+        <span>Gestion des catégories</span>
+      </a>
+    </li>
+    <li
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      <a routerLink="/pages/admin/competences/list">
+        <img src="assets/img/common/customer%20(5).svg" />
+        <span>Gestion des compétences</span>
+      </a>
+    </li>
+    <li
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      <a routerLink="/pages/admin/accreditations/list">
+        <img src="assets/img/common/clothing-store.svg" />
+        <span>Gestions des accréditations</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="list-unstyled components">
+    <app-sidebar-item
+      *ngFor="let item of sidebarItems"
+      [item]="item"
+    ></app-sidebar-item>
+  </ul>
+
+  <ul class="list-unstyled">
+    <li [class.active]="getUrl().includes('/settings')">
+      <a (click)="goToProfile()">
+        <img src="assets/img/common/settings.svg" />
+        <span>Paramètres</span></a
+      >
+    </li>
+
+    <li>
+      <a (click)="logout()">
+        <img src="assets/img/common/XMLID_2_.svg" />
+        <span>Déconnexion</span></a
+      >
+    </li>
+  </ul>
+  <div *ngIf="role === 'Client'" class="nav_img">
+    <img src="assets/img/menu-img.png" />
+  </div>
+</nav>

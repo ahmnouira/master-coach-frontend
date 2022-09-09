@@ -1,0 +1,43 @@
+<div class="btn-group" dropdown placement="bottom left">
+  <app-sub-header-item
+    [items]="notifications"
+    [name]="'notification'"
+  ></app-sub-header-item>
+  <ul
+    id="dropdown-basic"
+    *dropdownMenu
+    class="dropdown-menu"
+    role="menu"
+    aria-labelledby="button-basic"
+  >
+    <div *ngIf="notifications.length > 0">
+      <li role="menuitem" *ngFor="let notification of notifications">
+        <a class="dropdown-item d-flex" (click)="markOneAsRead(notification)">
+          <div style="margin-right: 20px">
+            <span class="notif-message">{{ notification.message }}</span
+            ><br />
+            <span class="notif-date">{{ notification.date }}</span>
+          </div>
+          <div
+            class="d-flex"
+            style="width: 10px; align-items: center"
+            *ngIf="!notification.read"
+          >
+            <span class="unread-dot"></span>
+          </div>
+        </a>
+      </li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem">
+        <a class="dropdown-item" (click)="markAllAsRead()"
+          >Marquer tout comme lu</a
+        >
+      </li>
+    </div>
+    <diV *ngIf="notifications.length == 0">
+      <li role="menuitem">
+        <a class="dropdown-item">Vous n'avez pas de notifications</a>
+      </li>
+    </diV>
+  </ul>
+</div>

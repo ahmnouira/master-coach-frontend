@@ -8,6 +8,7 @@ type GetUsersOptions = {
   category: string;
   competance: string;
   accreditation: string;
+  who: 'coaches' | 'all';
 };
 
 @Injectable({
@@ -16,14 +17,18 @@ type GetUsersOptions = {
 export class UserService extends BaseService {
   getUsers(options?: Partial<GetUsersOptions>) {
     const params = new HttpParams();
+    let path = '/users';
     if (options) {
+      if (options.who === 'coaches') {
+        path += '/coaches';
+      }
       for (const key in options) {
         if (options[key]) {
           params.set(key, options[key]);
         }
       }
     }
-    return this.get('/users', params);
+    return this.get(path, params);
   }
 
   getUser(id: string) {
@@ -59,6 +64,11 @@ export class UserService extends BaseService {
     return this.delete('/delete_user/' + id);
   }
 
+  /**
+   * @description get coach services
+   * @param id user id: coach id
+   * @returns Observable<any>
+   */
   getUserServices(id: string): Observable<any> {
     return this.get(`/users/${id}/services`);
   }

@@ -1,0 +1,19 @@
+.container {
+  &-title {
+    font: normal normal normal 18px/22px Fredoka;
+    color: #1376a3;
+  }
+
+  &-text {
+    font: normal normal normal 14px/20px Fredoka;
+    color: #3c4d5d;
+  }
+
+  &-features {
+    margin-top: 15px;
+  }
+}
+
+.link {
+  cursor: pointer;
+}

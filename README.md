@@ -27,3 +27,9 @@ jzjdDNt97Fy5
 ```
 
 Carthage18
+
+## Admin User
+
+superadmin@mastercoach.com
+
+7tC85lgJn9

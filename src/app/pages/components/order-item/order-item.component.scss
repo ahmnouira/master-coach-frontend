@@ -1,0 +1,16 @@
+.header-item {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  border: 1px solid #ddf2fa;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 5px;
+
+  span.bg-danger.badge {
+    background-color: #ddf2fa !important;
+    padding: 3px 4px !important;
+    font-size: 7px;
+    color: #3c4d5d;
+  }
+}

@@ -1,0 +1,36 @@
+<div class="btn-group">
+  <a
+    id="button-basic"
+    type="button"
+    class="header-item"
+    (click)="handleClick()"
+  >
+    <img
+      src="assets/img/common/bag.svg"
+      style="left: 6px; top: 5px; position: relative"
+      [ngClass]="
+        orders.length != 0
+          ? 'animate__animated animate__swing animate__delay-3s animate__infinite'
+          : ''
+      "
+    />
+    <sup
+      ><span
+        *ngIf="orders.length < 100"
+        class="badge ml-2"
+        [ngClass]="orders.length == 0 ? 'bg-success' : 'bg-danger'"
+        style="border-radius: 50%"
+        >{{ orders.length }}</span
+      ></sup
+    >
+    <sup
+      ><span
+        *ngIf="orders.length >= 100"
+        class="badge ml-2"
+        [ngClass]="orders.length == 0 ? 'bg-success' : 'bg-danger'"
+        style="border-radius: 50%"
+        >:)</span
+      ></sup
+    >
+  </a>
+</div>

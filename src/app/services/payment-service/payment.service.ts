@@ -5,6 +5,10 @@ import { Plan } from 'src/app/models/plan.model';
 import { BaseService } from '../base-service/base.service';
 import { SessionStorageService } from '../session-storage-service/session-storage.service';
 
+type GetPaymentsOptions = {
+  all: boolean;
+};
+
 interface ISubscribe {
   stripeToken: string;
   planPrice: number;
@@ -38,6 +42,19 @@ export class PaymentService extends BaseService {
 
   clearSelectedPlan() {
     return this.sessionStorageService.clearItem('plan');
+  }
+
+  getPayments(): Observable<any> {
+    return this.get('/payments');
+  }
+
+  getPayment(id: string): Observable<any> {
+    return this.get(`/payments/${id}`);
+  }
+
+  generatePDF(id: string): Observable<any> {
+    return this.getFile(`/payments/${id}/generate/pdf
+   `);
   }
 
   set setSelectedPlan(plan: Plan) {

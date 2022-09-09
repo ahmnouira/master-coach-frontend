@@ -23,6 +23,15 @@ export class BaseService {
 
   constructor(protected httpClient: HttpClient) {}
 
+  protected getFile<R = any>(url: string): Observable<R> {
+    return this.httpClient
+      .get<R>(this.baseUri + url, {
+        reportProgress: true,
+        responseType: 'blob' as 'json',
+      })
+      .pipe(catchError(this.handleError));
+  }
+
   protected get<R = any>(url: string, params?: HttpParams): Observable<R> {
     return this.httpClient
       .get<R>(this.baseUri + url, {

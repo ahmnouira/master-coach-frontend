@@ -10,6 +10,8 @@ import { PagesModule } from './pages/pages.module';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { JwtInterceptor } from './interceptors/jwt-interceptor';
+import { SharedModule } from './shared/shared.module';
+import { LayoutModule } from './shared/layout/layout.module';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -22,6 +24,8 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     CoreModule,
     PagesModule,
+    SharedModule,
+    LayoutModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
