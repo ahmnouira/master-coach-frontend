@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TwilioService } from '../../../services/twilio-service/twilio.service';
+import { TwilioService } from 'src/app/services/twilio-service/twilio.service';
 
 @Component({
   selector: 'app-detail-coach',

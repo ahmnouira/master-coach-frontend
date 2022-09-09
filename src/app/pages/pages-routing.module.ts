@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MessagerieComponent } from '../shared/components/messagerie/messagerie.component';
 import { VisioConferenceComponent } from '../shared/components/visio-conference/visio-conference.component';
-import { RdvDetailCommonComponent } from './rdv-detail-common/rdv-detail-common.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -35,14 +33,6 @@ const routes: Routes = [
   {
     path: 'video',
     component: VisioConferenceComponent,
-  },
-  {
-    path: 'rdv/detail',
-    component: RdvDetailCommonComponent,
-  },
-  {
-    path: 'user/detail',
-    component: UserProfileComponent,
   },
 ];
 

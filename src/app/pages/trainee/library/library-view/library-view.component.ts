@@ -17,8 +17,6 @@ export class LibraryViewComponent
 {
   id: string = '';
 
-  coach: Partial<IUser> = {};
-
   isSubmitting: boolean;
 
   orderExist: boolean;

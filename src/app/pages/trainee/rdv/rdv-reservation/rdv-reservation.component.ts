@@ -4,6 +4,11 @@ import * as moment from 'moment';
 import 'moment-timezone';
 import { Location } from '@angular/common';
 import { RdvService } from 'src/app/services/rdv-service/rdv.service';
+import { Service } from 'src/app/models/service/service.model';
+import { User } from 'src/app/models/user-model';
+import { SessionType } from 'src/app/models/service/service-type.enum';
+import { ServiceFormat } from 'src/app/models/service/service-format.enum';
+import { RouteService } from 'src/app/services/route-service/route.service';
 
 @Component({
   selector: 'app-rdv-reservation',
@@ -13,8 +18,14 @@ import { RdvService } from 'src/app/services/rdv-service/rdv.service';
 export class RdvReservationComponent implements OnInit {
   localeString: string = 'fr';
   viewDate: any;
-  coach: any = {};
-  formation: any = {};
+
+
+  coach: User & {
+    working_hours?: any
+  }
+  formation: Service;
+
+
   isVideoSession = false;
   weekDays = [
     {
@@ -65,9 +76,7 @@ export class RdvReservationComponent implements OnInit {
   selectedAppointmentIndex = 0;
 
   constructor(
-    private router: Router,
-    private location: Location,
-    public window: Window,
+    private routeService: RouteService,
     private rdvService: RdvService
   ) {
     moment.locale(this.localeString);
@@ -77,10 +86,20 @@ export class RdvReservationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let passedData = history?.state?.id;
-    this.coach = passedData?.coach;
-    this.formation = passedData?.formation;
-    this.isVideoSession = passedData?.isVideoSession;
+
+   
+    let passedData = history?.state?.id as Service;
+
+    if(!passedData) {
+        this.routeService.back()
+        return
+    }
+
+    this.coach = passedData?.user;
+    this.formation = passedData
+    this.isVideoSession = passedData?.format === ServiceFormat.CONFERENCE;
+
+
     this.getCoachSessions(this.coach._id);
     if (this.coach?.working_hours) {
       this.weekDays = this.coach.working_hours.weekdays;
@@ -185,11 +204,11 @@ export class RdvReservationComponent implements OnInit {
       },
       isVideoSession: this.isVideoSession,
     };
-    this.router.navigateByUrl('/pages/client/rdv/pay', { state: { id: data } });
+    this.routeService.navigateByUrl('/pages/client/rdv/pay', { state: { id: data } });
   }
 
   back() {
-    this.location.back();
+    this.routeService.back();
   }
 
   getAllZones() {
@@ -217,16 +236,16 @@ export class RdvReservationComponent implements OnInit {
     this.rdvService.getSessions(coachId).subscribe(
       (data) => {
         this.coachAppointments = [...data.sessions];
-        console.log(data);
+        // console.log(data);
       },
       (error) => {}
     );
   }
 
   isCrenauAvailable(date, cren) {
-    console.log(date);
+    // console.log(date);
     let dateFormatted = date.format('YYYY-MM-DD');
-    console.log(cren);
+    // console.log(cren);
     let apps = this.coachAppointments.filter(
       (elem) =>
         elem.date.includes(dateFormatted) &&

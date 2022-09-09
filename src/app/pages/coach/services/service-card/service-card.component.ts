@@ -30,7 +30,7 @@ export class ServiceCardComponent implements OnInit {
 
   getPath() {
     if (this.forClient) {
-      this.path = `/pages/client/rdv/detail-formation`;
+      this.path = `/pages/client/rdv/detail-formation/${this.service._id}`;
     } else {
       this.path = `/pages/coach/services/edit/${this.service._id}`;
     }
