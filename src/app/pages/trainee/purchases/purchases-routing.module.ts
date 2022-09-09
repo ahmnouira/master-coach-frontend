@@ -9,7 +9,7 @@ import { PurchasesViewComponent } from './purchases-view/purchases-view.componen
 
 const routes: Routes = [
   { path: '', component: PurchasesListComponent },
-  {path: 'view/:id', component: PurchasesViewComponent},
+  { path: 'view/:id', component: PurchasesViewComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

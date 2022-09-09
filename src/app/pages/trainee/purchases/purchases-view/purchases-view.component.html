@@ -7,26 +7,18 @@
     [title]="'command'"
   >
     <div class="row">
-      <app-cart-card
-        [order]="data"
-        [allowDelete]="false"
-        [facture]="true"
-      ></app-cart-card>
+      <app-purchases-total
+        [products]="data.products"
+        *ngIf="data && data.products"
+      ></app-purchases-total>
     </div>
 
-    <div class="row gx-4 gx-lg-5">
+    <div class="row gx-4 gx-lg-5" *ngIf="data && data.products">
       <h1>Produits</h1>
+      <div *ngFor="let product of data.products; index as i">
+        <div class="col-4 col-xxl-3"></div>
 
-      <div class="col-4 col-xxl-3">
-        <app-user-card
-          *ngIf="data && data.user"
-          [data]="data"
-          [page]="'view-service'"
-        ></app-user-card>
-      </div>
-
-      <div class="col-8 col-xxl-9">
-        <div *ngFor="let product of data.products; index as i">
+        <div class="col-8 col-xxl-9">
           <app-product-info
             *ngIf="product"
             [image]="product.image"

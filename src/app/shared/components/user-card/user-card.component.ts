@@ -22,11 +22,11 @@ export class UserCardComponent extends UserHelper implements OnInit {
   price: string;
 
   constructor() {
-    super()
+    super();
   }
 
   ngOnInit(): void {
-    this.init(this.user)
+    this.init(this.user);
 
     if (this.page === 'view-product') {
       const data = this.data as Product;

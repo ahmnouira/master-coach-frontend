@@ -14,7 +14,6 @@ import { CartPaidComponent } from './cart-paid/cart-paid.component';
 
   exports: [CartCardComponent],
 
-
   imports: [
     CommonModule,
     CartRoutingModule,

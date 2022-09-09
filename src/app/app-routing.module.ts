@@ -3,7 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
- 
   {
     path: 'pages',
     loadChildren: () =>
@@ -15,18 +14,16 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./core/core.module').then((module) => module.CoreModule),
-    canLoad: [], 
+    canLoad: [],
   },
 ];
 
 @NgModule({
-
-  
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
       useHash: false,
-      enableTracing: true,
+      //  enableTracing: true,
       urlUpdateStrategy: 'eager',
     }),
   ],

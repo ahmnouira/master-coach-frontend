@@ -9,14 +9,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-   
   },
 
   {
     path: 'create-user/:type',
     component: CreateUserComponent,
-   
-
   },
   {
     path: 'reset-password',
@@ -24,7 +21,6 @@ const routes: Routes = [
       import('./reset-password/reset-password.module').then(
         (module) => module.ResetPasswordModule
       ),
-
   },
 
   {
@@ -33,19 +29,14 @@ const routes: Routes = [
       import('./forgot-password/forgot-password.module').then(
         (module) => module.ForgotPasswordModule
       ),
-     
-
   },
 
   {
     path: 'email-confirmed',
     component: ConfirmEmailComponent,
-   
-
   },
 
-  { path: 'verify-email', component: VerifyEmailComponent,    
-},
+  { path: 'verify-email', component: VerifyEmailComponent },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
@@ -54,8 +45,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
 
     /*
     RouterModule.forRoot(routes, {
@@ -65,8 +55,7 @@ const routes: Routes = [
       urlUpdateStrategy: 'eager',
     }),
   */
-  ]
-  ,
+  ],
   exports: [RouterModule],
 })
 export class CoreRoutingModule {}

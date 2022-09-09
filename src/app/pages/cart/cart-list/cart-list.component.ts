@@ -1,10 +1,14 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { retry } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 import { getCartTotalPrice } from 'src/app/helpers/getPrice';
 import { PageHelper } from 'src/app/helpers/PageHelper';
+import { ICart } from 'src/app/interfaces/cart.interface';
 import { IStripe } from 'src/app/interfaces/stripe.interface';
+import { Cart } from 'src/app/models/cart/cart.model';
 import { Order } from 'src/app/models/order/order.model';
+import { Product } from 'src/app/models/product/product.model';
 import { OrderService } from 'src/app/services/order-service/order.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { environment } from 'src/environments/environment';
@@ -21,6 +25,8 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
   redirectUrl = environment.APP_URL + '/pages/cart/paid';
 
   price: number;
+
+  orders: Cart[] = [];
 
   constructor(
     private orderService: OrderService,
@@ -64,6 +70,7 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
 
   getOrders() {
     this.data = this.orderService.getOrdersFromStorage();
+
     if (Array.isArray(this.data) && this.data) {
       this.onSuccess();
     } else {
@@ -84,7 +91,7 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
     this.routeService.reload();
   }
 
-  trackById(index: number, order: Order) {
+  trackById(_index: number, order: Order) {
     return order._id;
   }
 

@@ -1,0 +1,25 @@
+<div
+  class="commande-container d-flex flex-column"
+  [ngStyle]="{ 'margin-bottom': '40px' }"
+>
+  <div class="commande d-flex align-items-center justify-content-between">
+    <div class="details">
+      <div class="details-title d-flex align-middle">
+        <img src="../../../../assets/icon/list.svg" />
+        <div class="blue-title">Détails commande</div>
+      </div>
+
+      <div *ngFor="let item of products; index as i">
+        <div class="item d-flex">
+          <div class="item-title">
+            <span>{{ item.type | titlecase }} </span>: {{ item.category }}
+          </div>
+          <div class="price">{{ item.price }} €</div>
+        </div>
+        <div class="commande-img">
+          <img src="../../../../assets/img/commande.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
