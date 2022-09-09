@@ -18,12 +18,20 @@
       <span
         [class]="row[title.data + '_class']"
         [ngClass]="{ badge: title.type === 'badge' }"
-        [ngStyle]="title.data === 'type' && { 'text-transform': 'capitalize' }"
-        [ngStyle]="title.data === 'price' && { 'font-weight': 'bold' }"
+        [ngStyle]="
+          (title.data === 'type' || title.data === 'description') && {
+            'text-transform': 'capitalize'
+          }
+        "
+        [ngStyle]="
+          (title.data === 'price' || title.data === 'amount') && {
+            'font-weight': 'bold'
+          }
+        "
       >
         {{
           row[title.data] || row[title.data] === 0
-            ? title.data === "price"
+            ? title.data === "price" || title.data === "amount"
               ? row[title.data] + " €"
               : row[title.data]
             : "-"

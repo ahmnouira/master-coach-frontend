@@ -1,4 +1,4 @@
-import { DatableTableAction } from '../shared/datatable/action.model';
+import { DatableTableAction } from '../../shared/datatable/action.model';
 
 export const COACH_PAYMENTS_DISPLAYED_COLUMNS = [
   {
@@ -38,6 +38,15 @@ export const COACH_PAYMENTS_ACTION_COLUMNS: DatableTableAction[] = [
       {
         type: 'view',
         iconClass: 'view',
+      },
+    ],
+  },
+  {
+    value: '',
+    children: [
+      {
+        type: 'download',
+        iconClass: 'download',
       },
     ],
   },

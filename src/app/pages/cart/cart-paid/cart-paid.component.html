@@ -14,7 +14,7 @@
       <div *ngFor="let order of data; index as i" class="container-features">
         <app-cart-card [order]="order" [allowDelete]="false"></app-cart-card>
       </div>
-      <a class="link link-primary" (click)="back()">Back</a>
+      <a class="link link-primary" routerLink="/pages/client/purchases">Back</a>
     </div>
 
     <div class="alert alert-danger" role="alert" *ngIf="error">

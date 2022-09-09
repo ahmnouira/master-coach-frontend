@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserHelper } from 'src/app/helpers/UserHelper';
 import { User } from 'src/app/models/user-model';
 
 @Component({
@@ -6,15 +7,16 @@ import { User } from 'src/app/models/user-model';
   templateUrl: './coach-card.component.html',
   styleUrls: ['./coach-card.component.scss'],
 })
-export class CoachCardComponent implements OnInit {
+export class CoachCardComponent extends UserHelper implements OnInit {
   @Input() coach: User;
 
-  path: string;
-
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {
-    this.path = '/pages/client/coaches/details/' + this.coach._id;
+    const path = '/pages/client/coaches/details/' + this.coach._id;
+    this.init(this.coach, path);
   }
 
   renderSkills() {
