@@ -50,6 +50,7 @@ import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.compon
 import { CalendarComponent } from './calendar/calendar.component';
 import { CountdownComponent } from './countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
+import { TabsComponent } from './components/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { CountdownModule } from 'ngx-countdown';
     TabsWizardComponent,
     CalendarComponent,
     CountdownComponent,
+    TabsComponent,
   ],
   imports: [
     CommonModule,
@@ -149,6 +151,7 @@ import { CountdownModule } from 'ngx-countdown';
     UpdatePasswordComponent,
     TabsWizardComponent,
     CalendarComponent,
+    TabsComponent
   ],
 })
 export class SharedModule {}
