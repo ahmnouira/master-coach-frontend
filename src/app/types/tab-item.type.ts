@@ -1,5 +1,4 @@
 export type TabItem = {
-    title: string;
-    icon?: string;
-  };
-  
+  title: string;
+  icon?: string;
+};

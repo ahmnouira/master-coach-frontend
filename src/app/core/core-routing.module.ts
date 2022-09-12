@@ -24,6 +24,14 @@ const routes: Routes = [
   },
 
   {
+    path: 'invitation',
+    loadChildren: () =>
+      import('./invitation/invitation.module').then(
+        (module) => module.InvitationModule
+      ),
+  },
+
+  {
     path: 'forgot-password',
     loadChildren: () =>
       import('./forgot-password/forgot-password.module').then(

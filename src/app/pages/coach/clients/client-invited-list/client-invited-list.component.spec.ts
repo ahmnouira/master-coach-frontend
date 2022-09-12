@@ -8,9 +8,8 @@ describe('ClientInvitedListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClientInvitedListComponent ]
-    })
-    .compileComponents();
+      declarations: [ClientInvitedListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ClientInvitedListComponent);
     component = fixture.componentInstance;

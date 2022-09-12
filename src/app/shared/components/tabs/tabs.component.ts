@@ -4,22 +4,19 @@ import { TabItem } from 'src/app/types/tab-item.type';
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.scss']
+  styleUrls: ['./tabs.component.scss'],
 })
 export class TabsComponent implements OnInit {
- 
-  @Input() tabs: TabItem[] 
+  @Input() tabs: TabItem[];
 
   @Output() onChange: EventEmitter<number> = new EventEmitter<number>();
 
-  selectedTab: number = 0
+  selectedTab: number = 0;
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   handleClick(event, index: number) {
-    this.selectedTab = index
+    this.selectedTab = index;
     this.onChange.emit(index);
   }
 }

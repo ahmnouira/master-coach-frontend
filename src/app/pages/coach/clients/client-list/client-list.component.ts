@@ -15,20 +15,18 @@ export class ClientListComponent extends PageHelper implements OnInit {
 
   coachObject: any = {};
 
-  tabs = COACH_CLIENTS_TABS
+  tabs = COACH_CLIENTS_TABS;
 
-  selectedTab: number = 0 
+  selectedTab: number = 0;
 
   constructor(private invitationService: InvitationService) {
     super();
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   handleTabChange(number: number) {
-    this.selectedTab = number  
+    this.selectedTab = number;
   }
 
   filterInputChanged(event) {

@@ -151,7 +151,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
     UpdatePasswordComponent,
     TabsWizardComponent,
     CalendarComponent,
-    TabsComponent
+    TabsComponent,
   ],
 })
 export class SharedModule {}
