@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoachClientManagementRoutingModule } from './coach-client-management-routing.module';
+import { ClientsRoutingModule } from './clients-routing.module';
 import { CcListComponent } from './cc-list/cc-list.component';
 import { CcAddComponent } from './cc-add/cc-add.component';
 import { ComponentsModule } from '../../components/components.module';
@@ -15,13 +15,14 @@ import { ClientFormComponent } from './client-form/client-form.component';
   declarations: [CcListComponent, CcAddComponent, ClientFormComponent],
   imports: [
     CommonModule,
-    CoachClientManagementRoutingModule,
+    ClientsRoutingModule,
     CommonModule,
     ComponentsModule,
     FormsModule,
     SharedModule,
+    RouterModule,
     AngularMultiSelectModule,
     ModalModule,
   ],
 })
-export class CoachClientManagementModule {}
+export class ClientsModule {}
