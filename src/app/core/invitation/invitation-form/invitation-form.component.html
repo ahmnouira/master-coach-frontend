@@ -1,1 +1,63 @@
-<p>invitation-form works!</p>
+<div id="main-container-login" class="row">
+  <div class="col right-login-pane">
+    <div class="image">
+      <img src="assets/img/login/mastercoach.svg" alt="left-pane-image" />
+    </div>
+    <div class="welcome-title">
+      <span>Invitation</span>
+    </div>
+
+    <div class="login-form">
+      <form
+        class="login-form"
+        [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
+        name="form"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="login-form-content">
+          <app-text-field
+            [label]="'Nom d\'utilisateur'"
+            [(model)]="form.username"
+            [form]="f"
+          >
+          </app-text-field>
+
+          <app-text-field
+            [type]="'password'"
+            [label]="'Mot de passe'"
+            [(model)]="form.password"
+            [name]="'password'"
+            [form]="f"
+          >
+          </app-text-field>
+
+          <app-text-field
+            [type]="'password'"
+            [label]="'Confirmez le mot de passe'"
+            [(model)]="form.confirmPassword"
+            [pattern]="form.password"
+            [name]="'confirmPassword'"
+            [form]="f"
+          >
+          </app-text-field>
+
+          <app-form-footer
+            [error]="error"
+            [success]="success"
+            [successMessage]="'Invitation envoyée'"
+            [showDivider]="false"
+          ></app-form-footer>
+
+          <app-button
+            (onClick)="submit()"
+            [isLoading]="isSubmitting"
+            [disabled]="f.dirty"
+            [variant]="'auth'"
+          >
+          </app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

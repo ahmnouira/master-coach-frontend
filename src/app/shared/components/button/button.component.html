@@ -22,3 +22,14 @@
 <button class="btn btn-basic mlr-10" *ngIf="variant === 'basic'">
   {{ title }}
 </button>
+
+<button
+  type="submit"
+  [disabled]="disabled"
+  class="btn btn-submit raised-button"
+  (click)="handleClick($event)"
+  *ngIf="variant === 'auth'"
+>
+  <span *ngIf="!isLoading">{{ title }}</span>
+  <app-loader *ngIf="isLoading"></app-loader>
+</button>

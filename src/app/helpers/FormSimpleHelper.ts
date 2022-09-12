@@ -32,7 +32,8 @@ export abstract class FormSimpleHelper extends BaseHelper {
   ) {
     for (const key in requiredFields) {
       if (!requiredFields[key]) {
-        this.onError(`${key} is required`);
+        // this.onError(`${key} is required`);
+        this.onError()
         return;
       }
       method.subscribe(

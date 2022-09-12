@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormSimpleHelper } from 'src/app/helpers/FormSimpleHelper';
 import { InvitationService } from 'src/app/services/invitation-service/invitation.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-invitation-form',
   templateUrl: './invitation-form.component.html',
   styleUrls: ['./invitation-form.component.scss'],
+  animations: Animations
 })
 export class InvitationFormComponent
   extends FormSimpleHelper
@@ -35,9 +37,7 @@ export class InvitationFormComponent
 
   submit() {
 
-    const {confirmPassword, password, email, username} = this.form
-
-
+    const {confirmPassword, password, username} = this.form
     this.submitData(this.invitationService.acceptInvitation({ password: this.form.username, token: this.token, username }), {
       password,
       confirmPassword, 

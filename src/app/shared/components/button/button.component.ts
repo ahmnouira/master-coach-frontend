@@ -11,7 +11,7 @@ export class ButtonComponent implements OnInit {
   @Input() isLoading: boolean = false;
   @Input() disabled: boolean;
 
-  @Input() variant?: 'submit' | 'add' | 'basic' = 'submit';
+  @Input() variant?: 'submit' | 'add' | 'basic'   | 'auth' = 'submit';
 
   @Input() fullWith: boolean = false;
 
