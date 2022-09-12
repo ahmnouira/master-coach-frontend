@@ -13,13 +13,8 @@ import { Animations } from 'src/app/shared/animations';
   animations: Animations,
 })
 export class ClientFormComponent extends FormHelper implements OnInit {
-  form: IClient = {
+  form: Partial<IClient> = {
     email: '',
-    equip: '',
-    nom: '',
-    notes: '',
-    prenom: '',
-    tel: '',
   };
 
   teamsList: any = [];
