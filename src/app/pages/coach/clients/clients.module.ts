@@ -10,9 +10,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { RouterModule } from '@angular/router';
 import { ClientFormComponent } from './client-form/client-form.component';
+import { ClientListComponent } from './client-list/client-list.component';
+import { ClientCardComponent } from './client-card/client-card.component';
+import { ClientItemComponent } from './client-item/client-item.component';
 
 @NgModule({
-  declarations: [CcListComponent, CcAddComponent, ClientFormComponent],
+  declarations: [CcListComponent, CcAddComponent, ClientFormComponent, ClientListComponent, ClientCardComponent, ClientItemComponent],
   imports: [
     CommonModule,
     ClientsRoutingModule,
