@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { COACH_CLIENTS_TABS } from 'src/app/constants/coach/clients';
 import { PageHelper } from 'src/app/helpers/PageHelper';
 import { InvitationService } from 'src/app/services/invitation-service/invitation.service';
 
@@ -14,18 +15,20 @@ export class ClientListComponent extends PageHelper implements OnInit {
 
   coachObject: any = {};
 
+  tabs = COACH_CLIENTS_TABS
+
+  selectedTab: number = 0 
+
   constructor(private invitationService: InvitationService) {
     super();
   }
 
   ngOnInit(): void {
-    this.getInvitations();
+    
   }
 
-  getInvitations() {
-    this.getData(this.invitationService.getCoachInvitations(), {
-      debug: true,
-    });
+  handleTabChange(number: number) {
+    this.selectedTab = number  
   }
 
   filterInputChanged(event) {

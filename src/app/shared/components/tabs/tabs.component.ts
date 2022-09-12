@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TabItem } from 'src/app/types/tab-item.type';
 
 @Component({
   selector: 'app-tabs',
@@ -7,20 +8,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TabsComponent implements OnInit {
  
-  @Input() tabs: any 
+  @Input() tabs: TabItem[] 
 
-  @Output() onClick: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onChange: EventEmitter<number> = new EventEmitter<number>();
 
-
+  selectedTab: number = 0
 
   ngOnInit(): void {
     
   }
 
-  handleClick(event) {
-   
-    this.onClick.emit();
+  handleClick(event, index: number) {
+    this.selectedTab = index
+    this.onChange.emit(index);
   }
-
-
 }
