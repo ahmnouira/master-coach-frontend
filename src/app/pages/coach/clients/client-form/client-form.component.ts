@@ -24,10 +24,9 @@ export class ClientFormComponent extends FormHelper implements OnInit {
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private coachService: CoachService, 
+    private coachService: CoachService,
     private invitationService: InvitationService,
     private routeService: RouteService
-    
   ) {
     super();
   }
@@ -39,13 +38,13 @@ export class ClientFormComponent extends FormHelper implements OnInit {
 
   submit() {
     this.isSubmitting = true;
-    const {email } = this.form;
+    const { email } = this.form;
 
     if (!email) {
-      this.onError()
+      this.onError();
       return;
     }
-    this.invitationService.addInvitation({email}).subscribe(
+    this.invitationService.addInvitation({ email }).subscribe(
       (res) => {
         if (!res.success) {
           this.onError(res.error);
@@ -53,14 +52,11 @@ export class ClientFormComponent extends FormHelper implements OnInit {
         }
         console.log('res', res.data);
         this.onSuccess();
-      
-      
       },
       (error) => {
         this.onError(error);
       }
     );
-
   }
 
   getTeamsList() {

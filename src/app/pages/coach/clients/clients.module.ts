@@ -15,7 +15,14 @@ import { ClientCardComponent } from './client-card/client-card.component';
 import { ClientItemComponent } from './client-item/client-item.component';
 
 @NgModule({
-  declarations: [CcListComponent, CcAddComponent, ClientFormComponent, ClientListComponent, ClientCardComponent, ClientItemComponent],
+  declarations: [
+    CcListComponent,
+    CcAddComponent,
+    ClientFormComponent,
+    ClientListComponent,
+    ClientCardComponent,
+    ClientItemComponent,
+  ],
   imports: [
     CommonModule,
     ClientsRoutingModule,

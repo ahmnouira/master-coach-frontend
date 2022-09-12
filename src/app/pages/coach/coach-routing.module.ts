@@ -45,10 +45,7 @@ const routes: Routes = [
   {
     path: 'clients',
     loadChildren: () =>
-      import('./clients/clients.module').then(
-        (module) => module.ClientsModule
-      ),
-    
+      import('./clients/clients.module').then((module) => module.ClientsModule),
   },
 
   {

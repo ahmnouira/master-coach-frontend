@@ -2,23 +2,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseService } from '../base-service/base.service';
 
-
-interface IAddInvitation  {
-  email: string
+interface IAddInvitation {
+  email: string;
 }
 
-interface IAcceptInvitation  {
-  token: string
-  password: string
-  username: string
+interface IAcceptInvitation {
+  token: string;
+  password: string;
+  username: string;
 }
-
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InvitationService extends BaseService {
-
   addInvitation(data: IAddInvitation): Observable<any> {
     return this.post('/invitations', data);
   }

@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-client-item',
   templateUrl: './client-item.component.html',
-  styleUrls: ['./client-item.component.scss']
+  styleUrls: ['./client-item.component.scss'],
 })
 export class ClientItemComponent implements OnInit {
+  @Input() client: any;
 
-  constructor() { }
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
 
-  ngOnInit(): void {
-  }
+  selectedClient: any;
 
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  handleSelectClient(user: any) {}
+
+  handleCheckbox(event: any) {}
 }
