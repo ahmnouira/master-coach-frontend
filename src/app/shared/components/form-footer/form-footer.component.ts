@@ -12,7 +12,7 @@ export class FormFooterComponent implements OnInit {
 
   @Input() successMessage: string;
 
-  @Input() showDivider: boolean = true 
+  @Input() showDivider: boolean = true;
 
   constructor() {}
 

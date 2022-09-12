@@ -23,6 +23,8 @@ export class CreateUserComponent implements OnInit {
   errorMessage = '';
   accountType = 'Coach';
 
+  title: string;
+
   constructor(
     private routeService: RouteService,
     private authService: AuthService
@@ -31,6 +33,7 @@ export class CreateUserComponent implements OnInit {
   }
   ngOnInit(): void {
     this.form.role = this.authService.getUserRole;
+    this.title = `Créer votre compte ${this.accountType}!`;
   }
 
   createUser() {

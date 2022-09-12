@@ -51,6 +51,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { CountdownComponent } from './countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
 import { TabsComponent } from './components/tabs/tabs.component';
+import { FormCoreWrapperComponent } from './components/form-core-wrapper/form-core-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
     CalendarComponent,
     CountdownComponent,
     TabsComponent,
+    FormCoreWrapperComponent,
   ],
   imports: [
     CommonModule,
@@ -152,6 +154,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
     TabsWizardComponent,
     CalendarComponent,
     TabsComponent,
+    FormCoreWrapperComponent,
   ],
 })
 export class SharedModule {}

@@ -14,7 +14,6 @@ body {
 
 .col {
   flex: 1; /* additionally, equal width */
-
   padding: 1em;
 }
 
@@ -41,7 +40,6 @@ body {
     }
   }
 }
-
 .right-login-pane {
   margin: 29px 28px;
   justify-content: center;
@@ -69,36 +67,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    &-content {
-      width: 424px;
-    }
-
-    form input {
-      width: 424px;
-      height: 50px;
-      background: #ffffff 0% 0% no-repeat padding-box;
-      box-shadow: 0px 0px 10px #0000001a;
-      border-radius: 10px;
-    }
-    form label {
-      text-align: left;
-      font: normal normal normal 10px/12px Fredoka;
-      letter-spacing: 0px;
-      color: #3c4d5d;
-      opacity: 0.5;
-    }
-    form .form-group {
-      width: 424px;
-      margin: 15px auto;
-    }
-  }
-
-  .login-forgotten-pass {
-    text-align: right;
-    font: normal normal normal 14px/17px Fredoka;
-    letter-spacing: 0px;
-    color: #9da6ae;
-    margin-right: 130px;
+    margin: 25px;
   }
 }

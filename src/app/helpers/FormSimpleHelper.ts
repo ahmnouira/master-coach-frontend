@@ -30,10 +30,11 @@ export abstract class FormSimpleHelper extends BaseHelper {
     requiredFields: object,
     options?: SubmitDataOptions
   ) {
+    this.isSubmitting = true;
     for (const key in requiredFields) {
       if (!requiredFields[key]) {
         // this.onError(`${key} is required`);
-        this.onError()
+        this.onError();
         return;
       }
       method.subscribe(
@@ -99,6 +100,7 @@ export abstract class FormSimpleHelper extends BaseHelper {
     this.isSubmitting = false;
     this.success = true;
     this.error = '';
+    this.isLoading = false;
     setTimeout(() => {
       this.success = false;
       if (cb) {

@@ -8,7 +8,7 @@ import { Animations } from 'src/app/shared/animations';
   selector: 'app-invitation-form',
   templateUrl: './invitation-form.component.html',
   styleUrls: ['./invitation-form.component.scss'],
-  animations: Animations
+  animations: Animations,
 })
 export class InvitationFormComponent
   extends FormSimpleHelper
@@ -34,14 +34,28 @@ export class InvitationFormComponent
     this.token = this.routeService.getQueryParamToken;
   }
 
-
   submit() {
+    const { confirmPassword, password, username } = this.form;
 
-    const {confirmPassword, password, username} = this.form
-    this.submitData(this.invitationService.acceptInvitation({ password: this.form.username, token: this.token, username }), {
-      password,
-      confirmPassword, 
-      username,
-    })
-}
+    if (password !== confirmPassword) {
+      this.onError('');
+      return;
+    }
+
+    this.submitData(
+      this.invitationService.acceptInvitation({
+        password: this.form.username,
+        token: this.token,
+        username,
+      }),
+      {
+        password,
+        confirmPassword,
+        username,
+      },
+      {
+        debug: true,
+      }
+    );
+  }
 }
