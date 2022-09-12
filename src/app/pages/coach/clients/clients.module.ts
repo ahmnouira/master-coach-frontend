@@ -13,6 +13,8 @@ import { ClientFormComponent } from './client-form/client-form.component';
 import { ClientListComponent } from './client-list/client-list.component';
 import { ClientCardComponent } from './client-card/client-card.component';
 import { ClientItemComponent } from './client-item/client-item.component';
+import { ClientInvitedListComponent } from './client-invited-list/client-invited-list.component';
+import { ClientAllListComponent } from './client-all-list/client-all-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ClientItemComponent } from './client-item/client-item.component';
     ClientListComponent,
     ClientCardComponent,
     ClientItemComponent,
+    ClientInvitedListComponent,
+    ClientAllListComponent,
   ],
   imports: [
     CommonModule,
