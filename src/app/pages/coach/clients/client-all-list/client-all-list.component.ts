@@ -28,13 +28,11 @@ export class ClientAllListComponent extends PageHelper implements OnInit {
 
   getClients() {
     let method: Observable<any>;
-    if (this.name === 'all') {
+    if (this.name === 'invited') {
       method = this.invitationService.getCoachInvitations();
-    } else if (this.name === 'invited') {
+    } else if (this.name === 'all') {
       method = this.coachService.getClients();
     }
-    this.getData(method, {
-      debug: true,
-    });
+    this.getData(method);
   }
 }

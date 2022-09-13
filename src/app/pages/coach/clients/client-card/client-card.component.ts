@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserHelper } from 'src/app/helpers/UserHelper';
+import { CoachService } from 'src/app/services/coach-service/coach.service';
+import { LocalStorageService } from 'src/app/services/local-storage-service/local-storage.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { TwilioService } from 'src/app/services/twilio-service/twilio.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
@@ -8,8 +11,9 @@ import { UserService } from 'src/app/services/user-service/user-service.service'
   templateUrl: './client-card.component.html',
   styleUrls: ['./client-card.component.scss'],
 })
-export class ClientCardComponent implements OnInit {
-  @Input() selectedUser: any;
+export class ClientCardComponent extends UserHelper implements OnInit {
+  
+  selectedUser: any 
 
   modeEdit = false;
 
@@ -18,15 +22,43 @@ export class ClientCardComponent implements OnInit {
 
   selectedTeam: any;
 
-  selectedUserToupdate: any;
+  selectedUserToupdate: any = {
+    
+  }
 
   constructor(
+    private coachService: CoachService, 
     private routeService: RouteService,
     private twilioService: TwilioService,
     private userService: UserService
-  ) {}
+  ) {
+    super()
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getClient()
+    this.init(this.selectedUser)
+    console.log('selected', this.selectedUser)
+  }
+
+  getClient() {
+    // this.setSelectedClient();
+    this.coachService.selectedClient.subscribe((client) => {
+      this.selectedUser = client;
+    });
+  }
+
+  private setSelectedClient() {
+    /*
+     const client = this.coachService.getOrdersFromStorage();
+    if (Array.isArray(orders) && orders.length) {
+      this.orderService.setOrders = orders;
+    }
+    */
+  }
+
+
+
 
   deleteUser(userElement) {}
 

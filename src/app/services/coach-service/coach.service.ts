@@ -1,12 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 import { BaseService } from '../base-service/base.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Client } from 'src/app/models/client/client.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CoachService extends BaseService {
+
+
+  /** TODO: can be both client and invitees */
+  selectedClient: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  selectedClient$ = this.selectedClient.asObservable();
+
+  set setSelectedClient(client: any) {
+    this.selectedClient.next(client);
+  }
+
   CreateTeam(team: any) {
     return this.post('/create_team', team);
   }
@@ -60,6 +71,6 @@ export class CoachService extends BaseService {
   }
 
   getClients(): Observable<any> {
-    return this.get('clients/mine');
+    return this.get('/clients/mine');
   }
 }

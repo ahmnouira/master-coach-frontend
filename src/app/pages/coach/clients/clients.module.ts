@@ -15,6 +15,9 @@ import { ClientCardComponent } from './client-card/client-card.component';
 import { ClientItemComponent } from './client-item/client-item.component';
 import { ClientInvitedListComponent } from './client-invited-list/client-invited-list.component';
 import { ClientAllListComponent } from './client-all-list/client-all-list.component';
+import { ClientCardEditComponent } from './client-card-edit/client-card-edit.component';
+import { ClientCardViewComponent } from './client-card-view/client-card-view.component';
+import { ClientCardToolsComponent } from './client-card-tools/client-card-tools.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { ClientAllListComponent } from './client-all-list/client-all-list.compon
     ClientItemComponent,
     ClientInvitedListComponent,
     ClientAllListComponent,
+    ClientCardEditComponent,
+    ClientCardViewComponent,
+    ClientCardToolsComponent,
   ],
   imports: [
     CommonModule,
