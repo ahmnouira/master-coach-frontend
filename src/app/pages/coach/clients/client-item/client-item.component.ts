@@ -1,20 +1,28 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserHelper } from 'src/app/helpers/UserHelper';
 
 @Component({
   selector: 'app-client-item',
   templateUrl: './client-item.component.html',
   styleUrls: ['./client-item.component.scss'],
 })
-export class ClientItemComponent implements OnInit {
+export class ClientItemComponent extends UserHelper implements OnInit {
   @Input() client: any;
 
   @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
 
+  form: any = {
+    selected : ''
+  }
   selectedClient: any;
 
-  constructor() {}
+  constructor() {
+    super()
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.init(this.client);
+  }
 
   handleSelectClient(user: any) {}
 

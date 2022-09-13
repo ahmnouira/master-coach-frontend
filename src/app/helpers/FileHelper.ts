@@ -2,6 +2,8 @@ import { environment } from 'src/environments/environment';
 
 export class FileHelper {
   static getUrl(url: string | File): string {
+
+    console.log('url', url)
     if (!url || typeof url !== 'string') {
       return '';
     } else {
