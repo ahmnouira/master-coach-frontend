@@ -1,46 +1,26 @@
 <div>
-  <div class="row">
+  <div class="img-row">
     <img class="user-img" [src]="photo" />
   </div>
-
-  <div
-    class="d-flex flex-column flex-xl-row justify-content-between user-infos"
-  >
-    <div class="basic-info d-flex">
+  <div class="flex-column flex-xl-row user-infos">
+    <div class="basic-info">
       <img src="assets/img/common/email%20(12).png" />
-      <div>{{ user?.email }}</div>
+      <span>{{ user.email || "N.C" }}</span>
     </div>
-    <div class="basic-info d-flex">
+    <div class="basic-info">
       <img src="assets/img/common/user%20(31).png" />
-      <div>{{ displayName }}</div>
+      <span>{{ displayName || "N.C" }}</span>
     </div>
-    <div class="basic-info d-flex">
+    <div class="basic-info">
       <img src="assets/img/common/phone%20(5).png" />
-      <div>{{ user?.tel }}</div>
+      <span>{{ user.tel || "N.C" }}</span>
     </div>
   </div>
 
-  <div class="d-flex mt-3 user-infos last">
-    <div class="basic-info d-flex">
-      <img width="22px" src="../../../../../assets/img/common/team.svg" />
-
-      <strong> Equipe :</strong>
-      {{ getUserTeam(user) ? getUserTeam(user)?.name : "Non affecté" }}
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group">
-      <label class="element-label">Notes</label>
-      <textarea
-        [disabled]="!modeEdit"
-        rows="5"
-        style="height: 120px"
-        [(ngModel)]="form.notes"
-        class="form-control element"
-        placeholder="Texte..."
-      >
-      </textarea>
+  <div class="user-infos">
+    <div class="basic-info">
+      <img width="18px" src="../../../../../assets/img/common/team.svg" />
+      <span>{{ "Non affecté" }}</span>
     </div>
   </div>
 </div>

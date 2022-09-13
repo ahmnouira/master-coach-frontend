@@ -1,4 +1,4 @@
-<div class="client-info" [ngClass]="!selectedUser ? 'd-flex' : ''">
+<div class="client-info">
   <a
     class="send-msg"
     (click)="createNewConversation(selectedUser)"
@@ -8,10 +8,8 @@
     Envoyer un message
   </a>
 
-  <div [hidden]="coachUsers.length == 0 || selectedUser" class="no-data">
-    Veuillez selectionner un client
-  </div>
-  <div *ngIf="coachUsers.length == 0" class="no-data">
-    Vous n'avez pas de clients dans vos équipes
-  </div>
+  <app-client-card-view
+    [user]="selectedUser"
+    *ngIf="selectedUser"
+  ></app-client-card-view>
 </div>

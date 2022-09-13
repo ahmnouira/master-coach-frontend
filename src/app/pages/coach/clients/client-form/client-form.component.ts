@@ -5,7 +5,6 @@ import { CoachService } from 'src/app/services/coach-service/coach.service';
 import { InvitationService } from 'src/app/services/invitation-service/invitation.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { UserService } from 'src/app/services/user-service/user-service.service';
 import { Animations } from 'src/app/shared/animations';
 
 @Component({

@@ -1,42 +1,25 @@
 import { User } from '../models/user-model';
-import { FileHelper } from './FileHelper';
+import { getDisplayName } from './methods/getDisplayName';
+import { getPhoto } from './methods/getPhoto';
 
-export class UserHelper {
+export interface IUserHelper  {
+  photo: string 
+  displayName: string
+  path?: string 
+  init(user: User, path?: string): void
+}
+
+export class UserHelper implements IUserHelper {
   photo: string;
   path: string;
   displayName: string
   private userData: User;
 
-
-  public init(user: User, path?: string) {
+   public init(user: User, path?: string) {
     this.userData = user;
     this.path = path;
-    this.getDisplayName()
-    this.getPhoto();
-  }
-
-  private getDisplayName() {
-    if(!this.userData) {
-      this.displayName = ''
-      return
-    }
-    if(this.userData.prenom && this.userData.nom) {
-      this.displayName =  `${this.userData.nom} ${this.userData.prenom}`
-    } else if (this.userData.username) {
-      this.displayName  = this.userData.username  
-    } else  {
-      this.displayName  = this.userData.email
-    }
-  }
-
-
-  private getPhoto() {
-    if (this.userData && this.userData.photo) {
-      this.photo = FileHelper.getUrl(this.userData.photo);
-    }  else {
-      // fallback avatar 
-      this.photo = '/assets/img/common/utilisateur.png';
-    }
+    this.displayName = getDisplayName(user)
+    this.photo = getPhoto(user)
   }
 
   public getCompetences(): string {

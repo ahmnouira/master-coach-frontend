@@ -39,6 +39,9 @@ a:focus {
   height: 100%;
   color: var(--global-font-color);
   transition: all 0.3s;
+
+ //  position: fixed;
+
   &.active {
     margin-left: -250px;
   }

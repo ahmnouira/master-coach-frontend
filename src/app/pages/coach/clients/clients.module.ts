@@ -18,6 +18,8 @@ import { ClientAllListComponent } from './client-all-list/client-all-list.compon
 import { ClientCardEditComponent } from './client-card-edit/client-card-edit.component';
 import { ClientCardViewComponent } from './client-card-view/client-card-view.component';
 import { ClientCardToolsComponent } from './client-card-tools/client-card-tools.component';
+import { ClientCardViewFormComponent } from './client-card-view-form/client-card-view-form.component';
+import { ClientCardViewEmptyComponent } from './client-card-view-empty/client-card-view-empty.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ClientCardToolsComponent } from './client-card-tools/client-card-tools.
     ClientCardEditComponent,
     ClientCardViewComponent,
     ClientCardToolsComponent,
+    ClientCardViewFormComponent,
+    ClientCardViewEmptyComponent,
   ],
   imports: [
     CommonModule,

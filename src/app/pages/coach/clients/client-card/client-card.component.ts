@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserHelper } from 'src/app/helpers/UserHelper';
 import { CoachService } from 'src/app/services/coach-service/coach.service';
-import { LocalStorageService } from 'src/app/services/local-storage-service/local-storage.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
 import { TwilioService } from 'src/app/services/twilio-service/twilio.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
@@ -38,7 +37,6 @@ export class ClientCardComponent extends UserHelper implements OnInit {
   ngOnInit(): void {
     this.getClient()
     this.init(this.selectedUser)
-    console.log('selected', this.selectedUser)
   }
 
   getClient() {
@@ -56,8 +54,6 @@ export class ClientCardComponent extends UserHelper implements OnInit {
     }
     */
   }
-
-
 
 
   deleteUser(userElement) {}
@@ -126,7 +122,7 @@ export class ClientCardComponent extends UserHelper implements OnInit {
   }
   */
 
-  createNewConversation(user) {
+  createNewConversation(user: any) {
     this.twilioService.createNewConversation(user._id).subscribe(
       (data) => {
         console.log(data);
