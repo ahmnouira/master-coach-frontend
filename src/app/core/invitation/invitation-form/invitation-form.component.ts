@@ -2,23 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { FormSimpleHelper } from 'src/app/helpers/FormSimpleHelper';
 import { InvitationService } from 'src/app/services/invitation-service/invitation.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
-import { Animations } from 'src/app/shared/animations';
 
+type Form = {
+  username: string;
+  password: string;
+  confirmPassword: string;
+};
 @Component({
   selector: 'app-invitation-form',
   templateUrl: './invitation-form.component.html',
   styleUrls: ['./invitation-form.component.scss'],
-  animations: Animations,
 })
 export class InvitationFormComponent
   extends FormSimpleHelper
   implements OnInit
 {
-  override form = {
-    email: null,
-    password: null,
-    confirmPassword: null,
-    username: null,
+  form: Form = {
+    password: '',
+    confirmPassword: '',
+    username: '',
   };
 
   token = '';
@@ -27,10 +29,10 @@ export class InvitationFormComponent
     private routeService: RouteService
   ) {
     super();
-    this.routeService.setTitle('MasterCoach - Invitation');
   }
 
   ngOnInit() {
+    this.routeService.setTitle('MasterCoach - Invitation');
     this.token = this.routeService.getQueryParamToken;
   }
 
