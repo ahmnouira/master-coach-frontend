@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientCardViewEmptyComponent implements OnInit {
 
-
   coachUsers: any[]
 
-  selectedUser: any
+  message: string 
 
   constructor() { }
-
   ngOnInit(): void {
-  }
 
+      this.message = " Veuillez selectionner un client"
+    
+    //  Vous n'avez pas de clients dans vos équipes
+  }
 }

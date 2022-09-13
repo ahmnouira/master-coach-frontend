@@ -1,15 +1,16 @@
 <div class="client-info">
-  <a
-    class="send-msg"
-    (click)="createNewConversation(selectedUser)"
-    *ngIf="selectedUser"
-  >
-    <span class="material-icons" style="vertical-align: bottom">send</span>
-    Envoyer un message
-  </a>
+  <div *ngIf="!selectedUser; else elseBlock">
+    <app-client-card-view-empty></app-client-card-view-empty>
+  </div>
 
-  <app-client-card-view
-    [user]="selectedUser"
-    *ngIf="selectedUser"
-  ></app-client-card-view>
+  <ng-template #elseBlock>
+    <a class="send-msg" (click)="createNewConversation(selectedUser)">
+      <span class="material-icons" style="vertical-align: bottom">send</span>
+      Envoyer un message
+    </a>
+
+    <app-client-card-view [user]="selectedUser"></app-client-card-view>
+
+    <app-client-card-view-form></app-client-card-view-form>
+  </ng-template>
 </div>

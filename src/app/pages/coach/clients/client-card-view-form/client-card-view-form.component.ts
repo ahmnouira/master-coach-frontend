@@ -12,6 +12,10 @@ type Form = {
 })
 export class ClientCardViewFormComponent extends FormSimpleHelper implements OnInit {
 
+  form: Form = {
+    notes: ''
+  };
+
   constructor() {
     super();
   }
@@ -20,7 +24,7 @@ export class ClientCardViewFormComponent extends FormSimpleHelper implements OnI
   }
 
 
-  form: Form;
+
   submit(): void {
     throw new Error('Method not implemented.');
   }

@@ -1,6 +1,3 @@
-<div [hidden]="coachUsers.length == 0 || selectedUser" class="no-data">
-  Veuillez selectionner un client
-</div>
-<div *ngIf="coachUsers.length == 0" class="no-data">
-  Vous n'avez pas de clients dans vos équipes
+<div class="no-data">
+  <h2 class="no-data-text">{{ message }}</h2>
 </div>

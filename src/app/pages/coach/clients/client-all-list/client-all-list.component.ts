@@ -33,6 +33,8 @@ export class ClientAllListComponent extends PageHelper implements OnInit {
     } else if (this.name === 'all') {
       method = this.coachService.getClients();
     }
-    this.getData(method);
+    this.getData(method, {
+      debug: true
+    });
   }
 }
