@@ -2,20 +2,24 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { TokenStorageService } from '../../services/token-storage.service';
 import { RouteService } from 'src/app/services/route-service/route.service';
-import { Animations } from 'src/app/shared/animations';
 import { UserRole } from 'src/app/models/role.enum';
 import { NgForm } from '@angular/forms';
+
+type Form = {
+  email: string;
+  password: string;
+};
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: Animations,
 })
 export class LoginComponent implements OnInit {
-  form = {
-    email: null,
-    password: null,
+  form: Form = {
+    email: '',
+    password: '',
   };
   isLoading = false;
   isLoginFailed = false;

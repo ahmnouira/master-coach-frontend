@@ -41,7 +41,7 @@ export class FormHelper extends BasicHelper {
 
   override onError(error?: any) {
     if (error) {
-      console.error('onError:', error);
+      console.error(error);
       this.error = error;
     }
     this.isSubmitting = false;

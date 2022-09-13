@@ -56,7 +56,9 @@ export class InvitationFormComponent
         username,
       },
       {
-        debug: true,
+        onSuccess: () => {
+          this.routeService.replace('/login')
+        }
       }
     );
   }

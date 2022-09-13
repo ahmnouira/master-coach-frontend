@@ -33,6 +33,7 @@ export abstract class FormSimpleHelper extends BaseHelper {
     options?: SubmitDataOptions
   ) {
     this.isSubmitting = true;
+    this.error = ''
     for (const key in requiredFields) {
       if (!requiredFields[key]) {
         // this.onError(`${key} is required`);
@@ -90,7 +91,7 @@ export abstract class FormSimpleHelper extends BaseHelper {
 
   protected override onError(error?: any) {
     if (error) {
-      console.error('onError:', error);
+      console.error(error);
       this.error = error;
     }
     this.isSubmitting = false;

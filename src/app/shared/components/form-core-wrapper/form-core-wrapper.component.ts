@@ -7,12 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FormCoreWrapperComponent implements OnInit {
   @Input() title: string;
+  @Input() image: string  = 'assets/img/login/mastercoach.svg'
 
-  image: string;
+  @Input() name: string 
+  
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.image = 'assets/img/login/mastercoach.svg';
+    
   }
 }

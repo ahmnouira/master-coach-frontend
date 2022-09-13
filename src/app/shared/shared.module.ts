@@ -52,6 +52,7 @@ import { CountdownComponent } from './countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { FormCoreWrapperComponent } from './components/form-core-wrapper/form-core-wrapper.component';
+import { FormCoreLeftSideComponent } from './components/form-core-left-side/form-core-left-side.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { FormCoreWrapperComponent } from './components/form-core-wrapper/form-co
     CountdownComponent,
     TabsComponent,
     FormCoreWrapperComponent,
+    FormCoreLeftSideComponent,
   ],
   imports: [
     CommonModule,
@@ -155,6 +157,7 @@ import { FormCoreWrapperComponent } from './components/form-core-wrapper/form-co
     CalendarComponent,
     TabsComponent,
     FormCoreWrapperComponent,
+    FormCoreLeftSideComponent
   ],
 })
 export class SharedModule {}

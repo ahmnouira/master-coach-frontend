@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormSimpleHelper } from 'src/app/helpers/FormSimpleHelper';
 import { RouteService } from 'src/app/services/route-service/route.service';
-import { Animations } from 'src/app/shared/animations';
 import { AuthService } from '../auth.service';
+
+type Form = {
+  email: string;
+ 
+};
+
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss'],
-  animations: Animations,
 })
 export class ForgotPasswordComponent
   extends FormSimpleHelper
   implements OnInit
 {
-  form = {
-    email: null,
+  form: Form = {
+    email: '',
   };
 
   constructor(
@@ -37,9 +41,6 @@ export class ForgotPasswordComponent
       {
         email,
       },
-      {
-        debug: true,
-      }
     );
   }
 }
