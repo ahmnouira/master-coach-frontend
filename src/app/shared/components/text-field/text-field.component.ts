@@ -33,6 +33,13 @@ export class TextFieldComponent implements OnInit {
     this.id = this.id ?? this.name ?? '';
     this.placeholder = this.placeholder ?? this.label;
     if (this.type === 'password') this.minLength = this.minLength ?? 5;
+    if (this.type === 'email')
+      this.pattern = this.pattern ?? '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
+    if (this.type === 'tel') {
+      this.pattern = this.pattern ?? '^(0|+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$';
+      this.placeholder = this.placeholder ?? '+33 12 34 56 789';
+    }
+
     this.patternError = this.getPatternMessage();
   }
 

@@ -1,4 +1,4 @@
-<div class="form-footer-container">
+<div [ngClass]="{ 'form-footer-container': showDivider }">
   <app-divider *ngIf="showDivider"></app-divider>
   <app-form-error [error]="error"></app-form-error>
   <div class="alert alert-info" role="alert" *ngIf="success">

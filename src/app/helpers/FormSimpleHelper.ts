@@ -17,13 +17,15 @@ export abstract class FormSimpleHelper extends BaseHelper {
 
   f: NgForm;
 
-  form: any;
+  abstract form: any;
 
   /** TODO: check this if it works **/
   handleSubmit(f: NgForm) {
     // console.log('f', f.errors);
     this.f = f;
   }
+
+  abstract submit(): void;
 
   submitData(
     method: Observable<any>,
@@ -100,12 +102,11 @@ export abstract class FormSimpleHelper extends BaseHelper {
     this.isSubmitting = false;
     this.success = true;
     this.error = '';
+
     this.isLoading = false;
-    setTimeout(() => {
-      this.success = false;
-      if (cb) {
-        cb();
-      }
-    }, 3000);
+
+    if (cb) {
+      cb();
+    }
   }
 }
