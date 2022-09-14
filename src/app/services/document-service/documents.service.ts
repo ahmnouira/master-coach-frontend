@@ -19,4 +19,8 @@ export class DocumentsService extends BaseService {
   getDocument(id: string): Observable<any> {
     return this.get(`/documents/${id}`);
   }
+
+  hideDocument(id: string): Observable<any> {
+    return this.delete(`/documents/${id}`);
+  }
 }
