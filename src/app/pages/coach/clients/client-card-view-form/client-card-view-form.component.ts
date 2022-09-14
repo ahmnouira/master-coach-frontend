@@ -30,11 +30,15 @@ export class ClientCardViewFormComponent
   submit() {
     const { note } = this.form;
 
-    console.log("id", this.id)
-    this.submitData(this.coachService.addClientNote(this.id, {note}), {
-      note,
-    }, {
-      debug: true
-    });
+    console.log('id', this.id);
+    this.submitData(
+      this.coachService.addClientNote(this.id, { note }),
+      {
+        note,
+      },
+      {
+        debug: true,
+      }
+    );
   }
 }

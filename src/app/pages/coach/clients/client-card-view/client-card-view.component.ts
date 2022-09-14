@@ -9,7 +9,6 @@ import { UserHelper } from 'src/app/helpers/UserHelper';
 export class ClientCardViewComponent extends UserHelper implements OnInit {
   @Input() user: any;
 
-
   constructor() {
     super();
   }
@@ -17,7 +16,6 @@ export class ClientCardViewComponent extends UserHelper implements OnInit {
   ngOnInit(): void {
     this.init(this.user);
   }
-
 
   ngOnChanges(changes: SimpleChanges) {
     this.init(this.user);

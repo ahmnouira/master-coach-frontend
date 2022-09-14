@@ -33,7 +33,7 @@ export abstract class FormSimpleHelper extends BaseHelper {
     options?: SubmitDataOptions
   ) {
     this.isSubmitting = true;
-    this.error = ''
+    this.error = '';
     for (const key in requiredFields) {
       if (!requiredFields[key]) {
         // this.onError(`${key} is required`);
@@ -43,11 +43,11 @@ export abstract class FormSimpleHelper extends BaseHelper {
       method.subscribe(
         (res) => {
           this.handleSeverResponse(res);
-          if(options) {
+          if (options) {
             this.onSuccess(options.onSuccess);
-            this.info(options.format); 
+            this.info(options.format);
           } else {
-            this.onSuccess()
+            this.onSuccess();
           }
         },
         (error) => {

@@ -5,12 +5,7 @@
     cursor: forClient && 'pointer'
   }"
 >
-  <div class="product-card-tools" *ngIf="!forClient">
-    <span class="material-icons edit-icon" [routerLink]="path">mode_edit</span>
-    <span class="material-icons visibility-icon" (click)="handleDelete()"
-      >visibility</span
-    >
-  </div>
+  <app-card-tools [path]="path" (onDelete)="handleDelete()"></app-card-tools>
   <div class="product-card-meta">
     <img
       class="product-card-meta-icon"

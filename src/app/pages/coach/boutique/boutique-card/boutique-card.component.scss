@@ -12,27 +12,6 @@
   justify-content: flex-end;
   position: relative;
 
-  &-tools {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: absolute;
-    top: 16px;
-    right: 16px;
-
-    .visibility-icon {
-      color: #3c4d5d; 
-      cursor: pointer;
-    }
-
-    .edit-icon {
-      color: #3c4d5d; 
-      margin-right: 8px;
-      cursor: pointer;
-    }
-    
-  }
- 
   &-meta {
     display: flex;
     align-items: center;

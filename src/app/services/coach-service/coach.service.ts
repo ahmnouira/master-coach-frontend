@@ -75,5 +75,3 @@ export class CoachService extends BaseService {
     return this.post(`/clients/${id}`, data);
   }
 }
-
-

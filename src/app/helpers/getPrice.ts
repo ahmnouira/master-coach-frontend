@@ -1,4 +1,4 @@
-export function getPrice(price: string | number, multi: number  = 1) {
+export function getPrice(price: string | number, multi: number = 1) {
   if (typeof price === 'string') {
     if (price.includes(' euros HT')) {
       return parseInt(price.replace(' euros HT', '')) * multi;
