@@ -33,7 +33,7 @@ export abstract class FormSimpleHelper extends BaseHelper {
     options?: SubmitDataOptions
   ) {
     this.isSubmitting = true;
-    this.error = ''
+    // this.error = ''
     for (const key in requiredFields) {
       if (!requiredFields[key]) {
         // this.onError(`${key} is required`);
@@ -82,11 +82,11 @@ export abstract class FormSimpleHelper extends BaseHelper {
   }
 
   private handleSeverResponse(res: any) {
-    if (!res.success) {
-      this.onError(res.error);
+    const error = res.error || res.err;
+    if (error) {
+      this.onError(error);
       return;
     }
-    this.onSuccess();
   }
 
   protected override onError(error?: any) {

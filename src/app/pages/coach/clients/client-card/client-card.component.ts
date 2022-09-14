@@ -11,8 +11,7 @@ import { UserService } from 'src/app/services/user-service/user-service.service'
   styleUrls: ['./client-card.component.scss'],
 })
 export class ClientCardComponent extends UserHelper implements OnInit {
-  
-  selectedUser: any 
+  selectedUser: any;
 
   modeEdit = false;
 
@@ -21,22 +20,20 @@ export class ClientCardComponent extends UserHelper implements OnInit {
 
   selectedTeam: any;
 
-  selectedUserToupdate: any = {
-    
-  }
+  selectedUserToupdate: any = {};
 
   constructor(
-    private coachService: CoachService, 
+    private coachService: CoachService,
     private routeService: RouteService,
     private twilioService: TwilioService,
     private userService: UserService
   ) {
-    super()
+    super();
   }
 
   ngOnInit(): void {
-    this.getClient()
-    this.init(this.selectedUser)
+    this.getClient();
+    this.init(this.selectedUser);
   }
 
   getClient() {
@@ -54,7 +51,6 @@ export class ClientCardComponent extends UserHelper implements OnInit {
     }
     */
   }
-
 
   deleteUser(userElement) {}
 

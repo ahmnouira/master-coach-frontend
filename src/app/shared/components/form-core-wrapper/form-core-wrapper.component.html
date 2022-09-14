@@ -6,7 +6,10 @@
     [ngStyle]="{ 'margin-top': name === 'login' ? '80px' : '' }"
   >
     <div class="image">
-      <img src="{{ image }}" alt="" />
+      <a *ngIf="!isLoginPage" href="/login">
+        <img src="{{ image }}" alt="" />
+      </a>
+      <img src="{{ image }}" alt="" *ngIf="isLoginPage" />
     </div>
     <div class="welcome-title">
       <span>{{ title }}</span>

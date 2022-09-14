@@ -34,7 +34,7 @@ export class ClientAllListComponent extends PageHelper implements OnInit {
       method = this.coachService.getClients();
     }
     this.getData(method, {
-      debug: true
+      debug: true,
     });
   }
 }

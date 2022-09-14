@@ -11,6 +11,8 @@
 
     <app-client-card-view [user]="selectedUser"></app-client-card-view>
 
-    <app-client-card-view-form></app-client-card-view-form>
+    <app-client-card-view-form
+      [id]="selectedUser._id"
+    ></app-client-card-view-form>
   </ng-template>
 </div>

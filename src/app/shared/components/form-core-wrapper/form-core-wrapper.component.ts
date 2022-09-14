@@ -7,15 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FormCoreWrapperComponent implements OnInit {
   @Input() title: string;
-  @Input() image: string  = 'assets/img/login/mastercoach.svg'
+  @Input() image: string = 'assets/img/login/mastercoach.svg';
 
-  @Input() name: string 
-  
+  @Input() name: string;
 
-  constructor() {
-  }
+  isLoginPage: boolean;
+
+  constructor() {}
 
   ngOnInit(): void {
-    
+    this.isLoginPage = this.name === 'login';
   }
 }

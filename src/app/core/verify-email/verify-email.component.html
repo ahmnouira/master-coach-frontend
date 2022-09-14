@@ -1,32 +1,23 @@
-<div id="main-container-login" class="row">
-  <div class="col right-login-pane">
-    <div class="image">
-      <img src="assets/img/login/mastercoach.svg" alt="left-pane-image" />
+<app-form-core-wrapper [title]="'Verify email'">
+  <div class="center">
+    <h2>Final Step</h2>
+    <p>Thank you for joining us.</p>
+    <p>In Order to sign in, you need to activate your account.</p>
+    <p>
+      We just sent an activation link
+      <span *ngIf="email"
+        >to <b>{{ email }}</b></span
+      >. if you did not receive an email, check your spam folders or
+      <a (click)="resendVerification()">Click here</a>
+      to resend a new once.
+    </p>
+
+    <div class="alert alert-info" role="alert" *ngIf="successMessage">
+      {{ successMessage }}
     </div>
-    <div class="welcome-title">
-      <span>Verify email</span>
-
-      <div class="center">
-        <h2>Final Step</h2>
-        <p>Thank you for joining us.</p>
-        <p>In Order to sign in, you need to activate your account.</p>
-        <p>
-          We just sent an activation link
-          <span *ngIf="email"
-            >to <b>{{ email }}</b></span
-          >. if you did not receive an email, check your spam folders or
-          <a (click)="resendVerification()">Click here</a>
-          to resend a new once.
-        </p>
-
-        <div class="alert alert-info" role="alert" *ngIf="successMessage">
-          {{ successMessage }}
-        </div>
-        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-          {{ errorMessage }}
-          <a routerLink="/login">Back</a>
-        </div>
-      </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+      <a routerLink="/login">Back</a>
     </div>
   </div>
-</div>
+</app-form-core-wrapper>

@@ -18,7 +18,7 @@ export class TextAreaComponent implements OnInit {
   @Input() patternError?: string;
   @Input() required: boolean = true;
 
-  @Input() variant: 'primary' | 'secondary' = 'primary'
+  @Input() variant: 'primary' | 'secondary' = 'primary';
 
   @Input() form?: any = undefined;
 

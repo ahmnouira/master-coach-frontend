@@ -8,9 +8,8 @@ describe('ClientCardViewEmptyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClientCardViewEmptyComponent ]
-    })
-    .compileComponents();
+      declarations: [ClientCardViewEmptyComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ClientCardViewEmptyComponent);
     component = fixture.componentInstance;

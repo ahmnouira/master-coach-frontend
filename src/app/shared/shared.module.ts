@@ -157,7 +157,7 @@ import { FormCoreLeftSideComponent } from './components/form-core-left-side/form
     CalendarComponent,
     TabsComponent,
     FormCoreWrapperComponent,
-    FormCoreLeftSideComponent
+    FormCoreLeftSideComponent,
   ],
 })
 export class SharedModule {}

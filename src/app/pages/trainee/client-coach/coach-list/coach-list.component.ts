@@ -49,7 +49,7 @@ export class CoachListComponent extends PageHelper implements OnInit {
   }
 
   getCoaches() {
-    this.getData(this.userService.getUsers({who: "coaches"}), {
+    this.getData(this.userService.getUsers({ who: 'coaches' }), {
       debug: true,
     });
   }

@@ -2,24 +2,24 @@ import { User } from '../models/user-model';
 import { getDisplayName } from './methods/getDisplayName';
 import { getPhoto } from './methods/getPhoto';
 
-export interface IUserHelper  {
-  photo: string 
-  displayName: string
-  path?: string 
-  init(user: User, path?: string): void
+export interface IUserHelper {
+  photo: string;
+  displayName: string;
+  path?: string;
+  init(user: User, path?: string): void;
 }
 
 export class UserHelper implements IUserHelper {
   photo: string;
   path: string;
-  displayName: string
+  displayName: string;
   private userData: User;
 
-   public init(user: User, path?: string) {
+  public init(user: User, path?: string) {
     this.userData = user;
     this.path = path;
-    this.displayName = getDisplayName(user)
-    this.photo = getPhoto(user)
+    this.displayName = getDisplayName(user);
+    this.photo = getPhoto(user);
   }
 
   public getCompetences(): string {

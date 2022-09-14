@@ -10,7 +10,7 @@ import { User } from 'src/app/models/user-model';
   styleUrls: ['./user-card.component.scss'],
 })
 export class UserCardComponent extends UserHelper implements OnInit {
-  @Input()  user: User;
+  @Input() user: User;
 
   @Input() data: any;
 

@@ -1,7 +1,7 @@
 export interface IUser {
   photo?: File | string;
   prenom: string;
-  username?: string
+  username?: string;
   nom: string;
   email: string;
   tel: string;

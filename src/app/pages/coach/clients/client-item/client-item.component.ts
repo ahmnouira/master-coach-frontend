@@ -11,18 +11,17 @@ import { LocalStorageService } from 'src/app/services/local-storage-service/loca
 export class ClientItemComponent extends UserHelper implements OnInit {
   @Input() client: any;
 
-  @Input() tab: string
-  
+  @Input() tab: string;
 
   @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
 
   form: any = {
-    selected : ''
-  }
+    selected: '',
+  };
   selectedClient: any;
 
   constructor(private coachService: CoachService) {
-    super()
+    super();
   }
 
   ngOnInit(): void {
@@ -31,10 +30,10 @@ export class ClientItemComponent extends UserHelper implements OnInit {
 
   handleSelectClient(user: any) {
     const data = {
-      ...user, 
-      tab: this.tab
-    }
-    this.coachService.setSelectedClient = data
+      ...user,
+      tab: this.tab,
+    };
+    this.coachService.setSelectedClient = data;
   }
 
   handleCheckbox(event: any) {}

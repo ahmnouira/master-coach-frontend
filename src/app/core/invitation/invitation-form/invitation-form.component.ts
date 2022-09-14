@@ -40,7 +40,7 @@ export class InvitationFormComponent
     const { confirmPassword, password, username } = this.form;
 
     if (password !== confirmPassword) {
-      this.onError('');
+      this.onError();
       return;
     }
 
@@ -57,8 +57,12 @@ export class InvitationFormComponent
       },
       {
         onSuccess: () => {
-          this.routeService.replace('/login')
-        }
+          /*
+          setTimeout(() => {
+            this.routeService.replace('/login')
+          }, 2000)
+          */
+        },
       }
     );
   }

@@ -3,25 +3,20 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-client-card-edit',
   templateUrl: './client-card-edit.component.html',
-  styleUrls: ['./client-card-edit.component.scss']
+  styleUrls: ['./client-card-edit.component.scss'],
 })
 export class ClientCardEditComponent implements OnInit {
+  selectedUserToupdate: any;
 
-  selectedUserToupdate: any
+  selectedUser: any;
 
-  selectedUser: any
+  selectedTeam: any;
 
-  selectedTeam: any 
+  coachTeams: any[];
 
-  coachTeams: any[]
-
-  
-
-  constructor() { }
+  constructor() {}
 
   saveUser() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
