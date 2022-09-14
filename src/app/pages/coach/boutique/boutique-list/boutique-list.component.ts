@@ -38,6 +38,24 @@ export class BoutiqueListComponent
     );
   }
 
+
+  hideProduct(id: string) {
+    console.log('hideProduct', id)
+    const filteredData = this.data.filter((el) => el._id !== id);
+    this.data = [...filteredData];
+
+    this.productService.hideProduct(id).subscribe(res => {
+      console.log(res)
+    }, (err) => {
+      console.error(err)
+    }) 
+  }
+
+
+  trackById(_index: number, product: Product) {
+    return product._id;
+  }
+
   resetFilters() {
     this.filteredData = this.data;
     // this.selectedComp = 'Compétences';

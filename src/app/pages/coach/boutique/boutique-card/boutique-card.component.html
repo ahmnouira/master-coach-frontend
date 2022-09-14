@@ -1,8 +1,16 @@
 <div
   class="product-card"
-  [ngStyle]="{ 'background-image': backgroundImage }"
-  [routerLink]="path"
+  [ngStyle]="{
+    'background-image': backgroundImage,
+    cursor: forClient && 'pointer'
+  }"
 >
+  <div class="product-card-tools" *ngIf="!forClient">
+    <span class="material-icons edit-icon" [routerLink]="path">mode_edit</span>
+    <span class="material-icons visibility-icon" (click)="handleDelete()"
+      >visibility</span
+    >
+  </div>
   <div class="product-card-meta">
     <img
       class="product-card-meta-icon"
