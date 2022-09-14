@@ -28,6 +28,10 @@ export class ServicesService extends BaseService {
     return this.get(`/services/${id}`);
   }
 
+  editService(id: string, data: any) {
+    return this.put(`/services/${id}`, data);
+  }
+
   hideService(id: string): Observable<any> {
     return this.delete(`/services/${id}`);
   }

@@ -11,14 +11,7 @@ export class BaseService {
 
   protected httpOptions = {
     // remove these
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Cross-Origin-Resource-Policy': 'cross-origin',
-      'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers':
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-    }),
+    headers: new HttpHeaders({}),
   };
 
   constructor(protected httpClient: HttpClient) {}
@@ -54,7 +47,7 @@ export class BaseService {
 
   protected put<T = any, R = any>(url: string, data: T): Observable<R> {
     return this.httpClient
-      .put<R>(this.baseUri + url, data)
+      .put<R>(this.baseUri + url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

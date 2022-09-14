@@ -26,11 +26,17 @@ export class ServicesListComponent extends PageHelper implements OnInit {
   }
 
   hideService(id: string) {
-    const filteredData = this.data.filter((el: any) => el._id !== id);
-    this.data = [...filteredData];
+    // this.isLoading = true
+
     this.servicesService.hideService(id).subscribe(
       (res) => {
-        console.log(res);
+        const filteredData = this.data.filter(
+          (el: any) => el._id !== id
+        ) as any[];
+        console.log(filteredData.length);
+        this.found = Boolean(filteredData.length);
+        this.onSuccess();
+        this.data = [...filteredData];
       },
       (err) => {
         console.error(err);
@@ -41,7 +47,6 @@ export class ServicesListComponent extends PageHelper implements OnInit {
   trackById(_index: number, service: Service) {
     return service._id;
   }
-
 
   filterInputChanged(event: any) {}
 }
