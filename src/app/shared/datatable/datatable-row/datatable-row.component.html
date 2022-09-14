@@ -14,19 +14,21 @@
           ? { 'text-align': 'center' }
           : { 'text-align': 'left' }
       "
+      style="padding-left: 32px"
     >
       <span
         [class]="row[title.data + '_class']"
         [ngClass]="{ badge: title.type === 'badge' }"
         [ngStyle]="
-          (title.data === 'type' || title.data === 'description') && {
-            'text-transform': 'capitalize'
-          }
-        "
-        [ngStyle]="
-          (title.data === 'price' || title.data === 'amount') && {
-            'font-weight': 'bold'
-          }
+          title.data === 'price' || title.data === 'amount'
+            ? {
+                'font-weight': 'bold'
+              }
+            : title.data === 'type' || title.data === 'description'
+            ? {
+                'text-transform': 'capitalize'
+              }
+            : {}
         "
       >
         {{

@@ -1,6 +1,8 @@
 <div class="card-tools">
-  <span class="material-icons edit-icon" [routerLink]="path">mode_edit</span>
-  <span class="material-icons visibility-icon" (click)="handleDelete()"
-    >visibility</span
-  >
+  <div class="card-tools-icon" [routerLink]="path">
+    <span class="material-icons edit-icon">mode_edit</span>
+  </div>
+  <div class="card-tools-icon" (click)="handleDelete()">
+    <span class="material-icons visibility-icon">visibility</span>
+  </div>
 </div>
