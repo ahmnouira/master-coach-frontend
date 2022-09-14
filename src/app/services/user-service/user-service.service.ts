@@ -36,7 +36,7 @@ export class UserService extends BaseService {
   }
 
   changeUserState(id: any) {
-    return this.put('/users/change_status/' + id);
+    return this.put('/users/change_status/' + id, {});
   }
 
   getAllUser() {

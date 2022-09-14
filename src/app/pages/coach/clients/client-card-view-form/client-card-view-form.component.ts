@@ -3,7 +3,7 @@ import { FormSimpleHelper } from 'src/app/helpers/FormSimpleHelper';
 import { CoachService } from 'src/app/services/coach-service/coach.service';
 
 type Form = {
-  notes: string;
+  note: string;
 };
 
 @Component({
@@ -18,7 +18,7 @@ export class ClientCardViewFormComponent
   @Input() id: string;
 
   form: Form = {
-    notes: '',
+    note: '',
   };
 
   constructor(private coachService: CoachService) {
@@ -28,10 +28,11 @@ export class ClientCardViewFormComponent
   ngOnInit(): void {}
 
   submit() {
-    const { notes } = this.form;
-
-    this.submitData(this.coachService.editClientNote('', notes), {
-      notes,
+    const { note } = this.form;
+    this.submitData(this.coachService.addClientNote(this.id, {note}), {
+      note,
+    }, {
+      debug: true
     });
   }
 }

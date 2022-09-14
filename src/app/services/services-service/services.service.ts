@@ -17,9 +17,7 @@ export class ServicesService extends BaseService {
   services$ = this.services.asObservable();
 
   addService(data: any): Observable<any> {
-    return this.post('/services', data, {
-      formData: true,
-    });
+    return this.post('/services', data);
   }
 
   getServices(options: GetServicesOptions): Observable<any> {

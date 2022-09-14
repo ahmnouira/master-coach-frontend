@@ -1,4 +1,4 @@
-import { PlanType } from '../models/plan.enum';
+import { PlanPeriod } from '../models/plan-period.enum';
 import { Plan } from '../models/plan.model';
 
 export const FREE_MONTHLY_PLAN_ID = 'm-1';
@@ -21,7 +21,7 @@ export const PLANS_MONTHLY: Plan[] = [
       'Jusqu`s a 50H de vidéconférence mensuelles',
       'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Monthly,
+    period: PlanPeriod.Monthly,
   },
 
   {
@@ -39,7 +39,8 @@ export const PLANS_MONTHLY: Plan[] = [
       'Jusqu`s a 50H de vidéconférence mensuelles',
       'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Monthly,
+    period: PlanPeriod.Monthly,
+
   },
 
   {
@@ -58,7 +59,7 @@ export const PLANS_MONTHLY: Plan[] = [
       'Jusqu`s a 6 produits dans lat Boutique en ligne',
     ],
 
-    type: PlanType.Monthly,
+    period: PlanPeriod.Monthly,
   },
   {
     id: 'm-4',
@@ -75,7 +76,7 @@ export const PLANS_MONTHLY: Plan[] = [
       'Vidéoconférences illimitée',
       'Produits illimités Boutique en ligne',
     ],
-    type: PlanType.Monthly,
+    period: PlanPeriod.Monthly,
   },
 ];
 
@@ -95,7 +96,7 @@ export const PLANS_ANNUAL: Plan[] = [
       'Jusqu`s a 50H de vidéconférence mensuelles',
       'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Annual,
+    period: PlanPeriod.Yearly,
   },
 
   {
@@ -113,7 +114,7 @@ export const PLANS_ANNUAL: Plan[] = [
       'Jusqu`s a 50H de vidéconférence mensuelles',
       'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Annual,
+    period: PlanPeriod.Yearly,
   },
 
   {
@@ -131,7 +132,7 @@ export const PLANS_ANNUAL: Plan[] = [
       'Jusqu`s a 100H de vidéconférence mensuelles',
       'Jusqu`s a 6 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Annual,
+    period: PlanPeriod.Yearly,
   },
   {
     id: 'a-4',
@@ -148,6 +149,6 @@ export const PLANS_ANNUAL: Plan[] = [
       'Vidéoconférences illimitée',
       'Produits illimités Boutique en ligne',
     ],
-    type: PlanType.Annual,
+    period: PlanPeriod.Yearly,
   },
 ];

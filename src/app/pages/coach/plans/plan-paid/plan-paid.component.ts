@@ -58,8 +58,10 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
     this.paymentService
       .savePlan({
         planDescription: this.plan.title.toLowerCase(),
+        planPeriod: this.plan.period.toLowerCase(),
         planPrice: getPrice(this.plan.price),
         stripeToken,
+      
       })
       .subscribe(
         (res) => {
@@ -78,7 +80,6 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
             }
           );
 
-          console.log('res:', res, res.success, res.message);
           this.paymentService.clearSelectedPlan();
           this.success = true;
           this.isLoading = false;

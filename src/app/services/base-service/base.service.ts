@@ -49,28 +49,27 @@ export class BaseService {
   protected post<T = any, R = any>(
     url: string,
     data: T,
-    options?: { formData: boolean }
   ): Observable<R> {
     return this.httpClient
       .post<R>(this.baseUri + url, data, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
-  protected put<T = any, R = any>(url: string, data?: T): Observable<R> {
+  protected put<T = any, R = any>(url: string, data: T): Observable<R> {
     return this.httpClient
-      .put<R>(this.baseUri + url, JSON.stringify(data), this.httpOptions)
+      .put<R>(this.baseUri + url, data)
       .pipe(catchError(this.handleError));
   }
 
   /* TODO: fix  deprecated */
   private handleError(error: any) {
     let errorMessage = '';
+
     // Get client-side error
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
       // Get server-side error
-      // console.log("error.error", error)
       errorMessage = error.error.error;
     }
     //window.alert(errorMessage);
