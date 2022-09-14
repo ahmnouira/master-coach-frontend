@@ -3,10 +3,16 @@
   [ngStyle]="{
     'background-image': backgroundImage,
     'min-height': minHeight,
-    width: width
+    width: width,
+    cursor: forClient && 'pointer'
   }"
-  [routerLink]="path"
 >
+  <app-card-tools
+    [path]="path"
+    (onDelete)="handleDelete()"
+    *ngIf="!forClient"
+  ></app-card-tools>
+
   <div class="service-card-label d-inline-flex">
     <p>{{ service.title }}</p>
   </div>

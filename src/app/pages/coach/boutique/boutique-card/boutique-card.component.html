@@ -5,7 +5,11 @@
     cursor: forClient && 'pointer'
   }"
 >
-  <app-card-tools [path]="path" (onDelete)="handleDelete()"></app-card-tools>
+  <app-card-tools
+    [path]="path"
+    (onDelete)="handleDelete()"
+    *ngIf="!forClient"
+  ></app-card-tools>
   <div class="product-card-meta">
     <img
       class="product-card-meta-icon"
