@@ -1,19 +1,10 @@
-<div *ngIf="isLoading; else elseBlock">
-  <div style="margin-top: 50px">
-    <app-loader></app-loader>
-  </div>
-</div>
-
-<ng-template #elseBlock>
-  <form
-    [@animate]="{
-      value: '*',
-      params: { duration: '300ms', y: '100px' }
-    }"
-    name="form"
-    #f="ngForm"
-    novalidate
-  >
+<app-page-list-wrapper
+  [error]=""
+  [found]="found"
+  [isLoading]="isLoading"
+  [title]="'product'"
+>
+  <app-form (onSubmit)="f = $event">
     <div class="form-container">
       <h2 class="title">Info</h2>
 
@@ -154,19 +145,18 @@
         </div>
       </div>
 
-      <app-divider></app-divider>
-      <app-form-error [error]="error"></app-form-error>
-
-      <div class="alert alert-info" role="alert" *ngIf="success">
-        Service ajouté
-      </div>
+      <app-form-footer
+        [error]="error"
+        [success]="success"
+        [successMessage]="id ? 'Produit modifé' : 'Produit ajouté'"
+      ></app-form-footer>
 
       <app-button
         (onClick)="submit()"
         [isLoading]="isSubmitting"
-        [disabled]="id ? true : false"
+        [disabled]="isSubmitting"
       >
       </app-button>
     </div>
-  </form>
-</ng-template>
+  </app-form>
+</app-page-list-wrapper>

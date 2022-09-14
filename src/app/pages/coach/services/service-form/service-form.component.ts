@@ -18,8 +18,6 @@ import { Animations } from 'src/app/shared/animations';
 export class ServiceFormComponent extends FormHelper implements OnInit {
   @Input() id: string = '';
 
-  isEdit: Boolean;
-
   form: IService = {
     description: '',
     title: '',

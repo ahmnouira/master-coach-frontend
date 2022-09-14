@@ -27,6 +27,10 @@ export class ProductService extends BaseService {
     return this.get(`/products/${id}`);
   }
 
+  editProduct(id: string, data: any) {
+    return this.put(`/products/${id}`, data);
+  }
+
   hideProduct(id: string): Observable<any> {
     return this.delete(`/products/${id}`);
   }
