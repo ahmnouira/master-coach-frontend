@@ -6,6 +6,7 @@
     width: width,
     cursor: forClient && 'pointer'
   }"
+  [routerLink]="forClient && path"
 >
   <app-card-tools
     [path]="path"

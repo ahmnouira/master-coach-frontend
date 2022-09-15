@@ -1,13 +1,7 @@
 import { DatableTableAction } from 'src/app/shared/datatable/action.model';
 
 export const CLIENT_PURCHASES_DISPLAYED_COLUMNS = [
-  {
-    data: '_id',
-    value: 'ref',
-    type: 'text',
-    search: true,
-    sort: true,
-  },
+
   {
     data: 'createdAt',
     value: 'date',
@@ -16,8 +10,8 @@ export const CLIENT_PURCHASES_DISPLAYED_COLUMNS = [
     sort: true,
   },
   {
-    data: 'user',
-    value: 'coach',
+    data: 'type',
+    value: 'type',
     type: 'text',
     search: true,
     sort: true,

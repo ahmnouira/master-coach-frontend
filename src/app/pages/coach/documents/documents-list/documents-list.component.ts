@@ -64,8 +64,12 @@ export class DocumentsListComponent
   onActionClicked(element: any) {
     const { action, item } = element;
     switch (action) {
-      case 'edit':
       case 'view':
+        this.routerService.navigate([
+          `/pages/coach/documents/view/${item._id}`,
+        ]);
+        break
+      case 'edit':
         this.routerService.navigate([
           `/pages/coach/documents/edit/${item._id}`,
         ]);

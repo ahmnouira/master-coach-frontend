@@ -22,11 +22,11 @@
       </p>
 
       <div class="d-flex justify-content-between" style="margin-top: 30px">
-        <h3 class="plans-container-title">Migrer vers un nouveau plan</h3>
+        <h3 class="plans-container-title">Changer mon offre d'abonnement</h3>
 
         <div class="d-flex align-items-center" style="margin-right: 200px">
           <app-radio
-            [label]="'Monthly'"
+            [label]="'Mensuel'"
             [(model)]="form.subscriptionPeriod"
             [value]="'monthly'"
             (modelChange)="changeOffer($event)"
@@ -34,7 +34,7 @@
           </app-radio>
 
           <app-radio
-            [label]="'Yearly'"
+            [label]="'Annuel'"
             [(model)]="form.subscriptionPeriod"
             [value]="'yearly'"
             (modelChange)="changeOffer($event)"

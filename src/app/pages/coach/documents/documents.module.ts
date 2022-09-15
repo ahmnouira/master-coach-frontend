@@ -11,6 +11,7 @@ import { DatatableModule } from 'src/app/shared/datatable/datatable.module';
 import { DocumentsAddComponent } from './documents-add/documents-add.component';
 import { DocumentsFormComponent } from './documents-form/documents-form.component';
 import { DocumentsEditComponent } from './documents-edit/documents-edit.component';
+import { DocumentsViewComponent } from './documents-view/documents-view.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { DocumentsEditComponent } from './documents-edit/documents-edit.componen
     DocumentsAddComponent,
     DocumentsFormComponent,
     DocumentsEditComponent,
+    DocumentsViewComponent,
   ],
   imports: [
     CommonModule,

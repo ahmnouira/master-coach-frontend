@@ -2,7 +2,7 @@
 
 ## Design file
 
-https://xd.adobe.com/view/cc4cb8fb-4bdf-4602-b884-22aab6cd3150-991f/
+https://xd.adobe.com/view/b6fabe5d-b208-4f34-8cec-d522e9eeb0cd-e3a9/
 
 ## API Postman url
 
