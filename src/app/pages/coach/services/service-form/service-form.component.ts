@@ -106,7 +106,7 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
     // check if not a free
     if (!isFree && !parseInt(price)) {
       // this.onError('Please check price');
-      this.onError('')
+      this.onError('');
       return;
     }
     let formData = this.getFormData(this.form);

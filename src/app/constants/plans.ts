@@ -79,8 +79,6 @@ export const PLANS_MONTHLY: Plan[] = [
   },
 ];
 
-
-
 export const PLANS_ANNUAL: Plan[] = [
   {
     id: FREE_ANNUAL_PLAN_ID,

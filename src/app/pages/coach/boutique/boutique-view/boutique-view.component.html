@@ -1,1 +1,26 @@
-<p>boutique-view works!</p>
+<app-sub-header
+  [title]="'Page détails du support formation'"
+  [subTitle]="'BACK'"
+></app-sub-header>
+
+<app-page-wrapper>
+  <app-page-list-wrapper
+    [error]=""
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'produit'"
+  >
+    <div class="row" *ngIf="data">
+      <div class="col-4 col-xxl-3">
+        <app-boutique-info [product]="data"></app-boutique-info>
+      </div>
+
+      <div class="col-8 col-xxl-9">
+        <app-product-info
+          [image]="data.image"
+          [description]="data.description"
+        ></app-product-info>
+      </div>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>

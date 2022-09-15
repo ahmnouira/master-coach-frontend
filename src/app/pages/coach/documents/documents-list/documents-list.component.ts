@@ -57,7 +57,8 @@ export class DocumentsListComponent
     this.getData(
       this.documentService.getDocuments({
         all: false,
-      }))
+      })
+    );
   }
 
   // when action is clicked
@@ -68,14 +69,14 @@ export class DocumentsListComponent
         this.routerService.navigate([
           `/pages/coach/documents/view/${item._id}`,
         ]);
-        break
+        break;
       case 'edit':
         this.routerService.navigate([
           `/pages/coach/documents/edit/${item._id}`,
         ]);
         break;
       case 'delete':
-        this.deleteDocument(item._id)
+        this.deleteDocument(item._id);
         break;
     }
   }
@@ -85,8 +86,7 @@ export class DocumentsListComponent
     this.data = [...filteredData];
     this.found = Boolean(filteredData.length);
     this.documentService.deleteDocument(id).subscribe(
-      (_res) => {
-      },
+      (_res) => {},
       (err) => {
         console.error(err);
       }

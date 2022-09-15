@@ -43,8 +43,7 @@ export class BoutiqueListComponent
     this.data = [...filteredData];
     this.found = Boolean(filteredData.length);
     this.productService.hideProduct(id).subscribe(
-      (_res) => {
-      },
+      (_res) => {},
       (err) => {
         console.error(err);
       }

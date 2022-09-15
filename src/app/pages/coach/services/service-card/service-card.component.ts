@@ -17,13 +17,14 @@ export class ServiceCardComponent implements OnInit {
   width: string;
   minHeight: string;
 
-  path: string;
+  editPath: string;
+  viewPath: string;
 
   constructor() {}
 
   ngOnInit(): void {
     this.getBackgroundImage();
-    this.getPath();
+    this.getPaths();
     this.width = this.forClient ? '340px' : 'auto';
     this.minHeight = this.forClient ? '200px' : '230px';
   }
@@ -32,11 +33,12 @@ export class ServiceCardComponent implements OnInit {
     this.onDelete.emit(this.service._id);
   }
 
-  getPath() {
+  getPaths() {
     if (this.forClient) {
-      this.path = `/pages/client/rdv/detail-formation/${this.service._id}`;
+      this.viewPath = `/pages/client/rdv/detail-formation/${this.service._id}`;
     } else {
-      this.path = `/pages/coach/services/edit/${this.service._id}`;
+      this.editPath = `/pages/coach/services/edit/${this.service._id}`;
+      this.viewPath = `/pages/coach/services/view/${this.service._id}`;
     }
   }
 

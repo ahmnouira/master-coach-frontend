@@ -35,7 +35,6 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
 
   found: boolean;
 
-
   constructor(
     private documentService: DocumentsService,
     private authService: AuthService,
@@ -48,38 +47,41 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
     this.getCategories();
     if (this.id) {
       // means edit
-      this.documentService.getDocument(this.id).subscribe((res) => {
-        if (!res.success && res.error) {
-          this.found = false
-          this.onError(res.error);
-          return;
-        }
-        const document = res.data as IDocument;
+      this.documentService.getDocument(this.id).subscribe(
+        (res) => {
+          if (!res.success && res.error) {
+            this.found = false;
+            this.onError(res.error);
+            return;
+          }
+          const document = res.data as IDocument;
 
-        this.form = {
-          description: this.getString(document.description),
-          title: this.getString(document.title),
-          type: document.type,
-          category: this.getString(document.category),
-          duration: this.getString(document.duration),
-          image: this.getFileUrl(document.image),
-          file: this.getFileUrl(document.file),
-        };
+          this.form = {
+            description: this.getString(document.description),
+            title: this.getString(document.title),
+            type: document.type,
+            category: this.getString(document.category),
+            duration: this.getString(document.duration),
+            image: this.getFileUrl(document.image),
+            file: this.getFileUrl(document.file),
+          };
 
-        const category = this.categories?.find(
-          (el) => el.name === this.form.category
-        );
-        if (category) {
-          this.selectedCategories = [category];
+          const category = this.categories?.find(
+            (el) => el.name === this.form.category
+          );
+          if (category) {
+            this.selectedCategories = [category];
+          }
+          this.found = true;
+          this.isLoading = false;
+        },
+        (error) => {
+          this.found = false;
+          this.onError(error);
         }
-        this.found = true
-        this.isLoading = false;
-      }, (error) => {
-        this.found = false
-        this.onError(error)
-      });
+      );
     } else {
-      this.found = true
+      this.found = true;
       this.isLoading = false;
     }
   }
