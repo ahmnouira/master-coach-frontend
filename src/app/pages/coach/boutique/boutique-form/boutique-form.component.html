@@ -1,10 +1,22 @@
-<app-page-list-wrapper
-  [error]=""
-  [found]="found"
-  [isLoading]="isLoading"
-  [title]="'product'"
->
-  <app-form (onSubmit)="f = $event">
+<div *ngIf="isLoading; else elseBlock">
+  <div style="margin-top: 50px">
+    <app-loader></app-loader>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <app-empty-page title="product" *ngIf="!found"></app-empty-page>
+
+  <form
+    [@animate]="{
+      value: '*',
+      params: { duration: '300ms', y: '100px' }
+    }"
+    name="form"
+    #f="ngForm"
+    novalidate
+    *ngIf="found"
+  >
     <div class="form-container">
       <h2 class="title">Info</h2>
 
@@ -158,5 +170,5 @@
       >
       </app-button>
     </div>
-  </app-form>
-</app-page-list-wrapper>
+  </form>
+</ng-template>

@@ -17,7 +17,7 @@ import { Animations } from 'src/app/shared/animations';
 export class BoutiqueFormComponent extends FormHelper implements OnInit {
   @Input() id: string = ''; // if id means edit
 
-  form: IProduct = {
+  form: Partial<IProduct> = {
     description: '',
     price: '',
     title: '',
@@ -75,7 +75,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
           if (category) {
             this.selectedCategories = [category];
           }
-
+  
           this.found = true;
           this.isLoading = false;
         },
@@ -157,8 +157,9 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     }
 
     // check if not a free
-    if (!isFree && !price) {
-      this.onError('Please check price');
+    if (!isFree && !parseInt(price)) {
+      // this.onError('Please check price');
+      this.onError('')
       return;
     }
 
