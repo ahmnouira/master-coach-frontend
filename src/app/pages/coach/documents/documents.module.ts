@@ -12,6 +12,7 @@ import { DocumentsAddComponent } from './documents-add/documents-add.component';
 import { DocumentsFormComponent } from './documents-form/documents-form.component';
 import { DocumentsEditComponent } from './documents-edit/documents-edit.component';
 import { DocumentsViewComponent } from './documents-view/documents-view.component';
+import { DocumentsInfoComponent } from './documents-info/documents-info.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DocumentsViewComponent } from './documents-view/documents-view.componen
     DocumentsFormComponent,
     DocumentsEditComponent,
     DocumentsViewComponent,
+    DocumentsInfoComponent,
   ],
   imports: [
     CommonModule,
