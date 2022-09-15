@@ -9,9 +9,10 @@ import { ServicesService } from 'src/app/services/services-service/services.serv
   templateUrl: './service-view.component.html',
   styleUrls: ['./service-view.component.scss'],
 })
-export class ServiceViewComponent extends PageHelper<Service>
-implements OnInit {
-  
+export class ServiceViewComponent
+  extends PageHelper<Service>
+  implements OnInit
+{
   id: string = '';
 
   constructor(
@@ -33,6 +34,6 @@ implements OnInit {
   }
 
   getService() {
-    this.getData(this.servicesService.getService(this.id))
+    this.getData(this.servicesService.getService(this.id));
   }
 }

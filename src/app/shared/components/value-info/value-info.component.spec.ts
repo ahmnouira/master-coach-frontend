@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ServiceInfoComponent } from './service-info.component';
+import { ValueInfoComponent } from './value-info.component';
 
-describe('ServiceInfoComponent', () => {
-  let component: ServiceInfoComponent;
-  let fixture: ComponentFixture<ServiceInfoComponent>;
+describe('ValueInfoComponent', () => {
+  let component: ValueInfoComponent;
+  let fixture: ComponentFixture<ValueInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ServiceInfoComponent],
+      declarations: [ValueInfoComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ServiceInfoComponent);
+    fixture = TestBed.createComponent(ValueInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

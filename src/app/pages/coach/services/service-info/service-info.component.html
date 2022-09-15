@@ -1,37 +1,69 @@
 <div class="form-container">
-  <h2 class="title">Info</h2>
-  <app-text-info
-    [title]="'Titre'"
-    [value]="service.title"
-    *ngIf="service.title"
-  ></app-text-info>
-  <app-text-info
-    [title]="'Durée'"
-    [value]="service.duration"
-    *ngIf="service.duration"
-  ></app-text-info>
-  <app-divider></app-divider>
+  <section>
+    <h2 class="title">Info</h2>
+    <app-text-info
+      [title]="'Titre'"
+      [value]="service.title"
+      *ngIf="service.title"
+    ></app-text-info>
+    <app-text-info
+      [title]="'Durée'"
+      [value]="service.duration"
+      *ngIf="service.duration"
+    ></app-text-info>
+  </section>
 
-  <app-divider></app-divider>
+  <section *ngIf="service.sessionType || service.format">
+    <app-divider></app-divider>
 
-  <h2 class="title">Tarifs</h2>
-  <app-text-info *ngIf="service.isFree" [title]="'Gratuit'"></app-text-info>
-  <app-text-info
-    *ngIf="service.isPriceHidden"
-    [title]="'Masquer le prix'"
-  ></app-text-info>
-  <app-text-info [title]="'Fixe'" *ngIf="service.isFixedPrice"></app-text-info>
+    <app-value-info
+      [type]="service.sessionType"
+      *ngIf="service.sessionType"
+      [center]="false"
+    ></app-value-info>
+    <app-value-info
+      *ngIf="service.format"
+      [format]="service.format"
+      [chez]="service?.chez"
+      [center]="false"
+    ></app-value-info>
+  </section>
 
-  <app-text-info
-    [title]="'Price'"
-    [value]="service.price"
-    *ngIf="service.price"
-  ></app-text-info>
-  <app-divider></app-divider>
-  <h2 class="title">Témoignage</h2>
-  <app-text-info
-    *ngFor="let testimony of testimonies; index as i"
-    title="Testimonie{{ i + 1 }}"
-    [value]="testimony.text"
-  ></app-text-info>
+  <section>
+    <app-divider></app-divider>
+    <app-text-info
+      [title]="'Auto Confirmation'"
+      [value]="service.isAutoConfirmed ? 'yes' : 'no'"
+    ></app-text-info>
+  </section>
+
+  <section>
+    <app-divider></app-divider>
+    <h2 class="title">Tarifs</h2>
+    <app-text-info *ngIf="service.isFree" [title]="'Gratuit'"></app-text-info>
+    <app-text-info
+      *ngIf="service.isPriceHidden"
+      [title]="'Masquer le prix'"
+    ></app-text-info>
+    <app-text-info
+      [title]="'Fixe'"
+      *ngIf="service.isFixedPrice"
+    ></app-text-info>
+
+    <app-text-info
+      [title]="'Price'"
+      [value]="service.price"
+      *ngIf="service.price"
+    ></app-text-info>
+  </section>
+
+  <section *ngIf="testimonies.length">
+    <app-divider></app-divider>
+    <h2 class="title">Témoignage</h2>
+    <app-text-info
+      *ngFor="let testimony of testimonies; index as i"
+      title="Testimonie{{ i + 1 }}"
+      [value]="testimony.text"
+    ></app-text-info>
+  </section>
 </div>

@@ -55,6 +55,7 @@ import { FormCoreWrapperComponent } from './components/form-core-wrapper/form-co
 import { FormCoreLeftSideComponent } from './components/form-core-left-side/form-core-left-side.component';
 import { CardToolsComponent } from './components/card-tools/card-tools.component';
 import { TextInfoComponent } from './components/text-info/text-info.component';
+import { ValueInfoComponent } from './components/value-info/value-info.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +105,7 @@ import { TextInfoComponent } from './components/text-info/text-info.component';
     FormCoreLeftSideComponent,
     CardToolsComponent,
     TextInfoComponent,
+    ValueInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -164,6 +166,7 @@ import { TextInfoComponent } from './components/text-info/text-info.component';
     FormCoreLeftSideComponent,
     CardToolsComponent,
     TextInfoComponent,
+    ValueInfoComponent,
   ],
 })
 export class SharedModule {}

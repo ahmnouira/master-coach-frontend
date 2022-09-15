@@ -4,14 +4,16 @@ import { ServiceFormat } from 'src/app/models/service/service-format.enum';
 import { SessionType } from 'src/app/models/service/service-type.enum';
 
 @Component({
-  selector: 'app-service-info',
-  templateUrl: './service-info.component.html',
-  styleUrls: ['./service-info.component.scss'],
+  selector: 'app-value-info',
+  templateUrl: './value-info.component.html',
+  styleUrls: ['./value-info.component.scss'],
 })
-export class ServiceInfoComponent implements OnInit {
+export class ValueInfoComponent implements OnInit {
   @Input() chez: ServiceChez;
   @Input() type: SessionType;
   @Input() format: ServiceFormat;
+
+  @Input() center: boolean = true;
 
   title: string;
   icon: string;
