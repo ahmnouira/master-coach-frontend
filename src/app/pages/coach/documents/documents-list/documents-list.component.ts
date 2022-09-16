@@ -57,11 +57,7 @@ export class DocumentsListComponent
     this.getData(
       this.documentService.getDocuments({
         all: false,
-      }),
-      {
-        debug: true,
-      }
-    );
+      }))
   }
 
   // when action is clicked
@@ -70,18 +66,31 @@ export class DocumentsListComponent
     switch (action) {
       case 'view':
         this.routerService.navigate([
-          `/pages/coach/documents/edit/${item._id}`,
+          `/pages/coach/documents/view/${item._id}`,
         ]);
-        break;
+        break
       case 'edit':
         this.routerService.navigate([
           `/pages/coach/documents/edit/${item._id}`,
         ]);
         break;
       case 'delete':
-        window.alert('NOT IMPLEMENTED!');
+        this.deleteDocument(item._id)
         break;
     }
+  }
+
+  deleteDocument(id: string) {
+    const filteredData = this.data.filter((el) => el._id !== id);
+    this.data = [...filteredData];
+    this.found = Boolean(filteredData.length);
+    this.documentService.deleteDocument(id).subscribe(
+      (_res) => {
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
   }
 
   datatableChange(ev: any) {

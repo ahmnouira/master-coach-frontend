@@ -41,9 +41,9 @@ export class BoutiqueListComponent
   hideProduct(id: string) {
     const filteredData = this.data.filter((el) => el._id !== id);
     this.data = [...filteredData];
+    this.found = Boolean(filteredData.length);
     this.productService.hideProduct(id).subscribe(
-      (res) => {
-        console.log(res);
+      (_res) => {
       },
       (err) => {
         console.error(err);

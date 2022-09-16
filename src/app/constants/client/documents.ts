@@ -1,13 +1,7 @@
 import { DatableTableAction } from '../../shared/datatable/action.model';
 
 export const CLIENT_DOCS_DISPLAYED_COLUMNS = [
-  {
-    data: '_id',
-    value: 'ref',
-    type: 'text',
-    search: true,
-    sort: true,
-  },
+
   {
     data: 'title',
     value: 'titre',

@@ -10,8 +10,11 @@ const routes: Routes = [
     path: 'add',
     component: BoutiqueAddComponent,
   },
-  { path: 'edit/:id', component: BoutiqueEditComponent },
 
+  { path: 'view/:id', component: BoutiqueEditComponent },
+
+  { path: 'edit/:id', component: BoutiqueEditComponent },
+  
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 @NgModule({

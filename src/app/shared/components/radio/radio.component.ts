@@ -26,6 +26,7 @@ export class RadioComponent implements OnInit {
     if (this.label && !this.id) {
       this.id = this.label.toLowerCase();
     }
+    console.log(this.model, this.value)
     this.checked = this.model == this.value;
   }
 

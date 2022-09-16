@@ -21,7 +21,7 @@ export class PlanListComponent implements OnInit {
   selectedPlan: Plan;
 
   subscriptionType: string;
-  subscriptionPeriod: SubscriptionPeriod | undefined = undefined;
+  subscriptionPeriod: string;
 
   expires: string | number;
   userEmail: string;
@@ -40,11 +40,13 @@ export class PlanListComponent implements OnInit {
   ngOnInit(): void {
     this.authService.currentUser$.subscribe((user) => {
       if (user) {
-        console.log(user.subscriptionType, user.subscriptionPeriod, user);
 
         this.userEmail = user.email;
+
+
+
         this.subscriptionType = user.subscriptionType ?? 'free';
-        this.subscriptionPeriod = user.subscriptionPeriod;
+        this.subscriptionPeriod = user.subscriptionPeriod === "monthly" ? 'Mensuel': user.subscriptionPeriod === 'yearly' ? "Annuel" : "";
         if (user.subscriptionEnd) {
           const difference =
             new Date(user.subscriptionEnd).getTime() - new Date().getTime();

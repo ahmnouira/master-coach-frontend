@@ -26,17 +26,11 @@ export class ServicesListComponent extends PageHelper implements OnInit {
   }
 
   hideService(id: string) {
-    // this.isLoading = true
-
+    const filteredData = this.data.filter((el) => el._id !== id);
+    this.data = [...filteredData];
+    this.found = Boolean(filteredData.length);
     this.servicesService.hideService(id).subscribe(
-      (res) => {
-        const filteredData = this.data.filter(
-          (el: any) => el._id !== id
-        ) as any[];
-        console.log(filteredData.length);
-        this.found = Boolean(filteredData.length);
-        this.onSuccess();
-        this.data = [...filteredData];
+      (_res) => {
       },
       (err) => {
         console.error(err);

@@ -5,6 +5,8 @@
 </div>
 
 <ng-template #elseBlock>
+  <app-empty-page title="document" *ngIf="!found"></app-empty-page>
+
   <form
     [@animate]="{
       value: '*',
@@ -13,6 +15,7 @@
     name="form"
     #f="ngForm"
     novalidate
+    *ngIf="found"
   >
     <div class="form-container">
       <h2 class="title">Info</h2>
@@ -125,13 +128,13 @@
       <app-form-footer
         [error]="error"
         [success]="success"
-        [successMessage]="'Documnet ajouté'"
+        [successMessage]="id ? 'Document modifé' : 'Document ajouté'"
       ></app-form-footer>
 
       <app-button
         (onClick)="submit()"
         [isLoading]="isSubmitting"
-        [disabled]="id ? true : false"
+        [disabled]="isSubmitting"
       >
       </app-button>
     </div>
