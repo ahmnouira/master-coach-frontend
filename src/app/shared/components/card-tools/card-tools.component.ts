@@ -6,7 +6,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./card-tools.component.scss'],
 })
 export class CardToolsComponent implements OnInit {
-  @Input() path: string;
+  @Input() editPath: string;
+
+  @Input() viewPath: string;
 
   @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
 

@@ -6,10 +6,11 @@
     width: width,
     cursor: forClient && 'pointer'
   }"
-  [routerLink]="forClient && path"
+  [routerLink]="forClient && viewPath"
 >
   <app-card-tools
-    [path]="path"
+    [editPath]="editPath"
+    [viewPath]="viewPath"
     (onDelete)="handleDelete()"
     *ngIf="!forClient"
   ></app-card-tools>

@@ -1,7 +1,6 @@
 import { DatableTableAction } from '../../shared/datatable/action.model';
 
 export const CLIENT_DOCS_DISPLAYED_COLUMNS = [
-
   {
     data: 'title',
     value: 'titre',

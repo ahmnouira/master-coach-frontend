@@ -1,7 +1,6 @@
 import { DatableTableAction } from 'src/app/shared/datatable/action.model';
 
 export const CLIENT_PURCHASES_DISPLAYED_COLUMNS = [
-
   {
     data: 'createdAt',
     value: 'date',

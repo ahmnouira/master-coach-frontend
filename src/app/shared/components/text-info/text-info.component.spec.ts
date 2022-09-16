@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DocumentsViewComponent } from './documents-view.component';
+import { TextInfoComponent } from './text-info.component';
 
-describe('DocumentsViewComponent', () => {
-  let component: DocumentsViewComponent;
-  let fixture: ComponentFixture<DocumentsViewComponent>;
+describe('TextInfoComponent', () => {
+  let component: TextInfoComponent;
+  let fixture: ComponentFixture<TextInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DocumentsViewComponent],
+      declarations: [TextInfoComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DocumentsViewComponent);
+    fixture = TestBed.createComponent(TextInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

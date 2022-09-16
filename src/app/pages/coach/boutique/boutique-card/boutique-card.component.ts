@@ -19,7 +19,8 @@ export class BoutiqueCardComponent implements OnInit {
   icon: string;
   backgroundImage: string;
 
-  path: string = '';
+  editPath: string = '';
+  viewPath: string = '';
 
   constructor() {}
 
@@ -31,7 +32,7 @@ export class BoutiqueCardComponent implements OnInit {
     this.getBackgroundImage();
     this.getPrice();
     this.getIcon();
-    this.getPath();
+    this.getPaths();
   }
 
   getIcon() {
@@ -50,11 +51,12 @@ export class BoutiqueCardComponent implements OnInit {
     }
   }
 
-  getPath() {
+  getPaths() {
     if (this.forClient) {
-      this.path = `/pages/client/library/view/${this.product._id}`;
+      this.editPath = `/pages/client/library/view/${this.product._id}`;
     } else {
-      this.path = `/pages/coach/boutique/edit/${this.product._id}`;
+      this.editPath = `/pages/coach/boutique/edit/${this.product._id}`;
+      this.viewPath = `/pages/coach/boutique/view/${this.product._id}`;
     }
   }
 

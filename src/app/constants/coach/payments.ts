@@ -25,7 +25,6 @@ export const COACH_PAYMENTS_DISPLAYED_COLUMNS = [
 ];
 
 export const COACH_PAYMENTS_ACTION_COLUMNS: DatableTableAction[] = [
-
   {
     value: '',
     children: [

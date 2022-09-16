@@ -75,7 +75,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
           if (category) {
             this.selectedCategories = [category];
           }
-  
+
           this.found = true;
           this.isLoading = false;
         },
@@ -159,7 +159,7 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     // check if not a free
     if (!isFree && !parseInt(price)) {
       // this.onError('Please check price');
-      this.onError('')
+      this.onError('');
       return;
     }
 
