@@ -1,0 +1,18 @@
+<div id="main-container-login" class="row">
+  <ng-content select="[left]"></ng-content>
+
+  <div
+    class="col right-login-pane"
+    [ngStyle]="{ 'margin-top': name === 'login' ? '80px' : '' }"
+  >
+    <div class="image">
+      <img src="{{ image }}" alt="" />
+    </div>
+    <div class="welcome-title">
+      <span>{{ title }}</span>
+    </div>
+    <div class="login-form">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

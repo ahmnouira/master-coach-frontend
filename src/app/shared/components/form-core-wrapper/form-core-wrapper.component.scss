@@ -1,0 +1,126 @@
+body {
+  background-color: #ffffff !important;
+ 
+}
+#main-container-login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: white;
+  margin: 0;
+  padding: 24px 20px;
+}
+
+.left-login-pane {
+  background: var(--global-bg-color-effafd) 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+
+  .logo {
+    display: flex;
+    img {
+      width: 259px;
+      height: 44px;
+      margin: 80px auto;
+    }
+  }
+  .image {
+    display: flex;
+    img {
+      width: 355px;
+      height: 343px;
+      margin: 55px auto;
+    }
+  }
+}
+.right-login-pane {
+ 
+  justify-content: center;
+
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 45px auto;
+    img {
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+
+  .welcome-title {
+    text-align: center;
+    span {
+      font: var(--global-font-style-normal) normal
+        var(--global-font-weight-normal) 30px/36px
+        var(--global-font-family-fredoka);
+      letter-spacing: var(--global-character-spacing-0);
+      text-align: center;
+      color: #ef6032;
+    }
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px;
+  }
+}
+
+
+
+@media screen and (max-width: 769px) {
+  .right-login-pane {
+    div.create-account {
+      flex-direction: column;
+      gap: unset;
+    }
+    a.login-forgotten-pass {
+      margin-bottom: 35px;
+    }
+    div.image {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .right-login-pane .btn.btn-submit-secondary {
+    padding: 0 10px;
+  }
+  .left-login-pane {
+    .image img {
+      max-width: 95%;
+    }
+    .logo img {
+      margin: 50px auto;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .right-login-pane .image {
+    margin-bottom: 10px;
+  }
+  .left-login-pane {
+    .logo img {
+      margin: 60px auto;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .right-login-pane {
+    .create-account {
+      flex-direction: row;
+      gap: 16px;
+    }
+    .login-forgotten-pass {
+      margin-bottom: 15px;
+    }
+  }
+}

@@ -1,134 +1,75 @@
-<div id="main-container-login" class="row">
-  <div class="col left-login-pane d-none d-md-block">
-    <div class="logo">
-      <img src="assets/img/login/mastercoach.svg" alt="logo" />
-    </div>
-    <div class="image">
-      <img src="assets/img/login/login-left-img@2x.png" alt="logo" />
-    </div>
-  </div>
-  <div class="col right-login-pane">
-    <div class="center-content">
-      <div class="image">
-        <img
-          src="assets/img/login/Groupe%20de%20masques%2042@2x.png"
-          alt="left-pane-image"
-        />
-      </div>
-      <div class="welcome-title">
-        <span>Heureux de vous revoir !</span>
-      </div>
-      <div class="login-form">
-        <form
-          class="login-form"
-          [@animate]="{ value: '*', params: { duration: '300ms', y: '100px' } }"
-          name="form"
-          #f="ngForm"
-          novalidate
-        >
-          <div class="form-group mb-20">
-            <label for="email">Email</label>
-            <input
-              type="text"
-              class="form-control"
-              id="email"
-              name="email"
-              aria-describedby="emailHelp"
-              placeholder="Ex : lorem@ipsum.com"
-              [(ngModel)]="form.email"
-              required
-              #email="ngModel"
-            />
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="email.errors && f.submitted"
-            >
-              L'email' est obligatoire!
-            </div>
-          </div>
+<app-form-core-wrapper
+  [title]="'Heureux de vous revoir !'"
+  [image]="'assets/img/login/login-right.png'"
+  [name]="'login'"
+>
+  <app-form-core-left-side class="col" left></app-form-core-left-side>
 
-          <div class="form-group mb-20">
-            <label for="password">Mot de passe</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              name="password"
-              placeholder="Ex : lorem@ipsum.com"
-              [(ngModel)]="form.password"
-              required
-              minlength="3"
-              #password="ngModel"
-            />
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="password.errors && f.submitted"
-            >
-              <div *ngIf="password.errors.required">
-                Mot de passe est obligatoire!
-              </div>
-              <div *ngIf="password.errors.minlength">
-                Le mot de passe doit avoir au moins 3 caractères
-              </div>
-            </div>
-          </div>
+  <app-form (onSubmit)="f = $event" class="login-form">
+    <app-text-field
+      type="email"
+      [label]="'Email'"
+      [(model)]="form.email"
+      [form]="f"
+    ></app-text-field>
+    <app-text-field
+      [type]="'password'"
+      [label]="'Mot de passe'"
+      [(model)]="form.password"
+      [name]="'password'"
+      [form]="f"
+    >
+    </app-text-field>
 
-          <div class="d-flex">
-            <button
-              (click)="login()"
-              class="btn btn-submit raised-button"
-              [disabled]="isLoading"
-            >
-              <span *ngIf="!isLoading">Se connecter</span>
-              <app-loader *ngIf="isLoading"></app-loader>
-            </button>
-          </div>
+    <app-button
+      (onClick)="login()"
+      [isLoading]="isLoading"
+      [disabled]="isLoading"
+      [title]="'Se connecter'"
+      [variant]="'auth'"
+    >
+    </app-button>
 
-          <div class="form-group">
-            <div class="alert alert-danger" role="alert" *ngIf="isLoginFailed">
-              L'authentification a echoué: {{ errorMessage }}
-            </div>
-          </div>
-
-          <div class="" *ngIf="!isVerified">
-            <button
-              class="btn btn-submit-secondary raised-button"
-              (click)="verifyEmail()"
-            >
-              Verify email
-            </button>
-          </div>
-
-          <div class="form-group">
-            <div class="alert alert-info" role="alert" *ngIf="successMessage">
-              {{ successMessage }}
-            </div>
-          </div>
-
-          <div class="d-flex justify-content-end">
-            <a class="login-forgotten-pass" routerLink="/forgot-password"
-              >Mot de passe oublié ?</a
-            >
-          </div>
-          <div class="create-account">
-            <button
-              class="btn btn-submit-secondary raised-button"
-              (click)="createUser('Coach')"
-            >
-              Créer mon compte coach
-            </button>
-            <button
-              class="btn btn-submit-secondary raised-button"
-              (click)="createUser('Client')"
-              routerLink="/create-user/client"
-            >
-              Créer mon compte coaché.e
-            </button>
-          </div>
-        </form>
+    <div class="form-group">
+      <div class="alert alert-danger" role="alert" *ngIf="isLoginFailed">
+        L'authentification a echoué: {{ errorMessage }}
       </div>
     </div>
-  </div>
-</div>
+
+    <div class="" *ngIf="!isVerified">
+      <button
+        class="btn btn-submit-secondary raised-button"
+        (click)="verifyEmail()"
+      >
+        Verify email
+      </button>
+    </div>
+
+    <div class="form-group">
+      <div class="alert alert-info" role="alert" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <a class="login-forgotten-pass" routerLink="/forgot-password"
+        >Mot de passe oublié ?</a
+      >
+    </div>
+    <div class="create-account">
+      <button
+        class="btn btn-submit-secondary raised-button"
+        (click)="createUser('Coach')"
+      >
+        Créer mon compte coach
+      </button>
+      <button
+        class="btn btn-submit-secondary raised-button"
+        (click)="createUser('Client')"
+        routerLink="/create-user/client"
+      >
+        Créer mon compte coaché.e
+      </button>
+    </div>
+  </app-form>
+</app-form-core-wrapper>

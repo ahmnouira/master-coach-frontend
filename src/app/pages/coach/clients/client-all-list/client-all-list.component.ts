@@ -7,28 +7,31 @@ import { InvitationService } from 'src/app/services/invitation-service/invitatio
 @Component({
   selector: 'app-client-all-list',
   templateUrl: './client-all-list.component.html',
-  styleUrls: ['./client-all-list.component.scss']
+  styleUrls: ['./client-all-list.component.scss'],
 })
 export class ClientAllListComponent extends PageHelper implements OnInit {
+  @Input() name: string = 'all';
 
-  @Input() name: string  = 'all'
+  title: string;
 
-  title: string
-
-  constructor(private invitationService: InvitationService, private coachService: CoachService ) {super() }
+  constructor(
+    private invitationService: InvitationService,
+    private coachService: CoachService
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
     this.getClients();
-    this.title = this.name + ' clients'
+    this.title = this.name + ' clients';
   }
 
   getClients() {
-    let method: Observable<any>
-     if(this.name === "all") {
-       method = this.invitationService.getCoachInvitations()
-     } 
-     else if(this.name === 'invited') {
-      method = this.coachService.getClients()
+    let method: Observable<any>;
+    if (this.name === 'all') {
+      method = this.invitationService.getCoachInvitations();
+    } else if (this.name === 'invited') {
+      method = this.coachService.getClients();
     }
     this.getData(method, {
       debug: true,

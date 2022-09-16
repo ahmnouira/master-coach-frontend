@@ -55,7 +55,6 @@
                     [label]="'Email'"
                     [(model)]="form.email"
                     [form]="f"
-                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   >
                   </app-text-field>
                 </div>
@@ -65,9 +64,7 @@
                     type="tel"
                     [label]="'Numéro de téléphone'"
                     [(model)]="form.tel"
-                    placeholder="+33 12 34 56 789"
                     [form]="f"
-                    pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
                   >
                   </app-text-field>
                 </div>
