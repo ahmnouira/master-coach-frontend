@@ -41,18 +41,16 @@
     [isLoading]="isLoading"
     [title]="'documents'"
   >
-    <div class="table-responsive">
-      <loading-card [loading]="loadingAnimation">
-        <datatable
-          [datatable]="data"
-          (datatableChange)="datatableChange($event)"
-          [checkboxes]="false"
-          [Actions]="ACTION_COLUMNS"
-          (onActionClicked)="onActionClicked($event)"
-          [searchvalue]="search"
-          [displayedColomn]="DISPLAYED_COLUMNS"
-        ></datatable>
-      </loading-card>
-    </div>
+    <loading-card [loading]="loadingAnimation">
+      <datatable
+        [datatable]="data"
+        (datatableChange)="datatableChange($event)"
+        [checkboxes]="false"
+        [Actions]="ACTION_COLUMNS"
+        (onActionClicked)="onActionClicked($event)"
+        [searchvalue]="search"
+        [displayedColomn]="DISPLAYED_COLUMNS"
+      ></datatable>
+    </loading-card>
   </app-page-list-wrapper>
 </app-page-wrapper>

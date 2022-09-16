@@ -39,7 +39,13 @@ export class PlanListComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.currentUser$.subscribe((user) => {
-      if (user && user.email && user.subscriptionPeriod && user.subscriptionType && user.subscriptionEnd) {
+      if (
+        user &&
+        user.email &&
+        user.subscriptionPeriod &&
+        user.subscriptionType &&
+        user.subscriptionEnd
+      ) {
         this.userEmail = user.email;
         this.subscriptionType = user.subscriptionType;
         this.subscriptionPeriod =
@@ -48,23 +54,22 @@ export class PlanListComponent implements OnInit {
             : user.subscriptionPeriod === 'yearly'
             ? 'Annuel'
             : '';
-          const difference =
-            new Date(user.subscriptionEnd).getTime() - new Date().getTime();
-          if (difference < 0) {
-            this.expires = `Plan is expired`;
-            this.subscriptionPeriod = undefined;
-            this.subscriptionType = ''
-            return;
-          }
-          const days = Math.ceil(difference / (1000 * 3600 * 24));
-          this.expires = days > 1 ? `${days} jours` : `${days} jour`;
-        } else {
-          this.subscriptionType = 'Offre libre'
-          this.expires = 'Expire dans : 30 jours';
+        const difference =
+          new Date(user.subscriptionEnd).getTime() - new Date().getTime();
+        if (difference < 0) {
+          this.expires = `Plan is expired`;
+          this.subscriptionPeriod = undefined;
+          this.subscriptionType = '';
+          return;
         }
-      })  
+        const days = Math.ceil(difference / (1000 * 3600 * 24));
+        this.expires = days > 1 ? `${days} jours` : `${days} jour`;
+      } else {
+        this.subscriptionType = 'Offre libre';
+        this.expires = 'Expire dans : 30 jours';
+      }
+    });
   }
-
 
   changeOffer(event: SubscriptionPeriod) {
     this.monthly = !this.monthly;

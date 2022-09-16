@@ -1,11 +1,15 @@
 <div class="position-relative">
   <div *ngIf="loading" class="spinner-wrapper">
+    <app-loader [showText]="true"></app-loader>
+
+    <!-- 
     <div class="lds-ellipsis">
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
+    -->
   </div>
   <ng-content></ng-content>
 </div>
