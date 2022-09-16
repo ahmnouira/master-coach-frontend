@@ -59,8 +59,7 @@ export class StripePaymentComponent implements OnInit {
     this.renderer.setAttribute(script, 'data-description', stripe.title);
     this.renderer.setAttribute(script, 'data-email', stripe.email);
 
-    this.renderer.setAttribute(script, 'data-currency', 'eur')
-
+    this.renderer.setAttribute(script, 'data-currency', 'eur');
 
     this.renderer.setAttribute(script, 'data-locale', 'auto');
   }

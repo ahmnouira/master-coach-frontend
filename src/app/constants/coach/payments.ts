@@ -17,7 +17,7 @@ export const COACH_PAYMENTS_DISPLAYED_COLUMNS = [
   },
   {
     data: 'createdAt',
-    value: 'Date',
+    value: 'date',
     type: 'text',
     search: true,
     sort: true,
