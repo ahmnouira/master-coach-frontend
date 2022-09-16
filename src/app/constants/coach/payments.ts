@@ -1,7 +1,6 @@
 import { DatableTableAction } from '../../shared/datatable/action.model';
 
 export const COACH_PAYMENTS_DISPLAYED_COLUMNS = [
-
   {
     data: 'description',
     value: 'type',

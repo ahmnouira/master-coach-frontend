@@ -1,0 +1,35 @@
+<app-sub-header [title]="'Mes clients'"></app-sub-header>
+
+<app-page-wrapper>
+  <app-page-header-wrapper>
+    <div class="row align-items-center" start>
+      <app-search
+        [(model)]="filterString"
+        (modelChange)="filterInputChanged($event)"
+        placeholder="Client"
+      ></app-search>
+    </div>
+
+    <app-button [title]="'Ajouter un client'" [variant]="'add'" end>
+    </app-button>
+  </app-page-header-wrapper>
+
+  <div class="row">
+    <div class="col-3">
+      <app-page-list-wrapper
+        [error]="error"
+        [found]="found"
+        [isLoading]="isLoading"
+        [title]="'invited clients'"
+      >
+        <div *ngFor="let user of data; index as i">
+          <app-client-item></app-client-item>
+        </div>
+      </app-page-list-wrapper>
+    </div>
+
+    <div class="col-9">
+      <app-client-card></app-client-card>
+    </div>
+  </div>
+</app-page-wrapper>

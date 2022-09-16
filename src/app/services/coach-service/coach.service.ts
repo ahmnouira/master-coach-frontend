@@ -60,6 +60,6 @@ export class CoachService extends BaseService {
   }
 
   getClients(): Observable<any> {
-    return this.get('clients/mine')
+    return this.get('clients/mine');
   }
 }

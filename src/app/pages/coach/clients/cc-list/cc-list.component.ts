@@ -6,13 +6,16 @@ import { Router } from '@angular/router';
 import { CoachService } from 'src/app/services/coach-service/coach.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
+import { RouteService } from 'src/app/services/route-service/route.service';
+import { InvitationService } from 'src/app/services/invitation-service/invitation.service';
+import { PageHelper } from 'src/app/helpers/PageHelper';
 
 @Component({
   selector: 'app-cc-list',
   templateUrl: './cc-list.component.html',
   styleUrls: ['./cc-list.component.scss'],
 })
-export class CcListComponent implements OnInit {
+export class CcListComponent extends PageHelper implements OnInit {
   modalRef: BsModalRef;
   filterString = '';
   coachTeams = [];
@@ -20,10 +23,9 @@ export class CcListComponent implements OnInit {
   coachUsers: any = [];
   defaultTeam: any = { users: [] };
   selectedUser: any;
-  selectedTeam: any;
   selectedUserToupdate: any;
-  modeEdit = false;
   selectAll = false;
+  selectedTeam: any;
   coachObject: any = {};
 
   constructor(
@@ -31,9 +33,11 @@ export class CcListComponent implements OnInit {
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
     private modalService: BsModalService,
-    private twilioService: TwilioService,
-    public router: Router
-  ) {}
+    public routeService: RouteService,
+    private invitationService: InvitationService
+  ) {
+    super();
+  }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
@@ -41,6 +45,13 @@ export class CcListComponent implements OnInit {
     const user = this.tokenStorageService.getUser();
     this.getUserFromDb(user._id);
     this.getTeams();
+    this.getInvitations();
+  }
+
+  getInvitations() {
+    this.getData(this.invitationService.getCoachInvitations(), {
+      debug: true,
+    });
   }
 
   filterInputChanged(event) {
@@ -77,40 +88,6 @@ export class CcListComponent implements OnInit {
       let user = elem.users.filter((user) => user._id == requestedUser._id)[0];
       if (user) return elem;
     })[0];
-  }
-
-  deleteUser(userElement) {
-    let team = this.getUserTeam(userElement);
-    if (team) {
-      let data = {
-        coach_id: this.tokenStorageService.getUser()._id,
-        team_id: team._id,
-        user_id: userElement._id,
-      };
-      this.coachService.DeleteTeamMember(data).subscribe(
-        (data) => {},
-        (error) => {
-          console.log(error);
-        }
-      );
-    }
-    for (var i = 0; i < this.coachUsers.length; i++) {
-      var obj = this.coachUsers[i];
-
-      if (userElement._id == obj._id) {
-        this.coachUsers.splice(i, 1);
-        this.coachObject.clients = [...this.coachUsers];
-      }
-    }
-    this.userService
-      .updateUser(this.coachObject, this.coachObject._id)
-      .subscribe(
-        (data) => {},
-        (error) => {
-          console.log(error);
-        }
-      );
-    this.selectedUser = null;
   }
 
   selectedUserChanged(user) {
@@ -188,22 +165,13 @@ export class CcListComponent implements OnInit {
   }
 
   massDelete() {
+    /*
     this.userToDelete = this.coachUsers.filter((elem) => elem.selected);
     this.userToDelete.forEach((elem) => {
       if (elem.selected) this.deleteUser(elem);
     });
     this.modalRef.hide();
-  }
-
-  createNewConversation(user) {
-    this.twilioService.createNewConversation(user._id).subscribe(
-      (data) => {
-        console.log(data);
-        this.router.navigate(['/pages/conversations']);
-      },
-      (error) => {}
-    );
-    console.log(user._id);
+    */
   }
 
   selectAllUsers(event) {
