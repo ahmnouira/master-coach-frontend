@@ -20,16 +20,25 @@ export class ServicesListComponent extends PageHelper implements OnInit {
   }
 
   getServices() {
-    this.getData(this.servicesService.getServices({ all: false }), {
+    this.getData(this.servicesService.getServices({ all: true }), {
       debug: true,
     });
   }
 
   hideService(id: string) {
+    this.servicesService.hideService(id).subscribe(
+      (_res) => {},
+      (err) => {
+        console.error(err);
+      }
+    );
+  }
+
+  deleteService(id: string) {
     const filteredData = this.data.filter((el) => el._id !== id);
     this.data = [...filteredData];
     this.found = Boolean(filteredData.length);
-    this.servicesService.hideService(id).subscribe(
+    this.servicesService.deleteService(id).subscribe(
       (_res) => {},
       (err) => {
         console.error(err);

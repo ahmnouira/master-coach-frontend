@@ -7,7 +7,9 @@
     <span class="material-icons edit-icon">mode_edit</span>
   </div>
 
-  <div class="card-tools-icon" (click)="handleDelete()">
-    <span class="material-icons public-icon">public</span>
+  <div class="card-tools-icon" (click)="handleHide()">
+    <span class="material-icons public-icon">
+      {{ isHidden ? "public_off" : "public" }}</span
+    >
   </div>
 </div>

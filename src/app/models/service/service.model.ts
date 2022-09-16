@@ -19,6 +19,7 @@ export class Service extends Entity implements IService {
   isPriceHidden?: boolean;
   testimonies?: any[];
   isAutoConfirmed?: boolean;
+  isDeleted?: boolean;
 
   readonly user: User;
 }

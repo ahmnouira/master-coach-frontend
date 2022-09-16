@@ -11,7 +11,8 @@
   <app-card-tools
     [editPath]="editPath"
     [viewPath]="viewPath"
-    (onDelete)="handleDelete()"
+    [isHidden]="service.isDeleted"
+    (onHide)="handleHide()"
     *ngIf="!forClient"
   ></app-card-tools>
 
