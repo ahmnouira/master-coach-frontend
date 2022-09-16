@@ -10,6 +10,7 @@
     pattern="{{ pattern }}"
     (input)="handleChange($event)"
     #field="ngModel"
+    [ngClass]="{ 'element-secondary': variant === 'secondary' }"
   >
   </textarea>
 

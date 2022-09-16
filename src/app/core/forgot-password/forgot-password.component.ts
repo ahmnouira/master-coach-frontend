@@ -5,9 +5,7 @@ import { AuthService } from '../auth.service';
 
 type Form = {
   email: string;
- 
 };
-
 
 @Component({
   selector: 'app-forgot-password',
@@ -40,7 +38,7 @@ export class ForgotPasswordComponent
       }),
       {
         email,
-      },
+      }
     );
   }
 }

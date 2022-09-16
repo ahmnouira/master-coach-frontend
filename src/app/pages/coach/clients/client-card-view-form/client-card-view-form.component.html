@@ -1,0 +1,25 @@
+<form name="form" #f="ngForm" novalidate>
+  <app-text-area
+    [label]="'Notes'"
+    [(model)]="form.notes"
+    [placeholder]="'Texte…'"
+    [form]="f"
+    [required]="false"
+    [variant]="'secondary'"
+  >
+  </app-text-area>
+
+  <app-form-footer
+    [error]="error"
+    [success]="success"
+    [successMessage]="'Note ajoutée'"
+    [showDivider]="false"
+  ></app-form-footer>
+
+  <app-button
+    (onClick)="submit()"
+    [isLoading]="isSubmitting"
+    [disabled]="isSubmitting"
+  >
+  </app-button>
+</form>

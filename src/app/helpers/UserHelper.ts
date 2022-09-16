@@ -1,21 +1,25 @@
 import { User } from '../models/user-model';
-import { FileHelper } from './FileHelper';
+import { getDisplayName } from './methods/getDisplayName';
+import { getPhoto } from './methods/getPhoto';
 
-export class UserHelper {
+export interface IUserHelper {
   photo: string;
-  user: User;
+  displayName: string;
+  path?: string;
+  init(user: User, path?: string): void;
+}
+
+export class UserHelper implements IUserHelper {
+  photo: string;
   path: string;
+  displayName: string;
+  private userData: User;
 
   public init(user: User, path?: string) {
-    this.user = user;
+    this.userData = user;
     this.path = path;
-    this.getPhoto();
-  }
-
-  private getPhoto() {
-    if (this.user && this.user.photo) {
-      this.photo = FileHelper.getUrl(this.user.photo);
-    }
+    this.displayName = getDisplayName(user);
+    this.photo = getPhoto(user);
   }
 
   public getCompetences(): string {
@@ -29,11 +33,11 @@ export class UserHelper {
   public getExpertise(
     key: 'category' | 'accreditation' | 'competance'
   ): string[] {
-    if (!Array.isArray(this.user[key])) {
+    if (!Array.isArray(this.userData[key])) {
       return [];
     }
     try {
-      const parsedArray = JSON.parse(this.user[key].toString()) as any[];
+      const parsedArray = JSON.parse(this.userData[key].toString()) as any[];
       return parsedArray.map((el) => el.name);
     } catch (error) {
       return [];

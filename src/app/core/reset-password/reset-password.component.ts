@@ -33,7 +33,6 @@ export class ResetPasswordComponent extends FormSimpleHelper implements OnInit {
   }
 
   submit() {
-    
     const { confirmPassword, password } = this.form;
 
     if (password !== confirmPassword) {
@@ -52,10 +51,10 @@ export class ResetPasswordComponent extends FormSimpleHelper implements OnInit {
       },
       {
         onSuccess: () => {
-         
-            this.routeService.replace('/login')
-        
-        }
+          setTimeout(() => {
+            this.routeService.replace('/login');
+          }, 2000);
+        },
       }
     );
   }

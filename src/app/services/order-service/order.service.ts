@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, retry } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Order } from 'src/app/models/order/order.model';
 import { BaseService } from '../base-service/base.service';
 import { LocalStorageService } from '../local-storage-service/local-storage.service';

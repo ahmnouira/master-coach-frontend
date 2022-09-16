@@ -1,6 +1,5 @@
 body {
   background-color: #ffffff !important;
- 
 }
 #main-container-login {
   position: absolute;
@@ -36,7 +35,6 @@ body {
   }
 }
 .right-login-pane {
- 
   justify-content: center;
 
   .image {
@@ -49,7 +47,6 @@ body {
       object-position: center;
     }
   }
-
 
   .welcome-title {
     text-align: center;
@@ -70,8 +67,6 @@ body {
     margin: 25px;
   }
 }
-
-
 
 @media screen and (max-width: 769px) {
   .right-login-pane {

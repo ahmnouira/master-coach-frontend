@@ -4,7 +4,23 @@
   [isLoading]="isLoading"
   [title]="title"
 >
-  <div *ngFor="let user of data; index as i">
-    <app-client-item></app-client-item>
+  <div *ngIf="name === 'all'">
+    <div *ngFor="let elm of data; index as i">
+      <app-client-item
+        [client]="elm.user"
+        [tab]="'all'"
+        *ngIf="elm.user"
+      ></app-client-item>
+    </div>
+  </div>
+
+  <div *ngIf="name === 'invited'">
+    <div *ngFor="let user of data; index as i">
+      <app-client-item
+        [client]="user"
+        [tab]="'invited'"
+        *ngIf="user"
+      ></app-client-item>
+    </div>
   </div>
 </app-page-list-wrapper>

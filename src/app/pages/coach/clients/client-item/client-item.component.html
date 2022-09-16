@@ -1,23 +1,22 @@
 <div
-  class="client-item mb-3"
+  class="client-item"
   [ngClass]="selectedClient?._id == client?._id ? 'client-item-active' : ''"
   (click)="handleSelectClient(client)"
 >
   <input
+    *ngIf="false"
     type="checkbox"
     [id]="client?._id"
     [name]="client?._id"
-    [(ngModel)]="client.selected"
+    [(ngModel)]="form.selected"
     (change)="handleCheckbox($event)"
   />
   <img
-    class="mlr-10"
-    width="36px"
-    height="36px"
-    [attr.src]="client.photo"
-    style="border-radius: 50%; border: 1px solid #2b76a3"
+    class="client-item-avatar"
+    [src]="photo"
+    style="border: 1px solid #2b76a3"
   />
-  <span>{{ client.prenom }} {{ client.nom }}</span>
+  <span>{{ displayName }}</span>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="5.875"
