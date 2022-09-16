@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PDF_ICON, VIDEO_ICON, PODCAST_ICON } from 'src/app/constants/icons';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 import { ProductType } from 'src/app/models/product/product-type.enum';
@@ -13,6 +13,8 @@ export class BoutiqueCardComponent implements OnInit {
   @Input() product: Product;
   @Input() forClient: boolean;
 
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
+
   price: string;
   icon: string;
   backgroundImage: string;
@@ -20,6 +22,10 @@ export class BoutiqueCardComponent implements OnInit {
   path: string = '';
 
   constructor() {}
+
+  handleDelete() {
+    this.onDelete.emit(this.product._id);
+  }
 
   ngOnInit(): void {
     this.getBackgroundImage();

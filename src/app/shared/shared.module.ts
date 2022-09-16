@@ -53,6 +53,7 @@ import { CountdownModule } from 'ngx-countdown';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { FormCoreWrapperComponent } from './components/form-core-wrapper/form-core-wrapper.component';
 import { FormCoreLeftSideComponent } from './components/form-core-left-side/form-core-left-side.component';
+import { CardToolsComponent } from './components/card-tools/card-tools.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { FormCoreLeftSideComponent } from './components/form-core-left-side/form
     TabsComponent,
     FormCoreWrapperComponent,
     FormCoreLeftSideComponent,
+    CardToolsComponent,
   ],
   imports: [
     CommonModule,
@@ -158,6 +160,7 @@ import { FormCoreLeftSideComponent } from './components/form-core-left-side/form
     TabsComponent,
     FormCoreWrapperComponent,
     FormCoreLeftSideComponent,
+    CardToolsComponent,
   ],
 })
 export class SharedModule {}

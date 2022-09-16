@@ -61,7 +61,6 @@ export class PlanPaidComponent implements OnInit, AfterViewInit {
         planPeriod: this.plan.period.toLowerCase(),
         planPrice: getPrice(this.plan.price),
         stripeToken,
-      
       })
       .subscribe(
         (res) => {

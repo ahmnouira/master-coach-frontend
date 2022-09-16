@@ -5,8 +5,8 @@ import { Plan } from 'src/app/models/plan.model';
 import { PaymentService } from 'src/app/services/payment-service/payment.service';
 
 type Form = {
-  subscriptionPeriod: SubscriptionPeriod
-}
+  subscriptionPeriod: SubscriptionPeriod;
+};
 
 type SubscriptionPeriod = 'yearly' | 'monthly';
 
@@ -29,8 +29,8 @@ export class PlanListComponent implements OnInit {
   monthly = true;
 
   form: Form = {
-    subscriptionPeriod: 'monthly'
-  }
+    subscriptionPeriod: 'monthly',
+  };
 
   constructor(
     private paymentService: PaymentService,
@@ -40,8 +40,7 @@ export class PlanListComponent implements OnInit {
   ngOnInit(): void {
     this.authService.currentUser$.subscribe((user) => {
       if (user) {
-
-        console.log(user.subscriptionType, user.subscriptionPeriod, user)
+        console.log(user.subscriptionType, user.subscriptionPeriod, user);
 
         this.userEmail = user.email;
         this.subscriptionType = user.subscriptionType ?? 'free';
@@ -51,7 +50,7 @@ export class PlanListComponent implements OnInit {
             new Date(user.subscriptionEnd).getTime() - new Date().getTime();
           if (difference < 0) {
             this.expires = `Plan is expired`;
-            this.subscriptionPeriod = undefined
+            this.subscriptionPeriod = undefined;
             return;
           }
           const days = Math.ceil(difference / (1000 * 3600 * 24));
@@ -64,7 +63,6 @@ export class PlanListComponent implements OnInit {
   }
 
   changeOffer(event: SubscriptionPeriod) {
-
     this.monthly = !this.monthly;
     if (event === 'monthly') {
       this.plans = PLANS_MONTHLY;

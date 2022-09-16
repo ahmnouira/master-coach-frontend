@@ -58,8 +58,8 @@ export class InvitationFormComponent
       {
         onSuccess: () => {
           setTimeout(() => {
-            this.routeService.replace('/login')
-          }, 2000)
+            this.routeService.replace('/login');
+          }, 2000);
         },
       }
     );

@@ -7,6 +7,7 @@
     <table class="table" [@animateStagger]="{ value: '50' }">
       <thead>
         <tr
+          class="tr-thead"
           [@animate]="{ value: '*', params: { y: '100%' } }"
           *ngIf="!hideTheader"
         >
@@ -31,7 +32,8 @@
           >
             <span
               (click)="title.sort && !loadingList ? sortBy(title) : ''"
-              class="color-primary block p3 cursor-pointer m-0"
+              class="color-primary block cursor-pointer"
+              style="margin-left: 32px"
               [ngClass]="{
                 sorting: title.sort && !loadingList && title !== sortByItem,
                 sorting_desc:
@@ -44,8 +46,12 @@
               {{ title.value }}
             </span>
           </th>
-          <th class="p3 action" [attr.colspan]="Actions.length">
-            <span class="color-primary block p3 cursor-pointer">Actions</span>
+          <th class="action" [attr.colspan]="Actions.length">
+            <span
+              class="color-primary block cursor-pointer"
+              style="margin-right: 32px"
+              >Actions</span
+            >
           </th>
         </tr>
       </thead>

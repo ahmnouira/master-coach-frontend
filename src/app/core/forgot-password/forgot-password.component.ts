@@ -38,10 +38,8 @@ export class ForgotPasswordComponent
       }),
       {
         email,
-      }, 
-      {
-        
-      }
+      },
+      {}
     );
   }
 }

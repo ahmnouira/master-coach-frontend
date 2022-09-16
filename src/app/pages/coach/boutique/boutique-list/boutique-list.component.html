@@ -20,8 +20,14 @@
     [isLoading]="isLoading"
     [title]="'products'"
   >
-    <div class="col-lg-3" *ngFor="let product of data; index as i">
-      <app-boutique-card [product]="product"></app-boutique-card>
+    <div
+      class="col-lg-3"
+      *ngFor="let product of data; index as i; trackBy: trackById"
+    >
+      <app-boutique-card
+        [product]="product"
+        (onDelete)="hideProduct($event)"
+      ></app-boutique-card>
     </div>
   </app-page-list-wrapper>
 </app-page-wrapper>

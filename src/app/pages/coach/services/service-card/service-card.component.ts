@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 import { Service } from 'src/app/models/service/service.model';
 
@@ -9,11 +9,11 @@ import { Service } from 'src/app/models/service/service.model';
 })
 export class ServiceCardComponent implements OnInit {
   @Input() service: Service;
-
   @Input() forClient: boolean = false;
 
-  backgroundImage: string;
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
 
+  backgroundImage: string;
   width: string;
   minHeight: string;
 
@@ -26,6 +26,11 @@ export class ServiceCardComponent implements OnInit {
     this.getPath();
     this.width = this.forClient ? '340px' : 'auto';
     this.minHeight = this.forClient ? '200px' : '230px';
+  }
+
+
+  handleDelete() {
+    this.onDelete.emit(this.service._id)
   }
 
   getPath() {

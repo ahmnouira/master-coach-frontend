@@ -40,7 +40,6 @@ export const PLANS_MONTHLY: Plan[] = [
       'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
     period: PlanPeriod.Monthly,
-
   },
 
   {

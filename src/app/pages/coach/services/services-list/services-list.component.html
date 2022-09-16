@@ -16,8 +16,14 @@
     [isLoading]="isLoading"
     [title]="'services'"
   >
-    <div class="col-lg-4" *ngFor="let service of data; index as i">
-      <app-service-card [service]="service"></app-service-card>
+    <div
+      class="col-lg-4"
+      *ngFor="let service of data; index as i; trackBy: trackById"
+    >
+      <app-service-card
+        [service]="service"
+        (onDelete)="hideService($event)"
+      ></app-service-card>
     </div>
   </app-page-list-wrapper>
 </app-page-wrapper>

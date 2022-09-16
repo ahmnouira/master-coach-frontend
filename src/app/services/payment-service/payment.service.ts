@@ -13,7 +13,7 @@ interface ISubscribe {
   stripeToken: string;
   planPrice: number;
   planDescription: string;
-  planPeriod: string 
+  planPeriod: string;
 }
 
 @Injectable({

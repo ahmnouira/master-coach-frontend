@@ -25,7 +25,9 @@
   }
 
   .action {
-    text-align: center;
+    
+    text-align: right;
+    
   }
 
   .checkboxTemplate {
@@ -114,6 +116,13 @@
   }
 
   .table {
+
+
+    .tr-thead {
+      
+    }
+
+
     .searchInput {
       color: #000;
       background-image: url("./assets/search.png");
@@ -190,6 +199,7 @@
 
   th span {
     user-select: none;
+  
     width: 99%;
     white-space: nowrap;
     overflow: hidden;

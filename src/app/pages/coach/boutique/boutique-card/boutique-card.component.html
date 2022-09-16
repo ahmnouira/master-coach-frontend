@@ -1,8 +1,15 @@
 <div
   class="product-card"
-  [ngStyle]="{ 'background-image': backgroundImage }"
-  [routerLink]="path"
+  [ngStyle]="{
+    'background-image': backgroundImage,
+    cursor: forClient && 'pointer'
+  }"
 >
+  <app-card-tools
+    [path]="path"
+    (onDelete)="handleDelete()"
+    *ngIf="!forClient"
+  ></app-card-tools>
   <div class="product-card-meta">
     <img
       class="product-card-meta-icon"
