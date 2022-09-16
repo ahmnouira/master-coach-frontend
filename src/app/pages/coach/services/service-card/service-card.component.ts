@@ -28,9 +28,8 @@ export class ServiceCardComponent implements OnInit {
     this.minHeight = this.forClient ? '200px' : '230px';
   }
 
-
   handleDelete() {
-    this.onDelete.emit(this.service._id)
+    this.onDelete.emit(this.service._id);
   }
 
   getPath() {
