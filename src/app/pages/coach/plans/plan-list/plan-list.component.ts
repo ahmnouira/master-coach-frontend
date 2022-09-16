@@ -39,32 +39,32 @@ export class PlanListComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.currentUser$.subscribe((user) => {
-      if (user) {
+      if (user && user.email && user.subscriptionPeriod && user.subscriptionType && user.subscriptionEnd) {
         this.userEmail = user.email;
-
-        this.subscriptionType = user.subscriptionType ?? 'free';
+        this.subscriptionType = user.subscriptionType;
         this.subscriptionPeriod =
           user.subscriptionPeriod === 'monthly'
             ? 'Mensuel'
             : user.subscriptionPeriod === 'yearly'
             ? 'Annuel'
             : '';
-        if (user.subscriptionEnd) {
           const difference =
             new Date(user.subscriptionEnd).getTime() - new Date().getTime();
           if (difference < 0) {
             this.expires = `Plan is expired`;
             this.subscriptionPeriod = undefined;
+            this.subscriptionType = ''
             return;
           }
           const days = Math.ceil(difference / (1000 * 3600 * 24));
           this.expires = days > 1 ? `${days} jours` : `${days} jour`;
         } else {
-          this.expires = 'No expire its free';
+          this.subscriptionType = 'Offre libre'
+          this.expires = 'Expire dans : 30 jours';
         }
-      }
-    });
+      })  
   }
+
 
   changeOffer(event: SubscriptionPeriod) {
     this.monthly = !this.monthly;

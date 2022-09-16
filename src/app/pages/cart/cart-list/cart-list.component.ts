@@ -121,6 +121,8 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
     this.renderer.setAttribute(script, 'data-name', environment.APP_NAME);
     this.renderer.setAttribute(script, 'data-description', data.title);
     this.renderer.setAttribute(script, 'data-email', data.email);
+    this.renderer.setAttribute(script, 'data-currency', 'eur')
+
 
     this.renderer.setAttribute(script, 'data-locale', 'auto');
 

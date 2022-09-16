@@ -86,6 +86,7 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
     this.renderer.setAttribute(script, 'data-name', environment.APP_NAME);
     this.renderer.setAttribute(script, 'data-description', plan.title);
     this.renderer.setAttribute(script, 'data-email', this.email);
+    this.renderer.setAttribute(script, 'data-currency', 'eur')
 
     this.renderer.setAttribute(script, 'data-locale', 'auto');
 
@@ -113,10 +114,8 @@ export class PlanCardComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onSubmit($event) {
-    console.log('onSubmit');
+  onSubmit($event: any) {
     $event.preventDefault();
-    console.log('form', this.form);
   }
 
   handleClick() {
