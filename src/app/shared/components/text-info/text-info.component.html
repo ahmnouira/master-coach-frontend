@@ -2,5 +2,5 @@
   <h3 class="info-container-title">
     <strong>{{ title }}</strong>
   </h3>
-  <p class="info-container-content">{{ value }}</p>
+  <p class="info-container-content" *ngIf="value">{{ value }}</p>
 </div>

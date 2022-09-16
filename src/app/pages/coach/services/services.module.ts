@@ -11,6 +11,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ServiceFormComponent } from './service-form/service-form.component';
 import { ServiceEditComponent } from './service-edit/service-edit.component';
 import { ServiceViewComponent } from './service-view/service-view.component';
+import { ServiceInfoComponent } from './service-info/service-info.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ServiceViewComponent } from './service-view/service-view.component';
     ServiceFormComponent,
     ServiceEditComponent,
     ServiceViewComponent,
+    ServiceInfoComponent,
   ],
   exports: [ServiceCardComponent, ServicesListComponent],
   imports: [

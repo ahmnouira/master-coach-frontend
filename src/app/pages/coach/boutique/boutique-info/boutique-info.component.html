@@ -1,18 +1,32 @@
 <div class="form-container">
-  <h2 class="title">Info</h2>
-  <app-text-info [title]="'Titre'" [value]="product.title"></app-text-info>
-  <app-text-info [title]="'Durée'" [value]="product.duration"></app-text-info>
-  <app-divider></app-divider>
+  <section>
+    <h2 class="title">Info</h2>
+    <app-text-info [title]="'Titre'" [value]="product.title"></app-text-info>
+    <app-text-info
+      [title]="'Durée'"
+      [value]="product.duration"
+      *ngIf="product.duration"
+    ></app-text-info>
+    <app-divider></app-divider>
+  </section>
 
-  <app-text-info [title]="'Type'" [value]="product.type"></app-text-info>
-  <app-divider></app-divider>
+  <section>
+    <app-text-info
+      [title]="'Type'"
+      [value]="product.type"
+      *ngIf="product.type"
+    ></app-text-info>
+    <app-divider></app-divider>
+  </section>
 
-  <h2 class="title">Tarifs</h2>
-  <app-text-info
-    [title]="'Gratuit'"
-    [value]="product.isFree ? 'yes' : 'false'"
-  ></app-text-info>
+  <section>
+    <h2 class="title">Tarifs</h2>
+    <app-text-info *ngIf="product.isFree" [title]="'Gratuit'"></app-text-info>
 
-  <app-text-info [title]="'Price'" [value]="product.price"></app-text-info>
-  <app-divider></app-divider>
+    <app-text-info
+      [title]="'Price'"
+      [value]="product.price"
+      *ngIf="product.price"
+    ></app-text-info>
+  </section>
 </div>
