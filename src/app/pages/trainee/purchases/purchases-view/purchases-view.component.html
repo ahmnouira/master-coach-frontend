@@ -29,9 +29,7 @@
           <div class="col-sm col-lg-8 col-xxl-9">
             <app-product-info
               *ngIf="product"
-              [image]="product.image"
-              [type]="product.type"
-              [description]="product.description"
+              [product]="data"
             ></app-product-info>
           </div>
         </div>

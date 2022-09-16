@@ -23,6 +23,10 @@ export class ProductService extends BaseService {
     return this.get(options.all ? '/products' : '/products/mine', params);
   }
 
+  downloadFile(url: string): Observable<any> {
+    return this.getFileFormUrl(url);
+  }
+
   getProduct(id: string): Observable<any> {
     return this.get(`/products/${id}`);
   }

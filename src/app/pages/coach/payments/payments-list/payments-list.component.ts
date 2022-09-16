@@ -77,7 +77,6 @@ export class PaymentsListComponent extends PageHelper implements OnInit {
   generatePDF(id: string) {
     this.paymentService.generatePDF(id).subscribe(
       (res) => {
-        console.log(typeof res);
         FileHelper.createFile(res as Blob, `payment-${id}`);
         this.loadingAnimation = false;
       },

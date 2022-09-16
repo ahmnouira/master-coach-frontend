@@ -13,8 +13,8 @@
     <div class="row gx-4" *ngIf="data">
       <div class="col-8 col-xxl-9">
         <app-product-info
-          [image]="data.image"
-          [description]="data.description"
+          [product]="data"
+          [showDownload]="true"
         ></app-product-info>
       </div>
 
