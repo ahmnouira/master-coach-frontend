@@ -43,12 +43,12 @@ const routes: Routes = [
   },
 
   {
-    path: 'coach-client',
+    path: 'clients',
     loadChildren: () =>
-      import('./coach-client-management/coach-client-management.module').then(
-        (module) => module.CoachClientManagementModule
+      import('./clients/clients.module').then(
+        (module) => module.ClientsModule
       ),
-    // canActivate: [AccountVerifiedGuard],
+    
   },
 
   {

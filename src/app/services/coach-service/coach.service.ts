@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 import { BaseService } from '../base-service/base.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -56,5 +57,9 @@ export class CoachService extends BaseService {
 
   DeleteTeam(team: any) {
     return this.delete('/delete_team/' + team._id);
+  }
+
+  getClients(): Observable<any> {
+    return this.get('clients/mine')
   }
 }

@@ -24,7 +24,7 @@ export const COACH_SIDEBAR: SidebarItem[] = [
   },
   {
     icon: 'assets/img/common/rating%20(1).svg',
-    route: '/pages/coach/coach-client',
+    route: '/pages/coach/clients',
     title: 'Mes clients',
   },
 

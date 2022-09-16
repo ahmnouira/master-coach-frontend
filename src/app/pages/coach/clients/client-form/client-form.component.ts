@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IClient } from 'src/app/interfaces/client.interface';
 import { CoachService } from 'src/app/services/coach-service/coach.service';
+import { InvitationService } from 'src/app/services/invitation-service/invitation.service';
+import { RouteService } from 'src/app/services/route-service/route.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user-service/user-service.service';
 import { Animations } from 'src/app/shared/animations';
@@ -22,8 +24,10 @@ export class ClientFormComponent extends FormHelper implements OnInit {
 
   constructor(
     private tokenStorageService: TokenStorageService,
-    private userService: UserService,
-    private coachService: CoachService
+    private coachService: CoachService, 
+    private invitationService: InvitationService,
+    private routeService: RouteService
+    
   ) {
     super();
   }
@@ -35,32 +39,28 @@ export class ClientFormComponent extends FormHelper implements OnInit {
 
   submit() {
     this.isSubmitting = true;
-    const { prenom, nom, notes, tel, email, equip } = this.form;
-    // +33122469999
-    if (!prenom || !nom || !tel || !email) {
-      this.isSubmitting = false;
+    const {email } = this.form;
+
+    if (!email) {
+      this.onError()
       return;
     }
-    const formData = this.getFormData(this.form);
-
-    /*
-    this.coachService.ad(formData).subscribe(
+    this.invitationService.addInvitation({email}).subscribe(
       (res) => {
         if (!res.success) {
           this.onError(res.error);
           return;
         }
         console.log('res', res.data);
-        this.authService.currentUser$.next(res.data);
-        this.tokenStorageService.saveUser(res.data);
         this.onSuccess();
+      
+      
       },
       (error) => {
         this.onError(error);
       }
     );
-    */
-    this.isSubmitting = false;
+
   }
 
   getTeamsList() {
