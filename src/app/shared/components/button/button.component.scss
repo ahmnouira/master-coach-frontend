@@ -8,6 +8,11 @@
   &-basic {
     height: 40px;
   }
+
+  &-icon {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .btn-submit {

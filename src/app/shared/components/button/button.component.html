@@ -7,7 +7,14 @@
     style="height: 50px"
     [ngStyle]="{ width: fullWith && '100%' }"
   >
-    <span *ngIf="!isLoading">{{ title }}</span>
+    <div *ngIf="!isLoading && icon" class="btn-icon">
+      <span class="material-icons">{{ icon }}</span>
+      <span>{{ title }}</span>
+    </div>
+
+    <span *ngIf="!isLoading && !icon">
+      {{ title }}
+    </span>
     <app-loader *ngIf="isLoading"></app-loader>
   </button>
 </div>

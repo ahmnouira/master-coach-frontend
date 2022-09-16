@@ -21,6 +21,8 @@ export class ButtonComponent implements OnInit {
 
   @Input() type = 'submit';
 
+  @Input() icon: string;
+
   constructor(private routerService: RouteService) {}
 
   ngOnInit(): void {

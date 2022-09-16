@@ -25,6 +25,14 @@ export class BaseService {
       .pipe(catchError(this.handleError));
   }
 
+  protected getFileFormUrl<R = any>(url: string): Observable<R> {
+    return this.httpClient
+      .get<R>(url, {
+        responseType: 'blob' as 'json',
+      })
+      .pipe(catchError(this.handleError));
+  }
+
   protected get<R = any>(url: string, params?: HttpParams): Observable<R> {
     return this.httpClient
       .get<R>(this.baseUri + url, {
