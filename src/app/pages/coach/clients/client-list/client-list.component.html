@@ -16,16 +16,12 @@
 
   <div class="row">
     <div class="col-3">
-      <app-page-list-wrapper
-        [error]="error"
-        [found]="found"
-        [isLoading]="isLoading"
-        [title]="'invited clients'"
-      >
-        <div *ngFor="let user of data; index as i">
-          <app-client-item></app-client-item>
-        </div>
-      </app-page-list-wrapper>
+      <app-tabs [tabs]="tabs" (onChange)="handleTabChange($event)"></app-tabs>
+      <app-client-all-list *ngIf="selectedTab === 0"></app-client-all-list>
+      <app-client-all-list
+        *ngIf="selectedTab === 1"
+        [name]="'invited'"
+      ></app-client-all-list>
     </div>
 
     <div class="col-9">
