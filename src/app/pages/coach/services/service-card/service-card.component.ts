@@ -11,7 +11,7 @@ export class ServiceCardComponent implements OnInit {
   @Input() service: Service;
   @Input() forClient: boolean = false;
 
-  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onHide: EventEmitter<any> = new EventEmitter<any>();
 
   backgroundImage: string;
   width: string;
@@ -29,8 +29,8 @@ export class ServiceCardComponent implements OnInit {
     this.minHeight = this.forClient ? '200px' : '230px';
   }
 
-  handleDelete() {
-    this.onDelete.emit(this.service._id);
+  handleHide() {
+    this.onHide.emit(this.service._id);
   }
 
   getPaths() {

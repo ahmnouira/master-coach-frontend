@@ -32,8 +32,12 @@ export class ServicesService extends BaseService {
     return this.put(`/services/${id}`, data);
   }
 
-  hideService(id: string): Observable<any> {
+  deleteService(id: string): Observable<any> {
     return this.delete(`/services/${id}`);
+  }
+
+  hideService(id: string): Observable<any> {
+    return this.put(`/services/${id}/toggle-delete`);
   }
 
   set setServices(services: Service[]) {

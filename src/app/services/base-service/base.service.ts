@@ -45,7 +45,7 @@ export class BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  protected put<T = any, R = any>(url: string, data: T): Observable<R> {
+  protected put<T = any, R = any>(url: string, data?: T): Observable<R> {
     return this.httpClient
       .put<R>(this.baseUri + url, data, this.httpOptions)
       .pipe(catchError(this.handleError));

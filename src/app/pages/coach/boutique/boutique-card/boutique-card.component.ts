@@ -13,7 +13,7 @@ export class BoutiqueCardComponent implements OnInit {
   @Input() product: Product;
   @Input() forClient: boolean;
 
-  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onHide: EventEmitter<any> = new EventEmitter<any>();
 
   price: string;
   icon: string;
@@ -24,8 +24,8 @@ export class BoutiqueCardComponent implements OnInit {
 
   constructor() {}
 
-  handleDelete() {
-    this.onDelete.emit(this.product._id);
+  handleHide() {
+    this.onHide.emit(this.product._id);
   }
 
   ngOnInit(): void {

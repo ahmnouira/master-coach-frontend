@@ -9,7 +9,8 @@
   <app-card-tools
     [editPath]="editPath"
     [viewPath]="viewPath"
-    (onDelete)="handleDelete()"
+    [isHidden]="product.isDeleted"
+    (onHide)="handleHide()"
     *ngIf="!forClient"
   ></app-card-tools>
   <div class="product-card-meta">

@@ -31,7 +31,11 @@ export class ProductService extends BaseService {
     return this.put(`/products/${id}`, data);
   }
 
-  hideProduct(id: string): Observable<any> {
+  hideProduct(id: string) {
+    return this.put(`/products/${id}/toggle-delete`);
+  }
+
+  deleteProduct(id: string): Observable<any> {
     return this.delete(`/products/${id}`);
   }
 }

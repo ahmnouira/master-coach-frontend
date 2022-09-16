@@ -10,13 +10,18 @@ export class CardToolsComponent implements OnInit {
 
   @Input() viewPath: string;
 
+  @Input() isHidden: boolean;
+
+  @Output() onHide: EventEmitter<any> = new EventEmitter<any>();
+
   @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  handleDelete() {
-    this.onDelete.emit();
+  handleHide() {
+    this.isHidden = !this.isHidden;
+    this.onHide.emit();
   }
 }
