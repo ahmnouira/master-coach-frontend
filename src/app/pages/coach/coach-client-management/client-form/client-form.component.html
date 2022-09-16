@@ -16,18 +16,9 @@
   >
     <div class="form-container">
       <h2 class="title">Info</h2>
+
       <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <app-text-field [label]="'Nom'" [(model)]="form.nom" [form]="f">
-          </app-text-field>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <app-text-field [label]="'Prénom'" [(model)]="form.prenom" [form]="f">
-          </app-text-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col">
           <app-text-field
             type="email"
             [label]="'Email'"
@@ -37,36 +28,7 @@
           >
           </app-text-field>
         </div>
-        <div class="col-xs-12 col-sm-6">
-          <app-text-field
-            type="tel"
-            [label]="'Numéro de téléphone'"
-            [(model)]="form.tel"
-            placeholder="+33 12 34 56 789"
-            [form]="f"
-            pattern="^(0|\+33)[ ]?[1-9]([-.: ]?[0-9]{2}){4}$"
-          >
-          </app-text-field>
-        </div>
       </div>
-      <app-select
-        [label]="'Equipe'"
-        [data]="teamsList"
-        [text]="'Choisir equipe'"
-        [(model)]="selectedTeam"
-        (onItemOneSelect)="form.equip = $event"
-        [singleSelection]="true"
-      >
-      </app-select>
-
-      <app-text-area
-        [(model)]="form.notes"
-        [label]="'Notes'"
-        [placeholder]="'Text...'"
-        [form]="f"
-        [required]="false"
-      >
-      </app-text-area>
 
       <app-form-footer
         [error]="error"
@@ -75,6 +37,7 @@
       ></app-form-footer>
 
       <app-button
+        [title]="'Inviter'"
         (onClick)="submit()"
         [isLoading]="isSubmitting"
         [disabled]="isSubmitting"
