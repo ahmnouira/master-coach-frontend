@@ -42,9 +42,11 @@ export class PageHelper<T = any> extends BaseHelper {
     return method.pipe().subscribe(
       (res) => {
         this.handleSeverResponse(res);
-        this.onSuccess(options.onSuccess, options.keepLoading);
-        if (options.debug) {
-          this.info(options.format);
+        if(options) {
+          this.onSuccess(options.onSuccess, options.keepLoading);
+          this.info(options.format); 
+        } else {
+          this.onSuccess()
         }
       },
       (error) => {

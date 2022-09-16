@@ -53,7 +53,7 @@ export class CartListComponent extends PageHelper<Order[]> implements OnInit {
 
   getPrice() {
     try {
-      this.price = getCartTotalPrice(this.data);
+      this.price = getCartTotalPrice(this.data, 100);
     } catch (error) {
       this.onError('error price');
     }

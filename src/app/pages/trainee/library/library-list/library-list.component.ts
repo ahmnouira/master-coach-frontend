@@ -24,7 +24,8 @@ export class LibraryListComponent
 
   getProducts() {
     this.getData(
-      this.productService.getProducts({ all: true, displayedInShop: false }),
+      // show only the not hidden products 
+      this.productService.getProducts({ all: true, displayedInShop: true }),
       {
         debug: true,
       }

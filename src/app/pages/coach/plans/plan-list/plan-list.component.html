@@ -10,8 +10,10 @@
       <p class="plans-container-info">
         Plan actif:
         <b class="plans-container-expire"
-          >{{ subscriptionType | titlecase }},
-          {{ subscriptionPeriod | titlecase }}</b
+          >{{ subscriptionType | titlecase
+          }}<span *ngIf="subscriptionPeriod"
+            >, {{ subscriptionPeriod | titlecase }}</span
+          ></b
         >
       </p>
       <p class="plans-container-info">
@@ -24,17 +26,17 @@
 
         <div class="d-flex align-items-center" style="margin-right: 200px">
           <app-radio
-            [label]="'Yearly'"
+            [label]="'Monthly'"
             [(model)]="form.subscriptionPeriod"
-            [value]="'yearly'"
+            [value]="'monthly'"
             (modelChange)="changeOffer($event)"
           >
           </app-radio>
 
           <app-radio
-            [label]="'Monthly'"
+            [label]="'Yearly'"
             [(model)]="form.subscriptionPeriod"
-            [value]="'monthly'"
+            [value]="'yearly'"
             (modelChange)="changeOffer($event)"
           >
           </app-radio>

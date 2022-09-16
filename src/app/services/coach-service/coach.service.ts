@@ -71,7 +71,9 @@ export class CoachService extends BaseService {
     return this.get('/clients/mine');
   }
 
-  editClientNote(id: string, note: string) {
-    return this.put(`/clients/${id}`, { note });
+  addClientNote(id: string, data: any) {
+    return this.post(`/clients/${id}`, data);
   }
 }
+
+
