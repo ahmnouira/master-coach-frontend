@@ -32,16 +32,16 @@ export class FormHelper extends BasicHelper {
   }
 
   handleSeverResponse(res: any) {
-    if (!res.success) {
-      this.onError(res.error);
+    const error = res.error || res.err;
+    if (error) {
+      this.onError(error);
       return;
     }
-    this.onSuccess();
   }
 
   override onError(error?: any) {
     if (error) {
-      console.error('onError:', error);
+      console.error(error);
       this.error = error;
     }
     this.isSubmitting = false;

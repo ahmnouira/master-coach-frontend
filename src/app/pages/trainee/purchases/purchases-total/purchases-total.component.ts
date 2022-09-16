@@ -27,7 +27,6 @@ export class PurchasesTotalComponent implements OnInit {
     this.isLoading = true;
     this.orderService.generatePDF(this.id).subscribe(
       (res) => {
-        console.log(typeof res);
         FileHelper.createFile(res as Blob, `order-${this.id}`);
         this.isLoading = false;
       },

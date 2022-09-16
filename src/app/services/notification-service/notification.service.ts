@@ -10,10 +10,10 @@ export class NotificationService extends BaseService {
   }
 
   markOneAsRead(notificationId: any) {
-    return this.put('/mark_as_read/' + notificationId);
+    return this.put('/mark_as_read/' + notificationId, {});
   }
 
   markAllAsRead(userId: any) {
-    return this.put('/mark_all_as_read/' + userId);
+    return this.put('/mark_all_as_read/' + userId, {});
   }
 }

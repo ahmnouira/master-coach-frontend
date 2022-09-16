@@ -20,23 +20,19 @@
           [page]="'view-service'"
         ></app-user-card>
         <div class="service-infos">
-          <app-service-info
+          <app-value-info
             [type]="data.sessionType"
             *ngIf="data && data.sessionType"
-          ></app-service-info>
-          <app-service-info
+          ></app-value-info>
+          <app-value-info
             *ngIf="data && data.format"
             [format]="data.format"
             [chez]="data?.chez"
-          ></app-service-info>
+          ></app-value-info>
         </div>
       </div>
       <div class="cold col-md-8 col-xxl-9">
-        <app-product-info
-          *ngIf="data"
-          [image]="data.image"
-          [description]="data.description"
-        ></app-product-info>
+        <app-product-info *ngIf="data" [product]="data"></app-product-info>
 
         <app-button
           (onClick)="reserver()"

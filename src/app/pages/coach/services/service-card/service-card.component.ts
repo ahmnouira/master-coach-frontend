@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 import { Service } from 'src/app/models/service/service.model';
 
@@ -9,30 +9,36 @@ import { Service } from 'src/app/models/service/service.model';
 })
 export class ServiceCardComponent implements OnInit {
   @Input() service: Service;
-
   @Input() forClient: boolean = false;
 
-  backgroundImage: string;
+  @Output() onHide: EventEmitter<any> = new EventEmitter<any>();
 
+  backgroundImage: string;
   width: string;
   minHeight: string;
 
-  path: string;
+  editPath: string;
+  viewPath: string;
 
   constructor() {}
 
   ngOnInit(): void {
     this.getBackgroundImage();
-    this.getPath();
+    this.getPaths();
     this.width = this.forClient ? '340px' : 'auto';
     this.minHeight = this.forClient ? '200px' : '230px';
   }
 
-  getPath() {
+  handleHide() {
+    this.onHide.emit(this.service._id);
+  }
+
+  getPaths() {
     if (this.forClient) {
-      this.path = `/pages/client/rdv/detail-formation/${this.service._id}`;
+      this.viewPath = `/pages/client/rdv/detail-formation/${this.service._id}`;
     } else {
-      this.path = `/pages/coach/services/edit/${this.service._id}`;
+      this.editPath = `/pages/coach/services/edit/${this.service._id}`;
+      this.viewPath = `/pages/coach/services/view/${this.service._id}`;
     }
   }
 

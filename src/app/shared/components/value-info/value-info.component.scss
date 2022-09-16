@@ -1,0 +1,13 @@
+.service-info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-bottom: 10px;
+  &-title {
+    font: normal normal normal 18px/22px Fredoka;
+    color: #1376a3;
+    margin: 0 8px;
+  }
+}

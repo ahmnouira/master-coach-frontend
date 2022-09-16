@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PDF_ICON, VIDEO_ICON, PODCAST_ICON } from 'src/app/constants/icons';
 import { FileHelper } from 'src/app/helpers/FileHelper';
 import { ProductType } from 'src/app/models/product/product-type.enum';
@@ -13,19 +13,26 @@ export class BoutiqueCardComponent implements OnInit {
   @Input() product: Product;
   @Input() forClient: boolean;
 
+  @Output() onHide: EventEmitter<any> = new EventEmitter<any>();
+
   price: string;
   icon: string;
   backgroundImage: string;
 
-  path: string = '';
+  editPath: string = '';
+  viewPath: string = '';
 
   constructor() {}
+
+  handleHide() {
+    this.onHide.emit(this.product._id);
+  }
 
   ngOnInit(): void {
     this.getBackgroundImage();
     this.getPrice();
     this.getIcon();
-    this.getPath();
+    this.getPaths();
   }
 
   getIcon() {
@@ -44,11 +51,12 @@ export class BoutiqueCardComponent implements OnInit {
     }
   }
 
-  getPath() {
+  getPaths() {
     if (this.forClient) {
-      this.path = `/pages/client/library/view/${this.product._id}`;
+      this.editPath = `/pages/client/library/view/${this.product._id}`;
     } else {
-      this.path = `/pages/coach/boutique/edit/${this.product._id}`;
+      this.editPath = `/pages/coach/boutique/edit/${this.product._id}`;
+      this.viewPath = `/pages/coach/boutique/view/${this.product._id}`;
     }
   }
 

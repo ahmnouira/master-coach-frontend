@@ -6,9 +6,7 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from '../core/auth.service';
 import { TokenStorageService } from '../services/token-storage.service';
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +22,7 @@ export class JwtInterceptor implements HttpInterceptor {
     let token = this.authenticationService.getToken();
     if (token && !request.url.includes('conversations.twilio.com')) {
       request = request.clone({
-        reportProgress: true,
+        // reportProgress: true,
         setHeaders: {
           Authorization: `Bearer ${token}`,
         },

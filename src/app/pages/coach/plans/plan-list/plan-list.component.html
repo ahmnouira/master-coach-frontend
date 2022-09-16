@@ -10,8 +10,8 @@
       <p class="plans-container-info">
         Plan actif:
         <b class="plans-container-expire"
-          >{{ subscriptionType | titlecase }},
-          {{ subscriptionPeriod | titlecase }}</b
+          >{{ subscriptionType | titlecase
+          }}<span>, {{ subscriptionPeriod | titlecase }}</span></b
         >
       </p>
       <p class="plans-container-info">
@@ -20,21 +20,21 @@
       </p>
 
       <div class="d-flex justify-content-between" style="margin-top: 30px">
-        <h3 class="plans-container-title">Migrer vers un nouveau plan</h3>
+        <h3 class="plans-container-title">Changer mon offre d'abonnement</h3>
 
         <div class="d-flex align-items-center" style="margin-right: 200px">
           <app-radio
-            [label]="'Yearly'"
+            [label]="'Mensuel'"
             [(model)]="form.subscriptionPeriod"
-            [value]="'yearly'"
+            [value]="'monthly'"
             (modelChange)="changeOffer($event)"
           >
           </app-radio>
 
           <app-radio
-            [label]="'Monthly'"
+            [label]="'Annuel'"
             [(model)]="form.subscriptionPeriod"
-            [value]="'monthly'"
+            [value]="'yearly'"
             (modelChange)="changeOffer($event)"
           >
           </app-radio>

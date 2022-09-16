@@ -1,4 +1,4 @@
-import { PlanType } from '../models/plan.enum';
+import { PlanPeriod } from '../models/plan-period.enum';
 import { Plan } from '../models/plan.model';
 
 export const FREE_MONTHLY_PLAN_ID = 'm-1';
@@ -8,7 +8,7 @@ export const PLANS_MONTHLY: Plan[] = [
   {
     id: FREE_MONTHLY_PLAN_ID,
     title: `Offer libre\nValable toute l'année`,
-    price: '0 euros HT',
+    price: '0€ HT/mois',
 
     features: [
       'Page web prsonnalisée',
@@ -21,13 +21,13 @@ export const PLANS_MONTHLY: Plan[] = [
       'Jusqu`s a 50H de vidéconférence mensuelles',
       'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Monthly,
+    period: PlanPeriod.Monthly,
   },
 
   {
     id: 'm-2',
     title: 'Initiation',
-    price: '29 euros HT',
+    price: '29€ HT/mois',
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -39,13 +39,13 @@ export const PLANS_MONTHLY: Plan[] = [
       'Jusqu`s a 50H de vidéconférence mensuelles',
       'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Monthly,
+    period: PlanPeriod.Monthly,
   },
 
   {
     id: 'm-3',
     title: 'Pro',
-    price: '59 euros HT',
+    price: '59€ HT/mois',
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -58,12 +58,12 @@ export const PLANS_MONTHLY: Plan[] = [
       'Jusqu`s a 6 produits dans lat Boutique en ligne',
     ],
 
-    type: PlanType.Monthly,
+    period: PlanPeriod.Monthly,
   },
   {
     id: 'm-4',
     title: 'Master',
-    price: '150 euros HT',
+    price: '150€ HT/mois',
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -75,7 +75,7 @@ export const PLANS_MONTHLY: Plan[] = [
       'Vidéoconférences illimitée',
       'Produits illimités Boutique en ligne',
     ],
-    type: PlanType.Monthly,
+    period: PlanPeriod.Monthly,
   },
 ];
 
@@ -83,7 +83,7 @@ export const PLANS_ANNUAL: Plan[] = [
   {
     id: FREE_ANNUAL_PLAN_ID,
     title: `Offer libre\nValable toute l'année`,
-    price: '0 euros HT',
+    price: '0€ HT par an',
     features: [
       'Page web prsonnalisée',
       'Référencement de votre profil avec un rayonnment optimal',
@@ -95,13 +95,13 @@ export const PLANS_ANNUAL: Plan[] = [
       'Jusqu`s a 50H de vidéconférence mensuelles',
       'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Annual,
+    period: PlanPeriod.Yearly,
   },
 
   {
     id: 'a-2',
     title: 'Initiation',
-    price: `${19 * 12} euros HT`,
+    price: `${19 * 12}€ HT par an`,
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -113,13 +113,13 @@ export const PLANS_ANNUAL: Plan[] = [
       'Jusqu`s a 50H de vidéconférence mensuelles',
       'Jusqu`s a 3 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Annual,
+    period: PlanPeriod.Yearly,
   },
 
   {
     id: 'a-3',
     title: 'Pro',
-    price: `${49 * 12} euros HT`,
+    price: `${49 * 12}€ HT par an`,
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -131,12 +131,12 @@ export const PLANS_ANNUAL: Plan[] = [
       'Jusqu`s a 100H de vidéconférence mensuelles',
       'Jusqu`s a 6 produits dans lat Boutique en ligne',
     ],
-    type: PlanType.Annual,
+    period: PlanPeriod.Yearly,
   },
   {
     id: 'a-4',
     title: 'Master',
-    price: `${140 * 12} euros HT`,
+    price: `${140 * 12}€ HT par an`,
     features: [
       'Page web prsonnalisée',
       'Gestion de la ralation client',
@@ -148,6 +148,6 @@ export const PLANS_ANNUAL: Plan[] = [
       'Vidéoconférences illimitée',
       'Produits illimités Boutique en ligne',
     ],
-    type: PlanType.Annual,
+    period: PlanPeriod.Yearly,
   },
 ];

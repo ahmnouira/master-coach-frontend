@@ -7,7 +7,14 @@
     style="height: 50px"
     [ngStyle]="{ width: fullWith && '100%' }"
   >
-    <span *ngIf="!isLoading">{{ title }}</span>
+    <div *ngIf="!isLoading && icon" class="btn-icon">
+      <span class="material-icons">{{ icon }}</span>
+      <span>{{ title }}</span>
+    </div>
+
+    <span *ngIf="!isLoading && !icon">
+      {{ title }}
+    </span>
     <app-loader *ngIf="isLoading"></app-loader>
   </button>
 </div>
@@ -21,4 +28,15 @@
 
 <button class="btn btn-basic mlr-10" *ngIf="variant === 'basic'">
   {{ title }}
+</button>
+
+<button
+  type="submit"
+  [disabled]="disabled"
+  class="btn btn-submit raised-button"
+  (click)="handleClick($event)"
+  *ngIf="variant === 'auth'"
+>
+  <span *ngIf="!isLoading">{{ title }}</span>
+  <app-loader *ngIf="isLoading"></app-loader>
 </button>

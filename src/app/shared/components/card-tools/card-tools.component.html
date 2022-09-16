@@ -1,0 +1,15 @@
+<div class="card-tools">
+  <div class="card-tools-icon" [routerLink]="viewPath">
+    <span class="material-icons visibility-icon">visibility</span>
+  </div>
+
+  <div class="card-tools-icon" [routerLink]="editPath">
+    <span class="material-icons edit-icon">mode_edit</span>
+  </div>
+
+  <div class="card-tools-icon" (click)="handleHide()">
+    <span class="material-icons public-icon">
+      {{ isHidden ? "public_off" : "public" }}</span
+    >
+  </div>
+</div>

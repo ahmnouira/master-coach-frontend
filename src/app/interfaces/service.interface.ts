@@ -16,5 +16,6 @@ export interface IService {
   isAutoConfirmed?: boolean;
   format?: ServiceFormat;
   sessionType?: SessionType;
+  isDeleted?: boolean;
   chez?: ServiceChez;
 }

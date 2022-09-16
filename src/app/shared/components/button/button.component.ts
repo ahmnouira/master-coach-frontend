@@ -11,7 +11,7 @@ export class ButtonComponent implements OnInit {
   @Input() isLoading: boolean = false;
   @Input() disabled: boolean;
 
-  @Input() variant?: 'submit' | 'add' | 'basic' = 'submit';
+  @Input() variant?: 'submit' | 'add' | 'basic' | 'auth' = 'submit';
 
   @Input() fullWith: boolean = false;
 
@@ -20,6 +20,8 @@ export class ButtonComponent implements OnInit {
   @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
   @Input() type = 'submit';
+
+  @Input() icon: string;
 
   constructor(private routerService: RouteService) {}
 

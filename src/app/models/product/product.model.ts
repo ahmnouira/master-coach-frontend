@@ -14,6 +14,7 @@ export class Product extends Entity implements IProduct {
   price?: string;
   isFree?: boolean;
   displayedInShop?: boolean;
+  isDeleted?: boolean;
 
   readonly user: User;
 }

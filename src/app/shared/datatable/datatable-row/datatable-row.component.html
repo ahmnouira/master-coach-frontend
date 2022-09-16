@@ -14,42 +14,27 @@
           ? { 'text-align': 'center' }
           : { 'text-align': 'left' }
       "
+      style="padding-left: 32px"
     >
       <span
         [class]="row[title.data + '_class']"
         [ngClass]="{ badge: title.type === 'badge' }"
         [ngStyle]="
-          (title.data === 'type' || title.data === 'description') && {
-            'text-transform': 'capitalize'
-          }
-        "
-        [ngStyle]="
-          (title.data === 'price' || title.data === 'amount') && {
-            'font-weight': 'bold'
-          }
+          title.data === 'price' || title.data === 'amount'
+            ? {
+                'font-weight': 'bold'
+              }
+            : title.data === 'type' || title.data === 'description'
+            ? {
+                'text-transform': 'capitalize'
+              }
+            : {}
         "
       >
-        {{
-          row[title.data] || row[title.data] === 0
-            ? title.data === "price" || title.data === "amount"
-              ? row[title.data] + " €"
-              : row[title.data]
-            : "-"
-        }}
+        {{ renderValue(title.data, row[title.data]) }}
       </span>
     </td>
-    <!-- date piped -->
-    <td *ngIf="title.type === 'date'">
-      <span>
-        <ng-template [ngIf]="row[title.data]">
-          {{
-            row[title.data]
-              | date: (title.dateFormat ? title.dateFormat : "dd/MM/yyyy")
-          }}
-        </ng-template>
-        <ng-template [ngIf]="!row[title.data]">-</ng-template>
-      </span>
-    </td>
+
     <!-- checkbox -->
     <td
       *ngIf="title.type === 'checkbox'"

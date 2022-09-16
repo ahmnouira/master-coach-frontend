@@ -10,5 +10,6 @@ export interface IProduct {
   file: any;
   price?: string;
   isFree?: boolean;
+  isDeleted?: boolean;
   displayedInShop?: boolean;
 }

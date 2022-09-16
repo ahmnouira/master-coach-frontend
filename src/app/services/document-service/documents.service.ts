@@ -19,4 +19,12 @@ export class DocumentsService extends BaseService {
   getDocument(id: string): Observable<any> {
     return this.get(`/documents/${id}`);
   }
+
+  editDocument(id: string, data: any): Observable<any> {
+    return this.put(`/documents/${id}`, data);
+  }
+
+  deleteDocument(id: string): Observable<any> {
+    return this.delete(`/documents/${id}`);
+  }
 }

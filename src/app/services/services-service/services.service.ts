@@ -17,9 +17,7 @@ export class ServicesService extends BaseService {
   services$ = this.services.asObservable();
 
   addService(data: any): Observable<any> {
-    return this.post('/services', data, {
-      formData: true,
-    });
+    return this.post('/services', data);
   }
 
   getServices(options: GetServicesOptions): Observable<any> {
@@ -28,6 +26,18 @@ export class ServicesService extends BaseService {
 
   getService(id: string): Observable<any> {
     return this.get(`/services/${id}`);
+  }
+
+  editService(id: string, data: any) {
+    return this.put(`/services/${id}`, data);
+  }
+
+  deleteService(id: string): Observable<any> {
+    return this.delete(`/services/${id}`);
+  }
+
+  hideService(id: string): Observable<any> {
+    return this.put(`/services/${id}/toggle-delete`);
   }
 
   set setServices(services: Service[]) {

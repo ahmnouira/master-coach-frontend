@@ -10,6 +10,8 @@ import { ServiceAddComponent } from './service-add/service-add.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ServiceFormComponent } from './service-form/service-form.component';
 import { ServiceEditComponent } from './service-edit/service-edit.component';
+import { ServiceViewComponent } from './service-view/service-view.component';
+import { ServiceInfoComponent } from './service-info/service-info.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { ServiceEditComponent } from './service-edit/service-edit.component';
     ServiceAddComponent,
     ServiceFormComponent,
     ServiceEditComponent,
+    ServiceViewComponent,
+    ServiceInfoComponent,
   ],
   exports: [ServiceCardComponent, ServicesListComponent],
   imports: [

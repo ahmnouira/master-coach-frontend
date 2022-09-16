@@ -6,7 +6,6 @@ import { ComponentsModule } from '../../components/components.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { FormationDetailComponent } from './formation-detail/formation-detail.component';
-import { ServiceInfoComponent } from './formation-detail/service-info/service-info.component';
 import { LoadingCardModule } from 'src/app/shared/loading-card/loading-card.module';
 import { DatatableModule } from 'src/app/shared/datatable/datatable.module';
 import { RdvListComponent } from './rdv-list/rdv-list.component';
@@ -19,7 +18,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [
     FormationDetailComponent,
-    ServiceInfoComponent,
     RdvListComponent,
     RdvDetailComponent,
     RdvPayComponent,

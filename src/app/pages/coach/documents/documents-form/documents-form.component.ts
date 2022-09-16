@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IDocument } from 'src/app/interfaces/document.interface';
@@ -15,10 +16,9 @@ import { Animations } from 'src/app/shared/animations';
 export class DocumentsFormComponent extends FormHelper implements OnInit {
   @Input() id: string = ''; // if id means edit
 
-  form: IDocument = {
+  form: Partial<IDocument> = {
     description: '',
     title: '',
-    type: DocumentType.DOCUMENT,
     category: '',
     image: '',
     file: '',
@@ -31,8 +31,9 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
   };
 
   selectedCategories: any = [];
-
   categories: any[] = [];
+
+  found: boolean;
 
   constructor(
     private documentService: DocumentsService,
@@ -46,31 +47,41 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
     this.getCategories();
     if (this.id) {
       // means edit
-      this.documentService.getDocument(this.id).subscribe((res) => {
-        if (!res.success) {
-          this.onError(res.error);
-          return;
-        }
-        const document = res.data as IDocument;
+      this.documentService.getDocument(this.id).subscribe(
+        (res) => {
+          if (!res.success && res.error) {
+            this.found = false;
+            this.onError(res.error);
+            return;
+          }
+          const document = res.data as IDocument;
 
-        this.form = {
-          description: this.getString(document.description),
-          title: this.getString(document.title),
-          type: document.type,
-          category: this.getString(document.category),
-          duration: this.getString(document.duration),
-          image: this.getFileUrl(document.image),
-          file: this.getFileUrl(document.file),
-        };
-        const category = this.categories?.find(
-          (el) => el.name === this.form.category
-        );
-        if (category) {
-          this.selectedCategories = [category];
+          this.form = {
+            description: this.getString(document.description),
+            title: this.getString(document.title),
+            type: document.type,
+            category: this.getString(document.category),
+            duration: this.getString(document.duration),
+            image: this.getFileUrl(document.image),
+            file: this.getFileUrl(document.file),
+          };
+
+          const category = this.categories?.find(
+            (el) => el.name === this.form.category
+          );
+          if (category) {
+            this.selectedCategories = [category];
+          }
+          this.found = true;
+          this.isLoading = false;
+        },
+        (error) => {
+          this.found = false;
+          this.onError(error);
         }
-        this.isLoading = false;
-      });
+      );
     } else {
+      this.found = true;
       this.isLoading = false;
     }
   }
@@ -114,8 +125,9 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
     this.form[key] = data;
   }
 
-  async submit() {
+  submit() {
     this.isSubmitting = true;
+    this.error = ''; // remove the error when re-submitting
 
     const { description, title, duration } = this.form;
 
@@ -124,10 +136,16 @@ export class DocumentsFormComponent extends FormHelper implements OnInit {
       return;
     }
     const formData = this.getFormData(this.form);
+    let method: Observable<any>;
 
-    this.documentService.addDocument(formData).subscribe(
+    if (this.id) {
+      method = this.documentService.editDocument(this.id, formData);
+    } else {
+      method = this.documentService.addDocument(formData);
+    }
+
+    method.subscribe(
       (res) => {
-        console.log('res:', res);
         if (!res.success) {
           this.onError(res.error);
           return;

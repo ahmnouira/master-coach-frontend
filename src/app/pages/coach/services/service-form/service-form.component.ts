@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IService } from 'src/app/interfaces/service.interface';
 import { ServiceChez } from 'src/app/models/service/service-chez.enum';
@@ -34,6 +35,8 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
     sessionType: SessionType.COLLECTIVE,
   };
 
+  found: boolean;
+
   constructor(
     private servicesService: ServicesService,
     private routeService: RouteService
@@ -43,34 +46,44 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
 
   ngOnInit(): void {
     if (this.id) {
-      this.isLoading = true;
       // means edit
-      this.servicesService.getService(this.id).subscribe((res) => {
-        if (!res.success) {
-          this.onError(res.error);
-          return;
+      this.isLoading = true;
+
+      this.servicesService.getService(this.id).subscribe(
+        (res) => {
+          if (!res.success) {
+            this.found = false;
+            this.onError(res.error);
+            return;
+          }
+          const service = res.data as IService;
+          this.form = {
+            description: service.description,
+            title: service.title,
+            duration: service.duration,
+            image: this.getFileUrl(service.image),
+            price: service.price,
+            isFree: service.isFree,
+            isPriceHidden: service.isPriceHidden,
+            isFixedPrice: service.isFixedPrice,
+            testimonies: this.getArray(service.testimonies),
+            category: service.category,
+            isAutoConfirmed: service.isAutoConfirmed,
+            // these  '||' for old created services
+            format: service.format || ServiceFormat.CONFERENCE,
+            chez: service.chez || ServiceChez.CLIENT,
+            sessionType: service.sessionType || SessionType.COLLECTIVE,
+          };
+          this.found = true;
+          this.isLoading = false;
+        },
+        (err) => {
+          this.found = false;
+          this.onError(err);
         }
-        const service = res.data as IService;
-        this.form = {
-          description: service.description,
-          title: service.title,
-          duration: service.duration,
-          image: this.getFileUrl(service.image),
-          price: service.price,
-          isFree: service.isFree,
-          isPriceHidden: service.isPriceHidden,
-          isFixedPrice: service.isFixedPrice,
-          testimonies: this.getArray(service.testimonies),
-          category: service.category,
-          isAutoConfirmed: service.isAutoConfirmed,
-          // these  '||' for old created services
-          format: service.format || ServiceFormat.CONFERENCE,
-          chez: service.chez || ServiceChez.CLIENT,
-          sessionType: service.sessionType || SessionType.COLLECTIVE,
-        };
-        this.isLoading = false;
-      });
+      );
     } else {
+      this.found = true;
       this.isLoading = false;
     }
   }
@@ -81,6 +94,7 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
 
   async submit() {
     this.isSubmitting = true;
+    this.error = ''; // remove the error when re-submitting
 
     const { title, description, duration, price, isFree } = this.form;
 
@@ -90,18 +104,24 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
     }
 
     // check if not a free
-    if (!isFree && !price) {
+    if (!isFree && !parseInt(price)) {
+      // this.onError('Please check price');
       this.onError('');
       return;
     }
     let formData = this.getFormData(this.form);
-
     formData.set('price', parseInt(price).toString());
+    let method: Observable<any>;
 
-    this.servicesService.addService(formData).subscribe(
+    if (this.id) {
+      method = this.servicesService.editService(this.id, formData);
+    } else {
+      method = this.servicesService.addService(formData);
+    }
+
+    method.subscribe(
       (res) => {
-        console.log('res:', res);
-        if (!res.success) {
+        if (!res.success && res.error) {
           this.onError(res.error);
           return;
         }
@@ -129,7 +149,7 @@ export class ServiceFormComponent extends FormHelper implements OnInit {
     ];
   }
 
-  track(item: any, index: number) {
+  track(_item: any, index: number) {
     return index;
   }
 }

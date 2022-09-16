@@ -3,17 +3,21 @@
     <app-loader></app-loader>
   </div>
 </div>
+
 <ng-template #elseBlock>
-  <div class="form-container">
-    <form
-      [@animate]="{
-        value: '*',
-        params: { duration: '300ms', y: '100px' }
-      }"
-      name="form"
-      #f="ngForm"
-      novalidate
-    >
+  <app-empty-page title="service" *ngIf="!found"></app-empty-page>
+
+  <form
+    [@animate]="{
+      value: '*',
+      params: { duration: '300ms', y: '100px' }
+    }"
+    name="form"
+    #f="ngForm"
+    novalidate
+    *ngIf="found"
+  >
+    <div class="form-container">
       <h2 class="title">Info</h2>
 
       <!-- Titre -->
@@ -199,20 +203,18 @@
         [hasItems]="form.testimonies.length"
       ></app-add-field>
 
-      <app-divider></app-divider>
-
-      <app-form-error [error]="error"></app-form-error>
-
-      <div class="alert alert-info" role="alert" *ngIf="success">
-        Service ajouté
-      </div>
+      <app-form-footer
+        [error]="error"
+        [success]="success"
+        [successMessage]="id ? 'Service modifé' : 'Service ajouté'"
+      ></app-form-footer>
 
       <app-button
         (onClick)="submit()"
         [isLoading]="isSubmitting"
-        [disabled]="id ? true : false"
+        [disabled]="isSubmitting"
       >
       </app-button>
-    </form>
-  </div>
+    </div>
+  </form>
 </ng-template>
