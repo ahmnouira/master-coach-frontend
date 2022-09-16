@@ -1,0 +1,10 @@
+<div class="tabs">
+  <button
+    *ngFor="let tab of tabs; index as i"
+    [ngClass]="selectedTab === i ? 'active-tab' : 'active-tab white-bg'"
+    (click)="handleClick($event, i)"
+  >
+    <span>{{ tab.title | titlecase }}</span>
+    <img *ngIf="tab.icon" src="{{ tab.icon }}" />
+  </button>
+</div>

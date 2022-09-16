@@ -1,0 +1,48 @@
+<div *ngIf="isLoading; else elseBlock">
+  <div style="margin-top: 50px">
+    <app-loader></app-loader>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <form
+    [@animate]="{
+      value: '*',
+      params: { duration: '300ms', y: '100px' }
+    }"
+    name="form"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="form-container">
+      <h2 class="title">Info</h2>
+
+      <div class="row">
+        <div class="col">
+          <app-text-field
+            type="email"
+            [label]="'Email'"
+            [(model)]="form.email"
+            [form]="f"
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          >
+          </app-text-field>
+        </div>
+      </div>
+
+      <app-form-footer
+        [error]="error"
+        [success]="success"
+        [successMessage]="'Invitation envoyée'"
+      ></app-form-footer>
+
+      <app-button
+        [title]="'Inviter'"
+        (onClick)="submit()"
+        [isLoading]="isSubmitting"
+        [disabled]="isSubmitting"
+      >
+      </app-button>
+    </div>
+  </form>
+</ng-template>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DocumentsAddComponent } from './documents-add/documents-add.component';
 import { DocumentsEditComponent } from './documents-edit/documents-edit.component';
 import { DocumentsListComponent } from './documents-list/documents-list.component';
+import { DocumentsViewComponent } from './documents-view/documents-view.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,8 @@ const routes: Routes = [
     path: 'add',
     component: DocumentsAddComponent,
   },
+
+  { path: 'view/:id', component: DocumentsViewComponent },
 
   { path: 'edit/:id', component: DocumentsEditComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },

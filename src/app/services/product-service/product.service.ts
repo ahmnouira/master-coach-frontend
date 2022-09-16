@@ -23,7 +23,23 @@ export class ProductService extends BaseService {
     return this.get(options.all ? '/products' : '/products/mine', params);
   }
 
+  downloadFile(url: string): Observable<any> {
+    return this.getFileFormUrl(url);
+  }
+
   getProduct(id: string): Observable<any> {
     return this.get(`/products/${id}`);
+  }
+
+  editProduct(id: string, data: any) {
+    return this.put(`/products/${id}`, data);
+  }
+
+  hideProduct(id: string) {
+    return this.put(`/products/${id}/toggle-delete`);
+  }
+
+  deleteProduct(id: string): Observable<any> {
+    return this.delete(`/products/${id}`);
   }
 }

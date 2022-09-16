@@ -1,0 +1,23 @@
+<div class="info-container">
+  <section>
+    <h2 class="title">Info</h2>
+    <app-text-info
+      [title]="'Titre'"
+      [value]="document.title"
+      *ngIf="document.title"
+    ></app-text-info>
+    <app-text-info
+      [title]="'Durée'"
+      [value]="document.duration"
+      *ngIf="document.duration"
+    ></app-text-info>
+  </section>
+
+  <section>
+    <app-text-info
+      [title]="'Type'"
+      [value]="document.type"
+      *ngIf="document.type"
+    ></app-text-info>
+  </section>
+</div>

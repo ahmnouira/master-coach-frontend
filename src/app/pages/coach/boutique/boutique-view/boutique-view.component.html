@@ -1,0 +1,26 @@
+<app-sub-header
+  [title]="'Page détails du support formation'"
+  [subTitle]="'BACK'"
+></app-sub-header>
+
+<app-page-wrapper>
+  <app-page-list-wrapper
+    [error]=""
+    [found]="found"
+    [isLoading]="isLoading"
+    [title]="'produit'"
+  >
+    <div class="row gx-4" *ngIf="data">
+      <div class="col-8 col-xxl-9">
+        <app-product-info
+          [product]="data"
+          [showDownload]="true"
+        ></app-product-info>
+      </div>
+
+      <div class="col-4 col-xxl-3">
+        <app-boutique-info [product]="data"></app-boutique-info>
+      </div>
+    </div>
+  </app-page-list-wrapper>
+</app-page-wrapper>

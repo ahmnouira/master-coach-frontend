@@ -1,0 +1,37 @@
+.img-row {
+  display: flex;
+  justify-content: center;
+  margin: 0 32px;
+}
+
+.user-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid #1376a3;
+  background: transparent;
+}
+
+.action-btn {
+  margin-top: 30px;
+  button {
+    height: 50px;
+  }
+}
+
+.user-infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 32px;
+
+  img {
+    margin-right: 8px;
+  }
+  .basic-info {
+    display: flex;
+    align-items: center;
+    font: normal normal normal 18px/22px Fredoka;
+    color: #1376a3;
+  }
+}

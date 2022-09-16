@@ -11,6 +11,8 @@ import { BoutiqueAddComponent } from './boutique-add/boutique-add.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BoutiqueFormComponent } from './boutique-form/boutique-form.component';
 import { BoutiqueEditComponent } from './boutique-edit/boutique-edit.component';
+import { BoutiqueViewComponent } from './boutique-view/boutique-view.component';
+import { BoutiqueInfoComponent } from './boutique-info/boutique-info.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { BoutiqueEditComponent } from './boutique-edit/boutique-edit.component';
     BoutiqueAddComponent,
     BoutiqueFormComponent,
     BoutiqueEditComponent,
+    BoutiqueViewComponent,
+    BoutiqueInfoComponent,
   ],
   exports: [BoutiqueCardComponent],
 

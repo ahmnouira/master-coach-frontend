@@ -1,0 +1,26 @@
+<div>
+  <div class="img-row">
+    <img class="user-img" [src]="photo" />
+  </div>
+  <div class="flex-column flex-xl-row user-infos">
+    <div class="basic-info">
+      <img src="assets/img/common/email%20(12).png" />
+      <span>{{ user.email || "N.C" }}</span>
+    </div>
+    <div class="basic-info">
+      <img src="assets/img/common/user%20(31).png" />
+      <span>{{ displayName || "N.C" }}</span>
+    </div>
+    <div class="basic-info">
+      <img src="assets/img/common/phone%20(5).png" />
+      <span>{{ user.tel || "N.C" }}</span>
+    </div>
+  </div>
+
+  <div class="user-infos">
+    <div class="basic-info">
+      <img width="18px" src="../../../../../assets/img/common/team.svg" />
+      <span>{{ "Non affecté" }}</span>
+    </div>
+  </div>
+</div>

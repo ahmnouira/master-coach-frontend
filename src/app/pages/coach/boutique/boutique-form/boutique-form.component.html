@@ -5,6 +5,8 @@
 </div>
 
 <ng-template #elseBlock>
+  <app-empty-page title="product" *ngIf="!found"></app-empty-page>
+
   <form
     [@animate]="{
       value: '*',
@@ -13,6 +15,7 @@
     name="form"
     #f="ngForm"
     novalidate
+    *ngIf="found"
   >
     <div class="form-container">
       <h2 class="title">Info</h2>
@@ -154,17 +157,16 @@
         </div>
       </div>
 
-      <app-divider></app-divider>
-      <app-form-error [error]="error"></app-form-error>
-
-      <div class="alert alert-info" role="alert" *ngIf="success">
-        Service ajouté
-      </div>
+      <app-form-footer
+        [error]="error"
+        [success]="success"
+        [successMessage]="id ? 'Produit modifé' : 'Produit ajouté'"
+      ></app-form-footer>
 
       <app-button
         (onClick)="submit()"
         [isLoading]="isSubmitting"
-        [disabled]="id ? true : false"
+        [disabled]="isSubmitting"
       >
       </app-button>
     </div>

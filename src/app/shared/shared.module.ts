@@ -50,6 +50,12 @@ import { TabsWizardComponent } from './components/tabs-wizard/tabs-wizard.compon
 import { CalendarComponent } from './calendar/calendar.component';
 import { CountdownComponent } from './countdown/countdown.component';
 import { CountdownModule } from 'ngx-countdown';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { FormCoreWrapperComponent } from './components/form-core-wrapper/form-core-wrapper.component';
+import { FormCoreLeftSideComponent } from './components/form-core-left-side/form-core-left-side.component';
+import { CardToolsComponent } from './components/card-tools/card-tools.component';
+import { TextInfoComponent } from './components/text-info/text-info.component';
+import { ValueInfoComponent } from './components/value-info/value-info.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +100,12 @@ import { CountdownModule } from 'ngx-countdown';
     TabsWizardComponent,
     CalendarComponent,
     CountdownComponent,
+    TabsComponent,
+    FormCoreWrapperComponent,
+    FormCoreLeftSideComponent,
+    CardToolsComponent,
+    TextInfoComponent,
+    ValueInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -149,6 +161,12 @@ import { CountdownModule } from 'ngx-countdown';
     UpdatePasswordComponent,
     TabsWizardComponent,
     CalendarComponent,
+    TabsComponent,
+    FormCoreWrapperComponent,
+    FormCoreLeftSideComponent,
+    CardToolsComponent,
+    TextInfoComponent,
+    ValueInfoComponent,
   ],
 })
 export class SharedModule {}

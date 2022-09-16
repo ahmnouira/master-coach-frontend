@@ -1,5 +1,5 @@
-<div class="form-footer-container">
-  <app-divider></app-divider>
+<div [ngClass]="{ 'form-footer-container': showDivider }">
+  <app-divider *ngIf="showDivider"></app-divider>
   <app-form-error [error]="error"></app-form-error>
   <div class="alert alert-info" role="alert" *ngIf="success">
     {{ successMessage }}

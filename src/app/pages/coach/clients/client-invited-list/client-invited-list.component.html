@@ -1,0 +1,10 @@
+<app-page-list-wrapper
+  [error]="error"
+  [found]="found"
+  [isLoading]="isLoading"
+  [title]="'invited clients'"
+>
+  <div *ngFor="let user of data; index as i">
+    <app-client-item></app-client-item>
+  </div>
+</app-page-list-wrapper>

@@ -4,7 +4,17 @@
   </div>
   <div class="desc">
     <p>
-      {{ description }}
+      {{ product.description }}
     </p>
   </div>
+
+  <app-button
+    *ngIf="showDownload"
+    (onClick)="download()"
+    [isLoading]="isSubmitting"
+    [title]="'Télécharger'"
+    [disabled]="disabled || isSubmitting"
+    [icon]="'download'"
+  >
+  </app-button>
 </div>

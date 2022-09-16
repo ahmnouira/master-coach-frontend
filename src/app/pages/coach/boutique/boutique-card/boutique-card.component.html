@@ -1,8 +1,18 @@
 <div
   class="product-card"
-  [ngStyle]="{ 'background-image': backgroundImage }"
-  [routerLink]="path"
+  [ngStyle]="{
+    'background-image': backgroundImage,
+    cursor: forClient && 'pointer'
+  }"
+  [routerLink]="forClient && viewPath"
 >
+  <app-card-tools
+    [editPath]="editPath"
+    [viewPath]="viewPath"
+    [isHidden]="product.isDeleted"
+    (onHide)="handleHide()"
+    *ngIf="!forClient"
+  ></app-card-tools>
   <div class="product-card-meta">
     <img
       class="product-card-meta-icon"

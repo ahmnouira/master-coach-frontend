@@ -10,7 +10,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  cursor: pointer;
+  position: relative;
+
   &-meta {
     display: flex;
     align-items: center;

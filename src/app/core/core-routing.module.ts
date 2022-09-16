@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { InvitationFormComponent } from './invitation/invitation-form/invitation-form.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
       import('./reset-password/reset-password.module').then(
         (module) => module.ResetPasswordModule
       ),
+  },
+
+  {
+    path: 'invitation',
+    component: InvitationFormComponent,
   },
 
   {

@@ -10,6 +10,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { ForgotPasswordModule } from './forgot-password/forgot-password.module';
 import { ResetPasswordModule } from './reset-password/reset-password.module';
+import { InvitationFormComponent } from './invitation/invitation-form/invitation-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ResetPasswordModule } from './reset-password/reset-password.module';
     ConfirmEmailComponent,
     AuthBaseComponent,
     VerifyEmailComponent,
+    InvitationFormComponent,
   ],
   imports: [
     CoreRoutingModule,

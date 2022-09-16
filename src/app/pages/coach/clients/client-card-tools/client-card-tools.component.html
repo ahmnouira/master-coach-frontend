@@ -1,0 +1,13 @@
+<div class="action-icons" *ngIf="selectedUser">
+  <img
+    src="assets/img/common/edit-client.svg"
+    style="width: 20px; height: 20px; cursor: pointer"
+    (click)="handleEdit()"
+  />
+  <div class="dropdown-container" tabindex="-1">
+    <div class="three-dots"></div>
+    <div class="dropdown">
+      <a (click)="deleteUser(selectedUser)"><div>Supprimer</div></a>
+    </div>
+  </div>
+</div>

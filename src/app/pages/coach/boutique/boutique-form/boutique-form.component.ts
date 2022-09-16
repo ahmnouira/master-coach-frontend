@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 import { FormHelper } from 'src/app/helpers/FormHelper';
 import { IProduct } from 'src/app/interfaces/product.interface';
@@ -16,7 +17,7 @@ import { Animations } from 'src/app/shared/animations';
 export class BoutiqueFormComponent extends FormHelper implements OnInit {
   @Input() id: string = ''; // if id means edit
 
-  form: IProduct = {
+  form: Partial<IProduct> = {
     description: '',
     price: '',
     title: '',
@@ -32,6 +33,8 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
   selectedCategories: any = [];
   categories: any[] = [];
 
+  found: boolean;
+
   constructor(
     private productService: ProductService,
     private authService: AuthService,
@@ -44,36 +47,45 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     this.getCategories();
     if (this.id) {
       // means edit
-      this.productService.getProduct(this.id).subscribe((res) => {
-        if (!res.success) {
-          this.onError(res.error);
-          return;
+      this.productService.getProduct(this.id).subscribe(
+        (res) => {
+          if (!res.success) {
+            this.found = false;
+            this.onError(res.error);
+            return;
+          }
+          const product = res.data as IProduct;
+
+          this.form = {
+            description: this.getString(product.description),
+            title: this.getString(product.title),
+            type: product.type,
+            category: this.getString(product.category),
+            isFree: product.isFree,
+            duration: this.getString(product.duration),
+            image: this.getFileUrl(product.image),
+            file: this.getFileUrl(product.file),
+            price: this.getString(product.price),
+            displayedInShop: product.displayedInShop,
+          };
+
+          const category = this.categories?.find(
+            (el) => el.name === this.form.category
+          );
+          if (category) {
+            this.selectedCategories = [category];
+          }
+
+          this.found = true;
+          this.isLoading = false;
+        },
+        (err) => {
+          this.found = false;
+          this.onError(err);
         }
-        const product = res.data as IProduct;
-
-        this.form = {
-          description: this.getString(product.description),
-          title: this.getString(product.title),
-          type: product.type,
-          category: this.getString(product.category),
-          isFree: product.isFree,
-          duration: this.getString(product.duration),
-          image: this.getFileUrl(product.image),
-          file: this.getFileUrl(product.file),
-          price: this.getString(product.price),
-          displayedInShop: product.displayedInShop,
-        };
-
-        const category = this.categories?.find(
-          (el) => el.name === this.form.category
-        );
-        if (category) {
-          this.selectedCategories = [category];
-        }
-
-        this.isLoading = false;
-      });
+      );
     } else {
+      this.found = true;
       this.isLoading = false;
     }
   }
@@ -135,6 +147,8 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
 
   async submit() {
     this.isSubmitting = true;
+    this.error = ''; // remove the error when re-submitting
+
     const { description, title, price, isFree, duration } = this.form;
 
     if (!title || !description || !duration) {
@@ -143,7 +157,8 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
     }
 
     // check if not a free
-    if (!isFree && !price) {
+    if (!isFree && !parseInt(price)) {
+      // this.onError('Please check price');
       this.onError('');
       return;
     }
@@ -152,10 +167,17 @@ export class BoutiqueFormComponent extends FormHelper implements OnInit {
 
     formData.set('price', parseInt(price).toString());
 
-    this.productService.addProduct(formData).subscribe(
+    let method: Observable<any>;
+
+    if (this.id) {
+      method = this.productService.editProduct(this.id, formData);
+    } else {
+      method = this.productService.addProduct(formData);
+    }
+
+    method.subscribe(
       (res) => {
-        console.log('res:', res);
-        if (!res.success) {
+        if (!res.success && res.error) {
           this.onError(res.error);
           return;
         }

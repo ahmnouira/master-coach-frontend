@@ -1,0 +1,31 @@
+<app-sub-header [title]="'Mes clients'"></app-sub-header>
+
+<app-page-wrapper>
+  <app-page-header-wrapper>
+    <div class="row align-items-center" start>
+      <app-search
+        [(model)]="filterString"
+        (modelChange)="filterInputChanged($event)"
+        placeholder="Client"
+      ></app-search>
+    </div>
+
+    <app-button [title]="'Ajouter un client'" [variant]="'add'" end>
+    </app-button>
+  </app-page-header-wrapper>
+
+  <div class="row">
+    <div class="col-3">
+      <app-tabs [tabs]="tabs" (onChange)="handleTabChange($event)"></app-tabs>
+      <app-client-all-list *ngIf="selectedTab === 0"></app-client-all-list>
+      <app-client-all-list
+        *ngIf="selectedTab === 1"
+        [name]="'invited'"
+      ></app-client-all-list>
+    </div>
+
+    <div class="col-9">
+      <app-client-card></app-client-card>
+    </div>
+  </div>
+</app-page-wrapper>

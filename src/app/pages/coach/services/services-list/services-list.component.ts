@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageHelper } from 'src/app/helpers/PageHelper';
+import { Service } from 'src/app/models/service/service.model';
 import { ServicesService } from 'src/app/services/services-service/services.service';
 
 @Component({
@@ -19,9 +20,34 @@ export class ServicesListComponent extends PageHelper implements OnInit {
   }
 
   getServices() {
-    this.getData(this.servicesService.getServices({ all: false }), {
+    this.getData(this.servicesService.getServices({ all: true }), {
       debug: true,
     });
+  }
+
+  hideService(id: string) {
+    this.servicesService.hideService(id).subscribe(
+      (_res) => {},
+      (err) => {
+        console.error(err);
+      }
+    );
+  }
+
+  deleteService(id: string) {
+    const filteredData = this.data.filter((el) => el._id !== id);
+    this.data = [...filteredData];
+    this.found = Boolean(filteredData.length);
+    this.servicesService.deleteService(id).subscribe(
+      (_res) => {},
+      (err) => {
+        console.error(err);
+      }
+    );
+  }
+
+  trackById(_index: number, service: Service) {
+    return service._id;
   }
 
   filterInputChanged(event: any) {}

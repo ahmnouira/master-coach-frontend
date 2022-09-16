@@ -31,11 +31,33 @@ export class BoutiqueListComponent
       this.productService.getProducts({
         all: false,
         displayedInShop: false,
-      }),
-      {
-        debug: true,
+      })
+    );
+  }
+
+  hideProduct(id: string) {
+    this.productService.hideProduct(id).subscribe(
+      (_res) => {},
+      (err) => {
+        console.error(err);
       }
     );
+  }
+
+  deleteProduct(id: string) {
+    const filteredData = this.data.filter((el) => el._id !== id);
+    this.data = [...filteredData];
+    this.found = Boolean(filteredData.length);
+    this.productService.deleteProduct(id).subscribe(
+      (_res) => {},
+      (err) => {
+        console.error(err);
+      }
+    );
+  }
+
+  trackById(_index: number, product: Product) {
+    return product._id;
   }
 
   resetFilters() {

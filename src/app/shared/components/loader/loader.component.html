@@ -1,3 +1,10 @@
-<div class="d-flex justify-content-center" [ngStyle]="{ marginTop: marginTop }">
-  <div class="spinner-border" role="status"></div>
+<div class="loader">
+  <div
+    class="d-flex justify-content-center"
+    [ngStyle]="{ marginTop: marginTop }"
+  >
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+  <h3 class="loader-title" *ngIf="showText">Chargement...</h3>
 </div>

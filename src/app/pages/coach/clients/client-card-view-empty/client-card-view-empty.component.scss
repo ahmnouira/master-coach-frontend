@@ -1,0 +1,12 @@
+.no-data {
+  display: flex;
+  flex-direction: row;
+  height: 440px;
+  justify-content: center;
+  align-items: center;
+
+  &-text {
+    font: normal normal normal 18px/22px Fredoka;
+    color: #2b76a3;
+  }
+}

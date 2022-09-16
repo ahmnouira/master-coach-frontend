@@ -3,11 +3,12 @@ import { Entity } from './entity/entity.model';
 import { UserRole } from './role.enum';
 
 export class User extends Entity implements IUser {
-  photo?: string | File;
-  prenom: string;
+  username?: string;
   nom: string;
   email: string;
   tel: string;
+  photo?: string | File;
+  prenom: string;
   bio: string;
   cinF: string | File;
   cinB: string | File;

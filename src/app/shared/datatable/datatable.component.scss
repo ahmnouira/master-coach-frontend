@@ -4,7 +4,6 @@
   font-size: 0.8rem;
   font-weight: 400;
   background-color: #fdfdfd;
-  box-shadow: 0.25rem 0.1875rem 0.3rem 0 #c5c5c585;
   overflow: auto;
 
   .bg-light-datatable {
@@ -25,7 +24,7 @@
   }
 
   .action {
-    text-align: center;
+    text-align: right;
   }
 
   .checkboxTemplate {
@@ -114,6 +113,9 @@
   }
 
   .table {
+    .tr-thead {
+    }
+
     .searchInput {
       color: #000;
       background-image: url("./assets/search.png");
@@ -190,6 +192,7 @@
 
   th span {
     user-select: none;
+
     width: 99%;
     white-space: nowrap;
     overflow: hidden;

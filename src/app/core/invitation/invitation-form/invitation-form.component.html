@@ -1,0 +1,45 @@
+<app-form-core-wrapper [title]="'Invitation'">
+  <app-form (onSubmit)="f = $event">
+    <app-text-field
+      [label]="'Nom d\'utilisateur'"
+      [(model)]="form.username"
+      [form]="f"
+    >
+    </app-text-field>
+
+    <app-text-field
+      [type]="'password'"
+      [label]="'Mot de passe'"
+      [(model)]="form.password"
+      [name]="'password'"
+      [form]="f"
+    >
+    </app-text-field>
+
+    <app-text-field
+      [type]="'password'"
+      [label]="'Confirmez le mot de passe'"
+      [(model)]="form.confirmPassword"
+      [pattern]="form.password"
+      [name]="'confirmPassword'"
+      [form]="f"
+    >
+    </app-text-field>
+
+    <app-form-footer
+      [error]="error"
+      [success]="success"
+      [successMessage]="'Acceptée'"
+      [showDivider]="false"
+    ></app-form-footer>
+
+    <app-button
+      (onClick)="submit()"
+      [title]="'Accepter'"
+      [isLoading]="isSubmitting"
+      [disabled]="isSubmitting"
+      [variant]="'auth'"
+    >
+    </app-button>
+  </app-form>
+</app-form-core-wrapper>

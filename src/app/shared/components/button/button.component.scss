@@ -8,4 +8,27 @@
   &-basic {
     height: 40px;
   }
+
+  &-icon {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.btn-submit {
+  color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0px 0px 10px #0000001a;
+  background: #ef6032 0% 0% no-repeat padding-box;
+  margin: 15px auto;
+  width: 424px;
+  border: none;
+  font: normal normal normal 14px/17px Fredoka;
+  height: 50px;
+}
+.btn-submit:hover {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  color: #ef6032;
+  border: 1px solid #ef6032;
+  margin: 15px auto;
 }
